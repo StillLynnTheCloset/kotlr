@@ -20,8 +20,7 @@ hs_err_pid*
 # Gradle Ignores
 .gradle
 **/build
-
-# Ignore Gradle GUI config
+**/out
 gradle-app.setting
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
@@ -33,6 +32,11 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 
-#Idea Ignores
+# Idea Ignores
 **/.idea
 **/*.iml
+
+# Project Ignores
+
+/src/test/kotlin/com.highthunder.kotlr/MyAppKey.kt
+/src/main/kotlin/com.highthunder.kotlr/MyAppKey.kt
