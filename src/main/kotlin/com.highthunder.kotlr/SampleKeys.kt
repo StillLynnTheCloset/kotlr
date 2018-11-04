@@ -18,7 +18,7 @@ val SampleAppKey = TumblrAppKey (
 
 @Suppress("SpellCheckingInspection")
 val SampleUserKey = TumblrUserKey(
-        appKey = MyAppKey,
+        appKey = SampleAppKey,
         userKey = "userKeyAkaToken",
         userSecret = "userSecretAkaTokenSecret"
 )
