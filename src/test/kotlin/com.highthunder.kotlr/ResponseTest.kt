@@ -1,6 +1,5 @@
 package com.highthunder.kotlr
 
-import com.highthunder.kotlr.json.superwrapper.PostJsonAdapter
 import com.highthunder.kotlr.response.type.blog.ResponseBlogLikes
 import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
 import com.squareup.moshi.JsonAdapter
@@ -15,8 +14,6 @@ import org.junit.Test
  * @version 1.0.0
  */
 class ResponseTest {
-
-    private val a = PostJsonAdapter()
 
     @Test
     fun parseBlogLikesResponseTest() {
@@ -36,10 +33,6 @@ class ResponseTest {
         Assert.assertEquals(1, response?.getBody()?.posts?.size)
         Assert.assertNotNull(response?.getBody()?.posts?.firstOrNull())
         Assert.assertNotNull(response?.getBody()?.posts?.firstOrNull()?.trail?.get(1)?.post?.id)
-        response?.getBody()?.posts?.forEach {
-            val parsed = a.fromPost(a.toPost(it))
-            Assert.assertEquals(it.toString().replace(",", "\n"), parsed.toString().replace(",", "\n"))
-        }
         val json = adapter.toJson(response)
         Assert.assertNotNull(json)
     }
@@ -74,12 +67,7 @@ class ResponseTest {
         val adapter = Kotlr.getMoshi().adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java).failOnUnknown()
 
         val response: ResponseUserDashboard.Response? = adapter.fromJson(DashSample.dashResult)
-        response?.getBody()?.posts?.forEach {
-            val parsed = a.fromPost(a.toPost(it))
-            Assert.assertEquals(
-                    it.toString().replace(",", "\n"),
-                    parsed.toString().replace(",", "\n"))
-        }
+
         val json = adapter.toJson(response)
         Assert.assertNotNull(json)
     }
@@ -89,12 +77,7 @@ class ResponseTest {
         val adapter = Kotlr.getMoshi().adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java).failOnUnknown()
 
         val response: ResponseUserDashboard.Response? = adapter.fromJson(DashSample.neueSample)
-        response?.getBody()?.posts?.forEach {
-            val parsed = a.fromPost(a.toPost(it))
-            Assert.assertEquals(
-                    it.toString().replace(",", "\n"),
-                    parsed.toString().replace(",", "\n"))
-        }
+
         val json = adapter.toJson(response)
         Assert.assertNotNull(json)
     }
@@ -104,15 +87,9 @@ class ResponseTest {
         val adapter = Kotlr.getMoshi().adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java).failOnUnknown()
 
         val response: ResponseUserDashboard.Response? = adapter.fromJson(DashSample.legacyAudioEmbedPost)
-        response?.getBody()?.posts?.forEach {
-            val parsed = a.fromPost(a.toPost(it))
-            Assert.assertEquals(
-                    it.toString().replace(",", "\n"),
-                    parsed.toString().replace(",", "\n"))
-        }
+
         val json = adapter.toJson(response)
         Assert.assertNotNull(json)
     }
-
 
 }
