@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/highthunder/kotlr.svg?branch=master)](https://travis-ci.com/highthunder/kotlr)
 
-# kotlr
+# Kotlr
 
 Its a portmanteau of Kotlin and Tumblr
 
@@ -9,16 +9,20 @@ The library is written in pure Kotlin, but does currently have
 dependencies on Java libraries, so, for the time being, it's use is
 restricted to the JVM.
 
-The goal of Kotlr is to create a full API client for Tumblr, and in typesafe and idiomatic Kotlin.
+### Goals ###
+
+* Create a full API client for Tumblr
+* Use typesafe and idiomatic Kotlin
 This means that every response, and every object within those responses,
 will be represented by a class which will have typed properties for every
 possible field that the API can return. All requests to the API will
 likewise be backed by classes which clearly document any and all availible
 parameters as well as enforcing any restrictions on the requests, such
 as maximum values or mutually exclusive parameters.
-
-Kotlr also aims to provide any functionality needed to interact with
-the Tumblr API. It provides APIs to acquire OAuth/XAuth keys in a
+* Support the origional (legacy) post format
+* Support the new 'blocks' post type, aka the Neue Post Format or NPF.
+* Provide any functionality needed to interact with
+the Tumblr API, such as APIs to acquire OAuth/XAuth keys in a
 (hopefully) straightforward manner.
 
 The priorities of development right now are:
@@ -27,12 +31,14 @@ The priorities of development right now are:
 2. Improve documentation.
 3. Improve test coverage and make tests more targeted.
 4. Add support for requests using other HTTP verbs.
-5. Add support for mutlipart form uploads.
-6. Create extension library to improve ease of use on Android.
-7. Create PoC Android App.
-8. Make use of Coroutines to better define blocking api calls.
-9. Improve error messages/exceptions.
-10. Find/make/port pure Kotlin libraries to replace existing dependencies.
+5. Add support for mutlipart form uploads. After this Kotlr will support all of the Tumblr API which will mark version 1.0.0
+6. Clean up the API by: restricting visibility, reducing optional and default values, limiting mutablity, and enforcing stricter types.
+7. Create extension library to improve ease of use on Android.
+8. Create PoC Android App.
+9. Make use of Coroutines to better define blocking api calls.
+10. Improve error messages/exceptions.
+11. Find/make/port pure Kotlin libraries to replace existing dependencies.
+12. Performance improvements and bug fixes, etc.
 
 Development Blog [Here](https://kotlr-development.tumblr.com/)
 
@@ -43,9 +49,9 @@ Please use Kotlr responsibly and follow the
 
 ### How To Use Kotlr ###
 
-There is currently no artifact repository for Gradle/Maven/etc so just
-clone this repo, run `./gradlew jar`, and then copy
-`kotlr/build/libs/kotlr-$version.jar` into your projects libraries.
+There is currently no artifact repository for Gradle/Maven/etc so
+for now just clone this repo, run `./gradlew jar`, and then copy
+`$project_dir/build/libs/kotlr-$version.jar` into your project's libraries.
 
 You'll need a Tumblr API token and secret. Get those by registering an
 app [here](https://www.tumblr.com/oauth/apps).
@@ -77,7 +83,8 @@ fun minimalExample() {
     if (body != null) {
         // And now we can access Tumblr's actual response, which in this case is composed of
         // a list of some liked posts, a count of the total number of liked posts, and potentially
-        // a list of RequestLinks which can encode some generic actions.
+        // a list of RequestLinks which can encode some generic actions that Tumblr thinks you
+        // might like to perform based on the content of this request.
         body.posts?.firstOrNull()?.blogName
         body.totalLiked
         body.links
@@ -124,13 +131,9 @@ fun xAuthExample() {
 }
 ```
 
-
-
 ### Credits ###
-* Continuous Integration - [Travis](https://travis-ci.com/)
-* JSON Serialization - [Moshi](https://github.com/square/moshi)
-* OAuth - [Scribe](https://github.com/scribejava/scribejava)
 * API Documentation - [Tumblr](https://github.com/tumblr/docs)
 * Kotlin - [Jet Brains](https://kotlinlang.org/)
-
-
+* JSON Serialization - [Moshi](https://github.com/square/moshi)
+* OAuth - [Scribe](https://github.com/scribejava/scribejava)
+* Continuous Integration - [Travis](https://travis-ci.com/)
