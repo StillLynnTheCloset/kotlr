@@ -6,6 +6,7 @@ import com.highthunder.kotlr.response.Response as ResponseInterface
 import com.highthunder.kotlr.response.Wrapper as WrapperInterface
 import com.highthunder.kotlr.response.ResponseMetaInfo
 import com.highthunder.kotlr.response.TumblrError
+import com.highthunder.kotlr.types.Post
 import com.highthunder.kotlr.types.RequestLink
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -47,8 +48,8 @@ interface ResponseUserDashboard {
     @JsonClass(generateAdapter = true)
     data class Body(
             @Json(name = "_links")
-            var links: Map<String, RequestLink>? = null,
+            var links: Map<String, RequestLink>? = null, // TODO: Get rid of map.
             @Json(name = "posts")
-            var posts: List<SuperPostJson>? = null)
+            var posts: List<Post>? = null)
 
 }

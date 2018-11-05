@@ -1,14 +1,14 @@
 package com.highthunder.kotlr.response.type.blog
 
-import com.highthunder.kotlr.json.superwrapper.SuperPostJson
 import com.highthunder.kotlr.json.response.BlogLikesWrapperJsonAdapter
-import com.highthunder.kotlr.response.Response as ResponseInterface
-import com.highthunder.kotlr.response.Wrapper as WrapperInterface
 import com.highthunder.kotlr.response.ResponseMetaInfo
 import com.highthunder.kotlr.response.TumblrError
+import com.highthunder.kotlr.types.Post
 import com.highthunder.kotlr.types.RequestLink
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import com.highthunder.kotlr.response.Response as ResponseInterface
+import com.highthunder.kotlr.response.Wrapper as WrapperInterface
 
 /**
  * ResponseBlogLikes - TODO: Documentation
@@ -47,10 +47,11 @@ interface ResponseBlogLikes {
     @JsonClass(generateAdapter = true)
     data class Body(
             @Json(name = "_links")
-            var links: Map<String, RequestLink>? = null,
+            var links: Map<String, RequestLink>? = null, // TODO: Get rid of map.
             @Json(name = "liked_posts")
-            var posts: List<SuperPostJson>? = null,
+            var posts: List<Post>? = null,
             @Json(name = "liked_count")
-            var totalLiked: Long? = null)
+            var totalLiked: Long? = null
+    )
 
 }
