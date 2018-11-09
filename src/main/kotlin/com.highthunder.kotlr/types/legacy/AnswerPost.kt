@@ -62,7 +62,7 @@ class AnswerPost(
         postUrl: String? = null,
         timestamp: Long? = null,
         date: String? = null,
-        format: String? = null,
+        format: PostFormat? = null,
         reblogKey: String? = null,
         tags: List<String>? = null,
         isBookmarklet: Boolean? = null,

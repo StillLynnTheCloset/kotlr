@@ -109,10 +109,4 @@ abstract class RequestPosts<T>(
         }.toString()
     }
 
-    enum class FilterFormat(val key: String) {
-        HTML("html"),
-        Plain("text"),
-        Raw("raw")
-    }
-
 }
