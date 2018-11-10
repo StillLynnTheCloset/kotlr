@@ -36,6 +36,7 @@ object Kotlr {
         return step3.newBuilder()
                 .add(BlogAvatarWrapperJsonAdapter(step3))
                 .add(BlogDraftsWrapperJsonAdapter(step3))
+                .add(BlogInfoWrapperJsonAdapter(step3))
                 .add(BlogLikesWrapperJsonAdapter(step3))
                 .add(BlogPostsWrapperJsonAdapter(step3))
                 .add(BlogQueueWrapperJsonAdapter(step3))
