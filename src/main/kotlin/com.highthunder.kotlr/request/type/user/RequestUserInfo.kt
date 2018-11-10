@@ -2,6 +2,7 @@ package com.highthunder.kotlr.request.type.user
 
 import com.github.scribejava.core.model.Verb
 import com.highthunder.kotlr.request.Request
+import com.highthunder.kotlr.response.ResponseInterface
 import com.highthunder.kotlr.response.type.user.ResponseUserInfo
 import kotlin.reflect.KClass
 
@@ -15,16 +16,16 @@ import kotlin.reflect.KClass
 class RequestUserInfo: Request<ResponseUserInfo.Body> {
 
     companion object {
-        const val base = "https://api.tumblr.com/v2/user/info"
+        const val BASE_PATH: String = "user/info"
     }
 
-    override fun getBaseUrl(): String = base
-
-    override fun getUrlParameters(apiKey: String): String = ""
-
-    override val responseClass: KClass<ResponseUserInfo.Response> = ResponseUserInfo.Response::class
+    override val responseClass: KClass<out ResponseInterface<ResponseUserInfo.Body>> = ResponseUserInfo.Response::class
     override val verb: Verb = Verb.GET
     override val requiresOAuth: Boolean = true
     override val improvedByOAuth: Boolean = false
+
+    override fun getBaseUrl(): String = "$apiRootPath$BASE_PATH"
+
+    override fun getUrlParameters(apiKey: String): String = ""
 
 }

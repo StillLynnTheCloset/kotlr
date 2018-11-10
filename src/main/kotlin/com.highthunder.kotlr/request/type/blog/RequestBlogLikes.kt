@@ -2,6 +2,7 @@ package com.highthunder.kotlr.request.type.blog
 
 import com.github.scribejava.core.model.Verb
 import com.highthunder.kotlr.request.RequestPosts
+import com.highthunder.kotlr.response.ResponseInterface
 import com.highthunder.kotlr.response.type.blog.ResponseBlogLikes
 import kotlin.reflect.KClass
 
@@ -26,15 +27,15 @@ class RequestBlogLikes(
 ) : RequestPosts<ResponseBlogLikes.Body>(postLimit, postOffset, afterPostId, beforePostId, afterTime, beforeTime, getReblogFields, getNotesHistory, useNeuePostFormat) {
 
     companion object {
-        const val base = "https://api.tumblr.com/v2/blog/"
+        const val BASE_PATH = "blog/"
     }
 
-    override val responseClass: KClass<ResponseBlogLikes.Response> = ResponseBlogLikes.Response::class
+    override val responseClass: KClass<out ResponseInterface<ResponseBlogLikes.Body>> = ResponseBlogLikes.Response::class
     override val verb: Verb = Verb.GET
     override val requiresOAuth: Boolean = false
     override val improvedByOAuth: Boolean = true
 
-    override fun getBaseUrl(): String = "$base$identifier/likes"
+    override fun getBaseUrl(): String = "$apiRootPath$BASE_PATH$identifier/likes"
 
     override fun getUrlParameters(apiKey: String): String {
         return StringBuilder().apply {
@@ -47,6 +48,8 @@ class RequestBlogLikes(
             apiKey.also {
                 if (previous) {
                     append("&")
+                } else {
+                    append("?")
                 }
                 append("api_key=")
                 append(it)

@@ -1,31 +1,31 @@
-package com.highthunder.kotlr.response.type.user
+package com.highthunder.kotlr.response.type.blog
 
-import com.highthunder.kotlr.json.response.user.UserInfoWrapperJsonAdapter
 import com.highthunder.kotlr.response.ResponseInterface
 import com.highthunder.kotlr.response.ResponseMetaInfo
 import com.highthunder.kotlr.response.TumblrError
 import com.highthunder.kotlr.response.WrapperInterface
-import com.highthunder.kotlr.types.User
+import com.highthunder.kotlr.json.response.blog.BlogInfoWrapperJsonAdapter
+import com.highthunder.kotlr.types.Blog
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * ResponseUserInfo - TODO: Documentation
+ * ResponseBlogInfo - TODO: Documentation
  *
  * @author highthunder
  * @since 11/4/18
  * @version 1.0.0
  */
-interface ResponseUserInfo {
+interface ResponseBlogInfo {
 
     @JsonClass(generateAdapter = true)
     data class Response(
-            @Json(name = "meta")
-            var meta: ResponseMetaInfo? = null,
-            @Json(name = "response")
-            var response: Wrapper? = null,
-            @Json(name = "errors")
-            var errors: List<TumblrError>? = null
+        @Json(name = "meta")
+        var meta: ResponseMetaInfo? = null,
+        @Json(name = "response")
+        var response: Wrapper? = null,
+        @Json(name = "errors")
+        var errors: List<TumblrError>? = null
     ) : ResponseInterface<Body> {
         override fun getError(): List<TumblrError>? = errors
         override fun getMetaInfo(): ResponseMetaInfo? = meta
@@ -33,11 +33,11 @@ interface ResponseUserInfo {
     }
 
     /**
-     * Adapter is [UserInfoWrapperJsonAdapter].
+     * Adapter is [BlogInfoWrapperJsonAdapter].
      */
     data class Wrapper(
-            var error: String? = null,
-            var response: Body? = null
+        var error: String? = null,
+        var response: Body? = null
     ) : WrapperInterface<Body> {
         override fun getMessage(): String? = error
         override fun getBody(): Body? = response
@@ -45,8 +45,8 @@ interface ResponseUserInfo {
 
     @JsonClass(generateAdapter = true)
     data class Body(
-            @Json(name = "user")
-            var user: User? = null
+        @Json(name = "blog")
+        var blog: Blog? = null
     )
 
 }

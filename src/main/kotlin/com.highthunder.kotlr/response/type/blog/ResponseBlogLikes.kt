@@ -1,14 +1,14 @@
 package com.highthunder.kotlr.response.type.blog
 
-import com.highthunder.kotlr.json.response.BlogLikesWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.blog.BlogLikesWrapperJsonAdapter
+import com.highthunder.kotlr.response.ResponseInterface
 import com.highthunder.kotlr.response.ResponseMetaInfo
 import com.highthunder.kotlr.response.TumblrError
+import com.highthunder.kotlr.response.WrapperInterface
 import com.highthunder.kotlr.types.Post
 import com.highthunder.kotlr.types.RequestLink
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import com.highthunder.kotlr.response.Response as ResponseInterface
-import com.highthunder.kotlr.response.Wrapper as WrapperInterface
 
 /**
  * ResponseBlogLikes - TODO: Documentation
