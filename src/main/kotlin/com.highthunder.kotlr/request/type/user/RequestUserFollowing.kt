@@ -33,6 +33,7 @@ class RequestUserFollowing(
         return StringBuilder().apply {
             var previous = false
             limit?.also {
+                append("?")
                 append("limit=")
                 append(it)
                 previous = true
@@ -40,6 +41,8 @@ class RequestUserFollowing(
             offset?.also {
                 if (previous) {
                     append("&")
+                } else {
+                    append("?")
                 }
                 append("offset=")
                 append(it)

@@ -18,10 +18,7 @@ import kotlin.reflect.KClass
 interface Request<out T> {
     fun getBaseUrl(): String
     fun getUrlParameters(apiKey: String): String
-    fun getUrl(apiKey: String): String {
-        val params = getUrlParameters(apiKey)
-        return "${getBaseUrl()}${if (params.isNotBlank()) "?$params" else ""}"
-    }
+    fun getUrl(apiKey: String): String = "${getBaseUrl()}${getUrlParameters(apiKey)}"
     val responseClass: KClass<out ResponseInterface<T>>
     val verb: Verb
     val requiresOAuth: Boolean

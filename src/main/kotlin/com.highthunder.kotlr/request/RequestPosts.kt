@@ -38,6 +38,7 @@ abstract class RequestPosts<T>(
         return StringBuilder().apply {
             var previous = false
             postLimit?.also {
+                append("?")
                 append("limit=")
                 append(it)
                 previous = true
@@ -45,6 +46,8 @@ abstract class RequestPosts<T>(
             postOffset?.also {
                 if (previous) {
                     append("&")
+                } else {
+                    append("?")
                 }
                 append("offset=")
                 append(it)
@@ -53,6 +56,8 @@ abstract class RequestPosts<T>(
             afterPostId?.also {
                 if (previous) {
                     append("&")
+                } else {
+                    append("?")
                 }
                 append("since_id=")
                 append(it)
@@ -61,6 +66,8 @@ abstract class RequestPosts<T>(
             beforePostId?.also {
                 if (previous) {
                     append("&")
+                } else {
+                    append("?")
                 }
                 append("before_id=")
                 append(it)
@@ -69,6 +76,8 @@ abstract class RequestPosts<T>(
             afterTime?.also {
                 if (previous) {
                     append("&")
+                } else {
+                    append("?")
                 }
                 append("before=")
                 append(it)
@@ -77,6 +86,8 @@ abstract class RequestPosts<T>(
             beforeTime?.also {
                 if (previous) {
                     append("&")
+                } else {
+                    append("?")
                 }
                 append("since=")
                 append(it)
@@ -85,6 +96,8 @@ abstract class RequestPosts<T>(
             getReblogFields?.also {
                 if (previous) {
                     append("&")
+                } else {
+                    append("?")
                 }
                 append("reblog_info=")
                 append(it)
@@ -93,6 +106,8 @@ abstract class RequestPosts<T>(
             getNotesHistory?.also {
                 if (previous) {
                     append("&")
+                } else {
+                    append("?")
                 }
                 append("notes_info=")
                 append(it)
@@ -101,6 +116,8 @@ abstract class RequestPosts<T>(
             useNeuePostFormat?.also {
                 if (previous) {
                     append("&")
+                } else {
+                    append("?")
                 }
                 append("npf=")
                 append(it)

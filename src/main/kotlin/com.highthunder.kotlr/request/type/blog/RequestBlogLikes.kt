@@ -48,6 +48,8 @@ class RequestBlogLikes(
             apiKey.also {
                 if (previous) {
                     append("&")
+                } else {
+                    append("?")
                 }
                 append("api_key=")
                 append(it)

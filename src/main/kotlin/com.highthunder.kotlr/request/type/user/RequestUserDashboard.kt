@@ -49,6 +49,8 @@ class RequestUserDashboard(
             type?.also {
                 if (previous) {
                     append("&")
+                } else {
+                    append("?")
                 }
                 append("type=")
                 append(it.key)

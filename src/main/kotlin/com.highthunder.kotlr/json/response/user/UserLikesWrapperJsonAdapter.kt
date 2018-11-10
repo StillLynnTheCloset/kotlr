@@ -18,11 +18,15 @@ class UserLikesWrapperJsonAdapter(moshi: Moshi) {
     private val responseAdapter: JsonAdapter<ResponseUserLikes.Body> =
             moshi.adapter<ResponseUserLikes.Body>(ResponseUserLikes.Body::class.java, kotlin.collections.emptySet(), null)
 
+    private val listOfAnyAdapter: JsonAdapter<List<Any>> =
+        moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), kotlin.collections.emptySet(), null)
+
     @FromJson
     fun fromJson(reader: JsonReader): ResponseUserLikes.Wrapper {
         return when (reader.peek()) {
             JsonReader.Token.BEGIN_OBJECT -> ResponseUserLikes.Wrapper(response = responseAdapter.fromJson(reader))
             JsonReader.Token.STRING -> ResponseUserLikes.Wrapper(error = stringAdapter.fromJson(reader))
+            JsonReader.Token.BEGIN_ARRAY -> ResponseUserLikes.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
             JsonReader.Token.NULL -> ResponseUserLikes.Wrapper()
             else -> throw JsonDataException("Expected a field of type List or String but got ${reader.peek()}")
         }

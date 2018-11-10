@@ -1,5 +1,6 @@
 package com.highthunder.kotlr
 
+import com.highthunder.kotlr.json.response.blog.BlogAvatarWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.blog.BlogLikesWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserDashboardWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserFollowingWrapperJsonAdapter
@@ -34,6 +35,7 @@ object Kotlr {
                 .add(ContentWrapperJsonAdapter(step2))
                 .build()
         return step3.newBuilder()
+                .add(BlogAvatarWrapperJsonAdapter(step3))
                 .add(BlogLikesWrapperJsonAdapter(step3))
                 .add(UserInfoWrapperJsonAdapter(step3))
                 .add(UserDashboardWrapperJsonAdapter(step3))
