@@ -19,21 +19,22 @@ class PlayerWrapperJsonAdapter(moshi: Moshi): JsonAdapter<PlayerWrapper>() {
             moshi.adapter<List<Video>>(Types.newParameterizedType(List::class.java, Video::class.java), kotlin.collections.emptySet(), null)
 
     @FromJson
-    override fun fromJson(reader: JsonReader): PlayerWrapper {
+    override fun fromJson(reader: JsonReader): PlayerWrapper? {
         return when (reader.peek()) {
             JsonReader.Token.BEGIN_ARRAY -> PlayerWrapper(contentList = listOfVideoAdapter.fromJson(reader))
             JsonReader.Token.STRING -> PlayerWrapper(contentString = stringAdapter.fromJson(reader))
-            JsonReader.Token.NULL -> PlayerWrapper()
+            JsonReader.Token.NULL -> null
             else -> throw JsonDataException("Expected a field of type List or String but got ${reader.peek()}")
         }
     }
 
     @ToJson
     override fun toJson(writer: JsonWriter, value: PlayerWrapper?) {
-        if (value?.contentString != null) {
-            stringAdapter.toJson(writer, value.contentString)
-        } else {
-            listOfVideoAdapter.toJson(writer, value?.contentList ?: listOf())
+        when {
+            value == null -> stringAdapter.toJson(writer, null)
+            value.contentString != null -> stringAdapter.toJson(writer, value.contentString)
+            value.contentList != null && value.contentList?.size != 0 -> listOfVideoAdapter.toJson(writer, value.contentList ?: listOf())
+            else -> stringAdapter.toJson(writer, null)
         }
     }
 

@@ -20,21 +20,22 @@ class MediaWrapperJsonAdapter(moshi: Moshi): JsonAdapter<MediaWrapper>() {
             moshi.adapter<List<Media>>(Types.newParameterizedType(List::class.java, Media::class.java), kotlin.collections.emptySet(), null)
 
     @FromJson
-    override fun fromJson(reader: JsonReader): MediaWrapper {
+    override fun fromJson(reader: JsonReader): MediaWrapper? {
         return when (reader.peek()) {
             JsonReader.Token.BEGIN_ARRAY -> MediaWrapper(listMedia = listOfMediaAdapter.fromJson(reader))
             JsonReader.Token.BEGIN_OBJECT -> MediaWrapper(singleMedia = mediaAdapter.fromJson(reader))
-            JsonReader.Token.NULL -> MediaWrapper()
+            JsonReader.Token.NULL -> null
             else -> throw JsonDataException("Expected a field of type List or Media but got ${reader.peek()}")
         }
     }
 
     @ToJson
     override fun toJson(writer: JsonWriter, value: MediaWrapper?) {
-        if (value?.singleMedia != null) {
-            mediaAdapter.toJson(writer, value.singleMedia)
-        } else {
-            listOfMediaAdapter.toJson(writer, value?.listMedia ?: listOf())
+        when {
+            value == null -> mediaAdapter.toJson(writer, null)
+            value.singleMedia != null -> mediaAdapter.toJson(writer, value.singleMedia)
+            value.listMedia != null && value.listMedia?.size != 0 -> listOfMediaAdapter.toJson(writer, value.listMedia ?: listOf())
+            else -> mediaAdapter.toJson(writer, null)
         }
     }
 

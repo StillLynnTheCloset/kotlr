@@ -35,6 +35,7 @@ dependencies {
 
     implementation "com.github.scribejava:scribejava-core:$scribe_version"
     implementation "com.github.scribejava:scribejava-apis:$scribe_version"
+    implementation "com.github.scribejava:scribejava-httpclient-okhttp:$scribe_version"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
