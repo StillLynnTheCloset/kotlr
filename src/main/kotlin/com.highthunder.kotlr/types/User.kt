@@ -36,5 +36,5 @@ data class User(
         @Json(name = "likes")
         var likes: Int? = null,
         @Json(name = "default_post_format")
-        var defaultPostFormat: Post.FilterFormat? = null
+        var defaultPostFormat: Post.PostFormat? = null
 )

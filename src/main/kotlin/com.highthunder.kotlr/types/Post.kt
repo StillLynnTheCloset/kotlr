@@ -156,7 +156,7 @@ abstract class Post(
         Block("blocks")
     }
 
-    enum class FilterFormat(val key: String) {
+    enum class PostFormat(val key: String) {
         @Json(name = "html")
         HTML("html"),
         @Json(name = "text")
