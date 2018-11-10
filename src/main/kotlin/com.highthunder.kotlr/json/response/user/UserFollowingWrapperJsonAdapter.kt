@@ -16,10 +16,10 @@ class UserFollowingWrapperJsonAdapter(moshi: Moshi) {
             moshi.adapter(String::class.java, kotlin.collections.emptySet(), null)
 
     private val responseAdapter: JsonAdapter<ResponseUserFollowing.Body> =
-            moshi.adapter<ResponseUserFollowing.Body>(ResponseUserFollowing.Body::class.java, kotlin.collections.emptySet(), null)
+            moshi.adapter<ResponseUserFollowing.Body>(ResponseUserFollowing.Body::class.java, kotlin.collections.emptySet(), null).failOnUnknown()
 
     private val listOfAnyAdapter: JsonAdapter<List<Any>> =
-        moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), kotlin.collections.emptySet(), null)
+        moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), kotlin.collections.emptySet(), null).failOnUnknown()
 
     @FromJson
     fun fromJson(reader: JsonReader): ResponseUserFollowing.Wrapper {

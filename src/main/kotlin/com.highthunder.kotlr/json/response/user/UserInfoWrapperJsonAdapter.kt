@@ -16,10 +16,10 @@ class UserInfoWrapperJsonAdapter(moshi: Moshi) {
             moshi.adapter(String::class.java, kotlin.collections.emptySet(), null)
 
     private val responseAdapter: JsonAdapter<ResponseUserInfo.Body> =
-            moshi.adapter<ResponseUserInfo.Body>(ResponseUserInfo.Body::class.java, kotlin.collections.emptySet(), null)
+            moshi.adapter<ResponseUserInfo.Body>(ResponseUserInfo.Body::class.java, kotlin.collections.emptySet(), null).failOnUnknown()
 
     private val listOfAnyAdapter: JsonAdapter<List<Any>> =
-            moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), kotlin.collections.emptySet(), null)
+            moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), kotlin.collections.emptySet(), null).failOnUnknown()
 
     @FromJson
     fun fromJson(reader: JsonReader): ResponseUserInfo.Wrapper {
