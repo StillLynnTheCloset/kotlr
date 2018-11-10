@@ -30,7 +30,7 @@ abstract class RequestPosts<T>(
         positions += if (afterTime != null) 1 else 0
         positions += if (beforeTime != null) 1 else 0
         if (positions > 1) {
-            throw ConflictingParametersException("You may only specify one of {beforePostId, afterPostId, postOffset}")
+            throw ConflictingParametersException("You may only specify one of {beforePostId, afterPostId, postOffset, afterTime, beforeTime}")
         }
     }
 
