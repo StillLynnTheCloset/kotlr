@@ -1,7 +1,6 @@
 package com.highthunder.kotlr.json.response.blog
 
 import com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar
-import com.highthunder.kotlr.response.type.blog.ResponseBlogLikes
 import com.squareup.moshi.*
 
 /**
@@ -20,7 +19,7 @@ class BlogAvatarWrapperJsonAdapter(moshi: Moshi) {
             moshi.adapter<ResponseBlogAvatar.Body>(ResponseBlogAvatar.Body::class.java, kotlin.collections.emptySet(), null)
 
     private val listOfAnyAdapter: JsonAdapter<List<Any>> =
-        moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), kotlin.collections.emptySet(), null)
+            moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), kotlin.collections.emptySet(), null)
 
     @FromJson
     fun fromJson(reader: JsonReader): ResponseBlogAvatar.Wrapper {

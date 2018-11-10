@@ -19,7 +19,7 @@ class BlogLikesWrapperJsonAdapter(moshi: Moshi) {
             moshi.adapter<ResponseBlogLikes.Body>(ResponseBlogLikes.Body::class.java, kotlin.collections.emptySet(), null)
 
     private val listOfAnyAdapter: JsonAdapter<List<Any>> =
-        moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), kotlin.collections.emptySet(), null)
+            moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), kotlin.collections.emptySet(), null)
 
     @FromJson
     fun fromJson(reader: JsonReader): ResponseBlogLikes.Wrapper {
