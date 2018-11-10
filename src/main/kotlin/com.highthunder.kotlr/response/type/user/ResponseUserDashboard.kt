@@ -1,9 +1,8 @@
 package com.highthunder.kotlr.response.type.user
 
 import com.highthunder.kotlr.json.response.UserDashboardWrapperJsonAdapter
-import com.highthunder.kotlr.json.superwrapper.SuperPostJson
-import com.highthunder.kotlr.response.Response as ResponseInterface
-import com.highthunder.kotlr.response.Wrapper as WrapperInterface
+import com.highthunder.kotlr.response.ResponseInterface as ResponseInterface
+import com.highthunder.kotlr.response.WrapperInterface as WrapperInterface
 import com.highthunder.kotlr.response.ResponseMetaInfo
 import com.highthunder.kotlr.response.TumblrError
 import com.highthunder.kotlr.types.Post

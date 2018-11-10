@@ -1,13 +1,13 @@
 package com.highthunder.kotlr.response
 
 /**
- * Wrapper - TODO: Documentation
+ * WrapperInterface - TODO: Documentation
  *
  * @author highthunder
  * @since 10/27/18
  * @version 1.0.0
  */
-interface Wrapper<out T> {
+interface WrapperInterface<out T> {
     fun getMessage(): String?
     fun getBody(): T?
 }

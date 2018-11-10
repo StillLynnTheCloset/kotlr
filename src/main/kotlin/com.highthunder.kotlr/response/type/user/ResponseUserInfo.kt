@@ -1,13 +1,13 @@
 package com.highthunder.kotlr.response.type.user
 
 import com.highthunder.kotlr.json.response.UserInfoWrapperJsonAdapter
+import com.highthunder.kotlr.response.ResponseInterface
 import com.highthunder.kotlr.response.ResponseMetaInfo
 import com.highthunder.kotlr.response.TumblrError
+import com.highthunder.kotlr.response.WrapperInterface
 import com.highthunder.kotlr.types.User
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import com.highthunder.kotlr.response.Response as ResponseInterface
-import com.highthunder.kotlr.response.Wrapper as WrapperInterface
 
 /**
  * ResponseUserInfo - TODO: Documentation

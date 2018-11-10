@@ -1,7 +1,7 @@
 package com.highthunder.kotlr.request
 
 import com.github.scribejava.core.model.Verb
-import com.highthunder.kotlr.response.Response
+import com.highthunder.kotlr.response.ResponseInterface
 import kotlin.reflect.KClass
 
 /**
@@ -22,7 +22,7 @@ interface Request<out T> {
         val params = getUrlParameters(apiKey)
         return "${getBaseUrl()}${if (params.isNotBlank()) "?$params" else ""}"
     }
-    val responseClass: KClass<out Response<out T>>
+    val responseClass: KClass<out ResponseInterface<out T>>
     val verb: Verb
     val requiresOAuth: Boolean
     val improvedByOAuth: Boolean

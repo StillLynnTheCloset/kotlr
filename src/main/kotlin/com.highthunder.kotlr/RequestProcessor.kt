@@ -7,7 +7,7 @@ import com.github.scribejava.core.model.OAuthRequest
 import com.github.scribejava.core.oauth.OAuth10aService
 import com.highthunder.kotlr.authentication.TumblrUserKey
 import com.highthunder.kotlr.request.Request
-import com.highthunder.kotlr.response.Response
+import com.highthunder.kotlr.response.ResponseInterface
 import com.squareup.moshi.Moshi
 
 /**
@@ -28,7 +28,7 @@ class RequestProcessor(private val key: TumblrUserKey) {
         return@let it.build(TumblrApi.instance())
     }
 
-    fun <T> process(request: Request<T>): Response<T>? {
+    fun <T> process(request: Request<T>): ResponseInterface<T>? {
         val url = request.getUrl(key.apiKey)
 
         val oAuthRequest = OAuthRequest(request.verb, url)
@@ -41,7 +41,7 @@ class RequestProcessor(private val key: TumblrUserKey) {
 
         val adapter = moshi.adapter(request.responseClass.java).failOnUnknown()
 
-        val parsed: Response<T>? = adapter.fromJson(response.body)
+        val parsed: ResponseInterface<T>? = adapter.fromJson(response.body)
         return parsed
     }
 
