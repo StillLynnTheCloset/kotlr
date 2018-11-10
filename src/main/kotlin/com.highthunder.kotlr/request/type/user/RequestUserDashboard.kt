@@ -2,6 +2,7 @@ package com.highthunder.kotlr.request.type.user
 
 import com.github.scribejava.core.model.Verb
 import com.highthunder.kotlr.request.RequestPosts
+import com.highthunder.kotlr.response.ResponseInterface
 import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
 import com.highthunder.kotlr.types.Post
 import kotlin.reflect.KClass
@@ -27,15 +28,15 @@ class RequestUserDashboard(
 ) : RequestPosts<ResponseUserDashboard.Body>(postLimit, postOffset, afterPostId, beforePostId, afterTime, beforeTime, getReblogFields, getNotesHistory, useNeuePostFormat) {
 
     companion object {
-        const val base = "https://api.tumblr.com/v2/user/dashboard"
+        const val BASE_PATH: String = "user/dashboard"
     }
 
-    override val responseClass: KClass<ResponseUserDashboard.Response> = ResponseUserDashboard.Response::class
+    override val responseClass: KClass<out ResponseInterface<ResponseUserDashboard.Body>> = ResponseUserDashboard.Response::class
     override val verb: Verb = Verb.GET
     override val requiresOAuth: Boolean = true
     override val improvedByOAuth: Boolean = false
 
-    override fun getBaseUrl(): String = base
+    override fun getBaseUrl(): String = "$apiRootPath$BASE_PATH"
 
     override fun getUrlParameters(apiKey: String): String {
         return StringBuilder().apply {

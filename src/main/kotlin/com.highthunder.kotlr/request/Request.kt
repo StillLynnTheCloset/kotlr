@@ -22,8 +22,10 @@ interface Request<out T> {
         val params = getUrlParameters(apiKey)
         return "${getBaseUrl()}${if (params.isNotBlank()) "?$params" else ""}"
     }
-    val responseClass: KClass<out ResponseInterface<out T>>
+    val responseClass: KClass<out ResponseInterface<T>>
     val verb: Verb
     val requiresOAuth: Boolean
     val improvedByOAuth: Boolean
+    val apiRootPath: String
+        get() = "https://api.tumblr.com/v2/"
 }

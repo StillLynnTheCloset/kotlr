@@ -18,12 +18,16 @@ class RequestUserFollowing(
     private val offset: Long? = null
 ) : Request<ResponseUserFollowing.Body> {
 
+    companion object {
+        const val BASE_PATH: String = "user/following"
+    }
+
     override val responseClass: KClass<out ResponseInterface<ResponseUserFollowing.Body>> = ResponseUserFollowing.Response::class
     override val verb: Verb = Verb.GET
     override val requiresOAuth: Boolean = true
     override val improvedByOAuth: Boolean = false
 
-    override fun getBaseUrl(): String = "https://api.tumblr.com/v2/user/following"
+    override fun getBaseUrl(): String = "$apiRootPath$BASE_PATH"
 
     override fun getUrlParameters(apiKey: String): String {
         return StringBuilder().apply {
