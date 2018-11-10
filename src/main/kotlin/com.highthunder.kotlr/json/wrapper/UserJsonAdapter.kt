@@ -37,8 +37,8 @@ class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
     private val nullableLongAdapter: JsonAdapter<Long?> =
         moshi.adapter<Long?>(Long::class.javaObjectType, kotlin.collections.emptySet(), "updated")
 
-    private val nullableFilterFormatAdapter: JsonAdapter<Post.FilterFormat?> =
-        moshi.adapter<Post.FilterFormat?>(Post.FilterFormat::class.java, kotlin.collections.emptySet(), "defaultPostFormat")
+    private val nullablePostFormatAdapter: JsonAdapter<Post.PostFormat?> =
+        moshi.adapter<Post.PostFormat?>(Post.PostFormat::class.java, kotlin.collections.emptySet(), "defaultPostFormat")
 
     override fun toString(): String = "GeneratedJsonAdapter(User)"
 
@@ -58,7 +58,7 @@ class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
         var updatedSet: Boolean = false
         var likes: Int? = null
         var likesSet: Boolean = false
-        var defaultPostFormat: Post.FilterFormat? = null
+        var defaultPostFormat: Post.PostFormat? = null
         var defaultPostFormatSet: Boolean = false
         reader.beginObject()
         while (reader.hasNext()) {
@@ -93,7 +93,7 @@ class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
                     likesSet = true
                 }
                 6 ->  {
-                    defaultPostFormat = nullableFilterFormatAdapter.fromJson(reader)
+                    defaultPostFormat = nullablePostFormatAdapter.fromJson(reader)
                     defaultPostFormatSet = true
                 }
                 -1 -> {
@@ -141,7 +141,7 @@ class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
         writer.name("likes")
         nullableIntAdapter.toJson(writer, value.likes)
         writer.name("default_post_format")
-        nullableFilterFormatAdapter.toJson(writer, value.defaultPostFormat)
+        nullablePostFormatAdapter.toJson(writer, value.defaultPostFormat)
         writer.endObject()
     }
 }

@@ -13,13 +13,13 @@ import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 
 /**
- * RequestProcessor - TODO: Documentation
+ * KotlrClient - TODO: Documentation
  *
  * @author highthunder
  * @since 10/28/18
  * @version 1.0.0
  */
-class RequestProcessor(private val key: TumblrUserKey) {
+class KotlrClient(private val key: TumblrUserKey) {
 
     companion object {
         private val moshi: Moshi = Kotlr.getMoshi()
