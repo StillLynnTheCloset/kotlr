@@ -24,6 +24,7 @@ object Kotlr {
         val step2: Moshi = step1
                 .newBuilder()
                 .add(VideoJsonAdapter(step1))
+                .add(UserJsonAdapter(step1))
                 .build()
         val step3: Moshi = step2
                 .newBuilder()
@@ -36,6 +37,7 @@ object Kotlr {
         return step3.newBuilder()
                 .add(BlogAvatarWrapperJsonAdapter(step3))
                 .add(BlogDraftsWrapperJsonAdapter(step3))
+                .add(BlogFollowersWrapperJsonAdapter(step3))
                 .add(BlogInfoWrapperJsonAdapter(step3))
                 .add(BlogLikesWrapperJsonAdapter(step3))
                 .add(BlogPostsWrapperJsonAdapter(step3))
