@@ -70,28 +70,43 @@ fun minimalExample() {
 
     // All request parameters are strongly typed and any constraints imposed by the API, such as
     // required or mutually exclusive parameters, are enforced by the builder.
-    val request: Request<ResponseBlogLikes.Body> = RequestBlogLikes(identifier = "kotlr-development")
+    RequestBlogLikes(identifier = "kotlr-development").also { request: RequestBlogLikes ->
 
-    // Actually perform the request and get our data from Tumblr
-    val response: Response<ResponseBlogLikes.Body>? = client.process(request)
+        // Actually perform the request and get our data from Tumblr
+        val response: Response<ResponseBlogLikes.Body>? = client.process(request)
 
-    // Check out any of the meta information that Tumblr returns such as HTTP success codes.
-    val meta: ResponseMetaInfo? = response?.getMetaInfo()
+        // Check out any of the meta information that Tumblr returns such as HTTP success codes.
+        val meta: ResponseMetaInfo? = response?.getMetaInfo()
 
-    // Get the main meat of the response.
-    val body: ResponseBlogLikes.Body? = response?.getBody()
-    if (body != null) {
-        // And now we can access Tumblr's actual response, which in this case is composed of
-        // a list of some liked posts, a count of the total number of liked posts, and potentially
-        // a list of RequestLinks which can encode some generic actions that Tumblr thinks you
-        // might like to perform based on the content of this request.
-        body.posts?.firstOrNull()?.blogName
-        body.totalLiked
-        body.links
+        // Get the main meat of the response.
+        val body: ResponseBlogLikes.Body? = response?.getBody()
+        if (body != null) {
+            // And now we can access Tumblr's actual response, which in this case is composed of
+            // a list of some liked posts, a count of the total number of liked posts, and potentially
+            // a list of RequestLinks which can encode some generic actions that Tumblr thinks you
+            // might like to perform based on the content of this request.
+            body.posts?.firstOrNull()?.blogName
+            body.totalLiked
+            body.links
+        }
+
     }
 
 }
 
+```
+
+or, the same example without the fluff:
+
+```
+fun minimalExample() {
+    val name = KotlrClient(SampleUserKey)
+            .process(RequestBlogLikes(identifier = "kotlr-development"))
+            ?.getBody()
+            ?.posts
+            ?.firstOrNull()
+            ?.blogName
+}
 ```
 
 ##### Auth Examples #####
