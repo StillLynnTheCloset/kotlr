@@ -156,4 +156,13 @@ abstract class Post(
         Block("blocks")
     }
 
+    enum class FilterFormat(val key: String) {
+        @Json(name = "html")
+        HTML("html"),
+        @Json(name = "text")
+        Plain("text"),
+        @Json(name = "raw")
+        Raw("raw")
+    }
+
 }
