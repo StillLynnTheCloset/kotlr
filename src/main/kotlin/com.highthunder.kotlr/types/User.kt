@@ -12,7 +12,8 @@ import com.squareup.moshi.JsonClass
  *
  * @param blogs The blogs to which the user can post.
  * @param name The user's tumblr short name.
- * @param following The number of blogs the user is following.
+ * @param totalFollowing The number of blogs the user is following.
+ * @param isUserFollowed Does the current signed in user follow this user's main blog.
  * @param url The URL of the user's primary blog.
  * @param updated The time of the user's most recent post, in seconds since the epoch.
  * @param likes The total count of the user's likes.
@@ -25,7 +26,9 @@ data class User(
         @Json(name = "name")
         var name: String? = null,
         @Json(name = "following")
-        var following: Int? = null,
+        var totalFollowing: Int? = null,
+        @Json(name = "following")
+        var isUserFollowed: Boolean? = null,
         @Json(name = "url")
         var url: String? = null,
         @Json(name = "updated")
@@ -33,5 +36,5 @@ data class User(
         @Json(name = "likes")
         var likes: Int? = null,
         @Json(name = "default_post_format")
-        var defaultPostFormat: String? = null // TODO: Make this an enum
+        var defaultPostFormat: Post.PostFormat? = null
 )

@@ -7,13 +7,13 @@ import org.junit.Assert
 import org.junit.Test
 
 /**
- * ResponseTest - TODO: Documentation
+ * ParseResponseTest - TODO: Documentation
  *
  * @author highthunder
  * @since 10/25/18
  * @version 1.0.0
  */
-class ResponseTest {
+class ParseResponseTest {
 
     @Test
     fun parseBlogLikesResponseTest() {

@@ -1,7 +1,7 @@
 package com.highthunder.kotlr.request
 
 import com.github.scribejava.core.model.Verb
-import com.highthunder.kotlr.response.Response
+import com.highthunder.kotlr.response.ResponseInterface
 import kotlin.reflect.KClass
 
 /**
@@ -18,12 +18,11 @@ import kotlin.reflect.KClass
 interface Request<out T> {
     fun getBaseUrl(): String
     fun getUrlParameters(apiKey: String): String
-    fun getUrl(apiKey: String): String {
-        val params = getUrlParameters(apiKey)
-        return "${getBaseUrl()}${if (params.isNotBlank()) "?$params" else ""}"
-    }
-    val responseClass: KClass<out Response<out T>>
+    fun getUrl(apiKey: String): String = "${getBaseUrl()}${getUrlParameters(apiKey)}"
+    val responseClass: KClass<out ResponseInterface<T>>
     val verb: Verb
     val requiresOAuth: Boolean
     val improvedByOAuth: Boolean
+    val apiRootPath: String
+        get() = "https://api.tumblr.com/v2/"
 }
