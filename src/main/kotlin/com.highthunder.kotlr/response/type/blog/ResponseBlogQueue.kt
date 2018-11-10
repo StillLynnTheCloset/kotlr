@@ -1,22 +1,23 @@
-package com.highthunder.kotlr.response.type.user
+package com.highthunder.kotlr.response.type.blog
 
-import com.highthunder.kotlr.json.response.user.UserInfoWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.blog.BlogQueueWrapperJsonAdapter
 import com.highthunder.kotlr.response.ResponseInterface
 import com.highthunder.kotlr.response.ResponseMetaInfo
 import com.highthunder.kotlr.response.TumblrError
 import com.highthunder.kotlr.response.WrapperInterface
-import com.highthunder.kotlr.types.User
+import com.highthunder.kotlr.types.Post
+import com.highthunder.kotlr.types.RequestLink
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * ResponseUserInfo - TODO: Documentation
+ * ResponseBlogQueue - TODO: Documentation
  *
  * @author highthunder
- * @since 11/4/18
+ * @since 10/27/18
  * @version 1.0.0
  */
-interface ResponseUserInfo {
+interface ResponseBlogQueue {
 
     @JsonClass(generateAdapter = true)
     data class Response(
@@ -33,7 +34,7 @@ interface ResponseUserInfo {
     }
 
     /**
-     * Adapter is [UserInfoWrapperJsonAdapter].
+     * Adapter is [BlogQueueWrapperJsonAdapter].
      */
     data class Wrapper(
             var error: String? = null,
@@ -45,8 +46,10 @@ interface ResponseUserInfo {
 
     @JsonClass(generateAdapter = true)
     data class Body(
-            @Json(name = "user")
-            var user: User? = null
+            @Json(name = "_links")
+            var links: Map<String, RequestLink>? = null, // TODO: Get rid of map.
+            @Json(name = "posts")
+            var posts: List<Post>? = null
     )
 
 }

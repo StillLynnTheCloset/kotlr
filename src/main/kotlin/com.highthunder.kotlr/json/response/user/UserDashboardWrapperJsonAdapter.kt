@@ -1,4 +1,4 @@
-package com.highthunder.kotlr.json.response
+package com.highthunder.kotlr.json.response.user
 
 import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
 import com.squareup.moshi.*
@@ -16,10 +16,10 @@ class UserDashboardWrapperJsonAdapter(moshi: Moshi) {
             moshi.adapter(String::class.java, kotlin.collections.emptySet(), null)
 
     private val responseAdapter: JsonAdapter<ResponseUserDashboard.Body> =
-            moshi.adapter<ResponseUserDashboard.Body>(ResponseUserDashboard.Body::class.java, kotlin.collections.emptySet(), null)
+            moshi.adapter<ResponseUserDashboard.Body>(ResponseUserDashboard.Body::class.java, kotlin.collections.emptySet(), null).failOnUnknown()
 
     private val listOfAnyAdapter: JsonAdapter<List<Any>> =
-            moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), kotlin.collections.emptySet(), null)
+            moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), kotlin.collections.emptySet(), null).failOnUnknown()
 
     @FromJson
     fun fromJson(reader: JsonReader): ResponseUserDashboard.Wrapper {
