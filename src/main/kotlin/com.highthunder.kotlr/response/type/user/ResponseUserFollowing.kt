@@ -6,7 +6,7 @@ import com.highthunder.kotlr.response.TumblrError
 import com.highthunder.kotlr.response.WrapperInterface
 import com.highthunder.kotlr.types.Blog
 import com.highthunder.kotlr.types.RequestLink
-import com.highthunder.kotlr.json.response.UserFollowingWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.user.UserFollowingWrapperJsonAdapter
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

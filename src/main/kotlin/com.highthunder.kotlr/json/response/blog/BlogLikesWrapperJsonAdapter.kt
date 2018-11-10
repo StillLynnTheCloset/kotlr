@@ -1,4 +1,4 @@
-package com.highthunder.kotlr.json.response
+package com.highthunder.kotlr.json.response.blog
 
 import com.highthunder.kotlr.response.type.blog.ResponseBlogLikes
 import com.squareup.moshi.*

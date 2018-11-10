@@ -1,6 +1,6 @@
 package com.highthunder.kotlr.response.type.user
 
-import com.highthunder.kotlr.json.response.UserDashboardWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.user.UserDashboardWrapperJsonAdapter
 import com.highthunder.kotlr.response.ResponseInterface as ResponseInterface
 import com.highthunder.kotlr.response.WrapperInterface as WrapperInterface
 import com.highthunder.kotlr.response.ResponseMetaInfo

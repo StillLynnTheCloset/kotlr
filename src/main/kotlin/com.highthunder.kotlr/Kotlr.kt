@@ -1,6 +1,10 @@
 package com.highthunder.kotlr
 
-import com.highthunder.kotlr.json.response.*
+import com.highthunder.kotlr.json.response.blog.BlogLikesWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.user.UserDashboardWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.user.UserFollowingWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.user.UserInfoWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.user.UserLikesWrapperJsonAdapter
 import com.highthunder.kotlr.json.superwrapper.*
 import com.highthunder.kotlr.json.wrapper.*
 import com.squareup.moshi.Moshi

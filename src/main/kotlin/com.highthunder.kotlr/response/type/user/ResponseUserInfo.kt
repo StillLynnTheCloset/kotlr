@@ -1,6 +1,6 @@
 package com.highthunder.kotlr.response.type.user
 
-import com.highthunder.kotlr.json.response.UserInfoWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.user.UserInfoWrapperJsonAdapter
 import com.highthunder.kotlr.response.ResponseInterface
 import com.highthunder.kotlr.response.ResponseMetaInfo
 import com.highthunder.kotlr.response.TumblrError
