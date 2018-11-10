@@ -38,6 +38,7 @@ object Kotlr {
                 .add(BlogAvatarWrapperJsonAdapter(step3))
                 .add(BlogDraftsWrapperJsonAdapter(step3))
                 .add(BlogFollowersWrapperJsonAdapter(step3))
+                .add(BlogFollowingWrapperJsonAdapter(step3))
                 .add(BlogInfoWrapperJsonAdapter(step3))
                 .add(BlogLikesWrapperJsonAdapter(step3))
                 .add(BlogPostsWrapperJsonAdapter(step3))
