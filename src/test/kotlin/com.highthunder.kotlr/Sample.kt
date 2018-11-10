@@ -3,6 +3,8 @@ package com.highthunder.kotlr
 /**
  * Sample - A bunch of sample json objects to test parsing.
  *
+ * TODO: Simplify the samples to limit what is being tested.
+ *
  * @author highthunder
  * @since 10/20/18
  * @version 1.0.0
