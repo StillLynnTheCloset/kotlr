@@ -54,21 +54,21 @@ abstract class Post(
         // region Defaults
 
         var blogName: String? = null,
-        var id: Long? = null,
-        var blog: Blog? = null,
-        var postUrl: String? = null,
-        var timestamp: Long? = null,
-        var date: String? = null,
-        var format: String? = null,
-        var reblogKey: String? = null,
+        val id: Long? = null,
+        val blog: Blog? = null,
+        val postUrl: String? = null,
+        val timestamp: Long? = null,
+        val date: String? = null,
+        var format: PostFormat? = null,
+        val reblogKey: String? = null,
         var tags: List<String>? = null,
         var isBookmarklet: Boolean? = null,
         var isMobile: Boolean? = null,
         var sourceUrl: String? = null,
         var sourceTitle: String? = null,
-        var isLiked: Boolean? = null,
+        val isLiked: Boolean? = null,
         var state: State? = null,
-        var totalPosts: Int? = null,
+        val totalPosts: Int? = null,
         var anonymous: Boolean? = null, // TODO: Documentation
 
         // endregion
@@ -82,35 +82,35 @@ abstract class Post(
         var shortUrl: String? = null,
         var summary: String? = null,
         var isBlocksFormat: Boolean? = null,
-        var likedTimestamp: Long? = null,
+        val likedTimestamp: Long? = null,
         var slug: String? = null,
         var noteCount: Long? = null,
-        var recommendedSource: String? = null,
-        var recommendedColor: String? = null,
-        var postAuthorIsAdult: Boolean? = null,
+        val recommendedSource: String? = null,
+        val recommendedColor: String? = null,
+        val postAuthorIsAdult: Boolean? = null,
         var isSubmission: Boolean? = null,
         var canLike: Boolean? = null,
         var canReblog: Boolean? = null,
         var canSendInMessage: Boolean? = null,
         var canReply: Boolean? = null,
-        var displayAvatar: Boolean? = null,
-        var followed: Boolean? = null,
+        val displayAvatar: Boolean? = null,
+        val followed: Boolean? = null,
         var reblogData: ReblogData? = null, // TODO: Documentation
-        var rebloggedFromId: Long? = null, // TODO: Documentation
-        var reblogged_from_url: String? = null, // TODO: Documentation
-        var rebloggedFromName: String? = null, // TODO: Documentation
-        var reblogged_from_title: String? = null, // TODO: Documentation
-        var reblogged_from_uuid: String? = null, // TODO: Documentation
-        var reblogged_from_can_message: Boolean? = null, // TODO: Documentation
-        var reblogged_from_following: Boolean? = null, // TODO: Documentation
-        var reblogged_root_id: Long? = null, // TODO: Documentation
-        var reblogged_root_url: String? = null, // TODO: Documentation
-        var reblogged_root_name: String? = null, // TODO: Documentation
-        var reblogged_root_title: String? = null, // TODO: Documentation
-        var reblogged_root_uuid: String? = null, // TODO: Documentation
-        var reblogged_root_can_message: Boolean? = null, // TODO: Documentation
-        var reblogged_root_following: Boolean? = null, // TODO: Documentation
-        var notes: List<NoteData>? = null // TODO: Documentation
+        val rebloggedFromId: Long? = null, // TODO: Documentation
+        val reblogged_from_url: String? = null, // TODO: Documentation
+        val rebloggedFromName: String? = null, // TODO: Documentation
+        val reblogged_from_title: String? = null, // TODO: Documentation
+        val reblogged_from_uuid: String? = null, // TODO: Documentation
+        val reblogged_from_can_message: Boolean? = null, // TODO: Documentation
+        val reblogged_from_following: Boolean? = null, // TODO: Documentation
+        val reblogged_root_id: Long? = null, // TODO: Documentation
+        val reblogged_root_url: String? = null, // TODO: Documentation
+        val reblogged_root_name: String? = null, // TODO: Documentation
+        val reblogged_root_title: String? = null, // TODO: Documentation
+        val reblogged_root_uuid: String? = null, // TODO: Documentation
+        val reblogged_root_can_message: Boolean? = null, // TODO: Documentation
+        val reblogged_root_following: Boolean? = null, // TODO: Documentation
+        val notes: List<NoteData>? = null // TODO: Documentation
 
         // endregion
 
@@ -156,7 +156,7 @@ abstract class Post(
         Block("blocks")
     }
 
-    enum class FilterFormat(val key: String) {
+    enum class PostFormat(val key: String) {
         @Json(name = "html")
         HTML("html"),
         @Json(name = "text")

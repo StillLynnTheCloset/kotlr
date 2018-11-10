@@ -74,9 +74,9 @@ sealed class PostContent {
      */
     class ImageContent(
             var media: List<Media>? = null,
-            var feedbackToken: String? = null,
+            val feedbackToken: String? = null,
             var colors: Colors? = null,
-            var poster: List<Media>? = null,
+            val poster: List<Media>? = null,
             var attribution: Attribution? = null
     ) : PostContent() {
         companion object {
@@ -188,8 +188,7 @@ sealed class PostContent {
      * 1. If there is a [media] object present, simply use the client's native player.
      * 2. If there is a client-side SDK for the given provider, use the given [metadata] object with
      *      the client-side SDK.
-     * 3. If there is an [embedHtml] and/or [embedUrl] field present, render [embedHtml] or show
-     *      [embed_url] in an iframe.
+     * 3. If there is an [embedHtml] and/or [embedUrl] field present, render [embedHtml] or show [embedUrl] in an iframe.
      * 4. If all else fails, just show a link to [url].
      *
      * @author highthunder
@@ -217,7 +216,8 @@ sealed class PostContent {
             var metadata: Any? = null,
             var attribution: Attribution? = null,
             var canAutoPlayOnCellular: Boolean? = null,
-            var filmStrip: List<Media>? = null
+            var filmStrip: List<Media>? = null,
+            var iframe: Media? = null
     ) : PostContent() {
         companion object {
             const val KEY: String = "video"

@@ -146,7 +146,7 @@ data class SuperPostJson(
         @Json(name = "date")
         var date: String? = null,
         @Json(name = "format")
-        var format: String? = null,
+        var format: Post.PostFormat? = null,
         @Json(name = "reblog_key")
         var reblogKey: String? = null,
         @Json(name = "tags")

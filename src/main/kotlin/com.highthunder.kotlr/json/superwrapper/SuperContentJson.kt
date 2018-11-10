@@ -143,20 +143,68 @@ data class SuperContentJson(
         @Json(name = "filmstrip")
         var filmStrip: List<Media>? = null,
         @Json(name = "embed_iframe")
-        var iframe: Media? = null // TODO: Add iframe to videos
+        var iframe: Media? = null
 
         // endregion
 
 ) {
 
-    // TODO: ToSuperContentJson
+    constructor(content: AudioContent) : this(
+        type = AudioContent.KEY,
+        provider = content.provider,
+        url = content.url,
+        media = content.media?.let { MediaWrapper(singleMedia = it) },
+        title = content.title,
+        artist = content.artist,
+        album = content.album,
+        poster = content.poster,
+        embedHtml = content.embedHtml,
+        embedUrl = content.embedUrl,
+        metadata = content.metadata,
+        attribution = content.attribution
+    )
 
-    constructor(content: AudioContent) : this()
-    constructor(content: ImageContent) : this()
-    constructor(content: LinkContent) : this()
-    constructor(content: TextContent) : this()
-    constructor(content: VideoContent) : this()
-    constructor(content: PostContent) : this()
+    constructor(content: ImageContent) : this(
+        type = ImageContent.KEY,
+        media = content.media?.let { MediaWrapper(listMedia = it) },
+        feedbackToken = content.feedbackToken,
+        colors = content.colors,
+        poster = content.poster,
+        attribution = content.attribution
+    )
+
+    constructor(content: LinkContent) : this(
+        type = LinkContent.KEY,
+        url = content.url,
+        title = content.title,
+        description = content.description,
+        author = content.author,
+        siteName = content.siteName,
+        displayUrl = content.displayUrl,
+        poster = content.poster
+    )
+
+    constructor(content: TextContent) : this(
+        type = TextContent.KEY,
+        text = content.text,
+        subType = content.subType,
+        formatting = content.formatting
+    )
+
+    constructor(content: VideoContent) : this(
+        type = VideoContent.KEY,
+        url = content.url,
+        media = content.media?.let { MediaWrapper(singleMedia = it) },
+        provider = content.provider,
+        embedHtml = content.embedHtml,
+        embedUrl = content.embedUrl,
+        poster = content.poster,
+        metadata = content.metadata,
+        attribution = content.attribution,
+        canAutoPlayOnCellular = content.canAutoPlayOnCellular,
+        filmStrip = content.filmStrip,
+        iframe = content.iframe
+    )
 
     fun toAudioContent(): AudioContent {
         return AudioContent(provider, url, media?.singleMedia, title, artist, album, poster,
@@ -177,7 +225,7 @@ data class SuperContentJson(
 
     fun toVideoContent(): VideoContent {
         return VideoContent(url, media?.singleMedia, provider, embedHtml, embedUrl, poster,
-                metadata, attribution, canAutoPlayOnCellular, filmStrip)
+                metadata, attribution, canAutoPlayOnCellular, filmStrip, iframe)
     }
 
     fun toBestContent(): PostContent {
