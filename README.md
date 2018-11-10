@@ -66,14 +66,14 @@ fun minimalExample() {
     val key: TumblrUserKey = SampleUserKey
 
     // Similar to Jumblr's `JumblrClient`
-    val processor = RequestProcessor(key)
+    val client = KotlrClient(key)
 
     // All request parameters are strongly typed and any constraints imposed by the API, such as
     // required or mutually exclusive parameters, are enforced by the builder.
     val request: Request<ResponseBlogLikes.Body> = RequestBlogLikes(identifier = "kotlr-development")
 
     // Actually perform the request and get our data from Tumblr
-    val response: Response<ResponseBlogLikes.Body>? = processor.process(request)
+    val response: Response<ResponseBlogLikes.Body>? = client.process(request)
 
     // Check out any of the meta information that Tumblr returns such as HTTP success codes.
     val meta: ResponseMetaInfo? = response?.getMetaInfo()
