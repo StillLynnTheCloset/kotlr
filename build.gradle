@@ -1,6 +1,6 @@
 buildscript {
     ext.kotlin_version = '1.3.0'
-    ext.moshi_version = '1.7.0'
+    ext.moshi_version = '1.8.0'
     ext.scribe_version = '6.0.0'
 
     repositories {
@@ -48,7 +48,6 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
-
 
 idea {
     module {
