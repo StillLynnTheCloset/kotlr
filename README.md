@@ -13,13 +13,14 @@ restricted to the JVM.
 
 * Create a full API client for Tumblr
 * Use typesafe and idiomatic Kotlin
-This means that every response, and every object within those responses,
-will be represented by a class which will have typed properties for every
-possible field that the API can return. All requests to the API will
-likewise be backed by classes which clearly document any and all availible
-parameters as well as enforcing any restrictions on the requests, such
-as maximum values or mutually exclusive parameters.
-* Support the origional (legacy) post format
+
+   This means that every response, and every object within those responses,
+   will be represented by a class which will have typed properties for every
+   possible field that the API can return. All requests to the API will
+   likewise be backed by classes which clearly document any and all availible
+   parameters as well as enforcing any restrictions on the requests, such
+   as maximum values or mutually exclusive parameters.
+* Support the original (legacy) post format
 * Support the new 'blocks' post type, aka the Neue Post Format or NPF.
 * Provide any functionality needed to interact with
 the Tumblr API, such as APIs to acquire OAuth/XAuth keys in a
@@ -27,7 +28,7 @@ the Tumblr API, such as APIs to acquire OAuth/XAuth keys in a
 
 The priorities of development right now are:
 
-1. Add support for all GET request/response types.
+1. ~~Add support for all GET request/response types.~~
 2. Improve documentation.
 3. Improve test coverage and make tests more targeted.
 4. Add support for requests using other HTTP verbs.
