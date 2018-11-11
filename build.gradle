@@ -21,7 +21,7 @@ apply plugin: "kotlin-kapt"
 apply plugin: 'idea'
 
 group 'com.highthunder'
-version '0.1.0'
+version '0.2.0'
 
 repositories {
     mavenCentral()
