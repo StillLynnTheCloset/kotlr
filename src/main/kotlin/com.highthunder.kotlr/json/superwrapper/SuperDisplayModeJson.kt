@@ -1,7 +1,8 @@
 package com.highthunder.kotlr.json.superwrapper
 
 import com.highthunder.kotlr.types.content.BlockLayout
-import com.highthunder.kotlr.types.content.BlockLayout.Row.Display.Mode.*
+import com.highthunder.kotlr.types.content.BlockLayout.Row.Display.Mode.Carousel
+import com.highthunder.kotlr.types.content.BlockLayout.Row.Display.Mode.Weighted
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -17,8 +18,8 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class SuperDisplayModeJson(
-        @Json(name = "type")
-        var type: String? = null
+    @Json(name = "type")
+    var type: String? = null
 ) {
 
     constructor(mode: Weighted) : this(Weighted.KEY)

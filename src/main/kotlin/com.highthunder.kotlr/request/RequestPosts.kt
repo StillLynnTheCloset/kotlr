@@ -8,15 +8,16 @@ package com.highthunder.kotlr.request
  * @version 1.0.0
  */
 abstract class RequestPosts<T>(
-        private val postLimit: Int? = null,
-        private val postOffset: Long? = null,
-        private val afterPostId: Long? = null,
-        private val beforePostId: Long? = null,
-        private val afterTime: Long? = null,
-        private val beforeTime: Long? = null,
-        private val getReblogFields: Boolean? = null,
-        private val getNotesHistory: Boolean? = null,
-        private val useNeuePostFormat: Boolean? = null
+    private val postLimit: Int? = null,
+    private val postOffset: Long? = null,
+    private val afterPostId: Long? = null,
+    private val beforePostId: Long? = null,
+    private val afterTime: Long? = null,
+    private val beforeTime: Long? = null,
+    private val getReblogFields: Boolean? = null,
+    private val getNotesHistory: Boolean? = null,
+    private val useNeuePostFormat: Boolean? = null,
+    private val tag: String? = null
 ) : Request<T> {
 
     init {
@@ -79,7 +80,7 @@ abstract class RequestPosts<T>(
                 } else {
                     append("?")
                 }
-                append("before=")
+                append("after=")
                 append(it)
                 previous = true
             }
@@ -89,7 +90,7 @@ abstract class RequestPosts<T>(
                 } else {
                     append("?")
                 }
-                append("since=")
+                append("before=")
                 append(it)
                 previous = true
             }
@@ -121,6 +122,16 @@ abstract class RequestPosts<T>(
                 }
                 append("npf=")
                 append(it)
+                previous = true
+            }
+            tag?.also {
+                if (previous) {
+                    append("&")
+                } else {
+                    append("?")
+                }
+                append("tag=")
+                append(it.replace(" ", "+"))
                 previous = true
             }
         }.toString()

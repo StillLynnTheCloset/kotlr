@@ -1,8 +1,10 @@
 package com.highthunder.kotlr.json.superwrapper
 
-import com.highthunder.kotlr.types.content.*
+import com.highthunder.kotlr.types.content.PostContent
 import com.highthunder.kotlr.types.content.PostContent.*
-import com.squareup.moshi.*
+import com.squareup.moshi.FromJson
+import com.squareup.moshi.JsonDataException
+import com.squareup.moshi.ToJson
 
 /**
  * ContentJsonAdapter - An adapter to help Moshi convert [SuperContentJson] objects to and

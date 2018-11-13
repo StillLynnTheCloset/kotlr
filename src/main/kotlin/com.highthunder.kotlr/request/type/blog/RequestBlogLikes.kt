@@ -14,23 +14,30 @@ import kotlin.reflect.KClass
  * @version 1.0.0
  */
 class RequestBlogLikes(
-        postLimit: Int? = null,
-        postOffset: Long? = null,
-        afterPostId: Long? = null,
-        beforePostId: Long? = null,
-        afterTime: Long? = null,
-        beforeTime: Long? = null,
-        getReblogFields: Boolean? = null,
-        getNotesHistory: Boolean? = null,
-        useNeuePostFormat: Boolean? = null,
-        private var identifier: String
-) : RequestPosts<ResponseBlogLikes.Body>(postLimit, postOffset, afterPostId, beforePostId, afterTime, beforeTime, getReblogFields, getNotesHistory, useNeuePostFormat) {
+    postLimit: Int? = null,
+    postOffset: Long? = null,
+    afterTime: Long? = null,
+    beforeTime: Long? = null,
+    getReblogFields: Boolean? = null,
+    getNotesHistory: Boolean? = null,
+    useNeuePostFormat: Boolean? = null,
+    private var identifier: String
+) : RequestPosts<ResponseBlogLikes.Body>(
+    postLimit = postLimit,
+    postOffset = postOffset,
+    afterTime = afterTime,
+    beforeTime = beforeTime,
+    getReblogFields = getReblogFields,
+    getNotesHistory = getNotesHistory,
+    useNeuePostFormat = useNeuePostFormat
+) {
 
     companion object {
         const val BASE_PATH = "blog/"
     }
 
-    override val responseClass: KClass<out ResponseInterface<ResponseBlogLikes.Body>> = ResponseBlogLikes.Response::class
+    override val responseClass: KClass<out ResponseInterface<ResponseBlogLikes.Body>> =
+        ResponseBlogLikes.Response::class
     override val verb: Verb = Verb.GET
     override val requiresOAuth: Boolean = false
     override val improvedByOAuth: Boolean = true

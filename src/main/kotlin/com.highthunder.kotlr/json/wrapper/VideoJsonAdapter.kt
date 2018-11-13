@@ -10,34 +10,34 @@ import com.squareup.moshi.*
  * @since 10/20/18
  * @version 1.0.0
  */
-class VideoJsonAdapter(moshi: Moshi): JsonAdapter<Video>() {
+class VideoJsonAdapter(moshi: Moshi) : JsonAdapter<Video>() {
     private val options: JsonReader.Options = JsonReader.Options.of("width", "embed_code")
 
     private val nullableIntAdapter: JsonAdapter<Int?> =
-            moshi.adapter<Int?>(Int::class.javaObjectType, kotlin.collections.emptySet(), "width")
+        moshi.adapter(Int::class.javaObjectType, kotlin.collections.emptySet(), "width")
 
     private val nullableStringAdapter: JsonAdapter<String?> =
-            moshi.adapter<String?>(String::class.java, kotlin.collections.emptySet(), "embed_code")
+        moshi.adapter(String::class.java, kotlin.collections.emptySet(), "embed_code")
 
     private val nullableBooleanAdapter: JsonAdapter<Boolean?> =
-            moshi.adapter<Boolean?>(Boolean::class.java, kotlin.collections.emptySet(), "embed_code")
+        moshi.adapter(Boolean::class.java, kotlin.collections.emptySet(), "embed_code")
 
     override fun toString(): String = "GeneratedJsonAdapter(Video)"
 
     @FromJson
     override fun fromJson(reader: JsonReader): Video {
         var width: Int? = null
-        var widthSet: Boolean = false
+        var widthSet = false
         var embedCode: String? = null
-        var embedCodeSet: Boolean = false
+        var embedCodeSet = false
         reader.beginObject()
         while (reader.hasNext()) {
             when (reader.selectName(options)) {
-                0 ->  {
+                0 -> {
                     width = nullableIntAdapter.fromJson(reader)
                     widthSet = true
                 }
-                1 ->  {
+                1 -> {
                     if (reader.peek() == JsonReader.Token.STRING) {
                         embedCode = nullableStringAdapter.fromJson(reader)
                         embedCodeSet = true
@@ -56,8 +56,9 @@ class VideoJsonAdapter(moshi: Moshi): JsonAdapter<Video>() {
         reader.endObject()
         var result = Video()
         result = result.copy(
-                width = if (widthSet) width else result.width,
-                embedCode = if (embedCodeSet) embedCode else result.embedCode)
+            width = if (widthSet) width else result.width,
+            embedCode = if (embedCodeSet) embedCode else result.embedCode
+        )
         return result
     }
 

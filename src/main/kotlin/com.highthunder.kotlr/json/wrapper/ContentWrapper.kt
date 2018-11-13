@@ -12,6 +12,6 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = false)
 data class ContentWrapper(
-        var contentString: String? = null,
-        var contentList: List<PostContent>? = null
+    var contentString: String? = null,
+    var contentList: List<PostContent>? = null
 )

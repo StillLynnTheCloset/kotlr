@@ -29,22 +29,26 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class SuperLayoutJson(
-        @Json(name = "type")
-        var type: String? = null,
-        @Json(name = "rows")
-        var rows: List<List<Int>>? = null,
-        @Json(name = "blocks")
-        var blocks: List<Int>? = null,
-        @Json(name = "display")
-        var display: List<BlockLayout.Row.Display>? = null,
-        @Json(name = "attribution")
-        var attribution: Attribution? = null
+    @Json(name = "type")
+    var type: String? = null,
+    @Json(name = "rows")
+    var rows: List<List<Int>>? = null,
+    @Json(name = "blocks")
+    var blocks: List<Int>? = null,
+    @Json(name = "display")
+    var display: List<BlockLayout.Row.Display>? = null,
+    @Json(name = "attribution")
+    var attribution: Attribution? = null
 ) {
 
     constructor(layout: BlockLayout.Vertical) : this(BlockLayout.Vertical.KEY)
     constructor(layout: BlockLayout.Row) : this(BlockLayout.Row.KEY, rows = layout.rows, display = layout.display)
     constructor(layout: BlockLayout.Condensed) : this(BlockLayout.Condensed.KEY, blocks = layout.blocks)
-    constructor(layout: BlockLayout.Ask) : this(BlockLayout.Ask.KEY, blocks = layout.blocks, attribution = layout.attribution)
+    constructor(layout: BlockLayout.Ask) : this(
+        BlockLayout.Ask.KEY,
+        blocks = layout.blocks,
+        attribution = layout.attribution
+    )
 
     fun toVerticalLayout(): BlockLayout.Vertical = BlockLayout.Vertical()
     fun toRowLayout(): BlockLayout.Row = BlockLayout.Row(rows, display)

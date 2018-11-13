@@ -2,6 +2,7 @@ package com.highthunder.kotlr.types.content
 
 import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.PostId
+import com.highthunder.kotlr.types.content.Attribution.*
 import com.highthunder.kotlr.types.Blog as RealBlog
 import com.highthunder.kotlr.types.Post as RealPost
 
@@ -24,9 +25,9 @@ sealed class Attribution {
      * @param blog A Tumblelog object with at least a uuid field.
      */
     class Post(
-            var url: String? = null,
-            var post: PostId? = null,
-            var blog: RealBlog? = null
+        var url: String? = null,
+        var post: PostId? = null,
+        var blog: RealBlog? = null
     ) : Attribution() {
         companion object {
             const val KEY = "post"
@@ -39,7 +40,7 @@ sealed class Attribution {
      * @param url The URL to be attributed for the content.
      */
     class Link(
-            var url: String? = null
+        var url: String? = null
     ) : Attribution() {
         companion object {
             const val KEY = "link"
@@ -52,7 +53,7 @@ sealed class Attribution {
      * @param blog A Tumblelog object with at least a uuid field.
      */
     class Blog(
-            var blog: RealBlog? = null
+        var blog: RealBlog? = null
     ) : Attribution() {
         companion object {
             const val KEY = "blog"
@@ -68,10 +69,10 @@ sealed class Attribution {
      * @param logo A specific logo Media Object that the client should use with the third-party app attribution.
      */
     class App(
-            var url: String? = null,
-            var appName: String? = null,
-            var displayText: String? = null,
-            var logo: Media? = null
+        var url: String? = null,
+        var appName: String? = null,
+        var displayText: String? = null,
+        var logo: Media? = null
     ) : Attribution() {
         companion object {
             const val KEY = "app"

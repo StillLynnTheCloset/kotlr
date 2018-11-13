@@ -10,13 +10,17 @@ import com.squareup.moshi.*
  * @since 10/20/18
  * @version 1.0.0
  */
-class PlayerWrapperJsonAdapter(moshi: Moshi): JsonAdapter<PlayerWrapper>() {
+class PlayerWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<PlayerWrapper>() {
 
     private val stringAdapter: JsonAdapter<String?> =
-            moshi.adapter(String::class.java, kotlin.collections.emptySet(), null)
+        moshi.adapter(String::class.java, kotlin.collections.emptySet(), null)
 
     private val listOfVideoAdapter: JsonAdapter<List<Video>> =
-            moshi.adapter<List<Video>>(Types.newParameterizedType(List::class.java, Video::class.java), kotlin.collections.emptySet(), null)
+        moshi.adapter<List<Video>>(
+            Types.newParameterizedType(List::class.java, Video::class.java),
+            kotlin.collections.emptySet(),
+            null
+        )
 
     @FromJson
     override fun fromJson(reader: JsonReader): PlayerWrapper? {
@@ -33,7 +37,10 @@ class PlayerWrapperJsonAdapter(moshi: Moshi): JsonAdapter<PlayerWrapper>() {
         when {
             value == null -> stringAdapter.toJson(writer, null)
             value.contentString != null -> stringAdapter.toJson(writer, value.contentString)
-            value.contentList != null && value.contentList?.size != 0 -> listOfVideoAdapter.toJson(writer, value.contentList ?: listOf())
+            value.contentList != null && value.contentList?.size != 0 -> listOfVideoAdapter.toJson(
+                writer,
+                value.contentList ?: listOf()
+            )
             else -> stringAdapter.toJson(writer, null)
         }
     }

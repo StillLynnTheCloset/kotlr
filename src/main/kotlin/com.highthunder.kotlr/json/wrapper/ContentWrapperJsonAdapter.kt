@@ -10,13 +10,17 @@ import com.squareup.moshi.*
  * @since 10/20/18
  * @version 1.0.0
  */
-class ContentWrapperJsonAdapter(moshi: Moshi): JsonAdapter<ContentWrapper>() {
+class ContentWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ContentWrapper>() {
 
     private val stringAdapter: JsonAdapter<String?> =
-            moshi.adapter(String::class.java, kotlin.collections.emptySet(), null)
+        moshi.adapter(String::class.java, kotlin.collections.emptySet(), null)
 
     private val listOfContentAdapter: JsonAdapter<List<PostContent>> =
-            moshi.adapter<List<PostContent>>(Types.newParameterizedType(List::class.java, PostContent::class.java), kotlin.collections.emptySet(), null)
+        moshi.adapter<List<PostContent>>(
+            Types.newParameterizedType(List::class.java, PostContent::class.java),
+            kotlin.collections.emptySet(),
+            null
+        )
 
     @FromJson
     override fun fromJson(reader: JsonReader): ContentWrapper {

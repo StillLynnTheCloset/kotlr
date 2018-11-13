@@ -130,606 +130,611 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class SuperPostJson(
 
-        // region Defaults
-        @Json(name = "type")
-        var type: Post.Type? = null,
-        @Json(name = "blog_name")
-        var blogName: String? = null,
-        @Json(name = "id")
-        var id: Long? = null,
-        @Json(name = "blog")
-        var blog: Blog? = null,
-        @Json(name = "post_url")
-        var postUrl: String? = null,
-        @Json(name = "timestamp")
-        var timestamp: Long? = null,
-        @Json(name = "date")
-        var date: String? = null,
-        @Json(name = "format")
-        var format: Post.PostFormat? = null,
-        @Json(name = "reblog_key")
-        var reblogKey: String? = null,
-        @Json(name = "tags")
-        var tags: List<String>? = null,
-        @Json(name = "bookmarklet")
-        var isBookmarklet: Boolean? = null,
-        @Json(name = "mobile")
-        var isMobile: Boolean? = null,
-        @Json(name = "source_url")
-        var sourceUrl: String? = null,
-        @Json(name = "source_title")
-        var sourceTitle: String? = null,
-        @Json(name = "liked")
-        var isLiked: Boolean? = null,
-        @Json(name = "state")
-        var state: Post.State? = null,
-        @Json(name = "total_posts")
-        var totalPosts: Int? = null,
-        @Json(name = "is_anonymous")
-        var anonymous: Boolean? = null,
+    // region Defaults
+    @Json(name = "type")
+    var type: Post.Type? = null,
+    @Json(name = "blog_name")
+    var blogName: String? = null,
+    @Json(name = "id")
+    var id: Long? = null,
+    @Json(name = "blog")
+    var blog: Blog? = null,
+    @Json(name = "post_url")
+    var postUrl: String? = null,
+    @Json(name = "timestamp")
+    var timestamp: Long? = null,
+    @Json(name = "date")
+    var date: String? = null,
+    @Json(name = "format")
+    var format: Post.PostFormat? = null,
+    @Json(name = "reblog_key")
+    var reblogKey: String? = null,
+    @Json(name = "tags")
+    var tags: List<String>? = null,
+    @Json(name = "bookmarklet")
+    var isBookmarklet: Boolean? = null,
+    @Json(name = "mobile")
+    var isMobile: Boolean? = null,
+    @Json(name = "source_url")
+    var sourceUrl: String? = null,
+    @Json(name = "source_title")
+    var sourceTitle: String? = null,
+    @Json(name = "liked")
+    var isLiked: Boolean? = null,
+    @Json(name = "state")
+    var state: Post.State? = null,
+    @Json(name = "total_posts")
+    var totalPosts: Int? = null,
+    @Json(name = "is_anonymous")
+    var anonymous: Boolean? = null,
 
-        // endregion
+    // endregion
 
-        // region Situational Fields
-        @Json(name = "content")
-        var content: List<PostContent>? = null,
-        @Json(name = "trail")
-        var trail: List<Trail>? = null,
-        @Json(name = "layout")
-        var layout: List<BlockLayout>? = null,
-        @Json(name = "post_author")
-        var postAuthor: String? = null,
-        @Json(name = "short_url")
-        var shortUrl: String? = null,
-        @Json(name = "summary")
-        var summary: String? = null,
-        @Json(name = "is_blocks_post_format")
-        var isBlocksFormat: Boolean? = null,
-        @Json(name = "liked_timestamp")
-        var likedTimestamp: Long? = null,
-        @Json(name = "slug")
-        var slug: String? = null,
-        @Json(name = "note_count")
-        var noteCount: Long? = null,
-        @Json(name = "recommended_source")
-        var recommendedSource: String? = null,
-        @Json(name = "recommended_color")
-        var recommendedColor: String? = null,
-        @Json(name = "post_author_is_adult")
-        var postAuthorIsAdult: Boolean? = null,
-        @Json(name = "is_submission")
-        var isSubmission: Boolean? = null,
-        @Json(name = "can_like")
-        var canLike: Boolean? = null,
-        @Json(name = "can_reblog")
-        var canReblog: Boolean? = null,
-        @Json(name = "can_send_in_message")
-        var canSendInMessage: Boolean? = null,
-        @Json(name = "can_reply")
-        var canReply: Boolean? = null,
-        @Json(name = "display_avatar")
-        var displayAvatar: Boolean? = null,
-        @Json(name = "followed")
-        var followed: Boolean? = null,
-        @Json(name = "reblog")
-        var reblogData: ReblogData? = null,
-        @Json(name = "reblogged_from_id")
-        var rebloggedFromId: Long? = null,
-        @Json(name = "reblogged_from_url")
-        var reblogged_from_url: String? = null,
-        @Json(name = "reblogged_from_name")
-        var rebloggedFromName: String? = null,
-        @Json(name = "reblogged_from_title")
-        var reblogged_from_title: String? = null,
-        @Json(name = "reblogged_from_uuid")
-        var reblogged_from_uuid: String? = null,
-        @Json(name = "reblogged_from_can_message")
-        var reblogged_from_can_message: Boolean? = null,
-        @Json(name = "reblogged_from_following")
-        var reblogged_from_following: Boolean? = null,
-        @Json(name = "reblogged_root_id")
-        var reblogged_root_id: Long? = null,
-        @Json(name = "reblogged_root_url")
-        var reblogged_root_url: String? = null,
-        @Json(name = "reblogged_root_name")
-        var reblogged_root_name: String? = null,
-        @Json(name = "reblogged_root_title")
-        var reblogged_root_title: String? = null,
-        @Json(name = "reblogged_root_uuid")
-        var reblogged_root_uuid: String? = null,
-        @Json(name = "reblogged_root_can_message")
-        var reblogged_root_can_message: Boolean? = null,
-        @Json(name = "reblogged_root_following")
-        var reblogged_root_following: Boolean? = null,
-        @Json(name = "notes")
-        var notes: List<NoteData>? = null,
+    // region Situational Fields
+    @Json(name = "content")
+    var content: List<PostContent>? = null,
+    @Json(name = "trail")
+    var trail: List<Trail>? = null,
+    @Json(name = "layout")
+    var layout: List<BlockLayout>? = null,
+    @Json(name = "post_author")
+    var postAuthor: String? = null,
+    @Json(name = "short_url")
+    var shortUrl: String? = null,
+    @Json(name = "summary")
+    var summary: String? = null,
+    @Json(name = "is_blocks_post_format")
+    var isBlocksFormat: Boolean? = null,
+    @Json(name = "liked_timestamp")
+    var likedTimestamp: Long? = null,
+    @Json(name = "slug")
+    var slug: String? = null,
+    @Json(name = "note_count")
+    var noteCount: Long? = null,
+    @Json(name = "recommended_source")
+    var recommendedSource: String? = null,
+    @Json(name = "recommended_color")
+    var recommendedColor: String? = null,
+    @Json(name = "post_author_is_adult")
+    var postAuthorIsAdult: Boolean? = null,
+    @Json(name = "is_submission")
+    var isSubmission: Boolean? = null,
+    @Json(name = "can_like")
+    var canLike: Boolean? = null,
+    @Json(name = "can_reblog")
+    var canReblog: Boolean? = null,
+    @Json(name = "can_send_in_message")
+    var canSendInMessage: Boolean? = null,
+    @Json(name = "can_reply")
+    var canReply: Boolean? = null,
+    @Json(name = "display_avatar")
+    var displayAvatar: Boolean? = null,
+    @Json(name = "followed")
+    var followed: Boolean? = null,
+    @Json(name = "reblog")
+    var reblogData: ReblogData? = null,
+    @Json(name = "reblogged_from_id")
+    var rebloggedFromId: Long? = null,
+    @Json(name = "reblogged_from_url")
+    var reblogged_from_url: String? = null,
+    @Json(name = "reblogged_from_name")
+    var rebloggedFromName: String? = null,
+    @Json(name = "reblogged_from_title")
+    var reblogged_from_title: String? = null,
+    @Json(name = "reblogged_from_uuid")
+    var reblogged_from_uuid: String? = null,
+    @Json(name = "reblogged_from_can_message")
+    var reblogged_from_can_message: Boolean? = null,
+    @Json(name = "reblogged_from_following")
+    var reblogged_from_following: Boolean? = null,
+    @Json(name = "reblogged_root_id")
+    var reblogged_root_id: Long? = null,
+    @Json(name = "reblogged_root_url")
+    var reblogged_root_url: String? = null,
+    @Json(name = "reblogged_root_name")
+    var reblogged_root_name: String? = null,
+    @Json(name = "reblogged_root_title")
+    var reblogged_root_title: String? = null,
+    @Json(name = "reblogged_root_uuid")
+    var reblogged_root_uuid: String? = null,
+    @Json(name = "reblogged_root_can_message")
+    var reblogged_root_can_message: Boolean? = null,
+    @Json(name = "reblogged_root_following")
+    var reblogged_root_following: Boolean? = null,
+    @Json(name = "notes")
+    var notes: List<NoteData>? = null,
+
+    @Json(name = "scheduled_publish_time")
+    var publishTime: Long? = null,
+    @Json(name = "queued_state")
+    var queueState: String? = null,
 
 
-        // endregion
+    // endregion
 
-        // region Answer Post
+    // region Answer Post
 
-        @Json(name = "asking_name")
-        var askingName: String? = null,
-        @Json(name = "asking_url")
-        var askingUrl: String? = null,
-        @Json(name = "question")
-        var question: String? = null,
-        @Json(name = "answer")
-        var answer: String? = null,
-        @Json(name = "answer_abstract")
-        var answerAbstract: String? = null,
+    @Json(name = "asking_name")
+    var askingName: String? = null,
+    @Json(name = "asking_url")
+    var askingUrl: String? = null,
+    @Json(name = "question")
+    var question: String? = null,
+    @Json(name = "answer")
+    var answer: String? = null,
+    @Json(name = "answer_abstract")
+    var answerAbstract: String? = null,
 
-        // endregion
+    // endregion
 
-        // region Audio Post
+    // region Audio Post
 
-        @Json(name = "caption")
-        var caption: String? = null,
-        @Json(name = "caption_abstract")
-        var captionAbstract: String? = null,
-        @Json(name = "embed")
-        var embed: String? = null,
-        @Json(name = "audio_url")
-        var audio_url: String? = null,
-        @Json(name = "plays")
-        var plays: Int? = null,
-        @Json(name = "album_art")
-        var album_art: String? = null,
-        @Json(name = "artist")
-        var artist: String? = null,
-        @Json(name = "album")
-        var album: String? = null,
-        @Json(name = "track_name")
-        var trackName: String? = null,
-        @Json(name = "track_number")
-        var trackNumber: Int? = null,
-        @Json(name = "track")
-        var track: String? = null,
-        @Json(name = "year")
-        var year: Int? = null,
-        @Json(name = "audio_source_url")
-        var audioSourceUrl: String? = null,
-        @Json(name = "audio_type")
-        var audioType: String? = null,
-        @Json(name = "is_external")
-        var external: Boolean? = null,
-        @Json(name = "provider_uri")
-        var providerUrl: String? = null,
+    @Json(name = "caption")
+    var caption: String? = null,
+    @Json(name = "caption_abstract")
+    var captionAbstract: String? = null,
+    @Json(name = "embed")
+    var embed: String? = null,
+    @Json(name = "audio_url")
+    var audio_url: String? = null,
+    @Json(name = "plays")
+    var plays: Int? = null,
+    @Json(name = "album_art")
+    var album_art: String? = null,
+    @Json(name = "artist")
+    var artist: String? = null,
+    @Json(name = "album")
+    var album: String? = null,
+    @Json(name = "track_name")
+    var trackName: String? = null,
+    @Json(name = "track_number")
+    var trackNumber: Int? = null,
+    @Json(name = "track")
+    var track: String? = null,
+    @Json(name = "year")
+    var year: Int? = null,
+    @Json(name = "audio_source_url")
+    var audioSourceUrl: String? = null,
+    @Json(name = "audio_type")
+    var audioType: String? = null,
+    @Json(name = "is_external")
+    var external: Boolean? = null,
+    @Json(name = "provider_uri")
+    var providerUrl: String? = null,
 
-        // endregion
+    // endregion
 
-        // region Chat Post
+    // region Chat Post
 
-        @Json(name = "title")
-        var title: String? = null,
-        @Json(name = "body")
-        var body: String? = null,
-        @Json(name = "dialogue")
-        var dialogue: List<Dialogue>? = null,
+    @Json(name = "title")
+    var title: String? = null,
+    @Json(name = "body")
+    var body: String? = null,
+    @Json(name = "dialogue")
+    var dialogue: List<Dialogue>? = null,
 
-        // endregion
+    // endregion
 
-        // region Link Post
+    // region Link Post
 
-        @Json(name = "description")
-        var description: String? = null,
-        @Json(name = "url")
-        var url: String? = null,
-        @Json(name = "author")
-        var author: String? = null,
-        @Json(name = "link_author")
-        var linkAuthor: String? = null,
-        @Json(name = "link_image")
-        var linkImage: String? = null,
-        @Json(name = "link_image_dimensions")
-        var linkImageDimensions: PhotoSize? = null,
-        @Json(name = "excerpt")
-        var excerpt: String? = null,
-        @Json(name = "publisher")
-        var publisher: String? = null,
-        @Json(name = "photos")
-        var photos: List<Photo>? = null,
+    @Json(name = "description")
+    var description: String? = null,
+    @Json(name = "url")
+    var url: String? = null,
+    @Json(name = "author")
+    var author: String? = null,
+    @Json(name = "link_author")
+    var linkAuthor: String? = null,
+    @Json(name = "link_image")
+    var linkImage: String? = null,
+    @Json(name = "link_image_dimensions")
+    var linkImageDimensions: PhotoSize? = null,
+    @Json(name = "excerpt")
+    var excerpt: String? = null,
+    @Json(name = "publisher")
+    var publisher: String? = null,
+    @Json(name = "photos")
+    var photos: List<Photo>? = null,
 
-        // endregion
+    // endregion
 
-        // region Photo Post
+    // region Photo Post
 
-        @Json(name = "width")
-        var width: Int? = null,
-        @Json(name = "height")
-        var height: Int? = null,
-        @Json(name = "image_permalink")
-        var imagePermalink: String? = null,
-        @Json(name = "link_url")
-        var linkUrl: String? = null,
-        @Json(name = "photoset_layout")
-        var photosetLayout: String? = null,
-        @Json(name = "is_panorama")
-        var panorama: Boolean? = null,
+    @Json(name = "width")
+    var width: Int? = null,
+    @Json(name = "height")
+    var height: Int? = null,
+    @Json(name = "image_permalink")
+    var imagePermalink: String? = null,
+    @Json(name = "link_url")
+    var linkUrl: String? = null,
+    @Json(name = "photoset_layout")
+    var photosetLayout: String? = null,
+    @Json(name = "is_panorama")
+    var panorama: Boolean? = null,
 
-        // endregion
+    // endregion
 
-        // region Quote Post
+    // region Quote Post
 
-        @Json(name = "text")
-        var text: String? = null,
-        @Json(name = "source")
-        var source: String? = null,
+    @Json(name = "text")
+    var text: String? = null,
+    @Json(name = "source")
+    var source: String? = null,
 
-        // endregion
+    // endregion
 
-        // region Text Post
-        @Json(name = "body_abstract")
-        var abstract: String? = null,
-        // endregion
+    // region Text Post
+    @Json(name = "body_abstract")
+    var abstract: String? = null,
+    // endregion
 
-        // region Video Post
+    // region Video Post
 
-        @Json(name = "player")
-        var player: PlayerWrapper? = null,
-        @Json(name = "video_url")
-        var videoUrl: String? = null,
-        @Json(name = "html5_capable")
-        var html5Capable: Boolean? = null,
-        @Json(name = "thumbnail_url")
-        val thumbnailUrl: String? = null,
-        @Json(name = "thumbnail_width")
-        val thumbnailWidth: Int? = null,
-        @Json(name = "thumbnail_height")
-        val thumbnailHeight: Int? = null,
-        @Json(name = "duration")
-        var duration: Double? = null,
-        @Json(name = "video_type")
-        var videoType: String? = null,
-        @Json(name = "video")// TODO: Figure out how to parse this one
-        var videoData: Any? = null,
-        @Json(name = "permalink_url")
-        var permalinkUrl: String? = null
+    @Json(name = "player")
+    var player: PlayerWrapper? = null,
+    @Json(name = "video_url")
+    var videoUrl: String? = null,
+    @Json(name = "html5_capable")
+    var html5Capable: Boolean? = null,
+    @Json(name = "thumbnail_url")
+    val thumbnailUrl: String? = null,
+    @Json(name = "thumbnail_width")
+    val thumbnailWidth: Int? = null,
+    @Json(name = "thumbnail_height")
+    val thumbnailHeight: Int? = null,
+    @Json(name = "duration")
+    var duration: Double? = null,
+    @Json(name = "video_type")
+    var videoType: String? = null,
+    @Json(name = "video")// TODO: Figure out how to parse this one
+    var videoData: Any? = null,
+    @Json(name = "permalink_url")
+    var permalinkUrl: String? = null
 
-        // endregion
+    // endregion
 
 ) {
 
     // region Answer Constructor
 
     constructor(post: AnswerPost) : this(
-            type = Post.Type.Answer,
-            blogName = post.blogName,
-            id = post.id,
-            blog = post.blog,
-            postUrl = post.postUrl,
-            timestamp = post.timestamp,
-            date = post.date,
-            format = post.format,
-            reblogKey = post.reblogKey,
-            tags = post.tags,
-            isBookmarklet = post.isBookmarklet,
-            isMobile = post.isMobile,
-            sourceUrl = post.sourceUrl,
-            sourceTitle = post.sourceTitle,
-            isLiked = post.isLiked,
-            state = post.state,
-            totalPosts = post.totalPosts,
-            anonymous = post.anonymous,
-            content = post.content,
-            trail = post.trail,
-            layout = post.layout,
-            postAuthor = post.postAuthor,
-            shortUrl = post.shortUrl,
-            summary = post.summary,
-            isBlocksFormat = post.isBlocksFormat,
-            likedTimestamp = post.likedTimestamp,
-            slug = post.slug,
-            noteCount = post.noteCount,
-            recommendedSource = post.recommendedSource,
-            recommendedColor = post.recommendedColor,
-            postAuthorIsAdult = post.postAuthorIsAdult,
-            isSubmission = post.isSubmission,
-            canLike = post.canLike,
-            canReblog = post.canReblog,
-            canSendInMessage = post.canSendInMessage,
-            canReply = post.canReply,
-            displayAvatar = post.displayAvatar,
-            followed = post.followed,
-            reblogData = post.reblogData,
-            rebloggedFromId = post.rebloggedFromId,
-            reblogged_from_url = post.reblogged_from_url,
-            rebloggedFromName = post.rebloggedFromName,
-            reblogged_from_title = post.reblogged_from_title,
-            reblogged_from_uuid = post.reblogged_from_uuid,
-            reblogged_from_can_message = post.reblogged_from_can_message,
-            reblogged_from_following = post.reblogged_from_following,
-            reblogged_root_id = post.reblogged_root_id,
-            reblogged_root_url = post.reblogged_root_url,
-            reblogged_root_name = post.reblogged_root_name,
-            reblogged_root_title = post.reblogged_root_title,
-            reblogged_root_uuid = post.reblogged_root_uuid,
-            reblogged_root_can_message = post.reblogged_root_can_message,
-            reblogged_root_following = post.reblogged_root_following,
-            notes = post.notes,
-            askingName = post.askingName,
-            askingUrl = post.askingUrl,
-            question = post.question,
-            answer = post.answer,
-            answerAbstract = post.answerAbstract
+        type = Post.Type.Answer,
+        blogName = post.blogName,
+        id = post.id,
+        blog = post.blog,
+        postUrl = post.postUrl,
+        timestamp = post.timestamp,
+        date = post.date,
+        format = post.format,
+        reblogKey = post.reblogKey,
+        tags = post.tags,
+        isBookmarklet = post.isBookmarklet,
+        isMobile = post.isMobile,
+        sourceUrl = post.sourceUrl,
+        sourceTitle = post.sourceTitle,
+        isLiked = post.isLiked,
+        state = post.state,
+        totalPosts = post.totalPosts,
+        anonymous = post.anonymous,
+        content = post.content,
+        trail = post.trail,
+        layout = post.layout,
+        postAuthor = post.postAuthor,
+        shortUrl = post.shortUrl,
+        summary = post.summary,
+        isBlocksFormat = post.isBlocksFormat,
+        likedTimestamp = post.likedTimestamp,
+        slug = post.slug,
+        noteCount = post.noteCount,
+        recommendedSource = post.recommendedSource,
+        recommendedColor = post.recommendedColor,
+        postAuthorIsAdult = post.postAuthorIsAdult,
+        isSubmission = post.isSubmission,
+        canLike = post.canLike,
+        canReblog = post.canReblog,
+        canSendInMessage = post.canSendInMessage,
+        canReply = post.canReply,
+        displayAvatar = post.displayAvatar,
+        followed = post.followed,
+        reblogData = post.reblogData,
+        rebloggedFromId = post.rebloggedFromId,
+        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromName = post.rebloggedFromName,
+        reblogged_from_title = post.reblogged_from_title,
+        reblogged_from_uuid = post.reblogged_from_uuid,
+        reblogged_from_can_message = post.reblogged_from_can_message,
+        reblogged_from_following = post.reblogged_from_following,
+        reblogged_root_id = post.reblogged_root_id,
+        reblogged_root_url = post.reblogged_root_url,
+        reblogged_root_name = post.reblogged_root_name,
+        reblogged_root_title = post.reblogged_root_title,
+        reblogged_root_uuid = post.reblogged_root_uuid,
+        reblogged_root_can_message = post.reblogged_root_can_message,
+        reblogged_root_following = post.reblogged_root_following,
+        notes = post.notes,
+        askingName = post.askingName,
+        askingUrl = post.askingUrl,
+        question = post.question,
+        answer = post.answer,
+        answerAbstract = post.answerAbstract
     )
     // endregion
 
     // region Audio Constructor
     constructor(post: AudioPost) : this(
-            type = Post.Type.Audio,
-            blogName = post.blogName,
-            id = post.id,
-            blog = post.blog,
-            postUrl = post.postUrl,
-            timestamp = post.timestamp,
-            date = post.date,
-            format = post.format,
-            reblogKey = post.reblogKey,
-            tags = post.tags,
-            isBookmarklet = post.isBookmarklet,
-            isMobile = post.isMobile,
-            sourceUrl = post.sourceUrl,
-            sourceTitle = post.sourceTitle,
-            isLiked = post.isLiked,
-            state = post.state,
-            totalPosts = post.totalPosts,
-            anonymous = post.anonymous,
-            content = post.content,
-            trail = post.trail,
-            layout = post.layout,
-            postAuthor = post.postAuthor,
-            shortUrl = post.shortUrl,
-            summary = post.summary,
-            isBlocksFormat = post.isBlocksFormat,
-            likedTimestamp = post.likedTimestamp,
-            slug = post.slug,
-            noteCount = post.noteCount,
-            recommendedSource = post.recommendedSource,
-            recommendedColor = post.recommendedColor,
-            postAuthorIsAdult = post.postAuthorIsAdult,
-            isSubmission = post.isSubmission,
-            canLike = post.canLike,
-            canReblog = post.canReblog,
-            canSendInMessage = post.canSendInMessage,
-            canReply = post.canReply,
-            displayAvatar = post.displayAvatar,
-            followed = post.followed,
-            reblogData = post.reblogData,
-            rebloggedFromId = post.rebloggedFromId,
-            reblogged_from_url = post.reblogged_from_url,
-            rebloggedFromName = post.rebloggedFromName,
-            reblogged_from_title = post.reblogged_from_title,
-            reblogged_from_uuid = post.reblogged_from_uuid,
-            reblogged_from_can_message = post.reblogged_from_can_message,
-            reblogged_from_following = post.reblogged_from_following,
-            reblogged_root_id = post.reblogged_root_id,
-            reblogged_root_url = post.reblogged_root_url,
-            reblogged_root_name = post.reblogged_root_name,
-            reblogged_root_title = post.reblogged_root_title,
-            reblogged_root_uuid = post.reblogged_root_uuid,
-            reblogged_root_can_message = post.reblogged_root_can_message,
-            reblogged_root_following = post.reblogged_root_following,
-            notes = post.notes,
-            caption = post.caption,
-            captionAbstract = post.captionAbstract,
-            player = PlayerWrapper(contentString = post.player),
-            audio_url = post.audioUrl,
-            plays = post.plays,
-            album_art = post.album_art,
-            artist = post.artist,
-            album = post.album,
-            trackName = post.trackName,
-            trackNumber = post.trackNumber,
-            track = post.track,
-            year = post.year,
-            external = post.external,
-            providerUrl = post.providerUrl,
-            audioSourceUrl = post.audioSourceUrl,
-            audioType = post.audioType,
-            embed = post.embed
+        type = Post.Type.Audio,
+        blogName = post.blogName,
+        id = post.id,
+        blog = post.blog,
+        postUrl = post.postUrl,
+        timestamp = post.timestamp,
+        date = post.date,
+        format = post.format,
+        reblogKey = post.reblogKey,
+        tags = post.tags,
+        isBookmarklet = post.isBookmarklet,
+        isMobile = post.isMobile,
+        sourceUrl = post.sourceUrl,
+        sourceTitle = post.sourceTitle,
+        isLiked = post.isLiked,
+        state = post.state,
+        totalPosts = post.totalPosts,
+        anonymous = post.anonymous,
+        content = post.content,
+        trail = post.trail,
+        layout = post.layout,
+        postAuthor = post.postAuthor,
+        shortUrl = post.shortUrl,
+        summary = post.summary,
+        isBlocksFormat = post.isBlocksFormat,
+        likedTimestamp = post.likedTimestamp,
+        slug = post.slug,
+        noteCount = post.noteCount,
+        recommendedSource = post.recommendedSource,
+        recommendedColor = post.recommendedColor,
+        postAuthorIsAdult = post.postAuthorIsAdult,
+        isSubmission = post.isSubmission,
+        canLike = post.canLike,
+        canReblog = post.canReblog,
+        canSendInMessage = post.canSendInMessage,
+        canReply = post.canReply,
+        displayAvatar = post.displayAvatar,
+        followed = post.followed,
+        reblogData = post.reblogData,
+        rebloggedFromId = post.rebloggedFromId,
+        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromName = post.rebloggedFromName,
+        reblogged_from_title = post.reblogged_from_title,
+        reblogged_from_uuid = post.reblogged_from_uuid,
+        reblogged_from_can_message = post.reblogged_from_can_message,
+        reblogged_from_following = post.reblogged_from_following,
+        reblogged_root_id = post.reblogged_root_id,
+        reblogged_root_url = post.reblogged_root_url,
+        reblogged_root_name = post.reblogged_root_name,
+        reblogged_root_title = post.reblogged_root_title,
+        reblogged_root_uuid = post.reblogged_root_uuid,
+        reblogged_root_can_message = post.reblogged_root_can_message,
+        reblogged_root_following = post.reblogged_root_following,
+        notes = post.notes,
+        caption = post.caption,
+        captionAbstract = post.captionAbstract,
+        player = PlayerWrapper(contentString = post.player),
+        audio_url = post.audioUrl,
+        plays = post.plays,
+        album_art = post.album_art,
+        artist = post.artist,
+        album = post.album,
+        trackName = post.trackName,
+        trackNumber = post.trackNumber,
+        track = post.track,
+        year = post.year,
+        external = post.external,
+        providerUrl = post.providerUrl,
+        audioSourceUrl = post.audioSourceUrl,
+        audioType = post.audioType,
+        embed = post.embed
     )
     // endregion
 
     // region Chat Constructor
     constructor(post: ChatPost) : this(
-            type = Post.Type.Chat,
-            blogName = post.blogName,
-            id = post.id,
-            blog = post.blog,
-            postUrl = post.postUrl,
-            timestamp = post.timestamp,
-            date = post.date,
-            format = post.format,
-            reblogKey = post.reblogKey,
-            tags = post.tags,
-            isBookmarklet = post.isBookmarklet,
-            isMobile = post.isMobile,
-            sourceUrl = post.sourceUrl,
-            sourceTitle = post.sourceTitle,
-            isLiked = post.isLiked,
-            state = post.state,
-            totalPosts = post.totalPosts,
-            anonymous = post.anonymous,
-            content = post.content,
-            trail = post.trail,
-            layout = post.layout,
-            postAuthor = post.postAuthor,
-            shortUrl = post.shortUrl,
-            summary = post.summary,
-            isBlocksFormat = post.isBlocksFormat,
-            likedTimestamp = post.likedTimestamp,
-            slug = post.slug,
-            noteCount = post.noteCount,
-            recommendedSource = post.recommendedSource,
-            recommendedColor = post.recommendedColor,
-            postAuthorIsAdult = post.postAuthorIsAdult,
-            isSubmission = post.isSubmission,
-            canLike = post.canLike,
-            canReblog = post.canReblog,
-            canSendInMessage = post.canSendInMessage,
-            canReply = post.canReply,
-            displayAvatar = post.displayAvatar,
-            followed = post.followed,
-            reblogData = post.reblogData,
-            rebloggedFromId = post.rebloggedFromId,
-            reblogged_from_url = post.reblogged_from_url,
-            rebloggedFromName = post.rebloggedFromName,
-            reblogged_from_title = post.reblogged_from_title,
-            reblogged_from_uuid = post.reblogged_from_uuid,
-            reblogged_from_can_message = post.reblogged_from_can_message,
-            reblogged_from_following = post.reblogged_from_following,
-            reblogged_root_id = post.reblogged_root_id,
-            reblogged_root_url = post.reblogged_root_url,
-            reblogged_root_name = post.reblogged_root_name,
-            reblogged_root_title = post.reblogged_root_title,
-            reblogged_root_uuid = post.reblogged_root_uuid,
-            reblogged_root_can_message = post.reblogged_root_can_message,
-            reblogged_root_following = post.reblogged_root_following,
-            notes = post.notes,
-            title = post.title,
-            body = post.body,
-            dialogue = post.dialogue
+        type = Post.Type.Chat,
+        blogName = post.blogName,
+        id = post.id,
+        blog = post.blog,
+        postUrl = post.postUrl,
+        timestamp = post.timestamp,
+        date = post.date,
+        format = post.format,
+        reblogKey = post.reblogKey,
+        tags = post.tags,
+        isBookmarklet = post.isBookmarklet,
+        isMobile = post.isMobile,
+        sourceUrl = post.sourceUrl,
+        sourceTitle = post.sourceTitle,
+        isLiked = post.isLiked,
+        state = post.state,
+        totalPosts = post.totalPosts,
+        anonymous = post.anonymous,
+        content = post.content,
+        trail = post.trail,
+        layout = post.layout,
+        postAuthor = post.postAuthor,
+        shortUrl = post.shortUrl,
+        summary = post.summary,
+        isBlocksFormat = post.isBlocksFormat,
+        likedTimestamp = post.likedTimestamp,
+        slug = post.slug,
+        noteCount = post.noteCount,
+        recommendedSource = post.recommendedSource,
+        recommendedColor = post.recommendedColor,
+        postAuthorIsAdult = post.postAuthorIsAdult,
+        isSubmission = post.isSubmission,
+        canLike = post.canLike,
+        canReblog = post.canReblog,
+        canSendInMessage = post.canSendInMessage,
+        canReply = post.canReply,
+        displayAvatar = post.displayAvatar,
+        followed = post.followed,
+        reblogData = post.reblogData,
+        rebloggedFromId = post.rebloggedFromId,
+        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromName = post.rebloggedFromName,
+        reblogged_from_title = post.reblogged_from_title,
+        reblogged_from_uuid = post.reblogged_from_uuid,
+        reblogged_from_can_message = post.reblogged_from_can_message,
+        reblogged_from_following = post.reblogged_from_following,
+        reblogged_root_id = post.reblogged_root_id,
+        reblogged_root_url = post.reblogged_root_url,
+        reblogged_root_name = post.reblogged_root_name,
+        reblogged_root_title = post.reblogged_root_title,
+        reblogged_root_uuid = post.reblogged_root_uuid,
+        reblogged_root_can_message = post.reblogged_root_can_message,
+        reblogged_root_following = post.reblogged_root_following,
+        notes = post.notes,
+        title = post.title,
+        body = post.body,
+        dialogue = post.dialogue
     )
     // endregion
 
     // region Link Constructor
     constructor(post: LinkPost) : this(
-            type = Post.Type.Link,
-            blogName = post.blogName,
-            id = post.id,
-            blog = post.blog,
-            postUrl = post.postUrl,
-            timestamp = post.timestamp,
-            date = post.date,
-            format = post.format,
-            reblogKey = post.reblogKey,
-            tags = post.tags,
-            isBookmarklet = post.isBookmarklet,
-            isMobile = post.isMobile,
-            sourceUrl = post.sourceUrl,
-            sourceTitle = post.sourceTitle,
-            isLiked = post.isLiked,
-            state = post.state,
-            totalPosts = post.totalPosts,
-            anonymous = post.anonymous,
-            content = post.content,
-            trail = post.trail,
-            layout = post.layout,
-            postAuthor = post.postAuthor,
-            shortUrl = post.shortUrl,
-            summary = post.summary,
-            isBlocksFormat = post.isBlocksFormat,
-            likedTimestamp = post.likedTimestamp,
-            slug = post.slug,
-            noteCount = post.noteCount,
-            recommendedSource = post.recommendedSource,
-            recommendedColor = post.recommendedColor,
-            postAuthorIsAdult = post.postAuthorIsAdult,
-            isSubmission = post.isSubmission,
-            canLike = post.canLike,
-            canReblog = post.canReblog,
-            canSendInMessage = post.canSendInMessage,
-            canReply = post.canReply,
-            displayAvatar = post.displayAvatar,
-            followed = post.followed,
-            reblogData = post.reblogData,
-            rebloggedFromId = post.rebloggedFromId,
-            reblogged_from_url = post.reblogged_from_url,
-            rebloggedFromName = post.rebloggedFromName,
-            reblogged_from_title = post.reblogged_from_title,
-            reblogged_from_uuid = post.reblogged_from_uuid,
-            reblogged_from_can_message = post.reblogged_from_can_message,
-            reblogged_from_following = post.reblogged_from_following,
-            reblogged_root_id = post.reblogged_root_id,
-            reblogged_root_url = post.reblogged_root_url,
-            reblogged_root_name = post.reblogged_root_name,
-            reblogged_root_title = post.reblogged_root_title,
-            reblogged_root_uuid = post.reblogged_root_uuid,
-            reblogged_root_can_message = post.reblogged_root_can_message,
-            reblogged_root_following = post.reblogged_root_following,
-            notes = post.notes,
-            title = post.title,
-            description = post.description,
-            url = post.url,
-            author = post.author,
-            linkAuthor = post.linkAuthor,
-            linkImage = post.linkImage,
-            linkImageDimensions = post.linkImageDimensions,
-            excerpt = post.excerpt,
-            publisher = post.publisher,
-            photos = post.photos,
-            body = post.body
+        type = Post.Type.Link,
+        blogName = post.blogName,
+        id = post.id,
+        blog = post.blog,
+        postUrl = post.postUrl,
+        timestamp = post.timestamp,
+        date = post.date,
+        format = post.format,
+        reblogKey = post.reblogKey,
+        tags = post.tags,
+        isBookmarklet = post.isBookmarklet,
+        isMobile = post.isMobile,
+        sourceUrl = post.sourceUrl,
+        sourceTitle = post.sourceTitle,
+        isLiked = post.isLiked,
+        state = post.state,
+        totalPosts = post.totalPosts,
+        anonymous = post.anonymous,
+        content = post.content,
+        trail = post.trail,
+        layout = post.layout,
+        postAuthor = post.postAuthor,
+        shortUrl = post.shortUrl,
+        summary = post.summary,
+        isBlocksFormat = post.isBlocksFormat,
+        likedTimestamp = post.likedTimestamp,
+        slug = post.slug,
+        noteCount = post.noteCount,
+        recommendedSource = post.recommendedSource,
+        recommendedColor = post.recommendedColor,
+        postAuthorIsAdult = post.postAuthorIsAdult,
+        isSubmission = post.isSubmission,
+        canLike = post.canLike,
+        canReblog = post.canReblog,
+        canSendInMessage = post.canSendInMessage,
+        canReply = post.canReply,
+        displayAvatar = post.displayAvatar,
+        followed = post.followed,
+        reblogData = post.reblogData,
+        rebloggedFromId = post.rebloggedFromId,
+        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromName = post.rebloggedFromName,
+        reblogged_from_title = post.reblogged_from_title,
+        reblogged_from_uuid = post.reblogged_from_uuid,
+        reblogged_from_can_message = post.reblogged_from_can_message,
+        reblogged_from_following = post.reblogged_from_following,
+        reblogged_root_id = post.reblogged_root_id,
+        reblogged_root_url = post.reblogged_root_url,
+        reblogged_root_name = post.reblogged_root_name,
+        reblogged_root_title = post.reblogged_root_title,
+        reblogged_root_uuid = post.reblogged_root_uuid,
+        reblogged_root_can_message = post.reblogged_root_can_message,
+        reblogged_root_following = post.reblogged_root_following,
+        notes = post.notes,
+        title = post.title,
+        description = post.description,
+        url = post.url,
+        author = post.author,
+        linkAuthor = post.linkAuthor,
+        linkImage = post.linkImage,
+        linkImageDimensions = post.linkImageDimensions,
+        excerpt = post.excerpt,
+        publisher = post.publisher,
+        photos = post.photos,
+        body = post.body
     )
     // endregion
 
     // region Photo Constructor
 
     constructor(post: PhotoPost) : this(
-            type = Post.Type.Photo,
-            blogName = post.blogName,
-            id = post.id,
-            blog = post.blog,
-            postUrl = post.postUrl,
-            timestamp = post.timestamp,
-            date = post.date,
-            format = post.format,
-            reblogKey = post.reblogKey,
-            tags = post.tags,
-            isBookmarklet = post.isBookmarklet,
-            isMobile = post.isMobile,
-            sourceUrl = post.sourceUrl,
-            sourceTitle = post.sourceTitle,
-            isLiked = post.isLiked,
-            state = post.state,
-            totalPosts = post.totalPosts,
-            anonymous = post.anonymous,
-            content = post.content,
-            trail = post.trail,
-            layout = post.layout,
-            postAuthor = post.postAuthor,
-            shortUrl = post.shortUrl,
-            summary = post.summary,
-            isBlocksFormat = post.isBlocksFormat,
-            likedTimestamp = post.likedTimestamp,
-            slug = post.slug,
-            noteCount = post.noteCount,
-            recommendedSource = post.recommendedSource,
-            recommendedColor = post.recommendedColor,
-            postAuthorIsAdult = post.postAuthorIsAdult,
-            isSubmission = post.isSubmission,
-            canLike = post.canLike,
-            canReblog = post.canReblog,
-            canSendInMessage = post.canSendInMessage,
-            canReply = post.canReply,
-            displayAvatar = post.displayAvatar,
-            followed = post.followed,
-            reblogData = post.reblogData,
-            rebloggedFromId = post.rebloggedFromId,
-            reblogged_from_url = post.reblogged_from_url,
-            rebloggedFromName = post.rebloggedFromName,
-            reblogged_from_title = post.reblogged_from_title,
-            reblogged_from_uuid = post.reblogged_from_uuid,
-            reblogged_from_can_message = post.reblogged_from_can_message,
-            reblogged_from_following = post.reblogged_from_following,
-            reblogged_root_id = post.reblogged_root_id,
-            reblogged_root_url = post.reblogged_root_url,
-            reblogged_root_name = post.reblogged_root_name,
-            reblogged_root_title = post.reblogged_root_title,
-            reblogged_root_uuid = post.reblogged_root_uuid,
-            reblogged_root_can_message = post.reblogged_root_can_message,
-            reblogged_root_following = post.reblogged_root_following,
-            notes = post.notes,
-            caption = post.caption,
-            captionAbstract = post.captionAbstract,
-            width = post.width,
-            height = post.height,
-            photos = post.photos,
-            linkUrl = post.linkUrl,
-            imagePermalink = post.imagePermalink,
-            panorama = post.panorama,
-            photosetLayout = post.photosetLayout
+        type = Post.Type.Photo,
+        blogName = post.blogName,
+        id = post.id,
+        blog = post.blog,
+        postUrl = post.postUrl,
+        timestamp = post.timestamp,
+        date = post.date,
+        format = post.format,
+        reblogKey = post.reblogKey,
+        tags = post.tags,
+        isBookmarklet = post.isBookmarklet,
+        isMobile = post.isMobile,
+        sourceUrl = post.sourceUrl,
+        sourceTitle = post.sourceTitle,
+        isLiked = post.isLiked,
+        state = post.state,
+        totalPosts = post.totalPosts,
+        anonymous = post.anonymous,
+        content = post.content,
+        trail = post.trail,
+        layout = post.layout,
+        postAuthor = post.postAuthor,
+        shortUrl = post.shortUrl,
+        summary = post.summary,
+        isBlocksFormat = post.isBlocksFormat,
+        likedTimestamp = post.likedTimestamp,
+        slug = post.slug,
+        noteCount = post.noteCount,
+        recommendedSource = post.recommendedSource,
+        recommendedColor = post.recommendedColor,
+        postAuthorIsAdult = post.postAuthorIsAdult,
+        isSubmission = post.isSubmission,
+        canLike = post.canLike,
+        canReblog = post.canReblog,
+        canSendInMessage = post.canSendInMessage,
+        canReply = post.canReply,
+        displayAvatar = post.displayAvatar,
+        followed = post.followed,
+        reblogData = post.reblogData,
+        rebloggedFromId = post.rebloggedFromId,
+        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromName = post.rebloggedFromName,
+        reblogged_from_title = post.reblogged_from_title,
+        reblogged_from_uuid = post.reblogged_from_uuid,
+        reblogged_from_can_message = post.reblogged_from_can_message,
+        reblogged_from_following = post.reblogged_from_following,
+        reblogged_root_id = post.reblogged_root_id,
+        reblogged_root_url = post.reblogged_root_url,
+        reblogged_root_name = post.reblogged_root_name,
+        reblogged_root_title = post.reblogged_root_title,
+        reblogged_root_uuid = post.reblogged_root_uuid,
+        reblogged_root_can_message = post.reblogged_root_can_message,
+        reblogged_root_following = post.reblogged_root_following,
+        notes = post.notes,
+        caption = post.caption,
+        captionAbstract = post.captionAbstract,
+        width = post.width,
+        height = post.height,
+        photos = post.photos,
+        linkUrl = post.linkUrl,
+        imagePermalink = post.imagePermalink,
+        panorama = post.panorama,
+        photosetLayout = post.photosetLayout
     )
 
     // endregion
@@ -737,62 +742,62 @@ data class SuperPostJson(
     // region Quote Constructor
 
     constructor(post: QuotePost) : this(
-            type = Post.Type.Quote,
-            blogName = post.blogName,
-            id = post.id,
-            blog = post.blog,
-            postUrl = post.postUrl,
-            timestamp = post.timestamp,
-            date = post.date,
-            format = post.format,
-            reblogKey = post.reblogKey,
-            tags = post.tags,
-            isBookmarklet = post.isBookmarklet,
-            isMobile = post.isMobile,
-            sourceUrl = post.sourceUrl,
-            sourceTitle = post.sourceTitle,
-            isLiked = post.isLiked,
-            state = post.state,
-            totalPosts = post.totalPosts,
-            anonymous = post.anonymous,
-            content = post.content,
-            trail = post.trail,
-            layout = post.layout,
-            postAuthor = post.postAuthor,
-            shortUrl = post.shortUrl,
-            summary = post.summary,
-            isBlocksFormat = post.isBlocksFormat,
-            likedTimestamp = post.likedTimestamp,
-            slug = post.slug,
-            noteCount = post.noteCount,
-            recommendedSource = post.recommendedSource,
-            recommendedColor = post.recommendedColor,
-            postAuthorIsAdult = post.postAuthorIsAdult,
-            isSubmission = post.isSubmission,
-            canLike = post.canLike,
-            canReblog = post.canReblog,
-            canSendInMessage = post.canSendInMessage,
-            canReply = post.canReply,
-            displayAvatar = post.displayAvatar,
-            followed = post.followed,
-            reblogData = post.reblogData,
-            rebloggedFromId = post.rebloggedFromId,
-            reblogged_from_url = post.reblogged_from_url,
-            rebloggedFromName = post.rebloggedFromName,
-            reblogged_from_title = post.reblogged_from_title,
-            reblogged_from_uuid = post.reblogged_from_uuid,
-            reblogged_from_can_message = post.reblogged_from_can_message,
-            reblogged_from_following = post.reblogged_from_following,
-            reblogged_root_id = post.reblogged_root_id,
-            reblogged_root_url = post.reblogged_root_url,
-            reblogged_root_name = post.reblogged_root_name,
-            reblogged_root_title = post.reblogged_root_title,
-            reblogged_root_uuid = post.reblogged_root_uuid,
-            reblogged_root_can_message = post.reblogged_root_can_message,
-            reblogged_root_following = post.reblogged_root_following,
-            notes = post.notes,
-            text = post.text,
-            source = post.source
+        type = Post.Type.Quote,
+        blogName = post.blogName,
+        id = post.id,
+        blog = post.blog,
+        postUrl = post.postUrl,
+        timestamp = post.timestamp,
+        date = post.date,
+        format = post.format,
+        reblogKey = post.reblogKey,
+        tags = post.tags,
+        isBookmarklet = post.isBookmarklet,
+        isMobile = post.isMobile,
+        sourceUrl = post.sourceUrl,
+        sourceTitle = post.sourceTitle,
+        isLiked = post.isLiked,
+        state = post.state,
+        totalPosts = post.totalPosts,
+        anonymous = post.anonymous,
+        content = post.content,
+        trail = post.trail,
+        layout = post.layout,
+        postAuthor = post.postAuthor,
+        shortUrl = post.shortUrl,
+        summary = post.summary,
+        isBlocksFormat = post.isBlocksFormat,
+        likedTimestamp = post.likedTimestamp,
+        slug = post.slug,
+        noteCount = post.noteCount,
+        recommendedSource = post.recommendedSource,
+        recommendedColor = post.recommendedColor,
+        postAuthorIsAdult = post.postAuthorIsAdult,
+        isSubmission = post.isSubmission,
+        canLike = post.canLike,
+        canReblog = post.canReblog,
+        canSendInMessage = post.canSendInMessage,
+        canReply = post.canReply,
+        displayAvatar = post.displayAvatar,
+        followed = post.followed,
+        reblogData = post.reblogData,
+        rebloggedFromId = post.rebloggedFromId,
+        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromName = post.rebloggedFromName,
+        reblogged_from_title = post.reblogged_from_title,
+        reblogged_from_uuid = post.reblogged_from_uuid,
+        reblogged_from_can_message = post.reblogged_from_can_message,
+        reblogged_from_following = post.reblogged_from_following,
+        reblogged_root_id = post.reblogged_root_id,
+        reblogged_root_url = post.reblogged_root_url,
+        reblogged_root_name = post.reblogged_root_name,
+        reblogged_root_title = post.reblogged_root_title,
+        reblogged_root_uuid = post.reblogged_root_uuid,
+        reblogged_root_can_message = post.reblogged_root_can_message,
+        reblogged_root_following = post.reblogged_root_following,
+        notes = post.notes,
+        text = post.text,
+        source = post.source
     )
 
     // endregion
@@ -800,63 +805,63 @@ data class SuperPostJson(
     // region Text Constructor
 
     constructor(post: TextPost) : this(
-            type = Post.Type.Text,
-            blogName = post.blogName,
-            id = post.id,
-            blog = post.blog,
-            postUrl = post.postUrl,
-            timestamp = post.timestamp,
-            date = post.date,
-            format = post.format,
-            reblogKey = post.reblogKey,
-            tags = post.tags,
-            isBookmarklet = post.isBookmarklet,
-            isMobile = post.isMobile,
-            sourceUrl = post.sourceUrl,
-            sourceTitle = post.sourceTitle,
-            isLiked = post.isLiked,
-            state = post.state,
-            totalPosts = post.totalPosts,
-            anonymous = post.anonymous,
-            content = post.content,
-            trail = post.trail,
-            layout = post.layout,
-            postAuthor = post.postAuthor,
-            shortUrl = post.shortUrl,
-            summary = post.summary,
-            isBlocksFormat = post.isBlocksFormat,
-            likedTimestamp = post.likedTimestamp,
-            slug = post.slug,
-            noteCount = post.noteCount,
-            recommendedSource = post.recommendedSource,
-            recommendedColor = post.recommendedColor,
-            postAuthorIsAdult = post.postAuthorIsAdult,
-            isSubmission = post.isSubmission,
-            canLike = post.canLike,
-            canReblog = post.canReblog,
-            canSendInMessage = post.canSendInMessage,
-            canReply = post.canReply,
-            displayAvatar = post.displayAvatar,
-            followed = post.followed,
-            reblogData = post.reblogData,
-            rebloggedFromId = post.rebloggedFromId,
-            reblogged_from_url = post.reblogged_from_url,
-            rebloggedFromName = post.rebloggedFromName,
-            reblogged_from_title = post.reblogged_from_title,
-            reblogged_from_uuid = post.reblogged_from_uuid,
-            reblogged_from_can_message = post.reblogged_from_can_message,
-            reblogged_from_following = post.reblogged_from_following,
-            reblogged_root_id = post.reblogged_root_id,
-            reblogged_root_url = post.reblogged_root_url,
-            reblogged_root_name = post.reblogged_root_name,
-            reblogged_root_title = post.reblogged_root_title,
-            reblogged_root_uuid = post.reblogged_root_uuid,
-            reblogged_root_can_message = post.reblogged_root_can_message,
-            reblogged_root_following = post.reblogged_root_following,
-            notes = post.notes,
-            title = post.title,
-            abstract = post.abstract,
-            body = post.body
+        type = Post.Type.Text,
+        blogName = post.blogName,
+        id = post.id,
+        blog = post.blog,
+        postUrl = post.postUrl,
+        timestamp = post.timestamp,
+        date = post.date,
+        format = post.format,
+        reblogKey = post.reblogKey,
+        tags = post.tags,
+        isBookmarklet = post.isBookmarklet,
+        isMobile = post.isMobile,
+        sourceUrl = post.sourceUrl,
+        sourceTitle = post.sourceTitle,
+        isLiked = post.isLiked,
+        state = post.state,
+        totalPosts = post.totalPosts,
+        anonymous = post.anonymous,
+        content = post.content,
+        trail = post.trail,
+        layout = post.layout,
+        postAuthor = post.postAuthor,
+        shortUrl = post.shortUrl,
+        summary = post.summary,
+        isBlocksFormat = post.isBlocksFormat,
+        likedTimestamp = post.likedTimestamp,
+        slug = post.slug,
+        noteCount = post.noteCount,
+        recommendedSource = post.recommendedSource,
+        recommendedColor = post.recommendedColor,
+        postAuthorIsAdult = post.postAuthorIsAdult,
+        isSubmission = post.isSubmission,
+        canLike = post.canLike,
+        canReblog = post.canReblog,
+        canSendInMessage = post.canSendInMessage,
+        canReply = post.canReply,
+        displayAvatar = post.displayAvatar,
+        followed = post.followed,
+        reblogData = post.reblogData,
+        rebloggedFromId = post.rebloggedFromId,
+        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromName = post.rebloggedFromName,
+        reblogged_from_title = post.reblogged_from_title,
+        reblogged_from_uuid = post.reblogged_from_uuid,
+        reblogged_from_can_message = post.reblogged_from_can_message,
+        reblogged_from_following = post.reblogged_from_following,
+        reblogged_root_id = post.reblogged_root_id,
+        reblogged_root_url = post.reblogged_root_url,
+        reblogged_root_name = post.reblogged_root_name,
+        reblogged_root_title = post.reblogged_root_title,
+        reblogged_root_uuid = post.reblogged_root_uuid,
+        reblogged_root_can_message = post.reblogged_root_can_message,
+        reblogged_root_following = post.reblogged_root_following,
+        notes = post.notes,
+        title = post.title,
+        abstract = post.abstract,
+        body = post.body
     )
 
     // endregion
@@ -864,71 +869,71 @@ data class SuperPostJson(
     // region Video Constructor
 
     constructor(post: VideoPost) : this(
-            type = Post.Type.Video,
-            blogName = post.blogName,
-            id = post.id,
-            blog = post.blog,
-            postUrl = post.postUrl,
-            timestamp = post.timestamp,
-            date = post.date,
-            format = post.format,
-            reblogKey = post.reblogKey,
-            tags = post.tags,
-            isBookmarklet = post.isBookmarklet,
-            isMobile = post.isMobile,
-            sourceUrl = post.sourceUrl,
-            sourceTitle = post.sourceTitle,
-            isLiked = post.isLiked,
-            state = post.state,
-            totalPosts = post.totalPosts,
-            anonymous = post.anonymous,
-            content = post.content,
-            trail = post.trail,
-            layout = post.layout,
-            postAuthor = post.postAuthor,
-            shortUrl = post.shortUrl,
-            summary = post.summary,
-            isBlocksFormat = post.isBlocksFormat,
-            likedTimestamp = post.likedTimestamp,
-            slug = post.slug,
-            noteCount = post.noteCount,
-            recommendedSource = post.recommendedSource,
-            recommendedColor = post.recommendedColor,
-            postAuthorIsAdult = post.postAuthorIsAdult,
-            isSubmission = post.isSubmission,
-            canLike = post.canLike,
-            canReblog = post.canReblog,
-            canSendInMessage = post.canSendInMessage,
-            canReply = post.canReply,
-            displayAvatar = post.displayAvatar,
-            followed = post.followed,
-            reblogData = post.reblogData,
-            rebloggedFromId = post.rebloggedFromId,
-            reblogged_from_url = post.reblogged_from_url,
-            rebloggedFromName = post.rebloggedFromName,
-            reblogged_from_title = post.reblogged_from_title,
-            reblogged_from_uuid = post.reblogged_from_uuid,
-            reblogged_from_can_message = post.reblogged_from_can_message,
-            reblogged_from_following = post.reblogged_from_following,
-            reblogged_root_id = post.reblogged_root_id,
-            reblogged_root_url = post.reblogged_root_url,
-            reblogged_root_name = post.reblogged_root_name,
-            reblogged_root_title = post.reblogged_root_title,
-            reblogged_root_uuid = post.reblogged_root_uuid,
-            reblogged_root_can_message = post.reblogged_root_can_message,
-            reblogged_root_following = post.reblogged_root_following,
-            notes = post.notes,
-            player = PlayerWrapper(contentList = post.player),
-            caption = post.caption,
-            videoUrl = post.videoUrl,
-            html5Capable = post.html5Capable,
-            thumbnailUrl = post.thumbnailUrl,
-            thumbnailWidth = post.thumbnailWidth,
-            thumbnailHeight = post.thumbnailHeight,
-            duration = post.duration,
-            videoData = post.videoData,
-            permalinkUrl = post.permalinkUrl,
-            videoType = post.videoType
+        type = Post.Type.Video,
+        blogName = post.blogName,
+        id = post.id,
+        blog = post.blog,
+        postUrl = post.postUrl,
+        timestamp = post.timestamp,
+        date = post.date,
+        format = post.format,
+        reblogKey = post.reblogKey,
+        tags = post.tags,
+        isBookmarklet = post.isBookmarklet,
+        isMobile = post.isMobile,
+        sourceUrl = post.sourceUrl,
+        sourceTitle = post.sourceTitle,
+        isLiked = post.isLiked,
+        state = post.state,
+        totalPosts = post.totalPosts,
+        anonymous = post.anonymous,
+        content = post.content,
+        trail = post.trail,
+        layout = post.layout,
+        postAuthor = post.postAuthor,
+        shortUrl = post.shortUrl,
+        summary = post.summary,
+        isBlocksFormat = post.isBlocksFormat,
+        likedTimestamp = post.likedTimestamp,
+        slug = post.slug,
+        noteCount = post.noteCount,
+        recommendedSource = post.recommendedSource,
+        recommendedColor = post.recommendedColor,
+        postAuthorIsAdult = post.postAuthorIsAdult,
+        isSubmission = post.isSubmission,
+        canLike = post.canLike,
+        canReblog = post.canReblog,
+        canSendInMessage = post.canSendInMessage,
+        canReply = post.canReply,
+        displayAvatar = post.displayAvatar,
+        followed = post.followed,
+        reblogData = post.reblogData,
+        rebloggedFromId = post.rebloggedFromId,
+        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromName = post.rebloggedFromName,
+        reblogged_from_title = post.reblogged_from_title,
+        reblogged_from_uuid = post.reblogged_from_uuid,
+        reblogged_from_can_message = post.reblogged_from_can_message,
+        reblogged_from_following = post.reblogged_from_following,
+        reblogged_root_id = post.reblogged_root_id,
+        reblogged_root_url = post.reblogged_root_url,
+        reblogged_root_name = post.reblogged_root_name,
+        reblogged_root_title = post.reblogged_root_title,
+        reblogged_root_uuid = post.reblogged_root_uuid,
+        reblogged_root_can_message = post.reblogged_root_can_message,
+        reblogged_root_following = post.reblogged_root_following,
+        notes = post.notes,
+        player = PlayerWrapper(contentList = post.player),
+        caption = post.caption,
+        videoUrl = post.videoUrl,
+        html5Capable = post.html5Capable,
+        thumbnailUrl = post.thumbnailUrl,
+        thumbnailWidth = post.thumbnailWidth,
+        thumbnailHeight = post.thumbnailHeight,
+        duration = post.duration,
+        videoData = post.videoData,
+        permalinkUrl = post.permalinkUrl,
+        videoType = post.videoType
     )
 
     // endregion
@@ -936,207 +941,216 @@ data class SuperPostJson(
     // region Block Constructor
 
     constructor(post: BlockPost) : this(
-            type = Post.Type.Block,
-            blogName = post.blogName,
-            id = post.id,
-            blog = post.blog,
-            postUrl = post.postUrl,
-            timestamp = post.timestamp,
-            date = post.date,
-            format = post.format,
-            reblogKey = post.reblogKey,
-            tags = post.tags,
-            isBookmarklet = post.isBookmarklet,
-            isMobile = post.isMobile,
-            sourceUrl = post.sourceUrl,
-            sourceTitle = post.sourceTitle,
-            isLiked = post.isLiked,
-            state = post.state,
-            totalPosts = post.totalPosts,
-            anonymous = post.anonymous,
-            content = post.content,
-            trail = post.trail,
-            layout = post.layout,
-            postAuthor = post.postAuthor,
-            shortUrl = post.shortUrl,
-            summary = post.summary,
-            isBlocksFormat = post.isBlocksFormat,
-            likedTimestamp = post.likedTimestamp,
-            slug = post.slug,
-            noteCount = post.noteCount,
-            recommendedSource = post.recommendedSource,
-            recommendedColor = post.recommendedColor,
-            postAuthorIsAdult = post.postAuthorIsAdult,
-            isSubmission = post.isSubmission,
-            canLike = post.canLike,
-            canReblog = post.canReblog,
-            canSendInMessage = post.canSendInMessage,
-            canReply = post.canReply,
-            displayAvatar = post.displayAvatar,
-            followed = post.followed,
-            reblogData = post.reblogData,
-            rebloggedFromId = post.rebloggedFromId,
-            reblogged_from_url = post.reblogged_from_url,
-            rebloggedFromName = post.rebloggedFromName,
-            reblogged_from_title = post.reblogged_from_title,
-            reblogged_from_uuid = post.reblogged_from_uuid,
-            reblogged_from_can_message = post.reblogged_from_can_message,
-            reblogged_from_following = post.reblogged_from_following,
-            reblogged_root_id = post.reblogged_root_id,
-            reblogged_root_url = post.reblogged_root_url,
-            reblogged_root_name = post.reblogged_root_name,
-            reblogged_root_title = post.reblogged_root_title,
-            reblogged_root_uuid = post.reblogged_root_uuid,
-            reblogged_root_can_message = post.reblogged_root_can_message,
-            reblogged_root_following = post.reblogged_root_following,
-            notes = post.notes
+        type = Post.Type.Block,
+        blogName = post.blogName,
+        id = post.id,
+        blog = post.blog,
+        postUrl = post.postUrl,
+        timestamp = post.timestamp,
+        date = post.date,
+        format = post.format,
+        reblogKey = post.reblogKey,
+        tags = post.tags,
+        isBookmarklet = post.isBookmarklet,
+        isMobile = post.isMobile,
+        sourceUrl = post.sourceUrl,
+        sourceTitle = post.sourceTitle,
+        isLiked = post.isLiked,
+        state = post.state,
+        totalPosts = post.totalPosts,
+        anonymous = post.anonymous,
+        content = post.content,
+        trail = post.trail,
+        layout = post.layout,
+        postAuthor = post.postAuthor,
+        shortUrl = post.shortUrl,
+        summary = post.summary,
+        isBlocksFormat = post.isBlocksFormat,
+        likedTimestamp = post.likedTimestamp,
+        slug = post.slug,
+        noteCount = post.noteCount,
+        recommendedSource = post.recommendedSource,
+        recommendedColor = post.recommendedColor,
+        postAuthorIsAdult = post.postAuthorIsAdult,
+        isSubmission = post.isSubmission,
+        canLike = post.canLike,
+        canReblog = post.canReblog,
+        canSendInMessage = post.canSendInMessage,
+        canReply = post.canReply,
+        displayAvatar = post.displayAvatar,
+        followed = post.followed,
+        reblogData = post.reblogData,
+        rebloggedFromId = post.rebloggedFromId,
+        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromName = post.rebloggedFromName,
+        reblogged_from_title = post.reblogged_from_title,
+        reblogged_from_uuid = post.reblogged_from_uuid,
+        reblogged_from_can_message = post.reblogged_from_can_message,
+        reblogged_from_following = post.reblogged_from_following,
+        reblogged_root_id = post.reblogged_root_id,
+        reblogged_root_url = post.reblogged_root_url,
+        reblogged_root_name = post.reblogged_root_name,
+        reblogged_root_title = post.reblogged_root_title,
+        reblogged_root_uuid = post.reblogged_root_uuid,
+        reblogged_root_can_message = post.reblogged_root_can_message,
+        reblogged_root_following = post.reblogged_root_following,
+        notes = post.notes
     )
 
     // endregion
 
     fun toAnswerPost(): AnswerPost {
-        return AnswerPost(blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
-                isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
-                anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
-                likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
-                postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-                displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-                rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-                reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-                reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-                reblogged_root_can_message, reblogged_root_following, notes,
+        return AnswerPost(
+            blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
+            isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
+            anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
+            likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
+            postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
+            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
+            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
+            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
+            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
+            reblogged_root_can_message, reblogged_root_following, notes,
 
-                askingName, askingUrl, question, answer, answerAbstract
+            askingName, askingUrl, question, answer, answerAbstract
         )
     }
 
     fun toAudioPost(): AudioPost {
-        return AudioPost(blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
-                isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
-                anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
-                likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
-                postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-                displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-                rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-                reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-                reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-                reblogged_root_can_message, reblogged_root_following, notes,
+        return AudioPost(
+            blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
+            isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
+            anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
+            likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
+            postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
+            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
+            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
+            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
+            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
+            reblogged_root_can_message, reblogged_root_following, notes,
 
-                caption, captionAbstract, player?.contentString, audio_url, plays, album_art,
-                artist, album, trackName, trackNumber, track, year, external, providerUrl,
-                audioSourceUrl, audioType, embed
+            caption, captionAbstract, player?.contentString, audio_url, plays, album_art,
+            artist, album, trackName, trackNumber, track, year, external, providerUrl,
+            audioSourceUrl, audioType, embed
         )
     }
 
     fun toChatPost(): ChatPost {
-        return ChatPost(blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
-                isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
-                anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
-                likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
-                postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-                displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-                rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-                reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-                reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-                reblogged_root_can_message, reblogged_root_following, notes,
+        return ChatPost(
+            blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
+            isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
+            anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
+            likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
+            postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
+            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
+            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
+            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
+            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
+            reblogged_root_can_message, reblogged_root_following, notes,
 
-                title, body, dialogue
+            title, body, dialogue
         )
     }
 
     fun toLinkPost(): LinkPost {
-        return LinkPost(blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
-                isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
-                anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
-                likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
-                postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-                displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-                rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-                reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-                reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-                reblogged_root_can_message, reblogged_root_following, notes,
+        return LinkPost(
+            blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
+            isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
+            anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
+            likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
+            postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
+            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
+            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
+            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
+            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
+            reblogged_root_can_message, reblogged_root_following, notes,
 
-                title, description, url, author, linkAuthor, linkImage, linkImageDimensions,
-                excerpt, publisher, photos, body
+            title, description, url, author, linkAuthor, linkImage, linkImageDimensions,
+            excerpt, publisher, photos, body
         )
     }
 
     fun toPhotoPost(): PhotoPost {
-        return PhotoPost(blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
-                isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
-                anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
-                likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
-                postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-                displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-                rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-                reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-                reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-                reblogged_root_can_message, reblogged_root_following, notes,
+        return PhotoPost(
+            blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
+            isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
+            anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
+            likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
+            postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
+            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
+            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
+            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
+            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
+            reblogged_root_can_message, reblogged_root_following, notes,
 
-                caption, captionAbstract, width, height, photos, linkUrl, imagePermalink, panorama, photosetLayout
+            caption, captionAbstract, width, height, photos, linkUrl, imagePermalink, panorama, photosetLayout
         )
     }
 
     fun toQuotePost(): QuotePost {
-        return QuotePost(blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
-                isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
-                anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
-                likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
-                postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-                displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-                rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-                reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-                reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-                reblogged_root_can_message, reblogged_root_following, notes,
+        return QuotePost(
+            blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
+            isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
+            anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
+            likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
+            postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
+            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
+            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
+            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
+            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
+            reblogged_root_can_message, reblogged_root_following, notes,
 
-                text, source
+            text, source
         )
     }
 
     fun toTextPost(): TextPost {
-        return TextPost(blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
-                isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
-                anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
-                likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
-                postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-                displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-                rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-                reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-                reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-                reblogged_root_can_message, reblogged_root_following, notes,
+        return TextPost(
+            blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
+            isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
+            anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
+            likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
+            postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
+            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
+            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
+            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
+            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
+            reblogged_root_can_message, reblogged_root_following, notes,
 
-                title, abstract, body
+            title, abstract, body
         )
     }
 
     fun toVideoPost(): VideoPost {
-        return VideoPost(blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
-                isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
-                anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
-                likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
-                postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-                displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-                rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-                reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-                reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-                reblogged_root_can_message, reblogged_root_following, notes,
+        return VideoPost(
+            blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
+            isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
+            anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
+            likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
+            postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
+            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
+            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
+            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
+            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
+            reblogged_root_can_message, reblogged_root_following, notes,
 
-                player?.contentList, caption, videoUrl, html5Capable, thumbnailUrl, thumbnailWidth,
-                thumbnailHeight, duration, videoData, permalinkUrl, videoType
+            player?.contentList, caption, videoUrl, html5Capable, thumbnailUrl, thumbnailWidth,
+            thumbnailHeight, duration, videoData, permalinkUrl, videoType
         )
     }
 
     fun toBlockPost(): BlockPost {
-        return BlockPost(blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
-                isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
-                anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
-                likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
-                postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-                displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-                rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-                reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-                reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-                reblogged_root_can_message, reblogged_root_following, notes
+        return BlockPost(
+            blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
+            isBookmarklet, isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts,
+            anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
+            likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
+            postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
+            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
+            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
+            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
+            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
+            reblogged_root_can_message, reblogged_root_following, notes
         )
     }
 

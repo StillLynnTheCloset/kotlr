@@ -3,7 +3,6 @@ package com.highthunder.kotlr.request.type.blog
 import com.github.scribejava.core.model.Verb
 import com.highthunder.kotlr.request.Request
 import com.highthunder.kotlr.response.ResponseInterface
-import com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar
 import com.highthunder.kotlr.response.type.blog.ResponseBlogInfo
 import kotlin.reflect.KClass
 

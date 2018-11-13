@@ -32,20 +32,21 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class SuperFormatJson constructor(
-        @Json(name = "start")
-        var start: Int? = null,
-        @Json(name = "end")
-        var end: Int? = null,
-        @Json(name = "type")
-        var type: String? = null,
-        @Json(name = "url")
-        var url: String? = null,
-        @Json(name = "blog")
-        var blog: Blog? = null,
-        @Json(name = "hex")
-        var hex: String? = null,
-        @Json(name = "size")
-        var size: TextFormat.Size.Option? = null) {
+    @Json(name = "start")
+    var start: Int? = null,
+    @Json(name = "end")
+    var end: Int? = null,
+    @Json(name = "type")
+    var type: String? = null,
+    @Json(name = "url")
+    var url: String? = null,
+    @Json(name = "blog")
+    var blog: Blog? = null,
+    @Json(name = "hex")
+    var hex: String? = null,
+    @Json(name = "size")
+    var size: TextFormat.Size.Option? = null
+) {
 
     constructor(format: TextFormat.Bold) : this(format.start, format.end)
     constructor(format: TextFormat.Italic) : this(format.start, format.end)

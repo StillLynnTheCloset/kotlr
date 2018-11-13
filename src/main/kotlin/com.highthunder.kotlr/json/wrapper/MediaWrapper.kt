@@ -18,6 +18,6 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = false)
 data class MediaWrapper(
-        var singleMedia: Media? = null,
-        var listMedia: List<Media>? = null
+    var singleMedia: Media? = null,
+    var listMedia: List<Media>? = null
 )

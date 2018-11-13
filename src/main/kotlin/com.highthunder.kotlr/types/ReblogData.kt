@@ -12,8 +12,8 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class ReblogData(
-        @Json(name = "comment")
-        var comment: String? = null,
-        @Json(name = "tree_html")
-        var tree: String? = null
+    @Json(name = "comment")
+    var comment: String? = null,
+    @Json(name = "tree_html")
+    var tree: String? = null
 )

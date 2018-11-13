@@ -12,10 +12,10 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class ResponseMetaInfo(
-        @Json(name = "status")
-        var status: Int? = null,
-        @Json(name = "msg")
-        var msg: String? = null,
-        @Json(name = "x_tumblr_content_rating")
-        var contentRating: String? = null
+    @Json(name = "status")
+    var status: Int? = null,
+    @Json(name = "msg")
+    var msg: String? = null,
+    @Json(name = "x_tumblr_content_rating")
+    var contentRating: String? = null
 )

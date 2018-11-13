@@ -13,13 +13,18 @@ import com.squareup.moshi.*
 class BlogQueueWrapperJsonAdapter(moshi: Moshi) {
 
     private val stringAdapter: JsonAdapter<String?> =
-            moshi.adapter(String::class.java, kotlin.collections.emptySet(), null)
+        moshi.adapter(String::class.java, kotlin.collections.emptySet(), null)
 
     private val responseAdapter: JsonAdapter<ResponseBlogQueue.Body> =
-            moshi.adapter<ResponseBlogQueue.Body>(ResponseBlogQueue.Body::class.java, kotlin.collections.emptySet(), null).failOnUnknown()
+        moshi.adapter<ResponseBlogQueue.Body>(ResponseBlogQueue.Body::class.java, kotlin.collections.emptySet(), null)
+            .failOnUnknown()
 
     private val listOfAnyAdapter: JsonAdapter<List<Any>> =
-            moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), kotlin.collections.emptySet(), null).failOnUnknown()
+        moshi.adapter<List<Any>>(
+            Types.newParameterizedType(List::class.java, Any::class.java),
+            kotlin.collections.emptySet(),
+            null
+        ).failOnUnknown()
 
     @FromJson
     fun fromJson(reader: JsonReader): ResponseBlogQueue.Wrapper {

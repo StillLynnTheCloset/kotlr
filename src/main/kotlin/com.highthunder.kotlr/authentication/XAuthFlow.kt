@@ -24,8 +24,8 @@ class XAuthFlow {
 
     private fun getService(appKey: TumblrAppKey): OAuth10aService {
         return ServiceBuilder(appKey.apiKey)
-                .apiSecret(appKey.apiSecret)
-                .build(TumblrApi.instance())
+            .apiSecret(appKey.apiSecret)
+            .build(TumblrApi.instance())
     }
 
     private fun constructXAuthPost(email: String, password: String): OAuthRequest {

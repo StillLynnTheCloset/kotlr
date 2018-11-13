@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.highthunder.kotlr
 
 import com.highthunder.kotlr.authentication.TumblrAppKey
@@ -11,14 +13,14 @@ import com.highthunder.kotlr.authentication.TumblrUserKey
  * @version 1.0.0
  */
 @Suppress("SpellCheckingInspection")
-val SampleAppKey = TumblrAppKey (
+val SampleAppKey = TumblrAppKey(
     apiKey = "apiKeyAkaConsumerKey",
     apiSecret = "apiSecretAkaConsumerSecret"
 )
 
 @Suppress("SpellCheckingInspection")
 val SampleUserKey = TumblrUserKey(
-        appKey = SampleAppKey,
-        userKey = "userKeyAkaToken",
-        userSecret = "userSecretAkaTokenSecret"
+    appKey = SampleAppKey,
+    userKey = "userKeyAkaToken",
+    userSecret = "userSecretAkaTokenSecret"
 )

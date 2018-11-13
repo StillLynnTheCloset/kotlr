@@ -2,7 +2,8 @@ package com.highthunder.kotlr
 
 import com.highthunder.kotlr.types.Post
 import com.squareup.moshi.JsonAdapter
-import org.junit.Assert.*
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class ParseNpfIntegrationTest {

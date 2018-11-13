@@ -22,7 +22,8 @@ class RequestBlogAvatar(
         const val BASE_PATH = "blog/"
     }
 
-    override val responseClass: KClass<out ResponseInterface<ResponseBlogAvatar.Body>> = ResponseBlogAvatar.Response::class
+    override val responseClass: KClass<out ResponseInterface<ResponseBlogAvatar.Body>> =
+        ResponseBlogAvatar.Response::class
     override val verb: Verb = Verb.GET
     override val requiresOAuth: Boolean = false
     override val improvedByOAuth: Boolean = true

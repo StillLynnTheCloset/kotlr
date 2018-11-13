@@ -2,7 +2,8 @@ package com.highthunder.kotlr.json.superwrapper
 
 import com.highthunder.kotlr.types.content.BlockLayout
 import com.highthunder.kotlr.types.content.BlockLayout.Row.Display.Mode
-import com.highthunder.kotlr.types.content.BlockLayout.Row.Display.Mode.*
+import com.highthunder.kotlr.types.content.BlockLayout.Row.Display.Mode.Carousel
+import com.highthunder.kotlr.types.content.BlockLayout.Row.Display.Mode.Weighted
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson
 

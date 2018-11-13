@@ -4,7 +4,6 @@ import com.github.scribejava.apis.TumblrApi
 import com.github.scribejava.core.builder.ServiceBuilder
 import com.github.scribejava.core.model.OAuth1RequestToken
 import com.github.scribejava.core.oauth.OAuth10aService
-import java.lang.IllegalStateException
 
 /**
  * OAuthFlow - TODO: Documentation
@@ -30,10 +29,10 @@ class OAuthFlow {
 
     private fun getService(appKey: TumblrAppKey, callbackUrl: String): OAuth10aService {
         return ServiceBuilder(appKey.apiKey)
-                .apiSecret(appKey.apiSecret)
-                .callback(callbackUrl)
-                .debug()
-                .build(TumblrApi.instance())
+            .apiSecret(appKey.apiSecret)
+            .callback(callbackUrl)
+            .debug()
+            .build(TumblrApi.instance())
     }
 
     fun getRequestUrl(appKey: TumblrAppKey, callbackUrl: String): String? {

@@ -1,11 +1,12 @@
 package com.highthunder.kotlr.json.superwrapper
 
 import com.highthunder.kotlr.types.Blog
-import com.highthunder.kotlr.types.Post
-import com.highthunder.kotlr.types.content.Attribution
-import com.highthunder.kotlr.types.content.Attribution.*
 import com.highthunder.kotlr.types.Media
+import com.highthunder.kotlr.types.Post
 import com.highthunder.kotlr.types.PostId
+import com.highthunder.kotlr.types.content.Attribution
+import com.highthunder.kotlr.types.content.Attribution.App
+import com.highthunder.kotlr.types.content.Attribution.Link
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -38,28 +39,32 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class SuperAttributionJson(
-        @Json(name = "type")
-        var type: String? = null,
-        @Json(name = "url")
-        var url: String? = null,
-        @Json(name = "post")
-        var post: PostId? = null,
-        @Json(name = "blog")
-        var blog: Blog? = null,
-        @Json(name = "app_name")
-        var appName: String? = null,
-        @Json(name = "display_text")
-        var displayText: String? = null,
-        @Json(name = "logo")
-        var logo: Media? = null
+    @Json(name = "type")
+    var type: String? = null,
+    @Json(name = "url")
+    var url: String? = null,
+    @Json(name = "post")
+    var post: PostId? = null,
+    @Json(name = "blog")
+    var blog: Blog? = null,
+    @Json(name = "app_name")
+    var appName: String? = null,
+    @Json(name = "display_text")
+    var displayText: String? = null,
+    @Json(name = "logo")
+    var logo: Media? = null
 ) {
 
-    constructor(attribution: Attribution.Post) : this(url = attribution.url,
-            post = attribution.post, blog = attribution.blog)
+    constructor(attribution: Attribution.Post) : this(
+        url = attribution.url,
+        post = attribution.post, blog = attribution.blog
+    )
 
-    constructor(attribution: Attribution.App) : this(url = attribution.url,
-            appName = attribution.appName, displayText = attribution.displayText,
-            logo = attribution.logo)
+    constructor(attribution: Attribution.App) : this(
+        url = attribution.url,
+        appName = attribution.appName, displayText = attribution.displayText,
+        logo = attribution.logo
+    )
 
     constructor(attribution: Attribution.Link) : this(url = attribution.url)
     constructor(attribution: Attribution.Blog) : this(blog = attribution.blog)

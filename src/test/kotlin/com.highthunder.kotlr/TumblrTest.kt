@@ -2,7 +2,9 @@ package com.highthunder.kotlr
 
 import com.highthunder.kotlr.json.superwrapper.PostJsonAdapter
 import com.highthunder.kotlr.json.superwrapper.SuperPostJson
-import com.highthunder.kotlr.types.*
+import com.highthunder.kotlr.types.Blog
+import com.highthunder.kotlr.types.NoteData
+import com.highthunder.kotlr.types.User
 import com.highthunder.kotlr.types.legacy.Photo
 import com.highthunder.kotlr.types.legacy.Video
 import com.squareup.moshi.JsonAdapter
@@ -33,8 +35,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -48,8 +51,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -63,8 +67,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -78,8 +83,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -93,8 +99,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -108,8 +115,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -123,8 +131,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -138,8 +147,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -153,8 +163,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -168,8 +179,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -183,8 +195,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -198,8 +211,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -213,8 +227,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -228,8 +243,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -243,8 +259,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -258,8 +275,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -273,8 +291,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -288,8 +307,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -303,8 +323,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -318,8 +339,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -333,8 +355,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -348,8 +371,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -363,8 +387,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -378,8 +403,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -393,8 +419,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -408,8 +435,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -423,8 +451,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
@@ -438,8 +467,9 @@ class TumblrTest {
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
-                post.toString().replace(",", "\n"),
-                parsed.toString().replace(",", "\n"))
+            post.toString().replace(",", "\n"),
+            parsed.toString().replace(",", "\n")
+        )
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }

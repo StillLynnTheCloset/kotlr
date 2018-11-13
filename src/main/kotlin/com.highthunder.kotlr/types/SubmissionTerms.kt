@@ -11,8 +11,8 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class SubmissionTerms(
-        var tags: List<String>? = null,
-        var title: String? = null,
-        var guidelines: String? = null,
-        var accepted_types: List<String>? = null
+    var tags: List<String>? = null,
+    var title: String? = null,
+    var guidelines: String? = null,
+    var accepted_types: List<String>? = null
 )

@@ -11,13 +11,17 @@ import com.squareup.moshi.*
  * @since 10/20/18
  * @version 1.0.0
  */
-class MediaWrapperJsonAdapter(moshi: Moshi): JsonAdapter<MediaWrapper>() {
+class MediaWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<MediaWrapper>() {
 
     private val mediaAdapter: JsonAdapter<Media?> =
-            moshi.adapter(Media::class.java, kotlin.collections.emptySet(), null)
+        moshi.adapter(Media::class.java, kotlin.collections.emptySet(), null)
 
     private val listOfMediaAdapter: JsonAdapter<List<Media>> =
-            moshi.adapter<List<Media>>(Types.newParameterizedType(List::class.java, Media::class.java), kotlin.collections.emptySet(), null)
+        moshi.adapter<List<Media>>(
+            Types.newParameterizedType(List::class.java, Media::class.java),
+            kotlin.collections.emptySet(),
+            null
+        )
 
     @FromJson
     override fun fromJson(reader: JsonReader): MediaWrapper? {
@@ -34,7 +38,10 @@ class MediaWrapperJsonAdapter(moshi: Moshi): JsonAdapter<MediaWrapper>() {
         when {
             value == null -> mediaAdapter.toJson(writer, null)
             value.singleMedia != null -> mediaAdapter.toJson(writer, value.singleMedia)
-            value.listMedia != null && value.listMedia?.size != 0 -> listOfMediaAdapter.toJson(writer, value.listMedia ?: listOf())
+            value.listMedia != null && value.listMedia?.size != 0 -> listOfMediaAdapter.toJson(
+                writer,
+                value.listMedia ?: listOf()
+            )
             else -> mediaAdapter.toJson(writer, null)
         }
     }

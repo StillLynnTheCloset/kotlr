@@ -11,13 +11,17 @@ import com.squareup.moshi.*
  * @since 10/20/18
  * @version 1.0.0
  */
-class ThemeWrapperJsonAdapter(moshi: Moshi): JsonAdapter<ThemeWrapper>() {
+class ThemeWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ThemeWrapper>() {
 
     private val themeAdapter: JsonAdapter<BlogTheme?> =
-            moshi.adapter(BlogTheme::class.java, kotlin.collections.emptySet(), null)
+        moshi.adapter(BlogTheme::class.java, kotlin.collections.emptySet(), null)
 
     private val listOfThemeAdapter: JsonAdapter<List<BlogTheme>> =
-            moshi.adapter<List<BlogTheme>>(Types.newParameterizedType(List::class.java, BlogTheme::class.java), kotlin.collections.emptySet(), null)
+        moshi.adapter<List<BlogTheme>>(
+            Types.newParameterizedType(List::class.java, BlogTheme::class.java),
+            kotlin.collections.emptySet(),
+            null
+        )
 
     @FromJson
     override fun fromJson(reader: JsonReader): ThemeWrapper {

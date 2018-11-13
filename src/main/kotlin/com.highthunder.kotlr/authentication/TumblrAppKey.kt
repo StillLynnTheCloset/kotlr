@@ -8,6 +8,6 @@ package com.highthunder.kotlr.authentication
  * @version 1.0.0
  */
 open class TumblrAppKey(
-        open val apiKey: String,
-        open val apiSecret: String
+    open val apiKey: String,
+    open val apiSecret: String
 )

@@ -3,12 +3,13 @@ package com.highthunder.kotlr.json.superwrapper
 import com.highthunder.kotlr.json.wrapper.MediaWrapper
 import com.highthunder.kotlr.types.Colors
 import com.highthunder.kotlr.types.Media
-import com.highthunder.kotlr.types.content.*
+import com.highthunder.kotlr.types.content.Attribution
+import com.highthunder.kotlr.types.content.PostContent
 import com.highthunder.kotlr.types.content.PostContent.*
 import com.highthunder.kotlr.types.content.PostContent.TextContent.SubType
+import com.highthunder.kotlr.types.content.TextFormat
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import java.lang.IllegalStateException
 
 /**
  * SuperContentJson - A class to hold every possible field for [PostContent] so that Mochi can
@@ -69,83 +70,83 @@ import java.lang.IllegalStateException
 @JsonClass(generateAdapter = true)
 data class SuperContentJson(
 
-        // region PostContent
+    // region PostContent
 
-        @Json(name = "type")
-        var type: String? = null,
+    @Json(name = "type")
+    var type: String? = null,
 
-        // endregion
+    // endregion
 
-        // region AudioContent
+    // region AudioContent
 
-        @Json(name = "provider")
-        var provider: String? = null,
-        @Json(name = "url")
-        var url: String? = null,
-        @Json(name = "media")
-        var media: MediaWrapper? = null,
-        @Json(name = "title")
-        var title: String? = null,
-        @Json(name = "artist")
-        var artist: String? = null,
-        @Json(name = "album")
-        var album: String? = null,
-        @Json(name = "poster")
-        var poster: List<Media>? = null,
-        @Json(name = "embed_html")
-        var embedHtml: String? = null,
-        @Json(name = "embed_url")
-        var embedUrl: String? = null,
-        @Json(name = "metadata")
-        var metadata: Any? = null,
-        @Json(name = "attribution")
-        var attribution: Attribution? = null,
+    @Json(name = "provider")
+    var provider: String? = null,
+    @Json(name = "url")
+    var url: String? = null,
+    @Json(name = "media")
+    var media: MediaWrapper? = null,
+    @Json(name = "title")
+    var title: String? = null,
+    @Json(name = "artist")
+    var artist: String? = null,
+    @Json(name = "album")
+    var album: String? = null,
+    @Json(name = "poster")
+    var poster: List<Media>? = null,
+    @Json(name = "embed_html")
+    var embedHtml: String? = null,
+    @Json(name = "embed_url")
+    var embedUrl: String? = null,
+    @Json(name = "metadata")
+    var metadata: Any? = null,
+    @Json(name = "attribution")
+    var attribution: Attribution? = null,
 
-        // endregion
+    // endregion
 
-        // region ImageContent
+    // region ImageContent
 
-        @Json(name = "feedback_token")
-        var feedbackToken: String? = null,
-        @Json(name = "colors")
-        var colors: Colors? = null,
+    @Json(name = "feedback_token")
+    var feedbackToken: String? = null,
+    @Json(name = "colors")
+    var colors: Colors? = null,
 
-        // endregion
+    // endregion
 
-        // region LinkContent
+    // region LinkContent
 
-        @Json(name = "description")
-        var description: String? = null,
-        @Json(name = "author")
-        var author: String? = null,
-        @Json(name = "site_name")
-        var siteName: String? = null,
-        @Json(name = "display_url")
-        var displayUrl: String? = null,
+    @Json(name = "description")
+    var description: String? = null,
+    @Json(name = "author")
+    var author: String? = null,
+    @Json(name = "site_name")
+    var siteName: String? = null,
+    @Json(name = "display_url")
+    var displayUrl: String? = null,
 
-        // endregion
+    // endregion
 
-        // region TextContent
+    // region TextContent
 
-        @Json(name = "text")
-        var text: String? = null,
-        @Json(name = "subtype")
-        var subType: TextContent.SubType? = null,
-        @Json(name = "formatting")
-        var formatting: List<TextFormat>? = null,
+    @Json(name = "text")
+    var text: String? = null,
+    @Json(name = "subtype")
+    var subType: TextContent.SubType? = null,
+    @Json(name = "formatting")
+    var formatting: List<TextFormat>? = null,
 
-        // endregion
+    // endregion
 
-        // region VideoContent
+    // region VideoContent
 
-        @Json(name = "can_autoplay_on_cellular")
-        var canAutoPlayOnCellular: Boolean? = null,
-        @Json(name = "filmstrip")
-        var filmStrip: List<Media>? = null,
-        @Json(name = "embed_iframe")
-        var iframe: Media? = null
+    @Json(name = "can_autoplay_on_cellular")
+    var canAutoPlayOnCellular: Boolean? = null,
+    @Json(name = "filmstrip")
+    var filmStrip: List<Media>? = null,
+    @Json(name = "embed_iframe")
+    var iframe: Media? = null
 
-        // endregion
+    // endregion
 
 ) {
 
@@ -207,8 +208,10 @@ data class SuperContentJson(
     )
 
     fun toAudioContent(): AudioContent {
-        return AudioContent(provider, url, media?.singleMedia, title, artist, album, poster,
-                embedHtml, embedUrl, metadata, attribution)
+        return AudioContent(
+            provider, url, media?.singleMedia, title, artist, album, poster,
+            embedHtml, embedUrl, metadata, attribution
+        )
     }
 
     fun toImageContent(): ImageContent {
@@ -224,19 +227,10 @@ data class SuperContentJson(
     }
 
     fun toVideoContent(): VideoContent {
-        return VideoContent(url, media?.singleMedia, provider, embedHtml, embedUrl, poster,
-                metadata, attribution, canAutoPlayOnCellular, filmStrip, iframe)
-    }
-
-    fun toBestContent(): PostContent {
-        return when (type) {
-            AudioContent.KEY -> toAudioContent()
-            ImageContent.KEY -> toImageContent()
-            LinkContent.KEY -> toLinkContent()
-            TextContent.KEY -> toTextContent()
-            VideoContent.KEY -> toVideoContent()
-            else -> throw IllegalStateException("Expected a field of type SuperContentJson but got ${this.type}")
-        }
+        return VideoContent(
+            url, media?.singleMedia, provider, embedHtml, embedUrl, poster,
+            metadata, attribution, canAutoPlayOnCellular, filmStrip, iframe
+        )
     }
 
 }

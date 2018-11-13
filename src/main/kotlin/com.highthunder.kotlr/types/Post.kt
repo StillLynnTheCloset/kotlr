@@ -51,68 +51,68 @@ import com.squareup.moshi.Json
  */
 abstract class Post(
 
-        // region Defaults
+    // region Defaults
 
-        var blogName: String? = null,
-        val id: Long? = null,
-        val blog: Blog? = null,
-        val postUrl: String? = null,
-        val timestamp: Long? = null,
-        val date: String? = null,
-        var format: PostFormat? = null,
-        val reblogKey: String? = null,
-        var tags: List<String>? = null,
-        var isBookmarklet: Boolean? = null,
-        var isMobile: Boolean? = null,
-        var sourceUrl: String? = null,
-        var sourceTitle: String? = null,
-        val isLiked: Boolean? = null,
-        var state: State? = null,
-        val totalPosts: Int? = null,
-        var anonymous: Boolean? = null, // TODO: Documentation
+    var blogName: String? = null,
+    val id: Long? = null,
+    val blog: Blog? = null,
+    val postUrl: String? = null,
+    val timestamp: Long? = null,
+    val date: String? = null,
+    var format: PostFormat? = null,
+    val reblogKey: String? = null,
+    var tags: List<String>? = null,
+    var isBookmarklet: Boolean? = null,
+    var isMobile: Boolean? = null,
+    var sourceUrl: String? = null,
+    var sourceTitle: String? = null,
+    val isLiked: Boolean? = null,
+    var state: State? = null,
+    val totalPosts: Int? = null,
+    var anonymous: Boolean? = null, // TODO: Documentation
 
-        // endregion
+    // endregion
 
-        // region Situational Fields
+    // region Situational Fields
 
-        var content: List<PostContent>? = null,
-        var trail: List<Trail>? = null,
-        var layout: List<BlockLayout>? = null,
-        var postAuthor: String? = null,
-        var shortUrl: String? = null,
-        var summary: String? = null,
-        var isBlocksFormat: Boolean? = null,
-        val likedTimestamp: Long? = null,
-        var slug: String? = null,
-        var noteCount: Long? = null,
-        val recommendedSource: String? = null,
-        val recommendedColor: String? = null,
-        val postAuthorIsAdult: Boolean? = null,
-        var isSubmission: Boolean? = null,
-        var canLike: Boolean? = null,
-        var canReblog: Boolean? = null,
-        var canSendInMessage: Boolean? = null,
-        var canReply: Boolean? = null,
-        val displayAvatar: Boolean? = null,
-        val followed: Boolean? = null,
-        var reblogData: ReblogData? = null, // TODO: Documentation
-        val rebloggedFromId: Long? = null, // TODO: Documentation
-        val reblogged_from_url: String? = null, // TODO: Documentation
-        val rebloggedFromName: String? = null, // TODO: Documentation
-        val reblogged_from_title: String? = null, // TODO: Documentation
-        val reblogged_from_uuid: String? = null, // TODO: Documentation
-        val reblogged_from_can_message: Boolean? = null, // TODO: Documentation
-        val reblogged_from_following: Boolean? = null, // TODO: Documentation
-        val reblogged_root_id: Long? = null, // TODO: Documentation
-        val reblogged_root_url: String? = null, // TODO: Documentation
-        val reblogged_root_name: String? = null, // TODO: Documentation
-        val reblogged_root_title: String? = null, // TODO: Documentation
-        val reblogged_root_uuid: String? = null, // TODO: Documentation
-        val reblogged_root_can_message: Boolean? = null, // TODO: Documentation
-        val reblogged_root_following: Boolean? = null, // TODO: Documentation
-        val notes: List<NoteData>? = null // TODO: Documentation
+    var content: List<PostContent>? = null,
+    var trail: List<Trail>? = null,
+    var layout: List<BlockLayout>? = null,
+    var postAuthor: String? = null,
+    var shortUrl: String? = null,
+    var summary: String? = null,
+    var isBlocksFormat: Boolean? = null,
+    val likedTimestamp: Long? = null,
+    var slug: String? = null,
+    var noteCount: Long? = null,
+    val recommendedSource: String? = null,
+    val recommendedColor: String? = null,
+    val postAuthorIsAdult: Boolean? = null,
+    var isSubmission: Boolean? = null,
+    var canLike: Boolean? = null,
+    var canReblog: Boolean? = null,
+    var canSendInMessage: Boolean? = null,
+    var canReply: Boolean? = null,
+    val displayAvatar: Boolean? = null,
+    val followed: Boolean? = null,
+    var reblogData: ReblogData? = null, // TODO: Documentation
+    val rebloggedFromId: Long? = null, // TODO: Documentation
+    val reblogged_from_url: String? = null, // TODO: Documentation
+    val rebloggedFromName: String? = null, // TODO: Documentation
+    val reblogged_from_title: String? = null, // TODO: Documentation
+    val reblogged_from_uuid: String? = null, // TODO: Documentation
+    val reblogged_from_can_message: Boolean? = null, // TODO: Documentation
+    val reblogged_from_following: Boolean? = null, // TODO: Documentation
+    val reblogged_root_id: Long? = null, // TODO: Documentation
+    val reblogged_root_url: String? = null, // TODO: Documentation
+    val reblogged_root_name: String? = null, // TODO: Documentation
+    val reblogged_root_title: String? = null, // TODO: Documentation
+    val reblogged_root_uuid: String? = null, // TODO: Documentation
+    val reblogged_root_can_message: Boolean? = null, // TODO: Documentation
+    val reblogged_root_following: Boolean? = null, // TODO: Documentation
+    val notes: List<NoteData>? = null // TODO: Documentation
 
-        // endregion
+    // endregion
 
 ) {
 
@@ -122,7 +122,7 @@ abstract class Post(
     enum class State {
         @Json(name = "draft")
         Draft,
-        @Json(name = "queue")
+        @Json(name = "queued")
         Queue,
         @Json(name = "published")
         Published,

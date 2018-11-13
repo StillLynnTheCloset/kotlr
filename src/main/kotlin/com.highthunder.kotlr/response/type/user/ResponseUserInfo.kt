@@ -20,12 +20,12 @@ interface ResponseUserInfo {
 
     @JsonClass(generateAdapter = true)
     data class Response(
-            @Json(name = "meta")
-            var meta: ResponseMetaInfo? = null,
-            @Json(name = "response")
-            var response: Wrapper? = null,
-            @Json(name = "errors")
-            var errors: List<TumblrError>? = null
+        @Json(name = "meta")
+        var meta: ResponseMetaInfo? = null,
+        @Json(name = "response")
+        var response: Wrapper? = null,
+        @Json(name = "errors")
+        var errors: List<TumblrError>? = null
     ) : ResponseInterface<Body> {
         override fun getError(): List<TumblrError>? = errors
         override fun getMetaInfo(): ResponseMetaInfo? = meta
@@ -36,8 +36,8 @@ interface ResponseUserInfo {
      * Adapter is [UserInfoWrapperJsonAdapter].
      */
     data class Wrapper(
-            var error: String? = null,
-            var response: Body? = null
+        var error: String? = null,
+        var response: Body? = null
     ) : WrapperInterface<Body> {
         override fun getMessage(): String? = error
         override fun getBody(): Body? = response
@@ -45,8 +45,8 @@ interface ResponseUserInfo {
 
     @JsonClass(generateAdapter = true)
     data class Body(
-            @Json(name = "user")
-            var user: User? = null
+        @Json(name = "user")
+        var user: User? = null
     )
 
 }

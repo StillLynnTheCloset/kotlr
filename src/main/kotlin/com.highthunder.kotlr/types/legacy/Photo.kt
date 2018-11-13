@@ -17,16 +17,16 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class Photo(
-        @Json(name = "original_size")
-        var originalSize: PhotoSize? = null,
-        @Json(name = "panorama_size")
-        var panoramaSize: PhotoSize? = null,
-        @Json(name = "caption")
-        var caption: String? = null,
-        @Json(name = "caption_abstract")
-        var captionAbstract: String? = null,
-        @Json(name = "alt_sizes")
-        var altSizes: List<PhotoSize>? = null,
-        @Json(name = "exif")
-        var exif: ExifData? = null
+    @Json(name = "original_size")
+    var originalSize: PhotoSize? = null,
+    @Json(name = "panorama_size")
+    var panoramaSize: PhotoSize? = null,
+    @Json(name = "caption")
+    var caption: String? = null,
+    @Json(name = "caption_abstract")
+    var captionAbstract: String? = null,
+    @Json(name = "alt_sizes")
+    var altSizes: List<PhotoSize>? = null,
+    @Json(name = "exif")
+    var exif: ExifData? = null
 )

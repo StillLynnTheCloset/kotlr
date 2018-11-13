@@ -1,7 +1,6 @@
 package com.highthunder.kotlr
 
 import com.github.scribejava.core.model.Response
-import java.lang.RuntimeException
 
 /**
  * KotlrException - TODO: Documentation

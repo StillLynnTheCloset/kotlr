@@ -13,7 +13,7 @@ import kotlin.reflect.KClass
  * @since 11/4/18
  * @version 1.0.0
  */
-class RequestUserInfo: Request<ResponseUserInfo.Body> {
+class RequestUserInfo : Request<ResponseUserInfo.Body> {
 
     companion object {
         const val BASE_PATH: String = "user/info"

@@ -11,7 +11,7 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class TumblrError(
-        var title: String? = null,
-        var code: Int? = null,
-        var detail: String? = null
+    var title: String? = null,
+    var code: Int? = null,
+    var detail: String? = null
 )

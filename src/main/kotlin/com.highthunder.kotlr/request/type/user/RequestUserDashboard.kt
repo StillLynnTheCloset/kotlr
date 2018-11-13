@@ -15,23 +15,36 @@ import kotlin.reflect.KClass
  * @version 1.0.0
  */
 class RequestUserDashboard(
-        postLimit: Int? = null,
-        postOffset: Long? = null,
-        afterPostId: Long? = null,
-        beforePostId: Long? = null,
-        afterTime: Long? = null,
-        beforeTime: Long? = null,
-        getReblogFields: Boolean? = null,
-        getNotesHistory: Boolean? = null,
-        useNeuePostFormat: Boolean? = null,
-        private var type: Post.Type? = null
-) : RequestPosts<ResponseUserDashboard.Body>(postLimit, postOffset, afterPostId, beforePostId, afterTime, beforeTime, getReblogFields, getNotesHistory, useNeuePostFormat) {
+    postLimit: Int? = null,
+    postOffset: Long? = null,
+    afterPostId: Long? = null,
+    beforePostId: Long? = null,
+    afterTime: Long? = null,
+    beforeTime: Long? = null,
+    getReblogFields: Boolean? = null,
+    getNotesHistory: Boolean? = null,
+    useNeuePostFormat: Boolean? = null,
+    tag: String? = null,
+    private var type: Post.Type? = null
+) : RequestPosts<ResponseUserDashboard.Body>(
+    postLimit = postLimit,
+    postOffset = postOffset,
+    afterPostId = afterPostId,
+    beforePostId = beforePostId,
+    afterTime = afterTime,
+    beforeTime = beforeTime,
+    getReblogFields = getReblogFields,
+    getNotesHistory = getNotesHistory,
+    useNeuePostFormat = useNeuePostFormat,
+    tag = tag
+) {
 
     companion object {
         const val BASE_PATH: String = "user/dashboard"
     }
 
-    override val responseClass: KClass<out ResponseInterface<ResponseUserDashboard.Body>> = ResponseUserDashboard.Response::class
+    override val responseClass: KClass<out ResponseInterface<ResponseUserDashboard.Body>> =
+        ResponseUserDashboard.Response::class
     override val verb: Verb = Verb.GET
     override val requiresOAuth: Boolean = true
     override val improvedByOAuth: Boolean = false

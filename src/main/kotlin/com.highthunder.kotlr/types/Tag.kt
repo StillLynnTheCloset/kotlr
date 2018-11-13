@@ -12,12 +12,12 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class Tag(
-        @Json(name = "tag")
-        var tagText: String? = null,
-        @Json(name = "thumb_url")
-        var thumbnailUrl: String? = null,
-        @Json(name = "is_tracked")
-        var isTracked: Boolean? = null,
-        @Json(name = "featured")
-        var featured: Boolean? = null
+    @Json(name = "tag")
+    var tagText: String? = null,
+    @Json(name = "thumb_url")
+    var thumbnailUrl: String? = null,
+    @Json(name = "is_tracked")
+    var isTracked: Boolean? = null,
+    @Json(name = "featured")
+    var featured: Boolean? = null
 )

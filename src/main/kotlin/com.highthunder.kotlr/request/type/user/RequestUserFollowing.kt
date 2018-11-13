@@ -22,7 +22,8 @@ class RequestUserFollowing(
         const val BASE_PATH: String = "user/following"
     }
 
-    override val responseClass: KClass<out ResponseInterface<ResponseUserFollowing.Body>> = ResponseUserFollowing.Response::class
+    override val responseClass: KClass<out ResponseInterface<ResponseUserFollowing.Body>> =
+        ResponseUserFollowing.Response::class
     override val verb: Verb = Verb.GET
     override val requiresOAuth: Boolean = true
     override val improvedByOAuth: Boolean = false

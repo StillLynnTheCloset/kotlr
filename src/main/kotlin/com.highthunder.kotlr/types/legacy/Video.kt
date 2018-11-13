@@ -15,8 +15,8 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = false)
 data class Video(
-        @Json(name = "width")
-        var width: Int? = null,
-        @Json(name = "embed_code")
-        var embedCode: String? = null
+    @Json(name = "width")
+    var width: Int? = null,
+    @Json(name = "embed_code")
+    var embedCode: String? = null
 )

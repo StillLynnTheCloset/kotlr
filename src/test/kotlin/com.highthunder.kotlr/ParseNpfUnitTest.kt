@@ -18,7 +18,8 @@ class ParseNpfUnitTest {
         val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
-        val content: PostContent.AudioContent? = adapter.fromJson(Sample.audioContentTumblr) as? PostContent.AudioContent
+        val content: PostContent.AudioContent? =
+            adapter.fromJson(Sample.audioContentTumblr) as? PostContent.AudioContent
         assertNotNull(content)
         assertNotNull(content?.media)
         assertNotNull(content?.poster)
@@ -32,7 +33,8 @@ class ParseNpfUnitTest {
         val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
-        val content: PostContent.AudioContent? = adapter.fromJson(Sample.audioContentSoundCloud) as? PostContent.AudioContent
+        val content: PostContent.AudioContent? =
+            adapter.fromJson(Sample.audioContentSoundCloud) as? PostContent.AudioContent
         assertNotNull(content)
         assertNotNull(content?.media)
         assertNotNull(content?.poster)
@@ -63,7 +65,8 @@ class ParseNpfUnitTest {
         val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
-        val content: PostContent.ImageContent? = adapter.fromJson(Sample.imageContentFeedback) as? PostContent.ImageContent
+        val content: PostContent.ImageContent? =
+            adapter.fromJson(Sample.imageContentFeedback) as? PostContent.ImageContent
         assertNotNull(content)
         assertNotNull(content?.feedbackToken)
         assertNotNull(content?.media)
@@ -116,7 +119,8 @@ class ParseNpfUnitTest {
         val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
-        val content: PostContent.VideoContent? = adapter.fromJson(Sample.videoContentTumblr) as? PostContent.VideoContent
+        val content: PostContent.VideoContent? =
+            adapter.fromJson(Sample.videoContentTumblr) as? PostContent.VideoContent
         assertNotNull(content)
         assertNotNull(content?.media)
         val json = adapter.toJson(content)
@@ -128,7 +132,8 @@ class ParseNpfUnitTest {
         val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
-        val content: PostContent.VideoContent? = adapter.fromJson(Sample.videoContentYoutube) as? PostContent.VideoContent
+        val content: PostContent.VideoContent? =
+            adapter.fromJson(Sample.videoContentYoutube) as? PostContent.VideoContent
         assertNotNull(content)
         assertNull(content?.media)
         val json = adapter.toJson(content)
@@ -304,7 +309,8 @@ class ParseNpfUnitTest {
         val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
-        val content: PostContent.TextContent? = adapter.fromJson(Sample.textContentOrderedList) as? PostContent.TextContent
+        val content: PostContent.TextContent? =
+            adapter.fromJson(Sample.textContentOrderedList) as? PostContent.TextContent
         assertNotNull(content)
         assertNotNull(content?.text)
         assertEquals(PostContent.TextContent.SubType.OrderedListItem, content?.subType)
@@ -318,7 +324,8 @@ class ParseNpfUnitTest {
         val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
-        val content: PostContent.TextContent? = adapter.fromJson(Sample.textContentUnorderedList) as? PostContent.TextContent
+        val content: PostContent.TextContent? =
+            adapter.fromJson(Sample.textContentUnorderedList) as? PostContent.TextContent
         assertNotNull(content)
         assertNotNull(content?.text)
         assertEquals(PostContent.TextContent.SubType.UnorderedListItem, content?.subType)

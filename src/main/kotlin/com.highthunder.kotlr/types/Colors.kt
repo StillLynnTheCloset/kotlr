@@ -12,14 +12,14 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class Colors(
-        var c0: String? = null,
-        var c1: String? = null,
-        var c2: String? = null,
-        var c3: String? = null,
-        var c4: String? = null,
-        var c5: String? = null,
-        var c6: String? = null,
-        var c7: String? = null,
-        var c8: String? = null,
-        var c9: String? = null
+    var c0: String? = null,
+    var c1: String? = null,
+    var c2: String? = null,
+    var c3: String? = null,
+    var c4: String? = null,
+    var c5: String? = null,
+    var c6: String? = null,
+    var c7: String? = null,
+    var c8: String? = null,
+    var c9: String? = null
 )
