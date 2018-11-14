@@ -19,7 +19,13 @@ import com.highthunder.kotlr.KotlrException
 class XAuthFlow {
 
     companion object {
-        private const val X_AUTH_ENDPOINT = "https://www.tumblr.com/oauth/access_token"
+        private const val X_AUTH_ENDPOINT: String = "https://www.tumblr.com/oauth/access_token"
+        private const val BODY_PARAMETER_KEY_USERNAME: String = "x_auth_username"
+        private const val BODY_PARAMETER_KEY_PASSWORD: String = "x_auth_password"
+        private const val BODY_PARAMETER_KEY_AUTHMODE: String = "x_auth_mode"
+        private const val BODY_PARAMETER_AUTHMODE_CLIENT: String = "client_auth"
+        private const val RESPONSE_PARAMETER_KEY_TOKEN: String = "oauth_token"
+        private const val RESPONSE_PARAMETER_KEY_SECRET: String = "oauth_token_secret"
     }
 
     private fun getService(appKey: TumblrAppKey): OAuth10aService {
@@ -30,9 +36,9 @@ class XAuthFlow {
 
     private fun constructXAuthPost(email: String, password: String): OAuthRequest {
         val request = OAuthRequest(Verb.POST, X_AUTH_ENDPOINT)
-        request.addBodyParameter("x_auth_username", email)
-        request.addBodyParameter("x_auth_password", password)
-        request.addBodyParameter("x_auth_mode", "client_auth")
+        request.addBodyParameter(BODY_PARAMETER_KEY_USERNAME, email)
+        request.addBodyParameter(BODY_PARAMETER_KEY_PASSWORD, password)
+        request.addBodyParameter(BODY_PARAMETER_KEY_AUTHMODE, BODY_PARAMETER_AUTHMODE_CLIENT)
         return request
     }
 
@@ -41,13 +47,13 @@ class XAuthFlow {
             // Response is received in the format "oauth_token=value&oauth_token_secret=value".
             var extractedToken: String? = null
             var extractedSecret: String? = null
-            val values = responseStr.split("&".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+            val values = responseStr.split("&".toRegex()).dropLastWhile { it.isEmpty() }
             for (value in values) {
-                val kvp = value.split("=".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+                val kvp = value.split("=".toRegex()).dropLastWhile { it.isEmpty() }
                 if (kvp.size == 2) {
-                    if (kvp[0] == "oauth_token") {
+                    if (kvp[0] == RESPONSE_PARAMETER_KEY_TOKEN) {
                         extractedToken = kvp[1]
-                    } else if (kvp[0] == "oauth_token_secret") {
+                    } else if (kvp[0] == RESPONSE_PARAMETER_KEY_SECRET) {
                         extractedSecret = kvp[1]
                     }
                 }
@@ -56,7 +62,7 @@ class XAuthFlow {
                 return OAuth1AccessToken(extractedToken, extractedSecret)
             }
         }
-        // No good
+        // No good token received
         throw KotlrException(response)
     }
 

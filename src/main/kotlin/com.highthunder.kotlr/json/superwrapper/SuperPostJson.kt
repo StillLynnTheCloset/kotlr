@@ -243,11 +243,10 @@ data class SuperPostJson(
     var reblogged_root_following: Boolean? = null,
     @Json(name = "notes")
     var notes: List<NoteData>? = null,
-
     @Json(name = "scheduled_publish_time")
-    var publishTime: Long? = null,
+    var publishTime: Long? = null, // TODO: Add to posts.
     @Json(name = "queued_state")
-    var queueState: String? = null,
+    var queueState: String? = null, // TODO: Add to posts, figure out all states and make enum.
 
 
     // endregion
