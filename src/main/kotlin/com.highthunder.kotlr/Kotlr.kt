@@ -15,12 +15,12 @@ import com.squareup.moshi.Moshi
 internal fun moshi(): Moshi {
     val step1: Moshi = Moshi
         .Builder()
-        .add(ContentJsonAdapter())
-        .add(AttributionJsonAdapter())
-        .add(FormatJsonAdapter())
-        .add(LayoutJsonAdapter())
-        .add(DisplayModeJsonAdapter())
-        .add(NoteJsonAdapter())
+        .add(ContentAmalgamationAdapter())
+        .add(AttributionAmalgamationAdapter())
+        .add(TextFormatAmalgamationAdapter())
+        .add(BlockLayoutAmalgamationAdapter())
+        .add(DisplayModeAmalgamationAdapter())
+        .add(NoteDataAmalgamationAdapter())
         .build()
     val step2: Moshi = step1
         .newBuilder()
@@ -30,7 +30,7 @@ internal fun moshi(): Moshi {
         .build()
     val step3: Moshi = step2
         .newBuilder()
-        .add(PostJsonAdapter())
+        .add(PostAmalgamationAdapter())
         .add(MediaWrapperJsonAdapter(step2))
         .add(ThemeWrapperJsonAdapter(step2))
         .add(PlayerWrapperJsonAdapter(step2))

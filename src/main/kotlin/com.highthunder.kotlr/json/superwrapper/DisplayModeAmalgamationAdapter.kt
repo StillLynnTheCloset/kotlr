@@ -8,20 +8,20 @@ import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson
 
 /**
- * DisplayModeJsonAdapter - An adapter to help Moshi convert [SuperDisplayModeJson] objects to and
+ * DisplayModeAmalgamationAdapter - An adapter to help Moshi convert [DisplayModeAmalgamation] objects to and
  * from individual subclasses of [BlockLayout.Row.Display.Mode].
  *
  * @author highthunder
  * @since 10/20/18
  * @version 1.0.0
  */
-class DisplayModeJsonAdapter {
+class DisplayModeAmalgamationAdapter {
 
     /**
      * TODO: Documentation
      */
     @FromJson
-    fun toDisplayMode(input: SuperDisplayModeJson?): Mode {
+    fun toDisplayMode(input: DisplayModeAmalgamation?): Mode {
         return when (input?.type) {
             Weighted.KEY -> input.toWeighted()
             Carousel.KEY -> input.toCarousel()
@@ -33,10 +33,10 @@ class DisplayModeJsonAdapter {
      * TODO: Documentation
      */
     @ToJson
-    fun fromDisplayMode(input: Mode): SuperDisplayModeJson? {
+    fun fromDisplayMode(input: Mode): DisplayModeAmalgamation? {
         return when (input) {
-            is Weighted -> SuperDisplayModeJson(input)
-            is Carousel -> SuperDisplayModeJson(input)
+            is Weighted -> DisplayModeAmalgamation(input)
+            is Carousel -> DisplayModeAmalgamation(input)
         }
     }
 

@@ -8,20 +8,20 @@ import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.ToJson
 
 /**
- * PostJsonAdapter - An adapter to help Moshi convert [SuperPostJson] objects to and
+ * PostAmalgamationAdapter - An adapter to help Moshi convert [PostAmalgamation] objects to and
  * from individual subclasses of [Post].
  *
  * @author highthunder
  * @since 10/20/18
  * @version 1.0.0
  */
-class PostJsonAdapter {
+class PostAmalgamationAdapter {
 
     /**
      * TODO: Documentation
      */
     @FromJson
-    fun toPost(input: SuperPostJson?): Post {
+    fun toPost(input: PostAmalgamation?): Post {
         return when (input?.type) {
             Post.Type.Answer -> input.toAnswerPost()
             Post.Type.Audio -> input.toAudioPost()
@@ -40,17 +40,17 @@ class PostJsonAdapter {
      * TODO: Documentation
      */
     @ToJson
-    fun fromPost(input: Post): SuperPostJson? {
+    fun fromPost(input: Post): PostAmalgamation? {
         return when (input) {
-            is AnswerPost -> SuperPostJson(input)
-            is AudioPost -> SuperPostJson(input)
-            is ChatPost -> SuperPostJson(input)
-            is LinkPost -> SuperPostJson(input)
-            is PhotoPost -> SuperPostJson(input)
-            is QuotePost -> SuperPostJson(input)
-            is TextPost -> SuperPostJson(input)
-            is VideoPost -> SuperPostJson(input)
-            is BlockPost -> SuperPostJson(input)
+            is AnswerPost -> PostAmalgamation(input)
+            is AudioPost -> PostAmalgamation(input)
+            is ChatPost -> PostAmalgamation(input)
+            is LinkPost -> PostAmalgamation(input)
+            is PhotoPost -> PostAmalgamation(input)
+            is QuotePost -> PostAmalgamation(input)
+            is TextPost -> PostAmalgamation(input)
+            is VideoPost -> PostAmalgamation(input)
+            is BlockPost -> PostAmalgamation(input)
             else -> throw JsonDataException("Post was not of expected type : $input")
         }
     }

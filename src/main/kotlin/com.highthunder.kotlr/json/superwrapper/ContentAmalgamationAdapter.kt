@@ -7,27 +7,27 @@ import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.ToJson
 
 /**
- * ContentJsonAdapter - An adapter to help Moshi convert [SuperContentJson] objects to and
+ * ContentAmalgamationAdapter - An adapter to help Moshi convert [ContentAmalgamation] objects to and
  * from individual subclasses of [PostContent].
  *
  * @author highthunder
  * @since 10/20/18
  * @version 1.0.0
  */
-class ContentJsonAdapter {
+class ContentAmalgamationAdapter {
 
     /**
      * TODO: Documentation
      */
     @FromJson
-    fun toContent(input: SuperContentJson): PostContent {
+    fun toContent(input: ContentAmalgamation): PostContent {
         return when (input.type) {
             AudioContent.KEY -> input.toAudioContent()
             ImageContent.KEY -> input.toImageContent()
             LinkContent.KEY -> input.toLinkContent()
             TextContent.KEY -> input.toTextContent()
             VideoContent.KEY -> input.toVideoContent()
-            else -> throw JsonDataException("Expected a field of type SuperContentJson but got $input")
+            else -> throw JsonDataException("Expected a field of type ContentAmalgamation but got $input")
         }
     }
 
@@ -35,13 +35,13 @@ class ContentJsonAdapter {
      * TODO: Documentation
      */
     @ToJson
-    fun fromContent(input: PostContent): SuperContentJson {
+    fun fromContent(input: PostContent): ContentAmalgamation {
         return when (input) {
-            is AudioContent -> SuperContentJson(input)
-            is ImageContent -> SuperContentJson(input)
-            is LinkContent -> SuperContentJson(input)
-            is TextContent -> SuperContentJson(input)
-            is VideoContent -> SuperContentJson(input)
+            is AudioContent -> ContentAmalgamation(input)
+            is ImageContent -> ContentAmalgamation(input)
+            is LinkContent -> ContentAmalgamation(input)
+            is TextContent -> ContentAmalgamation(input)
+            is VideoContent -> ContentAmalgamation(input)
         }
     }
 

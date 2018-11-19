@@ -1,7 +1,7 @@
 package com.highthunder.kotlr
 
-import com.highthunder.kotlr.json.superwrapper.PostJsonAdapter
-import com.highthunder.kotlr.json.superwrapper.SuperPostJson
+import com.highthunder.kotlr.json.superwrapper.PostAmalgamationAdapter
+import com.highthunder.kotlr.json.superwrapper.PostAmalgamation
 import com.highthunder.kotlr.types.Blog
 import com.highthunder.kotlr.types.NoteData
 import com.highthunder.kotlr.types.User
@@ -22,16 +22,16 @@ import org.junit.Test
  */
 class TumblrTest {
 
-    private val a = PostJsonAdapter()
+    private val a = PostAmalgamationAdapter()
 
     // region Legacy Posts Tests
 
     @Test
     fun parseLegacyAnswerTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.answerPost)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.answerPost)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -44,10 +44,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyAnswerAbstractTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.answerPostWithAbstract)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.answerPostWithAbstract)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -60,10 +60,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyAudioTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.audioPost)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.audioPost)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -76,10 +76,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyAudioTrackTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.audioPostWithTrack)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.audioPostWithTrack)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -92,10 +92,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyAudioTrackOfTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.audioPostWithTrackOf)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.audioPostWithTrackOf)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -108,10 +108,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyAudioProviderTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.audioPostWithProvider)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.audioPostWithProvider)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -124,10 +124,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyAudioExternalTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.audioPostWithExternal)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.audioPostWithExternal)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -140,10 +140,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyChatTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.chatPost)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.chatPost)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -156,10 +156,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyChat2Test() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.chat2Post)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.chat2Post)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -172,10 +172,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyLinkTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.linkPost)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.linkPost)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -188,10 +188,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyLinkImageTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.linkPostWithImage)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.linkPostWithImage)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -204,10 +204,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyLinkAuthorTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.linkPostWithAuthor)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.linkPostWithAuthor)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -220,10 +220,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyPhotoTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.photoPost)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.photoPost)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -236,10 +236,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyPhotoPanoramaTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.photoPostWithPanorama)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.photoPostWithPanorama)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -252,10 +252,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyPhotoAbstractTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.photoPostWithCaptionAbstract)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.photoPostWithCaptionAbstract)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -268,10 +268,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyPhotoSubmissionTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.submission)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.submission)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -284,10 +284,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyPhotoLayoutTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.photoPostWithLayout)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.photoPostWithLayout)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -300,10 +300,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyPhotoLinkUrlTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.photoPostWithLinkUrl)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.photoPostWithLinkUrl)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -316,10 +316,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyQuoteTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.quotePost)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.quotePost)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -332,10 +332,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyTextTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.textPost)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.textPost)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -348,10 +348,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyTextAbstractTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.textPostWithAbstract)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.textPostWithAbstract)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -364,10 +364,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyVideoPostTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.videoPost)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.videoPost)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -380,10 +380,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyVideoVideoTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.videoPostWithVideoObject)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.videoPostWithVideoObject)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -396,10 +396,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyVideoPermaLinkTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.videoPostWithPermaLink)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.videoPostWithPermaLink)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -412,10 +412,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyVideoFloatTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.videoPostWithFloatDuration)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.videoPostWithFloatDuration)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -428,10 +428,10 @@ class TumblrTest {
 
     @Test
     fun parseLegacyVideoBooleanEmbedTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.videoPostWithBooleanEmbed)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.videoPostWithBooleanEmbed)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -444,10 +444,10 @@ class TumblrTest {
 
     @Test
     fun parsePostWithNotesTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.postWithNotesData)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.postWithNotesData)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(
@@ -460,10 +460,10 @@ class TumblrTest {
 
     @Test
     fun parsePostWithReblogTest() {
-        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
-        Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
+        val adapter = moshi().adapter(PostAmalgamation::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<PostAmalgamation>)
 
-        val post: SuperPostJson? = adapter.fromJson(Sample.postWithReblogData)
+        val post: PostAmalgamation? = adapter.fromJson(Sample.postWithReblogData)
         Assert.assertNotNull(post)
         val parsed = a.fromPost(a.toPost(post))
         Assert.assertEquals(

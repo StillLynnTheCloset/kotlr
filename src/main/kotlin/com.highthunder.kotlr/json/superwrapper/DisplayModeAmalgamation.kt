@@ -7,7 +7,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * SuperDisplayModeJson - A class to hold every possible field for [BlockLayout.Row.Display.Mode] so that Mochi can
+ * DisplayModeAmalgamation - A class to hold every possible field for [BlockLayout.Row.Display.Mode] so that Mochi can
  * deserialize them.
  *
  * @author highthunder
@@ -17,7 +17,7 @@ import com.squareup.moshi.JsonClass
  * @param type The type of this display mode.
  */
 @JsonClass(generateAdapter = true)
-data class SuperDisplayModeJson(
+data class DisplayModeAmalgamation(
     @Json(name = "type")
     var type: String? = null
 ) {

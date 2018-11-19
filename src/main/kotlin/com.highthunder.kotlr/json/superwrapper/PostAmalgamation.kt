@@ -9,7 +9,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * SuperPostJson - A class to hold every possible field for [Post] so that Mochi can
+ * PostAmalgamation - A class to hold every possible field for [Post] so that Mochi can
  * deserialize them.
  *
  * @author highthunder
@@ -161,7 +161,7 @@ import com.squareup.moshi.JsonClass
  * @param permalinkUrl TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class SuperPostJson(
+data class PostAmalgamation(
 
     // region Defaults
     @Json(name = "type")

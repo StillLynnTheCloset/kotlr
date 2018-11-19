@@ -11,7 +11,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * SuperAttributionJson - A class to hold every possible field for [Attribution] so that Mochi can
+ * AttributionAmalgamation - A class to hold every possible field for [Attribution] so that Mochi can
  * deserialize them.
  *
  * @author highthunder
@@ -38,7 +38,7 @@ import com.squareup.moshi.JsonClass
  * @param logo A specific logo Media Object that the client should use with the third-party app attribution.
  */
 @JsonClass(generateAdapter = true)
-data class SuperAttributionJson(
+data class AttributionAmalgamation(
     @Json(name = "type")
     var type: String? = null,
     @Json(name = "url")

@@ -7,7 +7,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * SuperFormatJson - A class to hold every possible field for [TextFormat] so that Mochi can
+ * TextFormatAmalgamation - A class to hold every possible field for [TextFormat] so that Mochi can
  * deserialize them.
  *
  * @author highthunder
@@ -31,7 +31,7 @@ import com.squareup.moshi.JsonClass
  * @param size The text size for this particular range of text, one of 'small' or 'big'.
  */
 @JsonClass(generateAdapter = true)
-data class SuperFormatJson constructor(
+data class TextFormatAmalgamation constructor(
     @Json(name = "start")
     var start: Int? = null,
     @Json(name = "end")

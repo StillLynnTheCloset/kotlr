@@ -7,7 +7,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * SuperNoteJson - A class to hold every possible field for [NoteData] so that Mochi can
+ * NoteDataAmalgamation - A class to hold every possible field for [NoteData] so that Mochi can
  * deserialize them.
  *
  * @author highthunder
@@ -34,7 +34,7 @@ import com.squareup.moshi.JsonClass
  * @param photoHeight TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class SuperNoteJson(
+data class NoteDataAmalgamation(
     @Json(name = "type")
     var type: String? = null,
     @Json(name = "timestamp")
@@ -73,7 +73,7 @@ data class SuperNoteJson(
     var photoHeight: Int? = null
 ) {
 
-    // TODO: To and from SuperNoteJson
+    // TODO: To and from NoteDataAmalgamation
 
     constructor(note: Like) : this(Like.KEY)
     constructor(note: Reblog) : this(Reblog.KEY)

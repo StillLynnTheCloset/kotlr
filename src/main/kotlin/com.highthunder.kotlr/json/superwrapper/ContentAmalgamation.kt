@@ -12,7 +12,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * SuperContentJson - A class to hold every possible field for [PostContent] so that Mochi can
+ * ContentAmalgamation - A class to hold every possible field for [PostContent] so that Mochi can
  * deserialize them.
  *
  * @author highthunder
@@ -70,7 +70,7 @@ import com.squareup.moshi.JsonClass
  * @param iframe TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class SuperContentJson(
+data class ContentAmalgamation(
 
     // region PostContent
 

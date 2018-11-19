@@ -7,7 +7,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * SuperLayoutJson - A class to hold every possible field for [BlockLayout] so that Mochi can
+ * BlockLayoutAmalgamation - A class to hold every possible field for [BlockLayout] so that Mochi can
  * deserialize them.
  *
  * @author highthunder
@@ -32,7 +32,7 @@ import com.squareup.moshi.JsonClass
  * @param attribution If the ask is not anonymous, this will include information about the blog that submitted the ask.
  */
 @JsonClass(generateAdapter = true)
-data class SuperLayoutJson(
+data class BlockLayoutAmalgamation(
     @Json(name = "type")
     var type: String? = null,
     @Json(name = "rows")
