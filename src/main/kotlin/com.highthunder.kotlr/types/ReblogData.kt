@@ -9,6 +9,9 @@ import com.squareup.moshi.JsonClass
  * @author highthunder
  * @since 10/20/18
  * @version 1.0.0
+ *
+ * @param comment TODO: Documentation
+ * @param tree TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class ReblogData(

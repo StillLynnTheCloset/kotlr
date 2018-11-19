@@ -18,6 +18,13 @@ import com.squareup.moshi.JsonClass
  */
 interface ResponseBlogAvatar {
 
+    /**
+     * TODO: Documentation
+     *
+     * @param meta TODO: Documentation
+     * @param response TODO: Documentation
+     * @param errors TODO: Documentation
+     */
     @JsonClass(generateAdapter = true)
     data class Response(
         @Json(name = "meta")
@@ -34,6 +41,9 @@ interface ResponseBlogAvatar {
 
     /**
      * Adapter is [BlogAvatarWrapperJsonAdapter].
+     *
+     * @param response TODO: Documentation
+     * @param error TODO: Documentation
      */
     data class Wrapper(
         var error: String? = null,
@@ -43,6 +53,12 @@ interface ResponseBlogAvatar {
         override fun getBody(): Body? = response
     }
 
+    /**
+     * TODO: Documentation
+     *
+     * @param links TODO: Documentation
+     * @param url TODO: Documentation
+     */
     @JsonClass(generateAdapter = true)
     data class Body(
         @Json(name = "_links")

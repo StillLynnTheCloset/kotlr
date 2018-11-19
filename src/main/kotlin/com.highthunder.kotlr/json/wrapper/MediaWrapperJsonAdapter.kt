@@ -23,6 +23,9 @@ class MediaWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<MediaWrapper>() {
             null
         )
 
+    /**
+     * TODO: Documentation
+     */
     @FromJson
     override fun fromJson(reader: JsonReader): MediaWrapper? {
         return when (reader.peek()) {
@@ -33,6 +36,9 @@ class MediaWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<MediaWrapper>() {
         }
     }
 
+    /**
+     * TODO: Documentation
+     */
     @ToJson
     override fun toJson(writer: JsonWriter, value: MediaWrapper?) {
         when {

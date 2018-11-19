@@ -38,6 +38,9 @@ class RequestUserLikes(
 ) {
 
     companion object {
+        /**
+         * TODO: Documentation
+         */
         const val BASE_PATH: String = "user/likes/"
     }
 

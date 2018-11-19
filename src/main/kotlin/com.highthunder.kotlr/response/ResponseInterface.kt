@@ -8,10 +8,25 @@ package com.highthunder.kotlr.response
  * @version 1.0.0
  */
 interface ResponseInterface<out T> {
+
+    /**
+     * TODO: Documentation
+     */
     fun getError(): List<TumblrError>?
+
+    /**
+     * TODO: Documentation
+     */
     fun getMetaInfo(): ResponseMetaInfo?
+
+    /**
+     * TODO: Documentation
+     */
     fun getWrapper(): WrapperInterface<T>?
-    fun getBody(): T? {
-        return getWrapper()?.getBody()
-    }
+
+    /**
+     * TODO: Documentation
+     */
+    fun getBody(): T? = getWrapper()?.getBody()
+
 }

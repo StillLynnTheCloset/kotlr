@@ -16,6 +16,9 @@ import com.squareup.moshi.ToJson
  */
 class ContentJsonAdapter {
 
+    /**
+     * TODO: Documentation
+     */
     @FromJson
     fun toContent(input: SuperContentJson): PostContent {
         return when (input.type) {
@@ -28,6 +31,9 @@ class ContentJsonAdapter {
         }
     }
 
+    /**
+     * TODO: Documentation
+     */
     @ToJson
     fun fromContent(input: PostContent): SuperContentJson {
         return when (input) {

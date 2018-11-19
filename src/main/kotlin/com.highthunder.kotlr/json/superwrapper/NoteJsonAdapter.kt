@@ -16,6 +16,9 @@ import com.squareup.moshi.ToJson
  */
 class NoteJsonAdapter {
 
+    /**
+     * TODO: Documentation
+     */
     @FromJson
     fun toNote(input: SuperNoteJson?): NoteData {
         return when (input?.type) {
@@ -28,6 +31,9 @@ class NoteJsonAdapter {
         }
     }
 
+    /**
+     * TODO: Documentation
+     */
     @ToJson
     fun fromNote(input: NoteData): SuperNoteJson? {
         return when (input) {

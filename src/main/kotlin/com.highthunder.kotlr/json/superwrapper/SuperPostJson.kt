@@ -34,16 +34,16 @@ import com.squareup.moshi.JsonClass
  * @param isLiked Indicates if a user has already liked a post or not.
  * @param state Indicates the current state of the post.
  * @param totalPosts The total number of post available for this request, useful for paginating through results.
+ * @param anonymous TODO: Documentation
  * @param content The array of content that constitutes the body of a post in the Neue Post Format(NPF).
  * @param trail The previous Posts in the reblog trail. In order of oldest (the root Post) to the newest (the parent Post).
  * @param layout The layouts of the blocks in this post.
  * @param postAuthor The id of the author of the post.
  * @param shortUrl The short URL for this post.
+ * @param summary A short description of this post.
  * @param isBlocksFormat Whether or not this post is using the new block format(NPF).
  * @param likedTimestamp The timestamp of when this post was liked.
  * @param slug The slug.
- * @param rebloggedFromId The ID of the post that this post reblogged.
- * @param rebloggedFromName The name of the blog that this post reblogged.
  * @param noteCount The note count for this post.
  * @param recommendedSource The source of a recommended post.
  * @param recommendedColor The recommended color for styling this post.
@@ -55,16 +55,36 @@ import com.squareup.moshi.JsonClass
  * @param canReply Indicates whether or not the current user can reply to this post.
  * @param displayAvatar Indicates whether or not the poster's avatar should be shown with this post.
  * @param followed Indicates whether or not the current user follows the author of this post.
+ * @param reblogData TODO: Documentation
+ * @param rebloggedFromId The ID of the post that this post reblogged.
+ * @param rebloggedFromUrl TODO: Documentation
+ * @param rebloggedFromName The name of the blog that this post reblogged.
+ * @param rebloggedFromTitle TODO: Documentation
+ * @param rebloggedFromUuid TODO: Documentation
+ * @param rebloggedFromCanMessage TODO: Documentation
+ * @param rebloggedFromFollowing TODO: Documentation
+ * @param rebloggedRootId The ID of the post that this post reblogged.
+ * @param rebloggedRootUrl TODO: Documentation
+ * @param rebloggedRootName The name of the blog that this post reblogged.
+ * @param rebloggedRootTitle TODO: Documentation
+ * @param rebloggedRootUuid TODO: Documentation
+ * @param rebloggedRootCanMessage TODO: Documentation
+ * @param rebloggedRootFollowing TODO: Documentation
+ * @param notes TODO: Documentation
+ * @param publishTime TODO: Documentation
+ * @param queueState TODO: Documentation
  *
  * [AnswerPost]
  * @param askingName The blog that sent this ask, or answered it if it was privately answered.
  * @param askingUrl The blog URL that sent this ask, or answered it if it was privately answered.
  * @param question The question being asked.
  * @param answer The answer given.
+ * @param answerAbstract TODO: Documentation
  *
  * [AudioPost]
  * @param caption The user-supplied caption.
  *      NOTE: Duplicated by [photoPost,videoPost]
+ * @param captionAbstract TODO: Documentation
  * @param embed HTML for embedding the audio player.
  * @param audio_url The url of the audio file.
  * @param plays Number of times the audio post has been played.
@@ -73,8 +93,12 @@ import com.squareup.moshi.JsonClass
  * @param album The audio file's ID3 album value.
  * @param trackName The audio file's ID3 title value.
  * @param trackNumber The audio file's ID3 track value.
+ * @param track TODO: Documentation
  * @param year The audio file's ID3 year value.
- * @param summary A short description of this audio clip.
+ * @param audioSourceUrl TODO: Documentation
+ * @param audioType TODO: Documentation
+ * @param external TODO: Documentation
+ * @param providerUrl TODO: Documentation
  *
  * [ChatPost]
  * @param title The optional title of the post.
@@ -89,6 +113,9 @@ import com.squareup.moshi.JsonClass
  * @param description A user-supplied description.
  * @param url The link!
  * @param author The author of the article the link points to.
+ * @param linkAuthor TODO: Documentation
+ * @param linkImage TODO: Documentation
+ * @param linkImageDimensions TODO: Documentation
  * @param excerpt An excerpt from the article the link points to.
  * @param publisher The publisher of the article the link points to.
  * @param photos Photos to give a preview of the article that the link points to.
@@ -104,6 +131,9 @@ import com.squareup.moshi.JsonClass
  * @param photos The photos in this post.
  *      NOTE: Duplicated from LinkPost
  * @param imagePermalink A link to this image.
+ * @param linkUrl TODO: Documentation
+ * @param photosetLayout TODO: Documentation
+ * @param panorama TODO: Documentation
  *
  * [QuotePost]
  * @param text The text of the quote (can be modified by the user when posting).
@@ -114,6 +144,7 @@ import com.squareup.moshi.JsonClass
  *      NOTE: Duplicated from ChatPost
  * @param body The full post body.
  *      NOTE: Duplicated from ChatPost
+ * @param abstract TODO: Documentation
  *
  * [VideoPost]
  * @param player The list of [Video]s in this post.
@@ -126,6 +157,8 @@ import com.squareup.moshi.JsonClass
  * @param thumbnailHeight The height of the thumbnail.
  * @param duration The length of this video in seconds.
  * @param videoType The source of this video (tumblr, youtube, instagram, vimeo, vine(rip), etc.).
+ * @param videoData TODO: Documentation
+ * @param permalinkUrl TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class SuperPostJson(
@@ -216,38 +249,37 @@ data class SuperPostJson(
     @Json(name = "reblogged_from_id")
     var rebloggedFromId: Long? = null,
     @Json(name = "reblogged_from_url")
-    var reblogged_from_url: String? = null,
+    var rebloggedFromUrl: String? = null,
     @Json(name = "reblogged_from_name")
     var rebloggedFromName: String? = null,
     @Json(name = "reblogged_from_title")
-    var reblogged_from_title: String? = null,
+    var rebloggedFromTitle: String? = null,
     @Json(name = "reblogged_from_uuid")
-    var reblogged_from_uuid: String? = null,
+    var rebloggedFromUuid: String? = null,
     @Json(name = "reblogged_from_can_message")
-    var reblogged_from_can_message: Boolean? = null,
+    var rebloggedFromCanMessage: Boolean? = null,
     @Json(name = "reblogged_from_following")
-    var reblogged_from_following: Boolean? = null,
+    var rebloggedFromFollowing: Boolean? = null,
     @Json(name = "reblogged_root_id")
-    var reblogged_root_id: Long? = null,
+    var rebloggedRootId: Long? = null,
     @Json(name = "reblogged_root_url")
-    var reblogged_root_url: String? = null,
+    var rebloggedRootUrl: String? = null,
     @Json(name = "reblogged_root_name")
-    var reblogged_root_name: String? = null,
+    var rebloggedRootName: String? = null,
     @Json(name = "reblogged_root_title")
-    var reblogged_root_title: String? = null,
+    var rebloggedRootTitle: String? = null,
     @Json(name = "reblogged_root_uuid")
-    var reblogged_root_uuid: String? = null,
+    var rebloggedRootUuid: String? = null,
     @Json(name = "reblogged_root_can_message")
-    var reblogged_root_can_message: Boolean? = null,
+    var rebloggedRootCanMessage: Boolean? = null,
     @Json(name = "reblogged_root_following")
-    var reblogged_root_following: Boolean? = null,
+    var rebloggedRootFollowing: Boolean? = null,
     @Json(name = "notes")
     var notes: List<NoteData>? = null,
     @Json(name = "scheduled_publish_time")
     var publishTime: Long? = null, // TODO: Add to posts.
     @Json(name = "queued_state")
     var queueState: String? = null, // TODO: Add to posts, figure out all states and make enum.
-
 
     // endregion
 
@@ -438,19 +470,19 @@ data class SuperPostJson(
         followed = post.followed,
         reblogData = post.reblogData,
         rebloggedFromId = post.rebloggedFromId,
-        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromUrl = post.rebloggedFromUrl,
         rebloggedFromName = post.rebloggedFromName,
-        reblogged_from_title = post.reblogged_from_title,
-        reblogged_from_uuid = post.reblogged_from_uuid,
-        reblogged_from_can_message = post.reblogged_from_can_message,
-        reblogged_from_following = post.reblogged_from_following,
-        reblogged_root_id = post.reblogged_root_id,
-        reblogged_root_url = post.reblogged_root_url,
-        reblogged_root_name = post.reblogged_root_name,
-        reblogged_root_title = post.reblogged_root_title,
-        reblogged_root_uuid = post.reblogged_root_uuid,
-        reblogged_root_can_message = post.reblogged_root_can_message,
-        reblogged_root_following = post.reblogged_root_following,
+        rebloggedFromTitle = post.rebloggedFromTitle,
+        rebloggedFromUuid = post.rebloggedFromUuid,
+        rebloggedFromCanMessage = post.rebloggedFromCanMessage,
+        rebloggedFromFollowing = post.rebloggedFromFollowing,
+        rebloggedRootId = post.rebloggedRootId,
+        rebloggedRootUrl = post.rebloggedRootUrl,
+        rebloggedRootName = post.rebloggedRootName,
+        rebloggedRootTitle = post.rebloggedRootTitle,
+        rebloggedRootUuid = post.rebloggedRootUuid,
+        rebloggedRootCanMessage = post.rebloggedRootCanMessage,
+        rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes,
         askingName = post.askingName,
         askingUrl = post.askingUrl,
@@ -502,19 +534,19 @@ data class SuperPostJson(
         followed = post.followed,
         reblogData = post.reblogData,
         rebloggedFromId = post.rebloggedFromId,
-        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromUrl = post.rebloggedFromUrl,
         rebloggedFromName = post.rebloggedFromName,
-        reblogged_from_title = post.reblogged_from_title,
-        reblogged_from_uuid = post.reblogged_from_uuid,
-        reblogged_from_can_message = post.reblogged_from_can_message,
-        reblogged_from_following = post.reblogged_from_following,
-        reblogged_root_id = post.reblogged_root_id,
-        reblogged_root_url = post.reblogged_root_url,
-        reblogged_root_name = post.reblogged_root_name,
-        reblogged_root_title = post.reblogged_root_title,
-        reblogged_root_uuid = post.reblogged_root_uuid,
-        reblogged_root_can_message = post.reblogged_root_can_message,
-        reblogged_root_following = post.reblogged_root_following,
+        rebloggedFromTitle = post.rebloggedFromTitle,
+        rebloggedFromUuid = post.rebloggedFromUuid,
+        rebloggedFromCanMessage = post.rebloggedFromCanMessage,
+        rebloggedFromFollowing = post.rebloggedFromFollowing,
+        rebloggedRootId = post.rebloggedRootId,
+        rebloggedRootUrl = post.rebloggedRootUrl,
+        rebloggedRootName = post.rebloggedRootName,
+        rebloggedRootTitle = post.rebloggedRootTitle,
+        rebloggedRootUuid = post.rebloggedRootUuid,
+        rebloggedRootCanMessage = post.rebloggedRootCanMessage,
+        rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes,
         caption = post.caption,
         captionAbstract = post.captionAbstract,
@@ -578,19 +610,19 @@ data class SuperPostJson(
         followed = post.followed,
         reblogData = post.reblogData,
         rebloggedFromId = post.rebloggedFromId,
-        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromUrl = post.rebloggedFromUrl,
         rebloggedFromName = post.rebloggedFromName,
-        reblogged_from_title = post.reblogged_from_title,
-        reblogged_from_uuid = post.reblogged_from_uuid,
-        reblogged_from_can_message = post.reblogged_from_can_message,
-        reblogged_from_following = post.reblogged_from_following,
-        reblogged_root_id = post.reblogged_root_id,
-        reblogged_root_url = post.reblogged_root_url,
-        reblogged_root_name = post.reblogged_root_name,
-        reblogged_root_title = post.reblogged_root_title,
-        reblogged_root_uuid = post.reblogged_root_uuid,
-        reblogged_root_can_message = post.reblogged_root_can_message,
-        reblogged_root_following = post.reblogged_root_following,
+        rebloggedFromTitle = post.rebloggedFromTitle,
+        rebloggedFromUuid = post.rebloggedFromUuid,
+        rebloggedFromCanMessage = post.rebloggedFromCanMessage,
+        rebloggedFromFollowing = post.rebloggedFromFollowing,
+        rebloggedRootId = post.rebloggedRootId,
+        rebloggedRootUrl = post.rebloggedRootUrl,
+        rebloggedRootName = post.rebloggedRootName,
+        rebloggedRootTitle = post.rebloggedRootTitle,
+        rebloggedRootUuid = post.rebloggedRootUuid,
+        rebloggedRootCanMessage = post.rebloggedRootCanMessage,
+        rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes,
         title = post.title,
         body = post.body,
@@ -640,19 +672,19 @@ data class SuperPostJson(
         followed = post.followed,
         reblogData = post.reblogData,
         rebloggedFromId = post.rebloggedFromId,
-        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromUrl = post.rebloggedFromUrl,
         rebloggedFromName = post.rebloggedFromName,
-        reblogged_from_title = post.reblogged_from_title,
-        reblogged_from_uuid = post.reblogged_from_uuid,
-        reblogged_from_can_message = post.reblogged_from_can_message,
-        reblogged_from_following = post.reblogged_from_following,
-        reblogged_root_id = post.reblogged_root_id,
-        reblogged_root_url = post.reblogged_root_url,
-        reblogged_root_name = post.reblogged_root_name,
-        reblogged_root_title = post.reblogged_root_title,
-        reblogged_root_uuid = post.reblogged_root_uuid,
-        reblogged_root_can_message = post.reblogged_root_can_message,
-        reblogged_root_following = post.reblogged_root_following,
+        rebloggedFromTitle = post.rebloggedFromTitle,
+        rebloggedFromUuid = post.rebloggedFromUuid,
+        rebloggedFromCanMessage = post.rebloggedFromCanMessage,
+        rebloggedFromFollowing = post.rebloggedFromFollowing,
+        rebloggedRootId = post.rebloggedRootId,
+        rebloggedRootUrl = post.rebloggedRootUrl,
+        rebloggedRootName = post.rebloggedRootName,
+        rebloggedRootTitle = post.rebloggedRootTitle,
+        rebloggedRootUuid = post.rebloggedRootUuid,
+        rebloggedRootCanMessage = post.rebloggedRootCanMessage,
+        rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes,
         title = post.title,
         description = post.description,
@@ -711,19 +743,19 @@ data class SuperPostJson(
         followed = post.followed,
         reblogData = post.reblogData,
         rebloggedFromId = post.rebloggedFromId,
-        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromUrl = post.rebloggedFromUrl,
         rebloggedFromName = post.rebloggedFromName,
-        reblogged_from_title = post.reblogged_from_title,
-        reblogged_from_uuid = post.reblogged_from_uuid,
-        reblogged_from_can_message = post.reblogged_from_can_message,
-        reblogged_from_following = post.reblogged_from_following,
-        reblogged_root_id = post.reblogged_root_id,
-        reblogged_root_url = post.reblogged_root_url,
-        reblogged_root_name = post.reblogged_root_name,
-        reblogged_root_title = post.reblogged_root_title,
-        reblogged_root_uuid = post.reblogged_root_uuid,
-        reblogged_root_can_message = post.reblogged_root_can_message,
-        reblogged_root_following = post.reblogged_root_following,
+        rebloggedFromTitle = post.rebloggedFromTitle,
+        rebloggedFromUuid = post.rebloggedFromUuid,
+        rebloggedFromCanMessage = post.rebloggedFromCanMessage,
+        rebloggedFromFollowing = post.rebloggedFromFollowing,
+        rebloggedRootId = post.rebloggedRootId,
+        rebloggedRootUrl = post.rebloggedRootUrl,
+        rebloggedRootName = post.rebloggedRootName,
+        rebloggedRootTitle = post.rebloggedRootTitle,
+        rebloggedRootUuid = post.rebloggedRootUuid,
+        rebloggedRootCanMessage = post.rebloggedRootCanMessage,
+        rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes,
         caption = post.caption,
         captionAbstract = post.captionAbstract,
@@ -781,19 +813,19 @@ data class SuperPostJson(
         followed = post.followed,
         reblogData = post.reblogData,
         rebloggedFromId = post.rebloggedFromId,
-        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromUrl = post.rebloggedFromUrl,
         rebloggedFromName = post.rebloggedFromName,
-        reblogged_from_title = post.reblogged_from_title,
-        reblogged_from_uuid = post.reblogged_from_uuid,
-        reblogged_from_can_message = post.reblogged_from_can_message,
-        reblogged_from_following = post.reblogged_from_following,
-        reblogged_root_id = post.reblogged_root_id,
-        reblogged_root_url = post.reblogged_root_url,
-        reblogged_root_name = post.reblogged_root_name,
-        reblogged_root_title = post.reblogged_root_title,
-        reblogged_root_uuid = post.reblogged_root_uuid,
-        reblogged_root_can_message = post.reblogged_root_can_message,
-        reblogged_root_following = post.reblogged_root_following,
+        rebloggedFromTitle = post.rebloggedFromTitle,
+        rebloggedFromUuid = post.rebloggedFromUuid,
+        rebloggedFromCanMessage = post.rebloggedFromCanMessage,
+        rebloggedFromFollowing = post.rebloggedFromFollowing,
+        rebloggedRootId = post.rebloggedRootId,
+        rebloggedRootUrl = post.rebloggedRootUrl,
+        rebloggedRootName = post.rebloggedRootName,
+        rebloggedRootTitle = post.rebloggedRootTitle,
+        rebloggedRootUuid = post.rebloggedRootUuid,
+        rebloggedRootCanMessage = post.rebloggedRootCanMessage,
+        rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes,
         text = post.text,
         source = post.source
@@ -844,19 +876,19 @@ data class SuperPostJson(
         followed = post.followed,
         reblogData = post.reblogData,
         rebloggedFromId = post.rebloggedFromId,
-        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromUrl = post.rebloggedFromUrl,
         rebloggedFromName = post.rebloggedFromName,
-        reblogged_from_title = post.reblogged_from_title,
-        reblogged_from_uuid = post.reblogged_from_uuid,
-        reblogged_from_can_message = post.reblogged_from_can_message,
-        reblogged_from_following = post.reblogged_from_following,
-        reblogged_root_id = post.reblogged_root_id,
-        reblogged_root_url = post.reblogged_root_url,
-        reblogged_root_name = post.reblogged_root_name,
-        reblogged_root_title = post.reblogged_root_title,
-        reblogged_root_uuid = post.reblogged_root_uuid,
-        reblogged_root_can_message = post.reblogged_root_can_message,
-        reblogged_root_following = post.reblogged_root_following,
+        rebloggedFromTitle = post.rebloggedFromTitle,
+        rebloggedFromUuid = post.rebloggedFromUuid,
+        rebloggedFromCanMessage = post.rebloggedFromCanMessage,
+        rebloggedFromFollowing = post.rebloggedFromFollowing,
+        rebloggedRootId = post.rebloggedRootId,
+        rebloggedRootUrl = post.rebloggedRootUrl,
+        rebloggedRootName = post.rebloggedRootName,
+        rebloggedRootTitle = post.rebloggedRootTitle,
+        rebloggedRootUuid = post.rebloggedRootUuid,
+        rebloggedRootCanMessage = post.rebloggedRootCanMessage,
+        rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes,
         title = post.title,
         abstract = post.abstract,
@@ -908,19 +940,19 @@ data class SuperPostJson(
         followed = post.followed,
         reblogData = post.reblogData,
         rebloggedFromId = post.rebloggedFromId,
-        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromUrl = post.rebloggedFromUrl,
         rebloggedFromName = post.rebloggedFromName,
-        reblogged_from_title = post.reblogged_from_title,
-        reblogged_from_uuid = post.reblogged_from_uuid,
-        reblogged_from_can_message = post.reblogged_from_can_message,
-        reblogged_from_following = post.reblogged_from_following,
-        reblogged_root_id = post.reblogged_root_id,
-        reblogged_root_url = post.reblogged_root_url,
-        reblogged_root_name = post.reblogged_root_name,
-        reblogged_root_title = post.reblogged_root_title,
-        reblogged_root_uuid = post.reblogged_root_uuid,
-        reblogged_root_can_message = post.reblogged_root_can_message,
-        reblogged_root_following = post.reblogged_root_following,
+        rebloggedFromTitle = post.rebloggedFromTitle,
+        rebloggedFromUuid = post.rebloggedFromUuid,
+        rebloggedFromCanMessage = post.rebloggedFromCanMessage,
+        rebloggedFromFollowing = post.rebloggedFromFollowing,
+        rebloggedRootId = post.rebloggedRootId,
+        rebloggedRootUrl = post.rebloggedRootUrl,
+        rebloggedRootName = post.rebloggedRootName,
+        rebloggedRootTitle = post.rebloggedRootTitle,
+        rebloggedRootUuid = post.rebloggedRootUuid,
+        rebloggedRootCanMessage = post.rebloggedRootCanMessage,
+        rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes,
         player = PlayerWrapper(contentList = post.player),
         caption = post.caption,
@@ -980,24 +1012,27 @@ data class SuperPostJson(
         followed = post.followed,
         reblogData = post.reblogData,
         rebloggedFromId = post.rebloggedFromId,
-        reblogged_from_url = post.reblogged_from_url,
+        rebloggedFromUrl = post.rebloggedFromUrl,
         rebloggedFromName = post.rebloggedFromName,
-        reblogged_from_title = post.reblogged_from_title,
-        reblogged_from_uuid = post.reblogged_from_uuid,
-        reblogged_from_can_message = post.reblogged_from_can_message,
-        reblogged_from_following = post.reblogged_from_following,
-        reblogged_root_id = post.reblogged_root_id,
-        reblogged_root_url = post.reblogged_root_url,
-        reblogged_root_name = post.reblogged_root_name,
-        reblogged_root_title = post.reblogged_root_title,
-        reblogged_root_uuid = post.reblogged_root_uuid,
-        reblogged_root_can_message = post.reblogged_root_can_message,
-        reblogged_root_following = post.reblogged_root_following,
+        rebloggedFromTitle = post.rebloggedFromTitle,
+        rebloggedFromUuid = post.rebloggedFromUuid,
+        rebloggedFromCanMessage = post.rebloggedFromCanMessage,
+        rebloggedFromFollowing = post.rebloggedFromFollowing,
+        rebloggedRootId = post.rebloggedRootId,
+        rebloggedRootUrl = post.rebloggedRootUrl,
+        rebloggedRootName = post.rebloggedRootName,
+        rebloggedRootTitle = post.rebloggedRootTitle,
+        rebloggedRootUuid = post.rebloggedRootUuid,
+        rebloggedRootCanMessage = post.rebloggedRootCanMessage,
+        rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes
     )
 
     // endregion
 
+    /**
+     * TODO: Documentation
+     */
     fun toAnswerPost(): AnswerPost {
         return AnswerPost(
             blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
@@ -1005,16 +1040,19 @@ data class SuperPostJson(
             anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
             likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
             postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-            reblogged_root_can_message, reblogged_root_following, notes,
+            displayAvatar, followed, reblogData, rebloggedFromId, rebloggedFromUrl,
+            rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
+            rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
+            rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes,
 
             askingName, askingUrl, question, answer, answerAbstract
         )
     }
 
+    /**
+     * TODO: Documentation
+     */
     fun toAudioPost(): AudioPost {
         return AudioPost(
             blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
@@ -1022,11 +1060,11 @@ data class SuperPostJson(
             anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
             likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
             postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-            reblogged_root_can_message, reblogged_root_following, notes,
+            displayAvatar, followed, reblogData, rebloggedFromId, rebloggedFromUrl,
+            rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
+            rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
+            rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes,
 
             caption, captionAbstract, player?.contentString, audio_url, plays, album_art,
             artist, album, trackName, trackNumber, track, year, external, providerUrl,
@@ -1034,6 +1072,9 @@ data class SuperPostJson(
         )
     }
 
+    /**
+     * TODO: Documentation
+     */
     fun toChatPost(): ChatPost {
         return ChatPost(
             blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
@@ -1041,16 +1082,19 @@ data class SuperPostJson(
             anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
             likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
             postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-            reblogged_root_can_message, reblogged_root_following, notes,
+            displayAvatar, followed, reblogData, rebloggedFromId, rebloggedFromUrl,
+            rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
+            rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
+            rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes,
 
             title, body, dialogue
         )
     }
 
+    /**
+     * TODO: Documentation
+     */
     fun toLinkPost(): LinkPost {
         return LinkPost(
             blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
@@ -1058,17 +1102,20 @@ data class SuperPostJson(
             anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
             likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
             postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-            reblogged_root_can_message, reblogged_root_following, notes,
+            displayAvatar, followed, reblogData, rebloggedFromId, rebloggedFromUrl,
+            rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
+            rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
+            rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes,
 
             title, description, url, author, linkAuthor, linkImage, linkImageDimensions,
             excerpt, publisher, photos, body
         )
     }
 
+    /**
+     * TODO: Documentation
+     */
     fun toPhotoPost(): PhotoPost {
         return PhotoPost(
             blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
@@ -1076,16 +1123,19 @@ data class SuperPostJson(
             anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
             likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
             postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-            reblogged_root_can_message, reblogged_root_following, notes,
+            displayAvatar, followed, reblogData, rebloggedFromId, rebloggedFromUrl,
+            rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
+            rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
+            rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes,
 
             caption, captionAbstract, width, height, photos, linkUrl, imagePermalink, panorama, photosetLayout
         )
     }
 
+    /**
+     * TODO: Documentation
+     */
     fun toQuotePost(): QuotePost {
         return QuotePost(
             blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
@@ -1093,16 +1143,19 @@ data class SuperPostJson(
             anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
             likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
             postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-            reblogged_root_can_message, reblogged_root_following, notes,
+            displayAvatar, followed, reblogData, rebloggedFromId, rebloggedFromUrl,
+            rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
+            rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
+            rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes,
 
             text, source
         )
     }
 
+    /**
+     * TODO: Documentation
+     */
     fun toTextPost(): TextPost {
         return TextPost(
             blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
@@ -1110,16 +1163,19 @@ data class SuperPostJson(
             anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
             likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
             postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-            reblogged_root_can_message, reblogged_root_following, notes,
+            displayAvatar, followed, reblogData, rebloggedFromId, rebloggedFromUrl,
+            rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
+            rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
+            rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes,
 
             title, abstract, body
         )
     }
 
+    /**
+     * TODO: Documentation
+     */
     fun toVideoPost(): VideoPost {
         return VideoPost(
             blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
@@ -1127,17 +1183,20 @@ data class SuperPostJson(
             anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
             likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
             postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-            reblogged_root_can_message, reblogged_root_following, notes,
+            displayAvatar, followed, reblogData, rebloggedFromId, rebloggedFromUrl,
+            rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
+            rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
+            rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes,
 
             player?.contentList, caption, videoUrl, html5Capable, thumbnailUrl, thumbnailWidth,
             thumbnailHeight, duration, videoData, permalinkUrl, videoType
         )
     }
 
+    /**
+     * TODO: Documentation
+     */
     fun toBlockPost(): BlockPost {
         return BlockPost(
             blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags,
@@ -1145,11 +1204,11 @@ data class SuperPostJson(
             anonymous, content, trail, layout, postAuthor, shortUrl, summary, isBlocksFormat,
             likedTimestamp, slug, noteCount, recommendedSource, recommendedColor,
             postAuthorIsAdult, isSubmission, canLike, canReblog, canSendInMessage, canReply,
-            displayAvatar, followed, reblogData, rebloggedFromId, reblogged_from_url,
-            rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-            reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-            reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-            reblogged_root_can_message, reblogged_root_following, notes
+            displayAvatar, followed, reblogData, rebloggedFromId, rebloggedFromUrl,
+            rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
+            rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
+            rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes
         )
     }
 

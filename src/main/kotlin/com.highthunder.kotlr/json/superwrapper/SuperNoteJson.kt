@@ -15,6 +15,23 @@ import com.squareup.moshi.JsonClass
  * @version 1.0.0
  *
  * @param type The type of this note.
+ * @param timestamp TODO: Documentation
+ * @param blogName TODO: Documentation
+ * @param blogUuid TODO: Documentation
+ * @param blogUrl TODO: Documentation
+ * @param blogFollowed TODO: Documentation
+ * @param avatarShape TODO: Documentation
+ * @param addedText TODO: Documentation
+ * @param postId TODO: Documentation
+ * @param reblogParentBlogName TODO: Documentation
+ * @param replyText TODO: Documentation
+ * @param formatting TODO: Documentation
+ * @param canBlock TODO: Documentation
+ * @param postAttributionType TODO: Documentation
+ * @param postAttributionTypeName TODO: Documentation
+ * @param photoUrl TODO: Documentation
+ * @param photoWidth TODO: Documentation
+ * @param photoHeight TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class SuperNoteJson(
@@ -39,21 +56,21 @@ data class SuperNoteJson(
     @Json(name = "reblog_parent_blog_name")
     var reblogParentBlogName: String? = null,
     @Json(name = "reply_text")
-    var reply_text: String? = null,
+    var replyText: String? = null,
     @Json(name = "formatting")
     var formatting: List<TextFormat>? = null,
     @Json(name = "can_block")
-    var can_block: Boolean? = null,
+    var canBlock: Boolean? = null,
     @Json(name = "post_attribution_type")
-    var post_attribution_type: String? = null,
+    var postAttributionType: String? = null,
     @Json(name = "post_attribution_type_name")
-    var post_attribution_type_name: String? = null,
+    var postAttributionTypeName: String? = null,
     @Json(name = "photo_url")
-    var photo_url: String? = null,
+    var photoUrl: String? = null,
     @Json(name = "photo_width")
-    var photo_width: Int? = null,
+    var photoWidth: Int? = null,
     @Json(name = "photo_height")
-    var photo_height: Int? = null
+    var photoHeight: Int? = null
 ) {
 
     // TODO: To and from SuperNoteJson
@@ -64,10 +81,29 @@ data class SuperNoteJson(
     constructor(note: Reply) : this(Reply.KEY)
     constructor(note: Attribution) : this(Attribution.KEY)
 
+    /**
+     * TODO: Documentation
+     */
     fun toLike(): Like = Like()
+
+    /**
+     * TODO: Documentation
+     */
     fun toReblog(): Reblog = Reblog()
+
+    /**
+     * TODO: Documentation
+     */
     fun toPosted(): Posted = Posted()
+
+    /**
+     * TODO: Documentation
+     */
     fun toReply(): Reply = Reply()
+
+    /**
+     * TODO: Documentation
+     */
     fun toAttribution(): Attribution = Attribution()
 
 }

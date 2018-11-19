@@ -26,6 +26,9 @@ class BlogAvatarWrapperJsonAdapter(moshi: Moshi) {
             null
         ).failOnUnknown()
 
+    /**
+     *  TODO: Documentation
+     */
     @FromJson
     fun fromJson(reader: JsonReader): ResponseBlogAvatar.Wrapper {
         return when (reader.peek()) {
@@ -37,6 +40,9 @@ class BlogAvatarWrapperJsonAdapter(moshi: Moshi) {
         }
     }
 
+    /**
+     *  TODO: Documentation
+     */
     @ToJson
     fun toJson(writer: JsonWriter, value: ResponseBlogAvatar.Wrapper?) {
         if (value?.error != null) {

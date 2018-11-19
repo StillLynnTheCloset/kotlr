@@ -17,6 +17,9 @@ import com.squareup.moshi.ToJson
  */
 class DisplayModeJsonAdapter {
 
+    /**
+     * TODO: Documentation
+     */
     @FromJson
     fun toDisplayMode(input: SuperDisplayModeJson?): Mode {
         return when (input?.type) {
@@ -26,6 +29,9 @@ class DisplayModeJsonAdapter {
         }
     }
 
+    /**
+     * TODO: Documentation
+     */
     @ToJson
     fun fromDisplayMode(input: Mode): SuperDisplayModeJson? {
         return when (input) {

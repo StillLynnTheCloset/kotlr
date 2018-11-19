@@ -29,6 +29,9 @@ class BlogFollowersWrapperJsonAdapter(moshi: Moshi) {
             null
         ).failOnUnknown()
 
+    /**
+     * TODO: Documentation
+     */
     @FromJson
     fun fromJson(reader: JsonReader): ResponseBlogFollowers.Wrapper {
         return when (reader.peek()) {
@@ -40,6 +43,9 @@ class BlogFollowersWrapperJsonAdapter(moshi: Moshi) {
         }
     }
 
+    /**
+     * TODO: Documentation
+     */
     @ToJson
     fun toJson(writer: JsonWriter, value: ResponseBlogFollowers.Wrapper?) {
         if (value?.error != null) {

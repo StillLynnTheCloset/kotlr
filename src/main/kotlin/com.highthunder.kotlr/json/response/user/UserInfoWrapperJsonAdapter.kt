@@ -26,6 +26,9 @@ class UserInfoWrapperJsonAdapter(moshi: Moshi) {
             null
         ).failOnUnknown()
 
+    /**
+     * TODO: Documentation
+     */
     @FromJson
     fun fromJson(reader: JsonReader): ResponseUserInfo.Wrapper {
         return when (reader.peek()) {
@@ -37,6 +40,9 @@ class UserInfoWrapperJsonAdapter(moshi: Moshi) {
         }
     }
 
+    /**
+     * TODO: Documentation
+     */
     @ToJson
     fun toJson(writer: JsonWriter, value: ResponseUserInfo.Wrapper?) {
         if (value?.error != null) {

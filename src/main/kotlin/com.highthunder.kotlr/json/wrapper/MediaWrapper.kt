@@ -15,6 +15,9 @@ import com.squareup.moshi.JsonClass
  * @author highthunder
  * @since 10/20/18
  * @version 1.0.0
+ *
+ * @param singleMedia TODO: Documentation
+ * @param listMedia TODO: Documentation
  */
 @JsonClass(generateAdapter = false)
 data class MediaWrapper(

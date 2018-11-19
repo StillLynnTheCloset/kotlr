@@ -9,6 +9,9 @@ import kotlin.Int
 import kotlin.Long
 import kotlin.String
 
+/**
+ * TODO: Documentation
+ */
 class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
     private val options: JsonReader.Options =
         JsonReader.Options.of("blogs", "name", "following", "url", "updated", "likes", "default_post_format")
@@ -37,6 +40,9 @@ class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
 
     override fun toString(): String = "GeneratedJsonAdapter(User)"
 
+    /**
+     * TODO: Documentation
+     */
     @FromJson
     override fun fromJson(reader: JsonReader): User {
         var blogs: List<Blog>? = null
@@ -113,6 +119,9 @@ class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
         return result
     }
 
+    /**
+     * TODO: Documentation
+     */
     @ToJson
     override fun toJson(writer: JsonWriter, value: User?) {
         if (value == null) {

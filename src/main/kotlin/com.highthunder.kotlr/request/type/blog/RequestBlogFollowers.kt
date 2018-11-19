@@ -20,7 +20,10 @@ class RequestBlogFollowers(
 ) : Request<ResponseBlogFollowers.Body> {
 
     companion object {
-        const val BASE_PATH = "blog/"
+        /**
+         * TODO: Documentation
+         */
+        const val BASE_PATH: String = "blog/"
     }
 
     override val responseClass: KClass<out ResponseInterface<ResponseBlogFollowers.Body>> =

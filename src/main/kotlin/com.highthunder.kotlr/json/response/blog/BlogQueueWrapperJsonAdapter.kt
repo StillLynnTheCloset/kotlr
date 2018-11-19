@@ -26,6 +26,9 @@ class BlogQueueWrapperJsonAdapter(moshi: Moshi) {
             null
         ).failOnUnknown()
 
+    /**
+     * TODO: Documentation
+     */
     @FromJson
     fun fromJson(reader: JsonReader): ResponseBlogQueue.Wrapper {
         return when (reader.peek()) {
@@ -37,6 +40,9 @@ class BlogQueueWrapperJsonAdapter(moshi: Moshi) {
         }
     }
 
+    /**
+     * TODO: Documentation
+     */
     @ToJson
     fun toJson(writer: JsonWriter, value: ResponseBlogQueue.Wrapper?) {
         if (value?.error != null) {

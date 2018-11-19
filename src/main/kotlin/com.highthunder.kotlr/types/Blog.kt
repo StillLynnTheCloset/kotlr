@@ -46,6 +46,12 @@ import com.squareup.moshi.JsonClass
  * @param twitterEnabled Unknown.
  * @param twitterSend Unknown.
  * @param isOptOutAds Unknown.
+ *
+ * @param submissionTerms TODO: Documentation
+ * @param followed TODO: Documentation
+ * @param totalPosts TODO: Documentation
+ * @param shareFollowing TODO: Documentation
+ * @param canBeFollowed TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class Blog(
@@ -120,13 +126,13 @@ data class Blog(
     @Json(name = "is_optout_ads")
     var isOptOutAds: Boolean? = null,
     @Json(name = "submission_terms")
-    var submissionTerms: SubmissionTerms? = null, // TODO: Documentation
+    var submissionTerms: SubmissionTerms? = null,
     @Json(name = "followed")
-    var followed: Boolean? = null, // TODO: Documentation
+    var followed: Boolean? = null,
     @Json(name = "total_posts")
-    var totalPosts: Int? = null, // TODO: Documentation
+    var totalPosts: Int? = null,
     @Json(name = "share_following")
-    var shareFollowing: Boolean? = null, // TODO: Documentation
+    var shareFollowing: Boolean? = null,
     @Json(name = "can_be_followed")
-    var canBeFollowed: Boolean? = null // TODO: Documentation
+    var canBeFollowed: Boolean? = null
 )

@@ -56,32 +56,39 @@ data class SuperFormatJson constructor(
     constructor(format: TextFormat.Color) : this(format.start, format.end, hex = format.hex)
     constructor(format: TextFormat.Size) : this(format.start, format.end, size = format.size)
 
-    fun toBold(): TextFormat.Bold {
-        return TextFormat.Bold(start, end)
-    }
+    /**
+     * TODO: Documentation
+     */
+    fun toBold(): TextFormat.Bold = TextFormat.Bold(start, end)
 
-    fun toItalic(): TextFormat.Italic {
-        return TextFormat.Italic(start, end)
-    }
+    /**
+     * TODO: Documentation
+     */
+    fun toItalic(): TextFormat.Italic = TextFormat.Italic(start, end)
 
-    fun toStrikeThrough(): TextFormat.StrikeThrough {
-        return TextFormat.StrikeThrough(start, end)
-    }
+    /**
+     * TODO: Documentation
+     */
+    fun toStrikeThrough(): TextFormat.StrikeThrough = TextFormat.StrikeThrough(start, end)
 
-    fun toLink(): TextFormat.Link {
-        return TextFormat.Link(start, end, url)
-    }
+    /**
+     * TODO: Documentation
+     */
+    fun toLink(): TextFormat.Link = TextFormat.Link(start, end, url)
 
-    fun toMention(): TextFormat.Mention {
-        return TextFormat.Mention(start, end, blog)
-    }
+    /**
+     * TODO: Documentation
+     */
+    fun toMention(): TextFormat.Mention = TextFormat.Mention(start, end, blog)
 
-    fun toColor(): TextFormat.Color {
-        return TextFormat.Color(start, end, hex)
-    }
+    /**
+     * TODO: Documentation
+     */
+    fun toColor(): TextFormat.Color = TextFormat.Color(start, end, hex)
 
-    fun toSize(): TextFormat.Size {
-        return TextFormat.Size(start, end, size)
-    }
+    /**
+     * TODO: Documentation
+     */
+    fun toSize(): TextFormat.Size = TextFormat.Size(start, end, size)
 
 }

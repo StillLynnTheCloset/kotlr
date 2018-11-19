@@ -15,6 +15,9 @@ import com.squareup.moshi.ToJson
  */
 class AttributionJsonAdapter {
 
+    /**
+     *  TODO: Documentation
+     */
     @FromJson
     fun toAttribution(input: SuperAttributionJson?): Attribution {
         return when (input?.type) {
@@ -26,6 +29,9 @@ class AttributionJsonAdapter {
         }
     }
 
+    /**
+     *  TODO: Documentation
+     */
     @ToJson
     fun fromAttribution(input: Attribution): SuperAttributionJson? {
         return when (input) {

@@ -9,6 +9,12 @@ import com.squareup.moshi.JsonClass
  * @author highthunder
  * @since 11/3/18
  * @version 1.0.0
+ *
+ * @param camera TODO: Documentation
+ * @param iso TODO: Documentation
+ * @param aperture TODO: Documentation
+ * @param exposure TODO: Documentation
+ * @param focalLength TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class ExifData(

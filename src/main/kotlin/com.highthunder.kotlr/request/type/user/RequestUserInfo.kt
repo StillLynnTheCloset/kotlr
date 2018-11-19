@@ -16,6 +16,9 @@ import kotlin.reflect.KClass
 class RequestUserInfo : Request<ResponseUserInfo.Body> {
 
     companion object {
+        /**
+         * TODO: Documentation
+         */
         const val BASE_PATH: String = "user/info"
     }
 

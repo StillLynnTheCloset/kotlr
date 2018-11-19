@@ -29,6 +29,9 @@ class UserDashboardWrapperJsonAdapter(moshi: Moshi) {
             null
         ).failOnUnknown()
 
+    /**
+     * TODO: Documentation
+     */
     @FromJson
     fun fromJson(reader: JsonReader): ResponseUserDashboard.Wrapper {
         return when (reader.peek()) {
@@ -40,6 +43,9 @@ class UserDashboardWrapperJsonAdapter(moshi: Moshi) {
         }
     }
 
+    /**
+     * TODO: Documentation
+     */
     @ToJson
     fun toJson(writer: JsonWriter, value: ResponseUserDashboard.Wrapper?) {
         if (value?.error != null) {

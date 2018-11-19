@@ -19,6 +19,13 @@ import com.squareup.moshi.JsonClass
  */
 interface ResponseBlogQueue {
 
+    /**
+     * TODO: Documentation
+     *
+     * @param meta TODO: Documentation
+     * @param response TODO: Documentation
+     * @param errors TODO: Documentation
+     */
     @JsonClass(generateAdapter = true)
     data class Response(
         @Json(name = "meta")
@@ -35,6 +42,9 @@ interface ResponseBlogQueue {
 
     /**
      * Adapter is [BlogQueueWrapperJsonAdapter].
+     *
+     * @param response TODO: Documentation
+     * @param error TODO: Documentation
      */
     data class Wrapper(
         var error: String? = null,
@@ -44,6 +54,12 @@ interface ResponseBlogQueue {
         override fun getBody(): Body? = response
     }
 
+    /**
+     * TODO: Documentation
+     *
+     * @param links TODO: Documentation
+     * @param posts TODO: Documentation
+     */
     @JsonClass(generateAdapter = true)
     data class Body(
         @Json(name = "_links")

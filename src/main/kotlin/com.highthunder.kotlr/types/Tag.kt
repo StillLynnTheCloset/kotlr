@@ -9,6 +9,11 @@ import com.squareup.moshi.JsonClass
  * @author highthunder
  * @since 10/24/18
  * @version 1.0.0
+ *
+ * @param tagText TODO: Documentation
+ * @param thumbnailUrl TODO: Documentation
+ * @param isTracked TODO: Documentation
+ * @param featured TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class Tag(

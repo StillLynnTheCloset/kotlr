@@ -9,6 +9,10 @@ import com.squareup.moshi.JsonClass
  * @author highthunder
  * @since 10/24/18
  * @version 1.0.0
+ *
+ * @param status TODO: Documentation
+ * @param msg TODO: Documentation
+ * @param contentRating TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class ResponseMetaInfo(

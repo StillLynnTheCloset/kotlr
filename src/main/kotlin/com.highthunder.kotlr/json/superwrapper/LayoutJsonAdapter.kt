@@ -14,6 +14,9 @@ import com.squareup.moshi.ToJson
  */
 class LayoutJsonAdapter {
 
+    /**
+     * TODO: Documentation
+     */
     @FromJson
     fun toLayout(input: SuperLayoutJson?): BlockLayout {
         return when (input?.type) {
@@ -25,6 +28,9 @@ class LayoutJsonAdapter {
         }
     }
 
+    /**
+     * TODO: Documentation
+     */
     @ToJson
     fun fromLayout(input: BlockLayout): SuperLayoutJson? {
         return when (input) {

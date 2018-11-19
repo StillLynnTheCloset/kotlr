@@ -9,6 +9,11 @@ import com.squareup.moshi.JsonClass
  * @author highthunder
  * @since 10/24/18
  * @version 1.0.0
+ *
+ * @param linkType TODO: Documentation
+ * @param httpMethod TODO: Documentation
+ * @param fullLink TODO: Documentation
+ * @param queryParams TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class RequestLink(
@@ -21,9 +26,18 @@ data class RequestLink(
     @Json(name = "query_params")
     var queryParams: Map<String, Any>? = null
 ) {
+    /**
+     * TODO: Documentation
+     */
     enum class Type {
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "navigation")
         Navigation,
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "action")
         Action
     }

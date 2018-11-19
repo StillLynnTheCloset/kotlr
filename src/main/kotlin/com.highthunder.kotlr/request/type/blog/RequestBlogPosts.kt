@@ -41,7 +41,10 @@ class RequestBlogPosts(
 ) {
 
     companion object {
-        const val BASE_PATH = "blog/"
+        /**
+         * TODO: Documentation
+         */
+        const val BASE_PATH: String = "blog/"
     }
 
     override val responseClass: KClass<out ResponseInterface<ResponseBlogPosts.Body>> =

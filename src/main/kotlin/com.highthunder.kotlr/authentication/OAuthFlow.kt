@@ -15,9 +15,9 @@ import com.github.scribejava.core.oauth.OAuth10aService
 class OAuthFlow {
 
     companion object {
-        val URL_FILTER = "oauth_verifier=".toRegex()
-        val URL_REGEX = "(.*oauth_verifier=)(([a-zA-Z0-9])+)(.*)".toRegex()
-        const val URL_REPLACEMENT = "$2"
+        private val URL_FILTER: Regex = "oauth_verifier=".toRegex()
+        private val URL_REGEX: Regex = "(.*oauth_verifier=)(([a-zA-Z0-9])+)(.*)".toRegex()
+        private const val URL_REPLACEMENT: String = "$2"
     }
 
     private lateinit var appKey: TumblrAppKey
@@ -35,6 +35,9 @@ class OAuthFlow {
             .build(TumblrApi.instance())
     }
 
+    /**
+     * TODO: Documentation
+     */
     fun getRequestUrl(appKey: TumblrAppKey, callbackUrl: String): String? {
 
         this.appKey = appKey
@@ -53,8 +56,14 @@ class OAuthFlow {
 
     }
 
+    /**
+     * TODO: Documentation
+     */
     fun isVerifierUrl(url: String): Boolean = url.contains(URL_FILTER)
 
+    /**
+     * TODO: Documentation
+     */
     fun parseResponseUrl(url: String): TumblrUserKey {
 
         return if (isWaitingForResponse) {

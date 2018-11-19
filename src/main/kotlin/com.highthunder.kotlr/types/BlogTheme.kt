@@ -14,6 +14,29 @@ import com.squareup.moshi.JsonClass
  * @version 1.0.0
  *
  * TODO: Documentation
+ *
+ * @param url TODO: Documentation
+ * @param avatarImage TODO: Documentation
+ * @param headerImage TODO: Documentation
+ * @param headerFullWidth TODO: Documentation
+ * @param headerFullHeight TODO: Documentation
+ * @param headerFocusWidth TODO: Documentation
+ * @param headerFocusHeight TODO: Documentation
+ * @param avatarShape TODO: Documentation
+ * @param backgroundColor TODO: Documentation
+ * @param bodyFont TODO: Documentation
+ * @param headerBounds TODO: Documentation
+ * @param headerImageFocused TODO: Documentation
+ * @param headerImageScaled TODO: Documentation
+ * @param linkColor TODO: Documentation
+ * @param titleColor TODO: Documentation
+ * @param titleFont TODO: Documentation
+ * @param titleFontWeight TODO: Documentation
+ * @param headerStretch TODO: Documentation
+ * @param showAvatar TODO: Documentation
+ * @param showDescription TODO: Documentation
+ * @param showHeaderImage TODO: Documentation
+ * @param showTitle TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 class BlogTheme(
@@ -61,14 +84,42 @@ class BlogTheme(
     var showTitle: Boolean? = null
 ) {
     companion object {
-        const val DEFAULT_AVATAR = "https://secure.assets.tumblr.com/images/default_avatar/sphere_open_64.png"
-        const val DEFAULT_HEADER = "https://secure.assets.tumblr.com/images/default_header/optica_pattern_08.png"
-        const val DEFAULT_SHAPE = "Square"
-        const val DEFAULT_BACKGROUND_COLOR = ""
-        const val DEFAULT_BODY_FONT = ""
-        const val DEFAULT_LINK_COLOR = ""
+
+        /**
+         * TODO: Documentation
+         */
+        const val DEFAULT_AVATAR: String = "https://secure.assets.tumblr.com/images/default_avatar/sphere_open_64.png"
+
+        /**
+         * TODO: Documentation
+         */
+        const val DEFAULT_HEADER: String = "https://secure.assets.tumblr.com/images/default_header/optica_pattern_08.png"
+
+        /**
+         * TODO: Documentation
+         */
+        const val DEFAULT_SHAPE: String = "Square"
+
+        /**
+         * TODO: Documentation
+         */
+        const val DEFAULT_BACKGROUND_COLOR: String = ""
+
+        /**
+         * TODO: Documentation
+         */
+        const val DEFAULT_BODY_FONT: String = ""
+
+        /**
+         * TODO: Documentation
+         */
+        const val DEFAULT_LINK_COLOR: String = ""
+
     }
 
+    /**
+     * TODO: Documentation
+     */
     @Json(name = "avatar_image")
     var avatarImage: String? = null
         set(value) {
@@ -81,6 +132,10 @@ class BlogTheme(
                 field = null
             }
         }
+
+    /**
+     * TODO: Documentation
+     */
     @Json(name = "header_image")
     var headerImage: String? = null
         set(value) {

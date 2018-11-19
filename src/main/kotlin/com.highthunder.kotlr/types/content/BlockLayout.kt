@@ -21,6 +21,9 @@ sealed class BlockLayout {
      */
     class Vertical : BlockLayout() {
         companion object {
+            /**
+             *  TODO: Documentation
+             */
             const val KEY: String = "vertical"
         }
     }
@@ -37,9 +40,18 @@ sealed class BlockLayout {
     ) : BlockLayout() {
 
         companion object {
+            /**
+             *  TODO: Documentation
+             */
             const val KEY: String = "rows"
         }
 
+        /**
+         *  TODO: Documentation
+         *
+         * @param blocks TODO: Documentation
+         * @param mode TODO: Documentation
+         */
         @JsonClass(generateAdapter = true)
         data class Display(
             @Json(name = "blocks")
@@ -48,16 +60,31 @@ sealed class BlockLayout {
             var mode: Mode? = Mode.Weighted()
         ) {
 
+            /**
+             *  TODO: Documentation
+             */
             sealed class Mode {
 
+                /**
+                 *  TODO: Documentation
+                 */
                 class Weighted : Mode() {
                     companion object {
+                        /**
+                         *  TODO: Documentation
+                         */
                         const val KEY: String = "weighted"
                     }
                 }
 
+                /**
+                 *  TODO: Documentation
+                 */
                 class Carousel : Mode() {
                     companion object {
+                        /**
+                         *  TODO: Documentation
+                         */
                         const val KEY: String = "carousel"
                     }
                 }
@@ -77,6 +104,9 @@ sealed class BlockLayout {
         var blocks: List<Int>? = null
     ) : BlockLayout() {
         companion object {
+            /**
+             *  TODO: Documentation
+             */
             const val KEY: String = "condensed"
         }
     }
@@ -92,6 +122,9 @@ sealed class BlockLayout {
         var attribution: Attribution? = null
     ) : BlockLayout() {
         companion object {
+            /**
+             *  TODO: Documentation
+             */
             const val KEY: String = "ask"
         }
     }

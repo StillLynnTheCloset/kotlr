@@ -22,6 +22,9 @@ class ContentWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ContentWrapper>() {
             null
         )
 
+    /**
+     * TODO: Documentation
+     */
     @FromJson
     override fun fromJson(reader: JsonReader): ContentWrapper {
         return when (reader.peek()) {
@@ -32,6 +35,9 @@ class ContentWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ContentWrapper>() {
         }
     }
 
+    /**
+     * TODO: Documentation
+     */
     @ToJson
     override fun toJson(writer: JsonWriter, value: ContentWrapper?) {
         if (value?.contentString != null) {

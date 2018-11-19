@@ -37,6 +37,9 @@ class KotlrClient(private val key: TumblrUserKey) {
         return@let serviceBuilder.build(TumblrApi.instance())
     }
 
+    /**
+     * TODO: Documentation
+     */
     fun <T> process(request: Request<T>): ResponseInterface<T>? {
         val url = request.getUrl(key.apiKey)
         System.out.println(url)

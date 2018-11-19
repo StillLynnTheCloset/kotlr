@@ -19,6 +19,13 @@ import com.squareup.moshi.JsonClass
  */
 interface ResponseBlogFollowers {
 
+    /**
+     * TODO: Documentation
+     *
+     * @param meta TODO: Documentation
+     * @param response TODO: Documentation
+     * @param errors TODO: Documentation
+     */
     @JsonClass(generateAdapter = true)
     data class Response(
         @Json(name = "meta")
@@ -35,6 +42,9 @@ interface ResponseBlogFollowers {
 
     /**
      * Adapter is [BlogFollowersWrapperJsonAdapter].
+     *
+     * @param response TODO: Documentation
+     * @param error TODO: Documentation
      */
     data class Wrapper(
         var error: String? = null,
@@ -44,6 +54,13 @@ interface ResponseBlogFollowers {
         override fun getBody(): Body? = response
     }
 
+    /**
+     * TODO: Documentation
+     *
+     * @param links TODO: Documentation
+     * @param users TODO: Documentation
+     * @param total TODO: Documentation
+     */
     @JsonClass(generateAdapter = true)
     data class Body(
         @Json(name = "_links")

@@ -69,20 +69,24 @@ data class SuperAttributionJson(
     constructor(attribution: Attribution.Link) : this(url = attribution.url)
     constructor(attribution: Attribution.Blog) : this(blog = attribution.blog)
 
-    fun toPostAttribution(): Attribution.Post {
-        return Attribution.Post(url, post, blog)
-    }
+    /**
+     * TODO: Documentation
+     */
+    fun toPostAttribution(): Attribution.Post = Attribution.Post(url, post, blog)
 
-    fun toAppAttribution(): Attribution.App {
-        return Attribution.App(url, appName, displayText, logo)
-    }
+    /**
+     * TODO: Documentation
+     */
+    fun toAppAttribution(): Attribution.App = Attribution.App(url, appName, displayText, logo)
 
-    fun toLinkAttribution(): Attribution.Link {
-        return Attribution.Link(url)
-    }
+    /**
+     * TODO: Documentation
+     */
+    fun toLinkAttribution(): Attribution.Link = Attribution.Link(url)
 
-    fun toBlogAttribution(): Attribution.Blog {
-        return Attribution.Blog(blog)
-    }
+    /**
+     * TODO: Documentation
+     */
+    fun toBlogAttribution(): Attribution.Blog = Attribution.Blog(blog)
 
 }

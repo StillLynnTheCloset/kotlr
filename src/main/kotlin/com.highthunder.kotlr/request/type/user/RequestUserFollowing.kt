@@ -19,6 +19,9 @@ class RequestUserFollowing(
 ) : Request<ResponseUserFollowing.Body> {
 
     companion object {
+        /**
+         * TODO: Documentation
+         */
         const val BASE_PATH: String = "user/following"
     }
 

@@ -24,6 +24,9 @@ class VideoJsonAdapter(moshi: Moshi) : JsonAdapter<Video>() {
 
     override fun toString(): String = "GeneratedJsonAdapter(Video)"
 
+    /**
+     * TODO: Documentation
+     */
     @FromJson
     override fun fromJson(reader: JsonReader): Video {
         var width: Int? = null
@@ -62,6 +65,9 @@ class VideoJsonAdapter(moshi: Moshi) : JsonAdapter<Video>() {
         return result
     }
 
+    /**
+     * TODO: Documentation
+     */
     @ToJson
     override fun toJson(writer: JsonWriter, value: Video?) {
         if (value == null) {

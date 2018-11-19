@@ -23,6 +23,9 @@ class ThemeWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ThemeWrapper>() {
             null
         )
 
+    /**
+     * TODO: Documentation
+     */
     @FromJson
     override fun fromJson(reader: JsonReader): ThemeWrapper {
         return when (reader.peek()) {
@@ -33,6 +36,9 @@ class ThemeWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ThemeWrapper>() {
         }
     }
 
+    /**
+     * TODO: Documentation
+     */
     @ToJson
     override fun toJson(writer: JsonWriter, value: ThemeWrapper?) {
         if (value?.singleTheme != null) {

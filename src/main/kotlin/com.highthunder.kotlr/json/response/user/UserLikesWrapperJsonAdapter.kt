@@ -26,6 +26,9 @@ class UserLikesWrapperJsonAdapter(moshi: Moshi) {
             null
         ).failOnUnknown()
 
+    /**
+     * TODO: Documentation
+     */
     @FromJson
     fun fromJson(reader: JsonReader): ResponseUserLikes.Wrapper {
         return when (reader.peek()) {
@@ -37,6 +40,9 @@ class UserLikesWrapperJsonAdapter(moshi: Moshi) {
         }
     }
 
+    /**
+     * TODO: Documentation
+     */
     @ToJson
     fun toJson(writer: JsonWriter, value: ResponseUserLikes.Wrapper?) {
         if (value?.error != null) {

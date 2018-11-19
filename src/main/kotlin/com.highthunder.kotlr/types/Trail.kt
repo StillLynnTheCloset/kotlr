@@ -11,6 +11,17 @@ import com.squareup.moshi.JsonClass
  * @author highthunder
  * @since 10/20/18
  * @version 1.0.0
+ *
+ * @param blog TODO: Documentation
+ * @param post TODO: Documentation
+ * @param contentRaw TODO: Documentation
+ * @param content TODO: Documentation
+ * @param abstract TODO: Documentation
+ * @param currentItem TODO: Documentation
+ * @param rootItem TODO: Documentation
+ * @param layout TODO: Documentation
+ * @param brokenBlogName TODO: Documentation
+ * @param brokenBlog TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class Trail(

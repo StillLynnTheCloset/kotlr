@@ -30,7 +30,10 @@ sealed class Attribution {
         var blog: RealBlog? = null
     ) : Attribution() {
         companion object {
-            const val KEY = "post"
+            /**
+             *  TODO: Documentation
+             */
+            const val KEY: String = "post"
         }
     }
 
@@ -43,7 +46,10 @@ sealed class Attribution {
         var url: String? = null
     ) : Attribution() {
         companion object {
-            const val KEY = "link"
+            /**
+             *  TODO: Documentation
+             */
+            const val KEY: String = "link"
         }
     }
 
@@ -56,7 +62,10 @@ sealed class Attribution {
         var blog: RealBlog? = null
     ) : Attribution() {
         companion object {
-            const val KEY = "blog"
+            /**
+             *  TODO: Documentation
+             */
+            const val KEY: String = "blog"
         }
     }
 
@@ -75,7 +84,10 @@ sealed class Attribution {
         var logo: Media? = null
     ) : Attribution() {
         companion object {
-            const val KEY = "app"
+            /**
+             *  TODO: Documentation
+             */
+            const val KEY: String = "app"
         }
     }
 

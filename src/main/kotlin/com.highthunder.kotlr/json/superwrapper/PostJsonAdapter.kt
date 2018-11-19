@@ -17,6 +17,9 @@ import com.squareup.moshi.ToJson
  */
 class PostJsonAdapter {
 
+    /**
+     * TODO: Documentation
+     */
     @FromJson
     fun toPost(input: SuperPostJson?): Post {
         return when (input?.type) {
@@ -33,6 +36,9 @@ class PostJsonAdapter {
         }
     }
 
+    /**
+     * TODO: Documentation
+     */
     @ToJson
     fun fromPost(input: Post): SuperPostJson? {
         return when (input) {

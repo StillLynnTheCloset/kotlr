@@ -32,29 +32,47 @@ sealed class TextFormat(
     var end: Int?
 ) {
 
+    /**
+     * TODO: Documentation
+     */
     class Bold(
         start: Int? = null,
         end: Int? = null
     ) : TextFormat(start, end) {
         companion object {
+            /**
+             * TODO: Documentation
+             */
             const val KEY: String = "bold"
         }
     }
 
+    /**
+     * TODO: Documentation
+     */
     class Italic(
         start: Int? = null,
         end: Int? = null
     ) : TextFormat(start, end) {
         companion object {
+            /**
+             * TODO: Documentation
+             */
             const val KEY: String = "italic"
         }
     }
 
+    /**
+     * TODO: Documentation
+     */
     class StrikeThrough(
         start: Int? = null,
         end: Int? = null
     ) : TextFormat(start, end) {
         companion object {
+            /**
+             * TODO: Documentation
+             */
             const val KEY: String = "strikethrough"
         }
     }
@@ -70,6 +88,9 @@ sealed class TextFormat(
         var url: String? = null
     ) : TextFormat(start, end) {
         companion object {
+            /**
+             * TODO: Documentation
+             */
             const val KEY: String = "link"
         }
     }
@@ -85,6 +106,9 @@ sealed class TextFormat(
         var blog: Blog? = null
     ) : TextFormat(start, end) {
         companion object {
+            /**
+             * TODO: Documentation
+             */
             const val KEY: String = "mention"
         }
     }
@@ -100,6 +124,9 @@ sealed class TextFormat(
         var hex: String? = null
     ) : TextFormat(start, end) {
         companion object {
+            /**
+             * TODO: Documentation
+             */
             const val KEY: String = "color"
         }
     }
@@ -115,12 +142,26 @@ sealed class TextFormat(
         var size: Option? = null
     ) : TextFormat(start, end) {
         companion object {
+            /**
+             * TODO: Documentation
+             */
             const val KEY: String = "size"
         }
 
+        /**
+         * TODO: Documentation
+         *
+         * @param key TODO: Documentation
+         */
         enum class Option(val key: String) {
+            /**
+             * TODO: Documentation
+             */
             @Json(name = "small")
             Small("small"),
+            /**
+             * TODO: Documentation
+             */
             @Json(name = "big")
             Big("big")
         }

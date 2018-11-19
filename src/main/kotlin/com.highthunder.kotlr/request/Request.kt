@@ -16,13 +16,46 @@ import kotlin.reflect.KClass
  * @version 1.0.0
  */
 interface Request<out T> {
+
+    /**
+     * TODO: Documentation
+     */
     fun getBaseUrl(): String
+
+    /**
+     * TODO: Documentation
+     */
     fun getUrlParameters(apiKey: String): String
+
+    /**
+     * TODO: Documentation
+     */
     fun getUrl(apiKey: String): String = "${getBaseUrl()}${getUrlParameters(apiKey)}"
+
+    /**
+     * TODO: Documentation
+     */
     val responseClass: KClass<out ResponseInterface<T>>
+
+    /**
+     * TODO: Documentation
+     */
     val verb: Verb
+
+    /**
+     * TODO: Documentation
+     */
     val requiresOAuth: Boolean
+
+    /**
+     * TODO: Documentation
+     */
     val improvedByOAuth: Boolean
+
+    /**
+     * TODO: Documentation
+     */
     val apiRootPath: String
         get() = "https://api.tumblr.com/v2/"
+
 }

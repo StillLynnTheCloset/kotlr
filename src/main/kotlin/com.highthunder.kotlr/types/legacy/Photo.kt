@@ -11,9 +11,11 @@ import com.squareup.moshi.JsonClass
  * @version 1.0.0
  *
  * @param originalSize The photo at its original size.
+ * @param panoramaSize TODO: Documentation
  * @param caption A user supplied caption for the individual photo.
+ * @param captionAbstract TODO: Documentation
  * @param altSizes Alternate photo sizes.
- * TODO: Documentation
+ * @param exif TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class Photo(

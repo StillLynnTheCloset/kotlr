@@ -9,6 +9,10 @@ import com.squareup.moshi.JsonClass
  * @author highthunder
  * @since 10/20/18
  * @version 1.0.0
+ *
+ *
+ * @param contentString TODO: Documentation
+ * @param contentList TODO: Documentation
  */
 @JsonClass(generateAdapter = false)
 data class ContentWrapper(

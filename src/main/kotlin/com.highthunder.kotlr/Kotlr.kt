@@ -9,8 +9,14 @@ import com.highthunder.kotlr.json.superwrapper.*
 import com.highthunder.kotlr.json.wrapper.*
 import com.squareup.moshi.Moshi
 
+/**
+ * TODO: Documentation
+ */
 object Kotlr {
 
+    /**
+     * TODO: Documentation
+     */
     fun getMoshi(): Moshi {
         val step1: Moshi = Moshi
             .Builder()

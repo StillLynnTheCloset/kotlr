@@ -15,6 +15,9 @@ import com.squareup.moshi.ToJson
  */
 class FormatJsonAdapter {
 
+    /**
+     * TODO: Documentation
+     */
     @FromJson
     fun toFormat(input: SuperFormatJson?): TextFormat {
         return when (input?.type) {
@@ -29,6 +32,9 @@ class FormatJsonAdapter {
         }
     }
 
+    /**
+     * TODO: Documentation
+     */
     @ToJson
     fun fromFormat(input: TextFormat): SuperFormatJson? {
         return when (input) {

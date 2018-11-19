@@ -7,7 +7,7 @@ package com.highthunder.kotlr.request
  * @since 11/4/18
  * @version 1.0.0
  */
-abstract class RequestPosts<T>(
+abstract class RequestPosts<out T>(
     private val postLimit: Int? = null,
     private val postOffset: Long? = null,
     private val afterPostId: Long? = null,
@@ -35,6 +35,9 @@ abstract class RequestPosts<T>(
         }
     }
 
+    /**
+     *  TODO: Documentation
+     */
     override fun getUrlParameters(apiKey: String): String {
         return StringBuilder().apply {
             var previous = false

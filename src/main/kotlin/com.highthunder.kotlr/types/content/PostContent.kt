@@ -54,6 +54,9 @@ sealed class PostContent {
         var attribution: Attribution? = null
     ) : PostContent() {
         companion object {
+            /**
+             * TODO: Documentation
+             */
             const val KEY: String = "audio"
         }
     }
@@ -81,6 +84,9 @@ sealed class PostContent {
         var attribution: Attribution? = null
     ) : PostContent() {
         companion object {
+            /**
+             * TODO: Documentation
+             */
             const val KEY: String = "image"
         }
     }
@@ -119,6 +125,9 @@ sealed class PostContent {
         var poster: List<Media>? = null
     ) : PostContent() {
         companion object {
+            /**
+             * TODO: Documentation
+             */
             const val KEY: String = "link"
         }
     }
@@ -143,22 +152,49 @@ sealed class PostContent {
     ) : PostContent() {
 
         companion object {
+            /**
+             * TODO: Documentation
+             */
             const val KEY: String = "text"
         }
 
+        /**
+         * TODO: Documentation
+         */
         enum class SubType {
+            /**
+             * TODO: Documentation
+             */
             @Json(name = "heading1")
             Heading1,
+            /**
+             * TODO: Documentation
+             */
             @Json(name = "heading2")
             Heading2,
+            /**
+             * TODO: Documentation
+             */
             @Json(name = "quirky")
             Quirky,
+            /**
+             * TODO: Documentation
+             */
             @Json(name = "quote")
             Quote,
+            /**
+             * TODO: Documentation
+             */
             @Json(name = "chat")
             Chat,
+            /**
+             * TODO: Documentation
+             */
             @Json(name = "ordered-list-item")
             OrderedListItem,
+            /**
+             * TODO: Documentation
+             */
             @Json(name = "unordered-list-item")
             UnorderedListItem,
         }
@@ -206,6 +242,7 @@ sealed class PostContent {
      * @param attribution Optional attribution information about where the video came from.
      * @param canAutoPlayOnCellular Whether this video can be played on a cellular connection.
      * @param filmStrip A series of images taken from throughout this video.
+     * @param iframe TODO: Documentation
      */
     class VideoContent(
         var url: String? = null,
@@ -221,6 +258,9 @@ sealed class PostContent {
         var iframe: Media? = null
     ) : PostContent() {
         companion object {
+            /**
+             * TODO: Documentation
+             */
             const val KEY: String = "video"
         }
     }

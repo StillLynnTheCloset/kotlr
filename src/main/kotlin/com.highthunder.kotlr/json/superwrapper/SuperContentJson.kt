@@ -66,6 +66,8 @@ import com.squareup.moshi.JsonClass
  * @param metadata Optional provider-specific metadata about the video.
  * @param attribution Optional attribution information about where the video came from.
  * @param canAutoPlayOnCellular Whether this video can be played on a cellular connection.
+ * @param filmStrip TODO: Documentation
+ * @param iframe TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class SuperContentJson(
@@ -207,6 +209,9 @@ data class SuperContentJson(
         iframe = content.iframe
     )
 
+    /**
+     * TODO: Documentation
+     */
     fun toAudioContent(): AudioContent {
         return AudioContent(
             provider, url, media?.singleMedia, title, artist, album, poster,
@@ -214,18 +219,24 @@ data class SuperContentJson(
         )
     }
 
-    fun toImageContent(): ImageContent {
-        return ImageContent(media?.listMedia, feedbackToken, colors, poster, attribution)
-    }
+    /**
+     * TODO: Documentation
+     */
+    fun toImageContent(): ImageContent = ImageContent(media?.listMedia, feedbackToken, colors, poster, attribution)
 
-    fun toLinkContent(): LinkContent {
-        return LinkContent(url, title, description, author, siteName, displayUrl, poster)
-    }
+    /**
+     * TODO: Documentation
+     */
+    fun toLinkContent(): LinkContent = LinkContent(url, title, description, author, siteName, displayUrl, poster)
 
-    fun toTextContent(): TextContent {
-        return TextContent(text, subType, formatting)
-    }
+    /**
+     * TODO: Documentation
+     */
+    fun toTextContent(): TextContent = TextContent(text, subType, formatting)
 
+    /**
+     * TODO: Documentation
+     */
     fun toVideoContent(): VideoContent {
         return VideoContent(
             url, media?.singleMedia, provider, embedHtml, embedUrl, poster,

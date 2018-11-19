@@ -14,7 +14,11 @@ import com.squareup.moshi.JsonClass
  * @since 10/20/18
  * @version 1.0.0
  *
- * Vertical
+ * All:
+ * @param type TODO: Documentation
+ *
+ * [Vertical]
+ * No params
  *
  * [Row]
  * @param rows This is an array of the rows and block indices per row, for basic row layouts.
@@ -50,9 +54,24 @@ data class SuperLayoutJson(
         attribution = layout.attribution
     )
 
+    /**
+     * TODO: Documentation
+     */
     fun toVerticalLayout(): BlockLayout.Vertical = BlockLayout.Vertical()
+
+    /**
+     * TODO: Documentation
+     */
     fun toRowLayout(): BlockLayout.Row = BlockLayout.Row(rows, display)
+
+    /**
+     * TODO: Documentation
+     */
     fun toCondensedLayout(): BlockLayout.Condensed = BlockLayout.Condensed(blocks)
+
+    /**
+     * TODO: Documentation
+     */
     fun toAskLayout(): BlockLayout.Ask = BlockLayout.Ask(blocks, attribution)
 
 }

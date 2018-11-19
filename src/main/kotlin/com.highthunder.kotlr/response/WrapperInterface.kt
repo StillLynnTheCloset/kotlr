@@ -8,6 +8,12 @@ package com.highthunder.kotlr.response
  * @version 1.0.0
  */
 interface WrapperInterface<out T> {
+    /**
+     * TODO: Documentation
+     */
     fun getMessage(): String?
+    /**
+     * TODO: Documentation
+     */
     fun getBody(): T?
 }

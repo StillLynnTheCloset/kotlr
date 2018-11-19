@@ -47,17 +47,17 @@ class XAuthFlow {
             // Response is received in the format "oauth_token=value&oauth_token_secret=value".
             var extractedToken: String? = null
             var extractedSecret: String? = null
-            val values = responseStr.split("&".toRegex()).dropLastWhile { it.isEmpty() }
-            for (value in values) {
-                val kvp = value.split("=".toRegex()).dropLastWhile { it.isEmpty() }
-                if (kvp.size == 2) {
-                    if (kvp[0] == RESPONSE_PARAMETER_KEY_TOKEN) {
-                        extractedToken = kvp[1]
-                    } else if (kvp[0] == RESPONSE_PARAMETER_KEY_SECRET) {
-                        extractedSecret = kvp[1]
+            val values = responseStr.split("&".toRegex()).dropLastWhile(String::isEmpty)
+            values
+                .map { value -> value.split("=".toRegex()).dropLastWhile(String::isEmpty) }
+                .filter { it.size == 2 }
+                .forEach {
+                    if (it[0] == RESPONSE_PARAMETER_KEY_TOKEN) {
+                        extractedToken = it[1]
+                    } else if (it[0] == RESPONSE_PARAMETER_KEY_SECRET) {
+                        extractedSecret = it[1]
                     }
                 }
-            }
             if (extractedToken != null && extractedSecret != null) {
                 return OAuth1AccessToken(extractedToken, extractedSecret)
             }
@@ -82,6 +82,9 @@ class XAuthFlow {
         return clearXAuth(service.execute(request))
     }
 
+    /**
+     *  TODO: Documentation
+     */
     fun getUserKey(appKey: TumblrAppKey, email: String, password: String): TumblrUserKey {
         val token = postXAuth(appKey, email, password)
         return TumblrUserKey(appKey, token.token, token.tokenSecret)

@@ -25,7 +25,14 @@ data class SuperDisplayModeJson(
     constructor(mode: Weighted) : this(Weighted.KEY)
     constructor(mode: Carousel) : this(Carousel.KEY)
 
+    /**
+     * TODO: Documentation
+     */
     fun toWeighted(): Weighted = Weighted()
+
+    /**
+     * TODO: Documentation
+     */
     fun toCarousel(): Carousel = Carousel()
 
 }

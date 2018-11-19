@@ -10,157 +10,333 @@ import com.squareup.moshi.Json
  * @author highthunder
  * @since 10/20/18
  * @version 1.0.0
- *
- * @param blogName The short name used to uniquely identify a blog.
- * @param id The post's unique ID.
- * @param blog A standard API-formatted "short blog info" object.
- * @param postUrl The location of the post.
- * @param timestamp The time of the post, in seconds since the epoch.
- * @param date The GMT date and time of the post, as a string.
- * @param format The post format: html, raw, or markdown.
- * @param reblogKey The key used to reblog this post.
- * @param tags Tags applied to the post.
- * @param isBookmarklet Indicates whether the post was created via the Tumblr bookmarklet.
- * @param isMobile Indicates whether the post was created via mobile/email publishing.
- * @param sourceUrl The URL for the source of the content (for quotes, reblogs, etc.).
- * @param sourceTitle The title of the source site.
- * @param isLiked Indicates if a user has already liked a post or not.
- * @param state Indicates the current state of the post.
- * @param totalPosts The total number of post available for this request, useful for paginating through results.
- * @param content The array of content that constitutes the body of a post in the Neue Post Format(NPF).
- * @param trail The previous Posts in the reblog trail. In order of oldest (the root Post) to the newest (the parent Post).
- * @param layout The layouts of the blocks in this post.
- * @param postAuthor The id of the author of the post.
- * @param shortUrl The short URL for this post.
- * @param isBlocksFormat Indicates whether or not this post is using the new block format(NPF).
- * @param likedTimestamp The timestamp of when this post was liked.
- * @param slug The slug.
- * @param rebloggedFromId The ID of the post that this post reblogged.
- * @param rebloggedFromName The name of the blog that this post reblogged.
- * @param noteCount The note count for this post.
- * @param recommendedSource The source of a recommended post.
- * @param recommendedColor The recommended color for styling this post.
- * @param postAuthorIsAdult Indicates whether or not the author of this post is an adult only blog.
- * @param isSubmission Indicates whether or not this post is a submission.
- * @param canLike Indicates whether or not the current user can like this post.
- * @param canReblog Indicates whether or not the current user can reblog this post.
- * @param canSendInMessage Indicates whether or not this post can be sent in a message.
- * @param canReply Indicates whether or not the current user can reply to this post.
- * @param displayAvatar Indicates whether or not the poster's avatar should be shown with this post.
- * @param followed Indicates whether or not the current user follows the author of this post.
  */
-abstract class Post(
+interface Post {
 
     // region Defaults
 
-    var blogName: String? = null,
-    val id: Long? = null,
-    val blog: Blog? = null,
-    val postUrl: String? = null,
-    val timestamp: Long? = null,
-    val date: String? = null,
-    var format: PostFormat? = null,
-    val reblogKey: String? = null,
-    var tags: List<String>? = null,
-    var isBookmarklet: Boolean? = null,
-    var isMobile: Boolean? = null,
-    var sourceUrl: String? = null,
-    var sourceTitle: String? = null,
-    val isLiked: Boolean? = null,
-    var state: State? = null,
-    val totalPosts: Int? = null,
-    var anonymous: Boolean? = null, // TODO: Documentation
+    /**
+     * The short name used to uniquely identify a blog.
+     */
+    var blogName: String?
+    /**
+     * The post's unique ID.
+     */
+    val id: Long?
+    /**
+     * A standard API-formatted "short blog info" object.
+     */
+    val blog: Blog?
+    /**
+     * The location of the post.
+     */
+    val postUrl: String?
+    /**
+     * The time of the post, in seconds since the epoch.
+     */
+    val timestamp: Long?
+    /**
+     * The GMT date and time of the post, as a string.
+     */
+    val date: String?
+    /**
+     * The post format: html, raw, or markdown.
+     */
+    var format: PostFormat?
+    /**
+     * The key used to reblog this post.
+     */
+    val reblogKey: String?
+    /**
+     * Tags applied to the post.
+     */
+    var tags: List<String>?
+    /**
+     * Indicates whether the post was created via the Tumblr bookmarklet.
+     */
+    var isBookmarklet: Boolean?
+    /**
+     * Indicates whether the post was created via mobile/email publishing.
+     */
+    var isMobile: Boolean?
+    /**
+     * The URL for the source of the content (for quotes, reblogs, etc.).
+     */
+    var sourceUrl: String?
+    /**
+     * The title of the source site.
+     */
+    var sourceTitle: String?
+    /**
+     * Indicates if a user has already liked a post or not.
+     */
+    val isLiked: Boolean?
+    /**
+     * Indicates the current state of the post.
+     */
+    var state: State?
+    /**
+     * The total number of post available for this request, useful for paginating through results.
+     */
+    val totalPosts: Int?
+    /**
+     * TODO: Documentation
+     */
+    var anonymous: Boolean?
 
     // endregion
 
     // region Situational Fields
 
-    var content: List<PostContent>? = null,
-    var trail: List<Trail>? = null,
-    var layout: List<BlockLayout>? = null,
-    var postAuthor: String? = null,
-    var shortUrl: String? = null,
-    var summary: String? = null,
-    var isBlocksFormat: Boolean? = null,
-    val likedTimestamp: Long? = null,
-    var slug: String? = null,
-    var noteCount: Long? = null,
-    val recommendedSource: String? = null,
-    val recommendedColor: String? = null,
-    val postAuthorIsAdult: Boolean? = null,
-    var isSubmission: Boolean? = null,
-    var canLike: Boolean? = null,
-    var canReblog: Boolean? = null,
-    var canSendInMessage: Boolean? = null,
-    var canReply: Boolean? = null,
-    val displayAvatar: Boolean? = null,
-    val followed: Boolean? = null,
-    var reblogData: ReblogData? = null, // TODO: Documentation
-    val rebloggedFromId: Long? = null, // TODO: Documentation
-    val reblogged_from_url: String? = null, // TODO: Documentation
-    val rebloggedFromName: String? = null, // TODO: Documentation
-    val reblogged_from_title: String? = null, // TODO: Documentation
-    val reblogged_from_uuid: String? = null, // TODO: Documentation
-    val reblogged_from_can_message: Boolean? = null, // TODO: Documentation
-    val reblogged_from_following: Boolean? = null, // TODO: Documentation
-    val reblogged_root_id: Long? = null, // TODO: Documentation
-    val reblogged_root_url: String? = null, // TODO: Documentation
-    val reblogged_root_name: String? = null, // TODO: Documentation
-    val reblogged_root_title: String? = null, // TODO: Documentation
-    val reblogged_root_uuid: String? = null, // TODO: Documentation
-    val reblogged_root_can_message: Boolean? = null, // TODO: Documentation
-    val reblogged_root_following: Boolean? = null, // TODO: Documentation
-    val notes: List<NoteData>? = null // TODO: Documentation
+    /**
+     * The array of content that constitutes the body of a post in the Neue Post Format(NPF).
+     */
+    var content: List<PostContent>?
+    /**
+     * The previous Posts in the reblog trail. In order of oldest (the root Post) to the newest (the parent Post).
+     */
+    var trail: List<Trail>?
+    /**
+     * The layouts of the blocks in this post.
+     */
+    var layout: List<BlockLayout>?
+    /**
+     * The id of the author of the post.
+     */
+    var postAuthor: String?
+    /**
+     * The short URL for this post.
+     */
+    var shortUrl: String?
+    /**
+     * A short description of this post.
+     */
+    var summary: String?
+    /**
+     * Indicates whether or not this post is using the new block format(NPF).
+     */
+    var isBlocksFormat: Boolean?
+    /**
+     * The timestamp of when this post was liked.
+     */
+    val likedTimestamp: Long?
+    /**
+     * The slug. TODO: Documentation
+     */
+    var slug: String?
+    /**
+     * The note count for this post.
+     */
+    var noteCount: Long?
+    /**
+     * The source of a recommended post.
+     */
+    val recommendedSource: String?
+    /**
+     * The recommended color for styling this post.
+     */
+    val recommendedColor: String?
+    /**
+     * Indicates whether or not the author of this post is an adult only blog.
+     */
+    val postAuthorIsAdult: Boolean?
+    /**
+     * Indicates whether or not this post is a submission.
+     */
+    var isSubmission: Boolean?
+    /**
+     * Indicates whether or not the current user can like this post.
+     */
+    var canLike: Boolean?
+    /**
+     * Indicates whether or not the current user can reblog this post.
+     */
+    var canReblog: Boolean?
+    /**
+     * Indicates whether or not this post can be sent in a message.
+     */
+    var canSendInMessage: Boolean?
+    /**
+     * Indicates whether or not the current user can reply to this post.
+     */
+    var canReply: Boolean?
+    /**
+     * Indicates whether or not the poster's avatar should be shown with this post.
+     */
+    val displayAvatar: Boolean?
+    /**
+     * Indicates whether or not the current user follows the author of this post.
+     */
+    val followed: Boolean?
+    /**
+     * TODO: Documentation
+     */
+    var reblogData: ReblogData?
+    /**
+     * TODO: Documentation
+     */
+    val rebloggedFromId: Long?
+    /**
+     * TODO: Documentation
+     */
+    val rebloggedFromUrl: String?
+    /**
+     * TODO: Documentation
+     */
+    val rebloggedFromName: String?
+    /**
+     * TODO: Documentation
+     */
+    val rebloggedFromTitle: String?
+    /**
+     * TODO: Documentation
+     */
+    val rebloggedFromUuid: String?
+    /**
+     * TODO: Documentation
+     */
+    val rebloggedFromCanMessage: Boolean?
+    /**
+     * TODO: Documentation
+     */
+    val rebloggedFromFollowing: Boolean?
+    /**
+     * TODO: Documentation
+     */
+    val rebloggedRootId: Long?
+    /**
+     * TODO: Documentation
+     */
+    val rebloggedRootUrl: String?
+    /**
+     * TODO: Documentation
+     */
+    val rebloggedRootName: String?
+    /**
+     * TODO: Documentation
+     */
+    val rebloggedRootTitle: String?
+    /**
+     * TODO: Documentation
+     */
+    val rebloggedRootUuid: String?
+    /**
+     * TODO: Documentation
+     */
+    val rebloggedRootCanMessage: Boolean?
+    /**
+     * TODO: Documentation
+     */
+    val rebloggedRootFollowing: Boolean?
+    /**
+     * TODO: Documentation
+     */
+    val notes: List<NoteData>?
 
     // endregion
-
-) {
 
     /**
      * Enum of valid post states.
      */
     enum class State {
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "draft")
         Draft,
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "queued")
         Queue,
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "published")
         Published,
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "private")
         Private,
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "submission")
         Submission
     }
 
     /**
      * Enum of valid post types.
+     * @param key TODO: Documentation
      */
     enum class Type(val key: String) {
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "answer")
         Answer("answer"),
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "audio")
         Audio("audio"),
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "chat")
         Chat("chat"),
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "link")
         Link("link"),
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "photo")
         Photo("photo"),
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "quote")
         Quote("quote"),
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "text")
         Text("text"),
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "video")
         Video("video"),
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "blocks")
         Block("blocks")
     }
 
+    /**
+     * TODO: Documentation
+     *
+     * @param key TODO: Documentation
+     */
     enum class PostFormat(val key: String) {
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "html")
         HTML("html"),
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "text")
         Plain("text"),
+        /**
+         * TODO: Documentation
+         */
         @Json(name = "raw")
         Raw("raw")
     }
