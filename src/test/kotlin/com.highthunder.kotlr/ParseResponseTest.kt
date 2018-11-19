@@ -2,6 +2,7 @@ package com.highthunder.kotlr
 
 import com.highthunder.kotlr.response.type.blog.ResponseBlogLikes
 import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
+import com.highthunder.kotlr.types.content.PostContent
 import com.squareup.moshi.JsonAdapter
 import org.junit.Assert
 import org.junit.Test
@@ -18,7 +19,7 @@ class ParseResponseTest {
     @Test
     fun parseBlogLikesResponseTest() {
         val adapter =
-            Kotlr.getMoshi().adapter<ResponseBlogLikes.Response>(ResponseBlogLikes.Response::class.java).failOnUnknown()
+            moshi().adapter<ResponseBlogLikes.Response>(ResponseBlogLikes.Response::class.java).failOnUnknown()
 
         val response: ResponseBlogLikes.Response? = adapter.fromJson(Sample.blogLikesResponseGood)
         Assert.assertNotNull(response)
@@ -41,7 +42,7 @@ class ParseResponseTest {
     @Test
     fun parseBlogLikesResponseBadTest() {
         val adapter =
-            Kotlr.getMoshi().adapter<ResponseBlogLikes.Response>(ResponseBlogLikes.Response::class.java).failOnUnknown()
+            moshi().adapter<ResponseBlogLikes.Response>(ResponseBlogLikes.Response::class.java).failOnUnknown()
 
         val response: ResponseBlogLikes.Response? = adapter.fromJson(Sample.blogLikesUnauthorized)
         Assert.assertNotNull(response)
@@ -55,7 +56,7 @@ class ParseResponseTest {
 
     @Test
     fun parseUnauthorizedErrorTest() {
-        val adapter = Kotlr.getMoshi().adapter(ResponseUserDashboard.Response::class.java).failOnUnknown()
+        val adapter = moshi().adapter(ResponseUserDashboard.Response::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<ResponseUserDashboard.Response>)
 
         val post: ResponseUserDashboard.Response? = adapter.fromJson(Sample.dashUnauthorized)
@@ -67,7 +68,7 @@ class ParseResponseTest {
     @Test
     fun parseDashResponseTest() {
         val adapter =
-            Kotlr.getMoshi().adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java)
+            moshi().adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java)
                 .failOnUnknown()
 
         val response: ResponseUserDashboard.Response? = adapter.fromJson(DashSample.dashResult)
@@ -79,10 +80,12 @@ class ParseResponseTest {
     @Test
     fun parseDashNeueResponseTest() {
         val adapter =
-            Kotlr.getMoshi().adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java)
+            moshi().adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java)
                 .failOnUnknown()
 
         val response: ResponseUserDashboard.Response? = adapter.fromJson(DashSample.neueSample)
+        val colors = (response?.getBody()?.posts?.firstOrNull()?.content?.firstOrNull() as? PostContent.ImageContent)?.colors
+        System.out.println(colors)
 
         val json = adapter.toJson(response)
         Assert.assertNotNull(json)
@@ -91,7 +94,7 @@ class ParseResponseTest {
     @Test
     fun parseDashAudioEmbedResponseTest() {
         val adapter =
-            Kotlr.getMoshi().adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java)
+            moshi().adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java)
                 .failOnUnknown()
 
         val response: ResponseUserDashboard.Response? = adapter.fromJson(DashSample.legacyAudioEmbedPost)

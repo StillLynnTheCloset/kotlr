@@ -28,7 +28,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyAnswerTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.answerPost)
@@ -44,7 +44,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyAnswerAbstractTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.answerPostWithAbstract)
@@ -60,7 +60,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyAudioTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.audioPost)
@@ -76,7 +76,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyAudioTrackTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.audioPostWithTrack)
@@ -92,7 +92,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyAudioTrackOfTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.audioPostWithTrackOf)
@@ -108,7 +108,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyAudioProviderTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.audioPostWithProvider)
@@ -124,7 +124,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyAudioExternalTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.audioPostWithExternal)
@@ -140,7 +140,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyChatTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.chatPost)
@@ -156,7 +156,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyChat2Test() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.chat2Post)
@@ -172,7 +172,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyLinkTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.linkPost)
@@ -188,7 +188,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyLinkImageTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.linkPostWithImage)
@@ -204,7 +204,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyLinkAuthorTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.linkPostWithAuthor)
@@ -220,7 +220,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyPhotoTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.photoPost)
@@ -236,7 +236,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyPhotoPanoramaTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.photoPostWithPanorama)
@@ -252,7 +252,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyPhotoAbstractTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.photoPostWithCaptionAbstract)
@@ -268,7 +268,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyPhotoSubmissionTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.submission)
@@ -284,7 +284,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyPhotoLayoutTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.photoPostWithLayout)
@@ -300,7 +300,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyPhotoLinkUrlTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.photoPostWithLinkUrl)
@@ -316,7 +316,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyQuoteTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.quotePost)
@@ -332,7 +332,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyTextTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.textPost)
@@ -348,7 +348,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyTextAbstractTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.textPostWithAbstract)
@@ -364,7 +364,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyVideoPostTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.videoPost)
@@ -380,7 +380,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyVideoVideoTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.videoPostWithVideoObject)
@@ -396,7 +396,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyVideoPermaLinkTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.videoPostWithPermaLink)
@@ -412,7 +412,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyVideoFloatTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.videoPostWithFloatDuration)
@@ -428,7 +428,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyVideoBooleanEmbedTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.videoPostWithBooleanEmbed)
@@ -444,7 +444,7 @@ class TumblrTest {
 
     @Test
     fun parsePostWithNotesTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.postWithNotesData)
@@ -460,7 +460,7 @@ class TumblrTest {
 
     @Test
     fun parsePostWithReblogTest() {
-        val adapter = Kotlr.getMoshi().adapter(SuperPostJson::class.java).failOnUnknown()
+        val adapter = moshi().adapter(SuperPostJson::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<SuperPostJson>)
 
         val post: SuperPostJson? = adapter.fromJson(Sample.postWithReblogData)
@@ -480,7 +480,7 @@ class TumblrTest {
 
     @Test
     fun parsePhotoWithExifTest() {
-        val adapter = Kotlr.getMoshi().adapter(Photo::class.java).failOnUnknown()
+        val adapter = moshi().adapter(Photo::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<Photo>)
 
         val post: Photo? = adapter.fromJson(Sample.photoWithExit)
@@ -491,7 +491,7 @@ class TumblrTest {
 
     @Test
     fun parseLegacyVideoTest() {
-        val adapter = Kotlr.getMoshi().adapter(Video::class.java).failOnUnknown()
+        val adapter = moshi().adapter(Video::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<Video>)
 
         val post: Video? = adapter.fromJson(Sample.video)
@@ -506,7 +506,7 @@ class TumblrTest {
 
     @Test
     fun parseUserOtherTest() {
-        val adapter = Kotlr.getMoshi().adapter(User::class.java).failOnUnknown()
+        val adapter = moshi().adapter(User::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<User>)
 
         val user: User? = adapter.fromJson(Sample.userOther)
@@ -517,7 +517,7 @@ class TumblrTest {
 
     @Test
     fun parseUserSelfTest() {
-        val adapter = Kotlr.getMoshi().adapter(User::class.java).failOnUnknown()
+        val adapter = moshi().adapter(User::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<User>)
 
         val user: User? = adapter.fromJson(Sample.userSelf)
@@ -532,7 +532,7 @@ class TumblrTest {
 
     @Test
     fun parseBlogOtherTest() {
-        val adapter = Kotlr.getMoshi().adapter(Blog::class.java).failOnUnknown()
+        val adapter = moshi().adapter(Blog::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<Blog>)
 
         val blog: Blog? = adapter.fromJson(Sample.blogOther)
@@ -543,7 +543,7 @@ class TumblrTest {
 
     @Test
     fun parseBlogSubmissionsTest() {
-        val adapter = Kotlr.getMoshi().adapter(Blog::class.java).failOnUnknown()
+        val adapter = moshi().adapter(Blog::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<Blog>)
 
         val blog: Blog? = adapter.fromJson(Sample.blogSubmission)
@@ -554,7 +554,7 @@ class TumblrTest {
 
     @Test
     fun parseBlogNsfwTest() {
-        val adapter = Kotlr.getMoshi().adapter(Blog::class.java).failOnUnknown()
+        val adapter = moshi().adapter(Blog::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<Blog>)
 
         val blog: Blog? = adapter.fromJson(Sample.blogNsfw)
@@ -565,7 +565,7 @@ class TumblrTest {
 
     @Test
     fun parseBlogAuthTest() {
-        val adapter = Kotlr.getMoshi().adapter(Blog::class.java).failOnUnknown()
+        val adapter = moshi().adapter(Blog::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<Blog>)
 
         val blog: Blog? = adapter.fromJson(Sample.blogAuth)
@@ -576,7 +576,7 @@ class TumblrTest {
 
     @Test
     fun parseBlogSelfTest() {
-        val adapter = Kotlr.getMoshi().adapter(Blog::class.java).failOnUnknown()
+        val adapter = moshi().adapter(Blog::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<Blog>)
 
         val blog: Blog? = adapter.fromJson(Sample.blogSelf)
@@ -591,7 +591,7 @@ class TumblrTest {
 
     @Test
     fun parseNoteLikeTest() {
-        val adapter = Kotlr.getMoshi().adapter(NoteData::class.java).failOnUnknown()
+        val adapter = moshi().adapter(NoteData::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<NoteData>)
 
         val note: NoteData? = adapter.fromJson(Sample.noteLike)
@@ -602,7 +602,7 @@ class TumblrTest {
 
     @Test
     fun parseNotePostedTest() {
-        val adapter = Kotlr.getMoshi().adapter(NoteData::class.java).failOnUnknown()
+        val adapter = moshi().adapter(NoteData::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<NoteData>)
 
         val note: NoteData? = adapter.fromJson(Sample.notePosted)
@@ -613,7 +613,7 @@ class TumblrTest {
 
     @Test
     fun parseNoteAttributionTest() {
-        val adapter = Kotlr.getMoshi().adapter(NoteData::class.java).failOnUnknown()
+        val adapter = moshi().adapter(NoteData::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<NoteData>)
 
         val note: NoteData? = adapter.fromJson(Sample.notePostAttribution)
@@ -624,7 +624,7 @@ class TumblrTest {
 
     @Test
     fun parseNoteReblogTest() {
-        val adapter = Kotlr.getMoshi().adapter(NoteData::class.java).failOnUnknown()
+        val adapter = moshi().adapter(NoteData::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<NoteData>)
 
         val note: NoteData? = adapter.fromJson(Sample.noteReblogWithAddedText)
@@ -635,7 +635,7 @@ class TumblrTest {
 
     @Test
     fun parseNoteReplyTest() {
-        val adapter = Kotlr.getMoshi().adapter(NoteData::class.java).failOnUnknown()
+        val adapter = moshi().adapter(NoteData::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<NoteData>)
 
         val note: NoteData? = adapter.fromJson(Sample.noteWithResponseText)
@@ -646,7 +646,7 @@ class TumblrTest {
 
     @Test
     fun parseNoteReplyFormattedReblogTest() {
-        val adapter = Kotlr.getMoshi().adapter(NoteData::class.java).failOnUnknown()
+        val adapter = moshi().adapter(NoteData::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<NoteData>)
 
         val note: NoteData? = adapter.fromJson(Sample.noteWithFormatting)

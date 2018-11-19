@@ -22,7 +22,7 @@ import okhttp3.OkHttpClient
 class KotlrClient(private val key: TumblrUserKey) {
 
     companion object {
-        private val moshi: Moshi = Kotlr.getMoshi()
+        private val moshi: Moshi = moshi()
     }
 
     private val service: OAuth10aService = ServiceBuilder(key.apiKey).let { serviceBuilder ->

@@ -15,7 +15,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseAudioTumblrTest() {
-        val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
         val content: PostContent.AudioContent? =
@@ -30,7 +30,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseAudioSoundCloudTest() {
-        val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
         val content: PostContent.AudioContent? =
@@ -45,7 +45,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseImageTest() {
-        val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
         val content: PostContent.ImageContent? = adapter.fromJson(Sample.imageContent) as? PostContent.ImageContent
@@ -62,7 +62,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseImageWithFeedbackTest() {
-        val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
         val content: PostContent.ImageContent? =
@@ -80,7 +80,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseLinkReadTest() {
-        val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
         val content: PostContent.LinkContent? = adapter.fromJson(Sample.linkContentRead) as? PostContent.LinkContent
@@ -98,7 +98,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseLinkCreateTest() {
-        val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
         val content: PostContent.LinkContent? = adapter.fromJson(Sample.linkContentCreate) as? PostContent.LinkContent
@@ -116,7 +116,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseVideoTumblrTest() {
-        val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
         val content: PostContent.VideoContent? =
@@ -129,7 +129,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseVideoYoutubeTest() {
-        val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
         val content: PostContent.VideoContent? =
@@ -142,7 +142,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseVideoContentIFrame() {
-        val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
         val post: PostContent? = adapter.fromJson(Sample.videoContentIFrame)
@@ -157,7 +157,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseAttributionPostTest() {
-        val adapter = Kotlr.getMoshi().adapter(Attribution::class.java).failOnUnknown()
+        val adapter = moshi().adapter(Attribution::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<Attribution>)
 
         val attribution: Attribution.Post? = adapter.fromJson(Sample.postAttribution) as? Attribution.Post
@@ -175,7 +175,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseAttributionLinkTest() {
-        val adapter = Kotlr.getMoshi().adapter(Attribution::class.java).failOnUnknown()
+        val adapter = moshi().adapter(Attribution::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<Attribution>)
 
         val attribution: Attribution.Link? = adapter.fromJson(Sample.linkAttribution) as? Attribution.Link
@@ -187,7 +187,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseAttributionBlogTest() {
-        val adapter = Kotlr.getMoshi().adapter(Attribution::class.java).failOnUnknown()
+        val adapter = moshi().adapter(Attribution::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<Attribution>)
 
         val attribution: Attribution.Blog? = adapter.fromJson(Sample.blogAttribution) as? Attribution.Blog
@@ -202,7 +202,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseAttributionAppTest() {
-        val adapter = Kotlr.getMoshi().adapter(Attribution::class.java).failOnUnknown()
+        val adapter = moshi().adapter(Attribution::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<Attribution>)
 
         val attribution: Attribution.App? = adapter.fromJson(Sample.appAttribution) as? Attribution.App
@@ -222,7 +222,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseTextSimpleTest() {
-        val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
         val content: PostContent.TextContent? = adapter.fromJson(Sample.textContentSimple) as? PostContent.TextContent
@@ -236,7 +236,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseTextChatTest() {
-        val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
         val content: PostContent.TextContent? = adapter.fromJson(Sample.textContentChat) as? PostContent.TextContent
@@ -250,7 +250,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseTextQuirkyTest() {
-        val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
         val content: PostContent.TextContent? = adapter.fromJson(Sample.textContentQuirky) as? PostContent.TextContent
@@ -264,7 +264,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseTextHeading1Test() {
-        val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
         val content: PostContent.TextContent? = adapter.fromJson(Sample.textContentHeading1) as? PostContent.TextContent
@@ -278,7 +278,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseTextHeading2Test() {
-        val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
         val content: PostContent.TextContent? = adapter.fromJson(Sample.textContentHeading2) as? PostContent.TextContent
@@ -292,7 +292,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseTextQuoteTest() {
-        val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
         val content: PostContent.TextContent? = adapter.fromJson(Sample.textContentQuote) as? PostContent.TextContent
@@ -306,7 +306,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseTextOrderedItemTest() {
-        val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
         val content: PostContent.TextContent? =
@@ -321,7 +321,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseTextUnorderedItemTest() {
-        val adapter = Kotlr.getMoshi().adapter(PostContent::class.java).failOnUnknown()
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
         val content: PostContent.TextContent? =
@@ -340,7 +340,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseFormatColorTest() {
-        val adapter = Kotlr.getMoshi().adapter(TextFormat::class.java).failOnUnknown()
+        val adapter = moshi().adapter(TextFormat::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<TextFormat>)
 
         val attribution: TextFormat.Color? = adapter.fromJson(Sample.textFormatColor) as? TextFormat.Color
@@ -354,7 +354,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseFormatMentionTest() {
-        val adapter = Kotlr.getMoshi().adapter(TextFormat::class.java).failOnUnknown()
+        val adapter = moshi().adapter(TextFormat::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<TextFormat>)
 
         val attribution: TextFormat.Mention? = adapter.fromJson(Sample.textFormatMention) as? TextFormat.Mention
@@ -371,7 +371,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseFormatSizeTest() {
-        val adapter = Kotlr.getMoshi().adapter(TextFormat::class.java).failOnUnknown()
+        val adapter = moshi().adapter(TextFormat::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<TextFormat>)
 
         val attribution: TextFormat.Size? = adapter.fromJson(Sample.textFormatSize) as? TextFormat.Size
@@ -390,7 +390,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseLayoutNullTest() {
-        val adapter = Kotlr.getMoshi().adapter(BlockLayout::class.java).failOnUnknown()
+        val adapter = moshi().adapter(BlockLayout::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<BlockLayout>)
 
         val layout: BlockLayout.Vertical? = adapter.fromJson(Sample.layoutNull) as? BlockLayout.Vertical
@@ -402,7 +402,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseLayoutVerticalTest() {
-        val adapter = Kotlr.getMoshi().adapter(BlockLayout::class.java).failOnUnknown()
+        val adapter = moshi().adapter(BlockLayout::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<BlockLayout>)
 
         val layout: BlockLayout.Vertical? = adapter.fromJson(Sample.layoutVertical) as? BlockLayout.Vertical
@@ -413,7 +413,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseLayoutRowTest() {
-        val adapter = Kotlr.getMoshi().adapter(BlockLayout::class.java).failOnUnknown()
+        val adapter = moshi().adapter(BlockLayout::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<BlockLayout>)
 
         val layout: BlockLayout.Row? = adapter.fromJson(Sample.layoutRow) as? BlockLayout.Row
@@ -426,7 +426,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseLayoutRowDisplayModeTest() {
-        val adapter = Kotlr.getMoshi().adapter(BlockLayout::class.java).failOnUnknown()
+        val adapter = moshi().adapter(BlockLayout::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<BlockLayout>)
 
         val layout: BlockLayout.Row? = adapter.fromJson(Sample.layoutRowDisplayMode) as? BlockLayout.Row
@@ -439,7 +439,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseLayoutCondensedTest() {
-        val adapter = Kotlr.getMoshi().adapter(BlockLayout::class.java).failOnUnknown()
+        val adapter = moshi().adapter(BlockLayout::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<BlockLayout>)
 
         val layout: BlockLayout.Condensed? = adapter.fromJson(Sample.layoutCondensed) as? BlockLayout.Condensed
@@ -451,7 +451,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseLayoutAskTest() {
-        val adapter = Kotlr.getMoshi().adapter(BlockLayout::class.java).failOnUnknown()
+        val adapter = moshi().adapter(BlockLayout::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<BlockLayout>)
 
         val layout: BlockLayout.Ask? = adapter.fromJson(Sample.layoutAsk) as? BlockLayout.Ask
@@ -468,7 +468,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseDisplayWeightedTest() {
-        val adapter = Kotlr.getMoshi().adapter(BlockLayout.Row.Display::class.java).failOnUnknown()
+        val adapter = moshi().adapter(BlockLayout.Row.Display::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<BlockLayout.Row.Display>)
 
         val display: BlockLayout.Row.Display? = adapter.fromJson(Sample.displayModeWeighted)
@@ -482,7 +482,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseDisplayCarouselTest() {
-        val adapter = Kotlr.getMoshi().adapter(BlockLayout.Row.Display::class.java).failOnUnknown()
+        val adapter = moshi().adapter(BlockLayout.Row.Display::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<BlockLayout.Row.Display>)
 
         val display: BlockLayout.Row.Display? = adapter.fromJson(Sample.displayModeCarousel)
@@ -500,7 +500,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseMediaJpegTest() {
-        val adapter = Kotlr.getMoshi().adapter(Media::class.java).failOnUnknown()
+        val adapter = moshi().adapter(Media::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<Media>)
 
         val media: Media? = adapter.fromJson(Sample.mediaContentJpeg)
@@ -515,7 +515,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseMediaMp4Test() {
-        val adapter = Kotlr.getMoshi().adapter(Media::class.java).failOnUnknown()
+        val adapter = moshi().adapter(Media::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<Media>)
 
         val media: Media? = adapter.fromJson(Sample.mediaContentMp4)
@@ -530,7 +530,7 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseMediaGifTest() {
-        val adapter = Kotlr.getMoshi().adapter(Media::class.java).failOnUnknown()
+        val adapter = moshi().adapter(Media::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<Media>)
 
         val media: Media? = adapter.fromJson(Sample.mediaContentGif)
