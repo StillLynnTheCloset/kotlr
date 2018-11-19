@@ -79,6 +79,23 @@ class ParseNpfUnitTest {
     }
 
     @Test
+    fun parseImageWithColorsTest() {
+        val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
+        assertTrue(adapter is JsonAdapter<PostContent>)
+
+        val content: PostContent.ImageContent? =
+            adapter.fromJson(Sample.imageContentColors) as? PostContent.ImageContent
+        assertNotNull(content)
+        assertNotNull(content?.media)
+        assertNotNull(content?.colors)
+        assertEquals(2, content?.colors?.colors?.size)
+        assertNull(content?.poster)
+        assertNull(content?.attribution)
+        val json = adapter.toJson(content)
+        assertNotNull(json)
+    }
+
+    @Test
     fun parseLinkReadTest() {
         val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)

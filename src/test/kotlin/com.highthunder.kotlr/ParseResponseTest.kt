@@ -84,8 +84,6 @@ class ParseResponseTest {
                 .failOnUnknown()
 
         val response: ResponseUserDashboard.Response? = adapter.fromJson(DashSample.neueSample)
-        val colors = (response?.getBody()?.posts?.firstOrNull()?.content?.firstOrNull() as? PostContent.ImageContent)?.colors
-        System.out.println(colors)
 
         val json = adapter.toJson(response)
         Assert.assertNotNull(json)

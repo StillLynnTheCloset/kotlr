@@ -137,6 +137,22 @@ object Sample {
         "feedback_token": "abcdef123456"
     }"""
 
+    const val imageContentColors: String = """{
+        "type": "image",
+        "media": [
+            {
+                "type": "image/jpeg",
+                "url": "http://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_1280.jpg",
+                "width": 1280,
+                "height": 1073
+            }
+        ],
+        "colors": {
+            "c0": "a24615",
+            "c1": "ff7c00"
+        }
+    }"""
+
     const val linkContentCreate: String = """{
         "type": "link",
         "url": "https://www.nytimes.com/2017/06/15/us/politics/secrecy-surrounding-senate-health-bill-raises-alarms-in-both-parties.html",
