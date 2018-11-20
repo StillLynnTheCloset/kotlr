@@ -1,6 +1,8 @@
 package com.highthunder.kotlr.json.superwrapper
 
+import com.highthunder.kotlr.json.qualifier.HexColorOctothorpe
 import com.highthunder.kotlr.types.Blog
+import com.highthunder.kotlr.types.Color
 import com.highthunder.kotlr.types.content.TextFormat
 import com.highthunder.kotlr.types.content.TextFormat.*
 import com.squareup.moshi.Json
@@ -43,7 +45,7 @@ data class TextFormatAmalgamation constructor(
     @Json(name = "blog")
     var blog: Blog? = null,
     @Json(name = "hex")
-    var hex: String? = null,
+    @HexColorOctothorpe var hex: Color? = null,
     @Json(name = "size")
     var size: TextFormat.Size.Option? = null
 ) {

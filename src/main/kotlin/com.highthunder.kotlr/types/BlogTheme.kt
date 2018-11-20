@@ -1,5 +1,6 @@
 package com.highthunder.kotlr.types
 
+import com.highthunder.kotlr.json.qualifier.HexColorOctothorpe
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -55,7 +56,7 @@ class BlogTheme(
     @Json(name = "avatar_shape")
     var avatarShape: String? = null,
     @Json(name = "background_color")
-    var backgroundColor: String? = null,
+    @HexColorOctothorpe var backgroundColor: Color? = null,
     @Json(name = "body_font")
     var bodyFont: String? = null,
     @Json(name = "header_bounds")
@@ -65,9 +66,9 @@ class BlogTheme(
     @Json(name = "header_image_scaled")
     var headerImageScaled: String? = null,
     @Json(name = "link_color")
-    var linkColor: String? = null,
+    @HexColorOctothorpe var linkColor: Color? = null,
     @Json(name = "title_color")
-    var titleColor: String? = null,
+    @HexColorOctothorpe var titleColor: Color? = null,
     @Json(name = "title_font")
     var titleFont: String? = null,
     @Json(name = "title_font_weight")

@@ -1,6 +1,8 @@
 package com.highthunder.kotlr.types.content
 
+import com.highthunder.kotlr.json.qualifier.HexColorOctothorpe
 import com.highthunder.kotlr.types.Blog
+import com.highthunder.kotlr.types.Color
 import com.squareup.moshi.Json
 
 /**
@@ -121,7 +123,7 @@ sealed class TextFormat(
     class Color(
         start: Int? = null,
         end: Int? = null,
-        var hex: String? = null
+        @HexColorOctothorpe var hex: com.highthunder.kotlr.types.Color? = null
     ) : TextFormat(start, end) {
         companion object {
             /**

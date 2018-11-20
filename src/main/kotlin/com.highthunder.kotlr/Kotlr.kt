@@ -1,5 +1,7 @@
 package com.highthunder.kotlr
 
+import com.highthunder.kotlr.json.qualifier.HexColorJsonAdapter
+import com.highthunder.kotlr.json.qualifier.HexColorOctothorpeJsonAdapter
 import com.highthunder.kotlr.json.response.blog.*
 import com.highthunder.kotlr.json.response.user.UserDashboardWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserFollowingWrapperJsonAdapter
@@ -21,6 +23,8 @@ internal fun moshi(): Moshi {
         .add(BlockLayoutAmalgamationAdapter())
         .add(DisplayModeAmalgamationAdapter())
         .add(NoteDataAmalgamationAdapter())
+        .add(HexColorJsonAdapter())
+        .add(HexColorOctothorpeJsonAdapter())
         .build()
     val step2: Moshi = step1
         .newBuilder()

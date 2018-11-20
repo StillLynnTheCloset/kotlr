@@ -17,5 +17,5 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = false)
 data class Colors(
-    val colors: Map<Int, String>? = null
+    val colors: Map<Int, Color>? = null
 )
