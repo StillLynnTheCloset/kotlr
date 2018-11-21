@@ -125,6 +125,8 @@ data class QuotePost(
     override val rebloggedRootCanMessage: Boolean? = null,
     override val rebloggedRootFollowing: Boolean? = null,
     override val notes: List<NoteData>? = null,
+    override val publishTime: Long?,
+    override val queueState: Post.QueueState?,
     var text: String? = null,
     var source: String? = null
 ) : Post

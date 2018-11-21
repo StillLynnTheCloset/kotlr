@@ -134,6 +134,8 @@ data class LinkPost(
     override val rebloggedRootCanMessage: Boolean? = null,
     override val rebloggedRootFollowing: Boolean? = null,
     override val notes: List<NoteData>? = null,
+    override val publishTime: Long?,
+    override val queueState: Post.QueueState?,
     var title: String? = null,
     var description: String? = null,
     var url: String? = null,

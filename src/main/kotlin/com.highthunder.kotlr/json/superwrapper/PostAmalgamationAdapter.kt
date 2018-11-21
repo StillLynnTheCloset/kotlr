@@ -32,7 +32,7 @@ class PostAmalgamationAdapter {
             Post.Type.Text -> input.toTextPost()
             Post.Type.Video -> input.toVideoPost()
             Post.Type.Block -> input.toBlockPost()
-            null -> throw JsonDataException("Post or type was null: $input")
+            null -> throw JsonDataException("Post or type was invalid: $input")
         }
     }
 

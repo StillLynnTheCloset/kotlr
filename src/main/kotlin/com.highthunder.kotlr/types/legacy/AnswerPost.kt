@@ -128,6 +128,8 @@ data class AnswerPost(
     override val rebloggedRootCanMessage: Boolean? = null,
     override val rebloggedRootFollowing: Boolean? = null,
     override val notes: List<NoteData>? = null,
+    override val publishTime: Long?,
+    override val queueState: Post.QueueState?,
     var askingName: String? = null,
     var askingUrl: String? = null,
     var question: String? = null,

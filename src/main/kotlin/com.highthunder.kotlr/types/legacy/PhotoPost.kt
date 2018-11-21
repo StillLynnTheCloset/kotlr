@@ -132,6 +132,8 @@ data class PhotoPost(
     override val rebloggedRootCanMessage: Boolean? = null,
     override val rebloggedRootFollowing: Boolean? = null,
     override val notes: List<NoteData>? = null,
+    override val publishTime: Long?,
+    override val queueState: Post.QueueState?,
     var caption: String? = null,
     var captionAbstract: String? = null,
     var width: Int? = null,

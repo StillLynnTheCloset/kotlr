@@ -164,6 +164,7 @@ import com.squareup.moshi.JsonClass
 data class PostAmalgamation(
 
     // region Defaults
+
     @Json(name = "type")
     var type: Post.Type? = null,
     @Json(name = "blog_name")
@@ -204,6 +205,7 @@ data class PostAmalgamation(
     // endregion
 
     // region Situational Fields
+
     @Json(name = "content")
     var content: List<PostContent>? = null,
     @Json(name = "trail")
@@ -277,9 +279,9 @@ data class PostAmalgamation(
     @Json(name = "notes")
     var notes: List<NoteData>? = null,
     @Json(name = "scheduled_publish_time")
-    var publishTime: Long? = null, // TODO: Add to posts.
+    var publishTime: Long? = null,
     @Json(name = "queued_state")
-    var queueState: String? = null, // TODO: Add to posts, figure out all states and make enum.
+    var queueState: Post.QueueState? = null,
 
     // endregion
 
@@ -396,8 +398,10 @@ data class PostAmalgamation(
     // endregion
 
     // region Text Post
+
     @Json(name = "body_abstract")
     var abstract: String? = null,
+
     // endregion
 
     // region Video Post
@@ -490,9 +494,11 @@ data class PostAmalgamation(
         answer = post.answer,
         answerAbstract = post.answerAbstract
     )
+
     // endregion
 
     // region Audio Constructor
+
     constructor(post: AudioPost) : this(
         type = Post.Type.Audio,
         blogName = post.blogName,
@@ -566,9 +572,11 @@ data class PostAmalgamation(
         audioType = post.audioType,
         embed = post.embed
     )
+
     // endregion
 
     // region Chat Constructor
+
     constructor(post: ChatPost) : this(
         type = Post.Type.Chat,
         blogName = post.blogName,
@@ -628,9 +636,11 @@ data class PostAmalgamation(
         body = post.body,
         dialogue = post.dialogue
     )
+
     // endregion
 
     // region Link Constructor
+
     constructor(post: LinkPost) : this(
         type = Post.Type.Link,
         blogName = post.blogName,
@@ -698,6 +708,7 @@ data class PostAmalgamation(
         photos = post.photos,
         body = post.body
     )
+
     // endregion
 
     // region Photo Constructor
@@ -1044,7 +1055,7 @@ data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState,
 
             askingName, askingUrl, question, answer, answerAbstract
         )
@@ -1064,7 +1075,7 @@ data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState,
 
             caption, captionAbstract, player?.contentString, audio_url, plays, album_art,
             artist, album, trackName, trackNumber, track, year, external, providerUrl,
@@ -1086,7 +1097,7 @@ data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState,
 
             title, body, dialogue
         )
@@ -1106,7 +1117,7 @@ data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState,
 
             title, description, url, author, linkAuthor, linkImage, linkImageDimensions,
             excerpt, publisher, photos, body
@@ -1127,7 +1138,7 @@ data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState,
 
             caption, captionAbstract, width, height, photos, linkUrl, imagePermalink, panorama, photosetLayout
         )
@@ -1147,7 +1158,7 @@ data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState,
 
             text, source
         )
@@ -1167,7 +1178,7 @@ data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState,
 
             title, abstract, body
         )
@@ -1187,7 +1198,7 @@ data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState,
 
             player?.contentList, caption, videoUrl, html5Capable, thumbnailUrl, thumbnailWidth,
             thumbnailHeight, duration, videoData, permalinkUrl, videoType
@@ -1208,7 +1219,7 @@ data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState
         )
     }
 

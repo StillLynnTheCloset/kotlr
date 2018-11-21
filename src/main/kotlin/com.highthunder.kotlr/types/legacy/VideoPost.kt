@@ -134,6 +134,8 @@ data class VideoPost(
     override val rebloggedRootCanMessage: Boolean? = null,
     override val rebloggedRootFollowing: Boolean? = null,
     override val notes: List<NoteData>? = null,
+    override val publishTime: Long?,
+    override val queueState: Post.QueueState?,
     var player: List<Video>? = null,
     var caption: String? = null,
     var videoUrl: String? = null,

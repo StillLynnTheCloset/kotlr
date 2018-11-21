@@ -119,5 +119,7 @@ class BlockPost(
     override val rebloggedRootUuid: String? = null,
     override val rebloggedRootCanMessage: Boolean? = null,
     override val rebloggedRootFollowing: Boolean? = null,
-    override val notes: List<NoteData>? = null
+    override val notes: List<NoteData>? = null,
+    override val publishTime: Long?,
+    override val queueState: Post.QueueState?
 ) : Post

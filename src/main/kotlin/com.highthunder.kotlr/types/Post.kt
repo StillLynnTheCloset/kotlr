@@ -232,6 +232,14 @@ interface Post {
      * TODO: Documentation
      */
     val notes: List<NoteData>?
+    /**
+     * TODO: Documentation
+     */
+    val publishTime: Long?
+    /**
+     * TODO: Documentation
+     */
+    val queueState: QueueState?
 
     // endregion
 
@@ -339,6 +347,19 @@ interface Post {
          */
         @Json(name = "raw")
         Raw("raw")
+    }
+
+    /**
+     * TODO: Documentation
+     *
+     * @param key TODO: Documentation
+     */
+    enum class QueueState(val key: String) {
+        /**
+         * TODO: Documentation
+         */
+        @Json(name = "queued")
+        Queued("queued")
     }
 
 }

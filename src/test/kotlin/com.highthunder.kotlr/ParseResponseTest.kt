@@ -1,6 +1,8 @@
 package com.highthunder.kotlr
 
+import com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar
 import com.highthunder.kotlr.response.type.blog.ResponseBlogLikes
+import com.highthunder.kotlr.response.type.blog.ResponseBlogQueue
 import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
 import com.squareup.moshi.JsonAdapter
 import org.junit.Assert
@@ -97,6 +99,39 @@ class ParseResponseTest {
         val response: ResponseUserDashboard.Response? = adapter.fromJson(DashSample.legacyAudioEmbedPost)
 
         val json = adapter.toJson(response)
+        Assert.assertNotNull(json)
+    }
+
+    @Test
+    fun parseBlogAvatarTest() {
+        val adapter = moshi().adapter(ResponseBlogAvatar.Response::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<ResponseBlogAvatar.Response>)
+
+        val post: ResponseBlogAvatar.Response? = adapter.fromJson(Sample.blogAvatarResponse)
+        Assert.assertNotNull(post)
+        val json = adapter.toJson(post)
+        Assert.assertNotNull(json)
+    }
+
+    @Test
+    fun parseBlogAvatarErrorTest() {
+        val adapter = moshi().adapter(ResponseBlogAvatar.Response::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<ResponseBlogAvatar.Response>)
+
+        val post: ResponseBlogAvatar.Response? = adapter.fromJson(Sample.blogAvatarError)
+        Assert.assertNotNull(post)
+        val json = adapter.toJson(post)
+        Assert.assertNotNull(json)
+    }
+
+    @Test
+    fun parseQueuedTest() {
+        val adapter = moshi().adapter(ResponseBlogQueue.Response::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<ResponseBlogQueue.Response>)
+
+        val post: ResponseBlogQueue.Response? = adapter.fromJson(Sample.queuedPostsResponse)
+        Assert.assertNotNull(post)
+        val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
 
