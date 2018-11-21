@@ -1,5 +1,7 @@
 package com.highthunder.kotlr.types
 
+import com.highthunder.kotlr.types.content.TextFormat
+
 /**
  * NoteData - TODO: Documentation
  *
@@ -100,7 +102,7 @@ sealed class NoteData(
         blogFollowed: Boolean? = null,
         avatarShape: String? = null,
         var replyText: String? = null,
-        var formatting: List<Boolean>? = null,
+        var formatting: List<TextFormat>? = null,
         var canBlock: Boolean? = null
     ) : NoteData(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape) {
         companion object {
@@ -113,6 +115,12 @@ sealed class NoteData(
 
     /**
      * TODO: Documentation
+     *
+     * @param postAttributionType TODO: Documentation
+     * @param postAttributionTypeName TODO: Documentation
+     * @param photoUrl TODO: Documentation
+     * @param photoWidth TODO: Documentation
+     * @param photoHeight TODO: Documentation
      */
     class Attribution(
         timestamp: Long? = null,
@@ -120,7 +128,12 @@ sealed class NoteData(
         blogUuid: String? = null,
         blogUrl: String? = null,
         blogFollowed: Boolean? = null,
-        avatarShape: String? = null
+        avatarShape: String? = null,
+        var postAttributionType: String? = null,
+        var postAttributionTypeName: String? = null,
+        var photoUrl: String? = null,
+        var photoWidth: Int? = null,
+        var photoHeight: Int? = null
     ) : NoteData(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape) {
         companion object {
             /**

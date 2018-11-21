@@ -73,37 +73,89 @@ data class NoteDataAmalgamation(
     var photoHeight: Int? = null
 ) {
 
-    // TODO: To and from NoteDataAmalgamation
+    constructor(note: Like) : this(
+        type = Like.KEY,
+        timestamp = note.timestamp,
+        blogName = note.blogName,
+        blogUuid = note.blogUuid,
+        blogUrl = note.blogUrl,
+        blogFollowed = note.blogFollowed,
+        avatarShape = note.avatarShape
+    )
 
-    constructor(note: Like) : this(Like.KEY)
-    constructor(note: Reblog) : this(Reblog.KEY)
-    constructor(note: Posted) : this(Posted.KEY)
-    constructor(note: Reply) : this(Reply.KEY)
-    constructor(note: Attribution) : this(Attribution.KEY)
+    constructor(note: Posted) : this(
+        type = Posted.KEY,
+        timestamp = note.timestamp,
+        blogName = note.blogName,
+        blogUuid = note.blogUuid,
+        blogUrl = note.blogUrl,
+        blogFollowed = note.blogFollowed,
+        avatarShape = note.avatarShape
+    )
+
+    constructor(note: Reblog) : this(
+        type = Reblog.KEY,
+        timestamp = note.timestamp,
+        blogName = note.blogName,
+        blogUuid = note.blogUuid,
+        blogUrl = note.blogUrl,
+        blogFollowed = note.blogFollowed,
+        avatarShape = note.avatarShape,
+        postId = note.postId,
+        reblogParentBlogName = note.reblogParentBlogName
+    )
+
+    constructor(note: Reply) : this(
+        type = Reply.KEY,
+        timestamp = note.timestamp,
+        blogName = note.blogName,
+        blogUuid = note.blogUuid,
+        blogUrl = note.blogUrl,
+        blogFollowed = note.blogFollowed,
+        avatarShape = note.avatarShape,
+        replyText = note.replyText,
+        formatting = note.formatting,
+        canBlock = note.canBlock
+    )
+
+    constructor(note: Attribution) : this(
+        type = Attribution.KEY,
+        timestamp = note.timestamp,
+        blogName = note.blogName,
+        blogUuid = note.blogUuid,
+        blogUrl = note.blogUrl,
+        blogFollowed = note.blogFollowed,
+        avatarShape = note.avatarShape,
+        postAttributionType = note.postAttributionType,
+        postAttributionTypeName = note.postAttributionTypeName,
+        photoUrl = note.photoUrl,
+        photoWidth = note.photoWidth,
+        photoHeight = note.photoHeight
+    )
 
     /**
      * TODO: Documentation
      */
-    fun toLike(): Like = Like()
+    fun toLike(): Like = Like(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape)
 
     /**
      * TODO: Documentation
      */
-    fun toReblog(): Reblog = Reblog()
+    fun toPosted(): Posted = Posted(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape)
 
     /**
      * TODO: Documentation
      */
-    fun toPosted(): Posted = Posted()
+    fun toReblog(): Reblog = Reblog(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape, postId, reblogParentBlogName)
 
     /**
      * TODO: Documentation
      */
-    fun toReply(): Reply = Reply()
+    fun toReply(): Reply = Reply(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape, replyText, formatting, canBlock)
 
     /**
      * TODO: Documentation
      */
-    fun toAttribution(): Attribution = Attribution()
+    fun toAttribution(): Attribution = Attribution(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape, postAttributionType, postAttributionTypeName, photoUrl, photoWidth, photoHeight)
 
 }
