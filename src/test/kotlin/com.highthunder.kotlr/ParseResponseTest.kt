@@ -2,7 +2,6 @@ package com.highthunder.kotlr
 
 import com.highthunder.kotlr.response.type.blog.ResponseBlogLikes
 import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
-import com.highthunder.kotlr.types.content.PostContent
 import com.squareup.moshi.JsonAdapter
 import org.junit.Assert
 import org.junit.Test

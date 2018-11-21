@@ -4,6 +4,9 @@ import com.highthunder.kotlr.types.Color
 import com.highthunder.kotlr.types.Colors
 import com.squareup.moshi.*
 
+/**
+ * TODO: Documentation
+ */
 class ColorsJsonAdapter(moshi: Moshi) {
 
     private val nullableColorAdapter: JsonAdapter<Color?> =
