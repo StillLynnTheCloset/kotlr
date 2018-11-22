@@ -80,6 +80,10 @@ class ParseNpfUnitTest {
 
     @Test
     fun parseImageWithColorsTest() {
+        val expectedInts = arrayOf(10634773, 16743424)
+        val expectedStrings = arrayOf("a24615", "ff7c00")
+        val expectedOctothorpeStrings = arrayOf("#a24615", "#ff7c00")
+
         val adapter = moshi().adapter(PostContent::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<PostContent>)
 
@@ -89,6 +93,11 @@ class ParseNpfUnitTest {
         assertNotNull(content?.media)
         assertNotNull(content?.colors)
         assertEquals(2, content?.colors?.colors?.size)
+        content?.colors?.colors?.forEach { index, color ->
+            assertEquals(expectedInts[index], color.asInt())
+            assertTrue(expectedStrings[index].contentEquals(color.asString()))
+            assertEquals(expectedOctothorpeStrings[index], color.asOctothorpeString())
+        }
         assertNull(content?.poster)
         assertNull(content?.attribution)
         val json = adapter.toJson(content)
