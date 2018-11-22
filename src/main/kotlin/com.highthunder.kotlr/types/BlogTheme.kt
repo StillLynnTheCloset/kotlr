@@ -124,14 +124,7 @@ class BlogTheme(
     @Json(name = "avatar_image")
     var avatarImage: String? = null
         set(value) {
-            if (value != null) {
-                if (!value.contains("http")) {
-                    field = "https://api.tumblr.com/v2$value"
-                }
-                field = value.replace("http://", "https://")
-            } else {
-                field = null
-            }
+            field = value?.replace("http://", "https://")
         }
 
     /**

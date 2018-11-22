@@ -488,6 +488,8 @@ data class PostAmalgamation(
         rebloggedRootCanMessage = post.rebloggedRootCanMessage,
         rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes,
+        publishTime = post.publishTime,
+        queueState = post.queueState,
         askingName = post.askingName,
         askingUrl = post.askingUrl,
         question = post.question,
@@ -554,6 +556,8 @@ data class PostAmalgamation(
         rebloggedRootCanMessage = post.rebloggedRootCanMessage,
         rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes,
+        publishTime = post.publishTime,
+        queueState = post.queueState,
         caption = post.caption,
         captionAbstract = post.captionAbstract,
         player = PlayerWrapper(contentString = post.player),
@@ -632,6 +636,8 @@ data class PostAmalgamation(
         rebloggedRootCanMessage = post.rebloggedRootCanMessage,
         rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes,
+        publishTime = post.publishTime,
+        queueState = post.queueState,
         title = post.title,
         body = post.body,
         dialogue = post.dialogue
@@ -696,6 +702,8 @@ data class PostAmalgamation(
         rebloggedRootCanMessage = post.rebloggedRootCanMessage,
         rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes,
+        publishTime = post.publishTime,
+        queueState = post.queueState,
         title = post.title,
         description = post.description,
         url = post.url,
@@ -768,6 +776,8 @@ data class PostAmalgamation(
         rebloggedRootCanMessage = post.rebloggedRootCanMessage,
         rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes,
+        publishTime = post.publishTime,
+        queueState = post.queueState,
         caption = post.caption,
         captionAbstract = post.captionAbstract,
         width = post.width,
@@ -838,6 +848,8 @@ data class PostAmalgamation(
         rebloggedRootCanMessage = post.rebloggedRootCanMessage,
         rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes,
+        publishTime = post.publishTime,
+        queueState = post.queueState,
         text = post.text,
         source = post.source
     )
@@ -901,6 +913,8 @@ data class PostAmalgamation(
         rebloggedRootCanMessage = post.rebloggedRootCanMessage,
         rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes,
+        publishTime = post.publishTime,
+        queueState = post.queueState,
         title = post.title,
         abstract = post.abstract,
         body = post.body
@@ -965,6 +979,8 @@ data class PostAmalgamation(
         rebloggedRootCanMessage = post.rebloggedRootCanMessage,
         rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes,
+        publishTime = post.publishTime,
+        queueState = post.queueState,
         player = PlayerWrapper(contentList = post.player),
         caption = post.caption,
         videoUrl = post.videoUrl,
@@ -1036,7 +1052,9 @@ data class PostAmalgamation(
         rebloggedRootUuid = post.rebloggedRootUuid,
         rebloggedRootCanMessage = post.rebloggedRootCanMessage,
         rebloggedRootFollowing = post.rebloggedRootFollowing,
-        notes = post.notes
+        notes = post.notes,
+        publishTime = post.publishTime,
+        queueState = post.queueState
     )
 
     // endregion
