@@ -14,7 +14,7 @@ import com.squareup.moshi.ToJson
  * @since 10/20/18
  * @version 1.0.0
  */
-class NoteDataAmalgamationAdapter {
+internal class NoteDataAmalgamationAdapter {
 
     /**
      * TODO: Documentation

@@ -12,7 +12,7 @@ import kotlin.String
 /**
  * TODO: Documentation
  */
-class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
+internal class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
     private val options: JsonReader.Options =
         JsonReader.Options.of("blogs", "name", "following", "url", "updated", "likes", "default_post_format")
 

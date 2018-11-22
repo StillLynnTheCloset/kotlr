@@ -161,7 +161,7 @@ import com.squareup.moshi.JsonClass
  * @param permalinkUrl TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class PostAmalgamation(
+internal data class PostAmalgamation(
 
     // region Defaults
 

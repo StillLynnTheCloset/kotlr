@@ -12,7 +12,7 @@ import com.squareup.moshi.ToJson
  * @since 10/20/18
  * @version 1.0.0
  */
-class BlockLayoutAmalgamationAdapter {
+internal class BlockLayoutAmalgamationAdapter {
 
     /**
      * TODO: Documentation

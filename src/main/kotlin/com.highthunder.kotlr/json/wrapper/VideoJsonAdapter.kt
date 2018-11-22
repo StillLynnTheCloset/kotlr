@@ -10,7 +10,7 @@ import com.squareup.moshi.*
  * @since 10/20/18
  * @version 1.0.0
  */
-class VideoJsonAdapter(moshi: Moshi) : JsonAdapter<Video>() {
+internal class VideoJsonAdapter(moshi: Moshi) : JsonAdapter<Video>() {
     private val options: JsonReader.Options = JsonReader.Options.of("width", "embed_code")
 
     private val nullableIntAdapter: JsonAdapter<Int?> =

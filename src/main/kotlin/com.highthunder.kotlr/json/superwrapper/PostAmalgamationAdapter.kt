@@ -15,7 +15,7 @@ import com.squareup.moshi.ToJson
  * @since 10/20/18
  * @version 1.0.0
  */
-class PostAmalgamationAdapter {
+internal class PostAmalgamationAdapter {
 
     /**
      * TODO: Documentation

@@ -33,7 +33,7 @@ import com.squareup.moshi.JsonClass
  * @param size The text size for this particular range of text, one of 'small' or 'big'.
  */
 @JsonClass(generateAdapter = true)
-data class TextFormatAmalgamation constructor(
+internal data class TextFormatAmalgamation constructor(
     @Json(name = "start")
     var start: Int? = null,
     @Json(name = "end")

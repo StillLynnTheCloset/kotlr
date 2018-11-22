@@ -11,7 +11,7 @@ import com.squareup.moshi.*
  * @since 10/20/18
  * @version 1.0.0
  */
-class MediaWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<MediaWrapper>() {
+internal class MediaWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<MediaWrapper>() {
 
     private val mediaAdapter: JsonAdapter<Media?> =
         moshi.adapter(Media::class.java, kotlin.collections.emptySet(), null)

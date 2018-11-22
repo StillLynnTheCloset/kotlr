@@ -7,7 +7,7 @@ import com.squareup.moshi.*
 /**
  * TODO: Documentation
  */
-class ColorsJsonAdapter(moshi: Moshi) {
+internal class ColorsJsonAdapter(moshi: Moshi) {
 
     private val nullableColorAdapter: JsonAdapter<Color?> =
         moshi.adapter(Color::class.java, kotlin.collections.emptySet(), null)

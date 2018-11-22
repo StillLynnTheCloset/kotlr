@@ -13,7 +13,7 @@ import com.squareup.moshi.ToJson
  * @since 10/20/18
  * @version 1.0.0
  */
-class TextFormatAmalgamationAdapter {
+internal class TextFormatAmalgamationAdapter {
 
     /**
      * TODO: Documentation

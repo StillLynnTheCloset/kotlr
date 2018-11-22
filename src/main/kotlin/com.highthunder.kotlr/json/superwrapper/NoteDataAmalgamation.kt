@@ -34,7 +34,7 @@ import com.squareup.moshi.JsonClass
  * @param photoHeight TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class NoteDataAmalgamation(
+internal data class NoteDataAmalgamation(
     @Json(name = "type")
     var type: String? = null,
     @Json(name = "timestamp")

@@ -20,7 +20,7 @@ import com.squareup.moshi.JsonClass
  * @param listMedia TODO: Documentation
  */
 @JsonClass(generateAdapter = false)
-data class MediaWrapper(
+internal data class MediaWrapper(
     var singleMedia: Media? = null,
     var listMedia: List<Media>? = null
 )

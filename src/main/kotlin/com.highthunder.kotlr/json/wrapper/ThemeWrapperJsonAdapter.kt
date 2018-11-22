@@ -11,7 +11,7 @@ import com.squareup.moshi.*
  * @since 10/20/18
  * @version 1.0.0
  */
-class ThemeWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ThemeWrapper>() {
+internal class ThemeWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ThemeWrapper>() {
 
     private val themeAdapter: JsonAdapter<BlogTheme?> =
         moshi.adapter(BlogTheme::class.java, kotlin.collections.emptySet(), null)

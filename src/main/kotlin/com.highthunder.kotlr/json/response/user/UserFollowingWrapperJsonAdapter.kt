@@ -10,7 +10,7 @@ import com.squareup.moshi.*
  * @since 10/25/18
  * @version 1.0.0
  */
-class UserFollowingWrapperJsonAdapter(moshi: Moshi) {
+internal class UserFollowingWrapperJsonAdapter(moshi: Moshi) {
 
     private val stringAdapter: JsonAdapter<String?> =
         moshi.adapter(String::class.java, kotlin.collections.emptySet(), null)

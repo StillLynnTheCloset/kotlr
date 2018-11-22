@@ -10,7 +10,7 @@ import com.squareup.moshi.*
  * @since 10/20/18
  * @version 1.0.0
  */
-class PlayerWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<PlayerWrapper>() {
+internal class PlayerWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<PlayerWrapper>() {
 
     private val stringAdapter: JsonAdapter<String?> =
         moshi.adapter(String::class.java, kotlin.collections.emptySet(), null)

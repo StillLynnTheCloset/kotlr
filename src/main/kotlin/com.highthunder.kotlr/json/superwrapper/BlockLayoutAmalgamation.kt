@@ -32,7 +32,7 @@ import com.squareup.moshi.JsonClass
  * @param attribution If the ask is not anonymous, this will include information about the blog that submitted the ask.
  */
 @JsonClass(generateAdapter = true)
-data class BlockLayoutAmalgamation(
+internal data class BlockLayoutAmalgamation(
     @Json(name = "type")
     var type: String? = null,
     @Json(name = "rows")

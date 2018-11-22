@@ -70,7 +70,7 @@ import com.squareup.moshi.JsonClass
  * @param iframe TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class ContentAmalgamation(
+internal data class ContentAmalgamation(
 
     // region PostContent
 

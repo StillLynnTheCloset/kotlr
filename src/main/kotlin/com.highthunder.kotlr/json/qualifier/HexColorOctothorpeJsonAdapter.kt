@@ -11,7 +11,7 @@ import com.squareup.moshi.ToJson
  * @since 10/27/18
  * @version 1.0.0
  */
-class HexColorOctothorpeJsonAdapter {
+internal class HexColorOctothorpeJsonAdapter {
 
     /**
      * TODO: Documentation

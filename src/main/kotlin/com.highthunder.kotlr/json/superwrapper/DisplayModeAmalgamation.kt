@@ -17,7 +17,7 @@ import com.squareup.moshi.JsonClass
  * @param type The type of this display mode.
  */
 @JsonClass(generateAdapter = true)
-data class DisplayModeAmalgamation(
+internal data class DisplayModeAmalgamation(
     @Json(name = "type")
     var type: String? = null
 ) {

@@ -38,7 +38,7 @@ import com.squareup.moshi.JsonClass
  * @param logo A specific logo Media Object that the client should use with the third-party app attribution.
  */
 @JsonClass(generateAdapter = true)
-data class AttributionAmalgamation(
+internal data class AttributionAmalgamation(
     @Json(name = "type")
     var type: String? = null,
     @Json(name = "url")
