@@ -19,7 +19,7 @@ import okhttp3.OkHttpClient
  * @since 10/28/18
  * @version 1.0.0
  */
-class KotlrClient(private val key: TumblrUserKey) {
+class KotlrClient(private val key: TumblrUserKey) : KotlrRequestProcessor {
 
     companion object {
         private val moshi: Moshi = moshi()
@@ -32,15 +32,17 @@ class KotlrClient(private val key: TumblrUserKey) {
         // and if we followed that redirect we would just read the PNG data directly, instead of getting it's url.
         val clientBuilder = OkHttpClient.Builder()
         clientBuilder.followRedirects(false)
+
         val config = OkHttpHttpClientConfig(clientBuilder)
         serviceBuilder.httpClientConfig(config)
+
         return@let serviceBuilder.build(TumblrApi.instance())
     }
 
     /**
      * TODO: Documentation
      */
-    fun <T> process(request: Request<T>): ResponseInterface<T>? {
+    override fun <T> process(request: Request<T>): ResponseInterface<T>? {
         val url = request.getUrl(key.apiKey)
         System.out.println(url)
 

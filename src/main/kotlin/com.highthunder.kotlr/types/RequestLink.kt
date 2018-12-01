@@ -24,7 +24,7 @@ data class RequestLink(
     @Json(name = "href")
     var fullLink: String? = null,
     @Json(name = "query_params")
-    var queryParams: Map<String, Any>? = null
+    var queryParams: Map<String, String>? = null
 ) {
     /**
      * TODO: Documentation
