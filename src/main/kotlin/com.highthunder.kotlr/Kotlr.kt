@@ -12,9 +12,9 @@ import com.highthunder.kotlr.json.wrapper.*
 import com.squareup.moshi.Moshi
 
 /**
- * TODO: Documentation
+ * Get an instance of the Moshi JSON parser that is setup to parse all of our data types.
  */
-internal fun moshi(): Moshi {
+internal val moshi: Moshi by lazy {
     val step1: Moshi = Moshi
         .Builder()
         .add(ContentAmalgamationAdapter())
@@ -40,7 +40,7 @@ internal fun moshi(): Moshi {
         .add(PlayerWrapperJsonAdapter(step2))
         .add(ContentWrapperJsonAdapter(step2))
         .build()
-    return step3.newBuilder()
+    return@lazy step3.newBuilder()
         .add(BlogAvatarWrapperJsonAdapter(step3))
         .add(BlogDraftsWrapperJsonAdapter(step3))
         .add(BlogFollowersWrapperJsonAdapter(step3))

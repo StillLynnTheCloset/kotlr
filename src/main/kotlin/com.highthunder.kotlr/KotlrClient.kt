@@ -21,10 +21,6 @@ import okhttp3.OkHttpClient
  */
 class KotlrClient(private val key: TumblrUserKey) : KotlrRequestProcessor {
 
-    companion object {
-        private val moshi: Moshi = moshi()
-    }
-
     private val service: OAuth10aService = ServiceBuilder(key.apiKey).let { serviceBuilder ->
         serviceBuilder.apiSecret(key.apiSecret)
         // Use a specific HTTP Client so we can force Scribe to not follow redirects.

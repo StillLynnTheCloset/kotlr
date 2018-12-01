@@ -12,7 +12,7 @@ class ParseNpfIntegrationTest {
 
     @Test
     fun parseRealPostTest() {
-        val adapter = moshi().adapter(Post::class.java).failOnUnknown()
+        val adapter = moshi.adapter(Post::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<Post>)
 
         val post: Post? = adapter.fromJson(Sample.npfAnouncementPost)

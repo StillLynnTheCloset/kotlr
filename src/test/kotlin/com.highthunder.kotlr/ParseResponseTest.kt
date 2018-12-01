@@ -20,7 +20,7 @@ class ParseResponseTest {
     @Test
     fun parseBlogLikesResponseTest() {
         val adapter =
-            moshi().adapter<ResponseBlogLikes.Response>(ResponseBlogLikes.Response::class.java).failOnUnknown()
+            moshi.adapter<ResponseBlogLikes.Response>(ResponseBlogLikes.Response::class.java).failOnUnknown()
 
         val response: ResponseBlogLikes.Response? = adapter.fromJson(Sample.blogLikesResponseGood)
         Assert.assertNotNull(response)
@@ -43,7 +43,7 @@ class ParseResponseTest {
     @Test
     fun parseBlogLikesResponseBadTest() {
         val adapter =
-            moshi().adapter<ResponseBlogLikes.Response>(ResponseBlogLikes.Response::class.java).failOnUnknown()
+            moshi.adapter<ResponseBlogLikes.Response>(ResponseBlogLikes.Response::class.java).failOnUnknown()
 
         val response: ResponseBlogLikes.Response? = adapter.fromJson(Sample.blogLikesUnauthorized)
         Assert.assertNotNull(response)
@@ -57,7 +57,7 @@ class ParseResponseTest {
 
     @Test
     fun parseUnauthorizedErrorTest() {
-        val adapter = moshi().adapter(ResponseUserDashboard.Response::class.java).failOnUnknown()
+        val adapter = moshi.adapter(ResponseUserDashboard.Response::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<ResponseUserDashboard.Response>)
 
         val post: ResponseUserDashboard.Response? = adapter.fromJson(Sample.dashUnauthorized)
@@ -69,7 +69,7 @@ class ParseResponseTest {
     @Test
     fun parseDashResponseTest() {
         val adapter =
-            moshi().adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java)
+            moshi.adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java)
                 .failOnUnknown()
 
         val response: ResponseUserDashboard.Response? = adapter.fromJson(DashSample.dashResult)
@@ -81,7 +81,7 @@ class ParseResponseTest {
     @Test
     fun parseDashNeueResponseTest() {
         val adapter =
-            moshi().adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java)
+            moshi.adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java)
                 .failOnUnknown()
 
         val response: ResponseUserDashboard.Response? = adapter.fromJson(DashSample.neueSample)
@@ -93,7 +93,7 @@ class ParseResponseTest {
     @Test
     fun parseDashAudioEmbedResponseTest() {
         val adapter =
-            moshi().adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java)
+            moshi.adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java)
                 .failOnUnknown()
 
         val response: ResponseUserDashboard.Response? = adapter.fromJson(DashSample.legacyAudioEmbedPost)
@@ -104,7 +104,7 @@ class ParseResponseTest {
 
     @Test
     fun parseBlogAvatarTest() {
-        val adapter = moshi().adapter(ResponseBlogAvatar.Response::class.java).failOnUnknown()
+        val adapter = moshi.adapter(ResponseBlogAvatar.Response::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<ResponseBlogAvatar.Response>)
 
         val post: ResponseBlogAvatar.Response? = adapter.fromJson(Sample.blogAvatarResponse)
@@ -115,7 +115,7 @@ class ParseResponseTest {
 
     @Test
     fun parseBlogAvatarErrorTest() {
-        val adapter = moshi().adapter(ResponseBlogAvatar.Response::class.java).failOnUnknown()
+        val adapter = moshi.adapter(ResponseBlogAvatar.Response::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<ResponseBlogAvatar.Response>)
 
         val post: ResponseBlogAvatar.Response? = adapter.fromJson(Sample.blogAvatarError)
@@ -126,7 +126,7 @@ class ParseResponseTest {
 
     @Test
     fun parseQueuedTest() {
-        val adapter = moshi().adapter(ResponseBlogQueue.Response::class.java).failOnUnknown()
+        val adapter = moshi.adapter(ResponseBlogQueue.Response::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<ResponseBlogQueue.Response>)
 
         val post: ResponseBlogQueue.Response? = adapter.fromJson(Sample.queuedPostsResponse)
