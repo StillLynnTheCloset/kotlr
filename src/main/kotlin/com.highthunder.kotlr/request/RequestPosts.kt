@@ -17,7 +17,8 @@ abstract class RequestPosts<out T>(
     private val getReblogFields: Boolean? = null,
     private val getNotesHistory: Boolean? = null,
     private val useNeuePostFormat: Boolean? = null,
-    private val tag: String? = null
+    private val tag: String? = null,
+    private val pageNumber: Int? = null
 ) : TumblrRequest<T> {
 
     init {
@@ -135,6 +136,16 @@ abstract class RequestPosts<out T>(
                 }
                 append("tag=")
                 append(it.replace(" ", "+"))
+                previous = true
+            }
+            pageNumber?.also {
+                if (previous) {
+                    append("&")
+                } else {
+                    append("?")
+                }
+                append("page_number=")
+                append(it)
                 previous = true
             }
         }.toString()

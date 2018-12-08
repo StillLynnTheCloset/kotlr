@@ -25,6 +25,7 @@ class RequestBlogPosts(
     getNotesHistory: Boolean? = null,
     useNeuePostFormat: Boolean? = null,
     tag: String? = null,
+    pageNumber: Int? = null,
     private val identifier: String,
     private val type: Post.Type? = null
 ) : RequestPosts<ResponseBlogPosts.Body>(
@@ -37,7 +38,8 @@ class RequestBlogPosts(
     getReblogFields = getReblogFields,
     getNotesHistory = getNotesHistory,
     useNeuePostFormat = useNeuePostFormat,
-    tag = tag
+    tag = tag,
+    pageNumber = pageNumber
 ) {
 
     companion object {
