@@ -18,7 +18,7 @@ abstract class RequestPosts<out T>(
     private val getNotesHistory: Boolean? = null,
     private val useNeuePostFormat: Boolean? = null,
     private val tag: String? = null
-) : Request<T> {
+) : TumblrRequest<T> {
 
     init {
         if (getNotesHistory != null && getReblogFields != null) {

@@ -2,7 +2,7 @@ package com.highthunder.kotlr.request.type.user
 
 import com.github.scribejava.core.model.Verb
 import com.highthunder.kotlr.request.RequestPosts
-import com.highthunder.kotlr.response.ResponseInterface
+import com.highthunder.kotlr.response.TumblrResponse
 import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
 import com.highthunder.kotlr.types.Post
 import kotlin.reflect.KClass
@@ -46,7 +46,7 @@ class RequestUserDashboard(
         const val BASE_PATH: String = "user/dashboard"
     }
 
-    override val responseClass: KClass<out ResponseInterface<ResponseUserDashboard.Body>> =
+    override val responseClass: KClass<out TumblrResponse<ResponseUserDashboard.Body>> =
         ResponseUserDashboard.Response::class
     override val verb: Verb = Verb.GET
     override val requiresOAuth: Boolean = true

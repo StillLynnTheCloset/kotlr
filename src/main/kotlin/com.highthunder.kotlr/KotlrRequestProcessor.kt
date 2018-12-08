@@ -1,7 +1,7 @@
 package com.highthunder.kotlr
 
-import com.highthunder.kotlr.request.Request
-import com.highthunder.kotlr.response.ResponseInterface
+import com.highthunder.kotlr.request.TumblrRequest
+import com.highthunder.kotlr.response.TumblrResponse
 
 /**
  * KotlrRequestProcessor - TODO: Documentation
@@ -15,6 +15,6 @@ interface KotlrRequestProcessor {
     /**
      * TODO: Documentation
      */
-    fun <T> process(request: Request<T>): ResponseInterface<T>?
+    fun <T> process(request: TumblrRequest<T>): TumblrResponse<T>
 
 }

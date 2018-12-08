@@ -1,13 +1,15 @@
 package com.highthunder.kotlr.response
 
+import com.highthunder.kotlr.KotlrException
+
 /**
- * ResponseInterface - A generic response from the Tumblr API.
+ * TumblrResponse - A generic response from the Tumblr API.
  *
  * @author highthunder
  * @since 10/27/18
  * @version 1.0.0
  */
-interface ResponseInterface<out T> {
+interface TumblrResponse<out T> {
 
     /**
      * TODO: Documentation
@@ -25,8 +27,13 @@ interface ResponseInterface<out T> {
     fun getWrapper(): WrapperInterface<T>?
 
     /**
-     * TODO: Documentation
+     * A helper function to directly access the response body.
      */
     fun getBody(): T? = getWrapper()?.getBody()
+
+    /**
+     * TODO: Documentation
+     */
+    fun getBodyOrThrow(): T = getWrapper()?.getBody() ?: throw KotlrException("Unable to get body of response: $this")
 
 }

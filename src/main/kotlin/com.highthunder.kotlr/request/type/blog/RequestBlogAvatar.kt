@@ -1,8 +1,8 @@
 package com.highthunder.kotlr.request.type.blog
 
 import com.github.scribejava.core.model.Verb
-import com.highthunder.kotlr.request.Request
-import com.highthunder.kotlr.response.ResponseInterface
+import com.highthunder.kotlr.request.TumblrRequest
+import com.highthunder.kotlr.response.TumblrResponse
 import com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar
 import kotlin.reflect.KClass
 
@@ -16,7 +16,7 @@ import kotlin.reflect.KClass
 class RequestBlogAvatar(
     private val identifier: String,
     private val size: Int? = null
-) : Request<ResponseBlogAvatar.Body> {
+) : TumblrRequest<ResponseBlogAvatar.Body> {
 
     companion object {
         /**
@@ -25,7 +25,7 @@ class RequestBlogAvatar(
         const val BASE_PATH: String = "blog/"
     }
 
-    override val responseClass: KClass<out ResponseInterface<ResponseBlogAvatar.Body>> =
+    override val responseClass: KClass<out TumblrResponse<ResponseBlogAvatar.Body>> =
         ResponseBlogAvatar.Response::class
     override val verb: Verb = Verb.GET
     override val requiresOAuth: Boolean = false

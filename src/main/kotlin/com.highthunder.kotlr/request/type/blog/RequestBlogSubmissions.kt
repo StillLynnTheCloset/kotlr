@@ -2,7 +2,7 @@ package com.highthunder.kotlr.request.type.blog
 
 import com.github.scribejava.core.model.Verb
 import com.highthunder.kotlr.request.RequestPosts
-import com.highthunder.kotlr.response.ResponseInterface
+import com.highthunder.kotlr.response.TumblrResponse
 import com.highthunder.kotlr.response.type.blog.ResponseBlogSubmissions
 import kotlin.reflect.KClass
 
@@ -35,7 +35,7 @@ class RequestBlogSubmissions(
         const val BASE_PATH: String = "blog/"
     }
 
-    override val responseClass: KClass<out ResponseInterface<ResponseBlogSubmissions.Body>> =
+    override val responseClass: KClass<out TumblrResponse<ResponseBlogSubmissions.Body>> =
         ResponseBlogSubmissions.Response::class
     override val verb: Verb = Verb.GET
     override val requiresOAuth: Boolean = false
