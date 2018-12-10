@@ -13,6 +13,9 @@ import com.squareup.moshi.Moshi
 
 /**
  * Get an instance of the Moshi JSON parser that is setup to parse all of our data types.
+ *
+ * This is broken up into four steps because some adapters depend on the existence of
+ * other adapters.
  */
 internal val moshi: Moshi by lazy {
     val step1: Moshi = Moshi

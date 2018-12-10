@@ -3,7 +3,7 @@ package com.highthunder.kotlr.response
 import com.squareup.moshi.JsonClass
 
 /**
- * TumblrError - TODO: Documentation
+ * TumblrError - A specific error message from the Tumblr API.
  *
  * @author highthunder
  * @since 10/29/18
