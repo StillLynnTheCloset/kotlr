@@ -2,6 +2,7 @@ package com.highthunder.kotlr
 
 import com.highthunder.kotlr.request.TumblrRequest
 import com.highthunder.kotlr.response.TumblrResponse
+import kotlinx.coroutines.runBlocking
 
 /**
  * KotlrRequestProcessor - A generic interface for processing [TumblrRequest]s and turning them into [TumblrResponse]s.
@@ -21,6 +22,12 @@ interface KotlrRequestProcessor {
      * @throws KotlrNetworkException If an error occurs when performing the network operation.
      * @throws KotlrParsingException If an error occurs while parsing the response.
      */
-    fun <T> process(request: TumblrRequest<T>): TumblrResponse<T>
+    suspend fun <T> process(request: TumblrRequest<T>): TumblrResponse<T>
+
+    fun <T> processBlocking(request: TumblrRequest<T>): TumblrResponse<T> {
+        return runBlocking {
+            process(request)
+        }
+    }
 
 }

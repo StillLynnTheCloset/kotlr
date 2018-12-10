@@ -51,7 +51,7 @@ class KotlrAuthenticatedClient(private val key: TumblrUserKey) : KotlrRequestPro
         return@let serviceBuilder.build(TumblrApi.instance())
     }
 
-    override fun <T> process(request: TumblrRequest<T>): TumblrResponse<T> {
+    override suspend fun <T> process(request: TumblrRequest<T>): TumblrResponse<T> {
         val url = request.getUrl(key.apiKey)
         System.out.println(url)
 
