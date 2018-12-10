@@ -13,19 +13,19 @@ package com.highthunder.kotlr.response
 interface WrapperInterface<out T> {
 
     /**
-     * Get the message form of the response body.
+     * Get the error message form of the response body.
      *
      * This will be null under normal conditions, but some error states will return a string
      * for the body, which can be accessed here.
      *
      * @return An optional string of the error message, if any.
      */
-    fun getMessage(): String?
+    fun getError(): String?
 
     /**
      * Get the standard body form of the response body.
      *
-     * This will only be null if an error is returned by Tumblr, and in that case [getMessage]
+     * This will only be null if an error is returned by Tumblr, and in that case [getError]
      * should contain whatever error message Tumblr provided.
      *
      * @return An optional response body object, if any.

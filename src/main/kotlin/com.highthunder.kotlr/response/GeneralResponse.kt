@@ -1,15 +1,11 @@
-package com.highthunder.kotlr.response.type
+package com.highthunder.kotlr.response
 
-import com.highthunder.kotlr.response.ResponseMetaInfo
-import com.highthunder.kotlr.response.TumblrError
-import com.highthunder.kotlr.response.TumblrResponse
-import com.highthunder.kotlr.response.WrapperInterface
 import com.squareup.moshi.Json
 
 /**
  *
  */
-open class BlahResponse<out T>(
+open class GeneralResponse<out T>(
     @Json(name = "meta")
     internal val meta: ResponseMetaInfo,
     @Json(name = "response")

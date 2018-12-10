@@ -1,5 +1,7 @@
 package com.highthunder.kotlr.json.response.blog
 
+import com.highthunder.kotlr.response.GeneralWrapper
+import com.highthunder.kotlr.response.WrapperInterface
 import com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar
 import com.squareup.moshi.*
 
@@ -30,25 +32,25 @@ internal class BlogAvatarWrapperJsonAdapter(moshi: Moshi) {
      *  TODO: Documentation
      */
     @FromJson
-    fun fromJson(reader: JsonReader): ResponseBlogAvatar.Wrapper {
+    fun fromJson(reader: JsonReader): WrapperInterface<ResponseBlogAvatar.Body> {
         return when (reader.peek()) {
-            JsonReader.Token.BEGIN_OBJECT -> ResponseBlogAvatar.Wrapper(response = responseAdapter.fromJson(reader))
-            JsonReader.Token.STRING -> ResponseBlogAvatar.Wrapper(error = stringAdapter.fromJson(reader))
-            JsonReader.Token.BEGIN_ARRAY -> ResponseBlogAvatar.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
-            JsonReader.Token.NULL -> ResponseBlogAvatar.Wrapper()
+            JsonReader.Token.BEGIN_OBJECT -> GeneralWrapper(response = responseAdapter.fromJson(reader))
+            JsonReader.Token.STRING -> GeneralWrapper(error = stringAdapter.fromJson(reader))
+            JsonReader.Token.BEGIN_ARRAY -> GeneralWrapper(error = listOfAnyAdapter.fromJson(reader).toString())
+            JsonReader.Token.NULL -> GeneralWrapper()
             else -> throw JsonDataException("Expected a field of type List or String but got ${reader.peek()}")
         }
     }
 
     /**
-     *  TODO: Documentation
+     * TODO: Documentation
      */
     @ToJson
-    fun toJson(writer: JsonWriter, value: ResponseBlogAvatar.Wrapper?) {
-        if (value?.error != null) {
-            stringAdapter.toJson(writer, value.error)
+    fun toJson(writer: JsonWriter, value: WrapperInterface<ResponseBlogAvatar.Body>?) {
+        if (value?.getError() != null) {
+            stringAdapter.toJson(writer, value.getError())
         } else {
-            responseAdapter.toJson(writer, value?.response)
+            responseAdapter.toJson(writer, value?.getBody())
         }
     }
 

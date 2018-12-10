@@ -1,5 +1,7 @@
 package com.highthunder.kotlr.json.response.blog
 
+import com.highthunder.kotlr.response.GeneralWrapper
+import com.highthunder.kotlr.response.WrapperInterface
 import com.highthunder.kotlr.response.type.blog.ResponseBlogInfo
 import com.squareup.moshi.*
 
@@ -30,12 +32,12 @@ internal class BlogInfoWrapperJsonAdapter(moshi: Moshi) {
      * TODO: Documentation
      */
     @FromJson
-    fun fromJson(reader: JsonReader): ResponseBlogInfo.Wrapper {
+    fun fromJson(reader: JsonReader): WrapperInterface<ResponseBlogInfo.Body> {
         return when (reader.peek()) {
-            JsonReader.Token.BEGIN_OBJECT -> ResponseBlogInfo.Wrapper(response = responseAdapter.fromJson(reader))
-            JsonReader.Token.STRING -> ResponseBlogInfo.Wrapper(error = stringAdapter.fromJson(reader))
-            JsonReader.Token.BEGIN_ARRAY -> ResponseBlogInfo.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
-            JsonReader.Token.NULL -> ResponseBlogInfo.Wrapper()
+            JsonReader.Token.BEGIN_OBJECT -> GeneralWrapper(response = responseAdapter.fromJson(reader))
+            JsonReader.Token.STRING -> GeneralWrapper(error = stringAdapter.fromJson(reader))
+            JsonReader.Token.BEGIN_ARRAY -> GeneralWrapper(error = listOfAnyAdapter.fromJson(reader).toString())
+            JsonReader.Token.NULL -> GeneralWrapper()
             else -> throw JsonDataException("Expected a field of type List or String but got ${reader.peek()}")
         }
     }
@@ -44,11 +46,11 @@ internal class BlogInfoWrapperJsonAdapter(moshi: Moshi) {
      * TODO: Documentation
      */
     @ToJson
-    fun toJson(writer: JsonWriter, value: ResponseBlogInfo.Wrapper?) {
-        if (value?.error != null) {
-            stringAdapter.toJson(writer, value.error)
+    fun toJson(writer: JsonWriter, value: WrapperInterface<ResponseBlogInfo.Body>?) {
+        if (value?.getError() != null) {
+            stringAdapter.toJson(writer, value.getError())
         } else {
-            responseAdapter.toJson(writer, value?.response)
+            responseAdapter.toJson(writer, value?.getBody())
         }
     }
 
