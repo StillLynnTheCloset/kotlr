@@ -24,25 +24,25 @@ interface ResponseBlogFollowers {
      * @param errors TODO: Documentation
      */
     @JsonClass(generateAdapter = true)
-    class Response(
+    data class Response(
         @Json(name = "meta")
-        meta: ResponseMetaInfo,
+        override val meta: ResponseMetaInfo,
         @Json(name = "response")
-        response: WrapperInterface<Body>,
+        override val response: WrapperInterface<Body>,
         @Json(name = "errors")
-        errors: List<TumblrError>? = null
-    ) : GeneralResponse<Body>(meta, response, errors)
+        override val errors: List<TumblrError>? = null
+    ) : TumblrResponse<Body>
 
     /**
      * Adapter is [BlogFollowersWrapperJsonAdapter].
      *
-     * @param response TODO: Documentation
-     * @param error TODO: Documentation
+     * @param body The body of this response.
+     * @param error The error message if there is no body.
      */
-    class Wrapper(
-        error: String? = null,
-        response: Body? = null
-    ) : GeneralWrapper<Body>(error, response)
+    data class Wrapper(
+        override val error: String? = null,
+        override val body: Body? = null
+    ) : WrapperInterface<Body>
 
     /**
      * TODO: Documentation

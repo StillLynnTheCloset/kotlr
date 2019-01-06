@@ -3,7 +3,7 @@ package com.highthunder.kotlr.response
 /**
  * WrapperInterface - A wrapper class around the response to a given request.
  *
- * This is required because in some situations, Tumblr returns a string instead of an
+ * This is required because in some situations Tumblr returns a string instead of an
  * object as the response body so we need to be able to account for that.
  *
  * @author highthunder
@@ -20,16 +20,16 @@ interface WrapperInterface<out T> {
      *
      * @return An optional string of the error message, if any.
      */
-    fun getError(): String?
+    val error: String?
 
     /**
      * Get the standard body form of the response body.
      *
-     * This will only be null if an error is returned by Tumblr, and in that case [getError]
+     * This will only be null if an error is returned by Tumblr, and in that case [error]
      * should contain whatever error message Tumblr provided.
      *
      * @return An optional response body object, if any.
      */
-    fun getBody(): T?
+    val body: T?
 
 }

@@ -1,6 +1,5 @@
 package com.highthunder.kotlr.json.response.blog
 
-import com.highthunder.kotlr.response.GeneralWrapper
 import com.highthunder.kotlr.response.WrapperInterface
 import com.highthunder.kotlr.response.type.blog.ResponseBlogSubmissions
 import com.squareup.moshi.*
@@ -37,10 +36,10 @@ internal class BlogSubmissionsWrapperJsonAdapter(moshi: Moshi) {
     @FromJson
     fun fromJson(reader: JsonReader): WrapperInterface<ResponseBlogSubmissions.Body> {
         return when (reader.peek()) {
-            JsonReader.Token.BEGIN_OBJECT -> GeneralWrapper(response = responseAdapter.fromJson(reader))
-            JsonReader.Token.STRING -> GeneralWrapper(error = stringAdapter.fromJson(reader))
-            JsonReader.Token.BEGIN_ARRAY -> GeneralWrapper(error = listOfAnyAdapter.fromJson(reader).toString())
-            JsonReader.Token.NULL -> GeneralWrapper()
+            JsonReader.Token.BEGIN_OBJECT -> ResponseBlogSubmissions.Wrapper(body = responseAdapter.fromJson(reader))
+            JsonReader.Token.STRING -> ResponseBlogSubmissions.Wrapper(error = stringAdapter.fromJson(reader))
+            JsonReader.Token.BEGIN_ARRAY -> ResponseBlogSubmissions.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
+            JsonReader.Token.NULL -> ResponseBlogSubmissions.Wrapper()
             else -> throw JsonDataException("Expected a field of type List or String but got ${reader.peek()}")
         }
     }
@@ -50,10 +49,10 @@ internal class BlogSubmissionsWrapperJsonAdapter(moshi: Moshi) {
      */
     @ToJson
     fun toJson(writer: JsonWriter, value: WrapperInterface<ResponseBlogSubmissions.Body>?) {
-        if (value?.getError() != null) {
-            stringAdapter.toJson(writer, value.getError())
+        if (value?.error != null) {
+            stringAdapter.toJson(writer, value.error)
         } else {
-            responseAdapter.toJson(writer, value?.getBody())
+            responseAdapter.toJson(writer, value?.body)
         }
     }
 
