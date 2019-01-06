@@ -36,7 +36,7 @@ The priorities of development right now are:
 6. Clean up the API by: restricting visibility, reducing optional and default values, limiting mutablity, and enforcing stricter types.
 7. Create extension library to improve ease of use on Android.
 8. Create PoC Android App.
-9. Make use of Coroutines to better define blocking api calls.
+9. ~~Make use of Coroutines to better define blocking api calls.~~
 10. Improve error messages/exceptions.
 11. Find/make/port pure Kotlin libraries to replace existing dependencies.
 12. Performance improvements and bug fixes, etc.
@@ -46,7 +46,7 @@ Development Blog [Here](https://kotlr-development.tumblr.com/)
 Please use Kotlr responsibly and follow the
 [Tumblr api agreement](https://www.tumblr.com/docs/en/api_agreement).
 
-### Kotlr is not maintained by/built by/associated with/endorsed by Tumblr in any way! ###
+### Kotlr is NOT maintained by/built by/associated with/endorsed by Tumblr in any way! ###
 
 ### How To Use Kotlr ###
 
@@ -61,52 +61,51 @@ app [here](https://www.tumblr.com/oauth/apps).
 #### Examples ####
 
 ```
-fun minimalExample() {
+fun minimalExampleExplained() {
 
     // Class for holding API keys and secrets. Get this from one of the auth mechanisms.
-    val key: TumblrUserKey = SampleUserKey
+    val key = TumblrUserKey("apiKey", "apiSecret", "userKey", "userSecret")
 
-    // Similar to Jumblr's `JumblrClient`
-    val client = KotlrClient(key)
+    // The client which performs all requests, this is similar to Jumblr's `JumblrClient`.
+    val client = KotlrAuthenticatedClient(key)
 
-    // All request parameters are strongly typed and any constraints imposed by the API, such as
-    // required or mutually exclusive parameters, are enforced by the builder.
-    RequestBlogLikes(identifier = "kotlr-development").also { request: RequestBlogLikes ->
+    // All request parameters are strongly typed and any constraints imposed by Tumblr's API, such as
+    // required or mutually exclusive parameters, are enforced by the constructor.
+    // In this case, only the blog identifier is required.
+    val request = RequestBlogLikes(identifier = "kotlr-development")
 
-        // Actually perform the request and get our data from Tumblr
-        val response: Response<ResponseBlogLikes.Body>? = client.process(request)
+    // Actually perform the request and get our data from Tumblr.
+    // Kotlr offers both `process` and `processBlocking`, the former is a suspending function for use in
+    // coroutines, and the latter is not.
+    val response: TumblrResponse<ResponseBlogLikes.Body> = client.processBlocking(request)
 
-        // Check out any of the meta information that Tumblr returns such as HTTP success codes.
-        val meta: ResponseMetaInfo? = response?.getMetaInfo()
+    // Check out any of the meta information that Tumblr returns such as HTTP success codes.
+    val meta: ResponseMetaInfo? = response.meta
 
-        // Get the main meat of the response.
-        val body: ResponseBlogLikes.Body? = response?.getBody()
-        if (body != null) {
-            // And now we can access Tumblr's actual response, which in this case is composed of
-            // a list of some liked posts, a count of the total number of liked posts, and potentially
-            // a list of RequestLinks which can encode some generic actions that Tumblr thinks you
-            // might like to perform based on the content of this request.
-            body.posts?.firstOrNull()?.blogName
-            body.totalLiked
-            body.links
-        }
+    // Get the main meat of the response.
+    val body: ResponseBlogLikes.Body = response.getBodyOrThrow()
 
-    }
+    // And now we can access Tumblr's actual response, which in this case is composed of
+    // a list of some liked posts, a count of the total number of liked posts, and potentially
+    // a map of RequestLinks which can encode some generic actions that Tumblr thinks you
+    // might like to perform based on the content of this request.
+    val totalLikedPosts: Long? = body.totalLiked
+    val requestLinks: Map<String, RequestLink>? = body.links
+    val postUrl: String? = body.posts?.firstOrNull()?.postUrl
 
 }
-
 ```
 
 or, the same example without the fluff:
 
 ```
 fun minimalExample() {
-    val name = KotlrClient(SampleUserKey)
-            .process(RequestBlogLikes(identifier = "kotlr-development"))
-            ?.getBody()
-            ?.posts
-            ?.firstOrNull()
-            ?.blogName
+    val postUrl: String? = KotlrAuthenticatedClient(SampleUserKey)
+        .processBlocking(RequestBlogLikes(identifier = "kotlr-development"))
+        .getBodyOrThrow()
+        .posts
+        ?.firstOrNull()
+        ?.postUrl
 }
 ```
 

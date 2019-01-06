@@ -39,6 +39,7 @@ class KotlrAuthenticatedClient(private val key: TumblrUserKey) : KotlrRequestPro
 
     private val service: OAuth10aService = ServiceBuilder(key.apiKey).let { serviceBuilder ->
         serviceBuilder.apiSecret(key.apiSecret)
+
         // Use a specific HTTP Client so we can force Scribe to not follow redirects.
         // This is necessary because for blog avatar requests, Tumblr returns a redirect response,
         // and if we followed that redirect we would just read the PNG data directly, instead of getting it's url.
