@@ -60,7 +60,7 @@ app [here](https://www.tumblr.com/oauth/apps).
 
 #### Examples ####
 
-```
+```kotlin
 fun minimalExampleExplained() {
 
     // Class for holding API keys and secrets. Get this from one of the auth mechanisms.
@@ -98,7 +98,7 @@ fun minimalExampleExplained() {
 
 or, the same example without the fluff:
 
-```
+```kotlin
 fun minimalExample() {
     val postUrl: String? = KotlrAuthenticatedClient(SampleUserKey)
         .processBlocking(RequestBlogLikes(identifier = "kotlr-development"))
@@ -111,7 +111,7 @@ fun minimalExample() {
 
 ##### Auth Examples #####
 
-```
+```kotlin
 fun oAuthExample() {
     // Kotlr also makes the process of getting OAuth and XAuth keys easy.
 
@@ -138,7 +138,7 @@ fun oAuthExample() {
 }
 ```
 
-```
+```kotlin
 fun xAuthExample() {
     // If you can get Tumblr to give you access to the XAuth API, logging in is even easier!
     val userKey: TumblrUserKey = XAuthFlow().getUserKey(SampleAppKey, "example@example.com", "hunter2")
