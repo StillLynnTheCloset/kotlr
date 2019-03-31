@@ -132,6 +132,7 @@ data class ChatPost(
     override val notes: List<NoteData>? = null,
     override val publishTime: Long?,
     override val queueState: Post.QueueState?,
+    override val shouldOpenInLegacy: Boolean?,
     var title: String? = null,
     var body: String? = null,
     var dialogue: List<Dialogue>? = null

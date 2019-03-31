@@ -140,6 +140,7 @@ data class LinkPost(
     override val notes: List<NoteData>? = null,
     override val publishTime: Long?,
     override val queueState: Post.QueueState?,
+    override val shouldOpenInLegacy: Boolean?,
     var title: String? = null,
     var description: String? = null,
     var url: String? = null,

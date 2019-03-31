@@ -140,6 +140,7 @@ data class VideoPost(
     override val notes: List<NoteData>? = null,
     override val publishTime: Long?,
     override val queueState: Post.QueueState?,
+    override val shouldOpenInLegacy: Boolean?,
     var player: List<Video>? = null,
     var caption: String? = null,
     var videoUrl: String? = null,

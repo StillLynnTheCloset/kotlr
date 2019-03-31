@@ -147,6 +147,7 @@ data class AudioPost(
     override val notes: List<NoteData>? = null,
     override val publishTime: Long?,
     override val queueState: Post.QueueState?,
+    override val shouldOpenInLegacy: Boolean?,
     var caption: String? = null,
     var captionAbstract: String? = null,
     var player: String? = null,

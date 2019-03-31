@@ -132,6 +132,7 @@ data class TextPost(
     override val notes: List<NoteData>? = null,
     override val publishTime: Long?,
     override val queueState: Post.QueueState?,
+    override val shouldOpenInLegacy: Boolean?,
     var title: String? = null,
     var abstract: String? = null,
     var body: String? = null

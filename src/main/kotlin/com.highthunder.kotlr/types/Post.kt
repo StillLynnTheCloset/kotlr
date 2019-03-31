@@ -240,6 +240,10 @@ interface Post {
      * TODO: Documentation
      */
     val queueState: QueueState?
+    /**
+     * TODO: Documentation
+     */
+    val shouldOpenInLegacy: Boolean?
 
     // endregion
 

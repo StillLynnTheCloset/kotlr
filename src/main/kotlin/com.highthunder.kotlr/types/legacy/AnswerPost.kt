@@ -134,6 +134,7 @@ data class AnswerPost(
     override val notes: List<NoteData>? = null,
     override val publishTime: Long?,
     override val queueState: Post.QueueState?,
+    override val shouldOpenInLegacy: Boolean?,
     var askingName: String? = null,
     var askingUrl: String? = null,
     var question: String? = null,

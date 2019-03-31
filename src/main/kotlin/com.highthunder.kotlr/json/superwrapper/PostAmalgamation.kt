@@ -298,6 +298,8 @@ internal data class PostAmalgamation(
     var publishTime: Long? = null,
     @Json(name = "queued_state")
     var queueState: Post.QueueState? = null,
+    @Json(name = "should_open_in_legacy")
+    var shouldOpenInLegacy: Boolean? = null,
 
     // endregion
 
@@ -1089,7 +1091,7 @@ internal data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState, shouldOpenInLegacy,
 
             askingName, askingUrl, question, answer, answerAbstract
         )
@@ -1109,7 +1111,7 @@ internal data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState, shouldOpenInLegacy,
 
             caption, captionAbstract, player?.contentString, audio_url, plays, album_art,
             artist, album, trackName, trackNumber, track, year, external, providerUrl,
@@ -1131,7 +1133,7 @@ internal data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState, shouldOpenInLegacy,
 
             title, body, dialogue
         )
@@ -1151,7 +1153,7 @@ internal data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState, shouldOpenInLegacy,
 
             title, description, url, author, linkAuthor, linkImage, linkImageDimensions,
             excerpt, publisher, photos, body
@@ -1172,7 +1174,7 @@ internal data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState, shouldOpenInLegacy,
 
             caption, captionAbstract, width, height, photos, linkUrl, imagePermalink, panorama, photosetLayout
         )
@@ -1192,7 +1194,7 @@ internal data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState, shouldOpenInLegacy,
 
             text, source
         )
@@ -1212,7 +1214,7 @@ internal data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState, shouldOpenInLegacy,
 
             title, abstract, body
         )
@@ -1232,7 +1234,7 @@ internal data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState,
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState, shouldOpenInLegacy,
 
             player?.contentList, caption, videoUrl, html5Capable, thumbnailUrl, thumbnailWidth,
             thumbnailHeight, duration, videoData, permalinkUrl, videoType
@@ -1253,7 +1255,7 @@ internal data class PostAmalgamation(
             rebloggedFromName, rebloggedFromTitle, rebloggedFromUuid,
             rebloggedFromCanMessage, rebloggedFromFollowing, rebloggedRootId,
             rebloggedRootUrl, rebloggedRootName, rebloggedRootTitle, rebloggedRootUuid,
-            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState
+            rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState, shouldOpenInLegacy
         )
     }
 }
