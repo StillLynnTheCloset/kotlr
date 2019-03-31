@@ -5,8 +5,12 @@ import com.highthunder.kotlr.types.Colors
 import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.content.Attribution
 import com.highthunder.kotlr.types.content.PostContent
-import com.highthunder.kotlr.types.content.PostContent.*
+import com.highthunder.kotlr.types.content.PostContent.AudioContent
+import com.highthunder.kotlr.types.content.PostContent.ImageContent
+import com.highthunder.kotlr.types.content.PostContent.LinkContent
+import com.highthunder.kotlr.types.content.PostContent.TextContent
 import com.highthunder.kotlr.types.content.PostContent.TextContent.SubType
+import com.highthunder.kotlr.types.content.PostContent.VideoContent
 import com.highthunder.kotlr.types.content.TextFormat
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -212,12 +216,10 @@ internal data class ContentAmalgamation(
     /**
      * TODO: Documentation
      */
-    fun toAudioContent(): AudioContent {
-        return AudioContent(
-            provider, url, media?.singleMedia, title, artist, album, poster,
-            embedHtml, embedUrl, metadata, attribution
-        )
-    }
+    fun toAudioContent(): AudioContent = AudioContent(
+        provider, url, media?.singleMedia, title, artist, album, poster,
+        embedHtml, embedUrl, metadata, attribution
+    )
 
     /**
      * TODO: Documentation
@@ -237,11 +239,8 @@ internal data class ContentAmalgamation(
     /**
      * TODO: Documentation
      */
-    fun toVideoContent(): VideoContent {
-        return VideoContent(
-            url, media?.singleMedia, provider, embedHtml, embedUrl, poster,
-            metadata, attribution, canAutoPlayOnCellular, filmStrip, iframe
-        )
-    }
-
+    fun toVideoContent(): VideoContent = VideoContent(
+        url, media?.singleMedia, provider, embedHtml, embedUrl, poster,
+        metadata, attribution, canAutoPlayOnCellular, filmStrip, iframe
+    )
 }

@@ -88,11 +88,8 @@ sealed class BlockLayout {
                         const val KEY: String = "carousel"
                     }
                 }
-
             }
-
         }
-
     }
 
     /**
@@ -128,5 +125,4 @@ sealed class BlockLayout {
             const val KEY: String = "ask"
         }
     }
-
 }

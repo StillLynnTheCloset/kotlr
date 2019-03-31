@@ -142,5 +142,4 @@ sealed class NoteData(
             const val KEY: String = "post_attribution"
         }
     }
-
 }

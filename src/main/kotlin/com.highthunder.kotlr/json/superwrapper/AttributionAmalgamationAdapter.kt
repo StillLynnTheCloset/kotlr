@@ -41,5 +41,4 @@ internal class AttributionAmalgamationAdapter {
             is Attribution.App -> AttributionAmalgamation(input)
         }
     }
-
 }

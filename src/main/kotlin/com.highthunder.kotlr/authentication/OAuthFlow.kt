@@ -53,7 +53,6 @@ class OAuthFlow {
             e.printStackTrace()
             null
         }
-
     }
 
     /**
@@ -74,7 +73,5 @@ class OAuthFlow {
         } else {
             throw IllegalStateException("Was not waiting for a response when parseResponseUrl was called")
         }
-
     }
-
 }

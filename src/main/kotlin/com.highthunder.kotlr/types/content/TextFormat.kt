@@ -167,5 +167,4 @@ sealed class TextFormat(
             Big("big")
         }
     }
-
 }

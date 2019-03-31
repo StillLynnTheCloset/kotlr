@@ -67,5 +67,4 @@ class RequestBlogLikes(
             }
         }.toString()
     }
-
 }

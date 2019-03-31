@@ -1,7 +1,10 @@
 package com.highthunder.kotlr.response.type.blog
 
 import com.highthunder.kotlr.json.response.blog.BlogFollowersWrapperJsonAdapter
-import com.highthunder.kotlr.response.*
+import com.highthunder.kotlr.response.ResponseMetaInfo
+import com.highthunder.kotlr.response.TumblrError
+import com.highthunder.kotlr.response.TumblrResponse
+import com.highthunder.kotlr.response.WrapperInterface
 import com.highthunder.kotlr.types.RequestLink
 import com.highthunder.kotlr.types.User
 import com.squareup.moshi.Json
@@ -60,5 +63,4 @@ interface ResponseBlogFollowers {
         @Json(name = "total_users")
         var total: Int? = null
     )
-
 }

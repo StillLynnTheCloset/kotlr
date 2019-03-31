@@ -2,9 +2,11 @@ package com.highthunder.kotlr.types.content
 
 import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.PostId
-import com.highthunder.kotlr.types.content.Attribution.*
+import com.highthunder.kotlr.types.content.Attribution.Link
+import com.highthunder.kotlr.types.content.Attribution.Blog
+import com.highthunder.kotlr.types.content.Attribution.Post
+import com.highthunder.kotlr.types.content.Attribution.App
 import com.highthunder.kotlr.types.Blog as RealBlog
-import com.highthunder.kotlr.types.Post as RealPost
 
 /**
  * Attribution - Content blocks and layout blocks can have an attribution object containing a
@@ -90,5 +92,4 @@ sealed class Attribution {
             const val KEY: String = "app"
         }
     }
-
 }

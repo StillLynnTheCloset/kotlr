@@ -1,10 +1,26 @@
 package com.highthunder.kotlr.json.superwrapper
 
 import com.highthunder.kotlr.json.wrapper.PlayerWrapper
-import com.highthunder.kotlr.types.*
+import com.highthunder.kotlr.types.BlockPost
+import com.highthunder.kotlr.types.Blog
+import com.highthunder.kotlr.types.NoteData
+import com.highthunder.kotlr.types.Post
+import com.highthunder.kotlr.types.ReblogData
+import com.highthunder.kotlr.types.Trail
 import com.highthunder.kotlr.types.content.BlockLayout
 import com.highthunder.kotlr.types.content.PostContent
-import com.highthunder.kotlr.types.legacy.*
+import com.highthunder.kotlr.types.legacy.AnswerPost
+import com.highthunder.kotlr.types.legacy.AudioPost
+import com.highthunder.kotlr.types.legacy.ChatPost
+import com.highthunder.kotlr.types.legacy.Dialogue
+import com.highthunder.kotlr.types.legacy.LinkPost
+import com.highthunder.kotlr.types.legacy.Photo
+import com.highthunder.kotlr.types.legacy.PhotoPost
+import com.highthunder.kotlr.types.legacy.PhotoSize
+import com.highthunder.kotlr.types.legacy.QuotePost
+import com.highthunder.kotlr.types.legacy.TextPost
+import com.highthunder.kotlr.types.legacy.Video
+import com.highthunder.kotlr.types.legacy.VideoPost
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -422,7 +438,7 @@ internal data class PostAmalgamation(
     var duration: Double? = null,
     @Json(name = "video_type")
     var videoType: String? = null,
-    @Json(name = "video")// TODO: Figure out how to parse this one
+    @Json(name = "video") // TODO: Figure out how to parse this one
     var videoData: Any? = null,
     @Json(name = "permalink_url")
     var permalinkUrl: String? = null
@@ -1240,5 +1256,4 @@ internal data class PostAmalgamation(
             rebloggedRootCanMessage, rebloggedRootFollowing, notes, publishTime, queueState
         )
     }
-
 }

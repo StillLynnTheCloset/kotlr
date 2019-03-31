@@ -2,7 +2,18 @@ package com.highthunder.kotlr.json.response.blog
 
 import com.highthunder.kotlr.response.WrapperInterface
 import com.highthunder.kotlr.response.type.blog.ResponseBlogPosts
-import com.squareup.moshi.*
+import com.squareup.moshi.FromJson
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.JsonDataException
+import com.squareup.moshi.JsonReader
+import com.squareup.moshi.JsonReader.Token.BEGIN_ARRAY
+import com.squareup.moshi.JsonReader.Token.BEGIN_OBJECT
+import com.squareup.moshi.JsonReader.Token.NULL
+import com.squareup.moshi.JsonReader.Token.STRING
+import com.squareup.moshi.JsonWriter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.ToJson
+import com.squareup.moshi.Types
 
 /**
  * BlogPostsWrapperJsonAdapter - TODO: Documentation
@@ -33,10 +44,10 @@ internal class BlogPostsWrapperJsonAdapter(moshi: Moshi) {
     @FromJson
     fun fromJson(reader: JsonReader): WrapperInterface<ResponseBlogPosts.Body> {
         return when (reader.peek()) {
-            JsonReader.Token.BEGIN_OBJECT -> ResponseBlogPosts.Wrapper(body = responseAdapter.fromJson(reader))
-            JsonReader.Token.STRING -> ResponseBlogPosts.Wrapper(error = stringAdapter.fromJson(reader))
-            JsonReader.Token.BEGIN_ARRAY -> ResponseBlogPosts.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
-            JsonReader.Token.NULL -> ResponseBlogPosts.Wrapper()
+            BEGIN_OBJECT -> ResponseBlogPosts.Wrapper(body = responseAdapter.fromJson(reader))
+            STRING -> ResponseBlogPosts.Wrapper(error = stringAdapter.fromJson(reader))
+            BEGIN_ARRAY -> ResponseBlogPosts.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
+            NULL -> ResponseBlogPosts.Wrapper()
             else -> throw JsonDataException("Expected a field of type List or String but got ${reader.peek()}")
         }
     }
@@ -52,5 +63,4 @@ internal class BlogPostsWrapperJsonAdapter(moshi: Moshi) {
             responseAdapter.toJson(writer, value?.body)
         }
     }
-
 }

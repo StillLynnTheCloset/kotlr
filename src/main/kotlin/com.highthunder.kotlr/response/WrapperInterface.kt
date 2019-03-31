@@ -31,5 +31,4 @@ interface WrapperInterface<out T> {
      * @return An optional response body object, if any.
      */
     val body: T?
-
 }

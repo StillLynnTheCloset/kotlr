@@ -78,5 +78,4 @@ class KotlrAuthenticatedClient(private val key: TumblrUserKey) : KotlrRequestPro
         return adapter.fromJson(response.body)
             ?: throw KotlrParsingException("Failed to parse response body: ${response.body}")
     }
-
 }

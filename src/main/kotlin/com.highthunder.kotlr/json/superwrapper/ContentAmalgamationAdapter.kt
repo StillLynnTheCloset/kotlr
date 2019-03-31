@@ -1,7 +1,11 @@
 package com.highthunder.kotlr.json.superwrapper
 
 import com.highthunder.kotlr.types.content.PostContent
-import com.highthunder.kotlr.types.content.PostContent.*
+import com.highthunder.kotlr.types.content.PostContent.AudioContent
+import com.highthunder.kotlr.types.content.PostContent.ImageContent
+import com.highthunder.kotlr.types.content.PostContent.LinkContent
+import com.highthunder.kotlr.types.content.PostContent.TextContent
+import com.highthunder.kotlr.types.content.PostContent.VideoContent
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.ToJson
@@ -44,5 +48,4 @@ internal class ContentAmalgamationAdapter {
             is VideoContent -> ContentAmalgamation(input)
         }
     }
-
 }

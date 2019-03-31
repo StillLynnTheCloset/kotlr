@@ -42,5 +42,4 @@ class RequestBlogDrafts(
     override val improvedByOAuth: Boolean = true
 
     override fun getBaseUrl(): String = "$apiRootPath$BASE_PATH$identifier/posts/draft"
-
 }

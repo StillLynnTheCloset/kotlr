@@ -1,7 +1,10 @@
 package com.highthunder.kotlr.response.type.user
 
 import com.highthunder.kotlr.json.response.user.UserInfoWrapperJsonAdapter
-import com.highthunder.kotlr.response.*
+import com.highthunder.kotlr.response.ResponseMetaInfo
+import com.highthunder.kotlr.response.TumblrError
+import com.highthunder.kotlr.response.TumblrResponse
+import com.highthunder.kotlr.response.WrapperInterface
 import com.highthunder.kotlr.types.User
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -53,5 +56,4 @@ interface ResponseUserInfo {
         @Json(name = "user")
         var user: User? = null
     )
-
 }

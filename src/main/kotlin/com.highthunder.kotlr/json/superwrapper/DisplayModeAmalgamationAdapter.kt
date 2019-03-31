@@ -39,5 +39,4 @@ internal class DisplayModeAmalgamationAdapter {
             is Carousel -> DisplayModeAmalgamation(input)
         }
     }
-
 }

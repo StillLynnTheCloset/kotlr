@@ -25,5 +25,4 @@ internal class HexColorOctothorpeJsonAdapter {
     @FromJson
     @HexColorOctothorpe
     fun fromJson(rgb: String): Color = Color(rgb)
-
 }

@@ -40,5 +40,4 @@ internal class BlockLayoutAmalgamationAdapter {
             is BlockLayout.Ask -> BlockLayoutAmalgamation(input)
         }
     }
-
 }

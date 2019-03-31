@@ -4,7 +4,6 @@ import com.highthunder.kotlr.json.qualifier.HexColorOctothorpe
 import com.highthunder.kotlr.types.Blog
 import com.highthunder.kotlr.types.Color
 import com.highthunder.kotlr.types.content.TextFormat
-import com.highthunder.kotlr.types.content.TextFormat.*
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -20,16 +19,16 @@ import com.squareup.moshi.JsonClass
  * @param end The ending index of the formatting range (exclusive).
  * @param type The type of formatting range.
  *
- * [Link]
+ * [TextFormat.Link]
  * @param url The link's URL!
  *
- * [Mention]
+ * [TextFormat.Mention]
  * @param blog An object with a uuid field, which is the mentioned blog's UUID.
  *
- * [Color]
+ * [TextFormat.Color]
  * @param hex The color to use, in standard hex format, with leading '#'.
  *
- * [Size]
+ * [TextFormat.Size]
  * @param size The text size for this particular range of text, one of 'small' or 'big'.
  */
 @JsonClass(generateAdapter = true)
@@ -92,5 +91,4 @@ internal data class TextFormatAmalgamation constructor(
      * TODO: Documentation
      */
     fun toSize(): TextFormat.Size = TextFormat.Size(start, end, size)
-
 }

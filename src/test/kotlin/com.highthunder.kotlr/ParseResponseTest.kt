@@ -132,5 +132,4 @@ class ParseResponseTest {
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
     }
-
 }

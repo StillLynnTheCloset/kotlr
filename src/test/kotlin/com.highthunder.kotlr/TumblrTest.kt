@@ -1,7 +1,7 @@
 package com.highthunder.kotlr
 
-import com.highthunder.kotlr.json.superwrapper.PostAmalgamationAdapter
 import com.highthunder.kotlr.json.superwrapper.PostAmalgamation
+import com.highthunder.kotlr.json.superwrapper.PostAmalgamationAdapter
 import com.highthunder.kotlr.types.Blog
 import com.highthunder.kotlr.types.NoteData
 import com.highthunder.kotlr.types.User
@@ -656,5 +656,4 @@ class TumblrTest {
     }
 
     // endregion
-
 }

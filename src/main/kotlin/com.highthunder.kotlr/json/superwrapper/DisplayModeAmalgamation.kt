@@ -34,5 +34,4 @@ internal data class DisplayModeAmalgamation(
      * TODO: Documentation
      */
     fun toCarousel(): Carousel = Carousel()
-
 }

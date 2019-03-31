@@ -15,5 +15,4 @@ class KotlrParsingException : KotlrException {
     constructor(message: String) : super(message)
 
     constructor(response: Response) : super(response)
-
 }

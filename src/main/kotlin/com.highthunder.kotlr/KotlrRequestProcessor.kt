@@ -29,5 +29,4 @@ interface KotlrRequestProcessor {
             process(request)
         }
     }
-
 }

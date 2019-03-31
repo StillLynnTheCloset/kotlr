@@ -1,7 +1,10 @@
 package com.highthunder.kotlr.response.type.user
 
 import com.highthunder.kotlr.json.response.user.UserFollowingWrapperJsonAdapter
-import com.highthunder.kotlr.response.*
+import com.highthunder.kotlr.response.ResponseMetaInfo
+import com.highthunder.kotlr.response.TumblrError
+import com.highthunder.kotlr.response.TumblrResponse
+import com.highthunder.kotlr.response.WrapperInterface
 import com.highthunder.kotlr.types.Blog
 import com.highthunder.kotlr.types.RequestLink
 import com.squareup.moshi.Json
@@ -60,5 +63,4 @@ interface ResponseUserFollowing {
         @Json(name = "total_blogs")
         var totalFollowed: Long? = null
     )
-
 }

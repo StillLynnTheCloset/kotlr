@@ -88,5 +88,4 @@ internal data class AttributionAmalgamation(
      * TODO: Documentation
      */
     fun toBlogAttribution(): Attribution.Blog = Attribution.Blog(blog)
-
 }

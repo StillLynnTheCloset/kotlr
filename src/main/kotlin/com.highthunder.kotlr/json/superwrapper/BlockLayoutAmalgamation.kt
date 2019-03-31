@@ -2,7 +2,10 @@ package com.highthunder.kotlr.json.superwrapper
 
 import com.highthunder.kotlr.types.content.Attribution
 import com.highthunder.kotlr.types.content.BlockLayout
-import com.highthunder.kotlr.types.content.BlockLayout.*
+import com.highthunder.kotlr.types.content.BlockLayout.Vertical
+import com.highthunder.kotlr.types.content.BlockLayout.Row
+import com.highthunder.kotlr.types.content.BlockLayout.Condensed
+import com.highthunder.kotlr.types.content.BlockLayout.Ask
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -73,5 +76,4 @@ internal data class BlockLayoutAmalgamation(
      * TODO: Documentation
      */
     fun toAskLayout(): BlockLayout.Ask = BlockLayout.Ask(blocks, attribution)
-
 }

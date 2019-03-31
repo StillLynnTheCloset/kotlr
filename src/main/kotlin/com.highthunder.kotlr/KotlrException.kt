@@ -14,5 +14,4 @@ open class KotlrException : RuntimeException {
     constructor(message: String)
 
     constructor(response: Response)
-
 }

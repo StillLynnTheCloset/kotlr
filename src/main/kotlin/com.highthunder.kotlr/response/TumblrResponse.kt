@@ -38,5 +38,4 @@ interface TumblrResponse<out T> {
      * A helper function to directly access the response body and assert that it is not null.
      */
     fun getBodyOrThrow(): T = response.body ?: throw KotlrException("Unable to get body of response: $this")
-
 }

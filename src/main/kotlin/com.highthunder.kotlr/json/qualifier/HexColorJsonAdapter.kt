@@ -25,5 +25,4 @@ internal class HexColorJsonAdapter {
     @FromJson
     @HexColor
     fun fromJson(rgb: String): Color = Color(rgb)
-
 }

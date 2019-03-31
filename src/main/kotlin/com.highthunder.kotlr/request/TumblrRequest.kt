@@ -57,5 +57,4 @@ interface TumblrRequest<out T> {
      */
     val apiRootPath: String
         get() = "https://api.tumblr.com/v2/"
-
 }

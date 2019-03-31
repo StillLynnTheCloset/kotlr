@@ -2,7 +2,14 @@ package com.highthunder.kotlr.json.superwrapper
 
 import com.highthunder.kotlr.types.BlockPost
 import com.highthunder.kotlr.types.Post
-import com.highthunder.kotlr.types.legacy.*
+import com.highthunder.kotlr.types.legacy.AnswerPost
+import com.highthunder.kotlr.types.legacy.AudioPost
+import com.highthunder.kotlr.types.legacy.ChatPost
+import com.highthunder.kotlr.types.legacy.LinkPost
+import com.highthunder.kotlr.types.legacy.PhotoPost
+import com.highthunder.kotlr.types.legacy.QuotePost
+import com.highthunder.kotlr.types.legacy.TextPost
+import com.highthunder.kotlr.types.legacy.VideoPost
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.ToJson
@@ -54,5 +61,4 @@ internal class PostAmalgamationAdapter {
             else -> throw JsonDataException("Post was not of expected type : $input")
         }
     }
-
 }

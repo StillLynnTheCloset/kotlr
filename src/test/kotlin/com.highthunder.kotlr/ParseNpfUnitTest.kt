@@ -6,7 +6,10 @@ import com.highthunder.kotlr.types.content.BlockLayout
 import com.highthunder.kotlr.types.content.PostContent
 import com.highthunder.kotlr.types.content.TextFormat
 import com.squareup.moshi.JsonAdapter
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class ParseNpfUnitTest {
@@ -572,5 +575,4 @@ class ParseNpfUnitTest {
     }
 
     // endregion
-
 }

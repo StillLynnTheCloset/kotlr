@@ -30,5 +30,4 @@ class RequestUserInfo : TumblrRequest<ResponseUserInfo.Body> {
     override fun getBaseUrl(): String = "$apiRootPath$BASE_PATH"
 
     override fun getUrlParameters(apiKey: String): String = ""
-
 }

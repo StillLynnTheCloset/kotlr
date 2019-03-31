@@ -32,7 +32,8 @@ abstract class RequestPosts<out T>(
         positions += if (afterTime != null) 1 else 0
         positions += if (beforeTime != null) 1 else 0
         if (positions > 1) {
-            throw ConflictingParametersException("You may only specify one of {beforePostId, afterPostId, postOffset, afterTime, beforeTime}")
+            throw ConflictingParametersException(
+                "You may only specify one of {beforePostId, afterPostId, postOffset, afterTime, beforeTime}")
         }
     }
 
@@ -150,5 +151,4 @@ abstract class RequestPosts<out T>(
             }
         }.toString()
     }
-
 }

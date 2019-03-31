@@ -2,13 +2,33 @@ package com.highthunder.kotlr
 
 import com.highthunder.kotlr.json.qualifier.HexColorJsonAdapter
 import com.highthunder.kotlr.json.qualifier.HexColorOctothorpeJsonAdapter
-import com.highthunder.kotlr.json.response.blog.*
+import com.highthunder.kotlr.json.response.blog.BlogAvatarWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.blog.BlogDraftsWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.blog.BlogFollowersWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.blog.BlogFollowingWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.blog.BlogInfoWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.blog.BlogLikesWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.blog.BlogPostsWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.blog.BlogQueueWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.blog.BlogSubmissionsWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserDashboardWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserFollowingWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserInfoWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserLikesWrapperJsonAdapter
-import com.highthunder.kotlr.json.superwrapper.*
-import com.highthunder.kotlr.json.wrapper.*
+import com.highthunder.kotlr.json.superwrapper.AttributionAmalgamationAdapter
+import com.highthunder.kotlr.json.superwrapper.BlockLayoutAmalgamationAdapter
+import com.highthunder.kotlr.json.superwrapper.ContentAmalgamationAdapter
+import com.highthunder.kotlr.json.superwrapper.DisplayModeAmalgamationAdapter
+import com.highthunder.kotlr.json.superwrapper.NoteDataAmalgamationAdapter
+import com.highthunder.kotlr.json.superwrapper.PostAmalgamationAdapter
+import com.highthunder.kotlr.json.superwrapper.TextFormatAmalgamationAdapter
+import com.highthunder.kotlr.json.wrapper.ColorsJsonAdapter
+import com.highthunder.kotlr.json.wrapper.ContentWrapperJsonAdapter
+import com.highthunder.kotlr.json.wrapper.MediaWrapperJsonAdapter
+import com.highthunder.kotlr.json.wrapper.PlayerWrapperJsonAdapter
+import com.highthunder.kotlr.json.wrapper.ThemeWrapperJsonAdapter
+import com.highthunder.kotlr.json.wrapper.UserJsonAdapter
+import com.highthunder.kotlr.json.wrapper.VideoJsonAdapter
 import com.squareup.moshi.Moshi
 
 /**

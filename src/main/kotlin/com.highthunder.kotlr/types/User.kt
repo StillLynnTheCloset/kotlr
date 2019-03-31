@@ -19,7 +19,7 @@ import com.squareup.moshi.JsonClass
  * @param likes The total count of the user's likes.
  * @param defaultPostFormat The user's default posting format - html, markdown, or raw.
  */
-@JsonClass(generateAdapter = true)
+@JsonClass(generateAdapter = false)
 data class User(
     @Json(name = "blogs")
     var blogs: List<Blog>? = null,

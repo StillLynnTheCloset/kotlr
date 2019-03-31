@@ -54,11 +54,11 @@ import com.squareup.moshi.JsonClass
  * @param canBeFollowed TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class Blog(
+data class Blog constructor(
     @Json(name = "name")
-    var name: String? = null,
+    var name: String = "",
     @Json(name = "url")
-    var url: String? = null,
+    var url: String = "",
     @Json(name = "title")
     var title: String? = null,
     @Json(name = "primary")

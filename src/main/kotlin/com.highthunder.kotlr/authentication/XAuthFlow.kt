@@ -89,5 +89,4 @@ class XAuthFlow {
         val token = postXAuth(appKey, email, password)
         return TumblrUserKey(appKey, token.token, token.tokenSecret)
     }
-
 }

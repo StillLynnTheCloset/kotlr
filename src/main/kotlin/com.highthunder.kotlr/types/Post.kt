@@ -361,5 +361,4 @@ interface Post {
         @Json(name = "queued")
         Queued("queued")
     }
-
 }

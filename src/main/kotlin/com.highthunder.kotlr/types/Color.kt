@@ -42,5 +42,4 @@ data class Color(
      * TODO: Documentation
      */
     fun asOctothorpeString(): String = String.format("#%06x", c)
-
 }

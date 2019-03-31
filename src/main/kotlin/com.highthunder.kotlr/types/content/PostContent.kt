@@ -198,7 +198,6 @@ sealed class PostContent {
             @Json(name = "unordered-list-item")
             UnorderedListItem,
         }
-
     }
 
     /**
@@ -264,5 +263,4 @@ sealed class PostContent {
             const val KEY: String = "video"
         }
     }
-
 }

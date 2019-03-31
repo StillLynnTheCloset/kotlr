@@ -51,5 +51,4 @@ class RequestUserLikes(
     override val improvedByOAuth: Boolean = true
 
     override fun getBaseUrl(): String = "$apiRootPath$BASE_PATH"
-
 }

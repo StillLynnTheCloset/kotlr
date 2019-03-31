@@ -22,5 +22,4 @@ class ParseNpfIntegrationTest {
     }
 
     // endregion
-
 }

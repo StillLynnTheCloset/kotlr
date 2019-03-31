@@ -1,7 +1,11 @@
 package com.highthunder.kotlr.json.superwrapper
 
 import com.highthunder.kotlr.types.NoteData
-import com.highthunder.kotlr.types.NoteData.*
+import com.highthunder.kotlr.types.NoteData.Attribution
+import com.highthunder.kotlr.types.NoteData.Like
+import com.highthunder.kotlr.types.NoteData.Posted
+import com.highthunder.kotlr.types.NoteData.Reblog
+import com.highthunder.kotlr.types.NoteData.Reply
 import com.highthunder.kotlr.types.content.TextFormat
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -146,16 +150,18 @@ internal data class NoteDataAmalgamation(
     /**
      * TODO: Documentation
      */
-    fun toReblog(): Reblog = Reblog(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape, postId, reblogParentBlogName)
+    fun toReblog(): Reblog = Reblog(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape, postId,
+        reblogParentBlogName)
 
     /**
      * TODO: Documentation
      */
-    fun toReply(): Reply = Reply(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape, replyText, formatting, canBlock)
+    fun toReply(): Reply = Reply(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape, replyText,
+        formatting, canBlock)
 
     /**
      * TODO: Documentation
      */
-    fun toAttribution(): Attribution = Attribution(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape, postAttributionType, postAttributionTypeName, photoUrl, photoWidth, photoHeight)
-
+    fun toAttribution(): Attribution = Attribution(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape,
+        postAttributionType, postAttributionTypeName, photoUrl, photoWidth, photoHeight)
 }

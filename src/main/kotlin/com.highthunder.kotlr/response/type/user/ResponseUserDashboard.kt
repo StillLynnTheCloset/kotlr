@@ -1,7 +1,10 @@
 package com.highthunder.kotlr.response.type.user
 
 import com.highthunder.kotlr.json.response.user.UserDashboardWrapperJsonAdapter
-import com.highthunder.kotlr.response.*
+import com.highthunder.kotlr.response.ResponseMetaInfo
+import com.highthunder.kotlr.response.TumblrError
+import com.highthunder.kotlr.response.TumblrResponse
+import com.highthunder.kotlr.response.WrapperInterface
 import com.highthunder.kotlr.types.Post
 import com.highthunder.kotlr.types.RequestLink
 import com.squareup.moshi.Json
@@ -57,5 +60,4 @@ interface ResponseUserDashboard {
         @Json(name = "posts")
         var posts: List<Post>? = null
     )
-
 }

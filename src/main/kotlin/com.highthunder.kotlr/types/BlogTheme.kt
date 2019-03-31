@@ -40,9 +40,9 @@ import com.squareup.moshi.JsonClass
  * @param showTitle TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-class BlogTheme(
+class BlogTheme constructor(
     @Json(name = "url")
-    var url: String? = null,
+    var url: String = "",
     avatarImage: String? = null,
     headerImage: String? = null,
     @Json(name = "header_full_width")
@@ -56,7 +56,8 @@ class BlogTheme(
     @Json(name = "avatar_shape")
     var avatarShape: String? = null,
     @Json(name = "background_color")
-    @HexColorOctothorpe var backgroundColor: Color? = null,
+    @HexColorOctothorpe
+    var backgroundColor: Color? = null,
     @Json(name = "body_font")
     var bodyFont: String? = null,
     @Json(name = "header_bounds")
@@ -66,9 +67,11 @@ class BlogTheme(
     @Json(name = "header_image_scaled")
     var headerImageScaled: String? = null,
     @Json(name = "link_color")
-    @HexColorOctothorpe var linkColor: Color? = null,
+    @HexColorOctothorpe
+    var linkColor: Color? = null,
     @Json(name = "title_color")
-    @HexColorOctothorpe var titleColor: Color? = null,
+    @HexColorOctothorpe
+    var titleColor: Color? = null,
     @Json(name = "title_font")
     var titleFont: String? = null,
     @Json(name = "title_font_weight")
@@ -89,12 +92,14 @@ class BlogTheme(
         /**
          * TODO: Documentation
          */
-        const val DEFAULT_AVATAR: String = "https://secure.assets.tumblr.com/images/default_avatar/sphere_open_64.png"
+        const val DEFAULT_AVATAR: String =
+            "https://secure.assets.tumblr.com/images/default_avatar/sphere_open_64.png"
 
         /**
          * TODO: Documentation
          */
-        const val DEFAULT_HEADER: String = "https://secure.assets.tumblr.com/images/default_header/optica_pattern_08.png"
+        const val DEFAULT_HEADER: String =
+            "https://secure.assets.tumblr.com/images/default_header/optica_pattern_08.png"
 
         /**
          * TODO: Documentation
@@ -115,7 +120,6 @@ class BlogTheme(
          * TODO: Documentation
          */
         const val DEFAULT_LINK_COLOR: String = ""
-
     }
 
     /**
@@ -140,5 +144,4 @@ class BlogTheme(
         this.avatarImage = avatarImage
         this.headerImage = headerImage
     }
-
 }

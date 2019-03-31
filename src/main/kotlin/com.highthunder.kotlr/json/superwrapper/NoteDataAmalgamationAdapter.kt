@@ -1,7 +1,11 @@
 package com.highthunder.kotlr.json.superwrapper
 
 import com.highthunder.kotlr.types.NoteData
-import com.highthunder.kotlr.types.NoteData.*
+import com.highthunder.kotlr.types.NoteData.Attribution
+import com.highthunder.kotlr.types.NoteData.Like
+import com.highthunder.kotlr.types.NoteData.Reply
+import com.highthunder.kotlr.types.NoteData.Reblog
+import com.highthunder.kotlr.types.NoteData.Posted
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.ToJson
@@ -44,5 +48,4 @@ internal class NoteDataAmalgamationAdapter {
             is Attribution -> NoteDataAmalgamation(input)
         }
     }
-
 }

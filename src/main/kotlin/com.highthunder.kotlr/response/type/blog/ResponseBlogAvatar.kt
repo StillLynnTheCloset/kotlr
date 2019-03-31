@@ -1,7 +1,10 @@
 package com.highthunder.kotlr.response.type.blog
 
 import com.highthunder.kotlr.json.response.blog.BlogAvatarWrapperJsonAdapter
-import com.highthunder.kotlr.response.*
+import com.highthunder.kotlr.response.ResponseMetaInfo
+import com.highthunder.kotlr.response.TumblrError
+import com.highthunder.kotlr.response.TumblrResponse
+import com.highthunder.kotlr.response.WrapperInterface
 import com.highthunder.kotlr.types.RequestLink
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -56,5 +59,4 @@ interface ResponseBlogAvatar {
         @Json(name = "avatar_url")
         var url: String? = null
     )
-
 }

@@ -1,6 +1,10 @@
 package com.highthunder.kotlr.types.legacy
 
-import com.highthunder.kotlr.types.*
+import com.highthunder.kotlr.types.Blog
+import com.highthunder.kotlr.types.NoteData
+import com.highthunder.kotlr.types.Post
+import com.highthunder.kotlr.types.ReblogData
+import com.highthunder.kotlr.types.Trail
 import com.highthunder.kotlr.types.content.BlockLayout
 import com.highthunder.kotlr.types.content.PostContent
 
