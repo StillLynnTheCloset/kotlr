@@ -1,6 +1,8 @@
 package com.highthunder.kotlr
 
+import com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar
 import com.highthunder.kotlr.response.type.blog.ResponseBlogLikes
+import com.highthunder.kotlr.response.type.blog.ResponseBlogQueue
 import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
 import com.squareup.moshi.JsonAdapter
 import org.junit.Assert
@@ -17,15 +19,15 @@ class ParseResponseTest {
 
     @Test
     fun parseBlogLikesResponseTest() {
-        val adapter = Kotlr.getMoshi().adapter<ResponseBlogLikes.Response>(ResponseBlogLikes.Response::class.java).failOnUnknown()
+        val adapter =
+            moshi.adapter<ResponseBlogLikes.Response>(ResponseBlogLikes.Response::class.java).failOnUnknown()
 
         val response: ResponseBlogLikes.Response? = adapter.fromJson(Sample.blogLikesResponseGood)
         Assert.assertNotNull(response)
-        Assert.assertNotNull(response?.getWrapper())
-        Assert.assertTrue(response?.getWrapper() is ResponseBlogLikes.Wrapper)
-        Assert.assertNull(response?.getWrapper()?.getMessage())
+        Assert.assertNotNull(response?.response)
+        Assert.assertNull(response?.response?.error)
         Assert.assertNotNull(response?.getBody())
-        Assert.assertNotNull(response?.getWrapper()?.getBody())
+        Assert.assertNotNull(response?.response?.body)
         Assert.assertTrue(response?.getBody() is ResponseBlogLikes.Body)
         Assert.assertNotNull(response?.getBody()?.links)
         Assert.assertEquals(202L, response?.getBody()?.totalLiked)
@@ -39,13 +41,13 @@ class ParseResponseTest {
 
     @Test
     fun parseBlogLikesResponseBadTest() {
-        val adapter = Kotlr.getMoshi().adapter<ResponseBlogLikes.Response>(ResponseBlogLikes.Response::class.java).failOnUnknown()
+        val adapter =
+            moshi.adapter<ResponseBlogLikes.Response>(ResponseBlogLikes.Response::class.java).failOnUnknown()
 
         val response: ResponseBlogLikes.Response? = adapter.fromJson(Sample.blogLikesUnauthorized)
         Assert.assertNotNull(response)
-        Assert.assertNotNull(response?.getWrapper())
-        Assert.assertTrue(response?.getWrapper() is ResponseBlogLikes.Wrapper)
-        Assert.assertNotNull(response?.getWrapper()?.getMessage())
+        Assert.assertNotNull(response?.response)
+        Assert.assertNotNull(response?.response?.error)
         Assert.assertNull(response?.getBody())
         val json = adapter.toJson(response)
         Assert.assertNotNull(json)
@@ -53,7 +55,7 @@ class ParseResponseTest {
 
     @Test
     fun parseUnauthorizedErrorTest() {
-        val adapter = Kotlr.getMoshi().adapter(ResponseUserDashboard.Response::class.java).failOnUnknown()
+        val adapter = moshi.adapter(ResponseUserDashboard.Response::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<ResponseUserDashboard.Response>)
 
         val post: ResponseUserDashboard.Response? = adapter.fromJson(Sample.dashUnauthorized)
@@ -64,7 +66,9 @@ class ParseResponseTest {
 
     @Test
     fun parseDashResponseTest() {
-        val adapter = Kotlr.getMoshi().adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java).failOnUnknown()
+        val adapter =
+            moshi.adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java)
+                .failOnUnknown()
 
         val response: ResponseUserDashboard.Response? = adapter.fromJson(DashSample.dashResult)
 
@@ -74,7 +78,9 @@ class ParseResponseTest {
 
     @Test
     fun parseDashNeueResponseTest() {
-        val adapter = Kotlr.getMoshi().adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java).failOnUnknown()
+        val adapter =
+            moshi.adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java)
+                .failOnUnknown()
 
         val response: ResponseUserDashboard.Response? = adapter.fromJson(DashSample.neueSample)
 
@@ -84,7 +90,9 @@ class ParseResponseTest {
 
     @Test
     fun parseDashAudioEmbedResponseTest() {
-        val adapter = Kotlr.getMoshi().adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java).failOnUnknown()
+        val adapter =
+            moshi.adapter<ResponseUserDashboard.Response>(ResponseUserDashboard.Response::class.java)
+                .failOnUnknown()
 
         val response: ResponseUserDashboard.Response? = adapter.fromJson(DashSample.legacyAudioEmbedPost)
 
@@ -92,4 +100,36 @@ class ParseResponseTest {
         Assert.assertNotNull(json)
     }
 
+    @Test
+    fun parseBlogAvatarTest() {
+        val adapter = moshi.adapter(ResponseBlogAvatar.Response::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<ResponseBlogAvatar.Response>)
+
+        val post: ResponseBlogAvatar.Response? = adapter.fromJson(Sample.blogAvatarResponse)
+        Assert.assertNotNull(post)
+        val json = adapter.toJson(post)
+        Assert.assertNotNull(json)
+    }
+
+    @Test
+    fun parseBlogAvatarErrorTest() {
+        val adapter = moshi.adapter(ResponseBlogAvatar.Response::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<ResponseBlogAvatar.Response>)
+
+        val post: ResponseBlogAvatar.Response? = adapter.fromJson(Sample.blogAvatarError)
+        Assert.assertNotNull(post)
+        val json = adapter.toJson(post)
+        Assert.assertNotNull(json)
+    }
+
+    @Test
+    fun parseQueuedTest() {
+        val adapter = moshi.adapter(ResponseBlogQueue.Response::class.java).failOnUnknown()
+        Assert.assertTrue(adapter is JsonAdapter<ResponseBlogQueue.Response>)
+
+        val post: ResponseBlogQueue.Response? = adapter.fromJson(Sample.queuedPostsResponse)
+        Assert.assertNotNull(post)
+        val json = adapter.toJson(post)
+        Assert.assertNotNull(json)
+    }
 }

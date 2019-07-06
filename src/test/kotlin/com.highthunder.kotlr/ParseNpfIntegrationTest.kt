@@ -2,7 +2,8 @@ package com.highthunder.kotlr
 
 import com.highthunder.kotlr.types.Post
 import com.squareup.moshi.JsonAdapter
-import org.junit.Assert.*
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class ParseNpfIntegrationTest {
@@ -11,7 +12,7 @@ class ParseNpfIntegrationTest {
 
     @Test
     fun parseRealPostTest() {
-        val adapter = Kotlr.getMoshi().adapter(Post::class.java).failOnUnknown()
+        val adapter = moshi.adapter(Post::class.java).failOnUnknown()
         assertTrue(adapter is JsonAdapter<Post>)
 
         val post: Post? = adapter.fromJson(Sample.npfAnouncementPost)
@@ -21,5 +22,4 @@ class ParseNpfIntegrationTest {
     }
 
     // endregion
-
 }

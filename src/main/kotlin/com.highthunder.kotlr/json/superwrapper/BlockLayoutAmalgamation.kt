@@ -2,19 +2,26 @@ package com.highthunder.kotlr.json.superwrapper
 
 import com.highthunder.kotlr.types.content.Attribution
 import com.highthunder.kotlr.types.content.BlockLayout
-import com.highthunder.kotlr.types.content.BlockLayout.*
+import com.highthunder.kotlr.types.content.BlockLayout.Vertical
+import com.highthunder.kotlr.types.content.BlockLayout.Row
+import com.highthunder.kotlr.types.content.BlockLayout.Condensed
+import com.highthunder.kotlr.types.content.BlockLayout.Ask
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * SuperLayoutJson - A class to hold every possible field for [BlockLayout] so that Mochi can
+ * BlockLayoutAmalgamation - A class to hold every possible field for [BlockLayout] so that Mochi can
  * deserialize them.
  *
  * @author highthunder
  * @since 10/20/18
  * @version 1.0.0
  *
- * Vertical
+ * All:
+ * @param type TODO: Documentation
+ *
+ * [Vertical]
+ * No params
  *
  * [Row]
  * @param rows This is an array of the rows and block indices per row, for basic row layouts.
@@ -28,27 +35,45 @@ import com.squareup.moshi.JsonClass
  * @param attribution If the ask is not anonymous, this will include information about the blog that submitted the ask.
  */
 @JsonClass(generateAdapter = true)
-data class SuperLayoutJson(
-        @Json(name = "type")
-        var type: String? = null,
-        @Json(name = "rows")
-        var rows: List<List<Int>>? = null,
-        @Json(name = "blocks")
-        var blocks: List<Int>? = null,
-        @Json(name = "display")
-        var display: List<BlockLayout.Row.Display>? = null,
-        @Json(name = "attribution")
-        var attribution: Attribution? = null
+internal data class BlockLayoutAmalgamation(
+    @Json(name = "type")
+    var type: String? = null,
+    @Json(name = "rows")
+    var rows: List<List<Int>>? = null,
+    @Json(name = "blocks")
+    var blocks: List<Int>? = null,
+    @Json(name = "display")
+    var display: List<BlockLayout.Row.Display>? = null,
+    @Json(name = "attribution")
+    var attribution: Attribution? = null
 ) {
 
     constructor(layout: BlockLayout.Vertical) : this(BlockLayout.Vertical.KEY)
     constructor(layout: BlockLayout.Row) : this(BlockLayout.Row.KEY, rows = layout.rows, display = layout.display)
     constructor(layout: BlockLayout.Condensed) : this(BlockLayout.Condensed.KEY, blocks = layout.blocks)
-    constructor(layout: BlockLayout.Ask) : this(BlockLayout.Ask.KEY, blocks = layout.blocks, attribution = layout.attribution)
+    constructor(layout: BlockLayout.Ask) : this(
+        BlockLayout.Ask.KEY,
+        blocks = layout.blocks,
+        attribution = layout.attribution
+    )
 
+    /**
+     * TODO: Documentation
+     */
     fun toVerticalLayout(): BlockLayout.Vertical = BlockLayout.Vertical()
-    fun toRowLayout(): BlockLayout.Row = BlockLayout.Row(rows, display)
-    fun toCondensedLayout(): BlockLayout.Condensed = BlockLayout.Condensed(blocks)
-    fun toAskLayout(): BlockLayout.Ask = BlockLayout.Ask(blocks, attribution)
 
+    /**
+     * TODO: Documentation
+     */
+    fun toRowLayout(): BlockLayout.Row = BlockLayout.Row(rows, display)
+
+    /**
+     * TODO: Documentation
+     */
+    fun toCondensedLayout(): BlockLayout.Condensed = BlockLayout.Condensed(blocks)
+
+    /**
+     * TODO: Documentation
+     */
+    fun toAskLayout(): BlockLayout.Ask = BlockLayout.Ask(blocks, attribution)
 }

@@ -11,22 +11,24 @@ import com.squareup.moshi.JsonClass
  * @version 1.0.0
  *
  * @param originalSize The photo at its original size.
+ * @param panoramaSize TODO: Documentation
  * @param caption A user supplied caption for the individual photo.
+ * @param captionAbstract TODO: Documentation
  * @param altSizes Alternate photo sizes.
- * TODO: Documentation
+ * @param exif TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class Photo(
-        @Json(name = "original_size")
-        var originalSize: PhotoSize? = null,
-        @Json(name = "panorama_size")
-        var panoramaSize: PhotoSize? = null,
-        @Json(name = "caption")
-        var caption: String? = null,
-        @Json(name = "caption_abstract")
-        var captionAbstract: String? = null,
-        @Json(name = "alt_sizes")
-        var altSizes: List<PhotoSize>? = null,
-        @Json(name = "exif")
-        var exif: ExifData? = null
+    @Json(name = "original_size")
+    var originalSize: PhotoSize? = null,
+    @Json(name = "panorama_size")
+    var panoramaSize: PhotoSize? = null,
+    @Json(name = "caption")
+    var caption: String? = null,
+    @Json(name = "caption_abstract")
+    var captionAbstract: String? = null,
+    @Json(name = "alt_sizes")
+    var altSizes: List<PhotoSize>? = null,
+    @Json(name = "exif")
+    var exif: ExifData? = null
 )

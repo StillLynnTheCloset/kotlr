@@ -1,6 +1,10 @@
 package com.highthunder.kotlr.types.legacy
 
-import com.highthunder.kotlr.types.*
+import com.highthunder.kotlr.types.Blog
+import com.highthunder.kotlr.types.NoteData
+import com.highthunder.kotlr.types.Post
+import com.highthunder.kotlr.types.ReblogData
+import com.highthunder.kotlr.types.Trail
 import com.highthunder.kotlr.types.content.BlockLayout
 import com.highthunder.kotlr.types.content.PostContent
 
@@ -11,7 +15,6 @@ import com.highthunder.kotlr.types.content.PostContent
  * @since 10/20/18
  * @version 1.0.0
  *
- * Post
  * @param blogName The short name used to uniquely identify a blog.
  * @param id The post's unique ID.
  * @param blog A standard API-formatted "short blog info" object.
@@ -28,12 +31,14 @@ import com.highthunder.kotlr.types.content.PostContent
  * @param isLiked Indicates if a user has already liked a post or not.
  * @param state Indicates the current state of the post.
  * @param totalPosts The total number of post available for this request, useful for paginating through results.
+ * @param anonymous TODO: Documentation
  * @param content The array of content that constitutes the body of a post in the Neue Post Format(NPF).
  * @param trail The previous Posts in the reblog trail. In order of oldest (the root Post) to the newest (the parent Post).
  * @param layout The layouts of the blocks in this post.
  * @param postAuthor The id of the author of the post.
  * @param shortUrl The short URL for this post.
- * @param isBlocksFormat Whether or not this post is using the new block format(NPF).
+ * @param summary A short description of this post.
+ * @param isBlocksFormat Indicates whether or not this post is using the new block format(NPF).
  * @param likedTimestamp The timestamp of when this post was liked.
  * @param slug The slug.
  * @param rebloggedFromId The ID of the post that this post reblogged.
@@ -48,73 +53,85 @@ import com.highthunder.kotlr.types.content.PostContent
  * @param canSendInMessage Indicates whether or not this post can be sent in a message.
  * @param canReply Indicates whether or not the current user can reply to this post.
  * @param displayAvatar Indicates whether or not the poster's avatar should be shown with this post.
+ * @param followed Indicates whether or not the current user follows the author of this post.
+ * @param reblogData TODO: Documentation
+ * @param rebloggedFromId The ID of the post that this post reblogged.
+ * @param rebloggedFromUrl TODO: Documentation
+ * @param rebloggedFromName The name of the blog that this post reblogged.
+ * @param rebloggedFromTitle TODO: Documentation
+ * @param rebloggedFromUuid TODO: Documentation
+ * @param rebloggedFromCanMessage TODO: Documentation
+ * @param rebloggedFromFollowing TODO: Documentation
+ * @param rebloggedRootId The ID of the post that this post reblogged.
+ * @param rebloggedRootUrl TODO: Documentation
+ * @param rebloggedRootName The name of the blog that this post reblogged.
+ * @param rebloggedRootTitle TODO: Documentation
+ * @param rebloggedRootUuid TODO: Documentation
+ * @param rebloggedRootCanMessage TODO: Documentation
+ * @param rebloggedRootFollowing TODO: Documentation
+ * @param notes TODO: Documentation
  *
  * Quote Post
  * @param text The text of the quote (can be modified by the user when posting).
  * @param source Full HTML for the source of the quote Example: <a href="...">Steve Jobs</a>.
  */
-class QuotePost(
-        blogName: String? = null,
-        id: Long? = null,
-        blog: Blog? = null,
-        postUrl: String? = null,
-        timestamp: Long? = null,
-        date: String? = null,
-        format: PostFormat? = null,
-        reblogKey: String? = null,
-        tags: List<String>? = null,
-        isBookmarklet: Boolean? = null,
-        isMobile: Boolean? = null,
-        sourceUrl: String? = null,
-        sourceTitle: String? = null,
-        isLiked: Boolean? = null,
-        state: State? = null,
-        totalPosts: Int? = null,
-        anonymous: Boolean? = null,
-        content: List<PostContent>? = null,
-        trail: List<Trail>? = null,
-        layout: List<BlockLayout>? = null,
-        postAuthor: String? = null,
-        shortUrl: String? = null,
-        summary: String? = null,
-        isBlocksFormat: Boolean? = null,
-        likedTimestamp: Long? = null,
-        slug: String? = null,
-        noteCount: Long? = null,
-        recommendedSource: String? = null,
-        recommendedColor: String? = null,
-        postAuthorIsAdult: Boolean? = null,
-        isSubmission: Boolean? = null,
-        canLike: Boolean? = null,
-        canReblog: Boolean? = null,
-        canSendInMessage: Boolean? = null,
-        canReply: Boolean? = null,
-        displayAvatar: Boolean? = null,
-        followed: Boolean? = null,
-        reblogData: ReblogData? = null,
-        rebloggedFromId: Long? = null,
-        reblogged_from_url: String? = null,
-        rebloggedFromName: String? = null,
-        reblogged_from_title: String? = null,
-        reblogged_from_uuid: String? = null,
-        reblogged_from_can_message: Boolean? = null,
-        reblogged_from_following: Boolean? = null,
-        reblogged_root_id: Long? = null,
-        reblogged_root_url: String? = null,
-        reblogged_root_name: String? = null,
-        reblogged_root_title: String? = null,
-        reblogged_root_uuid: String? = null,
-        reblogged_root_can_message: Boolean? = null,
-        reblogged_root_following: Boolean? = null,
-        notes: List<NoteData>? = null,
-        var text: String? = null,
-        var source: String? = null
-) : Post(blogName, id, blog, postUrl, timestamp, date, format, reblogKey, tags, isBookmarklet,
-        isMobile, sourceUrl, sourceTitle, isLiked, state, totalPosts, anonymous, content, trail,
-        layout, postAuthor, shortUrl, summary, isBlocksFormat, likedTimestamp, slug, noteCount,
-        recommendedSource, recommendedColor, postAuthorIsAdult, isSubmission, canLike, canReblog,
-        canSendInMessage, canReply, displayAvatar, followed, reblogData, rebloggedFromId,
-        reblogged_from_url, rebloggedFromName, reblogged_from_title, reblogged_from_uuid,
-        reblogged_from_can_message, reblogged_from_following, reblogged_root_id,
-        reblogged_root_url, reblogged_root_name, reblogged_root_title, reblogged_root_uuid,
-        reblogged_root_can_message, reblogged_root_following, notes)
+data class QuotePost(
+    override var blogName: String? = null,
+    override val id: Long? = null,
+    override val blog: Blog? = null,
+    override val postUrl: String? = null,
+    override val timestamp: Long? = null,
+    override val date: String? = null,
+    override var format: Post.PostFormat? = null,
+    override val reblogKey: String? = null,
+    override var tags: List<String>? = null,
+    override var isBookmarklet: Boolean? = null,
+    override var isMobile: Boolean? = null,
+    override var sourceUrl: String? = null,
+    override var sourceTitle: String? = null,
+    override val isLiked: Boolean? = null,
+    override var state: Post.State? = null,
+    override val totalPosts: Int? = null,
+    override var anonymous: Boolean? = null,
+    override var content: List<PostContent>? = null,
+    override var trail: List<Trail>? = null,
+    override var layout: List<BlockLayout>? = null,
+    override var postAuthor: String? = null,
+    override var shortUrl: String? = null,
+    override var summary: String? = null,
+    override var isBlocksFormat: Boolean? = null,
+    override val likedTimestamp: Long? = null,
+    override var slug: String? = null,
+    override var noteCount: Long? = null,
+    override val recommendedSource: String? = null,
+    override val recommendedColor: String? = null,
+    override val postAuthorIsAdult: Boolean? = null,
+    override var isSubmission: Boolean? = null,
+    override var canLike: Boolean? = null,
+    override var canReblog: Boolean? = null,
+    override var canSendInMessage: Boolean? = null,
+    override var canReply: Boolean? = null,
+    override val displayAvatar: Boolean? = null,
+    override val followed: Boolean? = null,
+    override var reblogData: ReblogData? = null,
+    override val rebloggedFromId: Long? = null,
+    override val rebloggedFromUrl: String? = null,
+    override val rebloggedFromName: String? = null,
+    override val rebloggedFromTitle: String? = null,
+    override val rebloggedFromUuid: String? = null,
+    override val rebloggedFromCanMessage: Boolean? = null,
+    override val rebloggedFromFollowing: Boolean? = null,
+    override val rebloggedRootId: Long? = null,
+    override val rebloggedRootUrl: String? = null,
+    override val rebloggedRootName: String? = null,
+    override val rebloggedRootTitle: String? = null,
+    override val rebloggedRootUuid: String? = null,
+    override val rebloggedRootCanMessage: Boolean? = null,
+    override val rebloggedRootFollowing: Boolean? = null,
+    override val notes: List<NoteData>? = null,
+    override val publishTime: Long?,
+    override val queueState: Post.QueueState?,
+    override val shouldOpenInLegacy: Boolean?,
+    var text: String? = null,
+    var source: String? = null
+) : Post

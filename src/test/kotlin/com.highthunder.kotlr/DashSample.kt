@@ -7,6 +7,7 @@ package com.highthunder.kotlr
  * @since 11/3/18
  * @version 1.0.0
  */
+@Suppress("SpellCheckingInspection")
 object DashSample {
 
     const val dashResult: String = """{
@@ -158,5 +159,4 @@ object DashSample {
             ]
         }
     }"""
-
 }

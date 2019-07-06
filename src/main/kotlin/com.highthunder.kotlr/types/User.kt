@@ -17,24 +17,24 @@ import com.squareup.moshi.JsonClass
  * @param url The URL of the user's primary blog.
  * @param updated The time of the user's most recent post, in seconds since the epoch.
  * @param likes The total count of the user's likes.
- * @param defaultPostFormat The default posting format - html, markdown, or raw.
+ * @param defaultPostFormat The user's default posting format - html, markdown, or raw.
  */
-@JsonClass(generateAdapter = true)
+@JsonClass(generateAdapter = false)
 data class User(
-        @Json(name = "blogs")
-        var blogs: List<Blog>? = null,
-        @Json(name = "name")
-        var name: String? = null,
-        @Json(name = "following")
-        var totalFollowing: Int? = null,
-        @Json(name = "following")
-        var isUserFollowed: Boolean? = null,
-        @Json(name = "url")
-        var url: String? = null,
-        @Json(name = "updated")
-        var updated: Long? = null,
-        @Json(name = "likes")
-        var likes: Int? = null,
-        @Json(name = "default_post_format")
-        var defaultPostFormat: Post.PostFormat? = null
+    @Json(name = "blogs")
+    var blogs: List<Blog>? = null,
+    @Json(name = "name")
+    var name: String? = null,
+    @Json(name = "following")
+    var totalFollowing: Int? = null,
+    @Json(name = "following")
+    var isUserFollowed: Boolean? = null,
+    @Json(name = "url")
+    var url: String? = null,
+    @Json(name = "updated")
+    var updated: Long? = null,
+    @Json(name = "likes")
+    var likes: Int? = null,
+    @Json(name = "default_post_format")
+    var defaultPostFormat: Post.PostFormat? = null
 )

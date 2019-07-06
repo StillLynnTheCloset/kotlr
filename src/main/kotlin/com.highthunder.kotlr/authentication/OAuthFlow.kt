@@ -4,7 +4,6 @@ import com.github.scribejava.apis.TumblrApi
 import com.github.scribejava.core.builder.ServiceBuilder
 import com.github.scribejava.core.model.OAuth1RequestToken
 import com.github.scribejava.core.oauth.OAuth10aService
-import java.lang.IllegalStateException
 
 /**
  * OAuthFlow - TODO: Documentation
@@ -16,9 +15,9 @@ import java.lang.IllegalStateException
 class OAuthFlow {
 
     companion object {
-        val URL_FILTER = "oauth_verifier=".toRegex()
-        val URL_REGEX = "(.*oauth_verifier=)(([a-zA-Z0-9])+)(.*)".toRegex()
-        const val URL_REPLACEMENT = "$2"
+        private val URL_FILTER: Regex = "oauth_verifier=".toRegex()
+        private val URL_REGEX: Regex = "(.*oauth_verifier=)(([a-zA-Z0-9])+)(.*)".toRegex()
+        private const val URL_REPLACEMENT: String = "$2"
     }
 
     private lateinit var appKey: TumblrAppKey
@@ -30,12 +29,15 @@ class OAuthFlow {
 
     private fun getService(appKey: TumblrAppKey, callbackUrl: String): OAuth10aService {
         return ServiceBuilder(appKey.apiKey)
-                .apiSecret(appKey.apiSecret)
-                .callback(callbackUrl)
-                .debug()
-                .build(TumblrApi.instance())
+            .apiSecret(appKey.apiSecret)
+            .callback(callbackUrl)
+            .debug()
+            .build(TumblrApi.instance())
     }
 
+    /**
+     * TODO: Documentation
+     */
     fun getRequestUrl(appKey: TumblrAppKey, callbackUrl: String): String? {
 
         this.appKey = appKey
@@ -51,11 +53,16 @@ class OAuthFlow {
             e.printStackTrace()
             null
         }
-
     }
 
+    /**
+     * TODO: Documentation
+     */
     fun isVerifierUrl(url: String): Boolean = url.contains(URL_FILTER)
 
+    /**
+     * TODO: Documentation
+     */
     fun parseResponseUrl(url: String): TumblrUserKey {
 
         return if (isWaitingForResponse) {
@@ -66,7 +73,5 @@ class OAuthFlow {
         } else {
             throw IllegalStateException("Was not waiting for a response when parseResponseUrl was called")
         }
-
     }
-
 }

@@ -2,7 +2,7 @@ package com.highthunder.kotlr.request.type.user
 
 import com.github.scribejava.core.model.Verb
 import com.highthunder.kotlr.request.RequestPosts
-import com.highthunder.kotlr.response.ResponseInterface
+import com.highthunder.kotlr.response.TumblrResponse
 import com.highthunder.kotlr.response.type.user.ResponseUserLikes
 import kotlin.reflect.KClass
 
@@ -22,18 +22,33 @@ class RequestUserLikes(
     beforeTime: Long? = null,
     getReblogFields: Boolean? = null,
     getNotesHistory: Boolean? = null,
-    useNeuePostFormat: Boolean? = null
-) : RequestPosts<ResponseUserLikes.Body>(postLimit, postOffset, afterPostId, beforePostId, afterTime, beforeTime, getReblogFields, getNotesHistory, useNeuePostFormat) {
+    useNeuePostFormat: Boolean? = null,
+    tag: String? = null
+) : RequestPosts<ResponseUserLikes.Body>(
+    postLimit = postLimit,
+    postOffset = postOffset,
+    afterPostId = afterPostId,
+    beforePostId = beforePostId,
+    afterTime = afterTime,
+    beforeTime = beforeTime,
+    getReblogFields = getReblogFields,
+    getNotesHistory = getNotesHistory,
+    useNeuePostFormat = useNeuePostFormat,
+    tag = tag
+) {
 
     companion object {
+        /**
+         * TODO: Documentation
+         */
         const val BASE_PATH: String = "user/likes/"
     }
 
-    override val responseClass: KClass<out ResponseInterface<ResponseUserLikes.Body>> = ResponseUserLikes.Response::class
+    override val responseClass: KClass<out TumblrResponse<ResponseUserLikes.Body>> =
+        ResponseUserLikes.Response::class
     override val verb: Verb = Verb.GET
     override val requiresOAuth: Boolean = false
     override val improvedByOAuth: Boolean = true
 
     override fun getBaseUrl(): String = "$apiRootPath$BASE_PATH"
-
 }

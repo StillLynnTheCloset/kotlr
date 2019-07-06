@@ -2,9 +2,9 @@ package com.highthunder.kotlr.request.type.blog
 
 import com.github.scribejava.core.model.Verb
 import com.highthunder.kotlr.request.RequestPosts
-import com.highthunder.kotlr.response.ResponseInterface
-import com.highthunder.kotlr.response.type.blog.ResponseBlogLikes
+import com.highthunder.kotlr.response.TumblrResponse
 import com.highthunder.kotlr.response.type.blog.ResponseBlogPosts
+import com.highthunder.kotlr.types.Post
 import kotlin.reflect.KClass
 
 /**
@@ -15,23 +15,42 @@ import kotlin.reflect.KClass
  * @version 1.0.0
  */
 class RequestBlogPosts(
-        postLimit: Int? = null,
-        postOffset: Long? = null,
-        afterPostId: Long? = null,
-        beforePostId: Long? = null,
-        afterTime: Long? = null,
-        beforeTime: Long? = null,
-        getReblogFields: Boolean? = null,
-        getNotesHistory: Boolean? = null,
-        useNeuePostFormat: Boolean? = null,
-        private var identifier: String
-) : RequestPosts<ResponseBlogPosts.Body>(postLimit, postOffset, afterPostId, beforePostId, afterTime, beforeTime, getReblogFields, getNotesHistory, useNeuePostFormat) {
+    postLimit: Int? = null,
+    postOffset: Long? = null,
+    afterPostId: Long? = null,
+    beforePostId: Long? = null, // exclusive
+    afterTime: Long? = null,
+    beforeTime: Long? = null, // inclusive
+    getReblogFields: Boolean? = null,
+    getNotesHistory: Boolean? = null,
+    useNeuePostFormat: Boolean? = null,
+    tag: String? = null,
+    pageNumber: Int? = null,
+    private val identifier: String,
+    private val type: Post.Type? = null
+) : RequestPosts<ResponseBlogPosts.Body>(
+    postLimit = postLimit,
+    postOffset = postOffset,
+    afterPostId = afterPostId,
+    beforePostId = beforePostId,
+    afterTime = afterTime,
+    beforeTime = beforeTime,
+    getReblogFields = getReblogFields,
+    getNotesHistory = getNotesHistory,
+    useNeuePostFormat = useNeuePostFormat,
+    tag = tag,
+    pageNumber = pageNumber
+) {
 
     companion object {
-        const val BASE_PATH = "blog/"
+        /**
+         * TODO: Documentation
+         */
+        const val BASE_PATH: String = "blog/"
     }
 
-    override val responseClass: KClass<out ResponseInterface<ResponseBlogPosts.Body>> = ResponseBlogPosts.Response::class
+    override val responseClass: KClass<out TumblrResponse<ResponseBlogPosts.Body>> =
+        ResponseBlogPosts.Response::class
     override val verb: Verb = Verb.GET
     override val requiresOAuth: Boolean = false
     override val improvedByOAuth: Boolean = true
@@ -40,6 +59,9 @@ class RequestBlogPosts(
 
     override fun getUrlParameters(apiKey: String): String {
         return StringBuilder().apply {
+            if (type != null) {
+                append("/${type.key}")
+            }
             var previous = false
             val parent = super.getUrlParameters(apiKey)
             if (parent.isNotBlank()) {
@@ -58,5 +80,4 @@ class RequestBlogPosts(
             }
         }.toString()
     }
-
 }

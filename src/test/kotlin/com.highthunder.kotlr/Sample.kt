@@ -137,6 +137,22 @@ object Sample {
         "feedback_token": "abcdef123456"
     }"""
 
+    const val imageContentColors: String = """{
+        "type": "image",
+        "media": [
+            {
+                "type": "image/jpeg",
+                "url": "http://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_1280.jpg",
+                "width": 1280,
+                "height": 1073
+            }
+        ],
+        "colors": {
+            "c0": "a24615",
+            "c1": "ff7c00"
+        }
+    }"""
+
     const val linkContentCreate: String = """{
         "type": "link",
         "url": "https://www.nytimes.com/2017/06/15/us/politics/secrecy-surrounding-senate-health-bill-raises-alarms-in-both-parties.html",
@@ -2650,6 +2666,120 @@ object Sample {
         ]
     }"""
 
+    const val blogAvatarResponse: String = """{
+        "meta": {
+            "status": 302,
+            "msg": "Found"
+        },
+        "response": {
+            "avatar_url": "https://66.media.tumblr.com/avatar_19fe3de0d7fb_512.png"
+        }
+    }"""
+
+    const val blogAvatarError: String = """{
+        "meta": {
+            "status": 404,
+            "msg": "Not Found"
+        },
+        "response": [],
+        "errors": [
+            {
+                "title": "Not Found",
+                "code": 0,
+                "detail": "Tumblr went thud. Try again."
+            }
+        ]
+    }"""
+
+    const val queuedPostsResponse: String = """{
+        "meta": {
+            "status": 200,
+            "msg": "OK"
+        },
+        "response": {
+            "posts": [
+                {
+                    "type": "blocks",
+                    "blog_name": "t:ukIuGYR_Jcdm60j7Nb95dg",
+                    "blog": {
+                        "name": "t:ukIuGYR_Jcdm60j7Nb95dg",
+                        "title": "t:ukIuGYR_Jcdm60j7Nb95dg",
+                        "description": "t:ukIuGYR_Jcdm60j7Nb95dg",
+                        "url": "https://t:ukIuGYR_Jcdm60j7Nb95dg.com/",
+                        "uuid": "t:ukIuGYR_Jcdm60j7Nb95dg",
+                        "updated": 1542756580
+                    },
+                    "id": 180357110865,
+                    "post_url": "t:ukIuGYR_Jcdm60j7Nb95dg",
+                    "slug": "t:ukIuGYR_Jcdm60j7Nb95dg",
+                    "date": "2018-11-21 22:39:56 GMT",
+                    "timestamp": 1542839996,
+                    "state": "queued",
+                    "reblog_key": "t:ukIuGYR_Jcdm60j7Nb95dg",
+                    "tags": [],
+                    "short_url": "https://tmblr.co/Z_Whzk2d_7nnH",
+                    "summary": "t:ukIuGYR_Jcdm60j7Nb95dg...",
+                    "recommended_source": null,
+                    "recommended_color": null,
+                    "followed": false,
+                    "scheduled_publish_time": "1542868200",
+                    "queued_state": "queued",
+                    "liked": false,
+                    "note_count": 49,
+                    "trail": [
+                        {
+                            "content": [
+                                {
+                                    "type": "text",
+                                    "text": "t:ukIuGYR_Jcdm60j7Nb95dg"
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "t:ukIuGYR_Jcdm60j7Nb95dg "
+                                }
+                            ],
+                            "layout": [
+                                {
+                                    "type": "rows",
+                                    "rows": [
+                                        [
+                                            0
+                                        ],
+                                        [
+                                            1
+                                        ]
+                                    ]
+                                }
+                            ],
+                            "post": {
+                                "id": "180352259675"
+                            },
+                            "blog": {
+                                "name": "t:ukIuGYR_Jcdm60j7Nb95dg",
+                                "title": "t:ukIuGYR_Jcdm60j7Nb95dg",
+                                "description": "t:ukIuGYR_Jcdm60j7Nb95dg! \nPositivity is rad. (Can be NSFW!)",
+                                "url": "t:ukIuGYR_Jcdm60j7Nb95dg/",
+                                "uuid": "t:ukIuGYR_Jcdm60j7Nb95dg-Q",
+                                "updated": 1542830156,
+                                "subscribed": false,
+                                "can_subscribe": true,
+                                "followed": true,
+                                "active": true
+                            }
+                        }
+                    ],
+                    "content": [],
+                    "layout": [],
+                    "can_like": false,
+                    "can_reblog": false,
+                    "can_send_in_message": false,
+                    "can_reply": true,
+                    "display_avatar": true
+                }
+            ]
+        }
+    }"""
+
     // endregion
 
     // region Note samples
@@ -3373,5 +3503,4 @@ object Sample {
     }"""
 
     // endregion
-
 }

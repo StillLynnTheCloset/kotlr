@@ -26,18 +26,20 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class Media(
-        @Json(name = "type")
-        var type: String? = null,
-        @Json(name = "url")
-        var url: String? = null,
-        @Json(name = "width")
-        var width: Int? = null,
-        @Json(name = "height")
-        var height: Int? = null,
-        @Json(name = "original_dimensions_missing")
-        var originalDimensionsMissing: Boolean? = null,
-        @Json(name = "hd")
-        var hd: Boolean? = null,
-        @Json(name = "poster")
-        var poster: Media? = null
+    @Json(name = "type")
+    var type: String? = null,
+    @Json(name = "url")
+    var url: String? = null,
+    @Json(name = "width")
+    var width: Int? = null,
+    @Json(name = "height")
+    var height: Int? = null,
+    @Json(name = "original_dimensions_missing")
+    var originalDimensionsMissing: Boolean? = null,
+    @Json(name = "hd")
+    var hd: Boolean? = null,
+    @Json(name = "poster")
+    var poster: Media? = null,
+    @Json(name = "media_key")
+    var mediaKey: String? = null
 )

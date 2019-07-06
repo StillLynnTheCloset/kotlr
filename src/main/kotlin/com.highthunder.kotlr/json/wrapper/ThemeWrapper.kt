@@ -9,9 +9,12 @@ import com.squareup.moshi.JsonClass
  * @author highthunder
  * @since 10/27/18
  * @version 1.0.0
+ *
+ * @param singleTheme TODO: Documentation
+ * @param listOfThemes TODO: Documentation
  */
 @JsonClass(generateAdapter = false)
 data class ThemeWrapper(
-        var singleTheme: BlogTheme? = null,
-        var listOfThemes: List<BlogTheme>? = null
+    var singleTheme: BlogTheme? = null,
+    var listOfThemes: List<BlogTheme>? = null
 )

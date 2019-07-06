@@ -21,6 +21,9 @@ sealed class BlockLayout {
      */
     class Vertical : BlockLayout() {
         companion object {
+            /**
+             *  TODO: Documentation
+             */
             const val KEY: String = "vertical"
         }
     }
@@ -32,40 +35,61 @@ sealed class BlockLayout {
      * @param display This is an array of display objects per row, see [BlockLayout.Row.Display].
      */
     class Row(
-            var rows: List<List<Int>>? = null,
-            var display: List<Display>? = null
+        var rows: List<List<Int>>? = null,
+        var display: List<Display>? = null
     ) : BlockLayout() {
 
         companion object {
+            /**
+             *  TODO: Documentation
+             */
             const val KEY: String = "rows"
         }
 
+        /**
+         *  TODO: Documentation
+         *
+         * @param blocks TODO: Documentation
+         * @param mode TODO: Documentation
+         */
         @JsonClass(generateAdapter = true)
         data class Display(
-                @Json(name = "blocks")
-                var blocks: List<Int>? = null,
-                @Json(name = "mode")
-                var mode: Mode? = Mode.Weighted()
+            @Json(name = "blocks")
+            var blocks: List<Int>? = null,
+            @Json(name = "mode")
+            var mode: Mode? = Mode.Weighted()
         ) {
 
+            /**
+             *  TODO: Documentation
+             */
             sealed class Mode {
 
+                /**
+                 *  TODO: Documentation
+                 */
                 class Weighted : Mode() {
                     companion object {
+                        /**
+                         *  TODO: Documentation
+                         */
                         const val KEY: String = "weighted"
                     }
                 }
 
+                /**
+                 *  TODO: Documentation
+                 */
                 class Carousel : Mode() {
                     companion object {
+                        /**
+                         *  TODO: Documentation
+                         */
                         const val KEY: String = "carousel"
                     }
                 }
-
             }
-
         }
-
     }
 
     /**
@@ -74,9 +98,12 @@ sealed class BlockLayout {
      * @param blocks This is an array of block indices that are a part of the truncated version of the Post.
      */
     class Condensed(
-            var blocks: List<Int>? = null
+        var blocks: List<Int>? = null
     ) : BlockLayout() {
         companion object {
+            /**
+             *  TODO: Documentation
+             */
             const val KEY: String = "condensed"
         }
     }
@@ -88,12 +115,14 @@ sealed class BlockLayout {
      * @param attribution If the ask is not anonymous, this will include information about the blog that submitted the ask.
      */
     class Ask(
-            var blocks: List<Int>? = null,
-            var attribution: Attribution? = null
+        var blocks: List<Int>? = null,
+        var attribution: Attribution? = null
     ) : BlockLayout() {
         companion object {
+            /**
+             *  TODO: Documentation
+             */
             const val KEY: String = "ask"
         }
     }
-
 }

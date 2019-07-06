@@ -2,8 +2,11 @@ package com.highthunder.kotlr.types.content
 
 import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.PostId
+import com.highthunder.kotlr.types.content.Attribution.Link
+import com.highthunder.kotlr.types.content.Attribution.Blog
+import com.highthunder.kotlr.types.content.Attribution.Post
+import com.highthunder.kotlr.types.content.Attribution.App
 import com.highthunder.kotlr.types.Blog as RealBlog
-import com.highthunder.kotlr.types.Post as RealPost
 
 /**
  * Attribution - Content blocks and layout blocks can have an attribution object containing a
@@ -24,12 +27,15 @@ sealed class Attribution {
      * @param blog A Tumblelog object with at least a uuid field.
      */
     class Post(
-            var url: String? = null,
-            var post: PostId? = null,
-            var blog: RealBlog? = null
+        var url: String? = null,
+        var post: PostId? = null,
+        var blog: RealBlog? = null
     ) : Attribution() {
         companion object {
-            const val KEY = "post"
+            /**
+             *  TODO: Documentation
+             */
+            const val KEY: String = "post"
         }
     }
 
@@ -39,10 +45,13 @@ sealed class Attribution {
      * @param url The URL to be attributed for the content.
      */
     class Link(
-            var url: String? = null
+        var url: String? = null
     ) : Attribution() {
         companion object {
-            const val KEY = "link"
+            /**
+             *  TODO: Documentation
+             */
+            const val KEY: String = "link"
         }
     }
 
@@ -52,10 +61,13 @@ sealed class Attribution {
      * @param blog A Tumblelog object with at least a uuid field.
      */
     class Blog(
-            var blog: RealBlog? = null
+        var blog: RealBlog? = null
     ) : Attribution() {
         companion object {
-            const val KEY = "blog"
+            /**
+             *  TODO: Documentation
+             */
+            const val KEY: String = "blog"
         }
     }
 
@@ -68,14 +80,16 @@ sealed class Attribution {
      * @param logo A specific logo Media Object that the client should use with the third-party app attribution.
      */
     class App(
-            var url: String? = null,
-            var appName: String? = null,
-            var displayText: String? = null,
-            var logo: Media? = null
+        var url: String? = null,
+        var appName: String? = null,
+        var displayText: String? = null,
+        var logo: Media? = null
     ) : Attribution() {
         companion object {
-            const val KEY = "app"
+            /**
+             *  TODO: Documentation
+             */
+            const val KEY: String = "app"
         }
     }
-
 }

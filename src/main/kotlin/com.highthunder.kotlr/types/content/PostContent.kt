@@ -2,6 +2,7 @@ package com.highthunder.kotlr.types.content
 
 import com.highthunder.kotlr.types.Colors
 import com.highthunder.kotlr.types.Media
+import com.highthunder.kotlr.types.content.PostContent.TextContent.SubType
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -40,19 +41,22 @@ sealed class PostContent {
      * @param attribution Optional attribution information about where the audio track came from.
      */
     class AudioContent(
-            var provider: String? = null,
-            var url: String? = null,
-            var media: Media? = null,
-            var title: String? = null,
-            var artist: String? = null,
-            var album: String? = null,
-            var poster: List<Media>? = null,
-            var embedHtml: String? = null,
-            var embedUrl: String? = null,
-            var metadata: Any? = null,
-            var attribution: Attribution? = null
+        var provider: String? = null,
+        var url: String? = null,
+        var media: Media? = null,
+        var title: String? = null,
+        var artist: String? = null,
+        var album: String? = null,
+        var poster: List<Media>? = null,
+        var embedHtml: String? = null,
+        var embedUrl: String? = null,
+        var metadata: Any? = null,
+        var attribution: Attribution? = null
     ) : PostContent() {
         companion object {
+            /**
+             * TODO: Documentation
+             */
             const val KEY: String = "audio"
         }
     }
@@ -73,13 +77,17 @@ sealed class PostContent {
      * @param attribution See the [Attribution] for details about these objects.
      */
     class ImageContent(
-            var media: List<Media>? = null,
-            val feedbackToken: String? = null,
-            var colors: Colors? = null,
-            val poster: List<Media>? = null,
-            var attribution: Attribution? = null
+        var media: List<Media>? = null,
+        val feedbackToken: String? = null,
+        var colors: Colors? = null,
+        val poster: List<Media>? = null,
+        var attribution: Attribution? = null,
+        var altText: String? = null
     ) : PostContent() {
         companion object {
+            /**
+             * TODO: Documentation
+             */
             const val KEY: String = "image"
         }
     }
@@ -109,15 +117,18 @@ sealed class PostContent {
      * @param poster An image media object to use as a "poster" for the link.
      */
     class LinkContent(
-            var url: String? = null,
-            var title: String? = null,
-            var description: String? = null,
-            var author: String? = null,
-            var siteName: String? = null,
-            var displayUrl: String? = null,
-            var poster: List<Media>? = null
+        var url: String? = null,
+        var title: String? = null,
+        var description: String? = null,
+        var author: String? = null,
+        var siteName: String? = null,
+        var displayUrl: String? = null,
+        var poster: List<Media>? = null
     ) : PostContent() {
         companion object {
+            /**
+             * TODO: Documentation
+             */
             const val KEY: String = "link"
         }
     }
@@ -136,32 +147,58 @@ sealed class PostContent {
      * @param formatting A list of special formatting instructions.
      */
     class TextContent(
-            var text: String? = null,
-            var subType: SubType? = null,
-            var formatting: List<TextFormat>? = null
+        var text: String? = null,
+        var subType: SubType? = null,
+        var formatting: List<TextFormat>? = null
     ) : PostContent() {
 
         companion object {
+            /**
+             * TODO: Documentation
+             */
             const val KEY: String = "text"
         }
 
+        /**
+         * TODO: Documentation
+         */
         enum class SubType {
+            /**
+             * TODO: Documentation
+             */
             @Json(name = "heading1")
             Heading1,
+            /**
+             * TODO: Documentation
+             */
             @Json(name = "heading2")
             Heading2,
+            /**
+             * TODO: Documentation
+             */
             @Json(name = "quirky")
             Quirky,
+            /**
+             * TODO: Documentation
+             */
             @Json(name = "quote")
             Quote,
+            /**
+             * TODO: Documentation
+             */
             @Json(name = "chat")
             Chat,
+            /**
+             * TODO: Documentation
+             */
             @Json(name = "ordered-list-item")
             OrderedListItem,
+            /**
+             * TODO: Documentation
+             */
             @Json(name = "unordered-list-item")
             UnorderedListItem,
         }
-
     }
 
     /**
@@ -205,23 +242,26 @@ sealed class PostContent {
      * @param attribution Optional attribution information about where the video came from.
      * @param canAutoPlayOnCellular Whether this video can be played on a cellular connection.
      * @param filmStrip A series of images taken from throughout this video.
+     * @param iframe TODO: Documentation
      */
     class VideoContent(
-            var url: String? = null,
-            var media: Media? = null,
-            var provider: String? = null,
-            var embedHtml: String? = null,
-            var embedUrl: String? = null,
-            var poster: List<Media>? = null,
-            var metadata: Any? = null,
-            var attribution: Attribution? = null,
-            var canAutoPlayOnCellular: Boolean? = null,
-            var filmStrip: List<Media>? = null,
-            var iframe: Media? = null
+        var url: String? = null,
+        var media: Media? = null,
+        var provider: String? = null,
+        var embedHtml: String? = null,
+        var embedUrl: String? = null,
+        var poster: List<Media>? = null,
+        var metadata: Any? = null,
+        var attribution: Attribution? = null,
+        var canAutoPlayOnCellular: Boolean? = null,
+        var filmStrip: List<Media>? = null,
+        var iframe: Media? = null
     ) : PostContent() {
         companion object {
+            /**
+             * TODO: Documentation
+             */
             const val KEY: String = "video"
         }
     }
-
 }

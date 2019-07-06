@@ -5,17 +5,20 @@ import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson
 
 /**
- * LayoutJsonAdapter - An adapter to help Moshi convert [SuperLayoutJson] objects to and
+ * BlockLayoutAmalgamationAdapter - An adapter to help Moshi convert [BlockLayoutAmalgamation] objects to and
  * from individual subclasses of [BlockLayout].
  *
  * @author highthunder
  * @since 10/20/18
  * @version 1.0.0
  */
-class LayoutJsonAdapter {
+internal class BlockLayoutAmalgamationAdapter {
 
+    /**
+     * TODO: Documentation
+     */
     @FromJson
-    fun toLayout(input: SuperLayoutJson?): BlockLayout {
+    fun toLayout(input: BlockLayoutAmalgamation?): BlockLayout {
         return when (input?.type) {
             BlockLayout.Vertical.KEY -> input.toVerticalLayout()
             BlockLayout.Row.KEY -> input.toRowLayout()
@@ -25,14 +28,16 @@ class LayoutJsonAdapter {
         }
     }
 
+    /**
+     * TODO: Documentation
+     */
     @ToJson
-    fun fromLayout(input: BlockLayout): SuperLayoutJson? {
+    fun fromLayout(input: BlockLayout): BlockLayoutAmalgamation? {
         return when (input) {
-            is BlockLayout.Vertical -> SuperLayoutJson(input)
-            is BlockLayout.Row -> SuperLayoutJson(input)
-            is BlockLayout.Condensed -> SuperLayoutJson(input)
-            is BlockLayout.Ask -> SuperLayoutJson(input)
+            is BlockLayout.Vertical -> BlockLayoutAmalgamation(input)
+            is BlockLayout.Row -> BlockLayoutAmalgamation(input)
+            is BlockLayout.Condensed -> BlockLayoutAmalgamation(input)
+            is BlockLayout.Ask -> BlockLayoutAmalgamation(input)
         }
     }
-
 }
