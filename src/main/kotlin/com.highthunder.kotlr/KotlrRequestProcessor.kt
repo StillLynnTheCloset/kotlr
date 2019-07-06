@@ -2,6 +2,7 @@ package com.highthunder.kotlr
 
 import com.highthunder.kotlr.request.TumblrRequest
 import com.highthunder.kotlr.response.TumblrResponse
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 
 /**
@@ -25,7 +26,7 @@ interface KotlrRequestProcessor {
     suspend fun <T> process(request: TumblrRequest<T>): TumblrResponse<T>
 
     fun <T> processBlocking(request: TumblrRequest<T>): TumblrResponse<T> {
-        return runBlocking {
+        return runBlocking(Dispatchers.IO) {
             process(request)
         }
     }

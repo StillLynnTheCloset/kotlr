@@ -10,6 +10,8 @@ import com.github.scribejava.httpclient.okhttp.OkHttpHttpClientConfig
 import com.highthunder.kotlr.authentication.TumblrUserKey
 import com.highthunder.kotlr.request.TumblrRequest
 import com.highthunder.kotlr.response.TumblrResponse
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import java.io.IOException
 import java.util.concurrent.ExecutionException
@@ -52,30 +54,31 @@ class KotlrAuthenticatedClient(private val key: TumblrUserKey) : KotlrRequestPro
         return@let serviceBuilder.build(TumblrApi.instance())
     }
 
-    override suspend fun <T> process(request: TumblrRequest<T>): TumblrResponse<T> {
-        val url = request.getUrl(key.apiKey)
-        System.out.println(url)
+    override suspend fun <T> process(request: TumblrRequest<T>): TumblrResponse<T> =
+        withContext(Dispatchers.IO) {
+            val url = request.getUrl(key.apiKey)
+            println(url)
 
-        val oAuthRequest = OAuthRequest(request.verb, url)
+            val oAuthRequest = OAuthRequest(request.verb, url)
 
-        val token = OAuth1AccessToken(key.userKey, key.userSecret)
-        service.signRequest(token, oAuthRequest)
+            val token = OAuth1AccessToken(key.userKey, key.userSecret)
+            service.signRequest(token, oAuthRequest)
 
-        val response: Response
-        try {
-            response = service.execute(oAuthRequest)
-            System.out.println(response.body)
-        } catch (e: InterruptedException) {
-            throw KotlrNetworkException("Network operation interrupted")
-        } catch (e: ExecutionException) {
-            throw KotlrNetworkException("Network operation failed to execute")
-        } catch (e: IOException) {
-            throw KotlrNetworkException("Network operation failed")
+            val response: Response
+            try {
+                response = service.execute(oAuthRequest)
+                println(response.body)
+            } catch (e: InterruptedException) {
+                throw KotlrNetworkException("Network operation interrupted")
+            } catch (e: ExecutionException) {
+                throw KotlrNetworkException("Network operation failed to execute")
+            } catch (e: IOException) {
+                throw KotlrNetworkException("Network operation failed")
+            }
+
+            val adapter = moshi.adapter(request.responseClass.java).failOnUnknown()
+
+            return@withContext adapter.fromJson(response.body)
+                ?: throw KotlrParsingException("Failed to parse response body: ${response.body}")
         }
-
-        val adapter = moshi.adapter(request.responseClass.java).failOnUnknown()
-
-        return adapter.fromJson(response.body)
-            ?: throw KotlrParsingException("Failed to parse response body: ${response.body}")
-    }
 }
