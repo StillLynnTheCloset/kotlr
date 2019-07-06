@@ -226,7 +226,8 @@ internal data class ContentAmalgamation(
     /**
      * TODO: Documentation
      */
-    fun toImageContent(): ImageContent = ImageContent(media?.listMedia, feedbackToken, colors, poster, attribution, altText)
+    fun toImageContent(): ImageContent =
+        ImageContent(media?.listMedia, feedbackToken, colors, poster, attribution, altText)
 
     /**
      * TODO: Documentation
