@@ -39,5 +39,7 @@ data class Media(
     @Json(name = "hd")
     var hd: Boolean? = null,
     @Json(name = "poster")
-    var poster: Media? = null
+    var poster: Media? = null,
+    @Json(name = "media_key")
+    var mediaKey: String? = null
 )

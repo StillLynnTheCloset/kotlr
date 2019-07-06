@@ -134,5 +134,7 @@ data class Blog constructor(
     @Json(name = "share_following")
     var shareFollowing: Boolean? = null,
     @Json(name = "can_be_followed")
-    var canBeFollowed: Boolean? = null
+    var canBeFollowed: Boolean? = null,
+    @Json(name = "can_chat")
+    var canChat: Boolean? = null
 )

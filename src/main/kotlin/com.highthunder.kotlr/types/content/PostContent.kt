@@ -81,7 +81,8 @@ sealed class PostContent {
         val feedbackToken: String? = null,
         var colors: Colors? = null,
         val poster: List<Media>? = null,
-        var attribution: Attribution? = null
+        var attribution: Attribution? = null,
+        var altText: String? = null
     ) : PostContent() {
         companion object {
             /**

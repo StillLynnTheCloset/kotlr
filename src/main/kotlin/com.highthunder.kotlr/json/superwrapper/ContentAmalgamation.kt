@@ -116,6 +116,8 @@ internal data class ContentAmalgamation(
     var feedbackToken: String? = null,
     @Json(name = "colors")
     var colors: Colors? = null,
+    @Json(name = "alt_text")
+    var altText: String? = null,
 
     // endregion
 
@@ -224,7 +226,7 @@ internal data class ContentAmalgamation(
     /**
      * TODO: Documentation
      */
-    fun toImageContent(): ImageContent = ImageContent(media?.listMedia, feedbackToken, colors, poster, attribution)
+    fun toImageContent(): ImageContent = ImageContent(media?.listMedia, feedbackToken, colors, poster, attribution, altText)
 
     /**
      * TODO: Documentation
