@@ -25,24 +25,24 @@ internal class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
     private val nullableListOfBlogAdapter: JsonAdapter<List<Blog>?> =
         moshi.adapter(
             Types.newParameterizedType(List::class.java, Blog::class.java),
-            kotlin.collections.emptySet(),
+            emptySet(),
             "blogs"
         )
 
     private val nullableStringAdapter: JsonAdapter<String?> =
-        moshi.adapter(String::class.java, kotlin.collections.emptySet(), "name")
+        moshi.adapter(String::class.java, emptySet(), "name")
 
     private val nullableIntAdapter: JsonAdapter<Int?> =
-        moshi.adapter(Int::class.javaObjectType, kotlin.collections.emptySet(), "totalFollowing")
+        moshi.adapter(Int::class.javaObjectType, emptySet(), "totalFollowing")
 
     private val nullableBooleanAdapter: JsonAdapter<Boolean?> =
-        moshi.adapter(Boolean::class.javaObjectType, kotlin.collections.emptySet(), "isUserFollowed")
+        moshi.adapter(Boolean::class.javaObjectType, emptySet(), "isUserFollowed")
 
     private val nullableLongAdapter: JsonAdapter<Long?> =
-        moshi.adapter(Long::class.javaObjectType, kotlin.collections.emptySet(), "updated")
+        moshi.adapter(Long::class.javaObjectType, emptySet(), "updated")
 
     private val nullablePostFormatAdapter: JsonAdapter<Post.PostFormat?> =
-        moshi.adapter(Post.PostFormat::class.java, kotlin.collections.emptySet(), "defaultPostFormat")
+        moshi.adapter(Post.PostFormat::class.java, emptySet(), "defaultPostFormat")
 
     override fun toString(): String = "GeneratedJsonAdapter(User)"
 

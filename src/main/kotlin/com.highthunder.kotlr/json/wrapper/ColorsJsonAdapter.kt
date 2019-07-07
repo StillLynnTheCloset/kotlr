@@ -13,10 +13,10 @@ import com.squareup.moshi.ToJson
 /**
  * TODO: Documentation
  */
-internal class ColorsJsonAdapter(moshi: Moshi) {
+internal class ColorsJsonAdapter(moshi: Moshi) : JsonAdapter<Colors>() {
 
     private val nullableColorAdapter: JsonAdapter<Color?> =
-        moshi.adapter(Color::class.java, kotlin.collections.emptySet(), null)
+        moshi.adapter(Color::class.java, emptySet(), null)
 
     override fun toString(): String = "JsonAdapter(Colors)"
 
@@ -24,7 +24,7 @@ internal class ColorsJsonAdapter(moshi: Moshi) {
      * TODO: Documentation
      */
     @FromJson
-    fun fromJson(reader: JsonReader): Colors {
+    override fun fromJson(reader: JsonReader): Colors {
         val colors: MutableMap<Int, Color> = mutableMapOf()
         reader.beginObject()
         while (reader.hasNext()) {
@@ -43,7 +43,7 @@ internal class ColorsJsonAdapter(moshi: Moshi) {
      * TODO: Documentation
      */
     @ToJson
-    fun toJson(writer: JsonWriter, value: Colors?) {
+    override fun toJson(writer: JsonWriter, value: Colors?) {
 //        if (value == null) {
 //            throw NullPointerException("value was null! Wrap in .nullSafe() to write nullable values.")
 //        }

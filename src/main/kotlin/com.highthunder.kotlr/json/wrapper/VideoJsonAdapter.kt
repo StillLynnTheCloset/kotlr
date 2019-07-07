@@ -19,13 +19,13 @@ internal class VideoJsonAdapter(moshi: Moshi) : JsonAdapter<Video>() {
     private val options: JsonReader.Options = JsonReader.Options.of("width", "embed_code")
 
     private val nullableIntAdapter: JsonAdapter<Int?> =
-        moshi.adapter(Int::class.javaObjectType, kotlin.collections.emptySet(), "width")
+        moshi.adapter(Int::class.javaObjectType, emptySet(), "width")
 
     private val nullableStringAdapter: JsonAdapter<String?> =
-        moshi.adapter(String::class.java, kotlin.collections.emptySet(), "embed_code")
+        moshi.adapter(String::class.java, emptySet(), "embed_code")
 
     private val nullableBooleanAdapter: JsonAdapter<Boolean?> =
-        moshi.adapter(Boolean::class.java, kotlin.collections.emptySet(), "embed_code")
+        moshi.adapter(Boolean::class.java, emptySet(), "embed_code")
 
     override fun toString(): String = "GeneratedJsonAdapter(Video)"
 

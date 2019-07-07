@@ -22,30 +22,22 @@ import com.squareup.moshi.Types
  * @since 10/25/18
  * @version 1.0.0
  */
-internal class BlogFollowersWrapperJsonAdapter(moshi: Moshi) {
+internal class BlogFollowersWrapperJsonAdapter(moshi: Moshi) :
+    JsonAdapter<WrapperInterface<ResponseBlogFollowers.Body>>() {
 
     private val stringAdapter: JsonAdapter<String?> =
-        moshi.adapter(String::class.java, kotlin.collections.emptySet(), null)
+        moshi.adapter(String::class.java, emptySet(), null)
 
     private val responseAdapter: JsonAdapter<ResponseBlogFollowers.Body> =
-        moshi.adapter<ResponseBlogFollowers.Body>(
-            ResponseBlogFollowers.Body::class.java,
-            kotlin.collections.emptySet(),
-            null
-        ).failOnUnknown()
+        moshi.adapter<ResponseBlogFollowers.Body>(ResponseBlogFollowers.Body::class.java, emptySet(), null)
+            .failOnUnknown()
 
     private val listOfAnyAdapter: JsonAdapter<List<Any>> =
-        moshi.adapter<List<Any>>(
-            Types.newParameterizedType(List::class.java, Any::class.java),
-            kotlin.collections.emptySet(),
-            null
-        ).failOnUnknown()
+        moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), emptySet(), null)
+            .failOnUnknown()
 
-    /**
-     * TODO: Documentation
-     */
     @FromJson
-    fun fromJson(reader: JsonReader): WrapperInterface<ResponseBlogFollowers.Body> {
+    override fun fromJson(reader: JsonReader): WrapperInterface<ResponseBlogFollowers.Body> {
         return when (reader.peek()) {
             BEGIN_OBJECT -> ResponseBlogFollowers.Wrapper(body = responseAdapter.fromJson(reader))
             STRING -> ResponseBlogFollowers.Wrapper(error = stringAdapter.fromJson(reader))
@@ -55,11 +47,8 @@ internal class BlogFollowersWrapperJsonAdapter(moshi: Moshi) {
         }
     }
 
-    /**
-     * TODO: Documentation
-     */
     @ToJson
-    fun toJson(writer: JsonWriter, value: WrapperInterface<ResponseBlogFollowers.Body>?) {
+    override fun toJson(writer: JsonWriter, value: WrapperInterface<ResponseBlogFollowers.Body>?) {
         if (value?.error != null) {
             stringAdapter.toJson(writer, value.error)
         } else {

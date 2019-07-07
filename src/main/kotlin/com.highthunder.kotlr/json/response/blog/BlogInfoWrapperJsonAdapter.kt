@@ -22,27 +22,21 @@ import com.squareup.moshi.Types
  * @since 10/25/18
  * @version 1.0.0
  */
-internal class BlogInfoWrapperJsonAdapter(moshi: Moshi) {
+internal class BlogInfoWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponseBlogInfo.Body>>() {
 
     private val stringAdapter: JsonAdapter<String?> =
-        moshi.adapter(String::class.java, kotlin.collections.emptySet(), null)
+        moshi.adapter(String::class.java, emptySet(), null)
 
     private val responseAdapter: JsonAdapter<ResponseBlogInfo.Body> =
-        moshi.adapter<ResponseBlogInfo.Body>(ResponseBlogInfo.Body::class.java, kotlin.collections.emptySet(), null)
+        moshi.adapter<ResponseBlogInfo.Body>(ResponseBlogInfo.Body::class.java, emptySet(), null)
             .failOnUnknown()
 
     private val listOfAnyAdapter: JsonAdapter<List<Any>> =
-        moshi.adapter<List<Any>>(
-            Types.newParameterizedType(List::class.java, Any::class.java),
-            kotlin.collections.emptySet(),
-            null
-        ).failOnUnknown()
+        moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), emptySet(), null)
+            .failOnUnknown()
 
-    /**
-     * TODO: Documentation
-     */
     @FromJson
-    fun fromJson(reader: JsonReader): WrapperInterface<ResponseBlogInfo.Body> {
+    override fun fromJson(reader: JsonReader): WrapperInterface<ResponseBlogInfo.Body> {
         return when (reader.peek()) {
             BEGIN_OBJECT -> ResponseBlogInfo.Wrapper(body = responseAdapter.fromJson(reader))
             STRING -> ResponseBlogInfo.Wrapper(error = stringAdapter.fromJson(reader))
@@ -52,11 +46,8 @@ internal class BlogInfoWrapperJsonAdapter(moshi: Moshi) {
         }
     }
 
-    /**
-     * TODO: Documentation
-     */
     @ToJson
-    fun toJson(writer: JsonWriter, value: WrapperInterface<ResponseBlogInfo.Body>?) {
+    override fun toJson(writer: JsonWriter, value: WrapperInterface<ResponseBlogInfo.Body>?) {
         if (value?.error != null) {
             stringAdapter.toJson(writer, value.error)
         } else {
