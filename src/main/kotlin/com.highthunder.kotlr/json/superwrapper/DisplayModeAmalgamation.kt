@@ -1,13 +1,13 @@
 package com.highthunder.kotlr.json.superwrapper
 
-import com.highthunder.kotlr.types.content.BlockLayout
-import com.highthunder.kotlr.types.content.BlockLayout.Row.Display.Mode.Carousel
-import com.highthunder.kotlr.types.content.BlockLayout.Row.Display.Mode.Weighted
+import com.highthunder.kotlr.types.content.RowBlockLayout
+import com.highthunder.kotlr.types.content.RowBlockLayout.Display.Mode.Carousel
+import com.highthunder.kotlr.types.content.RowBlockLayout.Display.Mode.Weighted
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * DisplayModeAmalgamation - A class to hold every possible field for [BlockLayout.Row.Display.Mode] so that Mochi can
+ * DisplayModeAmalgamation - A class to hold every possible field for [RowBlockLayout.Display.Mode] so that Mochi can
  * deserialize them.
  *
  * @author highthunder
@@ -21,17 +21,10 @@ internal data class DisplayModeAmalgamation(
     @Json(name = "type")
     var type: String? = null
 ) {
-
     constructor(mode: Weighted) : this(Weighted.KEY)
     constructor(mode: Carousel) : this(Carousel.KEY)
 
-    /**
-     * TODO: Documentation
-     */
     fun toWeighted(): Weighted = Weighted()
 
-    /**
-     * TODO: Documentation
-     */
     fun toCarousel(): Carousel = Carousel()
 }

@@ -1,5 +1,12 @@
 package com.highthunder.kotlr.json.superwrapper
 
+import com.highthunder.kotlr.types.content.BoldTextFormat
+import com.highthunder.kotlr.types.content.ColorTextFormat
+import com.highthunder.kotlr.types.content.ItalicTextFormat
+import com.highthunder.kotlr.types.content.LinkTextFormat
+import com.highthunder.kotlr.types.content.MentionTextFormat
+import com.highthunder.kotlr.types.content.SizeTextFormat
+import com.highthunder.kotlr.types.content.StrikeThroughTextFormat
 import com.highthunder.kotlr.types.content.TextFormat
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonDataException
@@ -14,37 +21,30 @@ import com.squareup.moshi.ToJson
  * @version 1.0.0
  */
 internal class TextFormatAmalgamationAdapter {
-
-    /**
-     * TODO: Documentation
-     */
     @FromJson
     fun toFormat(input: TextFormatAmalgamation?): TextFormat {
         return when (input?.type) {
-            TextFormat.Bold.KEY -> input.toBold()
-            TextFormat.Italic.KEY -> input.toItalic()
-            TextFormat.StrikeThrough.KEY -> input.toStrikeThrough()
-            TextFormat.Link.KEY -> input.toLink()
-            TextFormat.Mention.KEY -> input.toMention()
-            TextFormat.Color.KEY -> input.toColor()
-            TextFormat.Size.KEY -> input.toSize()
+            BoldTextFormat.KEY -> input.toBold()
+            ItalicTextFormat.KEY -> input.toItalic()
+            StrikeThroughTextFormat.KEY -> input.toStrikeThrough()
+            LinkTextFormat.KEY -> input.toLink()
+            MentionTextFormat.KEY -> input.toMention()
+            ColorTextFormat.KEY -> input.toColor()
+            SizeTextFormat.KEY -> input.toSize()
             else -> throw JsonDataException("Expected a field of type TextFormatAmalgamation but got $input")
         }
     }
 
-    /**
-     * TODO: Documentation
-     */
     @ToJson
     fun fromFormat(input: TextFormat): TextFormatAmalgamation? {
         return when (input) {
-            is TextFormat.Bold -> TextFormatAmalgamation(input)
-            is TextFormat.Italic -> TextFormatAmalgamation(input)
-            is TextFormat.StrikeThrough -> TextFormatAmalgamation(input)
-            is TextFormat.Link -> TextFormatAmalgamation(input)
-            is TextFormat.Mention -> TextFormatAmalgamation(input)
-            is TextFormat.Color -> TextFormatAmalgamation(input)
-            is TextFormat.Size -> TextFormatAmalgamation(input)
+            is BoldTextFormat -> TextFormatAmalgamation(input)
+            is ItalicTextFormat -> TextFormatAmalgamation(input)
+            is StrikeThroughTextFormat -> TextFormatAmalgamation(input)
+            is LinkTextFormat -> TextFormatAmalgamation(input)
+            is MentionTextFormat -> TextFormatAmalgamation(input)
+            is ColorTextFormat -> TextFormatAmalgamation(input)
+            is SizeTextFormat -> TextFormatAmalgamation(input)
         }
     }
 }

@@ -1,11 +1,11 @@
 package com.highthunder.kotlr.json.superwrapper
 
+import com.highthunder.kotlr.types.content.AudioContent
+import com.highthunder.kotlr.types.content.ImageContent
+import com.highthunder.kotlr.types.content.LinkContent
 import com.highthunder.kotlr.types.content.PostContent
-import com.highthunder.kotlr.types.content.PostContent.AudioContent
-import com.highthunder.kotlr.types.content.PostContent.ImageContent
-import com.highthunder.kotlr.types.content.PostContent.LinkContent
-import com.highthunder.kotlr.types.content.PostContent.TextContent
-import com.highthunder.kotlr.types.content.PostContent.VideoContent
+import com.highthunder.kotlr.types.content.TextContent
+import com.highthunder.kotlr.types.content.VideoContent
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.ToJson
@@ -19,10 +19,6 @@ import com.squareup.moshi.ToJson
  * @version 1.0.0
  */
 internal class ContentAmalgamationAdapter {
-
-    /**
-     * TODO: Documentation
-     */
     @FromJson
     fun toContent(input: ContentAmalgamation): PostContent {
         return when (input.type) {
@@ -35,9 +31,6 @@ internal class ContentAmalgamationAdapter {
         }
     }
 
-    /**
-     * TODO: Documentation
-     */
     @ToJson
     fun fromContent(input: PostContent): ContentAmalgamation {
         return when (input) {

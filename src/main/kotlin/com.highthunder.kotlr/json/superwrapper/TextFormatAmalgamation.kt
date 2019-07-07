@@ -3,6 +3,13 @@ package com.highthunder.kotlr.json.superwrapper
 import com.highthunder.kotlr.json.qualifier.HexColorOctothorpe
 import com.highthunder.kotlr.types.Blog
 import com.highthunder.kotlr.types.Color
+import com.highthunder.kotlr.types.content.BoldTextFormat
+import com.highthunder.kotlr.types.content.ColorTextFormat
+import com.highthunder.kotlr.types.content.ItalicTextFormat
+import com.highthunder.kotlr.types.content.LinkTextFormat
+import com.highthunder.kotlr.types.content.MentionTextFormat
+import com.highthunder.kotlr.types.content.SizeTextFormat
+import com.highthunder.kotlr.types.content.StrikeThroughTextFormat
 import com.highthunder.kotlr.types.content.TextFormat
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -19,16 +26,16 @@ import com.squareup.moshi.JsonClass
  * @param end The ending index of the formatting range (exclusive).
  * @param type The type of formatting range.
  *
- * [TextFormat.Link]
+ * [LinkTextFormat]
  * @param url The link's URL!
  *
- * [TextFormat.Mention]
+ * [MentionTextFormat]
  * @param blog An object with a uuid field, which is the mentioned blog's UUID.
  *
- * [TextFormat.Color]
+ * [ColorTextFormat]
  * @param hex The color to use, in standard hex format, with leading '#'.
  *
- * [TextFormat.Size]
+ * [SizeTextFormat]
  * @param size The text size for this particular range of text, one of 'small' or 'big'.
  */
 @JsonClass(generateAdapter = true)
@@ -46,49 +53,21 @@ internal data class TextFormatAmalgamation constructor(
     @Json(name = "hex")
     @HexColorOctothorpe var hex: Color? = null,
     @Json(name = "size")
-    var size: TextFormat.Size.Option? = null
+    var size: SizeTextFormat.Option? = null
 ) {
+    constructor(format: BoldTextFormat) : this(format.start, format.end)
+    constructor(format: ItalicTextFormat) : this(format.start, format.end)
+    constructor(format: StrikeThroughTextFormat) : this(format.start, format.end)
+    constructor(format: LinkTextFormat) : this(format.start, format.end, url = format.url)
+    constructor(format: MentionTextFormat) : this(format.start, format.end, blog = format.blog)
+    constructor(format: ColorTextFormat) : this(format.start, format.end, hex = format.hex)
+    constructor(format: SizeTextFormat) : this(format.start, format.end, size = format.size)
 
-    constructor(format: TextFormat.Bold) : this(format.start, format.end)
-    constructor(format: TextFormat.Italic) : this(format.start, format.end)
-    constructor(format: TextFormat.StrikeThrough) : this(format.start, format.end)
-    constructor(format: TextFormat.Link) : this(format.start, format.end, url = format.url)
-    constructor(format: TextFormat.Mention) : this(format.start, format.end, blog = format.blog)
-    constructor(format: TextFormat.Color) : this(format.start, format.end, hex = format.hex)
-    constructor(format: TextFormat.Size) : this(format.start, format.end, size = format.size)
-
-    /**
-     * TODO: Documentation
-     */
-    fun toBold(): TextFormat.Bold = TextFormat.Bold(start, end)
-
-    /**
-     * TODO: Documentation
-     */
-    fun toItalic(): TextFormat.Italic = TextFormat.Italic(start, end)
-
-    /**
-     * TODO: Documentation
-     */
-    fun toStrikeThrough(): TextFormat.StrikeThrough = TextFormat.StrikeThrough(start, end)
-
-    /**
-     * TODO: Documentation
-     */
-    fun toLink(): TextFormat.Link = TextFormat.Link(start, end, url)
-
-    /**
-     * TODO: Documentation
-     */
-    fun toMention(): TextFormat.Mention = TextFormat.Mention(start, end, blog)
-
-    /**
-     * TODO: Documentation
-     */
-    fun toColor(): TextFormat.Color = TextFormat.Color(start, end, hex)
-
-    /**
-     * TODO: Documentation
-     */
-    fun toSize(): TextFormat.Size = TextFormat.Size(start, end, size)
+    fun toBold(): BoldTextFormat = BoldTextFormat(start, end)
+    fun toItalic(): ItalicTextFormat = ItalicTextFormat(start, end)
+    fun toStrikeThrough(): StrikeThroughTextFormat = StrikeThroughTextFormat(start, end)
+    fun toLink(): LinkTextFormat = LinkTextFormat(start, end, url)
+    fun toMention(): MentionTextFormat = MentionTextFormat(start, end, blog)
+    fun toColor(): ColorTextFormat = ColorTextFormat(start, end, hex)
+    fun toSize(): SizeTextFormat = SizeTextFormat(start, end, size)
 }

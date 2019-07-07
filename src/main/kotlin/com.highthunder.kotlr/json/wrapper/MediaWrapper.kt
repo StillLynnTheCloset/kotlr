@@ -1,7 +1,7 @@
 package com.highthunder.kotlr.json.wrapper
 
 import com.highthunder.kotlr.types.Media
-import com.highthunder.kotlr.types.content.PostContent.ImageContent
+import com.highthunder.kotlr.types.content.ImageContent
 import com.squareup.moshi.JsonClass
 
 /**
