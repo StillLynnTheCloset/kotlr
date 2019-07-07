@@ -12,7 +12,7 @@ package com.highthunder.kotlr.authentication
  * @param userKey TODO: Documentation
  * @param userSecret TODO: Documentation
  */
-data class TumblrUserKey(
+data class TumblrUserKey constructor(
     override val apiKey: String,
     override val apiSecret: String,
     val userKey: String,

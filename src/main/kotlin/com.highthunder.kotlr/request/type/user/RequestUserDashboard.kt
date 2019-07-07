@@ -14,7 +14,7 @@ import kotlin.reflect.KClass
  * @since 10/27/18
  * @version 1.0.0
  */
-class RequestUserDashboard(
+class RequestUserDashboard constructor(
     postLimit: Int? = null,
     postOffset: Long? = null,
     afterPostId: Long? = null,

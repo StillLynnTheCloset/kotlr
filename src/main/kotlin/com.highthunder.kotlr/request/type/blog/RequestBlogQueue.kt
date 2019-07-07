@@ -13,7 +13,7 @@ import kotlin.reflect.KClass
  * @since 10/27/18
  * @version 1.0.0
  */
-class RequestBlogQueue(
+class RequestBlogQueue constructor(
     postLimit: Int? = null,
     postOffset: Long? = null,
     getReblogFields: Boolean? = null,

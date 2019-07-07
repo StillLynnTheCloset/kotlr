@@ -13,14 +13,11 @@ import kotlin.reflect.KClass
  * @since 11/4/18
  * @version 1.0.0
  */
-class RequestBlogInfo(
+class RequestBlogInfo constructor(
     private val identifier: String
 ) : TumblrRequest<ResponseBlogInfo.Body> {
 
     companion object {
-        /**
-         * TODO: Documentation
-         */
         const val BASE_PATH: String = "blog/"
     }
 

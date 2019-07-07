@@ -9,7 +9,6 @@ import com.github.scribejava.core.model.Response
  * @since 10/23/18
  * @version 1.0.0
  */
-
 class KotlrParsingException : KotlrException {
 
     constructor(message: String) : super(message)

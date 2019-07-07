@@ -75,7 +75,7 @@ import com.highthunder.kotlr.types.content.PostContent
  * @param text The text of the quote (can be modified by the user when posting).
  * @param source Full HTML for the source of the quote Example: <a href="...">Steve Jobs</a>.
  */
-data class QuotePost(
+data class QuotePost constructor(
     override var blogName: String? = null,
     override val id: Long? = null,
     override val blog: Blog? = null,

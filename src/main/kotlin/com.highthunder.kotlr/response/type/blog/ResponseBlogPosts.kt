@@ -28,7 +28,7 @@ interface ResponseBlogPosts {
      * @param errors TODO: Documentation
      */
     @JsonClass(generateAdapter = true)
-    data class Response(
+    data class Response constructor(
         @Json(name = "meta")
         override val meta: ResponseMetaInfo,
         @Json(name = "response")
@@ -43,7 +43,7 @@ interface ResponseBlogPosts {
      * @param body The body of this response.
      * @param error The error message if there is no body.
      */
-    data class Wrapper(
+    data class Wrapper constructor(
         override val error: String? = null,
         override val body: Body? = null
     ) : WrapperInterface<Body>
@@ -57,7 +57,7 @@ interface ResponseBlogPosts {
      * @param totalPosts TODO: Documentation
      */
     @JsonClass(generateAdapter = true)
-    data class Body(
+    data class Body constructor(
         @Json(name = "_links")
         var links: Map<String, RequestLink>? = null, // TODO: Get rid of map.
         @Json(name = "blog")

@@ -82,7 +82,7 @@ import com.highthunder.kotlr.types.content.PostContent
  * @param panorama TODO: Documentation
  * @param photosetLayout TODO: Documentation
  */
-data class PhotoPost(
+data class PhotoPost constructor(
     override var blogName: String? = null,
     override val id: Long? = null,
     override val blog: Blog? = null,

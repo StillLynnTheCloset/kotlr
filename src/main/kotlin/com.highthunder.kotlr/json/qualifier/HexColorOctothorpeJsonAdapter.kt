@@ -12,16 +12,9 @@ import com.squareup.moshi.ToJson
  * @version 1.0.0
  */
 internal class HexColorOctothorpeJsonAdapter {
-
-    /**
-     * TODO: Documentation
-     */
     @ToJson
     fun toJson(@HexColorOctothorpe rgb: Color): String = rgb.asOctothorpeString()
 
-    /**
-     * TODO: Documentation
-     */
     @FromJson
     @HexColorOctothorpe
     fun fromJson(rgb: String): Color = Color(rgb)

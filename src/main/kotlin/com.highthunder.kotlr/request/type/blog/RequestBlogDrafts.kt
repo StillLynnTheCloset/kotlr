@@ -13,7 +13,7 @@ import kotlin.reflect.KClass
  * @since 10/27/18
  * @version 1.0.0
  */
-class RequestBlogDrafts(
+class RequestBlogDrafts constructor(
     postLimit: Int? = null,
     postOffset: Long? = null,
     getReblogFields: Boolean? = null,
@@ -29,9 +29,6 @@ class RequestBlogDrafts(
 ) {
 
     companion object {
-        /**
-         * TODO: Documentation
-         */
         const val BASE_PATH: String = "blog/"
     }
 

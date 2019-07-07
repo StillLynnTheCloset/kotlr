@@ -7,7 +7,7 @@ package com.highthunder.kotlr.request
  * @since 11/4/18
  * @version 1.0.0
  */
-abstract class RequestPosts<out T>(
+abstract class RequestPosts<out T> constructor(
     private val postLimit: Int? = null,
     private val postOffset: Long? = null,
     private val afterPostId: Long? = null,

@@ -13,16 +13,13 @@ import kotlin.reflect.KClass
  * @since 11/4/18
  * @version 1.0.0
  */
-class RequestBlogFollowers(
+class RequestBlogFollowers constructor(
     private val identifier: String,
     private val limit: Int? = null,
     private val offset: Int? = null
 ) : TumblrRequest<ResponseBlogFollowers.Body> {
 
     companion object {
-        /**
-         * TODO: Documentation
-         */
         const val BASE_PATH: String = "blog/"
     }
 

@@ -76,7 +76,7 @@ import com.highthunder.kotlr.types.content.PostContent
  * @param abstract TODO: Documentation
  * @param body The full post body.
  */
-data class TextPost(
+data class TextPost constructor(
     override var blogName: String? = null,
     override val id: Long? = null,
     override val blog: Blog? = null,
