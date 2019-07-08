@@ -14,7 +14,7 @@ import com.squareup.moshi.JsonClass
  * @param embedCode HTML for embedding the video player.
  */
 @JsonClass(generateAdapter = false)
-data class Video(
+data class Video constructor(
     @Json(name = "width")
     var width: Int? = null,
     @Json(name = "embed_code")

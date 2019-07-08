@@ -22,27 +22,21 @@ import com.squareup.moshi.Types
  * @since 10/25/18
  * @version 1.0.0
  */
-internal class BlogDraftsWrapperJsonAdapter(moshi: Moshi) {
+internal class BlogDraftsWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponseBlogDrafts.Body>>() {
 
     private val stringAdapter: JsonAdapter<String?> =
-        moshi.adapter(String::class.java, kotlin.collections.emptySet(), null)
+        moshi.adapter(String::class.java, emptySet(), null)
 
     private val responseAdapter: JsonAdapter<ResponseBlogDrafts.Body> =
-        moshi.adapter<ResponseBlogDrafts.Body>(ResponseBlogDrafts.Body::class.java, kotlin.collections.emptySet(), null)
+        moshi.adapter<ResponseBlogDrafts.Body>(ResponseBlogDrafts.Body::class.java, emptySet(), null)
             .failOnUnknown()
 
     private val listOfAnyAdapter: JsonAdapter<List<Any>> =
-        moshi.adapter<List<Any>>(
-            Types.newParameterizedType(List::class.java, Any::class.java),
-            kotlin.collections.emptySet(),
-            null
-        ).failOnUnknown()
+        moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), emptySet(), null)
+            .failOnUnknown()
 
-    /**
-     * TODO: Documentation
-     */
     @FromJson
-    fun fromJson(reader: JsonReader): WrapperInterface<ResponseBlogDrafts.Body> {
+    override fun fromJson(reader: JsonReader): WrapperInterface<ResponseBlogDrafts.Body> {
         return when (reader.peek()) {
             BEGIN_OBJECT -> ResponseBlogDrafts.Wrapper(body = responseAdapter.fromJson(reader))
             STRING -> ResponseBlogDrafts.Wrapper(error = stringAdapter.fromJson(reader))
@@ -52,11 +46,8 @@ internal class BlogDraftsWrapperJsonAdapter(moshi: Moshi) {
         }
     }
 
-    /**
-     * TODO: Documentation
-     */
     @ToJson
-    fun toJson(writer: JsonWriter, value: WrapperInterface<ResponseBlogDrafts.Body>?) {
+    override fun toJson(writer: JsonWriter, value: WrapperInterface<ResponseBlogDrafts.Body>?) {
         if (value?.error != null) {
             stringAdapter.toJson(writer, value.error)
         } else {

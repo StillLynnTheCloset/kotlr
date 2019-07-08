@@ -14,7 +14,7 @@ package com.highthunder.kotlr.types
  * @since 10/20/18
  * @version 1.0.0
  */
-data class Color(
+data class Color constructor(
     private val c: Int
 ) {
 

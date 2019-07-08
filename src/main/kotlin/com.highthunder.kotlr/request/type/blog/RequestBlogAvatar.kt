@@ -13,15 +13,12 @@ import kotlin.reflect.KClass
  * @since 11/4/18
  * @version 1.0.0
  */
-class RequestBlogAvatar(
+class RequestBlogAvatar constructor(
     private val identifier: String,
     private val size: Int? = null
 ) : TumblrRequest<ResponseBlogAvatar.Body> {
 
     companion object {
-        /**
-         * TODO: Documentation
-         */
         const val BASE_PATH: String = "blog/"
     }
 

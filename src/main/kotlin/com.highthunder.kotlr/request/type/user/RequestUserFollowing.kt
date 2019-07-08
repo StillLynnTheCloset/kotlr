@@ -13,7 +13,7 @@ import kotlin.reflect.KClass
  * @since 11/4/18
  * @version 1.0.0
  */
-class RequestUserFollowing(
+class RequestUserFollowing constructor(
     private val limit: Int? = null,
     private val offset: Long? = null
 ) : TumblrRequest<ResponseUserFollowing.Body> {

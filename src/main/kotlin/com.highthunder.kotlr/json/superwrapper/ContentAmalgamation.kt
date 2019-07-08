@@ -4,14 +4,13 @@ import com.highthunder.kotlr.json.wrapper.MediaWrapper
 import com.highthunder.kotlr.types.Colors
 import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.content.Attribution
+import com.highthunder.kotlr.types.content.AudioContent
+import com.highthunder.kotlr.types.content.ImageContent
+import com.highthunder.kotlr.types.content.LinkContent
 import com.highthunder.kotlr.types.content.PostContent
-import com.highthunder.kotlr.types.content.PostContent.AudioContent
-import com.highthunder.kotlr.types.content.PostContent.ImageContent
-import com.highthunder.kotlr.types.content.PostContent.LinkContent
-import com.highthunder.kotlr.types.content.PostContent.TextContent
-import com.highthunder.kotlr.types.content.PostContent.TextContent.SubType
-import com.highthunder.kotlr.types.content.PostContent.VideoContent
+import com.highthunder.kotlr.types.content.TextContent
 import com.highthunder.kotlr.types.content.TextFormat
+import com.highthunder.kotlr.types.content.VideoContent
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -74,7 +73,7 @@ import com.squareup.moshi.JsonClass
  * @param iframe TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-internal data class ContentAmalgamation(
+internal data class ContentAmalgamation constructor(
 
     // region PostContent
 
@@ -157,7 +156,6 @@ internal data class ContentAmalgamation(
     // endregion
 
 ) {
-
     constructor(content: AudioContent) : this(
         type = AudioContent.KEY,
         provider = content.provider,
@@ -215,35 +213,56 @@ internal data class ContentAmalgamation(
         iframe = content.iframe
     )
 
-    /**
-     * TODO: Documentation
-     */
     fun toAudioContent(): AudioContent = AudioContent(
-        provider, url, media?.singleMedia, title, artist, album, poster,
-        embedHtml, embedUrl, metadata, attribution
+        provider,
+        url,
+        media?.singleMedia,
+        title,
+        artist,
+        album,
+        poster,
+        embedHtml,
+        embedUrl,
+        metadata,
+        attribution
     )
 
-    /**
-     * TODO: Documentation
-     */
-    fun toImageContent(): ImageContent =
-        ImageContent(media?.listMedia, feedbackToken, colors, poster, attribution, altText)
+    fun toImageContent(): ImageContent = ImageContent(
+        media?.listMedia,
+        feedbackToken,
+        colors,
+        poster,
+        attribution,
+        altText
+    )
 
-    /**
-     * TODO: Documentation
-     */
-    fun toLinkContent(): LinkContent = LinkContent(url, title, description, author, siteName, displayUrl, poster)
+    fun toLinkContent(): LinkContent = LinkContent(
+        url,
+        title,
+        description,
+        author,
+        siteName,
+        displayUrl,
+        poster
+    )
 
-    /**
-     * TODO: Documentation
-     */
-    fun toTextContent(): TextContent = TextContent(text, subType, formatting)
+    fun toTextContent(): TextContent = TextContent(
+        text,
+        subType,
+        formatting
+    )
 
-    /**
-     * TODO: Documentation
-     */
     fun toVideoContent(): VideoContent = VideoContent(
-        url, media?.singleMedia, provider, embedHtml, embedUrl, poster,
-        metadata, attribution, canAutoPlayOnCellular, filmStrip, iframe
+        url,
+        media?.singleMedia,
+        provider,
+        embedHtml,
+        embedUrl,
+        poster,
+        metadata,
+        attribution,
+        canAutoPlayOnCellular,
+        filmStrip,
+        iframe
     )
 }

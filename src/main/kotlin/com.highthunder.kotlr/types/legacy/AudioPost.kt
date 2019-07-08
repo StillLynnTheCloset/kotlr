@@ -91,7 +91,7 @@ import com.highthunder.kotlr.types.content.PostContent
  * @param audioType The source of this audio file, (tumblr, soundcloud, bandcamp, etc.).
  * @param embed TODO: Documentation
  */
-data class AudioPost(
+data class AudioPost constructor(
     override var blogName: String? = null,
     override val id: Long? = null,
     override val blog: Blog? = null,

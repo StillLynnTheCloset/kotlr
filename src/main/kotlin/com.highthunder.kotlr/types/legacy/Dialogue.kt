@@ -15,7 +15,7 @@ import com.squareup.moshi.JsonClass
  * @param phrase The text being spoken.
  */
 @JsonClass(generateAdapter = true)
-data class Dialogue(
+data class Dialogue constructor(
     @Json(name = "name")
     var name: String? = null,
     @Json(name = "label")

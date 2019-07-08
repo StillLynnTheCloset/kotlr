@@ -17,7 +17,7 @@ import com.squareup.moshi.JsonClass
  * @param queryParams TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class RequestLink(
+data class RequestLink constructor(
     @Json(name = "type")
     var linkType: Type? = null,
     @Json(name = "method")

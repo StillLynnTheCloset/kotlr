@@ -13,7 +13,7 @@ import kotlin.reflect.KClass
  * @since 10/27/18
  * @version 1.0.0
  */
-class RequestBlogLikes(
+class RequestBlogLikes constructor(
     postLimit: Int? = null,
     postOffset: Long? = null,
     afterTime: Long? = null,
@@ -33,9 +33,6 @@ class RequestBlogLikes(
 ) {
 
     companion object {
-        /**
-         * TODO: Documentation
-         */
         const val BASE_PATH: String = "blog/"
     }
 

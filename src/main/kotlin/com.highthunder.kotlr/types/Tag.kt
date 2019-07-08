@@ -16,7 +16,7 @@ import com.squareup.moshi.JsonClass
  * @param featured TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class Tag(
+data class Tag constructor(
     @Json(name = "tag")
     var tagText: String? = null,
     @Json(name = "thumb_url")

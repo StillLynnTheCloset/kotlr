@@ -1,11 +1,11 @@
 package com.highthunder.kotlr.json.superwrapper
 
+import com.highthunder.kotlr.types.AttributionNote
+import com.highthunder.kotlr.types.LikeNote
 import com.highthunder.kotlr.types.NoteData
-import com.highthunder.kotlr.types.NoteData.Attribution
-import com.highthunder.kotlr.types.NoteData.Like
-import com.highthunder.kotlr.types.NoteData.Posted
-import com.highthunder.kotlr.types.NoteData.Reblog
-import com.highthunder.kotlr.types.NoteData.Reply
+import com.highthunder.kotlr.types.PostedNote
+import com.highthunder.kotlr.types.ReblogNote
+import com.highthunder.kotlr.types.ReplyNote
 import com.highthunder.kotlr.types.content.TextFormat
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -38,7 +38,7 @@ import com.squareup.moshi.JsonClass
  * @param photoHeight TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-internal data class NoteDataAmalgamation(
+internal data class NoteDataAmalgamation constructor(
     @Json(name = "type")
     var type: String? = null,
     @Json(name = "timestamp")
@@ -77,8 +77,8 @@ internal data class NoteDataAmalgamation(
     var photoHeight: Int? = null
 ) {
 
-    constructor(note: Like) : this(
-        type = Like.KEY,
+    constructor(note: LikeNote) : this(
+        type = LikeNote.KEY,
         timestamp = note.timestamp,
         blogName = note.blogName,
         blogUuid = note.blogUuid,
@@ -87,8 +87,8 @@ internal data class NoteDataAmalgamation(
         avatarShape = note.avatarShape
     )
 
-    constructor(note: Posted) : this(
-        type = Posted.KEY,
+    constructor(note: PostedNote) : this(
+        type = PostedNote.KEY,
         timestamp = note.timestamp,
         blogName = note.blogName,
         blogUuid = note.blogUuid,
@@ -97,8 +97,8 @@ internal data class NoteDataAmalgamation(
         avatarShape = note.avatarShape
     )
 
-    constructor(note: Reblog) : this(
-        type = Reblog.KEY,
+    constructor(note: ReblogNote) : this(
+        type = ReblogNote.KEY,
         timestamp = note.timestamp,
         blogName = note.blogName,
         blogUuid = note.blogUuid,
@@ -109,8 +109,8 @@ internal data class NoteDataAmalgamation(
         reblogParentBlogName = note.reblogParentBlogName
     )
 
-    constructor(note: Reply) : this(
-        type = Reply.KEY,
+    constructor(note: ReplyNote) : this(
+        type = ReplyNote.KEY,
         timestamp = note.timestamp,
         blogName = note.blogName,
         blogUuid = note.blogUuid,
@@ -122,8 +122,8 @@ internal data class NoteDataAmalgamation(
         canBlock = note.canBlock
     )
 
-    constructor(note: Attribution) : this(
-        type = Attribution.KEY,
+    constructor(note: AttributionNote) : this(
+        type = AttributionNote.KEY,
         timestamp = note.timestamp,
         blogName = note.blogName,
         blogUuid = note.blogUuid,
@@ -137,31 +137,58 @@ internal data class NoteDataAmalgamation(
         photoHeight = note.photoHeight
     )
 
-    /**
-     * TODO: Documentation
-     */
-    fun toLike(): Like = Like(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape)
+    fun toLike(): LikeNote = LikeNote(
+        timestamp,
+        blogName,
+        blogUuid,
+        blogUrl,
+        blogFollowed,
+        avatarShape
+    )
 
-    /**
-     * TODO: Documentation
-     */
-    fun toPosted(): Posted = Posted(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape)
+    fun toPosted(): PostedNote = PostedNote(
+        timestamp,
+        blogName,
+        blogUuid,
+        blogUrl,
+        blogFollowed,
+        avatarShape
+    )
 
-    /**
-     * TODO: Documentation
-     */
-    fun toReblog(): Reblog = Reblog(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape, postId,
-        reblogParentBlogName)
+    fun toReblog(): ReblogNote = ReblogNote(
+        timestamp,
+        blogName,
+        blogUuid,
+        blogUrl,
+        blogFollowed,
+        avatarShape,
+        postId,
+        reblogParentBlogName
+    )
 
-    /**
-     * TODO: Documentation
-     */
-    fun toReply(): Reply = Reply(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape, replyText,
-        formatting, canBlock)
+    fun toReply(): ReplyNote = ReplyNote(
+        timestamp,
+        blogName,
+        blogUuid,
+        blogUrl,
+        blogFollowed,
+        avatarShape,
+        replyText,
+        formatting,
+        canBlock
+    )
 
-    /**
-     * TODO: Documentation
-     */
-    fun toAttribution(): Attribution = Attribution(timestamp, blogName, blogUuid, blogUrl, blogFollowed, avatarShape,
-        postAttributionType, postAttributionTypeName, photoUrl, photoWidth, photoHeight)
+    fun toAttribution(): AttributionNote = AttributionNote(
+        timestamp,
+        blogName,
+        blogUuid,
+        blogUrl,
+        blogFollowed,
+        avatarShape,
+        postAttributionType,
+        postAttributionTypeName,
+        photoUrl,
+        photoWidth,
+        photoHeight
+    )
 }

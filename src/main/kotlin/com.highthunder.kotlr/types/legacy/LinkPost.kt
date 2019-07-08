@@ -84,7 +84,7 @@ import com.highthunder.kotlr.types.content.PostContent
  * @param photos Photos to give a preview of the article that the link points to.
  * @param body TODO: Documentation
  */
-data class LinkPost(
+data class LinkPost constructor(
     override var blogName: String? = null,
     override val id: Long? = null,
     override val blog: Blog? = null,

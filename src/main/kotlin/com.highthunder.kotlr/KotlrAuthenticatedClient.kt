@@ -37,7 +37,7 @@ import java.util.concurrent.ExecutionException
  * @since 10/28/18
  * @version 1.0.0
  */
-class KotlrAuthenticatedClient(private val key: TumblrUserKey) : KotlrRequestProcessor {
+class KotlrAuthenticatedClient constructor(private val key: TumblrUserKey) : KotlrRequestProcessor {
 
     private val service: OAuth10aService = ServiceBuilder(key.apiKey).let { serviceBuilder ->
         serviceBuilder.apiSecret(key.apiSecret)

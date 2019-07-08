@@ -84,7 +84,7 @@ import com.highthunder.kotlr.types.content.PostContent
  * @param permalinkUrl TODO: Documentation
  * @param videoType The source of this video (tumblr, youtube, instagram, vimeo, vine(rip), etc.).
  */
-data class VideoPost(
+data class VideoPost constructor(
     override var blogName: String? = null,
     override val id: Long? = null,
     override val blog: Blog? = null,

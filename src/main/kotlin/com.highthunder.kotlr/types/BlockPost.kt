@@ -66,7 +66,7 @@ import com.highthunder.kotlr.types.content.PostContent
  * @param rebloggedRootFollowing TODO: Documentation
  * @param notes TODO: Documentation
  */
-class BlockPost(
+data class BlockPost constructor(
     override var blogName: String? = null,
     override val id: Long? = null,
     override val blog: Blog? = null,

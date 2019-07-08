@@ -1,6 +1,10 @@
 package com.highthunder.kotlr.json.superwrapper
 
+import com.highthunder.kotlr.types.content.AppAttribution
 import com.highthunder.kotlr.types.content.Attribution
+import com.highthunder.kotlr.types.content.BlogAttribution
+import com.highthunder.kotlr.types.content.LinkAttribution
+import com.highthunder.kotlr.types.content.PostAttribution
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.ToJson
@@ -14,31 +18,24 @@ import com.squareup.moshi.ToJson
  * @version 1.0.0
  */
 internal class AttributionAmalgamationAdapter {
-
-    /**
-     *  TODO: Documentation
-     */
     @FromJson
     fun toAttribution(input: AttributionAmalgamation?): Attribution {
         return when (input?.type) {
-            Attribution.Post.KEY -> input.toPostAttribution()
-            Attribution.Link.KEY -> input.toLinkAttribution()
-            Attribution.Blog.KEY -> input.toBlogAttribution()
-            Attribution.App.KEY -> input.toAppAttribution()
+            PostAttribution.KEY -> input.toPostAttribution()
+            LinkAttribution.KEY -> input.toLinkAttribution()
+            BlogAttribution.KEY -> input.toBlogAttribution()
+            AppAttribution.KEY -> input.toAppAttribution()
             else -> throw JsonDataException("Expected a field of type AttributionAmalgamation but got $input")
         }
     }
 
-    /**
-     *  TODO: Documentation
-     */
     @ToJson
     fun fromAttribution(input: Attribution): AttributionAmalgamation? {
         return when (input) {
-            is Attribution.Post -> AttributionAmalgamation(input)
-            is Attribution.Link -> AttributionAmalgamation(input)
-            is Attribution.Blog -> AttributionAmalgamation(input)
-            is Attribution.App -> AttributionAmalgamation(input)
+            is PostAttribution -> AttributionAmalgamation(input)
+            is LinkAttribution -> AttributionAmalgamation(input)
+            is BlogAttribution -> AttributionAmalgamation(input)
+            is AppAttribution -> AttributionAmalgamation(input)
         }
     }
 }

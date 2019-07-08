@@ -18,7 +18,7 @@ import com.squareup.moshi.JsonClass
  * @param exif TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class Photo(
+data class Photo constructor(
     @Json(name = "original_size")
     var originalSize: PhotoSize? = null,
     @Json(name = "panorama_size")

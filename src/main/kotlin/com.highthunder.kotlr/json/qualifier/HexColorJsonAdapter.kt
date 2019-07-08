@@ -12,16 +12,9 @@ import com.squareup.moshi.ToJson
  * @version 1.0.0
  */
 internal class HexColorJsonAdapter {
-
-    /**
-     * TODO: Documentation
-     */
     @ToJson
     fun toJson(@HexColor rgb: Color): String = rgb.asString()
 
-    /**
-     * TODO: Documentation
-     */
     @FromJson
     @HexColor
     fun fromJson(rgb: String): Color = Color(rgb)

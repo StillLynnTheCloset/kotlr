@@ -78,7 +78,7 @@ import com.highthunder.kotlr.types.content.PostContent
  * @param answer The answer given.
  * @param answerAbstract TODO: Documentation
  */
-data class AnswerPost(
+data class AnswerPost constructor(
     override var blogName: String? = null,
     override val id: Long? = null,
     override val blog: Blog? = null,

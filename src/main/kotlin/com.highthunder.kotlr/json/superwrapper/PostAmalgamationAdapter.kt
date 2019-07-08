@@ -23,10 +23,6 @@ import com.squareup.moshi.ToJson
  * @version 1.0.0
  */
 internal class PostAmalgamationAdapter {
-
-    /**
-     * TODO: Documentation
-     */
     @FromJson
     fun toPost(input: PostAmalgamation?): Post {
         return when (input?.type) {
@@ -43,9 +39,6 @@ internal class PostAmalgamationAdapter {
         }
     }
 
-    /**
-     * TODO: Documentation
-     */
     @ToJson
     fun fromPost(input: Post): PostAmalgamation? {
         return when (input) {

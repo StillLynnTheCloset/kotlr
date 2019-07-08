@@ -13,7 +13,7 @@ import kotlin.reflect.KClass
  * @since 11/4/18
  * @version 1.0.0
  */
-class RequestUserLikes(
+class RequestUserLikes constructor(
     postLimit: Int? = null,
     postOffset: Long? = null,
     afterPostId: Long? = null,

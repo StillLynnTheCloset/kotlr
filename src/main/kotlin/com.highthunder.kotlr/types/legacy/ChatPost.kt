@@ -76,7 +76,7 @@ import com.highthunder.kotlr.types.content.PostContent
  * @param body The full chat body.
  * @param dialogue List of dialog objects describing the chat in detail.
  */
-data class ChatPost(
+data class ChatPost constructor(
     override var blogName: String? = null,
     override val id: Long? = null,
     override val blog: Blog? = null,
