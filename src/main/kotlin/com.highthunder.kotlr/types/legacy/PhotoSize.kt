@@ -15,11 +15,11 @@ import com.squareup.moshi.JsonClass
  * @param url The location of the photo file (either a JPG, GIF, or PNG).
  */
 @JsonClass(generateAdapter = true)
-data class PhotoSize(
-        @Json(name = "width")
-        var width: Int? = null,
-        @Json(name = "height")
-        var height: Int? = null,
-        @Json(name = "url")
-        var url: String? = null
+data class PhotoSize constructor(
+    @Json(name = "width")
+    var width: Int? = null,
+    @Json(name = "height")
+    var height: Int? = null,
+    @Json(name = "url")
+    var url: String? = null
 )

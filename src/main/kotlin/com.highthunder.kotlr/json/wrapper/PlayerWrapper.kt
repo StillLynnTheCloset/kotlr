@@ -9,9 +9,12 @@ import com.squareup.moshi.JsonClass
  * @author highthunder
  * @since 10/20/18
  * @version 1.0.0
+ *
+ * @param contentString TODO: Documentation
+ * @param contentList TODO: Documentation
  */
 @JsonClass(generateAdapter = false)
-data class PlayerWrapper(
-        var contentString: String? = null,
-        var contentList: List<Video>? = null
+internal data class PlayerWrapper(
+    var contentString: String? = null,
+    var contentList: List<Video>? = null
 )

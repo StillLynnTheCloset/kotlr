@@ -1,12 +1,9 @@
 package com.highthunder.kotlr.request.type.blog
 
 import com.github.scribejava.core.model.Verb
-import com.highthunder.kotlr.request.Request
-import com.highthunder.kotlr.response.ResponseInterface
-import com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar
-import com.highthunder.kotlr.response.type.blog.ResponseBlogFollowers
+import com.highthunder.kotlr.request.TumblrRequest
+import com.highthunder.kotlr.response.TumblrResponse
 import com.highthunder.kotlr.response.type.blog.ResponseBlogFollowing
-import com.highthunder.kotlr.response.type.blog.ResponseBlogInfo
 import kotlin.reflect.KClass
 
 /**
@@ -16,17 +13,18 @@ import kotlin.reflect.KClass
  * @since 11/4/18
  * @version 1.0.0
  */
-class RequestBlogFollowing(
+class RequestBlogFollowing constructor(
     private val identifier: String,
     private val limit: Int? = null,
     private val offset: Int? = null
-) : Request<ResponseBlogFollowing.Body> {
+) : TumblrRequest<ResponseBlogFollowing.Body> {
 
     companion object {
-        const val BASE_PATH = "blog/"
+        const val BASE_PATH: String = "blog/"
     }
 
-    override val responseClass: KClass<out ResponseInterface<ResponseBlogFollowing.Body>> = ResponseBlogFollowing.Response::class
+    override val responseClass: KClass<out TumblrResponse<ResponseBlogFollowing.Body>> =
+        ResponseBlogFollowing.Response::class
     override val verb: Verb = Verb.GET
     override val requiresOAuth: Boolean = false
     override val improvedByOAuth: Boolean = true
@@ -54,5 +52,4 @@ class RequestBlogFollowing(
             }
         }.toString()
     }
-
 }

@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/highthunder/kotlr.svg?branch=master)](https://travis-ci.com/highthunder/kotlr)
+[![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
 # Kotlr
 
@@ -13,13 +14,14 @@ restricted to the JVM.
 
 * Create a full API client for Tumblr
 * Use typesafe and idiomatic Kotlin
-This means that every response, and every object within those responses,
-will be represented by a class which will have typed properties for every
-possible field that the API can return. All requests to the API will
-likewise be backed by classes which clearly document any and all availible
-parameters as well as enforcing any restrictions on the requests, such
-as maximum values or mutually exclusive parameters.
-* Support the origional (legacy) post format
+
+   This means that every response, and every object within those responses,
+   will be represented by a class which will have typed properties for every
+   possible field that the API can return. All requests to the API will
+   likewise be backed by classes which clearly document any and all availible
+   parameters as well as enforcing any restrictions on the requests, such
+   as maximum values or mutually exclusive parameters.
+* Support the original (legacy) post format
 * Support the new 'blocks' post type, aka the Neue Post Format or NPF.
 * Provide any functionality needed to interact with
 the Tumblr API, such as APIs to acquire OAuth/XAuth keys in a
@@ -27,7 +29,7 @@ the Tumblr API, such as APIs to acquire OAuth/XAuth keys in a
 
 The priorities of development right now are:
 
-1. Add support for all GET request/response types.
+1. ~~Add support for all GET request/response types.~~
 2. Improve documentation.
 3. Improve test coverage and make tests more targeted.
 4. Add support for requests using other HTTP verbs.
@@ -35,7 +37,7 @@ The priorities of development right now are:
 6. Clean up the API by: restricting visibility, reducing optional and default values, limiting mutablity, and enforcing stricter types.
 7. Create extension library to improve ease of use on Android.
 8. Create PoC Android App.
-9. Make use of Coroutines to better define blocking api calls.
+9. ~~Make use of Coroutines to better define blocking api calls.~~
 10. Improve error messages/exceptions.
 11. Find/make/port pure Kotlin libraries to replace existing dependencies.
 12. Performance improvements and bug fixes, etc.
@@ -45,7 +47,7 @@ Development Blog [Here](https://kotlr-development.tumblr.com/)
 Please use Kotlr responsibly and follow the
 [Tumblr api agreement](https://www.tumblr.com/docs/en/api_agreement).
 
-### Kotlr is not maintained by/built by/associated with/endorsed by Tumblr in any way! ###
+### Kotlr is NOT maintained by/built by/associated with/endorsed by Tumblr in any way! ###
 
 ### How To Use Kotlr ###
 
@@ -59,59 +61,58 @@ app [here](https://www.tumblr.com/oauth/apps).
 
 #### Examples ####
 
-```
-fun minimalExample() {
+```kotlin
+fun minimalExampleExplained() {
 
     // Class for holding API keys and secrets. Get this from one of the auth mechanisms.
-    val key: TumblrUserKey = SampleUserKey
+    val key = TumblrUserKey("apiKey", "apiSecret", "userKey", "userSecret")
 
-    // Similar to Jumblr's `JumblrClient`
-    val client = KotlrClient(key)
+    // The client which performs all requests, this is similar to Jumblr's `JumblrClient`.
+    val client = KotlrAuthenticatedClient(key)
 
-    // All request parameters are strongly typed and any constraints imposed by the API, such as
-    // required or mutually exclusive parameters, are enforced by the builder.
-    RequestBlogLikes(identifier = "kotlr-development").also { request: RequestBlogLikes ->
+    // All request parameters are strongly typed and any constraints imposed by Tumblr's API, such as
+    // required or mutually exclusive parameters, are enforced by the constructor.
+    // In this case, only the blog identifier is required.
+    val request = RequestBlogLikes(identifier = "kotlr-development")
 
-        // Actually perform the request and get our data from Tumblr
-        val response: Response<ResponseBlogLikes.Body>? = client.process(request)
+    // Actually perform the request and get our data from Tumblr.
+    // Kotlr offers both `process` and `processBlocking`, the former is a suspending function for use in
+    // coroutines, and the latter is not.
+    val response: TumblrResponse<ResponseBlogLikes.Body> = client.processBlocking(request)
 
-        // Check out any of the meta information that Tumblr returns such as HTTP success codes.
-        val meta: ResponseMetaInfo? = response?.getMetaInfo()
+    // Check out any of the meta information that Tumblr returns such as HTTP success codes.
+    val meta: ResponseMetaInfo? = response.meta
 
-        // Get the main meat of the response.
-        val body: ResponseBlogLikes.Body? = response?.getBody()
-        if (body != null) {
-            // And now we can access Tumblr's actual response, which in this case is composed of
-            // a list of some liked posts, a count of the total number of liked posts, and potentially
-            // a list of RequestLinks which can encode some generic actions that Tumblr thinks you
-            // might like to perform based on the content of this request.
-            body.posts?.firstOrNull()?.blogName
-            body.totalLiked
-            body.links
-        }
+    // Get the main meat of the response.
+    val body: ResponseBlogLikes.Body = response.getBodyOrThrow()
 
-    }
+    // And now we can access Tumblr's actual response, which in this case is composed of
+    // a list of some liked posts, a count of the total number of liked posts, and potentially
+    // a map of RequestLinks which can encode some generic actions that Tumblr thinks you
+    // might like to perform based on the content of this request.
+    val totalLikedPosts: Long? = body.totalLiked
+    val requestLinks: Map<String, RequestLink>? = body.links
+    val postUrl: String? = body.posts?.firstOrNull()?.postUrl
 
 }
-
 ```
 
 or, the same example without the fluff:
 
-```
+```kotlin
 fun minimalExample() {
-    val name = KotlrClient(SampleUserKey)
-            .process(RequestBlogLikes(identifier = "kotlr-development"))
-            ?.getBody()
-            ?.posts
-            ?.firstOrNull()
-            ?.blogName
+    val postUrl: String? = KotlrAuthenticatedClient(SampleUserKey)
+        .processBlocking(RequestBlogLikes(identifier = "kotlr-development"))
+        .getBodyOrThrow()
+        .posts
+        ?.firstOrNull()
+        ?.postUrl
 }
 ```
 
 ##### Auth Examples #####
 
-```
+```kotlin
 fun oAuthExample() {
     // Kotlr also makes the process of getting OAuth and XAuth keys easy.
 
@@ -138,7 +139,7 @@ fun oAuthExample() {
 }
 ```
 
-```
+```kotlin
 fun xAuthExample() {
     // If you can get Tumblr to give you access to the XAuth API, logging in is even easier!
     val userKey: TumblrUserKey = XAuthFlow().getUserKey(SampleAppKey, "example@example.com", "hunter2")

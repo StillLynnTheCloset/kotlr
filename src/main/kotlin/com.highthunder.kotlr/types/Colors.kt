@@ -3,23 +3,19 @@ package com.highthunder.kotlr.types
 import com.squareup.moshi.JsonClass
 
 /**
- * Colors - TODO: Documentation
+ * Colors - Image blocks may contain a color field which provides the dominant colors stored for the image in the Post
+ * metadata. The value is an object with string fields where the key starts with a c and ends with a number, eg.
+ * c0, c1, c9. The values are a string of three or six characters representing an RGB hex value. These values are
+ * typically used for creating a placeholder gradient while images are loading. The colors represented for an image
+ * are the same for every size of that image.
  *
- * TODO: Figure out how to use an adapter to back this with an array.
  * @author highthunder
  * @since 10/27/18
  * @version 1.0.0
+ *
+ * @param colors A map from the numeric part of the name to the string representation of the color.
  */
-@JsonClass(generateAdapter = true)
-data class Colors(
-        var c0: String? = null,
-        var c1: String? = null,
-        var c2: String? = null,
-        var c3: String? = null,
-        var c4: String? = null,
-        var c5: String? = null,
-        var c6: String? = null,
-        var c7: String? = null,
-        var c8: String? = null,
-        var c9: String? = null
+@JsonClass(generateAdapter = false)
+data class Colors constructor(
+    val colors: Map<Int, Color>? = null
 )

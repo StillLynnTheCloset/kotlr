@@ -1,7 +1,7 @@
 package com.highthunder.kotlr.json.wrapper
 
 import com.highthunder.kotlr.types.Media
-import com.highthunder.kotlr.types.content.PostContent.ImageContent
+import com.highthunder.kotlr.types.content.ImageContent
 import com.squareup.moshi.JsonClass
 
 /**
@@ -15,9 +15,12 @@ import com.squareup.moshi.JsonClass
  * @author highthunder
  * @since 10/20/18
  * @version 1.0.0
+ *
+ * @param singleMedia TODO: Documentation
+ * @param listMedia TODO: Documentation
  */
 @JsonClass(generateAdapter = false)
-data class MediaWrapper(
-        var singleMedia: Media? = null,
-        var listMedia: List<Media>? = null
+internal data class MediaWrapper(
+    var singleMedia: Media? = null,
+    var listMedia: List<Media>? = null
 )

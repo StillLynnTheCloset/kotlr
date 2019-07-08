@@ -7,17 +7,19 @@ package com.highthunder.kotlr.request
  * @since 11/4/18
  * @version 1.0.0
  */
-abstract class RequestPosts<T>(
-        private val postLimit: Int? = null,
-        private val postOffset: Long? = null,
-        private val afterPostId: Long? = null,
-        private val beforePostId: Long? = null,
-        private val afterTime: Long? = null,
-        private val beforeTime: Long? = null,
-        private val getReblogFields: Boolean? = null,
-        private val getNotesHistory: Boolean? = null,
-        private val useNeuePostFormat: Boolean? = null
-) : Request<T> {
+abstract class RequestPosts<out T> constructor(
+    private val postLimit: Int? = null,
+    private val postOffset: Long? = null,
+    private val afterPostId: Long? = null,
+    private val beforePostId: Long? = null,
+    private val afterTime: Long? = null,
+    private val beforeTime: Long? = null,
+    private val getReblogFields: Boolean? = null,
+    private val getNotesHistory: Boolean? = null,
+    private val useNeuePostFormat: Boolean? = null,
+    private val tag: String? = null,
+    private val pageNumber: Int? = null
+) : TumblrRequest<T> {
 
     init {
         if (getNotesHistory != null && getReblogFields != null) {
@@ -30,10 +32,14 @@ abstract class RequestPosts<T>(
         positions += if (afterTime != null) 1 else 0
         positions += if (beforeTime != null) 1 else 0
         if (positions > 1) {
-            throw ConflictingParametersException("You may only specify one of {beforePostId, afterPostId, postOffset, afterTime, beforeTime}")
+            throw ConflictingParametersException(
+                "You may only specify one of {beforePostId, afterPostId, postOffset, afterTime, beforeTime}")
         }
     }
 
+    /**
+     *  TODO: Documentation
+     */
     override fun getUrlParameters(apiKey: String): String {
         return StringBuilder().apply {
             var previous = false
@@ -79,7 +85,7 @@ abstract class RequestPosts<T>(
                 } else {
                     append("?")
                 }
-                append("before=")
+                append("after=")
                 append(it)
                 previous = true
             }
@@ -89,7 +95,7 @@ abstract class RequestPosts<T>(
                 } else {
                     append("?")
                 }
-                append("since=")
+                append("before=")
                 append(it)
                 previous = true
             }
@@ -123,7 +129,26 @@ abstract class RequestPosts<T>(
                 append(it)
                 previous = true
             }
+            tag?.also {
+                if (previous) {
+                    append("&")
+                } else {
+                    append("?")
+                }
+                append("tag=")
+                append(it.replace(" ", "+"))
+                previous = true
+            }
+            pageNumber?.also {
+                if (previous) {
+                    append("&")
+                } else {
+                    append("?")
+                }
+                append("page_number=")
+                append(it)
+                previous = true
+            }
         }.toString()
     }
-
 }

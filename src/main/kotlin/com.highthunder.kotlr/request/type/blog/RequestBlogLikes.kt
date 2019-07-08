@@ -2,7 +2,7 @@ package com.highthunder.kotlr.request.type.blog
 
 import com.github.scribejava.core.model.Verb
 import com.highthunder.kotlr.request.RequestPosts
-import com.highthunder.kotlr.response.ResponseInterface
+import com.highthunder.kotlr.response.TumblrResponse
 import com.highthunder.kotlr.response.type.blog.ResponseBlogLikes
 import kotlin.reflect.KClass
 
@@ -13,24 +13,31 @@ import kotlin.reflect.KClass
  * @since 10/27/18
  * @version 1.0.0
  */
-class RequestBlogLikes(
-        postLimit: Int? = null,
-        postOffset: Long? = null,
-        afterPostId: Long? = null,
-        beforePostId: Long? = null,
-        afterTime: Long? = null,
-        beforeTime: Long? = null,
-        getReblogFields: Boolean? = null,
-        getNotesHistory: Boolean? = null,
-        useNeuePostFormat: Boolean? = null,
-        private var identifier: String
-) : RequestPosts<ResponseBlogLikes.Body>(postLimit, postOffset, afterPostId, beforePostId, afterTime, beforeTime, getReblogFields, getNotesHistory, useNeuePostFormat) {
+class RequestBlogLikes constructor(
+    postLimit: Int? = null,
+    postOffset: Long? = null,
+    afterTime: Long? = null,
+    beforeTime: Long? = null,
+    getReblogFields: Boolean? = null,
+    getNotesHistory: Boolean? = null,
+    useNeuePostFormat: Boolean? = null,
+    private var identifier: String
+) : RequestPosts<ResponseBlogLikes.Body>(
+    postLimit = postLimit,
+    postOffset = postOffset,
+    afterTime = afterTime,
+    beforeTime = beforeTime,
+    getReblogFields = getReblogFields,
+    getNotesHistory = getNotesHistory,
+    useNeuePostFormat = useNeuePostFormat
+) {
 
     companion object {
-        const val BASE_PATH = "blog/"
+        const val BASE_PATH: String = "blog/"
     }
 
-    override val responseClass: KClass<out ResponseInterface<ResponseBlogLikes.Body>> = ResponseBlogLikes.Response::class
+    override val responseClass: KClass<out TumblrResponse<ResponseBlogLikes.Body>> =
+        ResponseBlogLikes.Response::class
     override val verb: Verb = Verb.GET
     override val requiresOAuth: Boolean = false
     override val improvedByOAuth: Boolean = true
@@ -57,5 +64,4 @@ class RequestBlogLikes(
             }
         }.toString()
     }
-
 }

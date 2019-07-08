@@ -1,5 +1,6 @@
 package com.highthunder.kotlr.json.qualifier
 
+import com.highthunder.kotlr.types.Color
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson
 
@@ -10,17 +11,11 @@ import com.squareup.moshi.ToJson
  * @since 10/27/18
  * @version 1.0.0
  */
-class HexColorJsonAdapter {
-
+internal class HexColorJsonAdapter {
     @ToJson
-    fun toJson(@HexColor rgb: Int): String {
-        return String.format("%06x", rgb)
-    }
+    fun toJson(@HexColor rgb: Color): String = rgb.asString()
 
     @FromJson
     @HexColor
-    fun fromJson(rgb: String): Int {
-        return Integer.parseInt(rgb, 16)
-    }
-
+    fun fromJson(rgb: String): Color = Color(rgb)
 }

@@ -8,92 +8,97 @@ import com.squareup.moshi.JsonClass
  * vertical stack, you can use the optional layout block alongside the content block array.
  * The layout block holds an array of layouts. Each layout object requires a type field,
  * just like content blocks.
- *TODO: Documentation
+ *
  * @author highthunder
  * @since 10/20/18
  * @version 1.0.0
  */
-sealed class BlockLayout {
+sealed class BlockLayout
 
-    /**
-     * Vertical Layout - The default layout type, each content block should be placed below the
-     * previous block.
-     */
-    class Vertical : BlockLayout() {
-        companion object {
-            const val KEY: String = "vertical"
-        }
+/**
+ * Vertical Layout - The default layout type, each content block should be placed below the
+ * previous block.
+ */
+class VerticalBlockLayout : BlockLayout() {
+    companion object {
+        const val KEY: String = "vertical"
+    }
+}
+
+/**
+ * Row Layout
+ *
+ * @param rows This is an array of the rows and block indices per row, for basic row layouts.
+ * @param display This is an array of display objects per row, see [BlockLayout.Row.Display].
+ */
+data class RowBlockLayout constructor(
+    var rows: List<List<Int>>? = null,
+    var display: List<Display>? = null
+) : BlockLayout() {
+
+    companion object {
+        const val KEY: String = "rows"
     }
 
     /**
-     * Row Layout
+     *  TODO: Documentation
      *
-     * @param rows This is an array of the rows and block indices per row, for basic row layouts.
-     * @param display This is an array of display objects per row, see [BlockLayout.Row.Display].
+     * @param blocks TODO: Documentation
+     * @param mode TODO: Documentation
      */
-    class Row(
-            var rows: List<List<Int>>? = null,
-            var display: List<Display>? = null
-    ) : BlockLayout() {
+    @JsonClass(generateAdapter = true)
+    data class Display constructor(
+        @Json(name = "blocks")
+        var blocks: List<Int>? = null,
+        @Json(name = "mode")
+        var mode: Mode? = Mode.Weighted()
+    ) {
 
-        companion object {
-            const val KEY: String = "rows"
-        }
-
-        @JsonClass(generateAdapter = true)
-        data class Display(
-                @Json(name = "blocks")
-                var blocks: List<Int>? = null,
-                @Json(name = "mode")
-                var mode: Mode? = Mode.Weighted()
-        ) {
-
-            sealed class Mode {
-
-                class Weighted : Mode() {
-                    companion object {
-                        const val KEY: String = "weighted"
-                    }
+        /**
+         *  TODO: Documentation
+         */
+        sealed class Mode {
+            abstract val type: String
+            class Weighted : Mode() {
+                companion object {
+                    const val KEY: String = "weighted"
                 }
-
-                class Carousel : Mode() {
-                    companion object {
-                        const val KEY: String = "carousel"
-                    }
-                }
-
+                override val type: String = KEY
             }
-
-        }
-
-    }
-
-    /**
-     * Condensed Layout
-     *
-     * @param blocks This is an array of block indices that are a part of the truncated version of the Post.
-     */
-    class Condensed(
-            var blocks: List<Int>? = null
-    ) : BlockLayout() {
-        companion object {
-            const val KEY: String = "condensed"
+            class Carousel : Mode() {
+                companion object {
+                    const val KEY: String = "carousel"
+                }
+                override val type: String = KEY
+            }
         }
     }
+}
 
-    /**
-     * Ask Layout
-     *
-     * @param blocks This is an array of block indices that are a part of the ask content of the Post.
-     * @param attribution If the ask is not anonymous, this will include information about the blog that submitted the ask.
-     */
-    class Ask(
-            var blocks: List<Int>? = null,
-            var attribution: Attribution? = null
-    ) : BlockLayout() {
-        companion object {
-            const val KEY: String = "ask"
-        }
+/**
+ * Condensed Layout
+ *
+ * @param blocks This is an array of block indices that are a part of the truncated version of the Post.
+ */
+data class CondensedBlockLayout constructor(
+    var blocks: List<Int>? = null
+) : BlockLayout() {
+    companion object {
+        const val KEY: String = "condensed"
     }
+}
 
+/**
+ * Ask Layout
+ *
+ * @param blocks This is an array of block indices that are a part of the ask content of the Post.
+ * @param attribution If the ask is not anonymous, this will include information about the blog that submitted the ask.
+ */
+data class AskBlockLayout constructor(
+    var blocks: List<Int>? = null,
+    var attribution: Attribution? = null
+) : BlockLayout() {
+    companion object {
+        const val KEY: String = "ask"
+    }
 }

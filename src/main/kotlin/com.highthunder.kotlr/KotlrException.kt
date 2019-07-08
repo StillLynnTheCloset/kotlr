@@ -1,7 +1,6 @@
 package com.highthunder.kotlr
 
 import com.github.scribejava.core.model.Response
-import java.lang.RuntimeException
 
 /**
  * KotlrException - TODO: Documentation
@@ -10,10 +9,9 @@ import java.lang.RuntimeException
  * @since 10/23/18
  * @version 1.0.0
  */
-class KotlrException : RuntimeException {
+open class KotlrException : RuntimeException {
 
     constructor(message: String)
 
     constructor(response: Response)
-
 }

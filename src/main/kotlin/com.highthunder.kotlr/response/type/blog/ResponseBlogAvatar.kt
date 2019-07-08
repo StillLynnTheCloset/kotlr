@@ -1,11 +1,11 @@
 package com.highthunder.kotlr.response.type.blog
 
-import com.highthunder.kotlr.response.ResponseInterface
+import com.highthunder.kotlr.json.response.blog.BlogAvatarWrapperJsonAdapter
 import com.highthunder.kotlr.response.ResponseMetaInfo
 import com.highthunder.kotlr.response.TumblrError
+import com.highthunder.kotlr.response.TumblrResponse
 import com.highthunder.kotlr.response.WrapperInterface
 import com.highthunder.kotlr.types.RequestLink
-import com.highthunder.kotlr.json.response.blog.BlogAvatarWrapperJsonAdapter
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -18,37 +18,45 @@ import com.squareup.moshi.JsonClass
  */
 interface ResponseBlogAvatar {
 
+    /**
+     * TODO: Documentation
+     *
+     * @param meta TODO: Documentation
+     * @param response TODO: Documentation
+     * @param errors TODO: Documentation
+     */
     @JsonClass(generateAdapter = true)
-    data class Response(
+    data class Response constructor(
         @Json(name = "meta")
-        var meta: ResponseMetaInfo? = null,
+        override val meta: ResponseMetaInfo,
         @Json(name = "response")
-        var response: Wrapper? = null,
+        override val response: WrapperInterface<Body>,
         @Json(name = "errors")
-        var errors: List<TumblrError>? = null
-    ) : ResponseInterface<Body> {
-        override fun getError(): List<TumblrError>? = errors
-        override fun getMetaInfo(): ResponseMetaInfo? = meta
-        override fun getWrapper(): WrapperInterface<Body>? = response
-    }
+        override val errors: List<TumblrError>? = null
+    ) : TumblrResponse<Body>
 
     /**
      * Adapter is [BlogAvatarWrapperJsonAdapter].
+     *
+     * @param body The body of this response.
+     * @param error The error message if there is no body.
      */
-    data class Wrapper(
-        var error: String? = null,
-        var response: Body? = null
-    ) : WrapperInterface<Body> {
-        override fun getMessage(): String? = error
-        override fun getBody(): Body? = response
-    }
+    data class Wrapper constructor(
+        override val error: String? = null,
+        override val body: Body? = null
+    ) : WrapperInterface<Body>
 
+    /**
+     * TODO: Documentation
+     *
+     * @param links TODO: Documentation
+     * @param url TODO: Documentation
+     */
     @JsonClass(generateAdapter = true)
-    data class Body(
+    data class Body constructor(
         @Json(name = "_links")
         var links: Map<String, RequestLink>? = null, // TODO: Get rid of map.
         @Json(name = "avatar_url")
         var url: String? = null
     )
-
 }

@@ -1,8 +1,8 @@
 package com.highthunder.kotlr.request.type.user
 
 import com.github.scribejava.core.model.Verb
-import com.highthunder.kotlr.request.Request
-import com.highthunder.kotlr.response.ResponseInterface
+import com.highthunder.kotlr.request.TumblrRequest
+import com.highthunder.kotlr.response.TumblrResponse
 import com.highthunder.kotlr.response.type.user.ResponseUserFollowing
 import kotlin.reflect.KClass
 
@@ -13,16 +13,20 @@ import kotlin.reflect.KClass
  * @since 11/4/18
  * @version 1.0.0
  */
-class RequestUserFollowing(
+class RequestUserFollowing constructor(
     private val limit: Int? = null,
     private val offset: Long? = null
-) : Request<ResponseUserFollowing.Body> {
+) : TumblrRequest<ResponseUserFollowing.Body> {
 
     companion object {
+        /**
+         * TODO: Documentation
+         */
         const val BASE_PATH: String = "user/following"
     }
 
-    override val responseClass: KClass<out ResponseInterface<ResponseUserFollowing.Body>> = ResponseUserFollowing.Response::class
+    override val responseClass: KClass<out TumblrResponse<ResponseUserFollowing.Body>> =
+        ResponseUserFollowing.Response::class
     override val verb: Verb = Verb.GET
     override val requiresOAuth: Boolean = true
     override val improvedByOAuth: Boolean = false
@@ -50,5 +54,4 @@ class RequestUserFollowing(
             }
         }.toString()
     }
-
 }
