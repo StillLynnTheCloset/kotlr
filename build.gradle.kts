@@ -52,7 +52,7 @@ idea {
 }
 
 ktlint {
-    version.set("0.33.0")
+    version.set("0.34.2")
     debug.set(false)
     verbose.set(true)
     android.set(false)

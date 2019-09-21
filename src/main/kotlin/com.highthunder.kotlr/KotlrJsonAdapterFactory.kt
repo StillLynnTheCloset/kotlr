@@ -30,19 +30,32 @@ class KotlrJsonAdapterFactory : JsonAdapter.Factory {
         return if (type is ParameterizedType) {
             if (type.rawType.typeName == "com.highthunder.kotlr.response.WrapperInterface") {
                 when (type.actualTypeArguments.firstOrNull()?.typeName) {
-                    "com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar\$Body" -> BlogAvatarWrapperJsonAdapter(moshi)
-                    "com.highthunder.kotlr.response.type.blog.ResponseBlogDrafts\$Body" -> BlogDraftsWrapperJsonAdapter(moshi)
-                    "com.highthunder.kotlr.response.type.blog.ResponseBlogFollowers\$Body" -> BlogFollowersWrapperJsonAdapter(moshi)
-                    "com.highthunder.kotlr.response.type.blog.ResponseBlogFollowing\$Body" -> BlogFollowingWrapperJsonAdapter(moshi)
-                    "com.highthunder.kotlr.response.type.blog.ResponseBlogInfo\$Body" -> BlogInfoWrapperJsonAdapter(moshi)
-                    "com.highthunder.kotlr.response.type.blog.ResponseBlogLikes\$Body" -> BlogLikesWrapperJsonAdapter(moshi)
-                    "com.highthunder.kotlr.response.type.blog.ResponseBlogPosts\$Body" -> BlogPostsWrapperJsonAdapter(moshi)
-                    "com.highthunder.kotlr.response.type.blog.ResponseBlogQueue\$Body" -> BlogQueueWrapperJsonAdapter(moshi)
-                    "com.highthunder.kotlr.response.type.blog.ResponseBlogSubmissions\$Body" -> BlogSubmissionsWrapperJsonAdapter(moshi)
-                    "com.highthunder.kotlr.response.type.user.ResponseUserInfo\$Body" -> UserInfoWrapperJsonAdapter(moshi)
-                    "com.highthunder.kotlr.response.type.user.ResponseUserDashboard\$Body" -> UserDashboardWrapperJsonAdapter(moshi)
-                    "com.highthunder.kotlr.response.type.user.ResponseUserLikes\$Body" -> UserLikesWrapperJsonAdapter(moshi)
-                    "com.highthunder.kotlr.response.type.user.ResponseUserFollowing\$Body" -> UserFollowingWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar\$Body" ->
+                        BlogAvatarWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.blog.ResponseBlogDrafts\$Body" ->
+                        BlogDraftsWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.blog.ResponseBlogFollowers\$Body" ->
+                        BlogFollowersWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.blog.ResponseBlogFollowing\$Body" ->
+                        BlogFollowingWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.blog.ResponseBlogInfo\$Body" ->
+                        BlogInfoWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.blog.ResponseBlogLikes\$Body" ->
+                        BlogLikesWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.blog.ResponseBlogPosts\$Body" ->
+                        BlogPostsWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.blog.ResponseBlogQueue\$Body" ->
+                        BlogQueueWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.blog.ResponseBlogSubmissions\$Body" ->
+                        BlogSubmissionsWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.user.ResponseUserInfo\$Body" ->
+                        UserInfoWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.user.ResponseUserDashboard\$Body" ->
+                        UserDashboardWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.user.ResponseUserLikes\$Body" ->
+                        UserLikesWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.user.ResponseUserFollowing\$Body" ->
+                        UserFollowingWrapperJsonAdapter(moshi)
                     else -> null
                 }
             } else {
