@@ -21,12 +21,15 @@ plugins {
     id("idea")
 }
 
+apply(from = "publish-bitbucket.gradle")
+
 group = "com.highthunder"
 version = "0.3.0"
 
 repositories {
     mavenCentral()
     jcenter()
+    maven(url = "https://raw.github.com/synergian/wagon-git/releases")
 }
 
 dependencies {
