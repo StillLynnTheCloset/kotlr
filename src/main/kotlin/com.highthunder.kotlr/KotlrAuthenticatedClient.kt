@@ -8,6 +8,8 @@ import com.github.scribejava.core.model.Response
 import com.github.scribejava.core.oauth.OAuth10aService
 import com.github.scribejava.httpclient.okhttp.OkHttpHttpClientConfig
 import com.highthunder.kotlr.authentication.TumblrUserKey
+import com.highthunder.kotlr.exception.KotlrNetworkException
+import com.highthunder.kotlr.exception.KotlrParsingException
 import com.highthunder.kotlr.request.TumblrRequest
 import com.highthunder.kotlr.response.TumblrResponse
 import kotlinx.coroutines.Dispatchers
@@ -37,7 +39,10 @@ import java.util.concurrent.ExecutionException
  * @since 10/28/18
  * @version 1.0.0
  */
-class KotlrAuthenticatedClient constructor(private val key: TumblrUserKey) : KotlrRequestProcessor {
+class KotlrAuthenticatedClient constructor(
+    private val key: TumblrUserKey,
+    private val debug: Boolean = false
+) : KotlrRequestProcessor {
 
     private val service: OAuth10aService = ServiceBuilder(key.apiKey).let { serviceBuilder ->
         serviceBuilder.apiSecret(key.apiSecret)
@@ -57,7 +62,9 @@ class KotlrAuthenticatedClient constructor(private val key: TumblrUserKey) : Kot
     override suspend fun <T> process(request: TumblrRequest<T>): TumblrResponse<T> =
         withContext(Dispatchers.IO) {
             val url = request.getUrl(key.apiKey)
-            println(url)
+            if (debug) {
+                println(url)
+            }
 
             val oAuthRequest = OAuthRequest(request.verb, url)
 
@@ -67,7 +74,9 @@ class KotlrAuthenticatedClient constructor(private val key: TumblrUserKey) : Kot
             val response: Response
             try {
                 response = service.execute(oAuthRequest)
-                println(response.body)
+                if (debug) {
+                    println(response.body)
+                }
             } catch (e: InterruptedException) {
                 throw KotlrNetworkException("Network operation interrupted")
             } catch (e: ExecutionException) {

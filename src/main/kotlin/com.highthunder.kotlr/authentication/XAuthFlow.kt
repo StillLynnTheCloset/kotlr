@@ -7,7 +7,7 @@ import com.github.scribejava.core.model.OAuthRequest
 import com.github.scribejava.core.model.Response
 import com.github.scribejava.core.model.Verb
 import com.github.scribejava.core.oauth.OAuth10aService
-import com.highthunder.kotlr.KotlrException
+import com.highthunder.kotlr.exception.KotlrException
 
 /**
  * XAuthFlow - TODO: Documentation

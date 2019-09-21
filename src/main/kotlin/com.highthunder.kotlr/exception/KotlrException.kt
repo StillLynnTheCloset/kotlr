@@ -1,4 +1,4 @@
-package com.highthunder.kotlr
+package com.highthunder.kotlr.exception
 
 import com.github.scribejava.core.model.Response
 

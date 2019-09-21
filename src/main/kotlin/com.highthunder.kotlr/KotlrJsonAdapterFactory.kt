@@ -27,7 +27,7 @@ import java.lang.reflect.Type
 
 class KotlrJsonAdapterFactory : JsonAdapter.Factory {
     override fun create(type: Type, annotations: MutableSet<out Annotation>, moshi: Moshi): JsonAdapter<*>? {
-        val result = if (type is ParameterizedType) {
+        return if (type is ParameterizedType) {
             if (type.rawType.typeName == "com.highthunder.kotlr.response.WrapperInterface") {
                 when (type.actualTypeArguments.firstOrNull()?.typeName) {
                     "com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar\$Body" -> BlogAvatarWrapperJsonAdapter(moshi)
@@ -60,9 +60,5 @@ class KotlrJsonAdapterFactory : JsonAdapter.Factory {
                 else -> null
             }
         }
-        if (result == null) {
-            println("Didn't find an adapter for type: ${type.typeName}")
-        }
-        return result
     }
 }

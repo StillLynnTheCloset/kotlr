@@ -1,6 +1,6 @@
 package com.highthunder.kotlr.response
 
-import com.highthunder.kotlr.KotlrException
+import com.highthunder.kotlr.exception.KotlrException
 
 /**
  * TumblrResponse - A generic response from the Tumblr API.

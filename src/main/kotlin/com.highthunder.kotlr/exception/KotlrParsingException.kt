@@ -1,15 +1,15 @@
-package com.highthunder.kotlr
+package com.highthunder.kotlr.exception
 
 import com.github.scribejava.core.model.Response
 
 /**
- * KotlrNetworkException - TODO: Documentation
+ * KotlrParsingException - TODO: Documentation
  *
  * @author highthunder
  * @since 10/23/18
  * @version 1.0.0
  */
-class KotlrNetworkException : KotlrException {
+class KotlrParsingException : KotlrException {
 
     constructor(message: String) : super(message)
 
