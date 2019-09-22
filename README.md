@@ -1,3 +1,4 @@
+[![version](https://img.shields.io/static/v1?label=Version&message=0.3.0&color=brightgreen)]()
 [![Build Status](https://travis-ci.com/highthunder/kotlr.svg?branch=master)](https://travis-ci.com/highthunder/kotlr)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
@@ -51,19 +52,41 @@ Please use Kotlr responsibly and follow the
 
 ### How To Use Kotlr ###
 
-There is currently no artifact repository for Gradle/Maven/etc so
-for now just clone this repo, run `./gradlew jar`, and then copy
-`$project_dir/build/libs/kotlr-$version.jar` into your project's libraries.
-
-You'll need a Tumblr API token and secret. Get those by registering an
+First, you'll need a Tumblr API token and secret. Get those by registering an
 app [here](https://www.tumblr.com/oauth/apps).
 
+##### Gradle (build.gradle) #####
+
+Add 
+```groovey
+maven { url 'https://api.bitbucket.org/2.0/repositories/teamhighthunder/highthundermavenrepository/src/releases' }
+```
+to your project's `repositories` block.
+
+Then add 
+```groovy
+implementation 'com.highthunder:kotlr:0.3.0'
+```
+to your module's `dependencies` block.
+
+##### Gradle (build.gradle.kts) #####
+
+Add 
+```kotlin
+maven(url = "https://api.bitbucket.org/2.0/repositories/teamhighthunder/highthundermavenrepository/src/releases")
+```
+to your project's `repositories` block.
+
+Then add 
+```kotlin
+implementation("com.highthunder:kotlr:0.3.0")
+```
+to your module's `dependencies` block.
 
 #### Examples ####
 
 ```kotlin
 fun minimalExampleExplained() {
-
     // Class for holding API keys and secrets. Get this from one of the auth mechanisms.
     val key = TumblrUserKey("apiKey", "apiSecret", "userKey", "userSecret")
 
@@ -93,7 +116,6 @@ fun minimalExampleExplained() {
     val totalLikedPosts: Long? = body.totalLiked
     val requestLinks: Map<String, RequestLink>? = body.links
     val postUrl: String? = body.posts?.firstOrNull()?.postUrl
-
 }
 ```
 
@@ -135,7 +157,6 @@ fun oAuthExample() {
     // Now we just parse that url and use it to complete the authentication process.
     val userKey: TumblrUserKey = flow.parseResponseUrl(redirectedUrl)
     System.out.println(userKey.toString())
-
 }
 ```
 
