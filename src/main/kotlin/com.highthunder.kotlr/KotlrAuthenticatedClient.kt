@@ -85,7 +85,11 @@ class KotlrAuthenticatedClient constructor(
                 throw KotlrNetworkException("Network operation failed")
             }
 
-            val adapter = moshi.adapter(request.responseClass.java).failOnUnknown()
+            val adapter = if (debug) {
+                moshi.adapter(request.responseClass.java).failOnUnknown()
+            } else {
+                moshi.adapter(request.responseClass.java)
+            }
 
             return@withContext adapter.fromJson(response.body)
                 ?: throw KotlrParsingException("Failed to parse response body: ${response.body}")
