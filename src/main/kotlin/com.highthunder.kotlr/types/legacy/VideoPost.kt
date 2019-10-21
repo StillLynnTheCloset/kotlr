@@ -141,6 +141,7 @@ data class VideoPost constructor(
     override val publishTime: Long?,
     override val queueState: Post.QueueState?,
     override val shouldOpenInLegacy: Boolean?,
+    override val muted: Boolean?,
     var player: List<Video>? = null,
     var caption: String? = null,
     var videoUrl: String? = null,

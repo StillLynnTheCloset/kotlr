@@ -141,6 +141,7 @@ data class LinkPost constructor(
     override val publishTime: Long?,
     override val queueState: Post.QueueState?,
     override val shouldOpenInLegacy: Boolean?,
+    override val muted: Boolean?,
     var title: String? = null,
     var description: String? = null,
     var url: String? = null,

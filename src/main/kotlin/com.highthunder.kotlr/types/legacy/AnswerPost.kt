@@ -135,6 +135,7 @@ data class AnswerPost constructor(
     override val publishTime: Long?,
     override val queueState: Post.QueueState?,
     override val shouldOpenInLegacy: Boolean?,
+    override val muted: Boolean?,
     var askingName: String? = null,
     var askingUrl: String? = null,
     var question: String? = null,

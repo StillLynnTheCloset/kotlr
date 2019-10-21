@@ -245,6 +245,8 @@ interface Post {
      */
     val shouldOpenInLegacy: Boolean?
 
+    val muted: Boolean?
+
     // endregion
 
     /**

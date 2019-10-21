@@ -300,6 +300,8 @@ internal data class PostAmalgamation(
     var queueState: Post.QueueState? = null,
     @Json(name = "should_open_in_legacy")
     var shouldOpenInLegacy: Boolean? = null,
+    @Json(name = "muted")
+    var muted: Boolean? = null,
 
     // endregion
 
@@ -1135,6 +1137,7 @@ internal data class PostAmalgamation(
             publishTime,
             queueState,
             shouldOpenInLegacy,
+            muted,
 
             askingName,
             askingUrl,
@@ -1202,6 +1205,7 @@ internal data class PostAmalgamation(
             publishTime,
             queueState,
             shouldOpenInLegacy,
+            muted,
 
             caption,
             captionAbstract,
@@ -1281,6 +1285,7 @@ internal data class PostAmalgamation(
             publishTime,
             queueState,
             shouldOpenInLegacy,
+            muted,
 
             title,
             body,
@@ -1346,6 +1351,7 @@ internal data class PostAmalgamation(
             publishTime,
             queueState,
             shouldOpenInLegacy,
+            muted,
 
             title,
             description,
@@ -1419,6 +1425,7 @@ internal data class PostAmalgamation(
             publishTime,
             queueState,
             shouldOpenInLegacy,
+            muted,
 
             caption,
             captionAbstract,
@@ -1490,6 +1497,7 @@ internal data class PostAmalgamation(
             publishTime,
             queueState,
             shouldOpenInLegacy,
+            muted,
 
             text,
             source
@@ -1554,6 +1562,7 @@ internal data class PostAmalgamation(
             publishTime,
             queueState,
             shouldOpenInLegacy,
+            muted,
 
             title,
             abstract,
@@ -1619,6 +1628,7 @@ internal data class PostAmalgamation(
             publishTime,
             queueState,
             shouldOpenInLegacy,
+            muted,
 
             player?.contentList,
             caption,
@@ -1691,7 +1701,8 @@ internal data class PostAmalgamation(
             notes,
             publishTime,
             queueState,
-            shouldOpenInLegacy
+            shouldOpenInLegacy,
+            muted
         )
     }
 }

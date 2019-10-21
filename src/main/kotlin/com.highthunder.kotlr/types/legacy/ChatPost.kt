@@ -133,6 +133,7 @@ data class ChatPost constructor(
     override val publishTime: Long?,
     override val queueState: Post.QueueState?,
     override val shouldOpenInLegacy: Boolean?,
+    override val muted: Boolean?,
     var title: String? = null,
     var body: String? = null,
     var dialogue: List<Dialogue>? = null
