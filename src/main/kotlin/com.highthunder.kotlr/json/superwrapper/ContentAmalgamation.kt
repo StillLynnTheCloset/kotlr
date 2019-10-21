@@ -149,7 +149,7 @@ internal data class ContentAmalgamation constructor(
     @Json(name = "can_autoplay_on_cellular")
     var canAutoPlayOnCellular: Boolean? = null,
     @Json(name = "filmstrip")
-    var filmStrip: List<Media>? = null,
+    var filmStrip: MediaWrapper? = null,
     @Json(name = "embed_iframe")
     var iframe: Media? = null
 
@@ -209,7 +209,7 @@ internal data class ContentAmalgamation constructor(
         metadata = content.metadata,
         attribution = content.attribution,
         canAutoPlayOnCellular = content.canAutoPlayOnCellular,
-        filmStrip = content.filmStrip,
+        filmStrip = content.filmStrip?.let { MediaWrapper(listMedia = it) },
         iframe = content.iframe
     )
 
@@ -228,7 +228,7 @@ internal data class ContentAmalgamation constructor(
     )
 
     fun toImageContent(): ImageContent = ImageContent(
-        media?.listMedia,
+        media?.getAsList(),
         feedbackToken,
         colors,
         poster,
@@ -262,7 +262,7 @@ internal data class ContentAmalgamation constructor(
         metadata,
         attribution,
         canAutoPlayOnCellular,
-        filmStrip,
+        filmStrip?.getAsList(),
         iframe
     )
 }
