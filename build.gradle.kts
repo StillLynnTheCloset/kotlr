@@ -26,6 +26,11 @@ apply(from = "publish-bitbucket.gradle")
 group = "com.highthunder"
 version = "0.3.0"
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
 repositories {
     mavenCentral()
     jcenter()
@@ -39,6 +44,15 @@ dependencies {
     kapt("com.squareup.moshi:moshi-kotlin-codegen:${project.rootProject.ext["moshi_version"]}")
     implementation("com.squareup.moshi:moshi:${project.rootProject.ext["moshi_version"]}")
     implementation("com.squareup.moshi:moshi-adapters:${project.rootProject.ext["moshi_version"]}")
+
+    implementation("com.squareup.retrofit2:retrofit:2.6.2")
+    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.6.2")
+
+    implementation("com.squareup.okhttp3:okhttp:4.2.2")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.2.1")
+    implementation("se.akerfeldt:okhttp-signpost:1.1.0")
+    implementation("oauth.signpost:signpost-core:1.2.1.2")
 
     implementation("com.github.scribejava:scribejava-core:${project.rootProject.ext["scribe_version"]}")
     implementation("com.github.scribejava:scribejava-apis:${project.rootProject.ext["scribe_version"]}")
