@@ -1,10 +1,10 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 buildscript {
     extra.apply {
         set("kotlin_version", "1.3.41")
         set("moshi_version", "1.8.0")
-        set("scribe_version", "6.6.3")
     }
 
     repositories {
@@ -27,8 +27,12 @@ group = "com.highthunder"
 version = "0.3.0"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = "1.8"
 }
 
 repositories {
@@ -53,10 +57,6 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.2.1")
     implementation("se.akerfeldt:okhttp-signpost:1.1.0")
     implementation("oauth.signpost:signpost-core:1.2.1.2")
-
-    implementation("com.github.scribejava:scribejava-core:${project.rootProject.ext["scribe_version"]}")
-    implementation("com.github.scribejava:scribejava-apis:${project.rootProject.ext["scribe_version"]}")
-    implementation("com.github.scribejava:scribejava-httpclient-okhttp:${project.rootProject.ext["scribe_version"]}")
 
     testImplementation("junit:junit:4.12")
 }

@@ -1,6 +1,7 @@
 package com.highthunder.kotlr.authentication
 
-import com.highthunder.kotlr.RetrofitClient
+import com.highthunder.kotlr.getOAuthConsumer
+import com.highthunder.kotlr.getOAuthProvider
 
 /**
  * OAuthFlow - TODO: Documentation
@@ -18,8 +19,8 @@ class OAuthFlow constructor(private val appKey: TumblrAppKey) {
 
     private lateinit var requestUrl: String
 
-    private val consumer = RetrofitClient.getConsumer(appKey)
-    private val provider = RetrofitClient.getProvider(consumer)
+    private val consumer = getOAuthConsumer(appKey)
+    private val provider = getOAuthProvider(consumer)
 
     private var isWaitingForResponse: Boolean = false
 

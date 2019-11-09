@@ -1,6 +1,5 @@
 package com.highthunder.kotlr.types
 
-import com.github.scribejava.core.model.Verb
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -21,7 +20,7 @@ data class RequestLink constructor(
     @Json(name = "type")
     var linkType: Type? = null,
     @Json(name = "method")
-    var httpMethod: Verb? = null,
+    var httpMethod: String? = null,
     @Json(name = "href")
     var fullLink: String? = null,
     @Json(name = "query_params")
