@@ -9,9 +9,9 @@ import com.squareup.moshi.JsonClass
  *
  * This is needed because for some types of content(most of them) Tumblr returns the key-value-pair:
  * "media": { ... media object ... }
- * and sometimes([ImageContent]) returns the key-value-pair:
+ * and sometimes([ImageContent], [VideoContet] filmstrip) returns the key-value-pair:
  * "media": [ { ... media object ... }, { ... media object ... } ]
- * TODO: Documentation
+ *
  * @author highthunder
  * @since 10/20/18
  * @version 1.0.0
@@ -23,4 +23,6 @@ import com.squareup.moshi.JsonClass
 internal data class MediaWrapper(
     var singleMedia: Media? = null,
     var listMedia: List<Media>? = null
-)
+) {
+    fun getAsList(): List<Media>? = listMedia ?: singleMedia?.let { listOf(it) }
+}

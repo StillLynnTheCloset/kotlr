@@ -1,7 +1,5 @@
 package com.highthunder.kotlr.response
 
-import com.highthunder.kotlr.KotlrException
-
 /**
  * TumblrResponse - A generic response from the Tumblr API.
  *
@@ -37,5 +35,5 @@ interface TumblrResponse<out T> {
     /**
      * A helper function to directly access the response body and assert that it is not null.
      */
-    fun getBodyOrThrow(): T = response.body ?: throw KotlrException("Unable to get body of response: $this")
+    fun getBodyOrThrow(): T = response.body ?: throw IllegalStateException("Unable to get body of response: $this")
 }

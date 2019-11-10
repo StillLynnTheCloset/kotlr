@@ -122,5 +122,6 @@ data class BlockPost constructor(
     override val notes: List<NoteData>? = null,
     override val publishTime: Long?,
     override val queueState: Post.QueueState?,
-    override val shouldOpenInLegacy: Boolean?
+    override val shouldOpenInLegacy: Boolean?,
+    override val muted: Boolean?
 ) : Post

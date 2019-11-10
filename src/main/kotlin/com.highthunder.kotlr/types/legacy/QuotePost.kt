@@ -132,6 +132,7 @@ data class QuotePost constructor(
     override val publishTime: Long?,
     override val queueState: Post.QueueState?,
     override val shouldOpenInLegacy: Boolean?,
+    override val muted: Boolean?,
     var text: String? = null,
     var source: String? = null
 ) : Post

@@ -1,10 +1,10 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 buildscript {
     extra.apply {
         set("kotlin_version", "1.3.41")
         set("moshi_version", "1.8.0")
-        set("scribe_version", "6.6.3")
     }
 
     repositories {
@@ -21,12 +21,24 @@ plugins {
     id("idea")
 }
 
+apply(from = "publish-bitbucket.gradle")
+
 group = "com.highthunder"
-version = "0.2.0"
+version = "0.4.0"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = "1.8"
+}
 
 repositories {
     mavenCentral()
     jcenter()
+    maven(url = "https://raw.github.com/synergian/wagon-git/releases")
 }
 
 dependencies {
@@ -37,9 +49,14 @@ dependencies {
     implementation("com.squareup.moshi:moshi:${project.rootProject.ext["moshi_version"]}")
     implementation("com.squareup.moshi:moshi-adapters:${project.rootProject.ext["moshi_version"]}")
 
-    implementation("com.github.scribejava:scribejava-core:${project.rootProject.ext["scribe_version"]}")
-    implementation("com.github.scribejava:scribejava-apis:${project.rootProject.ext["scribe_version"]}")
-    implementation("com.github.scribejava:scribejava-httpclient-okhttp:${project.rootProject.ext["scribe_version"]}")
+    implementation("com.squareup.retrofit2:retrofit:2.6.2")
+    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.6.2")
+
+    implementation("com.squareup.okhttp3:okhttp:4.2.2")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.2.1")
+    implementation("se.akerfeldt:okhttp-signpost:1.1.0")
+    implementation("oauth.signpost:signpost-core:1.2.1.2")
 
     testImplementation("junit:junit:4.12")
 }
@@ -52,7 +69,7 @@ idea {
 }
 
 ktlint {
-    version.set("0.33.0")
+    version.set("0.34.2")
     debug.set(false)
     verbose.set(true)
     android.set(false)
