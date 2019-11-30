@@ -41,19 +41,19 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 internal data class TextFormatAmalgamation constructor(
     @Json(name = "start")
-    var start: Int? = null,
+    val start: Int? = null,
     @Json(name = "end")
-    var end: Int? = null,
+    val end: Int? = null,
     @Json(name = "type")
-    var type: String? = null,
+    val type: String? = null,
     @Json(name = "url")
-    var url: String? = null,
+    val url: String? = null,
     @Json(name = "blog")
-    var blog: Blog? = null,
+    val blog: Blog? = null,
     @Json(name = "hex")
-    @HexColorOctothorpe var hex: Color? = null,
+    @HexColorOctothorpe val hex: Color? = null,
     @Json(name = "size")
-    var size: SizeTextFormat.Option? = null
+    val size: SizeTextFormat.Option? = null
 ) {
     constructor(format: BoldTextFormat) : this(format.start, format.end)
     constructor(format: ItalicTextFormat) : this(format.start, format.end)

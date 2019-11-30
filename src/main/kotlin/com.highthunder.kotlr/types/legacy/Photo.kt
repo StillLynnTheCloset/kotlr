@@ -20,15 +20,15 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Photo constructor(
     @Json(name = "original_size")
-    var originalSize: PhotoSize? = null,
+    val originalSize: PhotoSize? = null,
     @Json(name = "panorama_size")
-    var panoramaSize: PhotoSize? = null,
+    val panoramaSize: PhotoSize? = null,
     @Json(name = "caption")
-    var caption: String? = null,
+    val caption: String? = null,
     @Json(name = "caption_abstract")
-    var captionAbstract: String? = null,
+    val captionAbstract: String? = null,
     @Json(name = "alt_sizes")
-    var altSizes: List<PhotoSize>? = null,
+    val altSizes: List<PhotoSize>? = null,
     @Json(name = "exif")
-    var exif: ExifData? = null
+    val exif: ExifData? = null
 )

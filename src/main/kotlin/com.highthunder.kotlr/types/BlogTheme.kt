@@ -42,50 +42,50 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 class BlogTheme constructor(
     @Json(name = "url")
-    var url: String = "",
+    val url: String = "",
     avatarImage: String? = null,
     headerImage: String? = null,
     @Json(name = "header_full_width")
-    var headerFullWidth: Int? = null,
+    val headerFullWidth: Int? = null,
     @Json(name = "header_full_height")
-    var headerFullHeight: Int? = null,
+    val headerFullHeight: Int? = null,
     @Json(name = "header_focus_width")
-    var headerFocusWidth: Int? = null,
+    val headerFocusWidth: Int? = null,
     @Json(name = "header_focus_height")
-    var headerFocusHeight: Int? = null,
+    val headerFocusHeight: Int? = null,
     @Json(name = "avatar_shape")
-    var avatarShape: String? = null,
+    val avatarShape: String? = null,
     @Json(name = "background_color")
     @HexColorOctothorpe
-    var backgroundColor: Color? = null,
+    val backgroundColor: Color? = null,
     @Json(name = "body_font")
-    var bodyFont: String? = null,
+    val bodyFont: String? = null,
     @Json(name = "header_bounds")
-    var headerBounds: String? = null,
+    val headerBounds: String? = null,
     @Json(name = "header_image_focused")
-    var headerImageFocused: String? = null,
+    val headerImageFocused: String? = null,
     @Json(name = "header_image_scaled")
-    var headerImageScaled: String? = null,
+    val headerImageScaled: String? = null,
     @Json(name = "link_color")
     @HexColorOctothorpe
-    var linkColor: Color? = null,
+    val linkColor: Color? = null,
     @Json(name = "title_color")
     @HexColorOctothorpe
-    var titleColor: Color? = null,
+    val titleColor: Color? = null,
     @Json(name = "title_font")
-    var titleFont: String? = null,
+    val titleFont: String? = null,
     @Json(name = "title_font_weight")
-    var titleFontWeight: String? = null,
+    val titleFontWeight: String? = null,
     @Json(name = "header_stretch")
-    var headerStretch: Boolean? = null,
+    val headerStretch: Boolean? = null,
     @Json(name = "show_avatar")
-    var showAvatar: Boolean? = null,
+    val showAvatar: Boolean? = null,
     @Json(name = "show_description")
-    var showDescription: Boolean? = null,
+    val showDescription: Boolean? = null,
     @Json(name = "show_header_image")
-    var showHeaderImage: Boolean? = null,
+    val showHeaderImage: Boolean? = null,
     @Json(name = "show_title")
-    var showTitle: Boolean? = null
+    val showTitle: Boolean? = null
 ) {
     companion object {
 

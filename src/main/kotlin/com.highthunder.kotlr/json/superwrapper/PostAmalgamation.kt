@@ -182,256 +182,256 @@ internal data class PostAmalgamation(
     // region Defaults
 
     @Json(name = "type")
-    var type: Post.Type? = null,
+    val type: Post.Type? = null,
     @Json(name = "blog_name")
-    var blogName: String? = null,
+    val blogName: String? = null,
     @Json(name = "id")
-    var id: Long? = null,
+    val id: Long? = null,
     @Json(name = "blog")
-    var blog: Blog? = null,
+    val blog: Blog? = null,
     @Json(name = "post_url")
-    var postUrl: String? = null,
+    val postUrl: String? = null,
     @Json(name = "timestamp")
-    var timestamp: Long? = null,
+    val timestamp: Long? = null,
     @Json(name = "date")
-    var date: String? = null,
+    val date: String? = null,
     @Json(name = "format")
-    var format: Post.PostFormat? = null,
+    val format: Post.PostFormat? = null,
     @Json(name = "reblog_key")
-    var reblogKey: String? = null,
+    val reblogKey: String? = null,
     @Json(name = "tags")
-    var tags: List<String>? = null,
+    val tags: List<String>? = null,
     @Json(name = "bookmarklet")
-    var isBookmarklet: Boolean? = null,
+    val isBookmarklet: Boolean? = null,
     @Json(name = "mobile")
-    var isMobile: Boolean? = null,
+    val isMobile: Boolean? = null,
     @Json(name = "source_url")
-    var sourceUrl: String? = null,
+    val sourceUrl: String? = null,
     @Json(name = "source_title")
-    var sourceTitle: String? = null,
+    val sourceTitle: String? = null,
     @Json(name = "liked")
-    var isLiked: Boolean? = null,
+    val isLiked: Boolean? = null,
     @Json(name = "state")
-    var state: Post.State? = null,
+    val state: Post.State? = null,
     @Json(name = "total_posts")
-    var totalPosts: Int? = null,
+    val totalPosts: Int? = null,
     @Json(name = "is_anonymous")
-    var anonymous: Boolean? = null,
+    val anonymous: Boolean? = null,
 
     // endregion
 
     // region Situational Fields
 
     @Json(name = "content")
-    var content: List<PostContent>? = null,
+    val content: List<PostContent>? = null,
     @Json(name = "trail")
-    var trail: List<Trail>? = null,
+    val trail: List<Trail>? = null,
     @Json(name = "layout")
-    var layout: List<BlockLayout>? = null,
+    val layout: List<BlockLayout>? = null,
     @Json(name = "post_author")
-    var postAuthor: String? = null,
+    val postAuthor: String? = null,
     @Json(name = "short_url")
-    var shortUrl: String? = null,
+    val shortUrl: String? = null,
     @Json(name = "summary")
-    var summary: String? = null,
+    val summary: String? = null,
     @Json(name = "is_blocks_post_format")
-    var isBlocksFormat: Boolean? = null,
+    val isBlocksFormat: Boolean? = null,
     @Json(name = "liked_timestamp")
-    var likedTimestamp: Long? = null,
+    val likedTimestamp: Long? = null,
     @Json(name = "slug")
-    var slug: String? = null,
+    val slug: String? = null,
     @Json(name = "note_count")
-    var noteCount: Long? = null,
+    val noteCount: Long? = null,
     @Json(name = "recommended_source")
-    var recommendedSource: String? = null,
+    val recommendedSource: String? = null,
     @Json(name = "recommended_color")
-    var recommendedColor: String? = null,
+    val recommendedColor: String? = null,
     @Json(name = "post_author_is_adult")
-    var postAuthorIsAdult: Boolean? = null,
+    val postAuthorIsAdult: Boolean? = null,
     @Json(name = "is_submission")
-    var isSubmission: Boolean? = null,
+    val isSubmission: Boolean? = null,
     @Json(name = "can_like")
-    var canLike: Boolean? = null,
+    val canLike: Boolean? = null,
     @Json(name = "can_reblog")
-    var canReblog: Boolean? = null,
+    val canReblog: Boolean? = null,
     @Json(name = "can_send_in_message")
-    var canSendInMessage: Boolean? = null,
+    val canSendInMessage: Boolean? = null,
     @Json(name = "can_reply")
-    var canReply: Boolean? = null,
+    val canReply: Boolean? = null,
     @Json(name = "display_avatar")
-    var displayAvatar: Boolean? = null,
+    val displayAvatar: Boolean? = null,
     @Json(name = "followed")
-    var followed: Boolean? = null,
+    val followed: Boolean? = null,
     @Json(name = "reblog")
-    var reblogData: ReblogData? = null,
+    val reblogData: ReblogData? = null,
     @Json(name = "reblogged_from_id")
-    var rebloggedFromId: Long? = null,
+    val rebloggedFromId: Long? = null,
     @Json(name = "reblogged_from_url")
-    var rebloggedFromUrl: String? = null,
+    val rebloggedFromUrl: String? = null,
     @Json(name = "reblogged_from_name")
-    var rebloggedFromName: String? = null,
+    val rebloggedFromName: String? = null,
     @Json(name = "reblogged_from_title")
-    var rebloggedFromTitle: String? = null,
+    val rebloggedFromTitle: String? = null,
     @Json(name = "reblogged_from_uuid")
-    var rebloggedFromUuid: String? = null,
+    val rebloggedFromUuid: String? = null,
     @Json(name = "reblogged_from_can_message")
-    var rebloggedFromCanMessage: Boolean? = null,
+    val rebloggedFromCanMessage: Boolean? = null,
     @Json(name = "reblogged_from_following")
-    var rebloggedFromFollowing: Boolean? = null,
+    val rebloggedFromFollowing: Boolean? = null,
     @Json(name = "reblogged_root_id")
-    var rebloggedRootId: Long? = null,
+    val rebloggedRootId: Long? = null,
     @Json(name = "reblogged_root_url")
-    var rebloggedRootUrl: String? = null,
+    val rebloggedRootUrl: String? = null,
     @Json(name = "reblogged_root_name")
-    var rebloggedRootName: String? = null,
+    val rebloggedRootName: String? = null,
     @Json(name = "reblogged_root_title")
-    var rebloggedRootTitle: String? = null,
+    val rebloggedRootTitle: String? = null,
     @Json(name = "reblogged_root_uuid")
-    var rebloggedRootUuid: String? = null,
+    val rebloggedRootUuid: String? = null,
     @Json(name = "reblogged_root_can_message")
-    var rebloggedRootCanMessage: Boolean? = null,
+    val rebloggedRootCanMessage: Boolean? = null,
     @Json(name = "reblogged_root_following")
-    var rebloggedRootFollowing: Boolean? = null,
+    val rebloggedRootFollowing: Boolean? = null,
     @Json(name = "notes")
-    var notes: List<NoteData>? = null,
+    val notes: List<NoteData>? = null,
     @Json(name = "scheduled_publish_time")
-    var publishTime: Long? = null,
+    val publishTime: Long? = null,
     @Json(name = "queued_state")
-    var queueState: Post.QueueState? = null,
+    val queueState: Post.QueueState? = null,
     @Json(name = "should_open_in_legacy")
-    var shouldOpenInLegacy: Boolean? = null,
+    val shouldOpenInLegacy: Boolean? = null,
     @Json(name = "muted")
-    var muted: Boolean? = null,
+    val muted: Boolean? = null,
 
     // endregion
 
     // region Answer Post
 
     @Json(name = "asking_name")
-    var askingName: String? = null,
+    val askingName: String? = null,
     @Json(name = "asking_url")
-    var askingUrl: String? = null,
+    val askingUrl: String? = null,
     @Json(name = "question")
-    var question: String? = null,
+    val question: String? = null,
     @Json(name = "answer")
-    var answer: String? = null,
+    val answer: String? = null,
     @Json(name = "answer_abstract")
-    var answerAbstract: String? = null,
+    val answerAbstract: String? = null,
 
     // endregion
 
     // region Audio Post
 
     @Json(name = "caption")
-    var caption: String? = null,
+    val caption: String? = null,
     @Json(name = "caption_abstract")
-    var captionAbstract: String? = null,
+    val captionAbstract: String? = null,
     @Json(name = "embed")
-    var embed: String? = null,
+    val embed: String? = null,
     @Json(name = "audio_url")
-    var audio_url: String? = null,
+    val audio_url: String? = null,
     @Json(name = "plays")
-    var plays: Int? = null,
+    val plays: Int? = null,
     @Json(name = "album_art")
-    var album_art: String? = null,
+    val album_art: String? = null,
     @Json(name = "artist")
-    var artist: String? = null,
+    val artist: String? = null,
     @Json(name = "album")
-    var album: String? = null,
+    val album: String? = null,
     @Json(name = "track_name")
-    var trackName: String? = null,
+    val trackName: String? = null,
     @Json(name = "track_number")
-    var trackNumber: Int? = null,
+    val trackNumber: Int? = null,
     @Json(name = "track")
-    var track: String? = null,
+    val track: String? = null,
     @Json(name = "year")
-    var year: Int? = null,
+    val year: Int? = null,
     @Json(name = "audio_source_url")
-    var audioSourceUrl: String? = null,
+    val audioSourceUrl: String? = null,
     @Json(name = "audio_type")
-    var audioType: String? = null,
+    val audioType: String? = null,
     @Json(name = "is_external")
-    var external: Boolean? = null,
+    val external: Boolean? = null,
     @Json(name = "provider_uri")
-    var providerUrl: String? = null,
+    val providerUrl: String? = null,
 
     // endregion
 
     // region Chat Post
 
     @Json(name = "title")
-    var title: String? = null,
+    val title: String? = null,
     @Json(name = "body")
-    var body: String? = null,
+    val body: String? = null,
     @Json(name = "dialogue")
-    var dialogue: List<Dialogue>? = null,
+    val dialogue: List<Dialogue>? = null,
 
     // endregion
 
     // region Link Post
 
     @Json(name = "description")
-    var description: String? = null,
+    val description: String? = null,
     @Json(name = "url")
-    var url: String? = null,
+    val url: String? = null,
     @Json(name = "author")
-    var author: String? = null,
+    val author: String? = null,
     @Json(name = "link_author")
-    var linkAuthor: String? = null,
+    val linkAuthor: String? = null,
     @Json(name = "link_image")
-    var linkImage: String? = null,
+    val linkImage: String? = null,
     @Json(name = "link_image_dimensions")
-    var linkImageDimensions: PhotoSize? = null,
+    val linkImageDimensions: PhotoSize? = null,
     @Json(name = "excerpt")
-    var excerpt: String? = null,
+    val excerpt: String? = null,
     @Json(name = "publisher")
-    var publisher: String? = null,
+    val publisher: String? = null,
     @Json(name = "photos")
-    var photos: List<Photo>? = null,
+    val photos: List<Photo>? = null,
 
     // endregion
 
     // region Photo Post
 
     @Json(name = "width")
-    var width: Int? = null,
+    val width: Int? = null,
     @Json(name = "height")
-    var height: Int? = null,
+    val height: Int? = null,
     @Json(name = "image_permalink")
-    var imagePermalink: String? = null,
+    val imagePermalink: String? = null,
     @Json(name = "link_url")
-    var linkUrl: String? = null,
+    val linkUrl: String? = null,
     @Json(name = "photoset_layout")
-    var photosetLayout: String? = null,
+    val photosetLayout: String? = null,
     @Json(name = "is_panorama")
-    var panorama: Boolean? = null,
+    val panorama: Boolean? = null,
 
     // endregion
 
     // region Quote Post
 
     @Json(name = "text")
-    var text: String? = null,
+    val text: String? = null,
     @Json(name = "source")
-    var source: String? = null,
+    val source: String? = null,
 
     // endregion
 
     // region Text Post
 
     @Json(name = "body_abstract")
-    var abstract: String? = null,
+    val abstract: String? = null,
 
     // endregion
 
     // region Video Post
 
     @Json(name = "player")
-    var player: PlayerWrapper? = null,
+    val player: PlayerWrapper? = null,
     @Json(name = "video_url")
-    var videoUrl: String? = null,
+    val videoUrl: String? = null,
     @Json(name = "html5_capable")
-    var html5Capable: Boolean? = null,
+    val html5Capable: Boolean? = null,
     @Json(name = "thumbnail_url")
     val thumbnailUrl: String? = null,
     @Json(name = "thumbnail_width")
@@ -439,13 +439,13 @@ internal data class PostAmalgamation(
     @Json(name = "thumbnail_height")
     val thumbnailHeight: Int? = null,
     @Json(name = "duration")
-    var duration: Double? = null,
+    val duration: Double? = null,
     @Json(name = "video_type")
-    var videoType: String? = null,
+    val videoType: String? = null,
     @Json(name = "video") // TODO: Figure out how to parse this one
-    var videoData: Any? = null,
+    val videoData: Any? = null,
     @Json(name = "permalink_url")
-    var permalinkUrl: String? = null
+    val permalinkUrl: String? = null
 
     // endregion
 

@@ -18,11 +18,11 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Tag constructor(
     @Json(name = "tag")
-    var tagText: String? = null,
+    val tagText: String? = null,
     @Json(name = "thumb_url")
-    var thumbnailUrl: String? = null,
+    val thumbnailUrl: String? = null,
     @Json(name = "is_tracked")
-    var isTracked: Boolean? = null,
+    val isTracked: Boolean? = null,
     @Json(name = "featured")
-    var featured: Boolean? = null
+    val featured: Boolean? = null
 )

@@ -41,17 +41,17 @@ sealed class PostContent
  * @param attribution Optional attribution information about where the audio track came from.
  */
 data class AudioContent constructor(
-    var provider: String? = null,
-    var url: String? = null,
-    var media: Media? = null,
-    var title: String? = null,
-    var artist: String? = null,
-    var album: String? = null,
-    var poster: List<Media>? = null,
-    var embedHtml: String? = null,
-    var embedUrl: String? = null,
-    var metadata: Any? = null,
-    var attribution: Attribution? = null
+    val provider: String? = null,
+    val url: String? = null,
+    val media: Media? = null,
+    val title: String? = null,
+    val artist: String? = null,
+    val album: String? = null,
+    val poster: List<Media>? = null,
+    val embedHtml: String? = null,
+    val embedUrl: String? = null,
+    val metadata: Any? = null,
+    val attribution: Attribution? = null
 ) : PostContent() {
     companion object {
         const val KEY: String = "audio"
@@ -74,12 +74,12 @@ data class AudioContent constructor(
  * @param attribution See the [Attribution] for details about these objects.
  */
 data class ImageContent constructor(
-    var media: List<Media>? = null,
+    val media: List<Media>? = null,
     val feedbackToken: String? = null,
-    var colors: Colors? = null,
+    val colors: Colors? = null,
     val poster: List<Media>? = null,
-    var attribution: Attribution? = null,
-    var altText: String? = null
+    val attribution: Attribution? = null,
+    val altText: String? = null
 ) : PostContent() {
     companion object {
         const val KEY: String = "image"
@@ -111,13 +111,13 @@ data class ImageContent constructor(
  * @param poster An image media object to use as a "poster" for the link.
  */
 data class LinkContent constructor(
-    var url: String? = null,
-    var title: String? = null,
-    var description: String? = null,
-    var author: String? = null,
-    var siteName: String? = null,
-    var displayUrl: String? = null,
-    var poster: List<Media>? = null
+    val url: String? = null,
+    val title: String? = null,
+    val description: String? = null,
+    val author: String? = null,
+    val siteName: String? = null,
+    val displayUrl: String? = null,
+    val poster: List<Media>? = null
 ) : PostContent() {
     companion object {
         const val KEY: String = "link"
@@ -138,11 +138,10 @@ data class LinkContent constructor(
  * @param formatting A list of special formatting instructions.
  */
 data class TextContent constructor(
-    var text: String? = null,
-    var subType: SubType? = null,
-    var formatting: List<TextFormat>? = null
+    val text: String? = null,
+    val subType: SubType? = null,
+    val formatting: List<TextFormat>? = null
 ) : PostContent() {
-
     companion object {
         const val KEY: String = "text"
     }
@@ -150,6 +149,7 @@ data class TextContent constructor(
     /**
      * TODO: Documentation
      */
+    @JsonClass(generateAdapter = false)
     enum class SubType {
         /**
          * TODO: Documentation
@@ -238,17 +238,17 @@ data class TextContent constructor(
  * @param iframe TODO: Documentation
  */
 data class VideoContent constructor(
-    var url: String? = null,
-    var media: Media? = null,
-    var provider: String? = null,
-    var embedHtml: String? = null,
-    var embedUrl: String? = null,
-    var poster: List<Media>? = null,
-    var metadata: Any? = null,
-    var attribution: Attribution? = null,
-    var canAutoPlayOnCellular: Boolean? = null,
-    var filmStrip: List<Media>? = null,
-    var iframe: Media? = null
+    val url: String? = null,
+    val media: Media? = null,
+    val provider: String? = null,
+    val embedHtml: String? = null,
+    val embedUrl: String? = null,
+    val poster: List<Media>? = null,
+    val metadata: Any? = null,
+    val attribution: Attribution? = null,
+    val canAutoPlayOnCellular: Boolean? = null,
+    val filmStrip: List<Media>? = null,
+    val iframe: Media? = null
 ) : PostContent() {
     companion object {
         const val KEY: String = "video"

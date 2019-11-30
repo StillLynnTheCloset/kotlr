@@ -22,19 +22,19 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = false)
 data class User constructor(
     @Json(name = "blogs")
-    var blogs: List<Blog>? = null,
+    val blogs: List<Blog>? = null,
     @Json(name = "name")
-    var name: String? = null,
+    val name: String? = null,
     @Json(name = "following")
-    var totalFollowing: Int? = null,
+    val totalFollowing: Int? = null,
     @Json(name = "following")
-    var isUserFollowed: Boolean? = null,
+    val isUserFollowed: Boolean? = null,
     @Json(name = "url")
-    var url: String? = null,
+    val url: String? = null,
     @Json(name = "updated")
-    var updated: Long? = null,
+    val updated: Long? = null,
     @Json(name = "likes")
-    var likes: Int? = null,
+    val likes: Int? = null,
     @Json(name = "default_post_format")
-    var defaultPostFormat: Post.PostFormat? = null
+    val defaultPostFormat: Post.PostFormat? = null
 )

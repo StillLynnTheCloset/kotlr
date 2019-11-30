@@ -17,9 +17,9 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Dialogue constructor(
     @Json(name = "name")
-    var name: String? = null,
+    val name: String? = null,
     @Json(name = "label")
-    var label: String? = null,
+    val label: String? = null,
     @Json(name = "phrase")
-    var phrase: String? = null
+    val phrase: String? = null
 )

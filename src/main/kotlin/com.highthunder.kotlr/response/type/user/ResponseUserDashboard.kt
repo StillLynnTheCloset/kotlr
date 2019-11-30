@@ -18,7 +18,6 @@ import com.squareup.moshi.JsonClass
  * @version 1.0.0
  */
 interface ResponseUserDashboard {
-
     /**
      * TODO: Documentation
      *
@@ -56,8 +55,8 @@ interface ResponseUserDashboard {
     @JsonClass(generateAdapter = true)
     data class Body constructor(
         @Json(name = "_links")
-        var links: Map<String, RequestLink>? = null, // TODO: Get rid of map.
+        val links: Map<String, RequestLink>? = null, // TODO: Get rid of map.
         @Json(name = "posts")
-        var posts: List<Post>? = null
+        val posts: List<Post>? = null
     )
 }

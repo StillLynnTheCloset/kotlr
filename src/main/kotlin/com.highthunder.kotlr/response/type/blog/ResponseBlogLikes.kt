@@ -18,7 +18,6 @@ import com.squareup.moshi.JsonClass
  * @version 1.0.0
  */
 interface ResponseBlogLikes {
-
     /**
      * TODO: Documentation
      *
@@ -57,10 +56,10 @@ interface ResponseBlogLikes {
     @JsonClass(generateAdapter = true)
     data class Body constructor(
         @Json(name = "_links")
-        var links: Map<String, RequestLink>? = null, // TODO: Get rid of map.
+        val links: Map<String, RequestLink>? = null, // TODO: Get rid of map.
         @Json(name = "liked_posts")
-        var posts: List<Post>? = null,
+        val posts: List<Post>? = null,
         @Json(name = "liked_count")
-        var totalLiked: Long? = null
+        val totalLiked: Long? = null
     )
 }

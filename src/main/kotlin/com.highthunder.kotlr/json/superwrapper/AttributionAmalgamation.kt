@@ -41,19 +41,19 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 internal data class AttributionAmalgamation constructor(
     @Json(name = "type")
-    var type: String? = null,
+    val type: String? = null,
     @Json(name = "url")
-    var url: String? = null,
+    val url: String? = null,
     @Json(name = "post")
-    var post: PostId? = null,
+    val post: PostId? = null,
     @Json(name = "blog")
-    var blog: Blog? = null,
+    val blog: Blog? = null,
     @Json(name = "app_name")
-    var appName: String? = null,
+    val appName: String? = null,
     @Json(name = "display_text")
-    var displayText: String? = null,
+    val displayText: String? = null,
     @Json(name = "logo")
-    var logo: Media? = null
+    val logo: Media? = null
 ) {
 
     constructor(attribution: PostAttribution) : this(

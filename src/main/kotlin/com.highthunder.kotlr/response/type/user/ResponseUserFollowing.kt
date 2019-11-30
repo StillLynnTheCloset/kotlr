@@ -18,7 +18,6 @@ import com.squareup.moshi.JsonClass
  * @version 1.0.0
  */
 interface ResponseUserFollowing {
-
     /**
      * TODO: Documentation
      *
@@ -57,10 +56,10 @@ interface ResponseUserFollowing {
     @JsonClass(generateAdapter = true)
     data class Body constructor(
         @Json(name = "_links")
-        var links: Map<String, RequestLink>? = null, // TODO: Get rid of map.
+        val links: Map<String, RequestLink>? = null, // TODO: Get rid of map.
         @Json(name = "blogs")
-        var blogs: List<Blog>? = null,
+        val blogs: List<Blog>? = null,
         @Json(name = "total_blogs")
-        var totalFollowed: Long? = null
+        val totalFollowed: Long? = null
     )
 }
