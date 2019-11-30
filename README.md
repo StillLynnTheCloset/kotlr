@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/static/v1?label=Version&message=0.3.0&color=brightgreen)]()
+[![version](https://img.shields.io/static/v1?label=Version&message=0.4.0&color=brightgreen)]()
 [![Build Status](https://travis-ci.com/highthunder/kotlr.svg?branch=master)](https://travis-ci.com/highthunder/kotlr)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
@@ -18,10 +18,7 @@ restricted to the JVM.
 
    This means that every response, and every object within those responses,
    will be represented by a class which will have typed properties for every
-   possible field that the API can return. All requests to the API will
-   likewise be backed by classes which clearly document any and all availible
-   parameters as well as enforcing any restrictions on the requests, such
-   as maximum values or mutually exclusive parameters.
+   possible field that the API can return.
 * Support the original (legacy) post format
 * Support the new 'blocks' post type, aka the Neue Post Format or NPF.
 * Provide any functionality needed to interact with
@@ -59,13 +56,13 @@ Then you'll need to add Kotlr to you project's dependencies.
 
 ##### Gradle (build.gradle) #####
 
-Add 
+Add
 ```groovey
 maven { url 'https://api.bitbucket.org/2.0/repositories/teamhighthunder/highthundermavenrepository/src/releases' }
 ```
 to your project's `repositories` block.
 
-Then add 
+Then add
 ```groovy
 implementation 'com.highthunder:kotlr:0.3.0'
 ```
@@ -73,43 +70,54 @@ to your module's `dependencies` block.
 
 ##### Gradle (build.gradle.kts) #####
 
-Add 
+Add
 ```kotlin
 maven(url = "https://api.bitbucket.org/2.0/repositories/teamhighthunder/highthundermavenrepository/src/releases")
 ```
 to your project's `repositories` block.
 
-Then add 
+Then add
 ```kotlin
-implementation("com.highthunder:kotlr:0.3.0")
+implementation("com.highthunder:kotlr:0.4.0")
 ```
 to your module's `dependencies` block.
 
 ##### Auth Example #####
 
 ```kotlin
-fun oAuthExample() {
-    // Kotlr also makes the process of getting OAuth keys easy.
+suspend fun oAuthExample() {
+    // Kotlr also makes the process of getting OAuth and XAuth keys easy.
+
+    println("Enter your consumer key:")
+    val apiKey: String = Scanner(System.`in`).nextLine()
+
+    println("Enter your consumer secret:")
+    val apiSecret: String = Scanner(System.`in`).nextLine()
 
     // Create an authentication flow.
-    val flow = OAuthFlow()
+    val flow = OAuthFlow(TumblrAppKey(apiKey, apiSecret))
 
     // Get the request url, you'll have to open this in a browser or webview.
     // It will then ask you to login to Tumblr and authorize your app to access your account.
     // Since we aren't using a web based application, the callbackUrl doesn't really matter, so let's
     // just make it example.com.
-    val requestUrl: String? = flow.getRequestUrl(SampleAppKey, "example.com")
+    val requestUrl: String? = flow.getRequestUrl("example.com")
 
-    // We'll just print this to the console so you can copy and paste it into a browser.
+    // We'll just print this to the console so you can copy and paste it.
+    println("Open this url in your browser and sign in")
     println(requestUrl)
 
     // Once you've signed in and been redirected, copy that new url from
     // the browser and drop it into the console.
+    println("Enter the url you were re-directed to:")
     val redirectedUrl: String = Scanner(System.`in`).nextLine()
 
     // Now we just parse that url and use it to complete the authentication process.
     val userKey: TumblrUserKey = flow.parseResponseUrl(redirectedUrl)
     println(userKey.toString())
+
+    // Print out information about the newly logged in user.
+    println(getApi(userKey).getUserInfo())
 }
 ```
 
@@ -123,21 +131,22 @@ suspend fun minimalExampleExplained() {
     // The client which performs all requests, this is similar to Jumblr's `JumblrClient`.
     val service = getApi(key)
 
+    // Perform the request.
     val response = service.getBlogLikes(identifier = "kotlr-development")
 
     // Check out any of the meta information that Tumblr returns such as HTTP success codes.
-    val meta: ResponseMetaInfo? = response.meta
+    val meta: ResponseMetaInfo? = response?.meta
 
     // Get the main meat of the response.
-    val body: ResponseBlogLikes.Body = response.getBodyOrThrow()
+    val body: ResponseBlogLikes.Body? = response?.getBody()
 
     // And now we can access Tumblr's actual response, which in this case is composed of
     // a list of some liked posts, a count of the total number of liked posts, and potentially
     // a map of RequestLinks which can encode some generic actions that Tumblr thinks you
     // might like to perform based on the content of this request.
-    val totalLikedPosts: Long? = body.totalLiked
-    val requestLinks: Map<String, RequestLink>? = body.links
-    val postUrl: String? = body.posts?.firstOrNull()?.postUrl
+    val totalLikedPosts: Long? = body?.totalLiked
+    val requestLinks: Map<String, RequestLink>? = body?.links
+    val postUrl: String? = body?.posts?.firstOrNull()?.postUrl
 }
 ```
 
@@ -147,7 +156,7 @@ or, the same example without the fluff:
 suspend fun minimalExample() {
     val postUrl: String? = getApi(SampleUserKey)
         .getBlogLikes(identifier = "kotlr-development")
-        .getBody()
+        ?.getBody()
         ?.posts
         ?.firstOrNull()
         ?.postUrl
@@ -158,7 +167,7 @@ suspend fun minimalExample() {
 * API Documentation - [Tumblr](https://github.com/tumblr/docs)
 * Kotlin - [Jet Brains](https://kotlinlang.org/)
 * HTTP - [OkHTTP](https://github.com/square/okhttp)
-* Restful API Client - [Retrofit](https://github.com/square/retrofit)
+* ReST API Client - [Retrofit](https://github.com/square/retrofit)
 * JSON Serialization - [Moshi](https://github.com/square/moshi)
 * OAuth - [SignPost](https://github.com/mttkay/signpost)
 * Continuous Integration - [Travis](https://travis-ci.com/)
