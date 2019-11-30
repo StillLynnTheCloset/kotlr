@@ -21,5 +21,6 @@ data class ResponseMetaInfo constructor(
     @Json(name = "msg")
     var msg: String? = null,
     @Json(name = "x_tumblr_content_rating")
-    var contentRating: String? = null
+    var contentRating: String? = null,
+    var rateLimitMetaData: RateLimitMetaData? = null
 )

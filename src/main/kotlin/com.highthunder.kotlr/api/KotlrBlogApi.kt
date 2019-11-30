@@ -1,4 +1,4 @@
-package com.highthunder.kotlr
+package com.highthunder.kotlr.api
 
 import com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar
 import com.highthunder.kotlr.response.type.blog.ResponseBlogDrafts
@@ -9,103 +9,29 @@ import com.highthunder.kotlr.response.type.blog.ResponseBlogLikes
 import com.highthunder.kotlr.response.type.blog.ResponseBlogPosts
 import com.highthunder.kotlr.response.type.blog.ResponseBlogQueue
 import com.highthunder.kotlr.response.type.blog.ResponseBlogSubmissions
-import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
-import com.highthunder.kotlr.response.type.user.ResponseUserFollowing
-import com.highthunder.kotlr.response.type.user.ResponseUserInfo
-import com.highthunder.kotlr.response.type.user.ResponseUserLikes
 import com.highthunder.kotlr.types.Post
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface KotlrApi {
-    // region User Getters
-
-    @GET("user/info")
-    suspend fun getUserInfo(): ResponseUserInfo.Response
-
-    @GET("user/likes")
-    suspend fun getUserLikes(
-        @Query("limit")
-        postLimit: Int? = null,
-        @Query("offset")
-        postOffset: Long? = null,
-        @Query("since_id")
-        afterPostId: Long? = null,
-        @Query("before_id")
-        beforePostId: Long? = null,
-        @Query("after")
-        afterTime: Long? = null,
-        @Query("before")
-        beforeTime: Long? = null,
-        @Query("reblog_info")
-        getReblogFields: Boolean? = null,
-        @Query("notes_info")
-        getNotesHistory: Boolean? = null,
-        @Query("npf")
-        useNeuePostFormat: Boolean? = null,
-        @Query("tag")
-        tag: String? = null,
-        @Query("page_number")
-        pageNumber: Int? = null
-    ): ResponseUserLikes.Response
-
-    @GET("user/dashboard")
-    suspend fun getUserDash(
-        @Query("limit")
-        postLimit: Int? = null,
-        @Query("offset")
-        postOffset: Long? = null,
-        @Query("since_id")
-        afterPostId: Long? = null,
-        @Query("before_id")
-        beforePostId: Long? = null,
-        @Query("after")
-        afterTime: Long? = null,
-        @Query("before")
-        beforeTime: Long? = null,
-        @Query("reblog_info")
-        getReblogFields: Boolean? = null,
-        @Query("notes_info")
-        getNotesHistory: Boolean? = null,
-        @Query("npf")
-        useNeuePostFormat: Boolean? = null,
-        @Query("tag")
-        tag: String? = null,
-        @Query("page_number")
-        pageNumber: Int? = null,
-        @Query("type")
-        type: Post.Type? = null
-    ): ResponseUserDashboard.Response
-
-    @GET("user/following")
-    suspend fun getUserFollowing(
-        @Query("limit")
-        limit: Int? = null,
-        @Query("offset")
-        offset: Long? = null
-    ): ResponseUserFollowing.Response
-
-    // endregion User Getters
-
-    // region Blog Getters
-
+internal interface KotlrBlogApi {
     @GET("blog/{identifier}/avatar")
-    suspend fun getBlogAvatar(
+    suspend fun getBlogAvatarHelper(
         @Path("identifier", encoded = true)
         identifier: String
-    ): ResponseBlogAvatar.Response
+    ): Response<ResponseBlogAvatar.Response>
 
     @GET("blog/{identifier}/avatar/{size}")
-    suspend fun getBlogAvatar(
+    suspend fun getBlogAvatarHelper(
         @Path("identifier", encoded = true)
         identifier: String,
         @Path("size")
         size: Int
-    ): ResponseBlogAvatar.Response
+    ): Response<ResponseBlogAvatar.Response>
 
     @GET("blog/{identifier}/posts/draft")
-    suspend fun getBlogDrafts(
+    suspend fun getBlogDraftsHelper(
         @Path("identifier", encoded = true)
         identifier: String,
         @Query("limit")
@@ -130,36 +56,36 @@ interface KotlrApi {
         tag: String? = null,
         @Query("page_number")
         pageNumber: Int? = null
-    ): ResponseBlogDrafts.Response
+    ): Response<ResponseBlogDrafts.Response>
 
     @GET("blog/{identifier}/followers")
-    suspend fun getBlogFollowers(
+    suspend fun getBlogFollowersHelper(
         @Path("identifier", encoded = true)
         identifier: String,
         @Query("limit")
         limit: Int? = null,
         @Query("offset")
         offset: Int? = null
-    ): ResponseBlogFollowers.Response
+    ): Response<ResponseBlogFollowers.Response>
 
     @GET("blog/{identifier}/following")
-    suspend fun getBlogFollowing(
+    suspend fun getBlogFollowingHelper(
         @Path("identifier", encoded = true)
         identifier: String,
         @Query("limit")
         limit: Int? = null,
         @Query("offset")
         offset: Int? = null
-    ): ResponseBlogFollowing.Response
+    ): Response<ResponseBlogFollowing.Response>
 
     @GET("blog/{identifier}/info")
-    suspend fun getBlogInfo(
+    suspend fun getBlogInfoHelper(
         @Path("identifier", encoded = true)
         identifier: String
-    ): ResponseBlogInfo.Response
+    ): Response<ResponseBlogInfo.Response>
 
     @GET("blog/{identifier}/likes")
-    suspend fun getBlogLikes(
+    suspend fun getBlogLikesHelper(
         @Path("identifier", encoded = true)
         identifier: String,
         @Query("limit")
@@ -184,10 +110,10 @@ interface KotlrApi {
         tag: String? = null,
         @Query("page_number")
         pageNumber: Int? = null
-    ): ResponseBlogLikes.Response
+    ): Response<ResponseBlogLikes.Response>
 
     @GET("blog/{identifier}/posts")
-    suspend fun getBlogPosts(
+    suspend fun getBlogPostsHelper(
         @Path("identifier", encoded = true)
         identifier: String,
         @Query("limit")
@@ -214,10 +140,10 @@ interface KotlrApi {
         pageNumber: Int? = null,
         @Query("type")
         type: Post.Type? = null
-    ): ResponseBlogPosts.Response
+    ): Response<ResponseBlogPosts.Response>
 
     @GET("blog/{identifier}/posts/queue")
-    suspend fun getBlogQueue(
+    suspend fun getBlogQueueHelper(
         @Path("identifier", encoded = true)
         identifier: String,
         @Query("limit")
@@ -242,10 +168,10 @@ interface KotlrApi {
         tag: String? = null,
         @Query("page_number")
         pageNumber: Int? = null
-    ): ResponseBlogQueue.Response
+    ): Response<ResponseBlogQueue.Response>
 
     @GET("blog/{identifier}/posts/submission")
-    suspend fun getBlogSubmissions(
+    suspend fun getBlogSubmissionsHelper(
         @Path("identifier", encoded = true)
         identifier: String,
         @Query("limit")
@@ -270,7 +196,5 @@ interface KotlrApi {
         tag: String? = null,
         @Query("page_number")
         pageNumber: Int? = null
-    ): ResponseBlogSubmissions.Response
-
-    // endregion Blog Getters
+    ): Response<ResponseBlogSubmissions.Response>
 }

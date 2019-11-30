@@ -1,5 +1,8 @@
 package com.highthunder.kotlr
 
+import com.highthunder.kotlr.api.KotlrApi
+import com.highthunder.kotlr.api.KotlrBlogApi
+import com.highthunder.kotlr.api.KotlrUserApi
 import com.highthunder.kotlr.authentication.TumblrAppKey
 import com.highthunder.kotlr.authentication.TumblrUserKey
 import com.highthunder.kotlr.json.qualifier.HexColorJsonAdapter
@@ -110,5 +113,9 @@ private fun getClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false): Re
         .build()
 }
 
-fun getApi(userKey: TumblrUserKey, debug: Boolean = false): KotlrApi =
-    getClient(getOAuthConsumer(userKey), debug).create()
+fun getApi(userKey: TumblrUserKey, debug: Boolean = false): KotlrApi {
+    val client = getClient(getOAuthConsumer(userKey), debug)
+    val userApi: KotlrUserApi = client.create()
+    val blogApi: KotlrBlogApi = client.create()
+    return KotlrApi(userApi, blogApi)
+}
