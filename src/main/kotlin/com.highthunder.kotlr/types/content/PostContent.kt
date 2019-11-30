@@ -186,6 +186,11 @@ data class TextContent constructor(
          */
         @Json(name = "unordered-list-item")
         UnorderedListItem,
+        /**
+         * TODO: Documentation
+         */
+        @Json(name = "indented")
+        Indented,
     }
 }
 

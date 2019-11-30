@@ -41,5 +41,11 @@ data class Media constructor(
     @Json(name = "poster")
     var poster: Media? = null,
     @Json(name = "media_key")
-    var mediaKey: String? = null
+    var mediaKey: String? = null,
+    @Json(name = "cropped")
+    var cropped: Boolean? = null,
+    @Json(name = "has_original_dimensions")
+    var hasOriginalDimensions: Boolean? = null,
+    @Json(name = "colors")
+    var colors: Colors? = null
 )
