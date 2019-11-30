@@ -19,6 +19,8 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface KotlrApi {
+    // region User Getters
+
     @GET("user/info")
     suspend fun getUserInfo(): ResponseUserInfo.Response
 
@@ -83,6 +85,10 @@ interface KotlrApi {
         @Query("offset")
         offset: Long? = null
     ): ResponseUserFollowing.Response
+
+    // endregion User Getters
+
+    // region Blog Getters
 
     @GET("blog/{identifier}/avatar")
     suspend fun getBlogAvatar(
@@ -265,4 +271,6 @@ interface KotlrApi {
         @Query("page_number")
         pageNumber: Int? = null
     ): ResponseBlogSubmissions.Response
+
+    // endregion Blog Getters
 }
