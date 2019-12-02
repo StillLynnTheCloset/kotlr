@@ -136,9 +136,13 @@ data class AnswerPost constructor(
     override val queueState: Post.QueueState?,
     override val shouldOpenInLegacy: Boolean?,
     override val muted: Boolean?,
+    override val objectType: String?,
+    override val blogUUID: String?,
     val askingName: String? = null,
     val askingUrl: String? = null,
     val question: String? = null,
     val answer: String? = null,
     val answerAbstract: String? = null
-) : Post
+) : Post {
+    override val type: Post.Type = Post.Type.Answer
+}

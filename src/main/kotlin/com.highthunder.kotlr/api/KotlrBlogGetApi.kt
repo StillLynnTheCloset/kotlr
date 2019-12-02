@@ -15,7 +15,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-internal interface KotlrBlogApi {
+internal interface KotlrBlogGetApi {
     @GET("blog/{identifier}/avatar")
     suspend fun getBlogAvatarHelper(
         @Path("identifier", encoded = true)

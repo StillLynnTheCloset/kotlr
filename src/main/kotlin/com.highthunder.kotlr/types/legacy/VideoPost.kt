@@ -142,6 +142,8 @@ data class VideoPost constructor(
     override val queueState: Post.QueueState?,
     override val shouldOpenInLegacy: Boolean?,
     override val muted: Boolean?,
+    override val objectType: String?,
+    override val blogUUID: String?,
     val player: List<Video>? = null,
     val caption: String? = null,
     val videoUrl: String? = null,
@@ -153,4 +155,6 @@ data class VideoPost constructor(
     val videoData: Any? = null,
     val permalinkUrl: String? = null,
     val videoType: String? = null
-) : Post
+) : Post {
+    override val type: Post.Type = Post.Type.Video
+}

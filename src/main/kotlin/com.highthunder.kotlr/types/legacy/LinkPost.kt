@@ -142,6 +142,8 @@ data class LinkPost constructor(
     override val queueState: Post.QueueState?,
     override val shouldOpenInLegacy: Boolean?,
     override val muted: Boolean?,
+    override val objectType: String?,
+    override val blogUUID: String?,
     val title: String? = null,
     val description: String? = null,
     val url: String? = null,
@@ -153,4 +155,6 @@ data class LinkPost constructor(
     val publisher: String? = null,
     val photos: List<Photo>? = null,
     val body: String? = null
-) : Post
+) : Post {
+    override val type: Post.Type = Post.Type.Link
+}

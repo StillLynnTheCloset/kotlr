@@ -302,6 +302,10 @@ internal data class PostAmalgamation(
     val shouldOpenInLegacy: Boolean? = null,
     @Json(name = "muted")
     val muted: Boolean? = null,
+    @Json(name = "object_type")
+    val objectType: String? = null,
+    @Json(name = "tumblelog_uuid")
+    val blogUUID: String? = null,
 
     // endregion
 
@@ -510,6 +514,10 @@ internal data class PostAmalgamation(
         notes = post.notes,
         publishTime = post.publishTime,
         queueState = post.queueState,
+        shouldOpenInLegacy = post.shouldOpenInLegacy,
+        muted = post.muted,
+        objectType = post.objectType,
+        blogUUID = post.blogUUID,
         askingName = post.askingName,
         askingUrl = post.askingUrl,
         question = post.question,
@@ -578,6 +586,10 @@ internal data class PostAmalgamation(
         notes = post.notes,
         publishTime = post.publishTime,
         queueState = post.queueState,
+        shouldOpenInLegacy = post.shouldOpenInLegacy,
+        muted = post.muted,
+        objectType = post.objectType,
+        blogUUID = post.blogUUID,
         caption = post.caption,
         captionAbstract = post.captionAbstract,
         player = PlayerWrapper(contentString = post.player),
@@ -658,6 +670,10 @@ internal data class PostAmalgamation(
         notes = post.notes,
         publishTime = post.publishTime,
         queueState = post.queueState,
+        shouldOpenInLegacy = post.shouldOpenInLegacy,
+        muted = post.muted,
+        objectType = post.objectType,
+        blogUUID = post.blogUUID,
         title = post.title,
         body = post.body,
         dialogue = post.dialogue
@@ -724,6 +740,10 @@ internal data class PostAmalgamation(
         notes = post.notes,
         publishTime = post.publishTime,
         queueState = post.queueState,
+        shouldOpenInLegacy = post.shouldOpenInLegacy,
+        muted = post.muted,
+        objectType = post.objectType,
+        blogUUID = post.blogUUID,
         title = post.title,
         description = post.description,
         url = post.url,
@@ -798,6 +818,10 @@ internal data class PostAmalgamation(
         notes = post.notes,
         publishTime = post.publishTime,
         queueState = post.queueState,
+        shouldOpenInLegacy = post.shouldOpenInLegacy,
+        muted = post.muted,
+        objectType = post.objectType,
+        blogUUID = post.blogUUID,
         caption = post.caption,
         captionAbstract = post.captionAbstract,
         width = post.width,
@@ -870,6 +894,10 @@ internal data class PostAmalgamation(
         notes = post.notes,
         publishTime = post.publishTime,
         queueState = post.queueState,
+        shouldOpenInLegacy = post.shouldOpenInLegacy,
+        muted = post.muted,
+        objectType = post.objectType,
+        blogUUID = post.blogUUID,
         text = post.text,
         source = post.source
     )
@@ -935,6 +963,10 @@ internal data class PostAmalgamation(
         notes = post.notes,
         publishTime = post.publishTime,
         queueState = post.queueState,
+        shouldOpenInLegacy = post.shouldOpenInLegacy,
+        muted = post.muted,
+        objectType = post.objectType,
+        blogUUID = post.blogUUID,
         title = post.title,
         abstract = post.abstract,
         body = post.body
@@ -1001,6 +1033,10 @@ internal data class PostAmalgamation(
         notes = post.notes,
         publishTime = post.publishTime,
         queueState = post.queueState,
+        shouldOpenInLegacy = post.shouldOpenInLegacy,
+        muted = post.muted,
+        objectType = post.objectType,
+        blogUUID = post.blogUUID,
         player = PlayerWrapper(contentList = post.player),
         caption = post.caption,
         videoUrl = post.videoUrl,
@@ -1074,7 +1110,11 @@ internal data class PostAmalgamation(
         rebloggedRootFollowing = post.rebloggedRootFollowing,
         notes = post.notes,
         publishTime = post.publishTime,
-        queueState = post.queueState
+        queueState = post.queueState,
+        shouldOpenInLegacy = post.shouldOpenInLegacy,
+        muted = post.muted,
+        objectType = post.objectType,
+        blogUUID = post.blogUUID
     )
 
     // endregion
@@ -1138,6 +1178,8 @@ internal data class PostAmalgamation(
             queueState,
             shouldOpenInLegacy,
             muted,
+            objectType,
+            blogUUID,
 
             askingName,
             askingUrl,
@@ -1206,6 +1248,8 @@ internal data class PostAmalgamation(
             queueState,
             shouldOpenInLegacy,
             muted,
+            objectType,
+            blogUUID,
 
             caption,
             captionAbstract,
@@ -1286,6 +1330,8 @@ internal data class PostAmalgamation(
             queueState,
             shouldOpenInLegacy,
             muted,
+            objectType,
+            blogUUID,
 
             title,
             body,
@@ -1352,6 +1398,8 @@ internal data class PostAmalgamation(
             queueState,
             shouldOpenInLegacy,
             muted,
+            objectType,
+            blogUUID,
 
             title,
             description,
@@ -1426,6 +1474,8 @@ internal data class PostAmalgamation(
             queueState,
             shouldOpenInLegacy,
             muted,
+            objectType,
+            blogUUID,
 
             caption,
             captionAbstract,
@@ -1498,6 +1548,8 @@ internal data class PostAmalgamation(
             queueState,
             shouldOpenInLegacy,
             muted,
+            objectType,
+            blogUUID,
 
             text,
             source
@@ -1563,6 +1615,8 @@ internal data class PostAmalgamation(
             queueState,
             shouldOpenInLegacy,
             muted,
+            objectType,
+            blogUUID,
 
             title,
             abstract,
@@ -1629,6 +1683,8 @@ internal data class PostAmalgamation(
             queueState,
             shouldOpenInLegacy,
             muted,
+            objectType,
+            blogUUID,
 
             player?.contentList,
             caption,
@@ -1702,7 +1758,9 @@ internal data class PostAmalgamation(
             publishTime,
             queueState,
             shouldOpenInLegacy,
-            muted
+            muted,
+            objectType,
+            blogUUID
         )
     }
 }

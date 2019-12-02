@@ -133,6 +133,10 @@ data class QuotePost constructor(
     override val queueState: Post.QueueState?,
     override val shouldOpenInLegacy: Boolean?,
     override val muted: Boolean?,
+    override val objectType: String?,
+    override val blogUUID: String?,
     val text: String? = null,
     val source: String? = null
-) : Post
+) : Post {
+    override val type: Post.Type = Post.Type.Quote
+}

@@ -134,7 +134,11 @@ data class ChatPost constructor(
     override val queueState: Post.QueueState?,
     override val shouldOpenInLegacy: Boolean?,
     override val muted: Boolean?,
+    override val objectType: String?,
+    override val blogUUID: String?,
     val title: String? = null,
     val body: String? = null,
     val dialogue: List<Dialogue>? = null
-) : Post
+) : Post {
+    override val type: Post.Type = Post.Type.Chat
+}

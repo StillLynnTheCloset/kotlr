@@ -140,6 +140,8 @@ data class PhotoPost constructor(
     override val queueState: Post.QueueState?,
     override val shouldOpenInLegacy: Boolean?,
     override val muted: Boolean?,
+    override val objectType: String?,
+    override val blogUUID: String?,
     val caption: String? = null,
     val captionAbstract: String? = null,
     val width: Int? = null,
@@ -149,4 +151,6 @@ data class PhotoPost constructor(
     val imagePermalink: String? = null,
     val panorama: Boolean? = null,
     val photosetLayout: String? = null
-) : Post
+) : Post {
+    override val type: Post.Type = Post.Type.Photo
+}

@@ -9,7 +9,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-internal interface KotlrUserApi {
+internal interface KotlrUserGetApi {
     @GET("user/info")
     suspend fun getUserInfoHelper(): Response<ResponseUserInfo.Response>
 

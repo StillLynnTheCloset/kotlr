@@ -123,5 +123,9 @@ data class BlockPost constructor(
     override val publishTime: Long?,
     override val queueState: Post.QueueState?,
     override val shouldOpenInLegacy: Boolean?,
-    override val muted: Boolean?
-) : Post
+    override val muted: Boolean?,
+    override val objectType: String?,
+    override val blogUUID: String?
+) : Post {
+    override val type: Post.Type = Post.Type.Block
+}

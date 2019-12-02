@@ -248,6 +248,12 @@ interface Post {
 
     val muted: Boolean?
 
+    val objectType: String?
+
+    val type: Post.Type?
+
+    val blogUUID: String?
+
     // endregion
 
     /**
@@ -357,6 +363,25 @@ interface Post {
          */
         @Json(name = "raw")
         Raw("raw")
+    }
+
+    /**
+     * TODO: Documentation
+     *
+     * @param key TODO: Documentation
+     */
+    @JsonClass(generateAdapter = false)
+    enum class PostVersion(val key: String) {
+        /**
+         * TODO: Documentation
+         */
+        @Json(name = "npf")
+        NPF("npf"),
+        /**
+         * TODO: Documentation
+         */
+        @Json(name = "legacy")
+        Legacy("legacy")
     }
 
     /**

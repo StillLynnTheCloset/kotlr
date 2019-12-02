@@ -149,6 +149,8 @@ data class AudioPost constructor(
     override val queueState: Post.QueueState?,
     override val shouldOpenInLegacy: Boolean?,
     override val muted: Boolean?,
+    override val objectType: String?,
+    override val blogUUID: String?,
     val caption: String? = null,
     val captionAbstract: String? = null,
     val player: String? = null,
@@ -166,4 +168,6 @@ data class AudioPost constructor(
     val audioSourceUrl: String? = null,
     val audioType: String? = null,
     val embed: String? = null
-) : Post
+) : Post {
+    override val type: Post.Type = Post.Type.Audio
+}
