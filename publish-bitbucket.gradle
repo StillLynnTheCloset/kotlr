@@ -86,6 +86,9 @@ def urlExists(String repositoryUrl) {
 
         def responseCode = connection.getResponseCode()
         println("responseCode: " + responseCode)
+        println("responseMessage: " + connection.getResponseMessage())
+        println("responseStream: " + connection.getInputStream()?.readLines())
+        println("responseError: " + connection.getErrorStream()?.readLines())
 
         if (responseCode == 401) {
             throw new RuntimeException("Unauthorized BitBucket user - please provide valid username and password in gradle.properties file")
