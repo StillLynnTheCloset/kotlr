@@ -2,11 +2,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 buildscript {
-    extra.apply {
-        set("kotlin_version", "1.3.41")
-        set("moshi_version", "1.8.0")
-    }
-
     repositories {
         mavenCentral()
         jcenter()
@@ -14,9 +9,10 @@ buildscript {
 }
 
 plugins {
-    kotlin("jvm") version "1.3.41"
-    kotlin("kapt") version "1.3.41"
-    id("com.github.ben-manes.versions") version "0.20.0"
+    kotlin("jvm") version "1.3.61"
+    kotlin("kapt") version "1.3.61"
+    id("com.github.ben-manes.versions") version "0.27.0"
+    id("de.fayard.buildSrcVersions") version "0.7.0"
     id("org.jlleitschuh.gradle.ktlint") version "8.1.0"
     id("idea")
 }
@@ -42,23 +38,23 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${project.rootProject.ext["kotlin_version"]}")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.0")
+    implementation(Libs.kotlin_stdlib)
+    implementation(Libs.kotlinx_coroutines_core)
 
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:${project.rootProject.ext["moshi_version"]}")
-    implementation("com.squareup.moshi:moshi:${project.rootProject.ext["moshi_version"]}")
-    implementation("com.squareup.moshi:moshi-adapters:${project.rootProject.ext["moshi_version"]}")
+    kapt(Libs.moshi_kotlin_codegen)
+    implementation(Libs.moshi)
+    implementation(Libs.moshi_adapters)
 
-    implementation("com.squareup.retrofit2:retrofit:2.6.2")
-    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
-    implementation("com.squareup.retrofit2:converter-moshi:2.6.2")
+    implementation(Libs.retrofit)
+    implementation(Libs.converter_scalars)
+    implementation(Libs.converter_moshi)
 
-    implementation("com.squareup.okhttp3:okhttp:4.2.2")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.2.1")
-    implementation("se.akerfeldt:okhttp-signpost:1.1.0")
-    implementation("oauth.signpost:signpost-core:1.2.1.2")
+    implementation(Libs.okhttp)
+    implementation(Libs.logging_interceptor)
+    implementation(Libs.okhttp_signpost)
+    implementation(Libs.signpost_core)
 
-    testImplementation("junit:junit:4.12")
+    testImplementation(Libs.junit)
 }
 
 idea {
