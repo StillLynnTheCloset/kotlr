@@ -19,8 +19,8 @@ plugins {
 
 apply(from = "publish-bitbucket.gradle")
 
-group = "com.highthunder"
-version = "0.4.0"
+group = properties["ARTIFACT_PACKAGE"] as String
+version = properties["ARTIFACT_VERSION"] as String
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
