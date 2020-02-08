@@ -18,6 +18,7 @@ gradle-app.setting
 **/*.iml
 
 # Project Ignores
+/local.properties
 
 /src/test/kotlin/com.highthunder.kotlr/MyAppKey.kt
 /src/main/kotlin/com.highthunder.kotlr/MyAppKey.kt
