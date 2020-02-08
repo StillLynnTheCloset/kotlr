@@ -171,3 +171,6 @@ suspend fun minimalExample() {
 * JSON Serialization - [Moshi](https://github.com/square/moshi)
 * OAuth - [SignPost](https://github.com/mttkay/signpost)
 * Continuous Integration - [Travis](https://travis-ci.com/)
+
+
+This [application/service] uses the Tumblr application programming interface but is not endorsed or certified by Tumblr, Inc. All of the Tumblr logos and trademarks displayed on this [application/service] are the property of Tumblr, Inc.
