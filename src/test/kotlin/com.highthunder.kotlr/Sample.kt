@@ -3528,4 +3528,15 @@ object Sample {
     }"""
 
     // endregion
+
+    // region Colors samples
+
+    const val colorsSample: String = """{
+        "c0": "a24615",
+        "c1": "f70",
+        "c2": "#f70",
+        "c3": "#a24615"
+    }"""
+
+    // endregion Colors samples
 }

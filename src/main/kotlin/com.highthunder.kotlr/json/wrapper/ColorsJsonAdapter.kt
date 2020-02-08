@@ -32,7 +32,7 @@ internal class ColorsJsonAdapter(moshi: Moshi) : JsonAdapter<Colors>() {
             when (reader.peek()) {
                 JsonReader.Token.STRING -> colors[number] = Color(reader.nextString())
                 JsonReader.Token.NUMBER -> colors[number] = Color(reader.nextInt())
-                else -> throw JsonDataException("Expected string while parsing colors, but got ${reader.peek()}")
+                else -> throw JsonDataException("Expected string or int while parsing colors, but got ${reader.peek()}")
             }
         }
         reader.endObject()

@@ -13,5 +13,5 @@ class IntegrationSuite
 class UnitSuite
 
 @RunWith(Suite::class)
-@SuiteClasses(ParseNpfUnitTest::class, ParseNpfIntegrationTest::class, ParseResponseTest::class, TumblrTest::class)
+@SuiteClasses(ParseNpfUnitTest::class, ParseNpfIntegrationTest::class, ParseResponseTest::class, TumblrTest::class, ParseDataTypeTests::class)
 class ParsingSuite
