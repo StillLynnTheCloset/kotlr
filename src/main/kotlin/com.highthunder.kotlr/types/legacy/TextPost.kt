@@ -136,6 +136,8 @@ data class TextPost constructor(
     override val muted: Boolean?,
     override val objectType: String?,
     override val blogUUID: String?,
+    override val parentPostId: Long?,
+    override val parentBlogUUID: String?,
     val title: String? = null,
     val abstract: String? = null,
     val body: String? = null

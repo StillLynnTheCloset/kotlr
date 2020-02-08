@@ -125,7 +125,9 @@ data class BlockPost constructor(
     override val shouldOpenInLegacy: Boolean?,
     override val muted: Boolean?,
     override val objectType: String?,
-    override val blogUUID: String?
+    override val blogUUID: String?,
+    override val parentPostId: Long?,
+    override val parentBlogUUID: String?
 ) : Post {
     override val type: Post.Type = Post.Type.Block
 }

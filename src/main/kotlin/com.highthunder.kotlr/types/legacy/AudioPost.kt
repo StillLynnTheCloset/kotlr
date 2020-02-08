@@ -151,6 +151,8 @@ data class AudioPost constructor(
     override val muted: Boolean?,
     override val objectType: String?,
     override val blogUUID: String?,
+    override val parentPostId: Long?,
+    override val parentBlogUUID: String?,
     val caption: String? = null,
     val captionAbstract: String? = null,
     val player: String? = null,

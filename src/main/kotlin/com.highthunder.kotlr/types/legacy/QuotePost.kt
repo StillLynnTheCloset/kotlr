@@ -135,6 +135,8 @@ data class QuotePost constructor(
     override val muted: Boolean?,
     override val objectType: String?,
     override val blogUUID: String?,
+    override val parentPostId: Long?,
+    override val parentBlogUUID: String?,
     val text: String? = null,
     val source: String? = null
 ) : Post {

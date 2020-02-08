@@ -89,6 +89,8 @@ import com.squareup.moshi.JsonClass
  * @param notes TODO: Documentation
  * @param publishTime TODO: Documentation
  * @param queueState TODO: Documentation
+ * @param parentPostId TODO: Documentation
+ * @param parentBlogUUID TODO: Documentation
  *
  * [AnswerPost]
  * @param askingName The blog that sent this ask, or answered it if it was privately answered.
@@ -306,6 +308,10 @@ internal data class PostAmalgamation(
     val objectType: String? = null,
     @Json(name = "tumblelog_uuid")
     val blogUUID: String? = null,
+    @Json(name = "parent_post_id")
+    val parentPostId: Long? = null,
+    @Json(name = "parent_tumblelog_uuid")
+    val parentBlogUUID: String? = null,
 
     // endregion
 
@@ -518,6 +524,9 @@ internal data class PostAmalgamation(
         muted = post.muted,
         objectType = post.objectType,
         blogUUID = post.blogUUID,
+        parentPostId = post.parentPostId,
+        parentBlogUUID = post.parentBlogUUID,
+
         askingName = post.askingName,
         askingUrl = post.askingUrl,
         question = post.question,
@@ -590,6 +599,9 @@ internal data class PostAmalgamation(
         muted = post.muted,
         objectType = post.objectType,
         blogUUID = post.blogUUID,
+        parentPostId = post.parentPostId,
+        parentBlogUUID = post.parentBlogUUID,
+
         caption = post.caption,
         captionAbstract = post.captionAbstract,
         player = PlayerWrapper(contentString = post.player),
@@ -674,6 +686,9 @@ internal data class PostAmalgamation(
         muted = post.muted,
         objectType = post.objectType,
         blogUUID = post.blogUUID,
+        parentPostId = post.parentPostId,
+        parentBlogUUID = post.parentBlogUUID,
+
         title = post.title,
         body = post.body,
         dialogue = post.dialogue
@@ -744,6 +759,9 @@ internal data class PostAmalgamation(
         muted = post.muted,
         objectType = post.objectType,
         blogUUID = post.blogUUID,
+        parentPostId = post.parentPostId,
+        parentBlogUUID = post.parentBlogUUID,
+
         title = post.title,
         description = post.description,
         url = post.url,
@@ -822,6 +840,9 @@ internal data class PostAmalgamation(
         muted = post.muted,
         objectType = post.objectType,
         blogUUID = post.blogUUID,
+        parentPostId = post.parentPostId,
+        parentBlogUUID = post.parentBlogUUID,
+
         caption = post.caption,
         captionAbstract = post.captionAbstract,
         width = post.width,
@@ -898,6 +919,9 @@ internal data class PostAmalgamation(
         muted = post.muted,
         objectType = post.objectType,
         blogUUID = post.blogUUID,
+        parentPostId = post.parentPostId,
+        parentBlogUUID = post.parentBlogUUID,
+
         text = post.text,
         source = post.source
     )
@@ -967,6 +991,9 @@ internal data class PostAmalgamation(
         muted = post.muted,
         objectType = post.objectType,
         blogUUID = post.blogUUID,
+        parentPostId = post.parentPostId,
+        parentBlogUUID = post.parentBlogUUID,
+
         title = post.title,
         abstract = post.abstract,
         body = post.body
@@ -1037,6 +1064,9 @@ internal data class PostAmalgamation(
         muted = post.muted,
         objectType = post.objectType,
         blogUUID = post.blogUUID,
+        parentPostId = post.parentPostId,
+        parentBlogUUID = post.parentBlogUUID,
+
         player = PlayerWrapper(contentList = post.player),
         caption = post.caption,
         videoUrl = post.videoUrl,
@@ -1114,7 +1144,9 @@ internal data class PostAmalgamation(
         shouldOpenInLegacy = post.shouldOpenInLegacy,
         muted = post.muted,
         objectType = post.objectType,
-        blogUUID = post.blogUUID
+        blogUUID = post.blogUUID,
+        parentPostId = post.parentPostId,
+        parentBlogUUID = post.parentBlogUUID
     )
 
     // endregion
@@ -1180,6 +1212,8 @@ internal data class PostAmalgamation(
             muted,
             objectType,
             blogUUID,
+            parentPostId,
+            parentBlogUUID,
 
             askingName,
             askingUrl,
@@ -1250,6 +1284,8 @@ internal data class PostAmalgamation(
             muted,
             objectType,
             blogUUID,
+            parentPostId,
+            parentBlogUUID,
 
             caption,
             captionAbstract,
@@ -1332,6 +1368,8 @@ internal data class PostAmalgamation(
             muted,
             objectType,
             blogUUID,
+            parentPostId,
+            parentBlogUUID,
 
             title,
             body,
@@ -1400,6 +1438,8 @@ internal data class PostAmalgamation(
             muted,
             objectType,
             blogUUID,
+            parentPostId,
+            parentBlogUUID,
 
             title,
             description,
@@ -1476,6 +1516,8 @@ internal data class PostAmalgamation(
             muted,
             objectType,
             blogUUID,
+            parentPostId,
+            parentBlogUUID,
 
             caption,
             captionAbstract,
@@ -1550,6 +1592,8 @@ internal data class PostAmalgamation(
             muted,
             objectType,
             blogUUID,
+            parentPostId,
+            parentBlogUUID,
 
             text,
             source
@@ -1617,6 +1661,8 @@ internal data class PostAmalgamation(
             muted,
             objectType,
             blogUUID,
+            parentPostId,
+            parentBlogUUID,
 
             title,
             abstract,
@@ -1685,6 +1731,8 @@ internal data class PostAmalgamation(
             muted,
             objectType,
             blogUUID,
+            parentPostId,
+            parentBlogUUID,
 
             player?.contentList,
             caption,
@@ -1760,7 +1808,9 @@ internal data class PostAmalgamation(
             shouldOpenInLegacy,
             muted,
             objectType,
-            blogUUID
+            blogUUID,
+            parentPostId,
+            parentBlogUUID
         )
     }
 }

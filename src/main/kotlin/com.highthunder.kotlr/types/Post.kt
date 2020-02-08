@@ -245,14 +245,30 @@ interface Post {
      * TODO: Documentation
      */
     val shouldOpenInLegacy: Boolean?
-
+    /**
+     * TODO: Documentation
+     */
     val muted: Boolean?
-
+    /**
+     * TODO: Documentation
+     */
     val objectType: String?
-
+    /**
+     * TODO: Documentation
+     */
     val type: Post.Type?
-
+    /**
+     * TODO: Documentation
+     */
     val blogUUID: String?
+    /**
+     * TODO: Documentation
+     */
+    val parentPostId: Long?
+    /**
+     * TODO: Documentation
+     */
+    val parentBlogUUID: String?
 
     // endregion
 

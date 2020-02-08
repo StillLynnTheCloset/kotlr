@@ -144,6 +144,8 @@ data class VideoPost constructor(
     override val muted: Boolean?,
     override val objectType: String?,
     override val blogUUID: String?,
+    override val parentPostId: Long?,
+    override val parentBlogUUID: String?,
     val player: List<Video>? = null,
     val caption: String? = null,
     val videoUrl: String? = null,

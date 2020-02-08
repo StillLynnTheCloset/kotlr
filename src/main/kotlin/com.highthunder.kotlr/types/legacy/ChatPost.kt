@@ -136,6 +136,8 @@ data class ChatPost constructor(
     override val muted: Boolean?,
     override val objectType: String?,
     override val blogUUID: String?,
+    override val parentPostId: Long?,
+    override val parentBlogUUID: String?,
     val title: String? = null,
     val body: String? = null,
     val dialogue: List<Dialogue>? = null
