@@ -29,11 +29,9 @@ internal class UserLikesWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperIn
 
     private val responseAdapter: JsonAdapter<ResponseUserLikes.Body> =
         moshi.adapter<ResponseUserLikes.Body>(ResponseUserLikes.Body::class.java, emptySet(), null)
-            .failOnUnknown()
 
     private val listOfAnyAdapter: JsonAdapter<List<Any>> =
         moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), emptySet(), null)
-            .failOnUnknown()
 
     @FromJson
     override fun fromJson(reader: JsonReader): WrapperInterface<ResponseUserLikes.Body> {

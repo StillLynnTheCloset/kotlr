@@ -35,11 +35,9 @@ internal class PostsPostWrapperJsonAdapter(moshi: Moshi) :
     private val responseAdapter: JsonAdapter<Post> =
         moshi.adapter<Post>(
             Post::class.java, emptySet(), null)
-            .failOnUnknown()
 
     private val listOfAnyAdapter: JsonAdapter<List<Any>> =
         moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), emptySet(), null)
-            .failOnUnknown()
 
     @FromJson
     override fun fromJson(reader: JsonReader): WrapperInterface<Post> {

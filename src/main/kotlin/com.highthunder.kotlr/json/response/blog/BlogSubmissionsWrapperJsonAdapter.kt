@@ -30,11 +30,9 @@ internal class BlogSubmissionsWrapperJsonAdapter(moshi: Moshi) :
 
     private val responseAdapter: JsonAdapter<ResponseBlogSubmissions.Body> =
         moshi.adapter<ResponseBlogSubmissions.Body>(ResponseBlogSubmissions.Body::class.java, emptySet(), null)
-            .failOnUnknown()
 
     private val listOfAnyAdapter: JsonAdapter<List<Any>> =
         moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), emptySet(), null)
-            .failOnUnknown()
 
     @FromJson
     override fun fromJson(reader: JsonReader): WrapperInterface<ResponseBlogSubmissions.Body> {
