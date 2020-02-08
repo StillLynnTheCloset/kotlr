@@ -18,7 +18,6 @@ import com.squareup.moshi.JsonClass
  * @version 1.0.0
  */
 interface ResponseUserLikes {
-
     /**
      * TODO: Documentation
      *

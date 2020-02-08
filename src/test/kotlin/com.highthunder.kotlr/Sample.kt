@@ -300,6 +300,25 @@ object Sample {
         }
     }"""
 
+    const val mediaContentAllProperties: String = """{
+        "url": "https://66.media.tumblr.com/9e73932ed3c60ed972a603fb4a7e8388/tumblr_p5xbcabCUL1sd87luo1_1280.gif",
+        "type": "image/gif",
+        "width": 1280,
+        "height": 985,
+        "poster": {
+            "url": "https://46.media.tumblr.com/9e73932ed3c60ed972a603fb4a7e8388/tumblr_p5xbcabCUL1sd87luo1_1280.gif",
+            "type": "image/gif",
+            "width": 1280,
+            "height": 985
+        },
+        "colors": {
+            "c0": "ffffff",
+            "c1": "7c7c7c"
+        },
+        "has_original_dimensions": true,
+        "cropped": false
+    }"""
+
     // endregion
 
     // region TextContent Subtype samples
@@ -351,6 +370,12 @@ object Sample {
         "type": "text",
         "subtype": "unordered-list-item",
         "text": "Death, which is uncountable on this list."
+    }"""
+
+    const val textContentIndented: String = """{
+        "type": "text",
+        "text": "A few years ago, when I was living in the hous. ",
+        "subtype": "indented"
     }"""
 
     // endregion
@@ -3503,4 +3528,15 @@ object Sample {
     }"""
 
     // endregion
+
+    // region Colors samples
+
+    const val colorsSample: String = """{
+        "c0": "a24615",
+        "c1": "f70",
+        "c2": "#f70",
+        "c3": "#a24615"
+    }"""
+
+    // endregion Colors samples
 }

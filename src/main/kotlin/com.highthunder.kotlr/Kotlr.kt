@@ -1,7 +1,14 @@
 package com.highthunder.kotlr
 
+import com.highthunder.kotlr.api.KotlrApi
+import com.highthunder.kotlr.api.KotlrBlogGetApi
+import com.highthunder.kotlr.api.KotlrBlogPostApi
+import com.highthunder.kotlr.api.KotlrPostsGetApi
+import com.highthunder.kotlr.api.KotlrUserGetApi
+import com.highthunder.kotlr.api.KotlrUserPostApi
 import com.highthunder.kotlr.authentication.TumblrAppKey
 import com.highthunder.kotlr.authentication.TumblrUserKey
+import com.highthunder.kotlr.json.qualifier.CommaSeparatedStringJsonAdapter
 import com.highthunder.kotlr.json.qualifier.HexColorJsonAdapter
 import com.highthunder.kotlr.json.qualifier.HexColorOctothorpeJsonAdapter
 import com.highthunder.kotlr.json.superwrapper.AttributionAmalgamationAdapter
@@ -24,10 +31,7 @@ import se.akerfeldt.okhttp.signpost.OkHttpOAuthProvider
 import se.akerfeldt.okhttp.signpost.SigningInterceptor
 
 /**
- * Get an instance of the Moshi JSON parser that is setup to parse all of our data types.
- *
- * This is broken up into four steps because some adapters depend on the existence of
- * other adapters.
+ * A lazily constructed instance of the Moshi JSON parser that is setup to parse all of our data types.
  */
 internal val moshi: Moshi by lazy {
     return@lazy Moshi
@@ -38,6 +42,7 @@ internal val moshi: Moshi by lazy {
         .add(BlockLayoutAmalgamationAdapter())
         .add(DisplayModeAmalgamationAdapter())
         .add(NoteDataAmalgamationAdapter())
+        .add(CommaSeparatedStringJsonAdapter())
         .add(HexColorJsonAdapter())
         .add(HexColorOctothorpeJsonAdapter())
         .add(PostAmalgamationAdapter())
@@ -51,16 +56,13 @@ private const val AUTHORIZE_URL = "${O_AUTH_BASE_URL}authorize"
 private const val REQUEST_TOKEN_RESOURCE = "${O_AUTH_BASE_URL}request_token"
 private const val ACCESS_TOKEN_RESOURCE = "${O_AUTH_BASE_URL}access_token"
 
-private val allow300ResponseInterceptor: Interceptor = Interceptor { chain: Interceptor.Chain ->
-    val response = chain.proceed(chain.request())
-    return@Interceptor if (response.code in 300 until 400) {
-        response
-            .newBuilder()
-            .code(200)
-            .build()
-    } else {
-        response
-    }
+// Tumblr returns the HTTP response code inside of the response body,
+// so we tell OkHTTP/Retrofit to treat every response as a 200 and we'll handle correctly parsing the error responses.
+private val treatAs200ResponseInterceptor: Interceptor = Interceptor { chain: Interceptor.Chain ->
+    return@Interceptor chain.proceed(chain.request())
+        .newBuilder()
+        .code(200)
+        .build()
 }
 
 internal fun getOAuthConsumer(appKey: TumblrAppKey): OkHttpOAuthConsumer =
@@ -93,16 +95,19 @@ private fun getHttpClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false)
     httpClient.retryOnConnectionFailure(false)
 
     httpClient.addInterceptor(SigningInterceptor(consumer))
-    httpClient.addInterceptor(allow300ResponseInterceptor)
+    httpClient.addInterceptor(treatAs200ResponseInterceptor)
     httpClient.addNetworkInterceptor(logging)
 
     return httpClient.build()
 }
 
 private fun getClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false): Retrofit {
-    var moshiFactory = MoshiConverterFactory.create(moshi)
-    if (debug) {
-        moshiFactory = moshiFactory.failOnUnknown()
+    val moshiFactory = MoshiConverterFactory.create(moshi).let { factory ->
+        if (debug) {
+            factory.failOnUnknown()
+        } else {
+            factory
+        }
     }
 
     return Retrofit.Builder()
@@ -113,5 +118,12 @@ private fun getClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false): Re
         .build()
 }
 
-fun getApi(userKey: TumblrUserKey, debug: Boolean = false): KotlrApi =
-    getClient(getOAuthConsumer(userKey), debug).create()
+fun getApi(userKey: TumblrUserKey, debug: Boolean = false): KotlrApi {
+    val client = getClient(getOAuthConsumer(userKey), debug)
+    val userGetApi: KotlrUserGetApi = client.create()
+    val blogGetApi: KotlrBlogGetApi = client.create()
+    val userPostApi: KotlrUserPostApi = client.create()
+    val blogPostApi: KotlrBlogPostApi = client.create()
+    val postsGetApi: KotlrPostsGetApi = client.create()
+    return KotlrApi(userGetApi, blogGetApi, userPostApi, blogPostApi, postsGetApi)
+}

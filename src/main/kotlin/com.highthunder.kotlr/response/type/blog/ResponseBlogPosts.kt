@@ -19,7 +19,6 @@ import com.squareup.moshi.JsonClass
  * @version 1.0.0
  */
 interface ResponseBlogPosts {
-
     /**
      * TODO: Documentation
      *
@@ -59,12 +58,12 @@ interface ResponseBlogPosts {
     @JsonClass(generateAdapter = true)
     data class Body constructor(
         @Json(name = "_links")
-        var links: Map<String, RequestLink>? = null, // TODO: Get rid of map.
+        val links: Map<String, RequestLink>? = null, // TODO: Get rid of map.
         @Json(name = "blog")
-        var blog: Blog? = null,
+        val blog: Blog? = null,
         @Json(name = "posts")
-        var posts: List<Post>? = null,
+        val posts: List<Post>? = null,
         @Json(name = "total_posts")
-        var totalPosts: Long? = null
+        val totalPosts: Long? = null
     )
 }

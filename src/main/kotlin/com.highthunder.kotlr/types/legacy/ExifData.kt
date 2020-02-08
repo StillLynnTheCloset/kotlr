@@ -19,13 +19,13 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class ExifData constructor(
     @Json(name = "Camera")
-    var camera: String? = null,
+    val camera: String? = null,
     @Json(name = "ISO")
-    var iso: Int? = null,
+    val iso: Int? = null,
     @Json(name = "Aperture")
-    var aperture: String? = null,
+    val aperture: String? = null,
     @Json(name = "Exposure")
-    var exposure: String? = null,
+    val exposure: String? = null,
     @Json(name = "FocalLength")
-    var focalLength: String? = null
+    val focalLength: String? = null
 )

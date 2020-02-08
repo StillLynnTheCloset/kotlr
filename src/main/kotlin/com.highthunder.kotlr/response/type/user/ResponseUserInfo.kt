@@ -17,7 +17,6 @@ import com.squareup.moshi.JsonClass
  * @version 1.0.0
  */
 interface ResponseUserInfo {
-
     /**
      * TODO: Documentation
      *
@@ -54,6 +53,6 @@ interface ResponseUserInfo {
     @JsonClass(generateAdapter = true)
     data class Body constructor(
         @Json(name = "user")
-        var user: User? = null
+        val user: User? = null
     )
 }

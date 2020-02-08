@@ -29,11 +29,9 @@ internal class UserInfoWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInt
 
     private val responseAdapter: JsonAdapter<ResponseUserInfo.Body> =
         moshi.adapter<ResponseUserInfo.Body>(ResponseUserInfo.Body::class.java, emptySet(), null)
-            .failOnUnknown()
 
     private val listOfAnyAdapter: JsonAdapter<List<Any>> =
         moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), emptySet(), null)
-            .failOnUnknown()
 
     @FromJson
     override fun fromJson(reader: JsonReader): WrapperInterface<ResponseUserInfo.Body> {

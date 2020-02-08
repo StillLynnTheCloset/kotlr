@@ -32,10 +32,9 @@ class VerticalBlockLayout : BlockLayout() {
  * @param display This is an array of display objects per row, see [BlockLayout.Row.Display].
  */
 data class RowBlockLayout constructor(
-    var rows: List<List<Int>>? = null,
-    var display: List<Display>? = null
+    val rows: List<List<Int>>? = null,
+    val display: List<Display>? = null
 ) : BlockLayout() {
-
     companion object {
         const val KEY: String = "rows"
     }
@@ -49,9 +48,9 @@ data class RowBlockLayout constructor(
     @JsonClass(generateAdapter = true)
     data class Display constructor(
         @Json(name = "blocks")
-        var blocks: List<Int>? = null,
+        val blocks: List<Int>? = null,
         @Json(name = "mode")
-        var mode: Mode? = Mode.Weighted()
+        val mode: Mode? = Mode.Weighted()
     ) {
 
         /**
@@ -81,7 +80,7 @@ data class RowBlockLayout constructor(
  * @param blocks This is an array of block indices that are a part of the truncated version of the Post.
  */
 data class CondensedBlockLayout constructor(
-    var blocks: List<Int>? = null
+    val blocks: List<Int>? = null
 ) : BlockLayout() {
     companion object {
         const val KEY: String = "condensed"
@@ -95,8 +94,8 @@ data class CondensedBlockLayout constructor(
  * @param attribution If the ask is not anonymous, this will include information about the blog that submitted the ask.
  */
 data class AskBlockLayout constructor(
-    var blocks: List<Int>? = null,
-    var attribution: Attribution? = null
+    val blocks: List<Int>? = null,
+    val attribution: Attribution? = null
 ) : BlockLayout() {
     companion object {
         const val KEY: String = "ask"

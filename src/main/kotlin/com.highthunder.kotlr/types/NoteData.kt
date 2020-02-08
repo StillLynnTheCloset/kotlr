@@ -17,24 +17,24 @@ import com.highthunder.kotlr.types.content.TextFormat
  * @param avatarShape TODO: Documentation
  */
 sealed class NoteData {
-    abstract var timestamp: Long?
-    abstract var blogName: String?
-    abstract var blogUuid: String?
-    abstract var blogUrl: String?
-    abstract var blogFollowed: Boolean?
-    abstract var avatarShape: String?
+    abstract val timestamp: Long?
+    abstract val blogName: String?
+    abstract val blogUuid: String?
+    abstract val blogUrl: String?
+    abstract val blogFollowed: Boolean?
+    abstract val avatarShape: String?
 }
 
 /**
  * TODO: Documentation
  */
 data class LikeNote constructor(
-    override var timestamp: Long? = null,
-    override var blogName: String? = null,
-    override var blogUuid: String? = null,
-    override var blogUrl: String? = null,
-    override var blogFollowed: Boolean? = null,
-    override var avatarShape: String? = null
+    override val timestamp: Long? = null,
+    override val blogName: String? = null,
+    override val blogUuid: String? = null,
+    override val blogUrl: String? = null,
+    override val blogFollowed: Boolean? = null,
+    override val avatarShape: String? = null
 ) : NoteData() {
     companion object {
         const val KEY: String = "like"
@@ -45,12 +45,12 @@ data class LikeNote constructor(
  * TODO: Documentation
  */
 data class PostedNote constructor(
-    override var timestamp: Long? = null,
-    override var blogName: String? = null,
-    override var blogUuid: String? = null,
-    override var blogUrl: String? = null,
-    override var blogFollowed: Boolean? = null,
-    override var avatarShape: String? = null
+    override val timestamp: Long? = null,
+    override val blogName: String? = null,
+    override val blogUuid: String? = null,
+    override val blogUrl: String? = null,
+    override val blogFollowed: Boolean? = null,
+    override val avatarShape: String? = null
 ) : NoteData() {
     companion object {
         const val KEY: String = "posted"
@@ -64,14 +64,14 @@ data class PostedNote constructor(
  * @param reblogParentBlogName TODO: Documentation
  */
 data class ReblogNote constructor(
-    override var timestamp: Long? = null,
-    override var blogName: String? = null,
-    override var blogUuid: String? = null,
-    override var blogUrl: String? = null,
-    override var blogFollowed: Boolean? = null,
-    override var avatarShape: String? = null,
-    var postId: String? = null,
-    var reblogParentBlogName: String? = null
+    override val timestamp: Long? = null,
+    override val blogName: String? = null,
+    override val blogUuid: String? = null,
+    override val blogUrl: String? = null,
+    override val blogFollowed: Boolean? = null,
+    override val avatarShape: String? = null,
+    val postId: String? = null,
+    val reblogParentBlogName: String? = null
 ) : NoteData() {
     companion object {
         const val KEY: String = "reblog"
@@ -86,15 +86,15 @@ data class ReblogNote constructor(
  * @param canBlock TODO: Documentation
  */
 data class ReplyNote constructor(
-    override var timestamp: Long? = null,
-    override var blogName: String? = null,
-    override var blogUuid: String? = null,
-    override var blogUrl: String? = null,
-    override var blogFollowed: Boolean? = null,
-    override var avatarShape: String? = null,
-    var replyText: String? = null,
-    var formatting: List<TextFormat>? = null,
-    var canBlock: Boolean? = null
+    override val timestamp: Long? = null,
+    override val blogName: String? = null,
+    override val blogUuid: String? = null,
+    override val blogUrl: String? = null,
+    override val blogFollowed: Boolean? = null,
+    override val avatarShape: String? = null,
+    val replyText: String? = null,
+    val formatting: List<TextFormat>? = null,
+    val canBlock: Boolean? = null
 ) : NoteData() {
     companion object {
         const val KEY: String = "reply"
@@ -111,17 +111,17 @@ data class ReplyNote constructor(
  * @param photoHeight TODO: Documentation
  */
 data class AttributionNote constructor(
-    override var timestamp: Long? = null,
-    override var blogName: String? = null,
-    override var blogUuid: String? = null,
-    override var blogUrl: String? = null,
-    override var blogFollowed: Boolean? = null,
-    override var avatarShape: String? = null,
-    var postAttributionType: String? = null,
-    var postAttributionTypeName: String? = null,
-    var photoUrl: String? = null,
-    var photoWidth: Int? = null,
-    var photoHeight: Int? = null
+    override val timestamp: Long? = null,
+    override val blogName: String? = null,
+    override val blogUuid: String? = null,
+    override val blogUrl: String? = null,
+    override val blogFollowed: Boolean? = null,
+    override val avatarShape: String? = null,
+    val postAttributionType: String? = null,
+    val postAttributionTypeName: String? = null,
+    val photoUrl: String? = null,
+    val photoWidth: Int? = null,
+    val photoHeight: Int? = null
 ) : NoteData() {
     companion object {
         const val KEY: String = "post_attribution"

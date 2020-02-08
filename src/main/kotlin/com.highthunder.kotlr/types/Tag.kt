@@ -4,25 +4,25 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Tag - TODO: Documentation
+ * Tag - A tag object represents a tag
  *
  * @author highthunder
  * @since 10/24/18
  * @version 1.0.0
  *
- * @param tagText TODO: Documentation
- * @param thumbnailUrl TODO: Documentation
- * @param isTracked TODO: Documentation
- * @param featured TODO: Documentation
+ * @param tagText The tag name
+ * @param thumbnailUrl An image (75x75) associated with the tag; may be null
+ * @param isTracked Indicates whether the requesting user is tracking this tag
+ * @param featured Indicates whether the tag is a featured tag
  */
 @JsonClass(generateAdapter = true)
 data class Tag constructor(
     @Json(name = "tag")
-    var tagText: String? = null,
+    val tagText: String? = null,
     @Json(name = "thumb_url")
-    var thumbnailUrl: String? = null,
+    val thumbnailUrl: String? = null,
     @Json(name = "is_tracked")
-    var isTracked: Boolean? = null,
+    val isTracked: Boolean? = null,
     @Json(name = "featured")
-    var featured: Boolean? = null
+    val featured: Boolean? = null
 )

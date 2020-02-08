@@ -18,17 +18,18 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class RequestLink constructor(
     @Json(name = "type")
-    var linkType: Type? = null,
+    val linkType: Type? = null,
     @Json(name = "method")
-    var httpMethod: String? = null,
+    val httpMethod: String? = null,
     @Json(name = "href")
-    var fullLink: String? = null,
+    val fullLink: String? = null,
     @Json(name = "query_params")
-    var queryParams: Map<String, String>? = null
+    val queryParams: Map<String, String>? = null
 ) {
     /**
      * TODO: Documentation
      */
+    @JsonClass(generateAdapter = false)
     enum class Type {
         /**
          * TODO: Documentation

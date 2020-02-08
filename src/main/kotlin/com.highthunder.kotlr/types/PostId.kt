@@ -13,5 +13,5 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class PostId constructor(
-    var id: Long? = null
+    val id: Long? = null
 )

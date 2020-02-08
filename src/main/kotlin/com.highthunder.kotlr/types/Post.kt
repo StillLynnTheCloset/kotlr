@@ -3,6 +3,7 @@ package com.highthunder.kotlr.types
 import com.highthunder.kotlr.types.content.BlockLayout
 import com.highthunder.kotlr.types.content.PostContent
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
 /**
  * Post - The base information about a post.
@@ -18,7 +19,7 @@ interface Post {
     /**
      * The short name used to uniquely identify a blog.
      */
-    var blogName: String?
+    val blogName: String?
     /**
      * The post's unique ID.
      */
@@ -42,7 +43,7 @@ interface Post {
     /**
      * The post format: html, raw, or markdown.
      */
-    var format: PostFormat?
+    val format: PostFormat?
     /**
      * The key used to reblog this post.
      */
@@ -50,23 +51,23 @@ interface Post {
     /**
      * Tags applied to the post.
      */
-    var tags: List<String>?
+    val tags: List<String>?
     /**
      * Indicates whether the post was created via the Tumblr bookmarklet.
      */
-    var isBookmarklet: Boolean?
+    val isBookmarklet: Boolean?
     /**
      * Indicates whether the post was created via mobile/email publishing.
      */
-    var isMobile: Boolean?
+    val isMobile: Boolean?
     /**
      * The URL for the source of the content (for quotes, reblogs, etc.).
      */
-    var sourceUrl: String?
+    val sourceUrl: String?
     /**
      * The title of the source site.
      */
-    var sourceTitle: String?
+    val sourceTitle: String?
     /**
      * Indicates if a user has already liked a post or not.
      */
@@ -74,7 +75,7 @@ interface Post {
     /**
      * Indicates the current state of the post.
      */
-    var state: State?
+    val state: State?
     /**
      * The total number of post available for this request, useful for paginating through results.
      */
@@ -82,7 +83,7 @@ interface Post {
     /**
      * TODO: Documentation
      */
-    var anonymous: Boolean?
+    val anonymous: Boolean?
 
     // endregion
 
@@ -91,31 +92,31 @@ interface Post {
     /**
      * The array of content that constitutes the body of a post in the Neue Post Format(NPF).
      */
-    var content: List<PostContent>?
+    val content: List<PostContent>?
     /**
      * The previous Posts in the reblog trail. In order of oldest (the root Post) to the newest (the parent Post).
      */
-    var trail: List<Trail>?
+    val trail: List<Trail>?
     /**
      * The layouts of the blocks in this post.
      */
-    var layout: List<BlockLayout>?
+    val layout: List<BlockLayout>?
     /**
      * The id of the author of the post.
      */
-    var postAuthor: String?
+    val postAuthor: String?
     /**
      * The short URL for this post.
      */
-    var shortUrl: String?
+    val shortUrl: String?
     /**
      * A short description of this post.
      */
-    var summary: String?
+    val summary: String?
     /**
      * Indicates whether or not this post is using the new block format(NPF).
      */
-    var isBlocksFormat: Boolean?
+    val isBlocksFormat: Boolean?
     /**
      * The timestamp of when this post was liked.
      */
@@ -123,11 +124,11 @@ interface Post {
     /**
      * The slug. TODO: Documentation
      */
-    var slug: String?
+    val slug: String?
     /**
      * The note count for this post.
      */
-    var noteCount: Long?
+    val noteCount: Long?
     /**
      * The source of a recommended post.
      */
@@ -143,23 +144,23 @@ interface Post {
     /**
      * Indicates whether or not this post is a submission.
      */
-    var isSubmission: Boolean?
+    val isSubmission: Boolean?
     /**
      * Indicates whether or not the current user can like this post.
      */
-    var canLike: Boolean?
+    val canLike: Boolean?
     /**
      * Indicates whether or not the current user can reblog this post.
      */
-    var canReblog: Boolean?
+    val canReblog: Boolean?
     /**
      * Indicates whether or not this post can be sent in a message.
      */
-    var canSendInMessage: Boolean?
+    val canSendInMessage: Boolean?
     /**
      * Indicates whether or not the current user can reply to this post.
      */
-    var canReply: Boolean?
+    val canReply: Boolean?
     /**
      * Indicates whether or not the poster's avatar should be shown with this post.
      */
@@ -171,7 +172,7 @@ interface Post {
     /**
      * TODO: Documentation
      */
-    var reblogData: ReblogData?
+    val reblogData: ReblogData?
     /**
      * TODO: Documentation
      */
@@ -244,14 +245,37 @@ interface Post {
      * TODO: Documentation
      */
     val shouldOpenInLegacy: Boolean?
-
+    /**
+     * TODO: Documentation
+     */
     val muted: Boolean?
+    /**
+     * TODO: Documentation
+     */
+    val objectType: String?
+    /**
+     * TODO: Documentation
+     */
+    val type: Post.Type?
+    /**
+     * TODO: Documentation
+     */
+    val blogUUID: String?
+    /**
+     * TODO: Documentation
+     */
+    val parentPostId: Long?
+    /**
+     * TODO: Documentation
+     */
+    val parentBlogUUID: String?
 
     // endregion
 
     /**
      * Enum of valid post states.
      */
+    @JsonClass(generateAdapter = false)
     enum class State {
         /**
          * TODO: Documentation
@@ -284,6 +308,7 @@ interface Post {
      * Enum of valid post types.
      * @param key TODO: Documentation
      */
+    @JsonClass(generateAdapter = false)
     enum class Type(val key: String) {
         /**
          * TODO: Documentation
@@ -337,6 +362,7 @@ interface Post {
      *
      * @param key TODO: Documentation
      */
+    @JsonClass(generateAdapter = false)
     enum class PostFormat(val key: String) {
         /**
          * TODO: Documentation
@@ -360,6 +386,26 @@ interface Post {
      *
      * @param key TODO: Documentation
      */
+    @JsonClass(generateAdapter = false)
+    enum class PostVersion(val key: String) {
+        /**
+         * TODO: Documentation
+         */
+        @Json(name = "npf")
+        NPF("npf"),
+        /**
+         * TODO: Documentation
+         */
+        @Json(name = "legacy")
+        Legacy("legacy")
+    }
+
+    /**
+     * TODO: Documentation
+     *
+     * @param key TODO: Documentation
+     */
+    @JsonClass(generateAdapter = false)
     enum class QueueState(val key: String) {
         /**
          * TODO: Documentation

@@ -23,9 +23,9 @@ sealed class Attribution
  * @param blog A Tumblelog object with at least a uuid field.
  */
 data class PostAttribution constructor(
-    var url: String? = null,
-    var post: PostId? = null,
-    var blog: Blog? = null
+    val url: String? = null,
+    val post: PostId? = null,
+    val blog: Blog? = null
 ) : Attribution() {
     companion object {
         const val KEY: String = "post"
@@ -38,7 +38,7 @@ data class PostAttribution constructor(
  * @param url The URL to be attributed for the content.
  */
 data class LinkAttribution constructor(
-    var url: String? = null
+    val url: String? = null
 ) : Attribution() {
     companion object {
         const val KEY: String = "link"
@@ -51,7 +51,7 @@ data class LinkAttribution constructor(
  * @param blog A Tumblelog object with at least a uuid field.
  */
 data class BlogAttribution constructor(
-    var blog: Blog? = null
+    val blog: Blog? = null
 ) : Attribution() {
     companion object {
         const val KEY: String = "blog"
@@ -67,10 +67,10 @@ data class BlogAttribution constructor(
  * @param logo A specific logo Media Object that the client should use with the third-party app attribution.
  */
 data class AppAttribution constructor(
-    var url: String? = null,
-    var appName: String? = null,
-    var displayText: String? = null,
-    var logo: Media? = null
+    val url: String? = null,
+    val appName: String? = null,
+    val displayText: String? = null,
+    val logo: Media? = null
 ) : Attribution() {
     companion object {
         const val KEY: String = "app"

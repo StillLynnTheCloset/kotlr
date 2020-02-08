@@ -21,8 +21,8 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = false)
 internal data class MediaWrapper(
-    var singleMedia: Media? = null,
-    var listMedia: List<Media>? = null
+    val singleMedia: Media? = null,
+    val listMedia: List<Media>? = null
 ) {
     fun getAsList(): List<Media>? = listMedia ?: singleMedia?.let { listOf(it) }
 }

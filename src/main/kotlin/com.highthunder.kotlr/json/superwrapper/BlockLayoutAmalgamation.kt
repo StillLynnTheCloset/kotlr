@@ -37,15 +37,15 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 internal data class BlockLayoutAmalgamation constructor(
     @Json(name = "type")
-    var type: String? = null,
+    val type: String? = null,
     @Json(name = "rows")
-    var rows: List<List<Int>>? = null,
+    val rows: List<List<Int>>? = null,
     @Json(name = "blocks")
-    var blocks: List<Int>? = null,
+    val blocks: List<Int>? = null,
     @Json(name = "display")
-    var display: List<RowBlockLayout.Display>? = null,
+    val display: List<RowBlockLayout.Display>? = null,
     @Json(name = "attribution")
-    var attribution: Attribution? = null
+    val attribution: Attribution? = null
 ) {
     constructor(layout: VerticalBlockLayout) : this(
         VerticalBlockLayout.KEY

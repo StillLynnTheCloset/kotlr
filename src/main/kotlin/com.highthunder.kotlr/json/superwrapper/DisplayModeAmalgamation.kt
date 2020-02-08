@@ -19,7 +19,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 internal data class DisplayModeAmalgamation(
     @Json(name = "type")
-    var type: String? = null
+    val type: String? = null
 ) {
     constructor(mode: Weighted) : this(Weighted.KEY)
     constructor(mode: Carousel) : this(Carousel.KEY)

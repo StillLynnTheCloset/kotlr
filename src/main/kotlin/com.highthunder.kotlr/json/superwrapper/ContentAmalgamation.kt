@@ -78,80 +78,80 @@ internal data class ContentAmalgamation constructor(
     // region PostContent
 
     @Json(name = "type")
-    var type: String? = null,
+    val type: String? = null,
 
     // endregion
 
     // region AudioContent
 
     @Json(name = "provider")
-    var provider: String? = null,
+    val provider: String? = null,
     @Json(name = "url")
-    var url: String? = null,
+    val url: String? = null,
     @Json(name = "media")
-    var media: MediaWrapper? = null,
+    val media: MediaWrapper? = null,
     @Json(name = "title")
-    var title: String? = null,
+    val title: String? = null,
     @Json(name = "artist")
-    var artist: String? = null,
+    val artist: String? = null,
     @Json(name = "album")
-    var album: String? = null,
+    val album: String? = null,
     @Json(name = "poster")
-    var poster: List<Media>? = null,
+    val poster: List<Media>? = null,
     @Json(name = "embed_html")
-    var embedHtml: String? = null,
+    val embedHtml: String? = null,
     @Json(name = "embed_url")
-    var embedUrl: String? = null,
+    val embedUrl: String? = null,
     @Json(name = "metadata")
-    var metadata: Any? = null,
+    val metadata: Any? = null,
     @Json(name = "attribution")
-    var attribution: Attribution? = null,
+    val attribution: Attribution? = null,
 
     // endregion
 
     // region ImageContent
 
     @Json(name = "feedback_token")
-    var feedbackToken: String? = null,
+    val feedbackToken: String? = null,
     @Json(name = "colors")
-    var colors: Colors? = null,
+    val colors: Colors? = null,
     @Json(name = "alt_text")
-    var altText: String? = null,
+    val altText: String? = null,
 
     // endregion
 
     // region LinkContent
 
     @Json(name = "description")
-    var description: String? = null,
+    val description: String? = null,
     @Json(name = "author")
-    var author: String? = null,
+    val author: String? = null,
     @Json(name = "site_name")
-    var siteName: String? = null,
+    val siteName: String? = null,
     @Json(name = "display_url")
-    var displayUrl: String? = null,
+    val displayUrl: String? = null,
 
     // endregion
 
     // region TextContent
 
     @Json(name = "text")
-    var text: String? = null,
+    val text: String? = null,
     @Json(name = "subtype")
-    var subType: TextContent.SubType? = null,
+    val subType: TextContent.SubType? = null,
     @Json(name = "formatting")
-    var formatting: List<TextFormat>? = null,
+    val formatting: List<TextFormat>? = null,
 
     // endregion
 
     // region VideoContent
 
     @Json(name = "can_autoplay_on_cellular")
-    var canAutoPlayOnCellular: Boolean? = null,
+    val canAutoPlayOnCellular: Boolean? = null,
     @Json(name = "filmstrip")
-    var filmStrip: MediaWrapper? = null,
+    val filmStrip: MediaWrapper? = null,
     @Json(name = "embed_iframe")
-    var iframe: Media? = null
+    val iframe: Media? = null
 
     // endregion
 

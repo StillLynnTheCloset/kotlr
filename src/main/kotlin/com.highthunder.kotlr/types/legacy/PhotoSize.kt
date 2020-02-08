@@ -17,9 +17,9 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class PhotoSize constructor(
     @Json(name = "width")
-    var width: Int? = null,
+    val width: Int? = null,
     @Json(name = "height")
-    var height: Int? = null,
+    val height: Int? = null,
     @Json(name = "url")
-    var url: String? = null
+    val url: String? = null
 )

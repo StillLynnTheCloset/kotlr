@@ -374,6 +374,21 @@ class ParseNpfUnitTest {
         assertNotNull(json)
     }
 
+    @Test
+    fun parseTextIndentedTest() {
+        val adapter = moshi.adapter(PostContent::class.java).failOnUnknown()
+        assertTrue(adapter is JsonAdapter<PostContent>)
+
+        val content: TextContent? =
+            adapter.fromJson(Sample.textContentIndented) as? TextContent
+        assertNotNull(content)
+        assertNotNull(content?.text)
+        assertEquals(TextContent.SubType.Indented, content?.subType)
+        assertNull(content?.formatting)
+        val json = adapter.toJson(content)
+        assertNotNull(json)
+    }
+
     // endregion
 
     // region Text Format Tests
@@ -564,6 +579,7 @@ class ParseNpfUnitTest {
         assertNotNull(media?.url)
         assertNotNull(media?.width)
         assertNotNull(media?.height)
+        assertNotNull(media?.hd)
         val json = adapter.toJson(media)
         assertNotNull(json)
     }
@@ -581,6 +597,29 @@ class ParseNpfUnitTest {
         assertNotNull(media?.height)
         assertNotNull(media?.poster)
         assertNotNull(media?.poster?.url)
+        val json = adapter.toJson(media)
+        assertNotNull(json)
+    }
+
+    @Test
+    fun parseMediaAllPropertiesTest() {
+        val adapter = moshi.adapter(Media::class.java).failOnUnknown()
+        assertTrue(adapter is JsonAdapter<Media>)
+
+        val media: Media? = adapter.fromJson(Sample.mediaContentAllProperties)
+        assertNotNull(media)
+        assertNotNull(media?.type)
+        assertNotNull(media?.url)
+        assertNotNull(media?.width)
+        assertNotNull(media?.height)
+        assertNotNull(media?.poster)
+        assertNotNull(media?.poster?.url)
+        assertNotNull(media?.colors)
+        assertNotNull(media?.colors?.colors)
+        assertNotNull(media?.colors?.colors?.get(0))
+        assertNotNull(media?.colors?.colors?.get(1))
+        assertNotNull(media?.cropped)
+        assertNotNull(media?.hasOriginalDimensions)
         val json = adapter.toJson(media)
         assertNotNull(json)
     }

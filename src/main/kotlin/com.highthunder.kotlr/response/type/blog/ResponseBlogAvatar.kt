@@ -17,7 +17,6 @@ import com.squareup.moshi.JsonClass
  * @version 1.0.0
  */
 interface ResponseBlogAvatar {
-
     /**
      * TODO: Documentation
      *
@@ -55,8 +54,8 @@ interface ResponseBlogAvatar {
     @JsonClass(generateAdapter = true)
     data class Body constructor(
         @Json(name = "_links")
-        var links: Map<String, RequestLink>? = null, // TODO: Get rid of map.
+        val links: Map<String, RequestLink>? = null, // TODO: Get rid of map.
         @Json(name = "avatar_url")
-        var url: String? = null
+        val url: String? = null
     )
 }

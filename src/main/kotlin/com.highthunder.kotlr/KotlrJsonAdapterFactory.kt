@@ -9,10 +9,14 @@ import com.highthunder.kotlr.json.response.blog.BlogLikesWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.blog.BlogPostsWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.blog.BlogQueueWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.blog.BlogSubmissionsWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.post.CreatePostWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.post.PostsPostWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.post.PostsTaggedWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserDashboardWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserFollowingWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserInfoWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserLikesWrapperJsonAdapter
+import com.highthunder.kotlr.json.wrapper.ColorJsonAdapter
 import com.highthunder.kotlr.json.wrapper.ColorsJsonAdapter
 import com.highthunder.kotlr.json.wrapper.ContentWrapperJsonAdapter
 import com.highthunder.kotlr.json.wrapper.MediaWrapperJsonAdapter
@@ -56,6 +60,12 @@ class KotlrJsonAdapterFactory : JsonAdapter.Factory {
                         UserLikesWrapperJsonAdapter(moshi)
                     "com.highthunder.kotlr.response.type.user.ResponseUserFollowing\$Body" ->
                         UserFollowingWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.post.ResponsePostsTagged\$Body" ->
+                        PostsTaggedWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.post.ResponseCreatePost\$Body" ->
+                        CreatePostWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.types.Post" ->
+                        PostsPostWrapperJsonAdapter(moshi)
                     else -> null
                 }
             } else {
@@ -64,6 +74,7 @@ class KotlrJsonAdapterFactory : JsonAdapter.Factory {
         } else {
             when (type.typeName) {
                 "com.highthunder.kotlr.types.Colors" -> ColorsJsonAdapter(moshi)
+                "com.highthunder.kotlr.types.Color" -> ColorJsonAdapter(moshi)
                 "com.highthunder.kotlr.types.legacy.Video" -> VideoJsonAdapter(moshi)
                 "com.highthunder.kotlr.types.User" -> UserJsonAdapter(moshi)
                 "com.highthunder.kotlr.json.wrapper.MediaWrapper" -> MediaWrapperJsonAdapter(moshi)

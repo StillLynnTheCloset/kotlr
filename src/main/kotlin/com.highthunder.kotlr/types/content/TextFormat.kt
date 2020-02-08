@@ -4,6 +4,7 @@ import com.highthunder.kotlr.json.qualifier.HexColorOctothorpe
 import com.highthunder.kotlr.types.Blog
 import com.highthunder.kotlr.types.Color
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
 /**
  * TextFormat - In addition to subtypes at the Text block level, the text within a Text block
@@ -30,16 +31,16 @@ import com.squareup.moshi.Json
  * @param end The ending index of the formatting range (exclusive).
  */
 sealed class TextFormat {
-    abstract var start: Int?
-    abstract var end: Int?
+    abstract val start: Int?
+    abstract val end: Int?
 }
 
 /**
  * TODO: Documentation
  */
-class BoldTextFormat constructor(
-    override var start: Int? = null,
-    override var end: Int? = null
+data class BoldTextFormat constructor(
+    override val start: Int? = null,
+    override val end: Int? = null
 ) : TextFormat() {
     companion object {
         const val KEY: String = "bold"
@@ -49,9 +50,9 @@ class BoldTextFormat constructor(
 /**
  * TODO: Documentation
  */
-class ItalicTextFormat constructor(
-    override var start: Int? = null,
-    override var end: Int? = null
+data class ItalicTextFormat constructor(
+    override val start: Int? = null,
+    override val end: Int? = null
 ) : TextFormat() {
     companion object {
         const val KEY: String = "italic"
@@ -61,9 +62,9 @@ class ItalicTextFormat constructor(
 /**
  * TODO: Documentation
  */
-class StrikeThroughTextFormat constructor(
-    override var start: Int? = null,
-    override var end: Int? = null
+data class StrikeThroughTextFormat constructor(
+    override val start: Int? = null,
+    override val end: Int? = null
 ) : TextFormat() {
     companion object {
         const val KEY: String = "strikethrough"
@@ -75,10 +76,10 @@ class StrikeThroughTextFormat constructor(
  *
  * @param url The link's URL!
  */
-class LinkTextFormat constructor(
-    override var start: Int? = null,
-    override var end: Int? = null,
-    var url: String? = null
+data class LinkTextFormat constructor(
+    override val start: Int? = null,
+    override val end: Int? = null,
+    val url: String? = null
 ) : TextFormat() {
     companion object {
         const val KEY: String = "link"
@@ -90,10 +91,10 @@ class LinkTextFormat constructor(
  *
  * @param blog An object with a uuid field, which is the mentioned blog's UUID.
  */
-class MentionTextFormat constructor(
-    override var start: Int? = null,
-    override var end: Int? = null,
-    var blog: Blog? = null
+data class MentionTextFormat constructor(
+    override val start: Int? = null,
+    override val end: Int? = null,
+    val blog: Blog? = null
 ) : TextFormat() {
     companion object {
         const val KEY: String = "mention"
@@ -105,10 +106,10 @@ class MentionTextFormat constructor(
  *
  * @param hex The color to use, in standard hex format, with leading '#'.
  */
-class ColorTextFormat constructor(
-    override var start: Int? = null,
-    override var end: Int? = null,
-    @HexColorOctothorpe var hex: Color? = null
+data class ColorTextFormat constructor(
+    override val start: Int? = null,
+    override val end: Int? = null,
+    @HexColorOctothorpe val hex: Color? = null
 ) : TextFormat() {
     companion object {
         const val KEY: String = "color"
@@ -120,10 +121,10 @@ class ColorTextFormat constructor(
  *
  * @param size The text size for this particular range of text, one of 'small' or 'big'.
  */
-class SizeTextFormat constructor(
-    override var start: Int? = null,
-    override var end: Int? = null,
-    var size: Option? = null
+data class SizeTextFormat constructor(
+    override val start: Int? = null,
+    override val end: Int? = null,
+    val size: Option? = null
 ) : TextFormat() {
     companion object {
         const val KEY: String = "size"
@@ -131,19 +132,18 @@ class SizeTextFormat constructor(
 
     /**
      * TODO: Documentation
-     *
-     * @param key TODO: Documentation
      */
-    enum class Option(val key: String) {
+    @JsonClass(generateAdapter = false)
+    enum class Option() {
         /**
          * TODO: Documentation
          */
         @Json(name = "small")
-        Small("small"),
+        Small,
         /**
          * TODO: Documentation
          */
         @Json(name = "big")
-        Big("big")
+        Big
     }
 }

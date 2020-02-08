@@ -20,9 +20,9 @@ data class Color constructor(
 
     constructor(s: String) : this(
         Integer.parseInt(s.dropWhile { it == '#' }.takeIf(String::isNotBlank)?.let {
-            return@let when {
-                it.length == 6 -> it
-                it.length == 3 -> "${it[0]}${it[0]}${it[1]}${it[1]}${it[2]}${it[2]}"
+            return@let when (it.length) {
+                6 -> it
+                3 -> "${it[0]}${it[0]}${it[1]}${it[1]}${it[2]}${it[2]}"
                 else -> null
             }
         } ?: throw IllegalArgumentException(""), 16)
