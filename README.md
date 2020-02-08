@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/static/v1?label=Version&message=0.4.0&color=brightgreen)]()
+[![version](https://img.shields.io/static/v1?label=Version&message=0.6.0&color=brightgreen)]()
 [![Build Status](https://travis-ci.com/highthunder/kotlr.svg?branch=master)](https://travis-ci.com/highthunder/kotlr)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
@@ -162,6 +162,41 @@ suspend fun minimalExample() {
         ?.postUrl
 }
 ```
+
+### Version History ###
+
+#### 0.6.0 ####
+
+  * Only fail on unknown JSON properties when `getApi` is called with `debug = true`
+  * Add support for Blog.avatar property, this is a list of `Media` objects
+  * Add support for Post.parentPostId
+  * Add support for Post.parentBlogUUID
+
+#### 0.5.0 ####
+
+  * Add a bunch of new requests including:
+    * Create new post (NPF and Legacy post types)
+    * Edit post (NPF and Legacy post types)
+    * Reblog post (NPF and Legacy post types)
+    * Get Post
+    * Follow Blog
+    * Unfollow Blog
+    * Like Post
+    * Unlike Post
+  * Use more `val`s instead of `var`s
+  * Add an object to all API responses containing Tumblr's rate limit headers
+    * Now every API call will tell you how many requests you have left in the hour and in the day.
+  * Add support for Post.objectType
+  * Add support for Post.type
+  * Add support for Post.blogUUID
+  * Add support for Media.cropped
+  * Add support for Media.hasOriginalDimensions
+  * Add support for Media.colors
+  * Add support for TextContent.SubType.Indented
+
+#### <= 0.4.0 ####
+
+  * Lots of cool stuff
 
 ### Credits ###
 * API Documentation - [Tumblr](https://github.com/tumblr/docs)
