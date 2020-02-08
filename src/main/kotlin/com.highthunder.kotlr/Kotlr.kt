@@ -31,7 +31,7 @@ import se.akerfeldt.okhttp.signpost.OkHttpOAuthProvider
 import se.akerfeldt.okhttp.signpost.SigningInterceptor
 
 /**
- * Get an instance of the Moshi JSON parser that is setup to parse all of our data types.
+ * A lazily constructed instance of the Moshi JSON parser that is setup to parse all of our data types.
  */
 internal val moshi: Moshi by lazy {
     return@lazy Moshi
@@ -102,9 +102,12 @@ private fun getHttpClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false)
 }
 
 private fun getClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false): Retrofit {
-    var moshiFactory = MoshiConverterFactory.create(moshi)
-    if (debug) {
-        moshiFactory = moshiFactory.failOnUnknown()
+    val moshiFactory = MoshiConverterFactory.create(moshi).let { factory ->
+        if (debug) {
+            factory.failOnUnknown()
+        } else {
+            factory
+        }
     }
 
     return Retrofit.Builder()
