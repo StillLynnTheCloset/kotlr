@@ -52,6 +52,7 @@ import com.squareup.moshi.JsonClass
  * @param totalPosts TODO: Documentation
  * @param shareFollowing TODO: Documentation
  * @param canBeFollowed TODO: Documentation
+ * @param canChat TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class Blog constructor(
@@ -136,5 +137,7 @@ data class Blog constructor(
     @Json(name = "can_be_followed")
     val canBeFollowed: Boolean? = null,
     @Json(name = "can_chat")
-    val canChat: Boolean? = null
+    val canChat: Boolean? = null,
+    @Json(name = "avatar")
+    val avatar: List<Media>? = null
 )
