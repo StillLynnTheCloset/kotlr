@@ -165,6 +165,10 @@ suspend fun minimalExample() {
 
 ### Version History ###
 
+#### 0.6.1 ####
+
+  * Add JsonAdapter for `Color`
+
 #### 0.6.0 ####
 
   * Only fail on unknown JSON properties when `getApi` is called with `debug = true`
