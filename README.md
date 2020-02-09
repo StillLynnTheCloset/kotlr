@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/static/v1?label=Version&message=0.6.0&color=brightgreen)]()
+[![version](https://img.shields.io/static/v1?label=Version&message=0.6.2&color=brightgreen)]()
 [![Build Status](https://travis-ci.com/highthunder/kotlr.svg?branch=master)](https://travis-ci.com/highthunder/kotlr)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
@@ -64,7 +64,7 @@ to your project's `repositories` block.
 
 Then add
 ```groovy
-implementation 'com.highthunder:kotlr:0.3.0'
+implementation 'com.highthunder:kotlr:0.6.2'
 ```
 to your module's `dependencies` block.
 
@@ -78,7 +78,7 @@ to your project's `repositories` block.
 
 Then add
 ```kotlin
-implementation("com.highthunder:kotlr:0.4.0")
+implementation("com.highthunder:kotlr:0.6.2")
 ```
 to your module's `dependencies` block.
 
@@ -164,6 +164,11 @@ suspend fun minimalExample() {
 ```
 
 ### Version History ###
+
+#### 0.6.2 ####
+
+  * Fix issue when trying to store `Post` classes in Room database
+  * Expose a new helper function `Moshi.Builder.addKotlrTypes` to easilly add Kotlr data types' adapters to your own instance of Moshi
 
 #### 0.6.1 ####
 
