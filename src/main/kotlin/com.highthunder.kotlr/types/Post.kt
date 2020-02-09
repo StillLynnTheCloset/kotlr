@@ -256,10 +256,6 @@ interface Post {
     /**
      * TODO: Documentation
      */
-    val type: Post.Type?
-    /**
-     * TODO: Documentation
-     */
     val blogUUID: String?
     /**
      * TODO: Documentation

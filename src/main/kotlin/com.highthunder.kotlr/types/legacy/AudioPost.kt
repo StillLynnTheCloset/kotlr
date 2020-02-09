@@ -170,6 +170,4 @@ data class AudioPost constructor(
     val audioSourceUrl: String? = null,
     val audioType: String? = null,
     val embed: String? = null
-) : Post {
-    override val type: Post.Type = Post.Type.Audio
-}
+) : Post

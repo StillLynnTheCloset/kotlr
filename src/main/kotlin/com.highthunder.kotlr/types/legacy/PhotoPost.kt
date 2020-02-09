@@ -153,6 +153,4 @@ data class PhotoPost constructor(
     val imagePermalink: String? = null,
     val panorama: Boolean? = null,
     val photosetLayout: String? = null
-) : Post {
-    override val type: Post.Type = Post.Type.Photo
-}
+) : Post

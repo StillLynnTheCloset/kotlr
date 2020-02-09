@@ -157,6 +157,4 @@ data class LinkPost constructor(
     val publisher: String? = null,
     val photos: List<Photo>? = null,
     val body: String? = null
-) : Post {
-    override val type: Post.Type = Post.Type.Link
-}
+) : Post

@@ -128,6 +128,4 @@ data class BlockPost constructor(
     override val blogUUID: String?,
     override val parentPostId: Long?,
     override val parentBlogUUID: String?
-) : Post {
-    override val type: Post.Type = Post.Type.Block
-}
+) : Post

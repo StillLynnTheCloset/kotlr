@@ -139,6 +139,4 @@ data class QuotePost constructor(
     override val parentBlogUUID: String?,
     val text: String? = null,
     val source: String? = null
-) : Post {
-    override val type: Post.Type = Post.Type.Quote
-}
+) : Post

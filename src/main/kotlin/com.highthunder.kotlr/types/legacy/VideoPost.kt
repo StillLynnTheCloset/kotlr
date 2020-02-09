@@ -157,6 +157,4 @@ data class VideoPost constructor(
     val videoData: Any? = null,
     val permalinkUrl: String? = null,
     val videoType: String? = null
-) : Post {
-    override val type: Post.Type = Post.Type.Video
-}
+) : Post

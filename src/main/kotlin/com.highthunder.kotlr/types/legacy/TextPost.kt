@@ -141,6 +141,4 @@ data class TextPost constructor(
     val title: String? = null,
     val abstract: String? = null,
     val body: String? = null
-) : Post {
-    override val type: Post.Type = Post.Type.Text
-}
+) : Post

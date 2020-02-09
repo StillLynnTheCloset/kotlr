@@ -141,6 +141,4 @@ data class ChatPost constructor(
     val title: String? = null,
     val body: String? = null,
     val dialogue: List<Dialogue>? = null
-) : Post {
-    override val type: Post.Type = Post.Type.Chat
-}
+) : Post

@@ -145,6 +145,4 @@ data class AnswerPost constructor(
     val question: String? = null,
     val answer: String? = null,
     val answerAbstract: String? = null
-) : Post {
-    override val type: Post.Type = Post.Type.Answer
-}
+) : Post
