@@ -36,19 +36,25 @@ import se.akerfeldt.okhttp.signpost.SigningInterceptor
 internal val moshi: Moshi by lazy {
     return@lazy Moshi
         .Builder()
-        .add(ContentAmalgamationAdapter())
-        .add(AttributionAmalgamationAdapter())
-        .add(TextFormatAmalgamationAdapter())
-        .add(BlockLayoutAmalgamationAdapter())
-        .add(DisplayModeAmalgamationAdapter())
-        .add(NoteDataAmalgamationAdapter())
-        .add(CommaSeparatedStringJsonAdapter())
-        .add(HexColorJsonAdapter())
-        .add(HexColorOctothorpeJsonAdapter())
-        .add(PostAmalgamationAdapter())
-        .add(KotlrJsonAdapterFactory())
+        .addKotlrTypes()
         .build()
 }
+
+/**
+ * Helper function to add support for all Kotlr datatypes to the given Moshi Builder
+ */
+fun Moshi.Builder.addKotlrTypes(): Moshi.Builder = this
+    .add(ContentAmalgamationAdapter())
+    .add(AttributionAmalgamationAdapter())
+    .add(TextFormatAmalgamationAdapter())
+    .add(BlockLayoutAmalgamationAdapter())
+    .add(DisplayModeAmalgamationAdapter())
+    .add(NoteDataAmalgamationAdapter())
+    .add(CommaSeparatedStringJsonAdapter())
+    .add(HexColorJsonAdapter())
+    .add(HexColorOctothorpeJsonAdapter())
+    .add(PostAmalgamationAdapter())
+    .add(KotlrJsonAdapterFactory())
 
 private const val API_BASE_URL = "https://api.tumblr.com/v2/"
 private const val O_AUTH_BASE_URL = "https://www.tumblr.com/oauth/"
