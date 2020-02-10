@@ -57,12 +57,14 @@ internal data class AttributionAmalgamation constructor(
 ) {
 
     constructor(attribution: PostAttribution) : this(
+        type = PostAttribution.KEY,
         url = attribution.url,
         post = attribution.post,
         blog = attribution.blog
     )
 
     constructor(attribution: AppAttribution) : this(
+        type = AppAttribution.KEY,
         url = attribution.url,
         appName = attribution.appName,
         displayText = attribution.displayText,
@@ -70,10 +72,12 @@ internal data class AttributionAmalgamation constructor(
     )
 
     constructor(attribution: LinkAttribution) : this(
+        type = LinkAttribution.KEY,
         url = attribution.url
     )
 
     constructor(attribution: BlogAttribution) : this(
+        type = BlogAttribution.KEY,
         blog = attribution.blog
     )
 

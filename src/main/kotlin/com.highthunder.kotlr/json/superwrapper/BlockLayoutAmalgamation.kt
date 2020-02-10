@@ -52,18 +52,18 @@ internal data class BlockLayoutAmalgamation constructor(
     )
 
     constructor(layout: RowBlockLayout) : this(
-        RowBlockLayout.KEY,
+        type = RowBlockLayout.KEY,
         rows = layout.rows,
         display = layout.display
     )
 
     constructor(layout: CondensedBlockLayout) : this(
-        CondensedBlockLayout.KEY,
+        type = CondensedBlockLayout.KEY,
         blocks = layout.blocks
     )
 
     constructor(layout: AskBlockLayout) : this(
-        AskBlockLayout.KEY,
+        type = AskBlockLayout.KEY,
         blocks = layout.blocks,
         attribution = layout.attribution
     )

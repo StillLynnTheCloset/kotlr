@@ -55,13 +55,13 @@ internal data class TextFormatAmalgamation constructor(
     @Json(name = "size")
     val size: SizeTextFormat.Option? = null
 ) {
-    constructor(format: BoldTextFormat) : this(format.start, format.end)
-    constructor(format: ItalicTextFormat) : this(format.start, format.end)
-    constructor(format: StrikeThroughTextFormat) : this(format.start, format.end)
-    constructor(format: LinkTextFormat) : this(format.start, format.end, url = format.url)
-    constructor(format: MentionTextFormat) : this(format.start, format.end, blog = format.blog)
-    constructor(format: ColorTextFormat) : this(format.start, format.end, hex = format.hex)
-    constructor(format: SizeTextFormat) : this(format.start, format.end, size = format.size)
+    constructor(format: BoldTextFormat) : this(type = BoldTextFormat.KEY, start = format.start, end = format.end)
+    constructor(format: ItalicTextFormat) : this(type = ItalicTextFormat.KEY, start = format.start, end = format.end)
+    constructor(format: StrikeThroughTextFormat) : this(type = StrikeThroughTextFormat.KEY, start = format.start, end = format.end)
+    constructor(format: LinkTextFormat) : this(type = LinkTextFormat.KEY, start = format.start, end = format.end, url = format.url)
+    constructor(format: MentionTextFormat) : this(type = MentionTextFormat.KEY, start = format.start, end = format.end, blog = format.blog)
+    constructor(format: ColorTextFormat) : this(type = ColorTextFormat.KEY, start = format.start, end = format.end, hex = format.hex)
+    constructor(format: SizeTextFormat) : this(type = SizeTextFormat.KEY, start = format.start, end = format.end, size = format.size)
 
     fun toBold(): BoldTextFormat = BoldTextFormat(start, end)
     fun toItalic(): ItalicTextFormat = ItalicTextFormat(start, end)

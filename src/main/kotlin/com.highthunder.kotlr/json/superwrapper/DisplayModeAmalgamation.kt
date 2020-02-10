@@ -21,8 +21,8 @@ internal data class DisplayModeAmalgamation(
     @Json(name = "type")
     val type: String? = null
 ) {
-    constructor(mode: Weighted) : this(Weighted.KEY)
-    constructor(mode: Carousel) : this(Carousel.KEY)
+    constructor(mode: Weighted) : this(type = Weighted.KEY)
+    constructor(mode: Carousel) : this(type = Carousel.KEY)
 
     fun toWeighted(): Weighted = Weighted()
 
