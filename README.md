@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/static/v1?label=Version&message=0.6.2&color=brightgreen)]()
+[![version](https://img.shields.io/static/v1?label=Version&message=0.6.3&color=brightgreen)]()
 [![Build Status](https://travis-ci.com/highthunder/kotlr.svg?branch=master)](https://travis-ci.com/highthunder/kotlr)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
@@ -64,7 +64,7 @@ to your project's `repositories` block.
 
 Then add
 ```groovy
-implementation 'com.highthunder:kotlr:0.6.2'
+implementation 'com.highthunder:kotlr:0.6.3'
 ```
 to your module's `dependencies` block.
 
@@ -78,7 +78,7 @@ to your project's `repositories` block.
 
 Then add
 ```kotlin
-implementation("com.highthunder:kotlr:0.6.2")
+implementation("com.highthunder:kotlr:0.6.3")
 ```
 to your module's `dependencies` block.
 
@@ -164,6 +164,10 @@ suspend fun minimalExample() {
 ```
 
 ### Version History ###
+
+#### 0.6.3 ####
+
+  * Add amalgamation types back in when constructing the amalgamation from a specific type
 
 #### 0.6.2 ####
 
