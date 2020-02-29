@@ -28,7 +28,8 @@ import com.squareup.moshi.JsonClass
  * @param display This is an array of display objects per row, see [RowBlockLayout.Display].
  *
  * [CondensedBlockLayout]
- * @param blocks This is an array of block indices that are a part of the truncated version of the Post.
+ * @param blocks This is an array of block indices that are a part of the truncated version of the Post. Required if truncate_after is not supplied. Must be sequential, not empty, and begin with 0.
+ * @param truncateAfter The last block to display before the Read More signifier. Required if blocks is not supplied. The truncate_after property will replace the blocks property in future versions of the Tumblr API. The blocks property consists of a blocks integer array that specifies the block indices that should be displayed as the truncated view of the Post. During the transition period, API responses will contain both the truncate_after and blocks properties.
  *
  * [AskBlockLayout]
  * @param blocks This is an array of block indices that are a part of the ask content of the Post.
@@ -42,6 +43,8 @@ internal data class BlockLayoutAmalgamation constructor(
     val rows: List<List<Int>>? = null,
     @Json(name = "blocks")
     val blocks: List<Int>? = null,
+    @Json(name = "truncate_after")
+    val truncateAfter: Int? = null,
     @Json(name = "display")
     val display: List<RowBlockLayout.Display>? = null,
     @Json(name = "attribution")
@@ -59,7 +62,8 @@ internal data class BlockLayoutAmalgamation constructor(
 
     constructor(layout: CondensedBlockLayout) : this(
         type = CondensedBlockLayout.KEY,
-        blocks = layout.blocks
+        blocks = layout.blocks,
+        truncateAfter = layout.truncateAfter
     )
 
     constructor(layout: AskBlockLayout) : this(
@@ -72,7 +76,7 @@ internal data class BlockLayoutAmalgamation constructor(
 
     fun toRowLayout(): RowBlockLayout = RowBlockLayout(rows, display)
 
-    fun toCondensedLayout(): CondensedBlockLayout = CondensedBlockLayout(blocks)
+    fun toCondensedLayout(): CondensedBlockLayout = CondensedBlockLayout(blocks, truncateAfter)
 
     fun toAskLayout(): AskBlockLayout = AskBlockLayout(blocks, attribution)
 }

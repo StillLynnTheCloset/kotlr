@@ -77,10 +77,13 @@ data class RowBlockLayout constructor(
 /**
  * Condensed Layout
  *
- * @param blocks This is an array of block indices that are a part of the truncated version of the Post.
+ * @param blocks This is an array of block indices that are a part of the truncated version of the Post. Required if truncate_after is not supplied. Must be sequential, not empty, and begin with 0.
+ * @param truncateAfter The last block to display before the Read More signifier. Required if blocks is not supplied. The truncate_after property will replace the blocks property in future versions of the Tumblr API. The blocks property consists of a blocks integer array that specifies the block indices that should be displayed as the truncated view of the Post. During the transition period, API responses will contain both the truncate_after and blocks properties
  */
 data class CondensedBlockLayout constructor(
-    val blocks: List<Int>? = null
+    @Deprecated("Use truncateAfter instead.")
+    val blocks: List<Int>? = null,
+    val truncateAfter: Int? = null
 ) : BlockLayout() {
     companion object {
         const val KEY: String = "condensed"
