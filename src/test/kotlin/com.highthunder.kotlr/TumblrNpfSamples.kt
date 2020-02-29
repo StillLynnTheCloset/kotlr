@@ -8,9 +8,7 @@ object TumblrNpfSamples {
     val postIdentification: String = """
 {
     "id": 1234567891234567,
-    "blog": {
-        "Standard API Short Blog Info object": "goes here"
-    }
+    "blog": {}
 }
     """
 
@@ -19,9 +17,7 @@ object TumblrNpfSamples {
     val contentBlocks1: String = """
 {
     "id": 1234,
-    "blog": {
-        "Standard API Short Blog Info object": "goes here"
-    },
+    "blog": {},
     "content": []
 }
     """
@@ -135,7 +131,6 @@ object TumblrNpfSamples {
     """
 
     // https://www.tumblr.com/docs/npf#text-block-basic-subtypes
-    // TODO: Correct extra trailing ","
     @Language("json")
     val contentBlockTypeText_subtypes1: String = """
 {
@@ -147,7 +142,7 @@ object TumblrNpfSamples {
         {
             "type": "text",
             "subtype": "quote",
-            "text": "Genius without education is like silver in the mine.",
+            "text": "Genius without education is like silver in the mine."
         }
     ]
 }
@@ -214,7 +209,6 @@ object TumblrNpfSamples {
     """
 
     // https://www.tumblr.com/docs/npf#text-block-subtype-list-item
-    // TODO: Correct missing ","
     @Language("json")
     val contentBlockTypeText_subtypes4: String = """
 {
@@ -237,7 +231,7 @@ object TumblrNpfSamples {
         {
             "type": "text",
             "text": "But especially don't forget:"
-        }
+        },
         {
             "type": "text",
             "subtype": "unordered-list-item",
@@ -307,7 +301,6 @@ object TumblrNpfSamples {
     """
 
     // https://www.tumblr.com/docs/npf#inline-format-type-mention
-    // TODO: Fix trailing ","
     @Language("json")
     val contentBlockTypeText_formatting4: String = """
 {
@@ -321,7 +314,7 @@ object TumblrNpfSamples {
             "blog": {
                 "uuid": "t:123456abcdf",
                 "name": "david",
-                "url": "https://davidslog.com/",
+                "url": "https://davidslog.com/"
             }
         }
     ]
@@ -453,21 +446,23 @@ object TumblrNpfSamples {
     @Language("json")
     val contentBlockTypeLink1: String = """
 {
-    "content": {
-        "type": "link",
-        "url": "https://www.nytimes.com/2017/06/15/us/politics/secrecy-surrounding-senate-health-bill-raises-alarms-in-both-parties.html",
-        "title": "Secrecy Surrounding Senate Health Bill Raises Alarms in Both Parties",
-        "description": "Senate leaders are writing legislation to repeal and replace the Affordable Care Act without a single hearing on the bill and without an open drafting session.",
-        "author": "Thomas Kaplan and Robert Pear",
-        "poster": [
-            {
-                "url": "https://static01.nyt.com/images/2017/06/15/us/politics/15dchealth-2/15dchealth-2-facebookJumbo.jpg",
-                "type": "image/jpeg",
-                "width": 1050,
-                "height": 549
-            }
-        ]
-    }
+    "content": [
+        {
+            "type": "link",
+            "url": "https://www.nytimes.com/2017/06/15/us/politics/secrecy-surrounding-senate-health-bill-raises-alarms-in-both-parties.html",
+            "title": "Secrecy Surrounding Senate Health Bill Raises Alarms in Both Parties",
+            "description": "Senate leaders are writing legislation to repeal and replace the Affordable Care Act without a single hearing on the bill and without an open drafting session.",
+            "author": "Thomas Kaplan and Robert Pear",
+            "poster": [
+                {
+                    "url": "https://static01.nyt.com/images/2017/06/15/us/politics/15dchealth-2/15dchealth-2-facebookJumbo.jpg",
+                    "type": "image/jpeg",
+                    "width": 1050,
+                    "height": 549
+                }
+            ]
+        }
+    ]
 }
     """
 
@@ -475,23 +470,25 @@ object TumblrNpfSamples {
     @Language("json")
     val contentBlockTypeLink2: String = """
 {
-    "content": {
-        "type": "link",
-        "url": "http://t.umblr.com/redirect?stuff-here",
-        "display_url": "https://www.nytimes.com/2017/06/15/us/politics/secrecy-surrounding-senate-health-bill-raises-alarms-in-both-parties.html",
-        "title": "Secrecy Surrounding Senate Health Bill Raises Alarms in Both Parties",
-        "description": "Senate leaders are writing legislation to repeal and replace the Affordable Care Act without a single hearing on the bill and without an open drafting session.",
-        "author": "Thomas Kaplan and Robert Pear",
-        "site_name": "nytimes.com",
-        "poster": [
-            {
-                "url": "https://static01.nyt.com/images/2017/06/15/us/politics/15dchealth-2/15dchealth-2-facebookJumbo.jpg",
-                "type": "image/jpeg",
-                "width": 1050,
-                "height": 549
-            }
-        ]
-    }
+    "content": [
+        {
+            "type": "link",
+            "url": "http://t.umblr.com/redirect?stuff-here",
+            "display_url": "https://www.nytimes.com/2017/06/15/us/politics/secrecy-surrounding-senate-health-bill-raises-alarms-in-both-parties.html",
+            "title": "Secrecy Surrounding Senate Health Bill Raises Alarms in Both Parties",
+            "description": "Senate leaders are writing legislation to repeal and replace the Affordable Care Act without a single hearing on the bill and without an open drafting session.",
+            "author": "Thomas Kaplan and Robert Pear",
+            "site_name": "nytimes.com",
+            "poster": [
+                {
+                    "url": "https://static01.nyt.com/images/2017/06/15/us/politics/15dchealth-2/15dchealth-2-facebookJumbo.jpg",
+                    "type": "image/jpeg",
+                    "width": 1050,
+                    "height": 549
+                }
+            ]
+        }
+    ]
 }
     """
 
@@ -524,7 +521,6 @@ object TumblrNpfSamples {
     """
 
     // https://www.tumblr.com/docs/npf#content-block-type-audio
-    // TODO: Fix unescaped html
     @Language("json")
     val contentBlockTypeAudio2: String = """
 {
@@ -535,7 +531,7 @@ object TumblrNpfSamples {
             "title": "Mouth Sounds",
             "artist": "neilcic",
             "url": "https://soundcloud.com/neilcic/mouth-sounds",
-            "embed_html": "<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/146805680&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>",
+            "embed_html": "<iframe width=\"100%\" height=\"450\" scrolling=\"no\" frameborder=\"no\" src=\"https:\/\/w.soundcloud.com\/player\/?url=https%3A\/\/api.soundcloud.com\/tracks\/146805680&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true\"><\/iframe>",
             "embed_url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/146805680&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true",
             "media": {
                 "type": "audio/mp3",
@@ -597,7 +593,6 @@ object TumblrNpfSamples {
     """
 
     // https://www.tumblr.com/docs/npf#content-block-type-video
-    // TODO: Fix unescaped html
     @Language("json")
     val contentBlockTypeVideo2: String = """
 {
@@ -606,7 +601,7 @@ object TumblrNpfSamples {
             "type": "video",
             "provider": "youtube",
             "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-            "embed_html": "<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>",
+            "embed_html": "<iframe width=\"560\" height=\"315\" src=\"https:\/\/www.youtube.com\/embed\/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen><\/iframe>",
             "embed_url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
             "metadata": {
                 "id": "dQw4w9WgXcQ"
@@ -751,80 +746,79 @@ object TumblrNpfSamples {
     """
 
     // https://www.tumblr.com/docs/npf#layout-block-display-mode-carousel
-    // TODO: Fix top level key
     @Language("json")
     val layoutBlockTypeRows_displayModeCarousel: String = """
-"layout": [
-    {
-        "type": "rows",
-        "display": [
-            {"blocks": [0]}, // Single block, full-width
-            {"blocks": [1, 2]}, // Two blocks, each weighted at 50% (e.g. a photoset)
-            {"blocks": [3]},
-            {"blocks": [4, 5, 6], "mode": {"type": "carousel"}}, // Carousel with three full-width blocks (see "Carousel Display Mode" below)
-            {"blocks": [7]}
-        ]
-    }
-]
+{
+    "layout": [
+        {
+            "type": "rows",
+            "display": [
+                {"blocks": [0]},
+                {"blocks": [1, 2]},
+                {"blocks": [3]},
+                {"blocks": [4, 5, 6], "mode": {"type": "carousel"}},
+                {"blocks": [7]}
+            ]
+        }
+    ]
+}
     """
 
     // https://www.tumblr.com/docs/npf#layout-block-type-condensed
-    // TODO: Fix top level key
     @Language("json")
     val layoutBlockTypeCondensed1: String = """
-"layout": [
-    {
-        "type": "condensed",
-        "truncate_after": 1
-    }
-]
+{
+    "layout": [
+        {
+            "type": "condensed",
+            "truncate_after": 1
+        }
+    ]
+}
     """
 
     // https://www.tumblr.com/docs/npf#layout-block-type-condensed
-    // TODO: Fix top level key
     @Language("json")
     val layoutBlockTypeCondensed2: String = """
-"layout": [
-    {
-        "type": "condensed",
-        "truncate_after": 3,
-        "blocks": [0, 1, 2, 3]
-    }
-]
+{
+    "layout": [
+        {
+            "type": "condensed",
+            "truncate_after": 3,
+            "blocks": [0, 1, 2, 3]
+        }
+    ]
+}
     """
 
     // https://www.tumblr.com/docs/npf#layout-block-type-ask
-    // TODO: Fix top level key
     @Language("json")
     val layoutBlockTypeAsk: String = """
-"layout": [
-    {
-        "type": "ask",
-        "blocks": [0, 1],
-        "attribution": {
-            "type": "blog",
-            "url": "https://cyle.tumblr.com",
-            "blog": {
-                "Standard API Short Blog Info object": "goes here, for @cyle's blog"
+{
+    "layout": [
+        {
+            "type": "ask",
+            "blocks": [0, 1],
+            "attribution": {
+                "type": "blog",
+                "url": "https://cyle.tumblr.com",
+                "blog": {}
             }
         }
-    }
-]
+    ]
+}
     """
 
     // https://www.tumblr.com/docs/npf#reblog-trail
-    // TODO: Fix trailing ","
     @Language("json")
     val reblogTrail: String = """
 {
     "trail": [
         {
             "post": {
-                "id": "1234",
+                "id": "1234"
             },
-            "blog": {
-                "Standard API Short Blog Info object": "goes here"
-            },
+            "blog": {},
             "content": [
                 {
                     "type": "text",
@@ -835,11 +829,9 @@ object TumblrNpfSamples {
         },
         {
             "post": {
-                "id": "3456",
+                "id": "3456"
             },
-            "blog": {
-                "Standard API Short Blog Info object": "goes here"
-            },
+            "blog": {},
             "content": [
                 {
                     "type": "text",
@@ -848,7 +840,7 @@ object TumblrNpfSamples {
                 {
                     "type": "text",
                     "text": "this is another text block in the parent Post"
-                },
+                }
             ],
             "layout": [
                 {
@@ -870,35 +862,36 @@ object TumblrNpfSamples {
     """
 
     // https://www.tumblr.com/docs/npf#broken-trail-items
-    // TODO: Fix top level key
     @Language("json")
     val reblogTrail_brokenTrailItems: String = """
-"trail": [
-    {
-        "broken_blog_name": "old-broken-blog",
-        "content": [
-            {
-                "type": "text",
-                "text": "this is the root Post, which is broken"
-            }
-        ],
-        "layout": []
-    },
-    {
-        "broken_blog_name": "another-broken-blog",
-        "content": [
-            {
-                "type": "text",
-                "text": "this is the parent Post, which is also broken"
-            },
-            {
-                "type": "text",
-                "text": "this is another text block in the broken parent Post"
-            },
-        ],
-        "layout": []
-    }
-]
+{
+    "trail": [
+        {
+            "broken_blog_name": "old-broken-blog",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "this is the root Post, which is broken"
+                }
+            ],
+            "layout": []
+        },
+        {
+            "broken_blog_name": "another-broken-blog",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "this is the parent Post, which is also broken"
+                },
+                {
+                    "type": "text",
+                    "text": "this is another text block in the broken parent Post"
+                }
+            ],
+            "layout": []
+        }
+    ]
+}
     """
 
     // https://www.tumblr.com/docs/npf#attribution-type-post
@@ -950,7 +943,6 @@ object TumblrNpfSamples {
     """
 
     // https://www.tumblr.com/docs/npf#attribution-type-blog
-    // TODO: Fix trailing ","
     @Language("json")
     val attributionTypeBlog: String = """
 {
@@ -966,7 +958,7 @@ object TumblrNpfSamples {
         {
             "type": "text",
             "text": "This is my response to the ask from @randerson!"
-        },
+        }
     ],
     "layout": [
         {
@@ -975,18 +967,14 @@ object TumblrNpfSamples {
             "attribution": {
                 "type": "blog",
                 "url": "https://randerson.tumblr.com",
-                "blog": {
-                    "Standard API Short Blog Info object": "goes here, for @randerson's blog"
-                }
+                "blog": {}
             }
         }
     ]
 }
-
     """
 
     // https://www.tumblr.com/docs/npf#attribution-type-app
-    // TODO: Remove illegal comment
     @Language("json")
     val attributionTypeApp: String = """
 {
@@ -1013,7 +1001,7 @@ object TumblrNpfSamples {
                 "type": "app",
                 "url": "https://www.instagram.com/p/BVZyxTklQWX/",
                 "app_name": "Instagram",
-                "display_text": "tibbythecorgi - Very Cute", // or "Listen on Bandcamp" for audio
+                "display_text": "tibbythecorgi - Very Cute",
                 "logo": {
                     "url": "https://scontent.cdninstagram.com/path/to/logo.jpg",
                     "type": "image/jpeg",
