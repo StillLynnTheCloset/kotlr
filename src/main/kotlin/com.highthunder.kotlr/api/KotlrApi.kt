@@ -11,7 +11,6 @@ import com.highthunder.kotlr.response.type.blog.ResponseBlogPosts
 import com.highthunder.kotlr.response.type.blog.ResponseBlogQueue
 import com.highthunder.kotlr.response.type.blog.ResponseBlogSubmissions
 import com.highthunder.kotlr.response.type.post.ResponsePostsPost
-import com.highthunder.kotlr.response.type.post.ResponsePostsTagged
 import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
 import com.highthunder.kotlr.response.type.user.ResponseUserFollowing
 import com.highthunder.kotlr.response.type.user.ResponseUserInfo
@@ -364,24 +363,24 @@ class KotlrApi internal constructor(
 
     // region Post Getters
 
-    suspend fun getTaggedPosts(
-        tag: String,
-        before: Long? = null,
-        limit: Long? = null,
-        filter: String? = null
-    ): ResponsePostsTagged.Response? {
-        TODO("The get tagged posts api requires special parsing that I don't feel like implementing")
-        // val retrofitResponse = postsGetApi.getTaggedPosts(
-        //     tag,
-        //     before,
-        //     limit,
-        //     filter
-        // )
-        //
-        // val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        // val response = retrofitResponse.body()
-        // return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    // suspend fun getTaggedPosts(
+    //     tag: String,
+    //     before: Long? = null,
+    //     limit: Long? = null,
+    //     filter: String? = null
+    // ): ResponsePostsTagged.Response? {
+    //     TODO("The get tagged posts api requires special parsing that I don't feel like implementing")
+    //     val retrofitResponse = postsGetApi.getTaggedPosts(
+    //         tag,
+    //         before,
+    //         limit,
+    //         filter
+    //     )
+    //
+    //     val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+    //     val response = retrofitResponse.body()
+    //     return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    // }
 
     suspend fun getPost(
         identifier: String,
