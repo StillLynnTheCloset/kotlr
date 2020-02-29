@@ -54,9 +54,9 @@ internal class MediaWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<MediaWrapper>
         when {
             value == null -> mediaAdapter.toJson(writer, null)
             value.singleMedia != null -> mediaAdapter.toJson(writer, value.singleMedia)
-            value.listMedia != null && value.listMedia?.size != 0 -> listOfMediaAdapter.toJson(
+            value.listMedia != null && value.listMedia.isNotEmpty() -> listOfMediaAdapter.toJson(
                 writer,
-                value.listMedia ?: listOf()
+                value.listMedia
             )
             else -> mediaAdapter.toJson(writer, null)
         }

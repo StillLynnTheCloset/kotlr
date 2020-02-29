@@ -18,6 +18,7 @@ import com.highthunder.kotlr.json.superwrapper.DisplayModeAmalgamationAdapter
 import com.highthunder.kotlr.json.superwrapper.NoteDataAmalgamationAdapter
 import com.highthunder.kotlr.json.superwrapper.PostAmalgamationAdapter
 import com.highthunder.kotlr.json.superwrapper.TextFormatAmalgamationAdapter
+import com.highthunder.kotlr.json.wrapper.ColorJsonAdapter
 import com.squareup.moshi.Moshi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -51,6 +52,7 @@ fun Moshi.Builder.addKotlrTypes(): Moshi.Builder = this
     .add(DisplayModeAmalgamationAdapter())
     .add(NoteDataAmalgamationAdapter())
     .add(CommaSeparatedStringJsonAdapter())
+    .add(ColorJsonAdapter())
     .add(HexColorJsonAdapter())
     .add(HexColorOctothorpeJsonAdapter())
     .add(PostAmalgamationAdapter())

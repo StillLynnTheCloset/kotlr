@@ -53,9 +53,9 @@ internal class PlayerWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<PlayerWrappe
         when {
             value == null -> stringAdapter.toJson(writer, null)
             value.contentString != null -> stringAdapter.toJson(writer, value.contentString)
-            value.contentList != null && value.contentList?.size != 0 -> listOfVideoAdapter.toJson(
+            value.contentList != null && value.contentList.isNotEmpty() -> listOfVideoAdapter.toJson(
                 writer,
-                value.contentList ?: listOf()
+                value.contentList
             )
             else -> stringAdapter.toJson(writer, null)
         }
