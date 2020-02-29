@@ -12,24 +12,22 @@ object Libs {
             Versions.org_jetbrains_kotlinx_kotlinx_coroutines
 
     /**
-     * https://kotlinlang.org/
+     * https://github.com/square/retrofit/
      */
-    const val kotlin_annotation_processing_gradle: String =
-            "org.jetbrains.kotlin:kotlin-annotation-processing-gradle:" +
-            Versions.org_jetbrains_kotlin
+    const val converter_moshi: String = "com.squareup.retrofit2:converter-moshi:" +
+            Versions.com_squareup_retrofit2
 
     /**
-     * https://kotlinlang.org/
+     * https://github.com/square/retrofit/
      */
-    const val kotlin_scripting_compiler_embeddable: String =
-            "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable:" +
-            Versions.org_jetbrains_kotlin
+    const val converter_scalars: String = "com.squareup.retrofit2:converter-scalars:" +
+            Versions.com_squareup_retrofit2
 
     /**
-     * https://kotlinlang.org/
+     * https://github.com/square/retrofit/
      */
-    const val kotlin_stdlib: String = "org.jetbrains.kotlin:kotlin-stdlib:" +
-            Versions.org_jetbrains_kotlin
+    const val retrofit: String = "com.squareup.retrofit2:retrofit:" +
+            Versions.com_squareup_retrofit2
 
     /**
      * https://github.com/square/moshi
@@ -69,27 +67,34 @@ object Libs {
             Versions.org_jetbrains_kotlin_jvm_gradle_plugin
 
     /**
-     * https://github.com/square/okhttp
+     * https://kotlinlang.org/
+     */
+    const val kotlin_scripting_compiler_embeddable: String =
+            "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable:" +
+            Versions.kotlin_scripting_compiler_embeddable
+
+    /**
+     * https://kotlinlang.org/
+     */
+    const val kotlin_annotation_processing_gradle: String =
+            "org.jetbrains.kotlin:kotlin-annotation-processing-gradle:" +
+            Versions.kotlin_annotation_processing_gradle
+
+    /**
+     * https://square.github.io/okhttp/
      */
     const val logging_interceptor: String = "com.squareup.okhttp3:logging-interceptor:" +
             Versions.logging_interceptor
 
     /**
-     * https://github.com/square/retrofit/
-     */
-    const val converter_scalars: String = "com.squareup.retrofit2:converter-scalars:" +
-            Versions.converter_scalars
-
-    /**
-     * https://github.com/square/retrofit/
-     */
-    const val converter_moshi: String = "com.squareup.retrofit2:converter-moshi:" +
-            Versions.converter_moshi
-
-    /**
      * http://github.com/pakerfeldt/okhttp-signpost/
      */
     const val okhttp_signpost: String = "se.akerfeldt:okhttp-signpost:" + Versions.okhttp_signpost
+
+    /**
+     * https://kotlinlang.org/
+     */
+    const val kotlin_stdlib: String = "org.jetbrains.kotlin:kotlin-stdlib:" + Versions.kotlin_stdlib
 
     /**
      * http://code.google.com/p/oauth-signpost/
@@ -102,17 +107,12 @@ object Libs {
     const val wagon_git: String = "ar.com.synergian:wagon-git:" + Versions.wagon_git
 
     /**
-     * https://github.com/square/retrofit/
-     */
-    const val retrofit: String = "com.squareup.retrofit2:retrofit:" + Versions.retrofit
-
-    /**
      * https://github.com/pinterest/ktlint
      */
     const val ktlint: String = "com.pinterest:ktlint:" + Versions.ktlint
 
     /**
-     * https://github.com/square/okhttp
+     * https://square.github.io/okhttp/
      */
     const val okhttp: String = "com.squareup.okhttp3:okhttp:" + Versions.okhttp
 
