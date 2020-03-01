@@ -9,20 +9,20 @@ import com.squareup.moshi.JsonClass
  *
  * This is needed because for some types of content(most of them) Tumblr returns the key-value-pair:
  * "media": { ... media object ... }
- * and sometimes([ImageContent], [VideoContet] filmstrip) returns the key-value-pair:
+ * and sometimes([ImageContent]) returns the key-value-pair:
  * "media": [ { ... media object ... }, { ... media object ... } ]
  *
  * @author highthunder
  * @since 10/20/18
  * @version 1.0.0
  *
- * @param singleMedia TODO: Documentation
- * @param listMedia TODO: Documentation
+ * @param singleMedia The single media object, if it was returned.
+ * @param listMedia A list of media objects, if they were returned.
  */
 @JsonClass(generateAdapter = false)
-internal data class MediaWrapper(
+internal data class MediaWrapper constructor(
     val singleMedia: Media? = null,
     val listMedia: List<Media>? = null
 ) {
-    fun getAsList(): List<Media>? = listMedia ?: singleMedia?.let { listOf(it) }
+    fun getAsList(): List<Media> = listMedia ?: singleMedia?.let { listOf(it) }.orEmpty()
 }

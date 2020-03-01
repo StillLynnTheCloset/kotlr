@@ -17,7 +17,7 @@ import com.squareup.moshi.JsonClass
  * @param type The type of this display mode.
  */
 @JsonClass(generateAdapter = true)
-internal data class DisplayModeAmalgamation(
+internal data class DisplayModeAmalgamation constructor(
     @Json(name = "type")
     val type: String? = null
 ) {
