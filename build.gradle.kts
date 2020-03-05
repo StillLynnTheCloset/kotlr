@@ -43,7 +43,6 @@ dependencies {
 
     kapt(Libs.moshi_kotlin_codegen)
     implementation(Libs.moshi)
-    implementation(Libs.moshi_adapters)
 
     implementation(Libs.retrofit)
     implementation(Libs.converter_scalars)

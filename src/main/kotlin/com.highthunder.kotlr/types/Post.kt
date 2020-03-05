@@ -1,7 +1,16 @@
 package com.highthunder.kotlr.types
 
+import com.highthunder.kotlr.json.PolymorphicJsonAdapterFactory
 import com.highthunder.kotlr.types.content.BlockLayout
 import com.highthunder.kotlr.types.content.PostContent
+import com.highthunder.kotlr.types.legacy.AnswerPost
+import com.highthunder.kotlr.types.legacy.AudioPost
+import com.highthunder.kotlr.types.legacy.ChatPost
+import com.highthunder.kotlr.types.legacy.LinkPost
+import com.highthunder.kotlr.types.legacy.PhotoPost
+import com.highthunder.kotlr.types.legacy.QuotePost
+import com.highthunder.kotlr.types.legacy.TextPost
+import com.highthunder.kotlr.types.legacy.VideoPost
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -13,6 +22,24 @@ import com.squareup.moshi.JsonClass
  * @version 1.0.0
  */
 interface Post {
+    companion object {
+        val jsonAdapterFactory = PolymorphicJsonAdapterFactory
+            .of(Post::class.java, "type")
+            // .withDefaultValue() // TODO: Add a default post object
+            .withMissingLabelType(BlockPost::class.java)
+
+            .withSubtype(AnswerPost::class.java, Type.Answer.key)
+            .withSubtype(AudioPost::class.java, Type.Audio.key)
+            .withSubtype(BlockPost::class.java, Type.Block.key)
+            .withSubtype(ChatPost::class.java, Type.Chat.key)
+            .withSubtype(LinkPost::class.java, Type.Link.key)
+            .withSubtype(PhotoPost::class.java, Type.Photo.key)
+            .withSubtype(QuotePost::class.java, Type.Quote.key)
+            .withSubtype(TextPost::class.java, Type.Text.key)
+            .withSubtype(VideoPost::class.java, Type.Video.key)
+    }
+
+    val type: Post.Type
 
     // region Defaults
 

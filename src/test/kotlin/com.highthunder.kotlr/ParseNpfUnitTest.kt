@@ -192,6 +192,17 @@ class ParseNpfUnitTest {
         assertNotNull(json)
     }
 
+    @Test
+    fun parseVideoContentSingleImageFilmstrip() {
+        val adapter = moshi.adapter(PostContent::class.java).failOnUnknown()
+        assertTrue(adapter is JsonAdapter<PostContent>)
+
+        val post: PostContent? = adapter.fromJson(Sample.videoContentSingleImageFilmstrip)
+        assertNotNull(post)
+        val json = adapter.toJson(post)
+        assertNotNull(json)
+    }
+
     // endregion
 
     // region Attribution Tests

@@ -1,7 +1,9 @@
 package com.highthunder.kotlr.types.content
 
+import com.highthunder.kotlr.json.PolymorphicJsonAdapterFactory
 import com.highthunder.kotlr.types.Colors
 import com.highthunder.kotlr.types.Media
+import com.highthunder.kotlr.types.MediaList
 import com.highthunder.kotlr.types.content.TextContent.SubType
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -14,7 +16,25 @@ import com.squareup.moshi.JsonClass
  * @version 1.0.0
  */
 @JsonClass(generateAdapter = false)
-sealed class PostContent
+sealed class PostContent {
+    companion object {
+        internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
+            .of(PostContent::class.java, "type")
+            .withDefaultValue(UnknownContent)
+
+            .withSubtype(AudioContent::class.java, AudioContent.KEY)
+            .withSubtype(ImageContent::class.java, ImageContent.KEY)
+            .withSubtype(LinkContent::class.java, LinkContent.KEY)
+            .withSubtype(TextContent::class.java, TextContent.KEY)
+            .withSubtype(VideoContent::class.java, VideoContent.KEY)
+    }
+
+    internal abstract val type: String
+}
+
+object UnknownContent : PostContent() {
+    override val type: String = "Unknown"
+}
 
 /**
  * AudioContent - An audio block represents a playable track.
@@ -40,6 +60,7 @@ sealed class PostContent
  * @param metadata Optional provider-specific metadata about the audio track.
  * @param attribution Optional attribution information about where the audio track came from.
  */
+@JsonClass(generateAdapter = true)
 data class AudioContent constructor(
     val provider: String? = null,
     val url: String? = null,
@@ -48,10 +69,13 @@ data class AudioContent constructor(
     val artist: String? = null,
     val album: String? = null,
     val poster: List<Media>? = null,
+    @Json(name = "embed_html")
     val embedHtml: String? = null,
+    @Json(name = "embed_url")
     val embedUrl: String? = null,
     val metadata: Any? = null,
-    val attribution: Attribution? = null
+    val attribution: Attribution? = null,
+    override val type: String = KEY
 ) : PostContent() {
     companion object {
         const val KEY: String = "audio"
@@ -73,13 +97,17 @@ data class AudioContent constructor(
  * @param poster For GIFs, this is a single-frame "poster".
  * @param attribution See the [Attribution] for details about these objects.
  */
+@JsonClass(generateAdapter = true)
 data class ImageContent constructor(
     val media: List<Media>? = null,
+    @Json(name = "feedback_token")
     val feedbackToken: String? = null,
     val colors: Colors? = null,
     val poster: List<Media>? = null,
     val attribution: Attribution? = null,
-    val altText: String? = null
+    @Json(name = "alt_text")
+    val altText: String? = null,
+    override val type: String = KEY
 ) : PostContent() {
     companion object {
         const val KEY: String = "image"
@@ -110,14 +138,18 @@ data class ImageContent constructor(
  * @param displayUrl Supplied on NPF Post consumption, ignored during NPF Post creation.
  * @param poster An image media object to use as a "poster" for the link.
  */
+@JsonClass(generateAdapter = true)
 data class LinkContent constructor(
     val url: String? = null,
     val title: String? = null,
     val description: String? = null,
     val author: String? = null,
+    @Json(name = "site_name")
     val siteName: String? = null,
+    @Json(name = "display_url")
     val displayUrl: String? = null,
-    val poster: List<Media>? = null
+    val poster: List<Media>? = null,
+    override val type: String = KEY
 ) : PostContent() {
     companion object {
         const val KEY: String = "link"
@@ -137,10 +169,13 @@ data class LinkContent constructor(
  * @param subType The [SubType] of text block.
  * @param formatting A list of special formatting instructions.
  */
+@JsonClass(generateAdapter = true)
 data class TextContent constructor(
     val text: String? = null,
+    @Json(name = "subtype")
     val subType: SubType? = null,
-    val formatting: List<TextFormat>? = null
+    val formatting: List<TextFormat>? = null,
+    override val type: String = KEY
 ) : PostContent() {
     companion object {
         const val KEY: String = "text"
@@ -237,18 +272,25 @@ data class TextContent constructor(
  * @param filmStrip A series of images taken from throughout this video.
  * @param iframe TODO: Documentation
  */
+@JsonClass(generateAdapter = true)
 data class VideoContent constructor(
     val url: String? = null,
     val media: Media? = null,
     val provider: String? = null,
+    @Json(name = "embed_html")
     val embedHtml: String? = null,
+    @Json(name = "embed_url")
     val embedUrl: String? = null,
     val poster: List<Media>? = null,
     val metadata: Any? = null,
     val attribution: Attribution? = null,
+    @Json(name = "can_autoplay_on_cellular")
     val canAutoPlayOnCellular: Boolean? = null,
-    val filmStrip: List<Media>? = null,
-    val iframe: Media? = null
+    @Json(name = "filmstrip")
+    val filmStrip: MediaList? = null,
+    @Json(name = "embed_iframe")
+    val iframe: Media? = null,
+    override val type: String = KEY
 ) : PostContent() {
     companion object {
         const val KEY: String = "video"

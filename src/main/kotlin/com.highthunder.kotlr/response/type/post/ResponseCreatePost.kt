@@ -1,6 +1,5 @@
 package com.highthunder.kotlr.response.type.post
 
-
 import com.highthunder.kotlr.json.response.post.CreatePostWrapperJsonAdapter
 import com.highthunder.kotlr.response.ResponseMetaInfo
 import com.highthunder.kotlr.response.TumblrError
@@ -55,7 +54,7 @@ interface ResponseCreatePost {
     @JsonClass(generateAdapter = true)
     data class Body constructor(
         @Json(name = "id")
-        val postId:String? = null,
+        val postId: String? = null,
         @Json(name = "state")
         val state: Post.State? = null,
         @Json(name = "display_text")

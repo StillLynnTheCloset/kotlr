@@ -1,16 +1,18 @@
 package com.highthunder.kotlr.json.wrapper
 
 import com.highthunder.kotlr.types.Media
-import com.highthunder.kotlr.types.content.ImageContent
+import com.highthunder.kotlr.types.MediaList
+import com.highthunder.kotlr.types.content.VideoContent
 import com.squareup.moshi.JsonClass
 
 /**
  * MediaWrapper - A class to wrap around both a single Media object and a list of them.
  *
- * This is needed because for some types of content(most of them) Tumblr returns the key-value-pair:
- * "media": { ... media object ... }
- * and sometimes([ImageContent]) returns the key-value-pair:
- * "media": [ { ... media object ... }, { ... media object ... } ]
+ * This is needed because sometimes [VideoContent] will return either the key-value-pair:
+ * "filmstrip": { ... media object ... }
+ * or the key-value-pair:
+ * "filmstrip": [ { ... media object ... }, { ... media object ... } ]
+ * depending on the content.
  *
  * @author highthunder
  * @since 10/20/18
@@ -23,6 +25,6 @@ import com.squareup.moshi.JsonClass
 internal data class MediaWrapper constructor(
     val singleMedia: Media? = null,
     val listMedia: List<Media>? = null
-) {
-    fun getAsList(): List<Media> = listMedia ?: singleMedia?.let { listOf(it) }.orEmpty()
+) : MediaList() {
+    override val media: List<Media> = listMedia ?: singleMedia?.let { listOf(it) }.orEmpty()
 }

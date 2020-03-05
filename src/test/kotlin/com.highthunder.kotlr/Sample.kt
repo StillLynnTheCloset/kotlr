@@ -268,6 +268,32 @@ object Sample {
         }
     }"""
 
+    const val videoContentSingleImageFilmstrip: String = """{
+        "type": "video",
+        "provider": "tumblr",
+        "url": "https://ve.media.tumblr.com/tumblr_q4uiq57Iog1ys1mpp.mp4",
+        "media": {
+            "url": "https://ve.media.tumblr.com/tumblr_q4uiq57Iog1ys1mpp.mp4",
+            "type": "video/mp4",
+            "width": 640,
+            "height": 360
+        },
+        "poster": [
+            {
+                "url": "https://66.media.tumblr.com/tumblr_q4uiq57Iog1ys1mpp_frame1.jpg",
+                "type": "image/jpeg",
+                "width": 640,
+                "height": 360
+            }
+        ],
+        "filmstrip": {
+            "url": "https://66.media.tumblr.com/previews/tumblr_q4uiq57Iog1ys1mpp_filmstrip.jpg",
+            "type": "image/jpeg",
+            "width": 2000,
+            "height": 112
+        }
+    }"""
+
     // endregion
 
     // region Media Object samples

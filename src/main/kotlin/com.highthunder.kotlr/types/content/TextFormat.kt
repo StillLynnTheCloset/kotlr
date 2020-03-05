@@ -1,5 +1,6 @@
 package com.highthunder.kotlr.types.content
 
+import com.highthunder.kotlr.json.PolymorphicJsonAdapterFactory
 import com.highthunder.kotlr.json.qualifier.HexColorOctothorpe
 import com.highthunder.kotlr.types.Blog
 import com.highthunder.kotlr.types.Color
@@ -27,32 +28,57 @@ import com.squareup.moshi.JsonClass
  * @since 10/20/18
  * @version 1.0.0
  *
- * @param start The starting index of the formatting range (inclusive).
- * @param end The ending index of the formatting range (exclusive).
+ * @property start The starting index of the formatting range (inclusive).
+ * @property end The ending index of the formatting range (exclusive).
+ * @property type The subtype label for each subtype, only used during (de)serialization.
  */
 sealed class TextFormat {
+    companion object {
+        internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
+            .of(TextFormat::class.java, "type")
+            .withDefaultValue(UnknownTextFormat)
+
+            .withSubtype(BoldTextFormat::class.java, BoldTextFormat.KEY)
+            .withSubtype(ItalicTextFormat::class.java, ItalicTextFormat.KEY)
+            .withSubtype(StrikeThroughTextFormat::class.java, StrikeThroughTextFormat.KEY)
+            .withSubtype(LinkTextFormat::class.java, LinkTextFormat.KEY)
+            .withSubtype(MentionTextFormat::class.java, MentionTextFormat.KEY)
+            .withSubtype(ColorTextFormat::class.java, ColorTextFormat.KEY)
+            .withSubtype(SizeTextFormat::class.java, SizeTextFormat.KEY)
+    }
+
     abstract val start: Int?
     abstract val end: Int?
+    internal abstract val type: String
+}
+
+object UnknownTextFormat : TextFormat() {
+    override val start: Int? = null
+    override val end: Int? = null
+    override val type: String = "unknown"
 }
 
 /**
  * TODO: Documentation
  */
+@JsonClass(generateAdapter = true)
 data class BoldTextFormat constructor(
     override val start: Int? = null,
-    override val end: Int? = null
+    override val end: Int? = null,
+    override val type: String = KEY
 ) : TextFormat() {
     companion object {
         const val KEY: String = "bold"
     }
 }
-
 /**
  * TODO: Documentation
  */
+@JsonClass(generateAdapter = true)
 data class ItalicTextFormat constructor(
     override val start: Int? = null,
-    override val end: Int? = null
+    override val end: Int? = null,
+    override val type: String = KEY
 ) : TextFormat() {
     companion object {
         const val KEY: String = "italic"
@@ -62,9 +88,11 @@ data class ItalicTextFormat constructor(
 /**
  * TODO: Documentation
  */
+@JsonClass(generateAdapter = true)
 data class StrikeThroughTextFormat constructor(
     override val start: Int? = null,
-    override val end: Int? = null
+    override val end: Int? = null,
+    override val type: String = KEY
 ) : TextFormat() {
     companion object {
         const val KEY: String = "strikethrough"
@@ -76,10 +104,12 @@ data class StrikeThroughTextFormat constructor(
  *
  * @param url The link's URL!
  */
+@JsonClass(generateAdapter = true)
 data class LinkTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
-    val url: String? = null
+    val url: String? = null,
+    override val type: String = KEY
 ) : TextFormat() {
     companion object {
         const val KEY: String = "link"
@@ -91,10 +121,12 @@ data class LinkTextFormat constructor(
  *
  * @param blog An object with a uuid field, which is the mentioned blog's UUID.
  */
+@JsonClass(generateAdapter = true)
 data class MentionTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
-    val blog: Blog? = null
+    val blog: Blog? = null,
+    override val type: String = KEY
 ) : TextFormat() {
     companion object {
         const val KEY: String = "mention"
@@ -106,10 +138,12 @@ data class MentionTextFormat constructor(
  *
  * @param hex The color to use, in standard hex format, with leading '#'.
  */
+@JsonClass(generateAdapter = true)
 data class ColorTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
-    @HexColorOctothorpe val hex: Color? = null
+    @HexColorOctothorpe val hex: Color? = null,
+    override val type: String = KEY
 ) : TextFormat() {
     companion object {
         const val KEY: String = "color"
@@ -121,10 +155,12 @@ data class ColorTextFormat constructor(
  *
  * @param size The text size for this particular range of text, one of 'small' or 'big'.
  */
+@JsonClass(generateAdapter = true)
 data class SizeTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
-    val size: Option? = null
+    val size: Option? = null,
+    override val type: String = KEY
 ) : TextFormat() {
     companion object {
         const val KEY: String = "size"

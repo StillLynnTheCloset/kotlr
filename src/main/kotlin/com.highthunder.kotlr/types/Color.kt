@@ -18,17 +18,20 @@ data class Color constructor(
     private val c: Int
 ) {
     companion object {
-        private fun String.normalizeTo6DigitString(): String? = dropWhile { it == '#' }.takeIf(String::isNotBlank)?.let {
-            return@let when (it.length) {
-                6 -> it
-                3 -> "${it[0]}${it[0]}${it[1]}${it[1]}${it[2]}${it[2]}"
-                else -> null
+        private fun String.normalizeTo6DigitString(): String? =
+            dropWhile { it == '#' }.takeIf(String::isNotBlank)?.let {
+                return@let when (it.length) {
+                    6 -> it
+                    3 -> "${it[0]}${it[0]}${it[1]}${it[1]}${it[2]}${it[2]}"
+                    else -> null
+                }
             }
-        }
     }
 
     constructor(s: String) : this(
-        Integer.parseInt(s.normalizeTo6DigitString() ?: throw NumberFormatException("Color string '$s' is not a valid color"), 16)
+        Integer.parseInt(
+            s.normalizeTo6DigitString() ?: throw NumberFormatException("Color string '$s' is not a valid color"), 16
+        )
     )
 
     /**
