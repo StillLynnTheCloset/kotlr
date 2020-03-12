@@ -401,7 +401,12 @@ interface Post {
          * TODO: Documentation
          */
         @Json(name = "raw")
-        Raw("raw")
+        Raw("raw"),
+        /**
+         * TODO: Documentation
+         */
+        @Json(name = "markdown")
+        Markdown("markdown"),
     }
 
     /**
