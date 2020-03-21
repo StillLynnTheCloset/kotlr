@@ -52,6 +52,10 @@ interface Post {
      */
     val id: Long?
     /**
+     * The post's unique ID formatted as a string to prevent loss of precision on platforms that lack true 64-bit integers.
+     */
+    val idString: String?
+    /**
      * A standard API-formatted "short blog info" object.
      */
     val blog: Blog?

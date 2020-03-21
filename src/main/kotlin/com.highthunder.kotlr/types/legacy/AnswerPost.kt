@@ -85,6 +85,8 @@ data class AnswerPost constructor(
     @Json(name = "blog_name")
     override val blogName: String? = null,
     override val id: Long? = null,
+    @Json(name = "id_string")
+    override val idString: String? = null,
     override val blog: Blog? = null,
     @Json(name = "post_url")
     override val postUrl: String? = null,
