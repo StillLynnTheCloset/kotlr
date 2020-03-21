@@ -11,6 +11,7 @@ import com.highthunder.kotlr.authentication.TumblrUserKey
 import com.highthunder.kotlr.json.qualifier.CommaSeparatedStringJsonAdapter
 import com.highthunder.kotlr.json.qualifier.HexColorJsonAdapter
 import com.highthunder.kotlr.json.qualifier.HexColorOctothorpeJsonAdapter
+import com.highthunder.kotlr.json.wrapper.AttributionListJsonAdapter
 import com.highthunder.kotlr.json.wrapper.ColorJsonAdapter
 import com.highthunder.kotlr.json.wrapper.MediaListJsonAdapter
 import com.highthunder.kotlr.types.NoteData
@@ -57,6 +58,7 @@ fun Moshi.Builder.addKotlrTypes(): Moshi.Builder = this
     .add(ColorJsonAdapter())
     .add(HexColorJsonAdapter())
     .add(MediaListJsonAdapter())
+    .add(AttributionListJsonAdapter())
     .add(HexColorOctothorpeJsonAdapter())
     .add(KotlrJsonAdapterFactory())
 
