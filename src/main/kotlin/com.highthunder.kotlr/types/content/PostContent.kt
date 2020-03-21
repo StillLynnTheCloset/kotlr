@@ -1,6 +1,7 @@
 package com.highthunder.kotlr.types.content
 
 import com.highthunder.kotlr.json.PolymorphicJsonAdapterFactory
+import com.highthunder.kotlr.types.AttributionList
 import com.highthunder.kotlr.types.Colors
 import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.MediaList
@@ -74,7 +75,7 @@ data class AudioContent constructor(
     @Json(name = "embed_url")
     val embedUrl: String? = null,
     val metadata: Any? = null,
-    val attribution: Attribution? = null,
+    val attribution: AttributionList? = null,
     override val type: String = KEY
 ) : PostContent() {
     companion object {
@@ -104,7 +105,7 @@ data class ImageContent constructor(
     val feedbackToken: String? = null,
     val colors: Colors? = null,
     val poster: List<Media>? = null,
-    val attribution: Attribution? = null,
+    val attribution: AttributionList? = null,
     @Json(name = "alt_text")
     val altText: String? = null,
     override val type: String = KEY
@@ -283,7 +284,7 @@ data class VideoContent constructor(
     val embedUrl: String? = null,
     val poster: List<Media>? = null,
     val metadata: Any? = null,
-    val attribution: Attribution? = null,
+    val attribution: AttributionList? = null,
     @Json(name = "can_autoplay_on_cellular")
     val canAutoPlayOnCellular: Boolean? = null,
     @Json(name = "filmstrip")
