@@ -1936,7 +1936,7 @@ object Sample {
         "embed_code": "\n<video  id='embed-5bcb5ea040f41385581651' class='crt-video crt-skin-default' width='250' height='250' poster='https://66.media.tumblr.com/tumblr_p4mr3kD1fq1wpsbbh_smart1.jpg' preload='none' muted data-crt-video data-crt-options='{\"autoheight\":null,\"duration\":58,\"hdUrl\":false,\"filmstrip\":{\"url\":\"https://78.media.tumblr.com/previews/tumblr_p4mr3kD1fq1wpsbbh_filmstrip.jpg\",\"width\":\"200\",\"height\":\"200\"}}' >\n    <source src=\"https://backwardsorbust.tumblr.com/video_file/t:LZuak_bb6qg9zrSHdWC9Gg/179243838952/tumblr_p4mr3kD1fq1wpsbbh/480\" type=\"video/mp4\">\n</video>\n"
     }"""
 
-    const val photoWithExit: String = """{
+    const val photoWithExif: String = """{
         "caption": "",
         "original_size": {
             "url": "https://66.media.tumblr.com/foto_1280.jpg",

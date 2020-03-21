@@ -342,7 +342,7 @@ class TumblrTest {
         val adapter = moshi.adapter(Photo::class.java).failOnUnknown()
         Assert.assertTrue(adapter is JsonAdapter<Photo>)
 
-        val post: Photo? = adapter.fromJson(Sample.photoWithExit)
+        val post: Photo? = adapter.fromJson(Sample.photoWithExif)
         Assert.assertNotNull(post)
         val json = adapter.toJson(post)
         Assert.assertNotNull(json)
