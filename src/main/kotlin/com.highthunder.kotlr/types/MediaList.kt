@@ -14,6 +14,4 @@ import com.highthunder.kotlr.types.content.VideoContent
  * depending on the content.
  *
  */
-abstract class MediaList {
-    abstract val media: List<Media>
-}
+abstract class MediaList : List<Media>

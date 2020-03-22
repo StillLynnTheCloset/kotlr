@@ -15,6 +15,4 @@ import com.highthunder.kotlr.types.content.ImageContent
  * depending on the content.
  *
  */
-abstract class AttributionList {
-    abstract val attributions: List<Attribution>
-}
+abstract class AttributionList : List<Attribution>

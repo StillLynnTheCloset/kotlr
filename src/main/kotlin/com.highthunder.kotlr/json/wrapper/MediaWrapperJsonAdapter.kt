@@ -1,5 +1,7 @@
 package com.highthunder.kotlr.json.wrapper
 
+import com.highthunder.kotlr.adapter
+import com.highthunder.kotlr.listAdapter
 import com.highthunder.kotlr.types.Media
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonAdapter
@@ -23,15 +25,9 @@ import com.squareup.moshi.Types
  */
 internal class MediaWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<MediaWrapper>() {
 
-    private val mediaAdapter: JsonAdapter<Media?> =
-        moshi.adapter(Media::class.java, kotlin.collections.emptySet(), null)
+    private val mediaAdapter: JsonAdapter<Media?> = moshi.adapter()
 
-    private val listOfMediaAdapter: JsonAdapter<List<Media>> =
-        moshi.adapter<List<Media>>(
-            Types.newParameterizedType(List::class.java, Media::class.java),
-            kotlin.collections.emptySet(),
-            null
-        )
+    private val listOfMediaAdapter: JsonAdapter<List<Media>> = moshi.listAdapter()
 
     /**
      * TODO: Documentation
@@ -39,7 +35,7 @@ internal class MediaWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<MediaWrapper>
     @FromJson
     override fun fromJson(reader: JsonReader): MediaWrapper? {
         return when (reader.peek()) {
-            BEGIN_ARRAY -> MediaWrapper(listMedia = listOfMediaAdapter.fromJson(reader))
+            BEGIN_ARRAY -> MediaWrapper(listMedia = listOfMediaAdapter.fromJson(reader).orEmpty())
             BEGIN_OBJECT -> MediaWrapper(singleMedia = mediaAdapter.fromJson(reader))
             NULL -> null
             else -> throw JsonDataException("Expected a field of type List or Media but got ${reader.peek()}")
@@ -54,10 +50,7 @@ internal class MediaWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<MediaWrapper>
         when {
             value == null -> mediaAdapter.toJson(writer, null)
             value.singleMedia != null -> mediaAdapter.toJson(writer, value.singleMedia)
-            value.listMedia != null && value.listMedia.isNotEmpty() -> listOfMediaAdapter.toJson(
-                writer,
-                value.listMedia
-            )
+            value.listMedia.isNotEmpty() -> listOfMediaAdapter.toJson(writer, value.listMedia)
             else -> mediaAdapter.toJson(writer, null)
         }
     }

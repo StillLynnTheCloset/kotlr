@@ -22,12 +22,10 @@ import com.squareup.moshi.JsonClass
  * @version 1.0.0
  *
  * @param singleAttribution The single attribution object, if it was returned.
- * @param listAttribution A list of attribution objects, if they were returned.
+ * @param listAttribution A list of attribution objects, if they were returned, or a list containing only singleAttribution.
  */
 @JsonClass(generateAdapter = false)
 internal data class AttributionWrapper constructor(
     val singleAttribution: Attribution? = null,
-    val listAttribution: List<Attribution>? = null
-) : AttributionList() {
-    override val attributions: List<Attribution> = listAttribution ?: singleAttribution?.let { listOf(it) }.orEmpty()
-}
+    val listAttribution: List<Attribution> = listOfNotNull(singleAttribution)
+) : AttributionList(), List<Attribution> by listAttribution

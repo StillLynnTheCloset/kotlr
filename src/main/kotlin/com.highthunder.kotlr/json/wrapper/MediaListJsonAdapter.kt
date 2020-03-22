@@ -9,7 +9,7 @@ internal class MediaListJsonAdapter {
     fun toJson(mediaList: MediaList): MediaWrapper = if (mediaList is MediaWrapper) {
         mediaList
     } else {
-        MediaWrapper(listMedia = mediaList.media)
+        MediaWrapper(listMedia = mediaList)
     }
 
     @FromJson

@@ -9,7 +9,7 @@ internal class AttributionListJsonAdapter {
     fun toJson(attributionList: AttributionList): AttributionWrapper = if (attributionList is AttributionWrapper) {
         attributionList
     } else {
-        AttributionWrapper(listAttribution = attributionList.attributions)
+        AttributionWrapper(listAttribution = attributionList)
     }
 
     @FromJson
