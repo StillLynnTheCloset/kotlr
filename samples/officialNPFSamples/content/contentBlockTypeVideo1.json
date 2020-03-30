@@ -1,0 +1,33 @@
+{
+    "type": "video",
+    "media": {
+        "type": "video/mp4",
+        "url": "http://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1.mp4",
+        "height": 640,
+        "width": 480,
+        "hd": false
+    },
+    "poster": [
+        {
+            "type": "image/jpeg",
+            "url": "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
+            "width": 500,
+            "height": 400
+        }
+    ],
+    "filmstrip": [
+        {
+            "type": "image/jpeg",
+            "url": "https://66.media.tumblr.com/previews/tumblr_nshp8oVOnV1rg0s9xo1_filmstrip_frame1.jpg",
+            "width": 200,
+            "height": 125
+        },
+        {
+            "type": "image/jpeg",
+            "url": "https://66.media.tumblr.com/previews/tumblr_nshp8oVOnV1rg0s9xo1_filmstrip_frame2.jpg",
+            "width": 200,
+            "height": 125
+        }
+    ],
+    "can_autoplay_on_cellular": true
+}

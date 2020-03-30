@@ -1,0 +1,13 @@
+{
+    "content": [
+        {
+            "type": "text",
+            "text": "It's like Ben Franklin always said:"
+        },
+        {
+            "type": "text",
+            "subtype": "quote",
+            "text": "Genius without education is like silver in the mine."
+        }
+    ]
+}

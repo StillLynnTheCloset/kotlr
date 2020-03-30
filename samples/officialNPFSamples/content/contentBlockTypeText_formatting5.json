@@ -1,0 +1,12 @@
+{
+    "type": "text",
+    "text": "Celebrate Pride Month",
+    "formatting": [
+        {
+            "start": 10,
+            "end": 15,
+            "type": "color",
+            "hex": "#ff492f"
+        }
+    ]
+}

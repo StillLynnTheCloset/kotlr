@@ -1,0 +1,11 @@
+{
+    "type": "rows",
+    "display": [
+        {
+            "blocks": [0, 1]
+        },
+        {
+            "blocks": [2]
+        }
+    ]
+}

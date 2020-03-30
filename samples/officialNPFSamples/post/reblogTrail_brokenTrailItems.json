@@ -1,0 +1,28 @@
+{
+    "trail": [
+        {
+            "broken_blog_name": "old-broken-blog",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "this is the root Post, which is broken"
+                }
+            ],
+            "layout": []
+        },
+        {
+            "broken_blog_name": "another-broken-blog",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "this is the parent Post, which is also broken"
+                },
+                {
+                    "type": "text",
+                    "text": "this is another text block in the broken parent Post"
+                }
+            ],
+            "layout": []
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "content": [
+        {
+            "type": "text",
+            "text": "Hello world!"
+        },
+        {
+            "type": "text",
+            "text": "This is a second paragraph below the first."
+        }
+    ]
+}

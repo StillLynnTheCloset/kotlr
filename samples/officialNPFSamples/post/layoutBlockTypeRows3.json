@@ -1,0 +1,26 @@
+{
+    "content": [
+        {
+            "type": "image",
+            "media": []
+        },
+        {
+            "type": "image",
+            "media": []
+        },
+        {
+            "type": "image",
+            "media": []
+        }
+    ],
+    "layout": [
+        {
+            "type": "rows",
+            "display": [
+                {
+                    "blocks": [2, 0, 1]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "type": "video",
+    "provider": "youtube",
+    "url": "https://www.youtube.com/watch?v=HgbN8doxXxg",
+    "embed_url": "https://www.youtube.com/embed/HgbN8doxXxg?feature=oembed&enablejsapi=1&origin=https://safe.txmblr.com&wmode=opaque",
+    "poster": [
+        {
+            "url": "https://i.ytimg.com/vi/HgbN8doxXxg/hqdefault.jpg",
+            "type": "image/jpeg",
+            "width": 480,
+            "height": 360
+        }
+    ],
+    "metadata": {
+        "id": "HgbN8doxXxg"
+    },
+    "embed_iframe": {
+        "url": "https://safe.txmblr.com/svc/embed/iframe/dominominomino/165315496890?w=540&h=304&media_id=HgbN8doxXxg#embed-5bd570c977dcd714178554",
+        "width": 540,
+        "height": 304
+    }
+}

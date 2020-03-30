@@ -1,0 +1,47 @@
+{
+    "trail": [
+        {
+            "post": {
+                "id": "1234"
+            },
+            "blog": {},
+            "content": [
+                {
+                    "type": "text",
+                    "text": "this is the root Post"
+                }
+            ],
+            "layout": []
+        },
+        {
+            "post": {
+                "id": "3456"
+            },
+            "blog": {},
+            "content": [
+                {
+                    "type": "text",
+                    "text": "this is the parent Post"
+                },
+                {
+                    "type": "text",
+                    "text": "this is another text block in the parent Post"
+                }
+            ],
+            "layout": [
+                {
+                    "type": "rows",
+                    "rows": [
+                        [1, 0]
+                    ]
+                }
+            ]
+        }
+    ],
+    "content": [
+        {
+            "type": "text",
+            "text": "lol, this is the content i am adding in my reblog of the parent Post"
+        }
+    ]
+}
