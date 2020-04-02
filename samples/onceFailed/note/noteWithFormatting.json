@@ -1,0 +1,23 @@
+{
+    "type": "reply",
+    "timestamp": 1541254204,
+    "blog_name": "kotlr-development",
+    "blog_uuid": "t:ukIuGYR_Jcdm60j7Nb95dg",
+    "blog_url": "http://kotlr-development.tumblr.com/",
+    "followed": false,
+    "avatar_shape": "square",
+    "reply_text": "ukIuGYR_Jcdm60j7Nb95dg",
+    "formatting": [
+        {
+            "type": "mention",
+            "start": 0,
+            "end": 13,
+            "blog": {
+                "name": "kotlr-development",
+                "url": "http://kotlr-development.tumblr.com/",
+                "uuid": "t:ukIuGYR_Jcdm60j7Nb95dg"
+            }
+        }
+    ],
+    "can_block": true
+}

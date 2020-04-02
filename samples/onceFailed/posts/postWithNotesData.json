@@ -1,0 +1,517 @@
+{
+    "type": "quote",
+    "blog_name": "yourplayersaidwhat",
+    "blog": {
+        "name": "yourplayersaidwhat",
+        "title": "Stuff My Players Say",
+        "description": "The wonderful wit, witticism, and weirdness of tabletop gamers.<br /><br />\n<!--<strong>Update: The ask and submit boxes are CLOSED until August 14! See <a href=\"https://yourplayersaidwhat.tumblr.com/post/176721050778/mod-post-submit-ask-boxes-closed-through\">this post</a> for details.</strong><br /><br />-->\n\nNeed help submitting a quote? <a href=\"http://yourplayersaidwhat.tumblr.com/tagged/how+to+submit\">Check our FAQs!</a>\n<br /><br />\n\nWant advice on how to run a game, play a game, or find a game? Try the <a href=\"http://rpg.stackexchange.com\">RPG Stack Exchange</a>, <a href=\"http://lfglistings.tumblr.com\">@lfglistings</a>, and <a href=\"https://roll20.net/\">Roll20</a>!<br /><br />\n\n\nNew reader? Bored and looking for a laugh? Check out a \n<a href=\"http://yourplayersaidwhat.tumblr.com/random\">random quote!</a>",
+        "url": "https://yourplayersaidwhat.tumblr.com/",
+        "uuid": "t:37p-R809YkHFQpJN2UUw4g",
+        "updated": 1541224307
+    },
+    "id": 179710586172,
+    "post_url": "https://yourplayersaidwhat.tumblr.com/post/179710586172/a-pile-of-rats-is-hardly-the-worst-thing-were",
+    "slug": "a-pile-of-rats-is-hardly-the-worst-thing-were",
+    "date": "2018-11-03 05:51:47 GMT",
+    "timestamp": 1541224307,
+    "state": "published",
+    "format": "html",
+    "reblog_key": "c61ysWN6",
+    "tags": [
+        "dnd",
+        "submission",
+        "why npcs hate pcs"
+    ],
+    "short_url": "https://tmblr.co/ZHegNss2dNbUqy",
+    "summary": "a pile of rats is hardly the worst thing we’re going to leave here tonight",
+    "is_blocks_post_format": false,
+    "recommended_source": null,
+    "recommended_color": null,
+    "followed": true,
+    "post_author": "nightsmaren",
+    "post_author_is_adult": false,
+    "is_submission": true,
+    "liked": false,
+    "note_count": 96,
+    "text": "a pile of rats is hardly the worst thing we’re going to leave here tonight",
+    "source": "our ratman thief",
+    "reblog": {
+        "comment": "<p>our ratman thief</p>",
+        "tree_html": ""
+    },
+    "can_like": true,
+    "can_reblog": true,
+    "can_send_in_message": true,
+    "notes": [
+        {
+            "type": "like",
+            "timestamp": 1541225157,
+            "blog_name": "all-things-fandomstuck",
+            "blog_uuid": "t:KewseyAE9ywZrqPNt5Cw7g",
+            "blog_url": "http://all-things-fandomstuck.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "reblog",
+            "timestamp": 1541225148,
+            "blog_name": "emomfr",
+            "blog_uuid": "t:jSs9hmuFGzerv6MB7yx8SA",
+            "blog_url": "http://emomfr.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle",
+            "post_id": "179710864782",
+            "reblog_parent_blog_name": "yourplayersaidwhat"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541225143,
+            "blog_name": "emomfr",
+            "blog_uuid": "t:jSs9hmuFGzerv6MB7yx8SA",
+            "blog_url": "http://emomfr.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541225129,
+            "blog_name": "makhortheeight",
+            "blog_uuid": "t:v0kkIVoRwFAcLd5uclxKnA",
+            "blog_url": "https://makhortheeight.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541225127,
+            "blog_name": "crazynimbat",
+            "blog_uuid": "t:qrj9JJlJOw_1kU7EpZO5KQ",
+            "blog_url": "https://crazynimbat.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541225120,
+            "blog_name": "watchhowfasticansummonthefandoms",
+            "blog_uuid": "t:pg2S1fbdFG1StFPRQLe4pQ",
+            "blog_url": "https://watchhowfasticansummonthefandoms.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541225115,
+            "blog_name": "mcbacondaddy",
+            "blog_uuid": "t:2ltPH9dTs_V0ru8zRt6y4g",
+            "blog_url": "https://mcbacondaddy.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541225101,
+            "blog_name": "transcendent-acedia",
+            "blog_uuid": "t:gUy5YGeFQQOB6PLKiDtiZw",
+            "blog_url": "https://transcendent-acedia.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "reblog",
+            "timestamp": 1541225099,
+            "blog_name": "unluckypunk13",
+            "blog_uuid": "t:2Vqapwo3p4bICFxRkPrvKQ",
+            "blog_url": "http://unluckypunk13.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle",
+            "post_id": "179710851668",
+            "reblog_parent_blog_name": "yourplayersaidwhat"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541225095,
+            "blog_name": "unluckypunk13",
+            "blog_uuid": "t:2Vqapwo3p4bICFxRkPrvKQ",
+            "blog_url": "http://unluckypunk13.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541225072,
+            "blog_name": "askgearhoof",
+            "blog_uuid": "t:Ol5IYmUlAnADo-RkKBAjGw",
+            "blog_url": "https://askgearhoof.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541225071,
+            "blog_name": "aromanticanakinskywalker",
+            "blog_uuid": "t:0T1MM65D2d37BcpTaTIBTQ",
+            "blog_url": "http://aromanticanakinskywalker.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541225063,
+            "blog_name": "princesscandypatrol",
+            "blog_uuid": "t:3374jaHxRleV_48F3OhZpQ",
+            "blog_url": "https://princesscandypatrol.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541225063,
+            "blog_name": "arrrowxx",
+            "blog_uuid": "t:LWeVFIq_HE8E_B0vblkNOw",
+            "blog_url": "http://arrrowxx.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541225053,
+            "blog_name": "baconpancaakes",
+            "blog_uuid": "t:UF5Dp73zz98e9DxDMlpObg",
+            "blog_url": "https://baconpancaakes.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541225022,
+            "blog_name": "mori-hime-chan",
+            "blog_uuid": "t:NKKLT8uVwyxhT0iIwZKGlg",
+            "blog_url": "https://mori-hime-chan.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541225009,
+            "blog_name": "calcifiedtreefrog",
+            "blog_uuid": "t:68xUXL1ZDu5ltfheqBTjug",
+            "blog_url": "https://calcifiedtreefrog.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "reblog",
+            "timestamp": 1541224971,
+            "blog_name": "do-you-hear-the-people-fuck",
+            "blog_uuid": "t:hYSKeGvOn1XBCjgDDnK4fQ",
+            "blog_url": "http://do-you-hear-the-people-fuck.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle",
+            "post_id": "179710810943",
+            "reblog_parent_blog_name": "yourplayersaidwhat"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224968,
+            "blog_name": "themajesticpotabro",
+            "blog_uuid": "t:XFCfxKeUqeLSsVcsBUjT4w",
+            "blog_url": "https://themajesticpotabro.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224966,
+            "blog_name": "motherofth0usands",
+            "blog_uuid": "t:ZEKsehLuASLMCySNeAF4xw",
+            "blog_url": "http://motherofth0usands.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224953,
+            "blog_name": "foulwitchperfection",
+            "blog_uuid": "t:XGR2zSDwN1WYoLpHI_jbwA",
+            "blog_url": "https://foulwitchperfection.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224926,
+            "blog_name": "dragonfly-the-twink",
+            "blog_uuid": "t:RN9FErYu0lJ1dXTvWMpCDw",
+            "blog_url": "https://dragonfly-the-twink.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224915,
+            "blog_name": "lazyemisfandomtrash",
+            "blog_uuid": "t:XAyq3bjfYrG4JjxRCNeqkA",
+            "blog_url": "https://lazyemisfandomtrash.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "reblog",
+            "timestamp": 1541224898,
+            "blog_name": "therandomduck",
+            "blog_uuid": "t:M-J6Z4CiKwkTIjrZob8HDA",
+            "blog_url": "http://therandomduck.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square",
+            "post_id": "179710786102",
+            "reblog_parent_blog_name": "yourplayersaidwhat"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224897,
+            "blog_name": "therandomduck",
+            "blog_uuid": "t:M-J6Z4CiKwkTIjrZob8HDA",
+            "blog_url": "http://therandomduck.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224892,
+            "blog_name": "dracninja",
+            "blog_uuid": "t:CGzmPESBlxcYvs4e0iMW0w",
+            "blog_url": "https://dracninja.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224868,
+            "blog_name": "dekubits",
+            "blog_uuid": "t:2lYwqdCGJGA7qAEBI_PkfQ",
+            "blog_url": "http://dekubits.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224850,
+            "blog_name": "disabledwarrior",
+            "blog_uuid": "t:4hUSuXAbsX4ewQAqH55AFw",
+            "blog_url": "http://disabledwarrior.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224848,
+            "blog_name": "mcwolfy",
+            "blog_uuid": "t:tzjJDbY7VCi_z4YeSxyqnQ",
+            "blog_url": "http://mcwolfy.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "reblog",
+            "timestamp": 1541224833,
+            "blog_name": "spycopoth",
+            "blog_uuid": "t:7IslimI9WwJeoqI4ONZfdw",
+            "blog_url": "http://spycopoth.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square",
+            "post_id": "179710761975",
+            "reblog_parent_blog_name": "yourplayersaidwhat"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224831,
+            "blog_name": "spycopoth",
+            "blog_uuid": "t:7IslimI9WwJeoqI4ONZfdw",
+            "blog_url": "http://spycopoth.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224811,
+            "blog_name": "mian-jy-ism",
+            "blog_uuid": "t:zou3Pv7R5had9b1nPBnqRA",
+            "blog_url": "https://mian-jy-ism.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "reblog",
+            "timestamp": 1541224802,
+            "blog_name": "catfeeshq",
+            "blog_uuid": "t:Y8SaVAwDNYJJEQAbgAFsPA",
+            "blog_url": "http://catfeeshq.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle",
+            "post_id": "179710751509",
+            "reblog_parent_blog_name": "yourplayersaidwhat"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224796,
+            "blog_name": "catfeeshq",
+            "blog_uuid": "t:Y8SaVAwDNYJJEQAbgAFsPA",
+            "blog_url": "http://catfeeshq.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224791,
+            "blog_name": "deegandungeons",
+            "blog_uuid": "t:e-6iJMrNAg3B0NoLEGjZEA",
+            "blog_url": "https://deegandungeons.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224754,
+            "blog_name": "ladysaladpuddin",
+            "blog_uuid": "t:rNfZYJ-c5rYLsF0c4YAWPg",
+            "blog_url": "http://ladysaladpuddin.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224745,
+            "blog_name": "yetanotherwrittingblog",
+            "blog_uuid": "t:GECGEBR2z8bl7z6hE11jjQ",
+            "blog_url": "https://yetanotherwrittingblog.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224709,
+            "blog_name": "skeletalweird0",
+            "blog_uuid": "t:WGMyDdumEe8arBD04ZKx1g",
+            "blog_url": "https://skeletalweird0.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224706,
+            "blog_name": "soraskingdomkey",
+            "blog_uuid": "t:8ps0GDsrG3I0T_ob5djwdQ",
+            "blog_url": "https://soraskingdomkey.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224667,
+            "blog_name": "cowboypunkcolt",
+            "blog_uuid": "t:x89r1-OscbZHk3zCmELinQ",
+            "blog_url": "http://cowboypunkcolt.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "reblog",
+            "timestamp": 1541224665,
+            "blog_name": "taco-that-is-half-eaten",
+            "blog_uuid": "t:Se_7PyKkir96kSG_4ZxKoQ",
+            "blog_url": "https://taco-that-is-half-eaten.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square",
+            "post_id": "179710707779",
+            "reblog_parent_blog_name": "yourplayersaidwhat"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224663,
+            "blog_name": "himinfluff",
+            "blog_uuid": "t:hSMfbEZlxXBCMnpyQ99G5Q",
+            "blog_url": "https://himinfluff.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224659,
+            "blog_name": "taco-that-is-half-eaten",
+            "blog_uuid": "t:Se_7PyKkir96kSG_4ZxKoQ",
+            "blog_url": "https://taco-that-is-half-eaten.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224654,
+            "blog_name": "antivertigo",
+            "blog_uuid": "t:o4x2bV9NSeQumrMXZ5oiTg",
+            "blog_url": "http://antivertigo.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224649,
+            "blog_name": "electricjudgement",
+            "blog_uuid": "t:T_kMoNTM37fLkzMoV3M_jA",
+            "blog_url": "http://electricjudgement.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224647,
+            "blog_name": "malslany",
+            "blog_uuid": "t:N0TVTwbWCBJcUN56nTSFxQ",
+            "blog_url": "http://malslany.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224640,
+            "blog_name": "kehito",
+            "blog_uuid": "t:hLVstwB6QKJPx6NhZM9D4A",
+            "blog_url": "https://kehito.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        },
+        {
+            "type": "reblog",
+            "timestamp": 1541224634,
+            "blog_name": "carmilla-hollis-22",
+            "blog_uuid": "t:l_4whGQ5XMcYzZSEWLroag",
+            "blog_url": "http://carmilla-hollis-22.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle",
+            "post_id": "179710697906",
+            "reblog_parent_blog_name": "yourplayersaidwhat"
+        },
+        {
+            "type": "reblog",
+            "timestamp": 1541224633,
+            "blog_name": "lucifers-demonic-breast-milk",
+            "blog_uuid": "t:TL1xqz3DT7b7AoSloO21Gg",
+            "blog_url": "https://lucifers-demonic-breast-milk.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "square",
+            "post_id": "179710697614",
+            "reblog_parent_blog_name": "yourplayersaidwhat"
+        },
+        {
+            "type": "like",
+            "timestamp": 1541224630,
+            "blog_name": "carmilla-hollis-22",
+            "blog_uuid": "t:l_4whGQ5XMcYzZSEWLroag",
+            "blog_url": "http://carmilla-hollis-22.tumblr.com/",
+            "followed": false,
+            "avatar_shape": "circle"
+        }
+    ],
+    "can_reply": true,
+    "display_avatar": true
+}
