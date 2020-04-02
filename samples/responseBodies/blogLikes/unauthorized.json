@@ -1,0 +1,7 @@
+{
+    "meta": {
+        "status": 403,
+        "msg": "Forbidden"
+    },
+    "response": "Not authorized."
+}

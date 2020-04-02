@@ -1,0 +1,14 @@
+{
+    "meta": {
+        "status": 401,
+        "msg": "Unauthorized"
+    },
+    "response": [],
+    "errors": [
+        {
+            "title": "Unauthorized",
+            "code": 1016,
+            "detail": "Unable to authorize"
+        }
+    ]
+}
