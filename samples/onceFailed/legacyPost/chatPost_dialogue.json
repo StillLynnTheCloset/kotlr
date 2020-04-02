@@ -1,0 +1,36 @@
+{
+    "blog_name": "david",
+    "id": 5845345725,
+    "post_url": "http:\/\/www.davidslog.com\/5845345725\/if-youre-okay-with-it-destroying-tumblr",
+    "type": "chat",
+    "date": "2011-05-25 22:32:00 GMT",
+    "timestamp": 1306362720,
+    "format": "html",
+    "reblog_key": "wlxAsElf",
+    "tags": [],
+    "note_count": 114,
+    "title": null,
+    "body": "David: http://staff.tumblr.com/post/5845153911[draft] Topherchris: are you freaking serious\r\n David: If you're okay with it - I'd love to :)\r\n Topherchris: i'm okay with it, if you're okay with it destroying tumblr",
+    "dialogue": [
+        {
+            "label": "David:",
+            "name": "David",
+            "phrase": "http://staff.tumblr.com/post/5845153911 [draft]\r"
+        },
+        {
+            "label": "Topherchris:",
+            "name": "Topherchris",
+            "phrase": "are you freaking serious\r"
+        },
+        {
+            "label": "David:",
+            "name": "David",
+            "phrase": "If you're okay with it - I'd love to :)"
+        },
+        {
+            "label": "Topherchris:",
+            "name": "Topherchris",
+            "phrase": "i'm okay with it, if you're okay with it destroying tumblr"
+        }
+    ]
+}

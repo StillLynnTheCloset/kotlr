@@ -1,0 +1,23 @@
+{
+    "type": "video",
+    "permalink_url": "https://instagram.com/p/ukIuGYR_Jcdm60j7Nb95dg",
+    "html5_capable": true,
+    "thumbnail_url": "https://ukIuGYR_Jcdm60j7Nb95dg-ukIuGYR_Jcdm60j7Nb95dg.cdninstagram.com/vp/ukIuGYR_Jcdm60j7Nb95dg/ukIuGYR_Jcdm60j7Nb95dg/ukIuGYR_Jcdm60j7Nb95dg/e15/s480x480/ukIuGYR_Jcdm60j7Nb95dg.jpg",
+    "thumbnail_width": 480,
+    "thumbnail_height": 480,
+    "player": [
+        {
+            "width": 250,
+            "embed_code": "ukIuGYR_Jcdm60j7Nb95dg"
+        },
+        {
+            "width": 400,
+            "embed_code": "ukIuGYR_Jcdm60j7Nb95dg"
+        },
+        {
+            "width": 500,
+            "embed_code": "ukIuGYR_Jcdm60j7Nb95dg"
+        }
+    ],
+    "video_type": "instagram"
+}
