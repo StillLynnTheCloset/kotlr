@@ -174,20 +174,20 @@ data class QuotePost constructor(
     override val rebloggedRootFollowing: Boolean? = null,
     override val notes: List<NoteData>? = null,
     @Json(name = "scheduled_publish_time")
-    override val publishTime: Long?,
+    override val publishTime: Long? = null,
     @Json(name = "queued_state")
-    override val queueState: Post.QueueState?,
+    override val queueState: Post.QueueState? = null,
     @Json(name = "should_open_in_legacy")
-    override val shouldOpenInLegacy: Boolean?,
-    override val muted: Boolean?,
+    override val shouldOpenInLegacy: Boolean? = null,
+    override val muted: Boolean? = null,
     @Json(name = "object_type")
-    override val objectType: String?,
+    override val objectType: String? = null,
     @Json(name = "tumblelog_uuid")
-    override val blogUUID: String?,
+    override val blogUUID: String? = null,
     @Json(name = "parent_post_id")
-    override val parentPostId: Long?,
+    override val parentPostId: Long? = null,
     @Json(name = "parent_tumblelog_uuid")
-    override val parentBlogUUID: String?,
+    override val parentBlogUUID: String? = null,
     val text: String? = null,
     val source: String? = null,
     @Json(name = "type")
