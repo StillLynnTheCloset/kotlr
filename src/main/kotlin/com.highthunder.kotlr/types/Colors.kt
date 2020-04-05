@@ -18,4 +18,6 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = false)
 data class Colors constructor(
     val colors: Map<Int, Color>? = null
-)
+) {
+    constructor(vararg pairs: Pair<Int, Color>) : this(pairs.toMap())
+}
