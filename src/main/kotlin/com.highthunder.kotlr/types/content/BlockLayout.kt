@@ -16,7 +16,7 @@ import com.squareup.moshi.JsonClass
  */
 sealed class BlockLayout {
     companion object {
-        val jsonAdapterFactory = PolymorphicJsonAdapterFactory
+        internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(BlockLayout::class.java, "type")
             .withDefaultValue(UnknownBlockLayout)
             .withMissingLabelType(VerticalBlockLayout::class.java)
@@ -82,7 +82,7 @@ data class RowBlockLayout constructor(
          */
         sealed class Mode {
             companion object {
-                val jsonAdapterFactory = PolymorphicJsonAdapterFactory
+                internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
                     .of(Mode::class.java, "type")
                     .withDefaultValue(Unknown)
                     .withMissingLabelType(Weighted::class.java)

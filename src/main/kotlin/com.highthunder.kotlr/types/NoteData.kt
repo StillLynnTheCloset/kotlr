@@ -21,7 +21,7 @@ import com.squareup.moshi.JsonClass
  */
 sealed class NoteData {
     companion object {
-        val jsonAdapterFactory = PolymorphicJsonAdapterFactory
+        internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(NoteData::class.java, "type")
             .withDefaultValue(UnknownNote)
 

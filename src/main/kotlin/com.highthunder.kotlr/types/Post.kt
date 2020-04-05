@@ -23,7 +23,7 @@ import com.squareup.moshi.JsonClass
  */
 interface Post {
     companion object {
-        val jsonAdapterFactory = PolymorphicJsonAdapterFactory
+        internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(Post::class.java, "type")
             // .withDefaultValue() // TODO: Add a default post object
             .withMissingLabelType(BlockPost::class.java)

@@ -29,7 +29,7 @@ import com.squareup.moshi.Moshi
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
-class KotlrJsonAdapterFactory : JsonAdapter.Factory {
+internal class KotlrJsonAdapterFactory : JsonAdapter.Factory {
     override fun create(type: Type, annotations: MutableSet<out Annotation>, moshi: Moshi): JsonAdapter<*>? {
         return if (type is ParameterizedType) {
             if (type.rawType.typeName == "com.highthunder.kotlr.response.WrapperInterface") {
