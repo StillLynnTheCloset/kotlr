@@ -108,7 +108,7 @@ data class RowBlockLayout constructor(
 
             @JsonClass(generateAdapter = true)
             data class Carousel constructor(
-                override val type: String = Weighted.KEY
+                override val type: String = KEY
             ) : Mode() {
                 companion object {
                     const val KEY: String = "carousel"
