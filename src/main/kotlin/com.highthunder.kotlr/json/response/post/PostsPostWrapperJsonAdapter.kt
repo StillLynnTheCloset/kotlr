@@ -1,5 +1,7 @@
 package com.highthunder.kotlr.json.response.post
 
+import com.highthunder.kotlr.adapter
+import com.highthunder.kotlr.listAdapter
 import com.highthunder.kotlr.response.WrapperInterface
 import com.highthunder.kotlr.response.type.post.ResponsePostsPost
 import com.highthunder.kotlr.types.Post
@@ -14,7 +16,6 @@ import com.squareup.moshi.JsonReader.Token.STRING
 import com.squareup.moshi.JsonWriter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
-import com.squareup.moshi.Types
 
 /**
  * PostsPostWrapperJsonAdapter - TODO: Documentation
@@ -26,18 +27,10 @@ import com.squareup.moshi.Types
  * @since 10/25/18
  * @version 1.0.0
  */
-internal class PostsPostWrapperJsonAdapter(moshi: Moshi) :
-    JsonAdapter<WrapperInterface<Post>>() {
-
-    private val stringAdapter: JsonAdapter<String?> =
-        moshi.adapter(String::class.java, emptySet(), null)
-
-    private val responseAdapter: JsonAdapter<Post> =
-        moshi.adapter<Post>(
-            Post::class.java, emptySet(), null)
-
-    private val listOfAnyAdapter: JsonAdapter<List<Any>> =
-        moshi.adapter<List<Any>>(Types.newParameterizedType(List::class.java, Any::class.java), emptySet(), null)
+internal class PostsPostWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<Post>>() {
+    private val stringAdapter: JsonAdapter<String?> = moshi.adapter()
+    private val responseAdapter: JsonAdapter<Post> = moshi.adapter()
+    private val listOfAnyAdapter: JsonAdapter<List<Any>> = moshi.listAdapter()
 
     @FromJson
     override fun fromJson(reader: JsonReader): WrapperInterface<Post> {
