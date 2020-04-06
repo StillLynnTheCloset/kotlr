@@ -7,10 +7,15 @@
         {
             "name": "derekg",
             "title": "Derek Gottfrid",
-            "url": "http://derekg.org/",
+            "url": "https://derekg.org/",
             "tweet": "auto",
             "primary": true,
-            "followers": 33004929
+            "followers": 33004929,
+        },
+        {
+            "name": "ihatehipstrz",
+            "title": "I Hate Hipstrz",
+            ...
         }
     ]
 }
