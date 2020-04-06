@@ -1,23 +1,8 @@
 {
     "type": "audio",
-    "note_count": 0,
-    "source_url": "ukIuGYR_Jcdm60j7Nb95dg&m=1",
-    "source_title": "open.spotify.com",
-    "artist": "ukIuGYR_Jcdm60j7Nb95dg",
-    "album": "ukIuGYR_Jcdm60j7Nb95dg",
-    "track_name": "ukIuGYR_Jcdm60j7Nb95dg",
-    "album_art": "https://i.scdn.co/image/ukIuGYR_Jcdm60j7Nb95dg",
-    "player": "ukIuGYR_Jcdm60j7Nb95dg",
-    "embed": "ukIuGYR_Jcdm60j7Nb95dg",
-    "plays": 0,
     "audio_url": "https://open.spotify.com/track/ukIuGYR_Jcdm60j7Nb95dg",
     "audio_source_url": "https://open.spotify.com/track/ukIuGYR_Jcdm60j7Nb95dg",
     "provider_uri": "spotify:track:ukIuGYR_Jcdm60j7Nb95dg?si=ukIuGYR_Jcdm60j7Nb95dg",
     "is_external": true,
-    "audio_type": "spotify",
-    "can_like": true,
-    "can_reblog": true,
-    "can_send_in_message": true,
-    "can_reply": true,
-    "display_avatar": true
+    "audio_type": "spotify"
 }

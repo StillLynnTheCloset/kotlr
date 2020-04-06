@@ -1,68 +1,12 @@
 {
     "type": "video",
-    "blog_name": "ukIuGYR_Jcdm60j7Nb95dg",
-    "blog": {
-        "name": "ukIuGYR_Jcdm60j7Nb95dg",
-        "title": "ukIuGYR_Jcdm60j7Nb95dg",
-        "description": "ukIuGYR_Jcdm60j7Nb95dg",
-        "url": "http://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/",
-        "uuid": "t:ukIuGYR_Jcdm60j7Nb95dg",
-        "updated": 1540854523
-    },
-    "id": 11456151650392,
-    "post_url": "http://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/post/1795187456165192/ukIuGYR_Jcdm60j7Nb95dg",
-    "slug": "ukIuGYR_Jcdm60j7Nb95dg",
-    "date": "2018-10-28 16:27:53 GMT",
-    "timestamp": 1540744073,
-    "state": "published",
-    "format": "html",
-    "reblog_key": "ukIuGYR_Jcdm60j7Nb95dg",
-    "tags": [],
-    "short_url": "https://tmblr.co/ukIuGYR_Jcdm60j7Nb95dg",
-    "summary": "ukIuGYR_Jcdm60j7Nb95dg",
-    "is_blocks_post_format": false,
-    "recommended_source": null,
-    "recommended_color": null,
-    "followed": true,
-    "liked": false,
-    "note_count": 677,
-    "source_url": "http://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/post/178948/ukIuGYR_Jcdm60j7Nb95dg",
-    "source_title": "ukIuGYR_Jcdm60j7Nb95dg",
-    "caption": "ukIuGYR_Jcdm60j7Nb95dg",
-    "reblog": {
-        "comment": "",
-        "tree_html": "ukIuGYR_Jcdm60j7Nb95dg"
-    },
-    "permalink_url": "https://www.youtube.com/watch?v=fD2briZ6fB0",
-    "html5_capable": true,
     "video": {
         "youtube": {
-            "video_id": "fD2briZ6fB0",
+            "video_id": "ukIuGYR_Jcdm60j7Nb95dg",
             "width": 540,
             "height": 304
         }
     },
-    "thumbnail_url": "https://i.ytimg.com/vi/fD2briZ6fB0/hqdefault.jpg",
-    "thumbnail_width": 480,
-    "thumbnail_height": 360,
-    "player": [
-        {
-            "width": 250,
-            "embed_code": "<iframe width=\"250\" height=\"141\"  id=\"youtube_iframe\" src=\"https://www.youtube.com/embed/fD2briZ6fB0?feature=oembed&amp;enablejsapi=1&amp;origin=https://safe.txmblr.com&amp;wmode=opaque\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>"
-        },
-        {
-            "width": 400,
-            "embed_code": "<iframe width=\"400\" height=\"225\"  id=\"youtube_iframe\" src=\"https://www.youtube.com/embed/fD2briZ6fB0?feature=oembed&amp;enablejsapi=1&amp;origin=https://safe.txmblr.com&amp;wmode=opaque\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>"
-        },
-        {
-            "width": 500,
-            "embed_code": "<iframe width=\"500\" height=\"281\"  id=\"youtube_iframe\" src=\"https://www.youtube.com/embed/fD2briZ6fB0?feature=oembed&amp;enablejsapi=1&amp;origin=https://safe.txmblr.com&amp;wmode=opaque\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>"
-        }
-    ],
-    "video_type": "youtube",
-    "can_like": true,
-    "can_reblog": true,
-    "can_send_in_message": true,
-    "can_reply": true,
-    "display_avatar": true
+    "thumbnail_url": "https://i.ytimg.com/vi/ukIuGYR_Jcdm60j7Nb95dg/hqdefault.jpg",
+    "video_type": "youtube"
 }

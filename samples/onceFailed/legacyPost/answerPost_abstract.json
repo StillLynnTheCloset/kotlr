@@ -4,51 +4,5 @@
     "asking_url": null,
     "question": "ukIuGYR_Jcdm60j7Nb95dg",
     "answer": "ukIuGYR_Jcdm60j7Nb95dg",
-    "answer_abstract": "ukIuGYR_Jcdm60j7Nb95dg",
-    "trail": [
-        {
-            "blog": {
-                "name": "creeptastically",
-                "active": true,
-                "theme": {
-                    "header_full_width": 1280,
-                    "header_full_height": 427,
-                    "header_focus_width": 760,
-                    "header_focus_height": 427,
-                    "avatar_shape": "square",
-                    "background_color": "#529ECC",
-                    "body_font": "Helvetica Neue",
-                    "header_bounds": "0,1280,427,520",
-                    "header_image": "https://static.tumblr.com/ukIuGYR_Jcdm60j7Nb95dg/ukIuGYR_Jcdm60j7Nb95dg/ukIuGYR_Jcdm60j7Nb95dg/ukIuGYR_Jcdm60j7Nb95dg.jpg",
-                    "header_image_focused": "https://static.tumblr.com/ukIuGYR_Jcdm60j7Nb95dg/ukIuGYR_Jcdm60j7Nb95dg/ukIuGYR_Jcdm60j7Nb95dg/ukIuGYR_Jcdm60j7Nb95dg.jpg",
-                    "header_image_scaled": "https://static.tumblr.com/ukIuGYR_Jcdm60j7Nb95dg/ukIuGYR_Jcdm60j7Nb95dg/ukIuGYR_Jcdm60j7Nb95dg/ukIuGYR_Jcdm60j7Nb95dg.jpg",
-                    "header_stretch": true,
-                    "link_color": "#f30505",
-                    "show_avatar": true,
-                    "show_description": true,
-                    "show_header_image": true,
-                    "show_title": true,
-                    "title_color": "#000000",
-                    "title_font": "Quadrat",
-                    "title_font_weight": "bold"
-                },
-                "share_likes": true,
-                "share_following": true,
-                "can_be_followed": true
-            },
-            "post": {
-                "id": "7894561234987"
-            },
-            "content_raw": "ukIuGYR_Jcdm60j7Nb95dg",
-            "content": "ukIuGYR_Jcdm60j7Nb95dg",
-            "content_abstract": "ukIuGYR_Jcdm60j7Nb95dg",
-            "is_current_item": true,
-            "is_root_item": true
-        }
-    ],
-    "can_like": true,
-    "can_reblog": true,
-    "can_send_in_message": true,
-    "can_reply": true,
-    "display_avatar": true
+    "answer_abstract": "ukIuGYR_Jcdm60j7Nb95dg"
 }
