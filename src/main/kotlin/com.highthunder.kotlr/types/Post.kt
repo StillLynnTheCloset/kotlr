@@ -1,8 +1,14 @@
 package com.highthunder.kotlr.types
 
 import com.highthunder.kotlr.json.PolymorphicJsonAdapterFactory
+import com.highthunder.kotlr.types.content.AskBlockLayout
+import com.highthunder.kotlr.types.content.AudioContent
 import com.highthunder.kotlr.types.content.BlockLayout
+import com.highthunder.kotlr.types.content.ImageContent
+import com.highthunder.kotlr.types.content.LinkContent
 import com.highthunder.kotlr.types.content.PostContent
+import com.highthunder.kotlr.types.content.TextContent
+import com.highthunder.kotlr.types.content.VideoContent
 import com.highthunder.kotlr.types.legacy.AnswerPost
 import com.highthunder.kotlr.types.legacy.AudioPost
 import com.highthunder.kotlr.types.legacy.ChatPost
@@ -39,7 +45,7 @@ interface Post {
             .withSubtype(VideoPost::class.java, Type.Video.key)
     }
 
-    val type: Post.Type
+    val type: Type
 
     // region Defaults
 
@@ -444,5 +450,38 @@ interface Post {
          */
         @Json(name = "queued")
         Queued("queued")
+    }
+
+
+    /**
+     * https://www.tumblr.com/docs/npf#mapping-npf-post-content-to-legacy-post-types
+     */
+    fun getLegacyPostType(): Type {
+        return when {
+            layout?.any { it is AskBlockLayout } == true -> {
+                Type.Answer
+            }
+            content?.any { it is VideoContent } == true -> {
+                Type.Video
+            }
+            content?.any { it is ImageContent } == true -> {
+                Type.Photo
+            }
+            content?.any { it is AudioContent } == true -> {
+                Type.Audio
+            }
+            content?.any { it is TextContent && it.subType == TextContent.SubType.Quote } == true -> {
+                Type.Quote
+            }
+            (content?.count { it is TextContent && it.subType == TextContent.SubType.Chat } ?: 0) > 1 -> {
+                Type.Chat
+            }
+            content?.any { it is LinkContent } == true -> {
+                Type.Link
+            }
+            else -> {
+                Type.Text
+            }
+        }
     }
 }
