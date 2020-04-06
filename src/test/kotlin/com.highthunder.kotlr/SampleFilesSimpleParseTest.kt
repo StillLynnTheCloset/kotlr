@@ -8,6 +8,7 @@ import com.highthunder.kotlr.types.Colors
 import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.NoteData
 import com.highthunder.kotlr.types.Post
+import com.highthunder.kotlr.types.RequestLink
 import com.highthunder.kotlr.types.User
 import com.highthunder.kotlr.types.content.Attribution
 import com.highthunder.kotlr.types.content.BlockLayout
@@ -16,6 +17,7 @@ import com.highthunder.kotlr.types.content.RowBlockLayout
 import com.highthunder.kotlr.types.content.TextFormat
 import com.highthunder.kotlr.types.legacy.Photo
 import com.highthunder.kotlr.types.legacy.Video
+import com.squareup.moshi.JsonAdapter
 import okio.buffer
 import okio.source
 import org.junit.AfterClass
@@ -75,6 +77,21 @@ class SampleFilesSimpleParseTest {
             }
             println("$filesParsedInDirectories parsed in directories so far")
         }
+
+        private fun <T> parseAllFilesInDirectory(directoryName: String, adapter: JsonAdapter<T>) {
+            val directory = File(directoryName)
+            if (!directory.exists() || !directory.isDirectory) {
+                throw IllegalArgumentException("directoryName must be the name of a directory")
+            }
+            directory.listFiles()?.forEach { file ->
+                val bufferedSource = file.source().buffer()
+                val parsedValue = adapter.failOnUnknown().fromJson(bufferedSource)
+                assertNotNull(parsedValue)
+                println(parsedValue)
+                filesParsedInDirectories++
+            }
+            println("$filesParsedInDirectories parsed in directories so far")
+        }
     }
 
 
@@ -100,6 +117,30 @@ class SampleFilesSimpleParseTest {
     }
 
     // endregion Manufactured Tests
+
+    // region Official LPF Samples Test Cases
+
+    @Test
+    fun testOfficialLPF_blog() {
+        parseAllFilesInDirectory<Blog>("samples/officialLPFSamples/blog")
+    }
+
+    @Test
+    fun testOfficialLPF_links() {
+        parseAllFilesInDirectory("samples/officialLPFSamples/links", moshi.mapAdapter<String, RequestLink>())
+    }
+
+    @Test
+    fun testOfficialLPF_post() {
+        parseAllFilesInDirectory<Post>("samples/officialLPFSamples/post")
+    }
+
+    @Test
+    fun testOfficialLPF_user() {
+        parseAllFilesInDirectory<User>("samples/officialLPFSamples/user")
+    }
+
+    // endregion Official LPF Samples Test Cases
 
     // region Official NPF Samples Test Cases
 
