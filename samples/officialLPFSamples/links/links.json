@@ -4,7 +4,7 @@
         "method": "GET",
         "href": "https://api.tumblr.com/v2/endpoint",
         "query_params": {
-            "page": 1,
+            "page": 1
         }
     },
     "next": {
@@ -12,11 +12,11 @@
         "method": "GET",
         "href": "https://api.tumblr.com/v2/endpoint",
         "query_params": {
-            "page": 3,
+            "page": 3
         }
     },
     "terms_of_service": {
         "type": "navigation",
-        "href": "https://www.tumblr.com/policy/terms-of-service",
+        "href": "https://www.tumblr.com/policy/terms-of-service"
     }
 }
