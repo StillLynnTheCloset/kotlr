@@ -74,7 +74,7 @@ class SampleFilesSimpleParseTest {
             val strictAdapter = adapter.failOnUnknown()
             val directory = File(directoryName)
             if (!directory.exists() || !directory.isDirectory) {
-                throw IllegalArgumentException("directoryName must be the name of a directory")
+                throw IllegalArgumentException("directoryName `$directoryName` must be the name of a directory")
             }
             directory.listFiles()?.forEach { file ->
                 val bufferedSource = file.source().buffer()
