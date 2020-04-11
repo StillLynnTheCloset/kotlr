@@ -30,38 +30,40 @@ import java.io.File
 class SampleFilesSimpleParseTest {
 
     companion object {
-        private var totalFilesInSamples = 0
-        private var filesParsedInDirectories = 0
+        private var allFileNames = mutableSetOf<String>()
+        private val parsedFileNames = mutableSetOf<String>()
 
-        private fun countFilesInDirRecursive(directory: File): Int {
-            var count = 0
+        private fun countFilesInDirRecursive(directory: File) {
             if (!directory.exists() || !directory.isDirectory) {
-                throw IllegalArgumentException("directory `$directory` must be a directory")
+                throw IllegalArgumentException("directory must be a directory")
             }
             directory.listFiles()?.forEach { file ->
                 if (file.isDirectory) {
-                    count += countFilesInDirRecursive(file)
+                    countFilesInDirRecursive(file)
                 } else {
-                    count++
+                    allFileNames.add(file.path)
                 }
             }
-            return count
         }
 
         @BeforeClass
         @JvmStatic
         fun beforeClass() {
-            filesParsedInDirectories = 0
-            totalFilesInSamples = countFilesInDirRecursive(File("samples"))
-            println("Expecting to test $totalFilesInSamples files")
+            parsedFileNames.clear()
+            allFileNames.clear()
+            countFilesInDirRecursive(File("samples"))
+            println("Expecting to test ${allFileNames.size} files")
         }
 
         @AfterClass
         @JvmStatic
         fun afterClass() {
             // Make sure that we tested every file.
-            println("Parsed $filesParsedInDirectories out of $totalFilesInSamples files")
-            assertEquals(totalFilesInSamples, filesParsedInDirectories)
+            println("Tested ${parsedFileNames.size} out of ${allFileNames.size} files")
+            allFileNames.filter { it !in parsedFileNames }.forEach {
+                println("Did not test file $it")
+            }
+            assertEquals(allFileNames, parsedFileNames)
         }
 
         private inline fun <reified T> parseAllFilesInDirectory(directoryName: String) {
@@ -78,7 +80,7 @@ class SampleFilesSimpleParseTest {
                 val bufferedSource = file.source().buffer()
                 val parsedValue = strictAdapter.fromJson(bufferedSource)
                 assertNotNull(parsedValue)
-                filesParsedInDirectories++
+                parsedFileNames.add(file.path)
             }
         }
     }
