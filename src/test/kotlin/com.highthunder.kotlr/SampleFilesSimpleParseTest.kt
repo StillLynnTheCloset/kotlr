@@ -36,7 +36,7 @@ class SampleFilesSimpleParseTest {
         private fun countFilesInDirRecursive(directory: File): Int {
             var count = 0
             if (!directory.exists() || !directory.isDirectory) {
-                throw IllegalArgumentException("directory must be a directory")
+                throw IllegalArgumentException("directory `$directory` must be a directory")
             }
             directory.listFiles()?.forEach { file ->
                 if (file.isDirectory) {
@@ -60,40 +60,28 @@ class SampleFilesSimpleParseTest {
         @JvmStatic
         fun afterClass() {
             // Make sure that we tested every file.
+            println("Parsed $filesParsedInDirectories out of $totalFilesInSamples files")
             assertEquals(totalFilesInSamples, filesParsedInDirectories)
         }
 
         private inline fun <reified T> parseAllFilesInDirectory(directoryName: String) {
-            val directory = File(directoryName)
-            if (!directory.exists() || !directory.isDirectory) {
-                throw IllegalArgumentException("directoryName must be the name of a directory")
-            }
-            directory.listFiles()?.forEach { file ->
-                val bufferedSource = file.source().buffer()
-                val parsedValue = moshi.adapter<T>().failOnUnknown().fromJson(bufferedSource)
-                assertNotNull(parsedValue)
-                println(parsedValue)
-                filesParsedInDirectories++
-            }
-            println("$filesParsedInDirectories parsed in directories so far")
+            parseAllFilesInDirectory(directoryName, moshi.adapter<T>())
         }
 
         private fun <T> parseAllFilesInDirectory(directoryName: String, adapter: JsonAdapter<T>) {
+            val strictAdapter = adapter.failOnUnknown()
             val directory = File(directoryName)
             if (!directory.exists() || !directory.isDirectory) {
                 throw IllegalArgumentException("directoryName must be the name of a directory")
             }
             directory.listFiles()?.forEach { file ->
                 val bufferedSource = file.source().buffer()
-                val parsedValue = adapter.failOnUnknown().fromJson(bufferedSource)
+                val parsedValue = strictAdapter.fromJson(bufferedSource)
                 assertNotNull(parsedValue)
-                println(parsedValue)
                 filesParsedInDirectories++
             }
-            println("$filesParsedInDirectories parsed in directories so far")
         }
     }
-
 
     // region Integration Test Cases
 
