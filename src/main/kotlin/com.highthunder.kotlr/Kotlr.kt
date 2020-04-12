@@ -113,9 +113,9 @@ private fun getHttpClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false)
     return httpClient.build()
 }
 
-private fun getClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false): Retrofit {
+private fun getClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false, strict: Boolean = false): Retrofit {
     val moshiFactory = MoshiConverterFactory.create(moshi).let { factory ->
-        if (debug) {
+        if (strict) {
             factory.failOnUnknown()
         } else {
             factory
@@ -130,8 +130,8 @@ private fun getClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false): Re
         .build()
 }
 
-fun getApi(userKey: TumblrUserKey, debug: Boolean = false): KotlrApi {
-    val client = getClient(getOAuthConsumer(userKey), debug)
+fun getApi(userKey: TumblrUserKey, debug: Boolean = false, strict: Boolean = false): KotlrApi {
+    val client = getClient(getOAuthConsumer(userKey), debug = debug, strict = strict)
     val userGetApi: KotlrUserGetApi = client.create()
     val blogGetApi: KotlrBlogGetApi = client.create()
     val userPostApi: KotlrUserPostApi = client.create()
