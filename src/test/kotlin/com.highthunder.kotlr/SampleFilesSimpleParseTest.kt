@@ -52,14 +52,14 @@ class SampleFilesSimpleParseTest {
             parsedFileNames.clear()
             allFileNames.clear()
             countFilesInDirRecursive(File("samples"))
-            println("Expecting to test ${allFileNames.size} files")
+            println("Expecting to parse ${allFileNames.size} files")
         }
 
         @AfterClass
         @JvmStatic
         fun afterClass() {
             // Make sure that we tested every file.
-            println("Tested ${parsedFileNames.size} out of ${allFileNames.size} files")
+            println("Parsed ${parsedFileNames.size} out of ${allFileNames.size} files")
             allFileNames.filter { it !in parsedFileNames }.forEach {
                 println("Did not test file $it")
             }

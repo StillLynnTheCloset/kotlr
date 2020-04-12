@@ -1,4 +1,4 @@
-
+import kotlin.String
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
@@ -13,8 +13,13 @@ import org.gradle.plugin.use.PluginDependencySpec
  */
 object Versions {
     const val org_jetbrains_kotlinx_kotlinx_coroutines: String = "1.3.3"
+             // available: "1.3.5-1.4-M1-release-99"
 
-    const val com_squareup_retrofit2: String = "2.7.2"
+    const val com_squareup_retrofit2: String = "2.8.1"
+
+    const val com_squareup_okhttp3: String = "4.5.0"
+
+    const val org_jetbrains_kotlin: String = "1.3.71"
 
     const val com_squareup_moshi: String = "1.9.2"
 
@@ -24,36 +29,26 @@ object Versions {
 
     const val de_fayard_buildsrcversions_gradle_plugin: String = "0.7.0"
 
-    const val org_jetbrains_kotlin_kapt_gradle_plugin: String = "1.3.61"
+    const val org_jetbrains_kotlin_kapt_gradle_plugin: String = "1.3.71"
 
-    const val org_jetbrains_kotlin_jvm_gradle_plugin: String = "1.3.61"
-
-    const val kotlin_scripting_compiler_embeddable: String = "1.3.61"
-
-    const val kotlin_annotation_processing_gradle: String = "1.3.61"
-
-    const val logging_interceptor: String = "4.4.0"
+    const val org_jetbrains_kotlin_jvm_gradle_plugin: String = "1.3.71"
 
     const val okhttp_signpost: String = "1.1.0"
 
-    const val kotlin_stdlib: String = "1.3.61"
-
     const val signpost_core: String = "1.2.1.2"
 
-    const val wagon_git: String = "0.2.0" // available: "0.3.0"
+    const val wagon_git: String = "0.3.0"
 
     const val ktlint: String = "0.36.0"
-
-    const val okhttp: String = "4.4.0"
 
     const val junit: String = "4.13"
 
     /**
-     * Current version: "6.1.1"
+     * Current version: "6.2.1"
      * See issue 19: How to update Gradle itself?
      * https://github.com/jmfayard/buildSrcVersions/issues/19
      */
-    const val gradleLatestVersion: String = "6.2.1"
+    const val gradleLatestVersion: String = "6.3"
 }
 
 /**
