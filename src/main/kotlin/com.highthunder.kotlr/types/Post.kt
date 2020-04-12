@@ -452,7 +452,6 @@ interface Post {
         Queued("queued")
     }
 
-
     /**
      * https://www.tumblr.com/docs/npf#mapping-npf-post-content-to-legacy-post-types
      */

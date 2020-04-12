@@ -18,6 +18,7 @@ import com.highthunder.kotlr.types.content.TextFormat
 import com.highthunder.kotlr.types.legacy.Photo
 import com.highthunder.kotlr.types.legacy.Video
 import com.squareup.moshi.JsonAdapter
+import java.io.File
 import okio.buffer
 import okio.source
 import org.junit.AfterClass
@@ -25,7 +26,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.BeforeClass
 import org.junit.Test
-import java.io.File
 
 class SampleFilesSimpleParseTest {
 

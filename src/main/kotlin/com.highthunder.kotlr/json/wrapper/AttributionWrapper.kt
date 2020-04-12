@@ -1,11 +1,8 @@
 package com.highthunder.kotlr.json.wrapper
 
 import com.highthunder.kotlr.types.AttributionList
-import com.highthunder.kotlr.types.Media
-import com.highthunder.kotlr.types.MediaList
 import com.highthunder.kotlr.types.content.Attribution
 import com.highthunder.kotlr.types.content.ImageContent
-import com.highthunder.kotlr.types.content.VideoContent
 import com.squareup.moshi.JsonClass
 
 /**

@@ -13,7 +13,6 @@ import com.squareup.moshi.JsonReader.Token.NULL
 import com.squareup.moshi.JsonWriter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
-import com.squareup.moshi.Types
 
 /**
  * MediaWrapperJsonAdapter - An adapter to help Moshi convert [MediaWrapper] objects to and
