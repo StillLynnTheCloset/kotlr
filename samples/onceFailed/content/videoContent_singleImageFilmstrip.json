@@ -1,21 +1,6 @@
 {
     "type": "video",
     "provider": "tumblr",
-    "url": "https://ve.media.tumblr.com/tumblr_ukIuGYR_Jcdm60j7Nb95dg.mp4",
-    "media": {
-        "url": "https://ve.media.tumblr.com/tumblr_ukIuGYR_Jcdm60j7Nb95dg.mp4",
-        "type": "video/mp4",
-        "width": 640,
-        "height": 360
-    },
-    "poster": [
-        {
-            "url": "https://66.media.tumblr.com/tumblr_ukIuGYR_Jcdm60j7Nb95dg_frame1.jpg",
-            "type": "image/jpeg",
-            "width": 640,
-            "height": 360
-        }
-    ],
     "filmstrip": {
         "url": "https://66.media.tumblr.com/previews/tumblr_ukIuGYR_Jcdm60j7Nb95dg_filmstrip.jpg",
         "type": "image/jpeg",

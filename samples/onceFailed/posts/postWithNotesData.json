@@ -1,47 +1,5 @@
 {
     "type": "quote",
-    "blog_name": "ukIuGYR_Jcdm60j7Nb95dg",
-    "blog": {
-        "name": "ukIuGYR_Jcdm60j7Nb95dg",
-        "title": "ukIuGYR_Jcdm60j7Nb95dg",
-        "description": "ukIuGYR_Jcdm60j7Nb95dga>",
-        "url": "https://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/",
-        "uuid": "t:ukIuGYR_Jcdm60j7Nb95dg",
-        "updated": 1541224307
-    },
-    "id": 8675309,
-    "post_url": "https://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/post/8675309/ukIuGYR_Jcdm60j7Nb95dg",
-    "slug": "ukIuGYR_Jcdm60j7Nb95dg",
-    "date": "2018-11-03 05:51:47 GMT",
-    "timestamp": 1541224307,
-    "state": "published",
-    "format": "html",
-    "reblog_key": "ukIuGYR_Jcdm60j7Nb95dg",
-    "tags": [
-        "ukIuGYR_Jcdm60j7Nb95dg",
-        "ukIuGYR_Jcdm60j7Nb95dg",
-        "ukIuGYR_Jcdm60j7Nb95dg"
-    ],
-    "short_url": "https://tmblr.co/ukIuGYR_Jcdm60j7Nb95dg",
-    "summary": "ukIuGYR_Jcdm60j7Nb95dg",
-    "is_blocks_post_format": false,
-    "recommended_source": null,
-    "recommended_color": null,
-    "followed": true,
-    "post_author": "nightsmaren",
-    "post_author_is_adult": false,
-    "is_submission": true,
-    "liked": false,
-    "note_count": 96,
-    "text": "ukIuGYR_Jcdm60j7Nb95dg",
-    "source": "ukIuGYR_Jcdm60j7Nb95dg",
-    "reblog": {
-        "comment": "ukIuGYR_Jcdm60j7Nb95dg",
-        "tree_html": ""
-    },
-    "can_like": true,
-    "can_reblog": true,
-    "can_send_in_message": true,
     "notes": [
         {
             "type": "like",
@@ -52,7 +10,5 @@
             "followed": false,
             "avatar_shape": "circle"
         }
-    ],
-    "can_reply": true,
-    "display_avatar": true
+    ]
 }

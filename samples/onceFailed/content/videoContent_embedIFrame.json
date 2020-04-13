@@ -1,19 +1,6 @@
 {
     "type": "video",
     "provider": "youtube",
-    "url": "https://www.youtube.com/watch?v=ukIuGYR_Jcdm60j7Nb95dg",
-    "embed_url": "https://www.youtube.com/embed/ukIuGYR_Jcdm60j7Nb95dg?feature=oembed&enablejsapi=1&origin=https://safe.txmblr.com&wmode=opaque",
-    "poster": [
-        {
-            "url": "https://i.ytimg.com/vi/ukIuGYR_Jcdm60j7Nb95dg/hqdefault.jpg",
-            "type": "image/jpeg",
-            "width": 480,
-            "height": 360
-        }
-    ],
-    "metadata": {
-        "id": "ukIuGYR_Jcdm60j7Nb95dg"
-    },
     "embed_iframe": {
         "url": "https://safe.txmblr.com/svc/embed/iframe/blogId/postId?w=540&h=304&media_id=HgbN8doxXxg#embed-ukIuGYR_Jcdm60j7Nb95dg",
         "width": 540,

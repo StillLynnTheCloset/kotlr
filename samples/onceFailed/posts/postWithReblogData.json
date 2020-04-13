@@ -1,112 +1,17 @@
 {
     "type": "photo",
-    "blog_name": "kotlr-development",
-    "blog": {
-        "name": "kotlr-development",
-        "title": "ukIuGYR_Jcdm60j7Nb95dg",
-        "description": "ukIuGYR_Jcdm60j7Nb95dg",
-        "url": "http://kotlr-development.tumblr.com/",
-        "uuid": "t:ukIuGYR_Jcdm60j7Nb95dg-8dg",
-        "updated": 1541218656
-    },
-    "id": 8675309,
-    "post_url": "http://kotlr-development.tumblr.com/post/8675309/ukIuGYR_Jcdm60j7Nb95dg",
-    "slug": "ukIuGYR_Jcdm60j7Nb95dg",
-    "date": "2018-11-03 04:17:36 GMT",
-    "timestamp": 1541218656,
-    "state": "published",
-    "format": "html",
-    "reblog_key": "ukIuGYR_Jcdm60j7Nb95dg",
-    "tags": [],
-    "short_url": "https://tmblr.co/ukIuGYR_Jcdm60j7Nb95dg",
-    "summary": "",
-    "is_blocks_post_format": true,
-    "recommended_source": null,
-    "recommended_color": null,
-    "followed": true,
-    "liked": false,
-    "note_count": 18111,
-    "source_url": "https://kotlr-development.tumblr.com/post/8675309",
-    "source_title": "kotlr-development",
-    "caption": "ukIuGYR_Jcdm60j7Nb95dg",
-    "reblog": {
-        "comment": "",
-        "tree_html": "ukIuGYR_Jcdm60j7Nb95dg"
-    },
-    "trail": [
-        {
-            "blog": {
-                "name": "kotlr-development",
-                "active": true,
-                "theme": {
-                    "header_full_width": 905,
-                    "header_full_height": 1280,
-                    "header_focus_width": 905,
-                    "header_focus_height": 509,
-                    "avatar_shape": "circle",
-                    "background_color": "#FFA444",
-                    "body_font": "Helvetica Neue",
-                    "header_bounds": "420,905,929,0",
-                    "header_image": "https://static.tumblr.com/ukIuGYR_Jcdm60j7Nb95dg/ukIuGYR_Jcdm60j7Nb95dg/ukIuGYR_Jcdm60j7Nb95dg/tumblr_static_.jpg",
-                    "header_image_focused": "https://static.tumblr.com/ukIuGYR_Jcdm60j7Nb95dg/ukIuGYR_Jcdm60j7Nb95dg/ukIuGYR_Jcdm60j7Nb95dg/tumblr_static_tumblr_static__focused_v3.jpg",
-                    "header_image_scaled": "https://static.tumblr.com/ukIuGYR_Jcdm60j7Nb95dg/ukIuGYR_Jcdm60j7Nb95dg/ukIuGYR_Jcdm60j7Nb95dg/tumblr_static__2048_v2.jpg",
-                    "header_stretch": true,
-                    "link_color": "#234357",
-                    "show_avatar": true,
-                    "show_description": true,
-                    "show_header_image": true,
-                    "show_title": true,
-                    "title_color": "#000000",
-                    "title_font": "Gibson",
-                    "title_font_weight": "regular"
-                },
-                "share_likes": false,
-                "share_following": false,
-                "can_be_followed": true
-            },
-            "post": {
-                "id": "179695024238"
-            },
-            "content_raw": "ukIuGYR_Jcdm60j7Nb95dg",
-            "content": "ukIuGYR_Jcdm60j7Nb95dg",
-            "is_root_item": true
-        }
-    ],
-    "photoset_layout": "1",
-    "photos": [
-        {
-            "caption": "",
-            "original_size": {
-                "url": "https://66.media.tumblr.com/ukIuGYR_Jcdm60j7Nb95dg/tumblr_phl0r1VvkB1wo3df8o1_1280.png",
-                "width": 1278,
-                "height": 797
-            },
-            "alt_sizes": [
-                {
-                    "url": "https://66.media.tumblr.com/ukIuGYR_Jcdm60j7Nb95dg/tumblr_phl0r1VvkB1wo3df8o1_1280.png",
-                    "width": 1278,
-                    "height": 797
-                }
-            ]
-        }
-    ],
     "reblogged_from_id": 8675309,
-    "reblogged_from_url": "http://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/post/179708440402",
+    "reblogged_from_url": "http://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/post/8675309",
     "reblogged_from_name": "ukIuGYR_Jcdm60j7Nb95dg",
     "reblogged_from_title": "ukIuGYR_Jcdm60j7Nb95dg",
     "reblogged_from_uuid": "t:ukIuGYR_Jcdm60j7Nb95dg",
     "reblogged_from_can_message": true,
     "reblogged_from_following": false,
     "reblogged_root_id": "8675309",
-    "reblogged_root_url": "https://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/post/44564815165161",
+    "reblogged_root_url": "https://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/post/8675309",
     "reblogged_root_name": "ukIuGYR_Jcdm60j7Nb95dg",
     "reblogged_root_title": "ukIuGYR_Jcdm60j7Nb95dg",
     "reblogged_root_uuid": "t:ukIuGYR_Jcdm60j7Nb95dg",
     "reblogged_root_can_message": true,
-    "reblogged_root_following": false,
-    "can_like": true,
-    "can_reblog": true,
-    "can_send_in_message": true,
-    "can_reply": false,
-    "display_avatar": true
+    "reblogged_root_following": false
 }
