@@ -46,7 +46,10 @@ data class ReblogPostBody constructor(
     val hideTrail: Boolean? = null
 ) {
     init {
-        tags?.forEach { it.takeIf { it.contains(',') }?.also { println("Tag `$it` contains comma(s). Tumblr will interpret this as a delimiter.") } }
+        tags?.forEach {
+            it.takeIf { it.contains(',') }
+                ?.also { println("Tag `$it` contains comma(s). Tumblr will interpret this as a delimiter.") }
+        }
     }
 
     constructor(
@@ -69,7 +72,8 @@ data class ReblogPostBody constructor(
         sourceUrl = sourceUrl,
         sendToTwitter = sendToTwitter,
         sendToFacebook = sendToFacebook,
-        parentTumblelogUuid = postToReblog.blogUUID ?: postToReblog.blog?.uuid ?: throw IllegalArgumentException("Post must have a parentBlogId"),
+        parentTumblelogUuid = postToReblog.blogUUID ?: postToReblog.blog?.uuid
+        ?: throw IllegalArgumentException("Post must have a parentBlogId"),
         parentPostId = postToReblog.id ?: throw IllegalArgumentException("Post must have an id"),
         reblogKey = postToReblog.reblogKey ?: throw IllegalArgumentException("Post must have a reblog key"),
         hideTrail = hideTrail

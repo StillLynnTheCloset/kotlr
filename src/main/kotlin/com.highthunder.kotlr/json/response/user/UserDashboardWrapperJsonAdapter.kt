@@ -23,7 +23,8 @@ import com.squareup.moshi.ToJson
  * @since 10/25/18
  * @version 1.0.0
  */
-internal class UserDashboardWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponseUserDashboard.Body>>() {
+internal class UserDashboardWrapperJsonAdapter(moshi: Moshi) :
+    JsonAdapter<WrapperInterface<ResponseUserDashboard.Body>>() {
     private val stringAdapter: JsonAdapter<String?> = moshi.adapter()
     private val responseAdapter: JsonAdapter<ResponseUserDashboard.Body> = moshi.adapter()
     private val listOfAnyAdapter: JsonAdapter<List<Any>> = moshi.listAdapter()

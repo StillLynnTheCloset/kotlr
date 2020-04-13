@@ -109,6 +109,9 @@ class PolymorphicJsonAdapterFactory<T> internal constructor(
                 null
             )
         }
+
+        private const val LABEL_INDEX_USE_DEFAULT: Int = -1
+        private const val LABEL_INDEX_USE_MISSING: Int = -2
     }
 
     /**
@@ -217,11 +220,11 @@ class PolymorphicJsonAdapterFactory<T> internal constructor(
             val peeked = reader.peekJson()
             peeked.setFailOnUnknown(false)
             val labelIndex: Int = peeked.use { labelIndex(it) }
-            if (labelIndex == -1) {
+            if (labelIndex == LABEL_INDEX_USE_DEFAULT) {
                 reader.skipValue()
                 return defaultValue
             }
-            if (labelIndex == -2 && missingLabelAdapter != null) {
+            if (labelIndex == LABEL_INDEX_USE_MISSING && missingLabelAdapter != null) {
                 return missingLabelAdapter.fromJson(reader)
             }
             return jsonAdapters[labelIndex].fromJson(reader)
@@ -237,15 +240,16 @@ class PolymorphicJsonAdapterFactory<T> internal constructor(
                     continue
                 }
                 val labelIndex = reader.selectString(labelOptions)
-                if (labelIndex == -1 && !defaultValueSet) {
+                if (labelIndex == LABEL_INDEX_USE_DEFAULT && !defaultValueSet) {
                     throw JsonDataException(
-                        "Expected one of $labels for key '$labelKey' but found '${reader.nextString()}'. Register a subtype for this label."
+                        "Expected one of $labels for key '$labelKey' but found '${reader.nextString()}'. " +
+                            "Register a subtype for this label."
                     )
                 }
                 return labelIndex
             }
             return if (missingLabelAdapter != null) {
-                -2
+                LABEL_INDEX_USE_MISSING
             } else {
                 throw JsonDataException("Missing label for $labelKey")
             }
@@ -268,7 +272,7 @@ class PolymorphicJsonAdapterFactory<T> internal constructor(
         }
 
         override fun toString(): String {
-            return "CustomPolymorphicJsonAdapter($labelKey)"
+            return "PolymorphicJsonAdapter($labelKey)"
         }
     }
 }

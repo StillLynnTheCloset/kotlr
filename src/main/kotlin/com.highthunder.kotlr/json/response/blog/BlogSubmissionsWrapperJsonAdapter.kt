@@ -23,7 +23,8 @@ import com.squareup.moshi.ToJson
  * @since 10/25/18
  * @version 1.0.0
  */
-internal class BlogSubmissionsWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponseBlogSubmissions.Body>>() {
+internal class BlogSubmissionsWrapperJsonAdapter(moshi: Moshi) :
+    JsonAdapter<WrapperInterface<ResponseBlogSubmissions.Body>>() {
     private val stringAdapter: JsonAdapter<String?> = moshi.adapter()
     private val responseAdapter: JsonAdapter<ResponseBlogSubmissions.Body> = moshi.adapter()
     private val listOfAnyAdapter: JsonAdapter<List<Any>> = moshi.listAdapter()

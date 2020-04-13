@@ -75,8 +75,7 @@ ktlint {
         include(fileTree("scripts/"))
     }
     filter {
-        exclude("**/generated/**")
-        include("**/kotlin/**")
+        include("src/**")
     }
 }
 

@@ -23,7 +23,8 @@ import com.squareup.moshi.ToJson
  * @since 10/25/18
  * @version 1.0.0
  */
-internal class UserFollowingWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponseUserFollowing.Body>>() {
+internal class UserFollowingWrapperJsonAdapter(moshi: Moshi) :
+    JsonAdapter<WrapperInterface<ResponseUserFollowing.Body>>() {
     private val stringAdapter: JsonAdapter<String?> = moshi.adapter()
     private val responseAdapter: JsonAdapter<ResponseUserFollowing.Body> = moshi.adapter()
     private val listOfAnyAdapter: JsonAdapter<List<Any>> = moshi.listAdapter()
