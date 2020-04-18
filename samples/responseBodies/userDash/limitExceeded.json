@@ -1,0 +1,14 @@
+{
+    "meta": {
+        "status": 429,
+        "msg": "Limit Exceeded"
+    },
+    "response": [],
+    "errors": [
+        {
+            "title": "Limit Exceeded",
+            "code": 0,
+            "detail": "Minor hiccup. Try again."
+        }
+    ]
+}

@@ -2323,6 +2323,28 @@ class SampleFilesIndividualParseTest {
         assertEquals(expected, response)
     }
 
+    @Test
+    fun responseBodies_userDash_limitExceeded() {
+        val response = parseFile<ResponseUserDashboard.Response>("samples/responseBodies/userDash/limitExceeded.json")
+        val expected = ResponseUserDashboard.Response(
+            meta = ResponseMetaInfo(
+                status = 429,
+                msg = "Limit Exceeded"
+            ),
+            response = ResponseUserDashboard.Wrapper(
+                error = "[]"
+            ),
+            errors = listOf(
+                TumblrError(
+                    title = "Limit Exceeded",
+                    code = 0,
+                    detail = "Minor hiccup. Try again."
+                )
+            )
+        )
+        assertEquals(expected, response)
+    }
+
     // endregion UserDash
 
     // endregion Response Bodies Test Cases
