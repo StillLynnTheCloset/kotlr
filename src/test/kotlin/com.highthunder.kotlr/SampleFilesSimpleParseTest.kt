@@ -60,7 +60,7 @@ class SampleFilesSimpleParseTest {
         fun afterClass() {
             // Make sure that we tested every file.
             println("Parsed ${parsedFileNames.size} out of ${allFileNames.size} files")
-            allFileNames.filter { it !in parsedFileNames }.forEach {
+            allFileNames.filter { it !in parsedFileNames }.sorted().forEach {
                 println("Did not test file $it")
             }
             assertEquals(allFileNames, parsedFileNames)
