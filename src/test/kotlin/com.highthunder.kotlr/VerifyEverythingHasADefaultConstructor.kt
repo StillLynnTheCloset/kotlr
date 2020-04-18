@@ -7,7 +7,6 @@ import com.highthunder.kotlr.types.BlogTheme
 import com.highthunder.kotlr.types.Colors
 import com.highthunder.kotlr.types.LikeNote
 import com.highthunder.kotlr.types.Media
-import com.highthunder.kotlr.types.PostId
 import com.highthunder.kotlr.types.PostedNote
 import com.highthunder.kotlr.types.ReblogData
 import com.highthunder.kotlr.types.ReblogNote
@@ -100,7 +99,6 @@ class VerifyEverythingHasADefaultConstructor {
         println(BlogTheme().toString())
         println(Colors().toString())
         println(Media().toString())
-        println(PostId().toString())
         println(ReblogData().toString())
         println(RequestLink().toString())
         println(SubmissionTerms().toString())

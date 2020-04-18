@@ -19,7 +19,6 @@ import com.highthunder.kotlr.types.LikeNote
 import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.NoteData
 import com.highthunder.kotlr.types.Post
-import com.highthunder.kotlr.types.PostId
 import com.highthunder.kotlr.types.PostedNote
 import com.highthunder.kotlr.types.ReblogNote
 import com.highthunder.kotlr.types.ReplyNote
@@ -594,7 +593,7 @@ class SampleFilesIndividualParseTest {
         val attribution = parseFile<Attribution>("samples/officialNPFSamples/attribution/attributionTypePost.json")
         val expected = PostAttribution(
             url = "http://www.davidslog.com/153957802620/five-years-of-working-with-this-awesome-girl",
-            post = PostId(
+            post = BlockPost(
                 id = 1234567890
             ),
             blog = Blog(
@@ -1285,7 +1284,7 @@ class SampleFilesIndividualParseTest {
         val expected = BlockPost(
             trail = listOf(
                 Trail(
-                    post = PostId(1234),
+                    post = BlockPost(id = 1234),
                     blog = Blog(),
                     content = ContentWrapper(contentList = listOf(
                         TextContent(
@@ -1295,7 +1294,7 @@ class SampleFilesIndividualParseTest {
                     layout = emptyList()
                 ),
                 Trail(
-                    post = PostId(3456),
+                    post = BlockPost(id = 3456),
                     blog = Blog(),
                     content = ContentWrapper(contentList = listOf(
                         TextContent(

@@ -30,7 +30,7 @@ data class Trail constructor(
     @Json(name = "blog")
     val blog: Blog? = null,
     @Json(name = "post")
-    val post: PostId? = null,
+    val post: Post? = null,
     @Json(name = "content_raw")
     val contentRaw: String? = null,
     @Json(name = "content")

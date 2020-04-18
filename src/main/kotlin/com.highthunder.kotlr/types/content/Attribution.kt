@@ -3,7 +3,7 @@ package com.highthunder.kotlr.types.content
 import com.highthunder.kotlr.json.PolymorphicJsonAdapterFactory
 import com.highthunder.kotlr.types.Blog
 import com.highthunder.kotlr.types.Media
-import com.highthunder.kotlr.types.PostId
+import com.highthunder.kotlr.types.Post
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -45,7 +45,7 @@ object UnknownAttribution : Attribution() {
 @JsonClass(generateAdapter = true)
 data class PostAttribution constructor(
     val url: String? = null,
-    val post: PostId? = null,
+    val post: Post? = null,
     val blog: Blog? = null,
     override val type: String = KEY
 ) : Attribution() {
