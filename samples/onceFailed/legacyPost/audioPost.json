@@ -1,26 +1,15 @@
 {
     "type": "audio",
-    "id": 8675309,
-    "note_count": 1436,
     "source_url": "https://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/post/8675309",
     "source_title": "ukIuGYR_Jcdm60j7Nb95dg",
     "artist": "ukIuGYR_Jcdm60j7Nb95dg",
     "track_name": "ukIuGYR_Jcdm60j7Nb95dg",
     "album_art": "https://66.media.tumblr.com/ukIuGYR_Jcdm60j7Nb95dg.png",
     "caption": "ukIuGYR_Jcdm60j7Nb95dg",
-    "reblog": {
-        "comment": "",
-        "tree_html": "ukIuGYR_Jcdm60j7Nb95dg"
-    },
     "player": "ukIuGYR_Jcdm60j7Nb95dg",
     "embed": "ukIuGYR_Jcdm60j7Nb95dg",
     "plays": 1876,
     "audio_url": "https://a.tumblr.com/ukIuGYR_Jcdm60j7Nb95dg.mp3",
     "audio_source_url": "https://a.tumblr.com/ukIuGYR_Jcdm60j7Nb95dg.mp3",
-    "audio_type": "tumblr",
-    "can_like": true,
-    "can_reblog": true,
-    "can_send_in_message": true,
-    "can_reply": true,
-    "display_avatar": true
+    "audio_type": "tumblr"
 }
