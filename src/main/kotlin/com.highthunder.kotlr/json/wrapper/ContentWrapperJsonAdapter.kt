@@ -23,14 +23,10 @@ import com.squareup.moshi.Types
 internal class ContentWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ContentWrapper>() {
 
     private val stringAdapter: JsonAdapter<String?> =
-        moshi.adapter(String::class.java, kotlin.collections.emptySet(), null)
+        moshi.adapter(String::class.java, emptySet())
 
     private val listOfContentAdapter: JsonAdapter<List<PostContent>> =
-        moshi.adapter<List<PostContent>>(
-            Types.newParameterizedType(List::class.java, PostContent::class.java),
-            kotlin.collections.emptySet(),
-            null
-        )
+        moshi.adapter(Types.newParameterizedType(List::class.java, PostContent::class.java), emptySet())
 
     /**
      * TODO: Documentation
@@ -41,7 +37,7 @@ internal class ContentWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ContentWrap
             BEGIN_ARRAY -> ContentWrapper(contentList = listOfContentAdapter.fromJson(reader))
             STRING -> ContentWrapper(contentString = stringAdapter.fromJson(reader))
             NULL -> ContentWrapper()
-            else -> throw JsonDataException("Expected a field of type List or Media but got ${reader.peek()}")
+            else -> throw JsonDataException("Expected a field of type List or String but got ${reader.peek()}")
         }
     }
 
@@ -53,7 +49,7 @@ internal class ContentWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ContentWrap
         if (value?.contentString != null) {
             stringAdapter.toJson(writer, value.contentString)
         } else {
-            listOfContentAdapter.toJson(writer, value?.contentList ?: listOf())
+            listOfContentAdapter.toJson(writer, value?.contentList.orEmpty())
         }
     }
 }

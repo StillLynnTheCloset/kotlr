@@ -17,29 +17,35 @@ package com.highthunder.kotlr.types
 data class Color constructor(
     private val c: Int
 ) {
+    companion object {
+        private fun String.normalizeTo6DigitString(): String? =
+            dropWhile { it == '#' }.takeIf(String::isNotBlank)?.let {
+                return@let when (it.length) {
+                    6 -> it
+                    3 -> "${it[0]}${it[0]}${it[1]}${it[1]}${it[2]}${it[2]}"
+                    else -> null
+                }
+            }
+    }
 
     constructor(s: String) : this(
-        Integer.parseInt(s.dropWhile { it == '#' }.takeIf(String::isNotBlank)?.let {
-            return@let when (it.length) {
-                6 -> it
-                3 -> "${it[0]}${it[0]}${it[1]}${it[1]}${it[2]}${it[2]}"
-                else -> null
-            }
-        } ?: throw IllegalArgumentException(""), 16)
+        Integer.parseInt(
+            s.normalizeTo6DigitString() ?: throw NumberFormatException("Color string '$s' is not a valid color"), 16
+        )
     )
 
     /**
-     * TODO: Documentation
+     * Return the value of this Color as an rgb integer, useful on platforms like Android that use integer color values.
      */
     fun asInt(): Int = c
 
     /**
-     * TODO: Documentation
+     * Return the value of this Color as a hexadecimal string, with no leading octothorpe.
      */
     fun asString(): String = String.format("%06x", c)
 
     /**
-     * TODO: Documentation
+     * Return the value of this Color as a hexadecimal string, with a leading octothorpe.
      */
     fun asOctothorpeString(): String = String.format("#%06x", c)
 }

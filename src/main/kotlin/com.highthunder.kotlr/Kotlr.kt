@@ -11,13 +11,16 @@ import com.highthunder.kotlr.authentication.TumblrUserKey
 import com.highthunder.kotlr.json.qualifier.CommaSeparatedStringJsonAdapter
 import com.highthunder.kotlr.json.qualifier.HexColorJsonAdapter
 import com.highthunder.kotlr.json.qualifier.HexColorOctothorpeJsonAdapter
-import com.highthunder.kotlr.json.superwrapper.AttributionAmalgamationAdapter
-import com.highthunder.kotlr.json.superwrapper.BlockLayoutAmalgamationAdapter
-import com.highthunder.kotlr.json.superwrapper.ContentAmalgamationAdapter
-import com.highthunder.kotlr.json.superwrapper.DisplayModeAmalgamationAdapter
-import com.highthunder.kotlr.json.superwrapper.NoteDataAmalgamationAdapter
-import com.highthunder.kotlr.json.superwrapper.PostAmalgamationAdapter
-import com.highthunder.kotlr.json.superwrapper.TextFormatAmalgamationAdapter
+import com.highthunder.kotlr.json.wrapper.AttributionListJsonAdapter
+import com.highthunder.kotlr.json.wrapper.ColorJsonAdapter
+import com.highthunder.kotlr.json.wrapper.MediaListJsonAdapter
+import com.highthunder.kotlr.types.NoteData
+import com.highthunder.kotlr.types.Post
+import com.highthunder.kotlr.types.content.Attribution
+import com.highthunder.kotlr.types.content.BlockLayout
+import com.highthunder.kotlr.types.content.PostContent
+import com.highthunder.kotlr.types.content.RowBlockLayout
+import com.highthunder.kotlr.types.content.TextFormat
 import com.squareup.moshi.Moshi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -36,19 +39,28 @@ import se.akerfeldt.okhttp.signpost.SigningInterceptor
 internal val moshi: Moshi by lazy {
     return@lazy Moshi
         .Builder()
-        .add(ContentAmalgamationAdapter())
-        .add(AttributionAmalgamationAdapter())
-        .add(TextFormatAmalgamationAdapter())
-        .add(BlockLayoutAmalgamationAdapter())
-        .add(DisplayModeAmalgamationAdapter())
-        .add(NoteDataAmalgamationAdapter())
-        .add(CommaSeparatedStringJsonAdapter())
-        .add(HexColorJsonAdapter())
-        .add(HexColorOctothorpeJsonAdapter())
-        .add(PostAmalgamationAdapter())
-        .add(KotlrJsonAdapterFactory())
+        .addKotlrTypes()
         .build()
 }
+
+/**
+ * Helper function to add support for all Kotlr datatypes to the given Moshi Builder
+ */
+fun Moshi.Builder.addKotlrTypes(): Moshi.Builder = this
+    .add(PostContent.jsonAdapterFactory)
+    .add(Attribution.jsonAdapterFactory)
+    .add(TextFormat.jsonAdapterFactory)
+    .add(BlockLayout.jsonAdapterFactory)
+    .add(RowBlockLayout.Display.Mode.jsonAdapterFactory)
+    .add(NoteData.jsonAdapterFactory)
+    .add(Post.jsonAdapterFactory)
+    .add(CommaSeparatedStringJsonAdapter())
+    .add(ColorJsonAdapter())
+    .add(HexColorJsonAdapter())
+    .add(MediaListJsonAdapter())
+    .add(AttributionListJsonAdapter())
+    .add(HexColorOctothorpeJsonAdapter())
+    .add(KotlrJsonAdapterFactory())
 
 private const val API_BASE_URL = "https://api.tumblr.com/v2/"
 private const val O_AUTH_BASE_URL = "https://www.tumblr.com/oauth/"
@@ -101,9 +113,9 @@ private fun getHttpClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false)
     return httpClient.build()
 }
 
-private fun getClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false): Retrofit {
+private fun getClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false, strict: Boolean = false): Retrofit {
     val moshiFactory = MoshiConverterFactory.create(moshi).let { factory ->
-        if (debug) {
+        if (strict) {
             factory.failOnUnknown()
         } else {
             factory
@@ -118,8 +130,8 @@ private fun getClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false): Re
         .build()
 }
 
-fun getApi(userKey: TumblrUserKey, debug: Boolean = false): KotlrApi {
-    val client = getClient(getOAuthConsumer(userKey), debug)
+fun getApi(userKey: TumblrUserKey, debug: Boolean = false, strict: Boolean = false): KotlrApi {
+    val client = getClient(getOAuthConsumer(userKey), debug = debug, strict = strict)
     val userGetApi: KotlrUserGetApi = client.create()
     val blogGetApi: KotlrBlogGetApi = client.create()
     val userPostApi: KotlrUserPostApi = client.create()

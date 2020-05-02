@@ -1,0 +1,9 @@
+{
+    "type": "video",
+    "provider": "youtube",
+    "embed_iframe": {
+        "url": "https://safe.txmblr.com/svc/embed/iframe/blogId/postId?w=540&h=304&media_id=HgbN8doxXxg#embed-ukIuGYR_Jcdm60j7Nb95dg",
+        "width": 540,
+        "height": 304
+    }
+}

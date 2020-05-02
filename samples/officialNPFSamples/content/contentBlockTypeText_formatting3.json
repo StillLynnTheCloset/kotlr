@@ -1,0 +1,12 @@
+{
+    "type": "text",
+    "text": "Found this link for you",
+    "formatting": [
+        {
+            "start": 6,
+            "end": 10,
+            "type": "link",
+            "url": "https://www.nasa.gov"
+        }
+    ]
+}

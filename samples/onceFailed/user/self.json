@@ -1,0 +1,17 @@
+{
+    "name": "kotlr-development",
+    "likes": 202,
+    "following": 28,
+    "default_post_format": "html",
+    "blogs": [
+        {
+            "primary": true
+        },
+        {
+            "primary": false
+        },
+        {
+            "primary": false
+        }
+    ]
+}

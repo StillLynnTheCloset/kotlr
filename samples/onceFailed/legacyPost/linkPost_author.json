@@ -1,0 +1,12 @@
+{
+    "type": "link",
+    "source_url": "url",
+    "source_title": "text",
+    "title": "text",
+    "url": "url",
+    "author": "author",
+    "link_author": "link author",
+    "excerpt": "text",
+    "publisher": "text",
+    "description": "text"
+}

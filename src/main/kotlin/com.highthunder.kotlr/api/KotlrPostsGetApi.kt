@@ -8,7 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface KotlrPostsGetApi {
+internal interface KotlrPostsGetApi {
     @GET("tagged")
     suspend fun getTaggedPosts(
         @Query("tag")

@@ -1,0 +1,30 @@
+{
+    "meta": {
+        "status": 200,
+        "msg": "OK"
+    },
+    "response": {
+        "liked_posts": [
+            {}
+        ],
+        "liked_count": 202,
+        "_links": {
+            "next": {
+                "href": "/v2/blog/kotlr-development.tumblr.com/likes?limit=1&before=1539817301",
+                "method": "GET",
+                "query_params": {
+                    "limit": "1",
+                    "before": "1539817301"
+                }
+            },
+            "prev": {
+                "href": "/v2/blog/kotlr-development.tumblr.com/likes?limit=1&after=1539817301",
+                "method": "GET",
+                "query_params": {
+                    "limit": "1",
+                    "after": "1539817301"
+                }
+            }
+        }
+    }
+}

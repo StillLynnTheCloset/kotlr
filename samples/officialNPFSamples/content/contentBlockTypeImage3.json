@@ -1,0 +1,15 @@
+{
+    "type": "image",
+    "media": [
+        {
+            "type": "image/jpeg",
+            "url": "http://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_1280.jpg",
+            "width": 1280,
+            "height": 1073
+        }
+    ],
+    "colors": {
+        "c0": "a24615",
+        "c1": "ff7c00"
+    }
+}

@@ -3,7 +3,7 @@ package com.highthunder.kotlr.api
 import retrofit2.http.POST
 import retrofit2.http.Query
 
-interface KotlrUserPostApi {
+internal interface KotlrUserPostApi {
 
     @POST("user/follow")
     suspend fun followBlog(

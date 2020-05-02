@@ -1,0 +1,9 @@
+{
+    "type": "video",
+    "player": [
+        {
+            "width": 250,
+            "embed_code": false
+        }
+    ]
+}

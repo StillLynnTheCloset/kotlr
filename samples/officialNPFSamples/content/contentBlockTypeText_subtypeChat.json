@@ -1,0 +1,12 @@
+{
+    "type": "text",
+    "subtype": "chat",
+    "text": "cyle: ello",
+    "formatting": [
+        {
+            "start": 0,
+            "end": 5,
+            "type": "bold"
+        }
+    ]
+}

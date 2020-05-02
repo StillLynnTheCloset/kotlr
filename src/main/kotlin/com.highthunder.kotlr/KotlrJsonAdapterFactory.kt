@@ -16,7 +16,7 @@ import com.highthunder.kotlr.json.response.user.UserDashboardWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserFollowingWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserInfoWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserLikesWrapperJsonAdapter
-import com.highthunder.kotlr.json.wrapper.ColorJsonAdapter
+import com.highthunder.kotlr.json.wrapper.AttributionWrapperJsonAdapter
 import com.highthunder.kotlr.json.wrapper.ColorsJsonAdapter
 import com.highthunder.kotlr.json.wrapper.ContentWrapperJsonAdapter
 import com.highthunder.kotlr.json.wrapper.MediaWrapperJsonAdapter
@@ -29,7 +29,7 @@ import com.squareup.moshi.Moshi
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
-class KotlrJsonAdapterFactory : JsonAdapter.Factory {
+internal class KotlrJsonAdapterFactory : JsonAdapter.Factory {
     override fun create(type: Type, annotations: MutableSet<out Annotation>, moshi: Moshi): JsonAdapter<*>? {
         return if (type is ParameterizedType) {
             if (type.rawType.typeName == "com.highthunder.kotlr.response.WrapperInterface") {
@@ -74,10 +74,10 @@ class KotlrJsonAdapterFactory : JsonAdapter.Factory {
         } else {
             when (type.typeName) {
                 "com.highthunder.kotlr.types.Colors" -> ColorsJsonAdapter(moshi)
-                "com.highthunder.kotlr.types.Color" -> ColorJsonAdapter(moshi)
                 "com.highthunder.kotlr.types.legacy.Video" -> VideoJsonAdapter(moshi)
                 "com.highthunder.kotlr.types.User" -> UserJsonAdapter(moshi)
                 "com.highthunder.kotlr.json.wrapper.MediaWrapper" -> MediaWrapperJsonAdapter(moshi)
+                "com.highthunder.kotlr.json.wrapper.AttributionWrapper" -> AttributionWrapperJsonAdapter(moshi)
                 "com.highthunder.kotlr.json.wrapper.ThemeWrapper" -> ThemeWrapperJsonAdapter(moshi)
                 "com.highthunder.kotlr.json.wrapper.PlayerWrapper" -> PlayerWrapperJsonAdapter(moshi)
                 "com.highthunder.kotlr.json.wrapper.ContentWrapper" -> ContentWrapperJsonAdapter(moshi)

@@ -34,7 +34,15 @@ data class CreateNewPostBody constructor(
     val sendToFacebook: Boolean? = null
 ) {
     init {
-        tags?.forEach { it.takeIf { it.contains(',') }?.also { println("Tag `$it` contains comma(s). Tumblr will interpret this as a delimiter.") } }
-        tags?.flatMap { it.split(",") }?.map { it.trim() }?.also { println("Tumblr will interpret tags as: $tags") }
+        tags?.forEach {
+            it
+                .takeIf { it.contains(',') }
+                ?.also { println("Tag `$it` contains comma(s). Tumblr will interpret this as a delimiter.") }
+        }
+
+        tags
+            ?.flatMap { it.split(",") }
+            ?.map { it.trim() }
+            ?.also { println("Tumblr will interpret tags as: $tags") }
     }
 }

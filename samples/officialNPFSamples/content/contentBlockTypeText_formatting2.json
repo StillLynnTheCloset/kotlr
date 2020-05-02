@@ -1,0 +1,16 @@
+{
+    "type": "text",
+    "text": "some bold and italic text",
+    "formatting": [
+        {
+            "start": 5,
+            "end": 9,
+            "type": "bold"
+        },
+        {
+            "start": 14,
+            "end": 20,
+            "type": "italic"
+        }
+    ]
+}

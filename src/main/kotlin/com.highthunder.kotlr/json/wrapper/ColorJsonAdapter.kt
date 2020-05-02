@@ -6,13 +6,12 @@ import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
-import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
 
 /**
  * TODO: Documentation
  */
-internal class ColorJsonAdapter(moshi: Moshi) : JsonAdapter<Color>() {
+internal class ColorJsonAdapter() : JsonAdapter<Color>() {
 
     override fun toString(): String = "JsonAdapter(Colors)"
 

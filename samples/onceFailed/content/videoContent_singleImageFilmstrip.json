@@ -1,0 +1,10 @@
+{
+    "type": "video",
+    "provider": "tumblr",
+    "filmstrip": {
+        "url": "https://66.media.tumblr.com/previews/tumblr_ukIuGYR_Jcdm60j7Nb95dg_filmstrip.jpg",
+        "type": "image/jpeg",
+        "width": 2000,
+        "height": 112
+    }
+}

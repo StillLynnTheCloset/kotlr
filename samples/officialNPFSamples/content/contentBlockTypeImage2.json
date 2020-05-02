@@ -1,0 +1,12 @@
+{
+    "type": "image",
+    "media": [
+        {
+            "type": "image/gif",
+            "url": "http://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_250.gif",
+            "width": 250,
+            "height": 200
+        }
+    ],
+    "feedback_token": "abcdef123456"
+}

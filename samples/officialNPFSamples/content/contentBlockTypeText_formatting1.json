@@ -1,0 +1,16 @@
+{
+    "type": "text",
+    "text": "supercalifragilisticexpialidocious",
+    "formatting": [
+        {
+            "start": 0,
+            "end": 20,
+            "type": "bold"
+        },
+        {
+            "start": 9,
+            "end": 34,
+            "type": "italic"
+        }
+    ]
+}

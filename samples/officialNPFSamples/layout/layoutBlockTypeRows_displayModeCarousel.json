@@ -1,0 +1,23 @@
+{
+    "type": "rows",
+    "display": [
+        {
+            "blocks": [0]
+        },
+        {
+            "blocks": [1, 2]
+        },
+        {
+            "blocks": [3]
+        },
+        {
+            "blocks": [4, 5, 6],
+            "mode": {
+                "type": "carousel"
+            }
+        },
+        {
+            "blocks": [7]
+        }
+    ]
+}

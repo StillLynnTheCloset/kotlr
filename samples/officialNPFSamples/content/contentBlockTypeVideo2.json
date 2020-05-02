@@ -1,0 +1,18 @@
+{
+    "type": "video",
+    "provider": "youtube",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "embed_html": "<iframe width=\"560\" height=\"315\" src=\"https:\/\/www.youtube.com\/embed\/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen><\/iframe>",
+    "embed_url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "metadata": {
+        "id": "dQw4w9WgXcQ"
+    },
+    "poster": [
+        {
+            "type": "image/jpeg",
+            "url": "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
+            "width": 500,
+            "height": 400
+        }
+    ]
+}

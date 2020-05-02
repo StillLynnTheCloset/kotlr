@@ -1,4 +1,4 @@
-
+import kotlin.String
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
@@ -12,49 +12,43 @@ import org.gradle.plugin.use.PluginDependencySpec
  * YOU are responsible for updating manually the dependency version.
  */
 object Versions {
-    const val org_jetbrains_kotlinx_kotlinx_coroutines: String = "1.1.0"
-             // available: "1.3.2-1.3.60"
+    const val org_jetbrains_kotlinx_kotlinx_coroutines: String = "1.3.3"
+             // available: "1.3.5-1.4-M1-release-99"
 
-    const val org_jetbrains_kotlin: String = "1.3.41" // available: "1.3.61"
+    const val com_squareup_retrofit2: String = "2.8.1"
 
-    const val com_squareup_moshi: String = "1.8.0" // available: "1.9.2"
+    const val com_squareup_okhttp3: String = "4.5.0"
 
-    const val com_github_ben_manes_versions_gradle_plugin: String = "0.27.0"
+    const val org_jetbrains_kotlin: String = "1.3.71"
 
-    const val org_jlleitschuh_gradle_ktlint_gradle_plugin: String = "8.1.0" // available: "9.1.1"
+    const val com_squareup_moshi: String = "1.9.2"
+
+    const val com_github_ben_manes_versions_gradle_plugin: String = "0.28.0"
+
+    const val org_jlleitschuh_gradle_ktlint_gradle_plugin: String = "9.2.1"
 
     const val de_fayard_buildsrcversions_gradle_plugin: String = "0.7.0"
 
-    const val org_jetbrains_kotlin_kapt_gradle_plugin: String = "1.3.61"
+    const val org_jetbrains_kotlin_kapt_gradle_plugin: String = "1.3.71"
 
-    const val org_jetbrains_kotlin_jvm_gradle_plugin: String = "1.3.61"
-
-    const val logging_interceptor: String = "4.2.1" // available: "4.2.2"
-
-    const val converter_scalars: String = "2.6.2"
-
-    const val converter_moshi: String = "2.6.2"
+    const val org_jetbrains_kotlin_jvm_gradle_plugin: String = "1.3.71"
 
     const val okhttp_signpost: String = "1.1.0"
 
     const val signpost_core: String = "1.2.1.2"
 
-    const val wagon_git: String = "0.2.0" // available: "0.3.0"
-
-    const val retrofit: String = "2.6.2"
+    const val wagon_git: String = "0.3.0"
 
     const val ktlint: String = "0.36.0"
 
-    const val okhttp: String = "4.2.2"
-
-    const val junit: String = "4.12"
+    const val junit: String = "4.13"
 
     /**
-     * Current version: "4.10.2"
+     * Current version: "6.2.1"
      * See issue 19: How to update Gradle itself?
      * https://github.com/jmfayard/buildSrcVersions/issues/19
      */
-    const val gradleLatestVersion: String = "6.0.1"
+    const val gradleLatestVersion: String = "6.3"
 }
 
 /**

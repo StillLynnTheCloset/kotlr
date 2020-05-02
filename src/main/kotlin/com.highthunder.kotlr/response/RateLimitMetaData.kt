@@ -62,7 +62,7 @@ data class RateLimitMetaData constructor(
         private const val HOURLY_RESET_HEADER: String = "X-Ratelimit-Perhour-Reset"
     }
 
-    constructor(header: Headers): this(
+    constructor(header: Headers) : this(
         header[DAILY_LIMIT_HEADER]?.toLongOrNull(),
         header[DAILY_REMAINING_HEADER]?.toLongOrNull(),
         header[DAILY_RESET_HEADER]?.toLongOrNull(),

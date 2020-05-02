@@ -1,7 +1,22 @@
 package com.highthunder.kotlr.types
 
+import com.highthunder.kotlr.json.PolymorphicJsonAdapterFactory
+import com.highthunder.kotlr.types.content.AskBlockLayout
+import com.highthunder.kotlr.types.content.AudioContent
 import com.highthunder.kotlr.types.content.BlockLayout
+import com.highthunder.kotlr.types.content.ImageContent
+import com.highthunder.kotlr.types.content.LinkContent
 import com.highthunder.kotlr.types.content.PostContent
+import com.highthunder.kotlr.types.content.TextContent
+import com.highthunder.kotlr.types.content.VideoContent
+import com.highthunder.kotlr.types.legacy.AnswerPost
+import com.highthunder.kotlr.types.legacy.AudioPost
+import com.highthunder.kotlr.types.legacy.ChatPost
+import com.highthunder.kotlr.types.legacy.LinkPost
+import com.highthunder.kotlr.types.legacy.PhotoPost
+import com.highthunder.kotlr.types.legacy.QuotePost
+import com.highthunder.kotlr.types.legacy.TextPost
+import com.highthunder.kotlr.types.legacy.VideoPost
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -13,6 +28,24 @@ import com.squareup.moshi.JsonClass
  * @version 1.0.0
  */
 interface Post {
+    companion object {
+        internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
+            .of(Post::class.java, "type")
+            // .withDefaultValue() // TODO: Add a default post object
+            .withMissingLabelType(BlockPost::class.java)
+
+            .withSubtype(AnswerPost::class.java, Type.Answer.key)
+            .withSubtype(AudioPost::class.java, Type.Audio.key)
+            .withSubtype(BlockPost::class.java, Type.Block.key)
+            .withSubtype(ChatPost::class.java, Type.Chat.key)
+            .withSubtype(LinkPost::class.java, Type.Link.key)
+            .withSubtype(PhotoPost::class.java, Type.Photo.key)
+            .withSubtype(QuotePost::class.java, Type.Quote.key)
+            .withSubtype(TextPost::class.java, Type.Text.key)
+            .withSubtype(VideoPost::class.java, Type.Video.key)
+    }
+
+    val type: Type
 
     // region Defaults
 
@@ -24,6 +57,10 @@ interface Post {
      * The post's unique ID.
      */
     val id: Long?
+    /**
+     * The post's unique ID formatted as a string to prevent loss of precision on platforms that lack true 64-bit integers.
+     */
+    val idString: String?
     /**
      * A standard API-formatted "short blog info" object.
      */
@@ -256,10 +293,6 @@ interface Post {
     /**
      * TODO: Documentation
      */
-    val type: Post.Type?
-    /**
-     * TODO: Documentation
-     */
     val blogUUID: String?
     /**
      * TODO: Documentation
@@ -378,7 +411,12 @@ interface Post {
          * TODO: Documentation
          */
         @Json(name = "raw")
-        Raw("raw")
+        Raw("raw"),
+        /**
+         * TODO: Documentation
+         */
+        @Json(name = "markdown")
+        Markdown("markdown"),
     }
 
     /**
@@ -412,5 +450,37 @@ interface Post {
          */
         @Json(name = "queued")
         Queued("queued")
+    }
+
+    /**
+     * https://www.tumblr.com/docs/npf#mapping-npf-post-content-to-legacy-post-types
+     */
+    fun getLegacyPostType(): Type {
+        return when {
+            layout?.any { it is AskBlockLayout } == true -> {
+                Type.Answer
+            }
+            content?.any { it is VideoContent } == true -> {
+                Type.Video
+            }
+            content?.any { it is ImageContent } == true -> {
+                Type.Photo
+            }
+            content?.any { it is AudioContent } == true -> {
+                Type.Audio
+            }
+            content?.any { it is TextContent && it.subType == TextContent.SubType.Quote } == true -> {
+                Type.Quote
+            }
+            (content?.count { it is TextContent && it.subType == TextContent.SubType.Chat } ?: 0) > 1 -> {
+                Type.Chat
+            }
+            content?.any { it is LinkContent } == true -> {
+                Type.Link
+            }
+            else -> {
+                Type.Text
+            }
+        }
     }
 }

@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 buildscript {
     repositories {
@@ -11,9 +10,10 @@ buildscript {
 plugins {
     kotlin("jvm") version "1.3.61"
     kotlin("kapt") version "1.3.61"
-    id("com.github.ben-manes.versions") version "0.27.0"
+    id("com.github.ben-manes.versions") version "0.28.0"
     id("de.fayard.buildSrcVersions") version "0.7.0"
-    id("org.jlleitschuh.gradle.ktlint") version "8.1.0"
+    // id("de.fayard.refreshVersions") version "0.7.0" // Soon this will be the future!
+    id("org.jlleitschuh.gradle.ktlint") version "9.2.1"
     id("idea")
 }
 
@@ -43,7 +43,6 @@ dependencies {
 
     kapt(Libs.moshi_kotlin_codegen)
     implementation(Libs.moshi)
-    implementation(Libs.moshi_adapters)
 
     implementation(Libs.retrofit)
     implementation(Libs.converter_scalars)
@@ -71,13 +70,16 @@ ktlint {
     android.set(false)
     outputToConsole.set(true)
     ignoreFailures.set(true)
-    reporters.set(mutableSetOf(ReporterType.PLAIN, ReporterType.CHECKSTYLE))
 
     kotlinScriptAdditionalPaths {
         include(fileTree("scripts/"))
     }
     filter {
-        exclude("**/generated/**")
-        include("**/kotlin/**")
+        include("src/**")
     }
+}
+
+tasks.withType<Wrapper> {
+    distributionType = Wrapper.DistributionType.ALL
+    gradleVersion = Versions.gradleLatestVersion
 }

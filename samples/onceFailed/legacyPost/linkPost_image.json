@@ -1,0 +1,15 @@
+{
+    "type": "link",
+    "link_image": "url.jpg",
+    "link_image_dimensions": {
+        "width": 540,
+        "height": 440
+    },
+    "photos": [
+        {
+            "caption": "",
+            "original_size": {},
+            "alt_sizes": []
+        }
+    ]
+}
