@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/static/v1?label=Version&message=0.6.3&color=brightgreen)]()
+[![version](https://img.shields.io/static/v1?label=Version&message=0.7.0&color=brightgreen)]()
 [![Build Status](https://travis-ci.com/highthunder/kotlr.svg?branch=master)](https://travis-ci.com/highthunder/kotlr)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
@@ -64,7 +64,7 @@ to your project's `repositories` block.
 
 Then add
 ```groovy
-implementation 'com.highthunder:kotlr:0.6.3'
+implementation 'com.highthunder:kotlr:0.7.0'
 ```
 to your module's `dependencies` block.
 
@@ -78,7 +78,7 @@ to your project's `repositories` block.
 
 Then add
 ```kotlin
-implementation("com.highthunder:kotlr:0.6.3")
+implementation("com.highthunder:kotlr:0.7.0")
 ```
 to your module's `dependencies` block.
 
@@ -164,6 +164,18 @@ suspend fun minimalExample() {
 ```
 
 ### Version History ###
+
+#### 0.7.0 ####
+
+  * Switch from using amalgamation types to using a modified version of PolymorphicJsonAdapterFactory
+  * Complete rework of testing system, now samples are stored in separate files and fully tested.
+  * Add improved support for various properties that can return as either a list of objects or a single object.
+  * Add support for Tumblr's new `id_string` property, even though it is unnecessary for languages with 64-bit longs.
+  * Add a Markdown post format
+  * Add the `truncateAfter` property to `CondensedBlockLayout` and deprecate the `blocks` property
+  * Remove the `PostId` class, this should just use a `BlockPost` with only an ID
+  * Add test samples from both the legacy documentation and the NPF documentation
+  * Many small changes
 
 #### 0.6.3 ####
 
