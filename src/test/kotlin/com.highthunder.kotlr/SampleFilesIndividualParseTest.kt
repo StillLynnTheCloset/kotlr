@@ -1576,6 +1576,42 @@ class SampleFilesIndividualParseTest {
 
     // endregion Content
 
+    // region Layout
+
+    @Test
+    fun onceFailed_layout_rowLayout_truncateAfter() {
+        val content = parseFile<BlockLayout>("samples/onceFailed/layout/rowLayout_truncateAfter.json")
+        val expected = RowBlockLayout(
+            display = listOf(
+                RowBlockLayout.Display(
+                    blocks = listOf(0)
+                ),
+                RowBlockLayout.Display(
+                    blocks = listOf(1)
+                ),
+                RowBlockLayout.Display(
+                    blocks = listOf(2)
+                ),
+                RowBlockLayout.Display(
+                    blocks = listOf(3)
+                ),
+                RowBlockLayout.Display(
+                    blocks = listOf(4)
+                ),
+                RowBlockLayout.Display(
+                    blocks = listOf(5)
+                ),
+                RowBlockLayout.Display(
+                    blocks = listOf(6)
+                )
+            ),
+            truncateAfter = 5
+        )
+        assertEquals(expected, content)
+    }
+
+    // endregion Layout
+
     // region Legacy Post
 
     @Test

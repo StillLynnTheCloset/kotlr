@@ -184,6 +184,11 @@ class SampleFilesSimpleParseTest {
     }
 
     @Test
+    fun testBadLayouts() {
+        parseAllFilesInDirectory<BlockLayout>("samples/onceFailed/layout")
+    }
+
+    @Test
     fun testBadLegacyPosts() {
         parseAllFilesInDirectory<Post>("samples/onceFailed/legacyPost")
     }

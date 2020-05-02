@@ -52,11 +52,14 @@ data class VerticalBlockLayout constructor(
  *
  * @param rows This is an array of the rows and block indices per row, for basic row layouts.
  * @param display This is an array of display objects per row, see [RowBlockLayout.Display].
+ * @param truncateAfter The last block to display before the Read More signifier.
  */
 @JsonClass(generateAdapter = true)
 data class RowBlockLayout constructor(
     val rows: List<List<Int>>? = null,
     val display: List<Display>? = null,
+    @Json(name = "truncate_after")
+    val truncateAfter: Int? = null,
     override val type: String = KEY
 ) : BlockLayout() {
     companion object {
