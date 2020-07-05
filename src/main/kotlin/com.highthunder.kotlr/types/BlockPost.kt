@@ -185,6 +185,8 @@ data class BlockPost constructor(
     val askingUrl: String? = null,
     @Json(name = "original_type")
     val originalType: Post.Type? = null,
+    @Json(name = "is_blurred_images")
+    val isBlurredImages: Boolean? = null,
     @Json(name = "type")
     override val type: Post.Type = Post.Type.Block
 ) : Post

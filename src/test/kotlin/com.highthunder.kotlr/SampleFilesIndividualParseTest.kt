@@ -2134,6 +2134,15 @@ class SampleFilesIndividualParseTest {
     // region Posts
 
     @Test
+    fun onceFailed_posts_blockPost_isBlurredImages() {
+        val post = parseFile<Post>("samples/onceFailed/posts/blockPost_isBlurredImages.json")
+        val expected = BlockPost(
+            isBlurredImages = true
+        )
+        assertEquals(expected, post)
+    }
+
+    @Test
     fun onceFailed_posts_blockPost_originalType() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_originalType.json")
         val expected = BlockPost(
