@@ -1530,6 +1530,15 @@ class SampleFilesIndividualParseTest {
         assertEquals(expected, blog)
     }
 
+    @Test
+    fun onceFailed_blog_asksAllowMedia() {
+        val blog = parseFile<Blog>("samples/onceFailed/blog/asksAllowMedia.json")
+        val expected = Blog(
+            asksAllowMedia = true
+        )
+        assertEquals(expected, blog)
+    }
+
     // endregion Blog
 
     // region Content

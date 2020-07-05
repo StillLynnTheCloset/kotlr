@@ -90,6 +90,8 @@ data class Blog constructor(
     val uuid: String? = null,
     @Json(name = "ask_page_title")
     val askPageTitle: String? = null,
+    @Json(name = "asks_allow_media")
+    val asksAllowMedia: Boolean? = null,
     @Json(name = "submission_page_title")
     val submissionPageTitle: String? = null,
     @Json(name = "active")
