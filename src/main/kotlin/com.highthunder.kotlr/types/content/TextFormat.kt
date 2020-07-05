@@ -155,6 +155,7 @@ data class ColorTextFormat constructor(
  *
  * @param size The text size for this particular range of text, one of 'small' or 'big'.
  */
+@Deprecated("This was removed from the Tumblr API spec and is unsupported when creating posts.")
 @JsonClass(generateAdapter = true)
 data class SizeTextFormat constructor(
     override val start: Int? = null,
@@ -169,6 +170,7 @@ data class SizeTextFormat constructor(
     /**
      * TODO: Documentation
      */
+    @Deprecated("This was removed from the Tumblr API spec and is unsupported when creating posts.")
     @JsonClass(generateAdapter = false)
     enum class Option() {
         /**
