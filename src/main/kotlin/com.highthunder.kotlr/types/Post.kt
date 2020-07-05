@@ -387,7 +387,22 @@ interface Post {
          * TODO: Documentation
          */
         @Json(name = "blocks")
-        Block("blocks")
+        Block("blocks"),
+        /**
+         * TODO: Documentation
+         */
+        @Json(name = "regular")
+        Regular("regular"),
+        /**
+         * TODO: Documentation
+         */
+        @Json(name = "note")
+        Note("note"),
+        /**
+         * TODO: Documentation
+         */
+        @Json(name = "conversation")
+        Conversation("conversation")
     }
 
     /**

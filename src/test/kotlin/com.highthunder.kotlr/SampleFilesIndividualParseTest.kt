@@ -2134,6 +2134,42 @@ class SampleFilesIndividualParseTest {
     // region Posts
 
     @Test
+    fun onceFailed_posts_blockPost_originalType() {
+        val post = parseFile<Post>("samples/onceFailed/posts/blockPost_originalType.json")
+        val expected = BlockPost(
+            originalType = Post.Type.Photo
+        )
+        assertEquals(expected, post)
+    }
+
+    @Test
+    fun onceFailed_posts_blockPost_originalType_conversation() {
+        val post = parseFile<Post>("samples/onceFailed/posts/blockPost_originalType_conversation.json")
+        val expected = BlockPost(
+            originalType = Post.Type.Conversation
+        )
+        assertEquals(expected, post)
+    }
+
+    @Test
+    fun onceFailed_posts_blockPost_originalType_note() {
+        val post = parseFile<Post>("samples/onceFailed/posts/blockPost_originalType_note.json")
+        val expected = BlockPost(
+            originalType = Post.Type.Note
+        )
+        assertEquals(expected, post)
+    }
+
+    @Test
+    fun onceFailed_posts_blockPost_originalType_regular() {
+        val post = parseFile<Post>("samples/onceFailed/posts/blockPost_originalType_regular.json")
+        val expected = BlockPost(
+            originalType = Post.Type.Regular
+        )
+        assertEquals(expected, post)
+    }
+
+    @Test
     fun onceFailed_posts_blockPostWithAskFields() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPostWithAskFields.json")
         val expected = BlockPost(
