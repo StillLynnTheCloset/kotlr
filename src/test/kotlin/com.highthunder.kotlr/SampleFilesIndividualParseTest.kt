@@ -1544,6 +1544,17 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
+    fun onceFailed_content_textContent_indentLevel() {
+        val content = parseFile<PostContent>("samples/onceFailed/content/textContent_indentLevel.json")
+        val expected = TextContent(
+            text = "Test",
+            subType = TextContent.SubType.Indented,
+            indentLevel = 1
+        )
+        assertEquals(expected, content)
+    }
+
+    @Test
     fun onceFailed_content_videoContent_embedIFrame() {
         val content = parseFile<PostContent>("samples/onceFailed/content/videoContent_embedIFrame.json")
         val expected = VideoContent(

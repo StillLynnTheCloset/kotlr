@@ -176,6 +176,8 @@ data class TextContent constructor(
     @Json(name = "subtype")
     val subType: SubType? = null,
     val formatting: List<TextFormat>? = null,
+    @Json(name = "indent_level")
+    val indentLevel: Int? = null,
     override val type: String = KEY
 ) : PostContent() {
     companion object {
