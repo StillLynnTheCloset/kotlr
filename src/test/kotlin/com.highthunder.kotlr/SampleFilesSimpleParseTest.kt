@@ -214,6 +214,11 @@ class SampleFilesSimpleParseTest {
     }
 
     @Test
+    fun testBadTextFormat() {
+        parseAllFilesInDirectory<TextFormat>("samples/onceFailed/textFormat")
+    }
+
+    @Test
     fun testBadUsers() {
         parseAllFilesInDirectory<User>("samples/onceFailed/user")
     }

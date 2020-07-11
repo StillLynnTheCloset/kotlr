@@ -45,6 +45,7 @@ import com.highthunder.kotlr.types.content.PostAttribution
 import com.highthunder.kotlr.types.content.PostContent
 import com.highthunder.kotlr.types.content.RowBlockLayout
 import com.highthunder.kotlr.types.content.SizeTextFormat
+import com.highthunder.kotlr.types.content.SmallTextFormat
 import com.highthunder.kotlr.types.content.StrikeThroughTextFormat
 import com.highthunder.kotlr.types.content.TextContent
 import com.highthunder.kotlr.types.content.TextFormat
@@ -2239,6 +2240,20 @@ class SampleFilesIndividualParseTest {
     }
 
     // endregion Posts
+
+    // region Text Format
+
+    @Test
+    fun onceFailed_textFormat_small() {
+        val textFormat = parseFile<TextFormat>("samples/onceFailed/textFormat/small.json")
+        val expected = SmallTextFormat(
+            start = 0,
+            end = 60
+        )
+        assertEquals(expected, textFormat)
+    }
+
+    // endregion Text Format
 
     // region User
 

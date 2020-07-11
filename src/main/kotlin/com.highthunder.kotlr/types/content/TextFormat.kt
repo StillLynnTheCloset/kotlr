@@ -45,6 +45,7 @@ sealed class TextFormat {
             .withSubtype(MentionTextFormat::class.java, MentionTextFormat.KEY)
             .withSubtype(ColorTextFormat::class.java, ColorTextFormat.KEY)
             .withSubtype(SizeTextFormat::class.java, SizeTextFormat.KEY)
+            .withSubtype(SmallTextFormat::class.java, SmallTextFormat.KEY)
             .withSubtype(UnknownTextFormat::class.java, UnknownTextFormat.KEY)
     }
 
@@ -192,5 +193,22 @@ data class SizeTextFormat constructor(
          */
         @Json(name = "big")
         Big
+    }
+}
+
+/**
+ * SmallTextFormat - Format the specified range of text to be smaller
+ *
+ * Note: small refers to one-text-size smaller by default.
+ * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
+ */
+@JsonClass(generateAdapter = true)
+data class SmallTextFormat constructor(
+    override val start: Int? = null,
+    override val end: Int? = null,
+    override val type: String = KEY
+) : TextFormat() {
+    companion object {
+        const val KEY: String = "small"
     }
 }
