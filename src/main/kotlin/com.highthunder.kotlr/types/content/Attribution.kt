@@ -20,19 +20,28 @@ sealed class Attribution {
     companion object {
         internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(Attribution::class.java, "type")
-            .withDefaultValue(UnknownAttribution)
+            .withDefaultValue(UnknownAttribution())
 
             .withSubtype(PostAttribution::class.java, PostAttribution.KEY)
             .withSubtype(LinkAttribution::class.java, LinkAttribution.KEY)
             .withSubtype(BlogAttribution::class.java, BlogAttribution.KEY)
             .withSubtype(AppAttribution::class.java, AppAttribution.KEY)
+            .withSubtype(UnknownAttribution::class.java, UnknownAttribution.KEY)
     }
 
     internal abstract val type: String
 }
 
-object UnknownAttribution : Attribution() {
-    override val type: String = "Unknown"
+/**
+ * UnknownAttribution - Placeholder that is generated when an Attribution with an unknown [type] is encountered.
+ */
+@JsonClass(generateAdapter = true)
+class UnknownAttribution : Attribution() {
+    companion object {
+        const val KEY: String = "Unknown"
+    }
+
+    override val type: String = KEY
 }
 
 /**

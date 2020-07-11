@@ -23,13 +23,14 @@ sealed class NoteData {
     companion object {
         internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(NoteData::class.java, "type")
-            .withDefaultValue(UnknownNote)
+            .withDefaultValue(UnknownNote())
 
             .withSubtype(LikeNote::class.java, LikeNote.KEY)
             .withSubtype(PostedNote::class.java, PostedNote.KEY)
             .withSubtype(ReblogNote::class.java, ReblogNote.KEY)
             .withSubtype(ReplyNote::class.java, ReplyNote.KEY)
             .withSubtype(AttributionNote::class.java, AttributionNote.KEY)
+            .withSubtype(UnknownNote::class.java, UnknownNote.KEY)
     }
 
     abstract val timestamp: Long?
@@ -41,14 +42,22 @@ sealed class NoteData {
     internal abstract val type: String
 }
 
-object UnknownNote : NoteData() {
+/**
+ * UnknownNote - Placeholder that is generated when a Note with an unknown [type] is encountered.
+ */
+@JsonClass(generateAdapter = true)
+class UnknownNote : NoteData() {
+    companion object {
+        const val KEY: String = "Unknown"
+    }
+
     override val timestamp: Long? = null
     override val blogName: String? = null
     override val blogUuid: String? = null
     override val blogUrl: String? = null
     override val blogFollowed: Boolean? = null
     override val avatarShape: String? = null
-    override val type: String = "Unknown"
+    override val type: String = KEY
 }
 
 /**

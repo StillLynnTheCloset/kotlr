@@ -18,20 +18,29 @@ sealed class BlockLayout {
     companion object {
         internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(BlockLayout::class.java, "type")
-            .withDefaultValue(UnknownBlockLayout)
+            .withDefaultValue(UnknownBlockLayout())
             .withMissingLabelType(VerticalBlockLayout::class.java)
 
             .withSubtype(VerticalBlockLayout::class.java, VerticalBlockLayout.KEY)
             .withSubtype(RowBlockLayout::class.java, RowBlockLayout.KEY)
             .withSubtype(CondensedBlockLayout::class.java, CondensedBlockLayout.KEY)
             .withSubtype(AskBlockLayout::class.java, AskBlockLayout.KEY)
+            .withSubtype(UnknownBlockLayout::class.java, UnknownBlockLayout.KEY)
     }
 
     internal abstract val type: String
 }
 
-object UnknownBlockLayout : BlockLayout() {
-    override val type: String = "unknown"
+/**
+ * UnknownBlockLayout - Placeholder that is generated when a Layout with an unknown [type] is encountered.
+ */
+@JsonClass(generateAdapter = true)
+class UnknownBlockLayout : BlockLayout() {
+    companion object {
+        const val KEY: String = "unknown"
+    }
+
+    override val type: String = KEY
 }
 
 /**
@@ -87,17 +96,23 @@ data class RowBlockLayout constructor(
             companion object {
                 internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
                     .of(Mode::class.java, "type")
-                    .withDefaultValue(Unknown)
+                    .withDefaultValue(Unknown())
                     .withMissingLabelType(Weighted::class.java)
 
                     .withSubtype(Weighted::class.java, Weighted.KEY)
                     .withSubtype(Carousel::class.java, Carousel.KEY)
+                    .withSubtype(Unknown::class.java, Unknown.KEY)
             }
 
             internal abstract val type: String
 
-            object Unknown : Mode() {
-                override val type: String = "Unknown"
+            @JsonClass(generateAdapter = true)
+            class Unknown : Mode() {
+                companion object {
+                    const val KEY: String = "Unknown"
+                }
+
+                override val type: String = KEY
             }
 
             @JsonClass(generateAdapter = true)

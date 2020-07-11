@@ -36,7 +36,7 @@ sealed class TextFormat {
     companion object {
         internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(TextFormat::class.java, "type")
-            .withDefaultValue(UnknownTextFormat)
+            .withDefaultValue(UnknownTextFormat())
 
             .withSubtype(BoldTextFormat::class.java, BoldTextFormat.KEY)
             .withSubtype(ItalicTextFormat::class.java, ItalicTextFormat.KEY)
@@ -45,6 +45,7 @@ sealed class TextFormat {
             .withSubtype(MentionTextFormat::class.java, MentionTextFormat.KEY)
             .withSubtype(ColorTextFormat::class.java, ColorTextFormat.KEY)
             .withSubtype(SizeTextFormat::class.java, SizeTextFormat.KEY)
+            .withSubtype(UnknownTextFormat::class.java, UnknownTextFormat.KEY)
     }
 
     abstract val start: Int?
@@ -52,10 +53,18 @@ sealed class TextFormat {
     internal abstract val type: String
 }
 
-object UnknownTextFormat : TextFormat() {
+/**
+ * UnknownTextFormat - Placeholder that is generated when a TextFormat with an unknown [type] is encountered.
+ */
+@JsonClass(generateAdapter = true)
+class UnknownTextFormat : TextFormat() {
+    companion object {
+        const val KEY: String = "unknown"
+    }
+
     override val start: Int? = null
     override val end: Int? = null
-    override val type: String = "unknown"
+    override val type: String = KEY
 }
 
 /**

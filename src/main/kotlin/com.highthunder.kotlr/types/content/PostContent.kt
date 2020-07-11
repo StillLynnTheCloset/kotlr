@@ -21,20 +21,29 @@ sealed class PostContent {
     companion object {
         internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(PostContent::class.java, "type")
-            .withDefaultValue(UnknownContent)
+            .withDefaultValue(UnknownContent())
 
             .withSubtype(AudioContent::class.java, AudioContent.KEY)
             .withSubtype(ImageContent::class.java, ImageContent.KEY)
             .withSubtype(LinkContent::class.java, LinkContent.KEY)
             .withSubtype(TextContent::class.java, TextContent.KEY)
             .withSubtype(VideoContent::class.java, VideoContent.KEY)
+            .withSubtype(UnknownContent::class.java, UnknownContent.KEY)
     }
 
     internal abstract val type: String
 }
 
-object UnknownContent : PostContent() {
-    override val type: String = "Unknown"
+/**
+ * UnknownContent - Placeholder that is generated when a Content with an unknown [type] is encountered.
+ */
+@JsonClass(generateAdapter = true)
+class UnknownContent : PostContent() {
+    companion object {
+        const val KEY: String = "Unknown"
+    }
+
+    override val type: String = KEY
 }
 
 /**
