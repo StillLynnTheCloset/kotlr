@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/static/v1?label=Version&message=0.7.0&color=brightgreen)]()
+[![version](https://img.shields.io/static/v1?label=Version&message=0.7.1&color=brightgreen)]()
 [![Build Status](https://travis-ci.com/highthunder/kotlr.svg?branch=master)](https://travis-ci.com/highthunder/kotlr)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
@@ -64,7 +64,7 @@ to your project's `repositories` block.
 
 Then add
 ```groovy
-implementation 'com.highthunder:kotlr:0.7.0'
+implementation 'com.highthunder:kotlr:0.7.1'
 ```
 to your module's `dependencies` block.
 
@@ -78,7 +78,7 @@ to your project's `repositories` block.
 
 Then add
 ```kotlin
-implementation("com.highthunder:kotlr:0.7.0")
+implementation("com.highthunder:kotlr:0.7.1")
 ```
 to your module's `dependencies` block.
 
@@ -164,6 +164,18 @@ suspend fun minimalExample() {
 ```
 
 ### Version History ###
+
+#### 0.7.1 ####
+
+  * Improve handling of re-serializing unknown sub-types.
+  * Deprecate the `SizeTextFormat` type.
+  * Add support for `SmallTextFormat`, intended to replace `SizeTextFormat`.
+  * Add support for `BlockPost.isBlurredImages`.
+  * Add support for `BlockPost.originalType`.
+  * Add support for `Blog.asksAllowMedia`.
+  * Add support for `TextContent.indentLevel`.
+  * Add support for `ImageContent.exif`.
+  * Slightly improve documentation.
 
 #### 0.7.0 ####
 
