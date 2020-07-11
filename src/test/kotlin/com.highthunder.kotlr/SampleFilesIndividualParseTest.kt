@@ -1545,6 +1545,17 @@ class SampleFilesIndividualParseTest {
     // region Content
 
     @Test
+    fun onceFailed_content_imageContent_exif() {
+        val content = parseFile<PostContent>("samples/onceFailed/content/imageContent_exif.json")
+        val expected = ImageContent(
+            exif = mapOf(
+                "Time" to "1594466997"
+            )
+        )
+        assertEquals(expected, content)
+    }
+
+    @Test
     fun onceFailed_content_listOfAttribution() {
         val content = parseFile<PostContent>("samples/onceFailed/content/listOfAttribution.json")
         val expected = ImageContent(

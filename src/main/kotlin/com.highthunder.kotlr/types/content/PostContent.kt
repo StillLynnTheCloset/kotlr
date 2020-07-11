@@ -106,6 +106,7 @@ data class AudioContent constructor(
  * @param colors Colors used in the image.
  * @param poster For GIFs, this is a single-frame "poster".
  * @param attribution See the [Attribution] for details about these objects.
+ * @param exif TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class ImageContent constructor(
@@ -117,6 +118,7 @@ data class ImageContent constructor(
     val attribution: AttributionList? = null,
     @Json(name = "alt_text")
     val altText: String? = null,
+    val exif: Map<String, Any?>? = null,
     override val type: String = KEY
 ) : PostContent() {
     companion object {
