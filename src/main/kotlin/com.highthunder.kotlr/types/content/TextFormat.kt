@@ -69,7 +69,7 @@ class UnknownTextFormat : TextFormat() {
 }
 
 /**
- * TODO: Documentation
+ * BoldTextFormat - TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class BoldTextFormat constructor(
@@ -81,8 +81,9 @@ data class BoldTextFormat constructor(
         const val KEY: String = "bold"
     }
 }
+
 /**
- * TODO: Documentation
+ * ItalicTextFormat- TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class ItalicTextFormat constructor(
@@ -96,7 +97,7 @@ data class ItalicTextFormat constructor(
 }
 
 /**
- * TODO: Documentation
+ * StrikeThroughTextFormat- TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class StrikeThroughTextFormat constructor(
@@ -110,7 +111,7 @@ data class StrikeThroughTextFormat constructor(
 }
 
 /**
- * Link - TODO: Documentation
+ * LinkTextFormat - TODO: Documentation
  *
  * @param url The link's URL!
  */
@@ -127,7 +128,7 @@ data class LinkTextFormat constructor(
 }
 
 /**
- * Mention - TODO: Documentation
+ * MentionTextFormat - TODO: Documentation
  *
  * @param blog An object with a uuid field, which is the mentioned blog's UUID.
  */
@@ -144,7 +145,7 @@ data class MentionTextFormat constructor(
 }
 
 /**
- * Color - TODO: Documentation
+ * ColorTextFormat - TODO: Documentation
  *
  * @param hex The color to use, in standard hex format, with leading '#'.
  */
@@ -161,7 +162,7 @@ data class ColorTextFormat constructor(
 }
 
 /**
- * Size - TODO: Documentation
+ * SizeTextFormat - TODO: Documentation
  *
  * @param size The text size for this particular range of text, one of 'small' or 'big'.
  */

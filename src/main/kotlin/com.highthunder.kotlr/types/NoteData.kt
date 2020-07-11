@@ -61,7 +61,7 @@ class UnknownNote : NoteData() {
 }
 
 /**
- * TODO: Documentation
+ * LikeNote - TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class LikeNote constructor(
@@ -84,7 +84,7 @@ data class LikeNote constructor(
 }
 
 /**
- * TODO: Documentation
+ * PostedNote - TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 data class PostedNote constructor(
@@ -107,7 +107,7 @@ data class PostedNote constructor(
 }
 
 /**
- * TODO: Documentation
+ * ReblogNote - TODO: Documentation
  *
  * @param postId TODO: Documentation
  * @param reblogParentBlogName TODO: Documentation
@@ -141,7 +141,7 @@ data class ReblogNote constructor(
 }
 
 /**
- * TODO: Documentation
+ * ReplyNote - TODO: Documentation
  *
  * @param replyText TODO: Documentation
  * @param formatting TODO: Documentation
@@ -173,7 +173,7 @@ data class ReplyNote constructor(
 }
 
 /**
- * TODO: Documentation
+ * AttributionNote - TODO: Documentation
  *
  * @param postAttributionType TODO: Documentation
  * @param postAttributionTypeName TODO: Documentation
