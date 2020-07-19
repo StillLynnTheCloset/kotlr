@@ -5,10 +5,14 @@ package com.highthunder.kotlr.types
  *
  * Can either be created from an int, or a string of the forms:
  * #rgb
+ * #argb
  * #rrggbb
+ * #aarrggbb
  * rgb
+ * argb
  * rrggbb
- * and can then be output either as an int, rrggbb, or #rrggbb
+ * aarrggbb
+ * and can then be output either as an int, AARRGGBB, or #AARRGGBB
  *
  * @author highthunder
  * @since 10/20/18
@@ -18,34 +22,42 @@ data class Color constructor(
     private val c: Int
 ) {
     companion object {
-        private fun String.normalizeTo6DigitString(): String? =
-            dropWhile { it == '#' }.takeIf(String::isNotBlank)?.let {
-                return@let when (it.length) {
-                    6 -> it
-                    3 -> "${it[0]}${it[0]}${it[1]}${it[1]}${it[2]}${it[2]}"
-                    else -> null
-                }
-            }
+        private const val DEFAULT_COLOR: String = "00000000"
+        private val validCharactersRegex = Regex("[0-9A-Fa-f]+")
+
+        private fun String.normalizeTo8DigitString(): String =
+            removePrefix("#")
+                .takeIf { it.matches(validCharactersRegex) }
+                ?.toUpperCase()
+                ?.let {
+                    return@let when (it.length) {
+                        8 -> it
+                        6 -> "FF$it"
+                        4 -> "${it[0]}${it[0]}${it[1]}${it[1]}${it[2]}${it[2]}${it[3]}${it[3]}"
+                        3 -> "FF${it[0]}${it[0]}${it[1]}${it[1]}${it[2]}${it[2]}"
+                        else -> null
+                    }
+                } ?: DEFAULT_COLOR
     }
 
     constructor(s: String) : this(
-        Integer.parseInt(
-            s.normalizeTo6DigitString() ?: throw NumberFormatException("Color string '$s' is not a valid color"), 16
-        )
+        s.normalizeTo8DigitString()
+            .toLong(16)
+            .toInt()
     )
 
     /**
-     * Return the value of this Color as an rgb integer, useful on platforms like Android that use integer color values.
+     * Return the value of this Color as an AARRGGBB integer, useful on platforms like Android that use integer color values.
      */
     fun asInt(): Int = c
 
     /**
-     * Return the value of this Color as a hexadecimal string, with no leading octothorpe.
+     * Return the value of this Color as a hexadecimal AARRGGBB string, with no leading octothorpe.
      */
-    fun asString(): String = String.format("%06x", c)
+    fun asString(): String = String.format("%08X", c)
 
     /**
-     * Return the value of this Color as a hexadecimal string, with a leading octothorpe.
+     * Return the value of this Color as a hexadecimal AARRGGBB string, with a leading octothorpe.
      */
-    fun asOctothorpeString(): String = String.format("#%06x", c)
+    fun asOctothorpeString(): String = String.format("#%08X", c)
 }
