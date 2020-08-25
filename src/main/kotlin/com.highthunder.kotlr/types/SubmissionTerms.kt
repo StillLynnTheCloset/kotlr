@@ -15,7 +15,7 @@ import com.squareup.moshi.JsonClass
  * @param accepted_types TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class SubmissionTerms constructor(
+public data class SubmissionTerms constructor(
     val tags: List<String>? = null,
     val title: String? = null,
     val guidelines: String? = null,

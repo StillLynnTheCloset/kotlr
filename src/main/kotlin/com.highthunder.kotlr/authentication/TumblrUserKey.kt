@@ -12,7 +12,7 @@ package com.highthunder.kotlr.authentication
  * @param userKey TODO: Documentation
  * @param userSecret TODO: Documentation
  */
-data class TumblrUserKey constructor(
+public data class TumblrUserKey constructor(
     override val apiKey: String,
     override val apiSecret: String,
     val userKey: String,
@@ -21,7 +21,7 @@ data class TumblrUserKey constructor(
     apiKey,
     apiSecret
 ) {
-    constructor(appKey: TumblrAppKey, userKey: String, userSecret: String) : this(
+    public constructor(appKey: TumblrAppKey, userKey: String, userSecret: String) : this(
         appKey.apiKey,
         appKey.apiSecret,
         userKey,

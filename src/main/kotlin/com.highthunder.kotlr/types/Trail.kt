@@ -26,7 +26,7 @@ import com.squareup.moshi.JsonClass
  * @param brokenBlog TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class Trail constructor(
+public data class Trail constructor(
     @Json(name = "blog")
     val blog: Blog? = null,
     @Json(name = "post")

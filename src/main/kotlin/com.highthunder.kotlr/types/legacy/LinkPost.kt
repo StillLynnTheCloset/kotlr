@@ -87,7 +87,7 @@ import com.squareup.moshi.JsonClass
  * @param body TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class LinkPost constructor(
+public data class LinkPost constructor(
     @Json(name = "blog_name")
     override val blogName: String? = null,
     override val id: Long? = null,

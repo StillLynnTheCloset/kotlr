@@ -25,7 +25,7 @@ import com.squareup.moshi.JsonClass
  * @param poster Usually a still image to represent this media while loading.
  */
 @JsonClass(generateAdapter = true)
-data class Media constructor(
+public data class Media constructor(
     @Json(name = "type")
     val type: String? = null,
     @Json(name = "url")

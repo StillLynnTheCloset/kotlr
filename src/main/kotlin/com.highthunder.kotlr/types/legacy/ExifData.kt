@@ -17,7 +17,7 @@ import com.squareup.moshi.JsonClass
  * @param focalLength TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class ExifData constructor(
+public data class ExifData constructor(
     @Json(name = "Camera")
     val camera: String? = null,
     @Json(name = "ISO")

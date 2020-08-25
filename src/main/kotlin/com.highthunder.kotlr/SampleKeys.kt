@@ -16,7 +16,7 @@ import com.highthunder.kotlr.authentication.TumblrUserKey
 /**
  * TODO: Documentation
  */
-val SampleAppKey: TumblrAppKey = TumblrAppKey(
+public val SampleAppKey: TumblrAppKey = TumblrAppKey(
     apiKey = "apiKey aka ConsumerKey",
     apiSecret = "apiSecret aka ConsumerSecret"
 )
@@ -24,7 +24,7 @@ val SampleAppKey: TumblrAppKey = TumblrAppKey(
 /**
  * TODO: Documentation
  */
-val SampleUserKey: TumblrUserKey = TumblrUserKey(
+public val SampleUserKey: TumblrUserKey = TumblrUserKey(
     appKey = SampleAppKey,
     userKey = "userKey aka Token",
     userSecret = "userSecret aka TokenSecret"

@@ -10,7 +10,7 @@ package com.highthunder.kotlr.authentication
  * @param apiKey TODO: Documentation
  * @param apiSecret TODO: Documentation
  */
-open class TumblrAppKey constructor(
-    open val apiKey: String,
-    open val apiSecret: String
+public open class TumblrAppKey constructor(
+    public open val apiKey: String,
+    public open val apiSecret: String
 )

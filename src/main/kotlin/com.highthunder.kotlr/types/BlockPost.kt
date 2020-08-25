@@ -69,7 +69,7 @@ import com.squareup.moshi.JsonClass
  * @param notes TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class BlockPost constructor(
+public data class BlockPost constructor(
     @Json(name = "blog_name")
     override val blogName: String? = null,
     override val id: Long? = null,

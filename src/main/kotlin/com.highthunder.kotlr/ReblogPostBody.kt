@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
  * @param hideTrail Whether or not to hide the reblog trail with this new post. Defaults to false.
  */
 @JsonClass(generateAdapter = true)
-data class ReblogPostBody constructor(
+public data class ReblogPostBody constructor(
     val content: List<PostContent>,
     val layout: List<BlockLayout>? = null,
     val state: Post.State? = null,
@@ -52,7 +52,7 @@ data class ReblogPostBody constructor(
         }
     }
 
-    constructor(
+    public constructor(
         postToReblog: Post,
         content: List<PostContent>,
         layout: List<BlockLayout>? = null,

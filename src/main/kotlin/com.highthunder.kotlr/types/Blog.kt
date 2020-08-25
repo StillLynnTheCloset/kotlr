@@ -55,7 +55,7 @@ import com.squareup.moshi.JsonClass
  * @param canChat TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class Blog constructor(
+public data class Blog constructor(
     @Json(name = "name")
     val name: String = "",
     @Json(name = "url")

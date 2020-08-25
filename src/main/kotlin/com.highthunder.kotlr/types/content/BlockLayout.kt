@@ -14,8 +14,8 @@ import com.squareup.moshi.JsonClass
  * @since 10/20/18
  * @version 1.0.0
  */
-sealed class BlockLayout {
-    companion object {
+public sealed class BlockLayout {
+    internal companion object {
         internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(BlockLayout::class.java, "type")
             .withDefaultValue(UnknownBlockLayout())
@@ -35,9 +35,9 @@ sealed class BlockLayout {
  * UnknownBlockLayout - Placeholder that is generated when a Layout with an unknown [type] is encountered.
  */
 @JsonClass(generateAdapter = true)
-class UnknownBlockLayout : BlockLayout() {
-    companion object {
-        const val KEY: String = "unknown"
+public class UnknownBlockLayout : BlockLayout() {
+    internal companion object {
+        internal const val KEY: String = "unknown"
     }
 
     override val type: String = KEY
@@ -48,11 +48,11 @@ class UnknownBlockLayout : BlockLayout() {
  * previous block.
  */
 @JsonClass(generateAdapter = true)
-data class VerticalBlockLayout constructor(
+public data class VerticalBlockLayout constructor(
     override val type: String = KEY
 ) : BlockLayout() {
-    companion object {
-        const val KEY: String = "vertical"
+    internal companion object {
+        internal const val KEY: String = "vertical"
     }
 }
 
@@ -70,15 +70,15 @@ data class VerticalBlockLayout constructor(
  * @param truncateAfter The last block to display before the Read More signifier.
  */
 @JsonClass(generateAdapter = true)
-data class RowBlockLayout constructor(
+public data class RowBlockLayout constructor(
     val rows: List<List<Int>>? = null,
     val display: List<Display>? = null,
     @Json(name = "truncate_after")
     val truncateAfter: Int? = null,
     override val type: String = KEY
 ) : BlockLayout() {
-    companion object {
-        const val KEY: String = "rows"
+    internal companion object {
+        internal const val KEY: String = "rows"
     }
 
     /**
@@ -88,7 +88,7 @@ data class RowBlockLayout constructor(
      * @param mode TODO: Documentation
      */
     @JsonClass(generateAdapter = true)
-    data class Display constructor(
+    public data class Display constructor(
         @Json(name = "blocks")
         val blocks: List<Int>? = null,
         @Json(name = "mode")
@@ -98,8 +98,8 @@ data class RowBlockLayout constructor(
         /**
          *  TODO: Documentation
          */
-        sealed class Mode {
-            companion object {
+        public sealed class Mode {
+            internal companion object {
                 internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
                     .of(Mode::class.java, "type")
                     .withDefaultValue(Unknown())
@@ -113,29 +113,29 @@ data class RowBlockLayout constructor(
             internal abstract val type: String
 
             @JsonClass(generateAdapter = true)
-            class Unknown : Mode() {
-                companion object {
-                    const val KEY: String = "Unknown"
+            public class Unknown : Mode() {
+                internal companion object {
+                    internal const val KEY: String = "Unknown"
                 }
 
                 override val type: String = KEY
             }
 
             @JsonClass(generateAdapter = true)
-            data class Weighted constructor(
+            public data class Weighted constructor(
                 override val type: String = KEY
             ) : Mode() {
-                companion object {
-                    const val KEY: String = "weighted"
+                internal companion object {
+                    internal const val KEY: String = "weighted"
                 }
             }
 
             @JsonClass(generateAdapter = true)
-            data class Carousel constructor(
+            public data class Carousel constructor(
                 override val type: String = KEY
             ) : Mode() {
-                companion object {
-                    const val KEY: String = "carousel"
+                internal companion object {
+                    internal const val KEY: String = "carousel"
                 }
             }
         }
@@ -166,15 +166,15 @@ data class RowBlockLayout constructor(
  */
 @Deprecated("Use a [RowBlockLayout] with truncateAfter instead.")
 @JsonClass(generateAdapter = true)
-data class CondensedBlockLayout constructor(
+public data class CondensedBlockLayout constructor(
     @Deprecated("Use truncateAfter instead.")
     val blocks: List<Int>? = null,
     @Json(name = "truncate_after")
     val truncateAfter: Int? = null,
     override val type: String = KEY
 ) : BlockLayout() {
-    companion object {
-        const val KEY: String = "condensed"
+    internal companion object {
+        internal const val KEY: String = "condensed"
     }
 }
 
@@ -193,12 +193,12 @@ data class CondensedBlockLayout constructor(
  * @param attribution If the ask is not anonymous, this will include information about the blog that submitted the ask.
  */
 @JsonClass(generateAdapter = true)
-data class AskBlockLayout constructor(
+public data class AskBlockLayout constructor(
     val blocks: List<Int>? = null,
     val attribution: Attribution? = null,
     override val type: String = KEY
 ) : BlockLayout() {
-    companion object {
-        const val KEY: String = "ask"
+    internal companion object {
+        internal const val KEY: String = "ask"
     }
 }

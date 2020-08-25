@@ -46,7 +46,7 @@ internal val moshi: Moshi by lazy {
 /**
  * Helper function to add support for all Kotlr datatypes to the given Moshi Builder
  */
-fun Moshi.Builder.addKotlrTypes(): Moshi.Builder = this
+public fun Moshi.Builder.addKotlrTypes(): Moshi.Builder = this
     .add(PostContent.jsonAdapterFactory)
     .add(Attribution.jsonAdapterFactory)
     .add(TextFormat.jsonAdapterFactory)
@@ -130,7 +130,7 @@ private fun getClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false, str
         .build()
 }
 
-fun getApi(userKey: TumblrUserKey, debug: Boolean = false, strict: Boolean = false): KotlrApi {
+public fun getApi(userKey: TumblrUserKey, debug: Boolean = false, strict: Boolean = false): KotlrApi {
     val client = getClient(getOAuthConsumer(userKey), debug = debug, strict = strict)
     val userGetApi: KotlrUserGetApi = client.create()
     val blogGetApi: KotlrBlogGetApi = client.create()

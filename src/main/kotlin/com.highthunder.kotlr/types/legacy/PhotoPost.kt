@@ -85,7 +85,7 @@ import com.squareup.moshi.JsonClass
  * @param photosetLayout TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class PhotoPost constructor(
+public data class PhotoPost constructor(
     @Json(name = "blog_name")
     override val blogName: String? = null,
     override val id: Long? = null,

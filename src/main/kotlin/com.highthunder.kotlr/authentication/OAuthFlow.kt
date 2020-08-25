@@ -10,8 +10,8 @@ import com.highthunder.kotlr.getOAuthProvider
  * @since 10/23/18
  * @version 1.0.0
  */
-class OAuthFlow constructor(private val appKey: TumblrAppKey) {
-    companion object {
+public class OAuthFlow constructor(private val appKey: TumblrAppKey) {
+    private companion object {
         private val URL_FILTER: Regex = "oauth_verifier=".toRegex()
         private val URL_REGEX: Regex = "(.*oauth_verifier=)(([a-zA-Z0-9])+)(.*)".toRegex()
         private const val URL_REPLACEMENT: String = "$2"
@@ -27,7 +27,7 @@ class OAuthFlow constructor(private val appKey: TumblrAppKey) {
     /**
      * TODO: Documentation
      */
-    fun getRequestUrl(callbackUrl: String): String? {
+    public fun getRequestUrl(callbackUrl: String): String? {
         return try {
             requestUrl = provider.retrieveRequestToken(consumer, callbackUrl)
             isWaitingForResponse = true
@@ -41,12 +41,12 @@ class OAuthFlow constructor(private val appKey: TumblrAppKey) {
     /**
      * TODO: Documentation
      */
-    fun isVerifierUrl(url: String): Boolean = url.contains(URL_FILTER)
+    private fun isVerifierUrl(url: String): Boolean = url.contains(URL_FILTER)
 
     /**
      * TODO: Documentation
      */
-    fun parseResponseUrl(url: String): TumblrUserKey {
+    public fun parseResponseUrl(url: String): TumblrUserKey {
         return if (isWaitingForResponse && isVerifierUrl(url)) {
             isWaitingForResponse = false
             val verificationString = url.replace(URL_REGEX, URL_REPLACEMENT)

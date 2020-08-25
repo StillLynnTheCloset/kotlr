@@ -15,7 +15,7 @@ import com.squareup.moshi.JsonClass
  * @param url The location of the photo file (either a JPG, GIF, or PNG).
  */
 @JsonClass(generateAdapter = true)
-data class PhotoSize constructor(
+public data class PhotoSize constructor(
     @Json(name = "width")
     val width: Int? = null,
     @Json(name = "height")

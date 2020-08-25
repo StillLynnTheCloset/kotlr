@@ -10,7 +10,7 @@ package com.highthunder.kotlr.response
  * @since 10/27/18
  * @version 1.0.0
  */
-interface WrapperInterface<out T> {
+public interface WrapperInterface<out T> {
 
     /**
      * Get the error message form of the response body.
@@ -20,7 +20,7 @@ interface WrapperInterface<out T> {
      *
      * @return An optional string of the error message, if any.
      */
-    val error: String?
+    public val error: String?
 
     /**
      * Get the standard body form of the response body.
@@ -30,5 +30,5 @@ interface WrapperInterface<out T> {
      *
      * @return An optional response body object, if any.
      */
-    val body: T?
+    public val body: T?
 }

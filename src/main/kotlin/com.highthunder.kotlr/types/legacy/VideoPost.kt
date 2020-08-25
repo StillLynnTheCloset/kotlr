@@ -87,7 +87,7 @@ import com.squareup.moshi.JsonClass
  * @param videoType The source of this video (tumblr, youtube, instagram, vimeo, vine(rip), etc.).
  */
 @JsonClass(generateAdapter = true)
-data class VideoPost constructor(
+public data class VideoPost constructor(
     @Json(name = "blog_name")
     override val blogName: String? = null,
     override val id: Long? = null,

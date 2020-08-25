@@ -17,8 +17,8 @@ import com.squareup.moshi.JsonClass
  * @version 1.0.0
  */
 @JsonClass(generateAdapter = false)
-sealed class PostContent {
-    companion object {
+public sealed class PostContent {
+    internal companion object {
         internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(PostContent::class.java, "type")
             .withDefaultValue(UnknownContent())
@@ -38,9 +38,9 @@ sealed class PostContent {
  * UnknownContent - Placeholder that is generated when a Content with an unknown [type] is encountered.
  */
 @JsonClass(generateAdapter = true)
-class UnknownContent : PostContent() {
-    companion object {
-        const val KEY: String = "Unknown"
+public class UnknownContent : PostContent() {
+    internal companion object {
+        internal const val KEY: String = "Unknown"
     }
 
     override val type: String = KEY
@@ -71,7 +71,7 @@ class UnknownContent : PostContent() {
  * @param attribution Optional attribution information about where the audio track came from.
  */
 @JsonClass(generateAdapter = true)
-data class AudioContent constructor(
+public data class AudioContent constructor(
     val provider: String? = null,
     val url: String? = null,
     val media: Media? = null,
@@ -87,8 +87,8 @@ data class AudioContent constructor(
     val attribution: AttributionList? = null,
     override val type: String = KEY
 ) : PostContent() {
-    companion object {
-        const val KEY: String = "audio"
+    internal companion object {
+        internal const val KEY: String = "audio"
     }
 }
 
@@ -109,7 +109,7 @@ data class AudioContent constructor(
  * @param exif TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class ImageContent constructor(
+public data class ImageContent constructor(
     val media: List<Media>? = null,
     @Json(name = "feedback_token")
     val feedbackToken: String? = null,
@@ -121,8 +121,8 @@ data class ImageContent constructor(
     val exif: Map<String, Any?>? = null,
     override val type: String = KEY
 ) : PostContent() {
-    companion object {
-        const val KEY: String = "image"
+    internal companion object {
+        internal const val KEY: String = "image"
     }
 }
 
@@ -151,7 +151,7 @@ data class ImageContent constructor(
  * @param poster An image media object to use as a "poster" for the link.
  */
 @JsonClass(generateAdapter = true)
-data class LinkContent constructor(
+public data class LinkContent constructor(
     val url: String? = null,
     val title: String? = null,
     val description: String? = null,
@@ -163,8 +163,8 @@ data class LinkContent constructor(
     val poster: List<Media>? = null,
     override val type: String = KEY
 ) : PostContent() {
-    companion object {
-        const val KEY: String = "link"
+    internal companion object {
+        internal const val KEY: String = "link"
     }
 }
 
@@ -182,7 +182,7 @@ data class LinkContent constructor(
  * @param formatting A list of special formatting instructions.
  */
 @JsonClass(generateAdapter = true)
-data class TextContent constructor(
+public data class TextContent constructor(
     val text: String? = null,
     @Json(name = "subtype")
     val subType: SubType? = null,
@@ -191,15 +191,15 @@ data class TextContent constructor(
     val indentLevel: Int? = null,
     override val type: String = KEY
 ) : PostContent() {
-    companion object {
-        const val KEY: String = "text"
+    internal companion object {
+        internal const val KEY: String = "text"
     }
 
     /**
      * TODO: Documentation
      */
     @JsonClass(generateAdapter = false)
-    enum class SubType {
+    public enum class SubType {
         /**
          * Intended for Post headings.
          */
@@ -287,7 +287,7 @@ data class TextContent constructor(
  * @param iframe TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class VideoContent constructor(
+public data class VideoContent constructor(
     val url: String? = null,
     val media: Media? = null,
     val provider: String? = null,
@@ -306,7 +306,7 @@ data class VideoContent constructor(
     val iframe: Media? = null,
     override val type: String = KEY
 ) : PostContent() {
-    companion object {
-        const val KEY: String = "video"
+    internal companion object {
+        internal const val KEY: String = "video"
     }
 }

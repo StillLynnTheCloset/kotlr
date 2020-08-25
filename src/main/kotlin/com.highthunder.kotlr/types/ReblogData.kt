@@ -14,7 +14,7 @@ import com.squareup.moshi.JsonClass
  * @param tree TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class ReblogData constructor(
+public data class ReblogData constructor(
     @Json(name = "comment")
     val comment: String? = null,
     @Json(name = "tree_html")

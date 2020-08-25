@@ -78,7 +78,7 @@ import com.squareup.moshi.JsonClass
  * @param source Full HTML for the source of the quote Example: <a href="...">Steve Jobs</a>.
  */
 @JsonClass(generateAdapter = true)
-data class QuotePost constructor(
+public data class QuotePost constructor(
     @Json(name = "blog_name")
     override val blogName: String? = null,
     override val id: Long? = null,

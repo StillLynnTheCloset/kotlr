@@ -17,7 +17,7 @@ import com.highthunder.kotlr.response.type.user.ResponseUserInfo
 import com.highthunder.kotlr.response.type.user.ResponseUserLikes
 import com.highthunder.kotlr.types.Post
 
-class KotlrApi internal constructor(
+public class KotlrApi internal constructor(
     private val userGetApi: KotlrUserGetApi,
     private val blogGetApi: KotlrBlogGetApi,
     private val userPostApi: KotlrUserPostApi,
@@ -26,14 +26,14 @@ class KotlrApi internal constructor(
 ) : KotlrUserPostApi by userPostApi, KotlrBlogPostApi by blogPostApi {
     // region User Getters
 
-    suspend fun getUserInfo(): ResponseUserInfo.Response? {
+    public suspend fun getUserInfo(): ResponseUserInfo.Response? {
         val retrofitResponse = userGetApi.getUserInfoHelper()
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
         val response = retrofitResponse.body()
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
-    suspend fun getUserLikes(
+    public suspend fun getUserLikes(
         postLimit: Int? = null,
         postOffset: Long? = null,
         afterPostId: Long? = null,
@@ -65,7 +65,7 @@ class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
-    suspend fun getUserDash(
+    public suspend fun getUserDash(
         postLimit: Int? = null,
         postOffset: Long? = null,
         afterPostId: Long? = null,
@@ -99,7 +99,7 @@ class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
-    suspend fun getUserFollowing(
+    public suspend fun getUserFollowing(
         limit: Int? = null,
         offset: Long? = null
     ): ResponseUserFollowing.Response? {
@@ -117,7 +117,7 @@ class KotlrApi internal constructor(
 
     // region Blog Getters
 
-    suspend fun getBlogAvatar(
+    public suspend fun getBlogAvatar(
         identifier: String
     ): ResponseBlogAvatar.Response? {
         val retrofitResponse = blogGetApi.getBlogAvatarHelper(
@@ -129,7 +129,7 @@ class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
-    suspend fun getBlogAvatar(
+    public suspend fun getBlogAvatar(
         identifier: String,
         size: Int
     ): ResponseBlogAvatar.Response? {
@@ -143,7 +143,7 @@ class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
-    suspend fun getBlogDrafts(
+    public suspend fun getBlogDrafts(
         identifier: String,
         postLimit: Int? = null,
         postOffset: Long? = null,
@@ -177,7 +177,7 @@ class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
-    suspend fun getBlogFollowers(
+    public suspend fun getBlogFollowers(
         identifier: String,
         limit: Int? = null,
         offset: Int? = null
@@ -193,7 +193,7 @@ class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
-    suspend fun getBlogFollowing(
+    public suspend fun getBlogFollowing(
         identifier: String,
         limit: Int? = null,
         offset: Int? = null
@@ -209,7 +209,7 @@ class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
-    suspend fun getBlogInfo(
+    public suspend fun getBlogInfo(
         identifier: String
     ): ResponseBlogInfo.Response? {
         val retrofitResponse = blogGetApi.getBlogInfoHelper(
@@ -221,7 +221,7 @@ class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
-    suspend fun getBlogLikes(
+    public suspend fun getBlogLikes(
         identifier: String,
         postLimit: Int? = null,
         postOffset: Long? = null,
@@ -255,7 +255,7 @@ class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
-    suspend fun getBlogPosts(
+    public suspend fun getBlogPosts(
         identifier: String,
         postLimit: Int? = null,
         postOffset: Long? = null,
@@ -291,7 +291,7 @@ class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
-    suspend fun getBlogQueue(
+    public suspend fun getBlogQueue(
         identifier: String,
         postLimit: Int? = null,
         postOffset: Long? = null,
@@ -325,7 +325,7 @@ class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
-    suspend fun getBlogSubmissions(
+    public suspend fun getBlogSubmissions(
         identifier: String,
         postLimit: Int? = null,
         postOffset: Long? = null,
@@ -382,7 +382,7 @@ class KotlrApi internal constructor(
     //     return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     // }
 
-    suspend fun getPost(
+    public suspend fun getPost(
         identifier: String,
         postId: Long,
         postFormat: Post.PostVersion? = null

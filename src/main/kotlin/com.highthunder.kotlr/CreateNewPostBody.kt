@@ -18,7 +18,7 @@ import com.squareup.moshi.JsonClass
  * @param sendToTwitter Whether or not to share this via any connected Facebook account on post publish. Defaults to the blog's global setting.
  */
 @JsonClass(generateAdapter = true)
-data class CreateNewPostBody constructor(
+public data class CreateNewPostBody constructor(
     val content: List<PostContent>,
     val layout: List<BlockLayout>? = null,
     val state: Post.State? = null,

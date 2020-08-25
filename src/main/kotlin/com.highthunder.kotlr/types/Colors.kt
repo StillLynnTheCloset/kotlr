@@ -16,8 +16,8 @@ import com.squareup.moshi.JsonClass
  * @param colors A map from the numeric part of the name to the string representation of the color.
  */
 @JsonClass(generateAdapter = false)
-data class Colors constructor(
+public data class Colors constructor(
     val colors: Map<Int, Color>? = null
 ) {
-    constructor(vararg pairs: Pair<Int, Color>) : this(pairs.toMap())
+    public constructor(vararg pairs: Pair<Int, Color>) : this(pairs.toMap())
 }

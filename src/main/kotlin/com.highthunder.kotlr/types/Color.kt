@@ -18,10 +18,10 @@ package com.highthunder.kotlr.types
  * @since 10/20/18
  * @version 1.0.0
  */
-data class Color constructor(
+public data class Color constructor(
     private val c: Int
 ) {
-    companion object {
+    private companion object {
         private const val DEFAULT_COLOR: String = "00000000"
         private val validCharactersRegex = Regex("[0-9A-Fa-f]+")
 
@@ -40,7 +40,7 @@ data class Color constructor(
                 } ?: DEFAULT_COLOR
     }
 
-    constructor(s: String) : this(
+    public constructor(s: String) : this(
         s.normalizeTo8DigitString()
             .toLong(16)
             .toInt()
@@ -49,15 +49,15 @@ data class Color constructor(
     /**
      * Return the value of this Color as an AARRGGBB integer, useful on platforms like Android that use integer color values.
      */
-    fun asInt(): Int = c
+    public fun asInt(): Int = c
 
     /**
      * Return the value of this Color as a hexadecimal AARRGGBB string, with no leading octothorpe.
      */
-    fun asString(): String = String.format("%08X", c)
+    public fun asString(): String = String.format("%08X", c)
 
     /**
      * Return the value of this Color as a hexadecimal AARRGGBB string, with a leading octothorpe.
      */
-    fun asOctothorpeString(): String = String.format("#%08X", c)
+    public fun asOctothorpeString(): String = String.format("#%08X", c)
 }

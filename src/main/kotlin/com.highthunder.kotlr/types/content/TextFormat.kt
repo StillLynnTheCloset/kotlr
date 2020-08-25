@@ -32,8 +32,8 @@ import com.squareup.moshi.JsonClass
  * @property end The ending index of the formatting range (exclusive).
  * @property type The subtype label for each subtype, only used during (de)serialization.
  */
-sealed class TextFormat {
-    companion object {
+public sealed class TextFormat {
+    internal companion object {
         internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(TextFormat::class.java, "type")
             .withDefaultValue(UnknownTextFormat())
@@ -49,8 +49,8 @@ sealed class TextFormat {
             .withSubtype(UnknownTextFormat::class.java, UnknownTextFormat.KEY)
     }
 
-    abstract val start: Int?
-    abstract val end: Int?
+    public abstract val start: Int?
+    public abstract val end: Int?
     internal abstract val type: String
 }
 
@@ -58,9 +58,9 @@ sealed class TextFormat {
  * UnknownTextFormat - Placeholder that is generated when a TextFormat with an unknown [type] is encountered.
  */
 @JsonClass(generateAdapter = true)
-class UnknownTextFormat : TextFormat() {
-    companion object {
-        const val KEY: String = "unknown"
+public class UnknownTextFormat : TextFormat() {
+    internal companion object {
+        internal const val KEY: String = "unknown"
     }
 
     override val start: Int? = null
@@ -72,13 +72,13 @@ class UnknownTextFormat : TextFormat() {
  * BoldTextFormat - TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class BoldTextFormat constructor(
+public data class BoldTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
     override val type: String = KEY
 ) : TextFormat() {
-    companion object {
-        const val KEY: String = "bold"
+    internal companion object {
+        internal const val KEY: String = "bold"
     }
 }
 
@@ -86,13 +86,13 @@ data class BoldTextFormat constructor(
  * ItalicTextFormat- TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class ItalicTextFormat constructor(
+public data class ItalicTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
     override val type: String = KEY
 ) : TextFormat() {
-    companion object {
-        const val KEY: String = "italic"
+    internal companion object {
+        internal const val KEY: String = "italic"
     }
 }
 
@@ -100,13 +100,13 @@ data class ItalicTextFormat constructor(
  * StrikeThroughTextFormat- TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class StrikeThroughTextFormat constructor(
+public data class StrikeThroughTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
     override val type: String = KEY
 ) : TextFormat() {
-    companion object {
-        const val KEY: String = "strikethrough"
+    internal companion object {
+        internal const val KEY: String = "strikethrough"
     }
 }
 
@@ -116,14 +116,14 @@ data class StrikeThroughTextFormat constructor(
  * @param url The link's URL!
  */
 @JsonClass(generateAdapter = true)
-data class LinkTextFormat constructor(
+public data class LinkTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
     val url: String? = null,
     override val type: String = KEY
 ) : TextFormat() {
-    companion object {
-        const val KEY: String = "link"
+    internal companion object {
+        internal const val KEY: String = "link"
     }
 }
 
@@ -133,14 +133,14 @@ data class LinkTextFormat constructor(
  * @param blog An object with a uuid field, which is the mentioned blog's UUID.
  */
 @JsonClass(generateAdapter = true)
-data class MentionTextFormat constructor(
+public data class MentionTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
     val blog: Blog? = null,
     override val type: String = KEY
 ) : TextFormat() {
-    companion object {
-        const val KEY: String = "mention"
+    internal companion object {
+        internal const val KEY: String = "mention"
     }
 }
 
@@ -150,14 +150,14 @@ data class MentionTextFormat constructor(
  * @param hex The color to use, in standard hex format, with leading '#'.
  */
 @JsonClass(generateAdapter = true)
-data class ColorTextFormat constructor(
+public data class ColorTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
     @HexColorOctothorpe val hex: Color? = null,
     override val type: String = KEY
 ) : TextFormat() {
-    companion object {
-        const val KEY: String = "color"
+    internal companion object {
+        internal const val KEY: String = "color"
     }
 }
 
@@ -168,14 +168,14 @@ data class ColorTextFormat constructor(
  */
 @Deprecated("This was removed from the Tumblr API spec and is unsupported when creating posts.")
 @JsonClass(generateAdapter = true)
-data class SizeTextFormat constructor(
+public data class SizeTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
     val size: Option? = null,
     override val type: String = KEY
 ) : TextFormat() {
-    companion object {
-        const val KEY: String = "size"
+    internal companion object {
+        internal const val KEY: String = "size"
     }
 
     /**
@@ -183,7 +183,7 @@ data class SizeTextFormat constructor(
      */
     @Deprecated("This was removed from the Tumblr API spec and is unsupported when creating posts.")
     @JsonClass(generateAdapter = false)
-    enum class Option() {
+    public enum class Option {
         /**
          * TODO: Documentation
          */
@@ -204,12 +204,12 @@ data class SizeTextFormat constructor(
  * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
  */
 @JsonClass(generateAdapter = true)
-data class SmallTextFormat constructor(
+public data class SmallTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
     override val type: String = KEY
 ) : TextFormat() {
-    companion object {
-        const val KEY: String = "small"
+    internal companion object {
+        internal const val KEY: String = "small"
     }
 }

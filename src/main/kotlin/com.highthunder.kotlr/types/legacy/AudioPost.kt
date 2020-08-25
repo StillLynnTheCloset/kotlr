@@ -94,7 +94,7 @@ import com.squareup.moshi.JsonClass
  * @param embed TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class AudioPost constructor(
+public data class AudioPost constructor(
     @Json(name = "blog_name")
     override val blogName: String? = null,
     override val id: Long? = null,

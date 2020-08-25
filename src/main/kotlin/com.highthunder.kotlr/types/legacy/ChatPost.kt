@@ -79,7 +79,7 @@ import com.squareup.moshi.JsonClass
  * @param dialogue List of dialog objects describing the chat in detail.
  */
 @JsonClass(generateAdapter = true)
-data class ChatPost constructor(
+public data class ChatPost constructor(
     @Json(name = "blog_name")
     override val blogName: String? = null,
     override val id: Long? = null,

@@ -81,7 +81,7 @@ import com.squareup.moshi.JsonClass
  * @param answerAbstract TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class AnswerPost constructor(
+public data class AnswerPost constructor(
     @Json(name = "blog_name")
     override val blogName: String? = null,
     override val id: Long? = null,

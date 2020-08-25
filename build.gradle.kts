@@ -8,9 +8,9 @@ buildscript {
 }
 
 plugins {
-    kotlin("jvm") version "1.3.61"
-    kotlin("kapt") version "1.3.61"
     id("com.github.ben-manes.versions") version "0.28.0"
+    kotlin("jvm") version "1.4.0"
+    kotlin("kapt") version "1.4.0"
     id("de.fayard.buildSrcVersions") version "0.7.0"
     // id("de.fayard.refreshVersions") version "0.7.0" // Soon this will be the future!
     id("org.jlleitschuh.gradle.ktlint") version "9.2.1"
@@ -61,6 +61,11 @@ idea {
         sourceDirs.addAll(files("build/generated/source/kapt/main", "build/generated/source/kaptKotlin/main"))
         generatedSourceDirs.addAll(files("build/generated/source/kapt/main", "build/generated/source/kaptKotlin/main"))
     }
+}
+
+kotlin {
+    // explicitApi() // TODO: Switch to this once code gen supports this.
+    explicitApiWarning()
 }
 
 ktlint {

@@ -16,8 +16,8 @@ import com.squareup.moshi.JsonClass
  * @since 10/20/18
  * @version 1.0.0
  */
-sealed class Attribution {
-    companion object {
+public sealed class Attribution {
+    internal companion object {
         internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(Attribution::class.java, "type")
             .withDefaultValue(UnknownAttribution())
@@ -36,9 +36,9 @@ sealed class Attribution {
  * UnknownAttribution - Placeholder that is generated when an Attribution with an unknown [type] is encountered.
  */
 @JsonClass(generateAdapter = true)
-class UnknownAttribution : Attribution() {
-    companion object {
-        const val KEY: String = "Unknown"
+public class UnknownAttribution : Attribution() {
+    internal companion object {
+        internal const val KEY: String = "Unknown"
     }
 
     override val type: String = KEY
@@ -52,14 +52,14 @@ class UnknownAttribution : Attribution() {
  * @param blog A Tumblelog object with at least a uuid field.
  */
 @JsonClass(generateAdapter = true)
-data class PostAttribution constructor(
+public data class PostAttribution constructor(
     val url: String? = null,
     val post: Post? = null,
     val blog: Blog? = null,
     override val type: String = KEY
 ) : Attribution() {
-    companion object {
-        const val KEY: String = "post"
+    internal companion object {
+        internal const val KEY: String = "post"
     }
 }
 
@@ -69,12 +69,12 @@ data class PostAttribution constructor(
  * @param url The URL to be attributed for the content.
  */
 @JsonClass(generateAdapter = true)
-data class LinkAttribution constructor(
+public data class LinkAttribution constructor(
     val url: String? = null,
     override val type: String = KEY
 ) : Attribution() {
-    companion object {
-        const val KEY: String = "link"
+    internal companion object {
+        internal const val KEY: String = "link"
     }
 }
 
@@ -85,13 +85,13 @@ data class LinkAttribution constructor(
  * @param url The URL to be attributed for the content.
  */
 @JsonClass(generateAdapter = true)
-data class BlogAttribution constructor(
+public data class BlogAttribution constructor(
     val blog: Blog? = null,
     val url: String? = null,
     override val type: String = KEY
 ) : Attribution() {
-    companion object {
-        const val KEY: String = "blog"
+    internal companion object {
+        internal const val KEY: String = "blog"
     }
 }
 
@@ -104,7 +104,7 @@ data class BlogAttribution constructor(
  * @param logo A specific logo Media Object that the client should use with the third-party app attribution.
  */
 @JsonClass(generateAdapter = true)
-data class AppAttribution constructor(
+public data class AppAttribution constructor(
     val url: String? = null,
     @Json(name = "app_name")
     val appName: String? = null,
@@ -113,7 +113,7 @@ data class AppAttribution constructor(
     val logo: Media? = null,
     override val type: String = KEY
 ) : Attribution() {
-    companion object {
-        const val KEY: String = "app"
+    internal companion object {
+        internal const val KEY: String = "app"
     }
 }

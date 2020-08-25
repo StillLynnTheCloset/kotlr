@@ -85,7 +85,7 @@ import java.util.ArrayList
  * <p>If you want to specify a custom unknown fallback for decoding, you can do so via
  * {@link #withDefaultValue(Object)}. This instance should be immutable, as it is shared.
  */
-class PolymorphicJsonAdapterFactory<T> internal constructor(
+public class PolymorphicJsonAdapterFactory<T> internal constructor(
     private val baseType: Class<T>,
     private val labelKey: String,
     private val labels: List<String>,
@@ -94,13 +94,13 @@ class PolymorphicJsonAdapterFactory<T> internal constructor(
     private val defaultValueSet: Boolean,
     private val missingLabelType: Type?
 ) : JsonAdapter.Factory {
-    companion object {
+    public companion object {
         /**
          * @param baseType The base type for which this factory will create adapters. Cannot be Object.
          * @param labelKey The key in the JSON object whose value determines the type to which to map the
          * JSON object.
          */
-        fun <T> of(baseType: Class<T>, labelKey: String): PolymorphicJsonAdapterFactory<T> {
+        public fun <T> of(baseType: Class<T>, labelKey: String): PolymorphicJsonAdapterFactory<T> {
             return PolymorphicJsonAdapterFactory(
                 baseType,
                 labelKey, emptyList(), emptyList(),
@@ -119,7 +119,7 @@ class PolymorphicJsonAdapterFactory<T> internal constructor(
      * during encoding an [IllegalArgumentException] will be thrown. When an unknown label
      * is found during decoding a [JsonDataException] will be thrown.
      */
-    fun withSubtype(subtype: Class<out T>, label: String): PolymorphicJsonAdapterFactory<T> {
+    public fun withSubtype(subtype: Class<out T>, label: String): PolymorphicJsonAdapterFactory<T> {
         require(!labels.contains(label)) { "Labels must be unique." }
         val newLabels: MutableList<String> = ArrayList(labels)
         newLabels.add(label)
@@ -140,7 +140,7 @@ class PolymorphicJsonAdapterFactory<T> internal constructor(
      * Returns a new factory that will default to [defaultValue] upon decoding of unrecognized
      * labels. The default value should be immutable.
      */
-    fun withDefaultValue(defaultValue: T?): PolymorphicJsonAdapterFactory<T> {
+    public fun withDefaultValue(defaultValue: T?): PolymorphicJsonAdapterFactory<T> {
         return PolymorphicJsonAdapterFactory(
             baseType,
             labelKey,
@@ -155,7 +155,7 @@ class PolymorphicJsonAdapterFactory<T> internal constructor(
     /**
      * Returns a new factory that will attempt to decode values as type [missingLabelType] if [labelKey] is missing.
      */
-    fun withMissingLabelType(missingLabelType: Class<out T>): PolymorphicJsonAdapterFactory<T> {
+    public fun withMissingLabelType(missingLabelType: Class<out T>): PolymorphicJsonAdapterFactory<T> {
         return PolymorphicJsonAdapterFactory(
             baseType,
             labelKey,

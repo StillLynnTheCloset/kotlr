@@ -19,8 +19,8 @@ import com.squareup.moshi.JsonClass
  * @property blogFollowed TODO: Documentation
  * @property avatarShape TODO: Documentation
  */
-sealed class NoteData {
-    companion object {
+public sealed class NoteData {
+    internal companion object {
         internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(NoteData::class.java, "type")
             .withDefaultValue(UnknownNote())
@@ -33,12 +33,12 @@ sealed class NoteData {
             .withSubtype(UnknownNote::class.java, UnknownNote.KEY)
     }
 
-    abstract val timestamp: Long?
-    abstract val blogName: String?
-    abstract val blogUuid: String?
-    abstract val blogUrl: String?
-    abstract val blogFollowed: Boolean?
-    abstract val avatarShape: String?
+    public abstract val timestamp: Long?
+    public abstract val blogName: String?
+    public abstract val blogUuid: String?
+    public abstract val blogUrl: String?
+    public abstract val blogFollowed: Boolean?
+    public abstract val avatarShape: String?
     internal abstract val type: String
 }
 
@@ -46,9 +46,9 @@ sealed class NoteData {
  * UnknownNote - Placeholder that is generated when a Note with an unknown [type] is encountered.
  */
 @JsonClass(generateAdapter = true)
-class UnknownNote : NoteData() {
-    companion object {
-        const val KEY: String = "Unknown"
+public class UnknownNote : NoteData() {
+    internal companion object {
+        internal const val KEY: String = "Unknown"
     }
 
     override val timestamp: Long? = null
@@ -64,7 +64,7 @@ class UnknownNote : NoteData() {
  * LikeNote - TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class LikeNote constructor(
+public data class LikeNote constructor(
     override val timestamp: Long? = null,
     @Json(name = "blog_name")
     override val blogName: String? = null,
@@ -78,8 +78,8 @@ data class LikeNote constructor(
     override val avatarShape: String? = null,
     override val type: String = KEY
 ) : NoteData() {
-    companion object {
-        const val KEY: String = "like"
+    internal companion object {
+        internal const val KEY: String = "like"
     }
 }
 
@@ -87,7 +87,7 @@ data class LikeNote constructor(
  * PostedNote - TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class PostedNote constructor(
+public data class PostedNote constructor(
     override val timestamp: Long? = null,
     @Json(name = "blog_name")
     override val blogName: String? = null,
@@ -101,8 +101,8 @@ data class PostedNote constructor(
     override val avatarShape: String? = null,
     override val type: String = KEY
 ) : NoteData() {
-    companion object {
-        const val KEY: String = "posted"
+    internal companion object {
+        internal const val KEY: String = "posted"
     }
 }
 
@@ -113,7 +113,7 @@ data class PostedNote constructor(
  * @param reblogParentBlogName TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class ReblogNote constructor(
+public data class ReblogNote constructor(
     override val timestamp: Long? = null,
     @Json(name = "blog_name")
     override val blogName: String? = null,
@@ -135,8 +135,8 @@ data class ReblogNote constructor(
     val reblogParentBlogName: String? = null,
     override val type: String = KEY
 ) : NoteData() {
-    companion object {
-        const val KEY: String = "reblog"
+    internal companion object {
+        internal const val KEY: String = "reblog"
     }
 }
 
@@ -148,7 +148,7 @@ data class ReblogNote constructor(
  * @param canBlock TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class ReplyNote constructor(
+public data class ReplyNote constructor(
     override val timestamp: Long? = null,
     @Json(name = "blog_name")
     override val blogName: String? = null,
@@ -167,8 +167,8 @@ data class ReplyNote constructor(
     val canBlock: Boolean? = null,
     override val type: String = KEY
 ) : NoteData() {
-    companion object {
-        const val KEY: String = "reply"
+    internal companion object {
+        internal const val KEY: String = "reply"
     }
 }
 
@@ -182,7 +182,7 @@ data class ReplyNote constructor(
  * @param photoHeight TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class AttributionNote constructor(
+public data class AttributionNote constructor(
     override val timestamp: Long? = null,
     @Json(name = "blog_name")
     override val blogName: String? = null,
@@ -208,7 +208,7 @@ data class AttributionNote constructor(
     val photoHeight: Int? = null,
     override val type: String = KEY
 ) : NoteData() {
-    companion object {
-        const val KEY: String = "post_attribution"
+    internal companion object {
+        internal const val KEY: String = "post_attribution"
     }
 }

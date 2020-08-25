@@ -45,7 +45,7 @@ import okhttp3.Headers
  * @param timeUntilHourlyReset The number of seconds until your API key's current 1 hour period resets.
  */
 @JsonClass(generateAdapter = true)
-data class RateLimitMetaData constructor(
+public data class RateLimitMetaData constructor(
     val dailyLimit: Long?,
     val dailyRemaining: Long?,
     val timeUntilDailyReset: Long?,
@@ -53,7 +53,7 @@ data class RateLimitMetaData constructor(
     val hourlyRemaining: Long?,
     val timeUntilHourlyReset: Long?
 ) {
-    companion object {
+    private companion object {
         private const val DAILY_LIMIT_HEADER: String = "X-Ratelimit-Perday-Limit"
         private const val DAILY_REMAINING_HEADER: String = "X-Ratelimit-Perday-Remaining"
         private const val DAILY_RESET_HEADER: String = "X-Ratelimit-Perday-Reset"
@@ -62,7 +62,7 @@ data class RateLimitMetaData constructor(
         private const val HOURLY_RESET_HEADER: String = "X-Ratelimit-Perhour-Reset"
     }
 
-    constructor(header: Headers) : this(
+    internal constructor(header: Headers) : this(
         header[DAILY_LIMIT_HEADER]?.toLongOrNull(),
         header[DAILY_REMAINING_HEADER]?.toLongOrNull(),
         header[DAILY_RESET_HEADER]?.toLongOrNull(),

@@ -20,7 +20,7 @@ import com.squareup.moshi.JsonClass
  * @param defaultPostFormat The user's default posting format - html, markdown, or raw.
  */
 @JsonClass(generateAdapter = false)
-data class User constructor(
+public data class User constructor(
     @Json(name = "blogs")
     val blogs: List<Blog>? = null,
     @Json(name = "name")

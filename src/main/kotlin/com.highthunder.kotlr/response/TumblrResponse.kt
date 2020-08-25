@@ -7,33 +7,33 @@ package com.highthunder.kotlr.response
  * @since 10/27/18
  * @version 1.0.0
  */
-interface TumblrResponse<out T> {
+public interface TumblrResponse<out T> {
 
     /**
      * Get the list of error messages sent with this response.
      * This will be null under normal circumstances when no errors are sent.
      */
-    val errors: List<TumblrError>?
+    public val errors: List<TumblrError>?
 
     /**
      * Get the meta information block from this request.
      * This contains the HTTP response code and message as well as
      * the potential for other flags from Tumblr.
      */
-    val meta: ResponseMetaInfo
+    public val meta: ResponseMetaInfo
 
     /**
      * TODO: Documentation
      */
-    val response: WrapperInterface<T>
+    public val response: WrapperInterface<T>
 
     /**
      * A helper function to directly access the response body.
      */
-    fun getBody(): T? = response.body
+    public fun getBody(): T? = response.body
 
     /**
      * A helper function to directly access the response body and assert that it is not null.
      */
-    fun getBodyOrThrow(): T = response.body ?: throw IllegalStateException("Unable to get body of response: $this")
+    public fun getBodyOrThrow(): T = response.body ?: throw IllegalStateException("Unable to get body of response: $this")
 }

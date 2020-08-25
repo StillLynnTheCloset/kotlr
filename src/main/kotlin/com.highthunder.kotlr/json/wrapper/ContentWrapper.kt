@@ -16,7 +16,7 @@ import com.squareup.moshi.JsonClass
  * @param contentList The contents as a list of content blocks.
  */
 @JsonClass(generateAdapter = false)
-data class ContentWrapper constructor(
+public data class ContentWrapper constructor(
     val contentString: String? = null,
     val contentList: List<PostContent>? = null
 )

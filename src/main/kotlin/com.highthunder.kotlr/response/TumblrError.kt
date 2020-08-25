@@ -14,7 +14,7 @@ import com.squareup.moshi.JsonClass
  * @param detail TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class TumblrError constructor(
+public data class TumblrError constructor(
     val title: String? = null,
     val code: Int? = null,
     val detail: String? = null

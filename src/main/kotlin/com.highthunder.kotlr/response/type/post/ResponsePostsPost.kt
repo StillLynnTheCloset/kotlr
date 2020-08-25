@@ -18,7 +18,7 @@ import com.squareup.moshi.JsonClass
  * @since 11/4/18
  * @version 1.0.0
  */
-interface ResponsePostsPost {
+public interface ResponsePostsPost {
     /**
      * TODO: Documentation
      *
@@ -27,7 +27,7 @@ interface ResponsePostsPost {
      * @param errors TODO: Documentation
      */
     @JsonClass(generateAdapter = true)
-    data class Response constructor(
+    public data class Response constructor(
         @Json(name = "meta")
         override val meta: ResponseMetaInfo,
         @Json(name = "response")
@@ -42,7 +42,7 @@ interface ResponsePostsPost {
      * @param body The body of this response.
      * @param error The error message if there is no body.
      */
-    data class Wrapper constructor(
+    public data class Wrapper constructor(
         override val error: String? = null,
         override val body: Post? = null
     ) : WrapperInterface<Post>

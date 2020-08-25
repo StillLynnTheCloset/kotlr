@@ -16,7 +16,7 @@ import com.squareup.moshi.JsonClass
  * @param featured Indicates whether the tag is a featured tag
  */
 @JsonClass(generateAdapter = true)
-data class Tag constructor(
+public data class Tag constructor(
     @Json(name = "tag")
     val tagText: String? = null,
     @Json(name = "thumb_url")

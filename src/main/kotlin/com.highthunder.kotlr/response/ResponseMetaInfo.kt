@@ -15,7 +15,7 @@ import com.squareup.moshi.JsonClass
  * @param contentRating TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class ResponseMetaInfo constructor(
+public data class ResponseMetaInfo constructor(
     @Json(name = "status")
     val status: Int? = null,
     @Json(name = "msg")

@@ -34,7 +34,7 @@ import com.squareup.moshi.JsonClass
  * @param showTitle Whether or not the blog's title should be displayed, even if it's given in the API payload.
  */
 @JsonClass(generateAdapter = true)
-data class BlogTheme constructor(
+public data class BlogTheme constructor(
     @Json(name = "header_image")
     val headerImage: String? = null,
     @Json(name = "header_full_width")

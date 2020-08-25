@@ -19,7 +19,7 @@ object Versions {
 
     const val com_squareup_okhttp3: String = "4.5.0"
 
-    const val org_jetbrains_kotlin: String = "1.3.71"
+    const val org_jetbrains_kotlin: String = "1.4.0"
 
     const val com_squareup_moshi: String = "1.9.2"
 
@@ -29,9 +29,9 @@ object Versions {
 
     const val de_fayard_buildsrcversions_gradle_plugin: String = "0.7.0"
 
-    const val org_jetbrains_kotlin_kapt_gradle_plugin: String = "1.3.71"
+    const val org_jetbrains_kotlin_kapt_gradle_plugin: String = "1.4.0"
 
-    const val org_jetbrains_kotlin_jvm_gradle_plugin: String = "1.3.71"
+    const val org_jetbrains_kotlin_jvm_gradle_plugin: String = "1.4.0"
 
     const val okhttp_signpost: String = "1.1.0"
 

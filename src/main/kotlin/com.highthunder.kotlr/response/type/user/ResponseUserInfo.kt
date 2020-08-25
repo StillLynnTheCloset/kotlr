@@ -16,7 +16,7 @@ import com.squareup.moshi.JsonClass
  * @since 11/4/18
  * @version 1.0.0
  */
-interface ResponseUserInfo {
+public interface ResponseUserInfo {
     /**
      * TODO: Documentation
      *
@@ -25,7 +25,7 @@ interface ResponseUserInfo {
      * @param errors TODO: Documentation
      */
     @JsonClass(generateAdapter = true)
-    data class Response constructor(
+    public data class Response constructor(
         @Json(name = "meta")
         override val meta: ResponseMetaInfo,
         @Json(name = "response")
@@ -40,7 +40,7 @@ interface ResponseUserInfo {
      * @param body The body of this response.
      * @param error The error message if there is no body.
      */
-    data class Wrapper constructor(
+    public data class Wrapper constructor(
         override val error: String? = null,
         override val body: Body? = null
     ) : WrapperInterface<Body>
@@ -51,7 +51,7 @@ interface ResponseUserInfo {
      * @param user TODO: Documentation
      */
     @JsonClass(generateAdapter = true)
-    data class Body constructor(
+    public data class Body constructor(
         @Json(name = "user")
         val user: User? = null
     )

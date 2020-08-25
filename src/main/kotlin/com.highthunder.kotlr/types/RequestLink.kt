@@ -16,7 +16,7 @@ import com.squareup.moshi.JsonClass
  * @param queryParams TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
-data class RequestLink constructor(
+public data class RequestLink constructor(
     @Json(name = "type")
     val linkType: Type? = null,
     @Json(name = "method")
@@ -30,7 +30,7 @@ data class RequestLink constructor(
      * TODO: Documentation
      */
     @JsonClass(generateAdapter = false)
-    enum class Type {
+    public enum class Type {
         /**
          * TODO: Documentation
          */
