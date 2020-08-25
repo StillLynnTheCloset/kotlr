@@ -73,7 +73,7 @@ public data class ReblogPostBody constructor(
         sendToTwitter = sendToTwitter,
         sendToFacebook = sendToFacebook,
         parentTumblelogUuid = postToReblog.blogUUID ?: postToReblog.blog?.uuid
-        ?: throw IllegalArgumentException("Post must have a parentBlogId"),
+            ?: throw IllegalArgumentException("Post must have a parentBlogId"),
         parentPostId = postToReblog.id ?: throw IllegalArgumentException("Post must have an id"),
         reblogKey = postToReblog.reblogKey ?: throw IllegalArgumentException("Post must have a reblog key"),
         hideTrail = hideTrail

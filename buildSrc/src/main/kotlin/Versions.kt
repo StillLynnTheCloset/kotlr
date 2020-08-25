@@ -39,7 +39,7 @@ object Versions {
 
     const val wagon_git: String = "0.3.0"
 
-    const val ktlint: String = "0.36.0"
+    const val ktlint: String = "0.38.1"
 
     const val junit: String = "4.13"
 

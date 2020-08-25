@@ -1,6 +1,6 @@
 package com.highthunder.kotlr
 // Disable line length checking because there are a lot of long string literals in here.
-/* ktlint-disable max-line-length */
+/* ktlint-disable max-line-length parameter-list-wrapping */
 
 import com.highthunder.kotlr.json.wrapper.AttributionWrapper
 import com.highthunder.kotlr.json.wrapper.ContentWrapper
@@ -65,7 +65,6 @@ import com.highthunder.kotlr.types.legacy.TextPost
 import com.highthunder.kotlr.types.legacy.Video
 import com.highthunder.kotlr.types.legacy.VideoPost
 import com.squareup.moshi.JsonAdapter
-import java.io.File
 import okio.buffer
 import okio.source
 import org.junit.AfterClass
@@ -73,6 +72,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.BeforeClass
 import org.junit.Test
+import java.io.File
 
 internal class SampleFilesIndividualParseTest {
     internal companion object {
@@ -1287,24 +1287,28 @@ internal class SampleFilesIndividualParseTest {
                 Trail(
                     post = BlockPost(id = 1234),
                     blog = Blog(),
-                    content = ContentWrapper(contentList = listOf(
-                        TextContent(
-                            text = "this is the root Post"
+                    content = ContentWrapper(
+                        contentList = listOf(
+                            TextContent(
+                                text = "this is the root Post"
+                            )
                         )
-                    )),
+                    ),
                     layout = emptyList()
                 ),
                 Trail(
                     post = BlockPost(id = 3456),
                     blog = Blog(),
-                    content = ContentWrapper(contentList = listOf(
-                        TextContent(
-                            text = "this is the parent Post"
-                        ),
-                        TextContent(
-                            text = "this is another text block in the parent Post"
+                    content = ContentWrapper(
+                        contentList = listOf(
+                            TextContent(
+                                text = "this is the parent Post"
+                            ),
+                            TextContent(
+                                text = "this is another text block in the parent Post"
+                            )
                         )
-                    )),
+                    ),
                     layout = listOf(
                         RowBlockLayout(
                             rows = listOf(
@@ -1330,23 +1334,27 @@ internal class SampleFilesIndividualParseTest {
             trail = listOf(
                 Trail(
                     brokenBlogName = "old-broken-blog",
-                    content = ContentWrapper(contentList = listOf(
-                        TextContent(
-                            text = "this is the root Post, which is broken"
+                    content = ContentWrapper(
+                        contentList = listOf(
+                            TextContent(
+                                text = "this is the root Post, which is broken"
+                            )
                         )
-                    )),
+                    ),
                     layout = emptyList()
                 ),
                 Trail(
                     brokenBlogName = "another-broken-blog",
-                    content = ContentWrapper(contentList = listOf(
-                        TextContent(
-                            text = "this is the parent Post, which is also broken"
-                        ),
-                        TextContent(
-                            text = "this is another text block in the broken parent Post"
+                    content = ContentWrapper(
+                        contentList = listOf(
+                            TextContent(
+                                text = "this is the parent Post, which is also broken"
+                            ),
+                            TextContent(
+                                text = "this is another text block in the broken parent Post"
+                            )
                         )
-                    )),
+                    ),
                     layout = emptyList()
                 )
             )

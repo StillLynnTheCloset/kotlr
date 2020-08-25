@@ -13,7 +13,7 @@ plugins {
     kotlin("kapt") version "1.4.0"
     id("de.fayard.buildSrcVersions") version "0.7.0"
     // id("de.fayard.refreshVersions") version "0.7.0" // Soon this will be the future!
-    id("org.jlleitschuh.gradle.ktlint") version "9.2.1"
+    id("org.jlleitschuh.gradle.ktlint") version "9.3.0"
     id("idea")
 }
 
@@ -69,7 +69,7 @@ kotlin {
 }
 
 ktlint {
-    version.set("0.37.2")
+    version.set("0.38.1")
     debug.set(false)
     verbose.set(true)
     android.set(false)

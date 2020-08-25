@@ -103,7 +103,9 @@ public class PolymorphicJsonAdapterFactory<T> internal constructor(
         public fun <T> of(baseType: Class<T>, labelKey: String): PolymorphicJsonAdapterFactory<T> {
             return PolymorphicJsonAdapterFactory(
                 baseType,
-                labelKey, emptyList(), emptyList(),
+                labelKey,
+                emptyList(),
+                emptyList(),
                 null,
                 false,
                 null
