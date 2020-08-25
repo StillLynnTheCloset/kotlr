@@ -74,8 +74,8 @@ import org.junit.Assert.assertNotNull
 import org.junit.BeforeClass
 import org.junit.Test
 
-class SampleFilesIndividualParseTest {
-    companion object {
+internal class SampleFilesIndividualParseTest {
+    internal companion object {
         private var allFileNames = mutableSetOf<String>()
         private val parsedFileNames = mutableSetOf<String>()
 
@@ -94,7 +94,7 @@ class SampleFilesIndividualParseTest {
 
         @BeforeClass
         @JvmStatic
-        fun beforeClass() {
+        internal fun beforeClass() {
             parsedFileNames.clear()
             allFileNames.clear()
             countFilesInDirRecursive(File("samples"))
@@ -103,7 +103,7 @@ class SampleFilesIndividualParseTest {
 
         @AfterClass
         @JvmStatic
-        fun afterClass() {
+        internal fun afterClass() {
             // Make sure that we tested every file.
             println("Tested ${parsedFileNames.size} out of ${allFileNames.size} files")
             allFileNames.filter { it !in parsedFileNames }.sorted().forEach {
@@ -135,7 +135,7 @@ class SampleFilesIndividualParseTest {
     // region Integration Test Cases
 
     @Test
-    fun testIntegration_npfAnnouncementPost() {
+    internal fun testIntegration_npfAnnouncementPost() {
         val post = parseFile<BlockPost>("samples/integrationTest/npfAnnouncementPost.json")
         assertNotNull(post)
     }
@@ -145,17 +145,17 @@ class SampleFilesIndividualParseTest {
     // region Manufactured Test Cases
 
     @Test
-    fun testManufactured_colors_allFormats() {
+    internal fun testManufactured_colors_allFormats() {
         val colors = parseFile<Colors>("samples/manufactured/colors/colorsSampleWithAllFormats.json")
         assertNotNull(colors)
-        assertEquals("a24615", colors?.colors?.get(0)?.asString())
-        assertEquals("ff7700", colors?.colors?.get(1)?.asString())
-        assertEquals("ff7700", colors?.colors?.get(2)?.asString())
-        assertEquals("a24615", colors?.colors?.get(3)?.asString())
+        assertEquals("FFA24615", colors?.colors?.get(0)?.asString())
+        assertEquals("FFFF7700", colors?.colors?.get(1)?.asString())
+        assertEquals("FFFF7700", colors?.colors?.get(2)?.asString())
+        assertEquals("FFA24615", colors?.colors?.get(3)?.asString())
     }
 
     @Test
-    fun testManufactured_media_allProperties() {
+    internal fun testManufactured_media_allProperties() {
         val media = parseFile<Media>("samples/manufactured/media/mediaAllProperties.json")
         assertNotNull(media)
         assertNotNull(media?.type)
@@ -178,7 +178,7 @@ class SampleFilesIndividualParseTest {
     // region Blog
 
     @Test
-    fun testOfficialLPF_blog_getBlog() {
+    internal fun testOfficialLPF_blog_getBlog() {
         val blog = parseFile<Blog>("samples/officialLPFSamples/blog/getBlog.json")
         val expected = Blog(
             title = "David's Log",
@@ -195,7 +195,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialLPF_blog_getFollowing() {
+    internal fun testOfficialLPF_blog_getFollowing() {
         val blog = parseFile<Blog>("samples/officialLPFSamples/blog/getFollowing.json")
         val expected = Blog(
             title = "David’s Log",
@@ -212,7 +212,7 @@ class SampleFilesIndividualParseTest {
     // region Links
 
     @Test
-    fun testOfficialLPF_links_links() {
+    internal fun testOfficialLPF_links_links() {
         val linkMap = parseFile<Map<String, RequestLink>>("samples/officialLPFSamples/links/links.json", adapter = moshi.mapAdapter())
         val expected = mapOf(
             "previous" to RequestLink(
@@ -244,7 +244,7 @@ class SampleFilesIndividualParseTest {
     // region Post
 
     @Test
-    fun testOfficialLPF_post_answerPost() {
+    internal fun testOfficialLPF_post_answerPost() {
         val post = parseFile<Post>("samples/officialLPFSamples/post/answerPost.json")
         val expected = AnswerPost(
             blogName = "david",
@@ -265,7 +265,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialLPF_post_audioPost() {
+    internal fun testOfficialLPF_post_audioPost() {
         val post = parseFile<Post>("samples/officialLPFSamples/post/audioPost.json")
         val expected = AudioPost(
             blogName = "derekg",
@@ -289,7 +289,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialLPF_post_chatPost() {
+    internal fun testOfficialLPF_post_chatPost() {
         val post = parseFile<Post>("samples/officialLPFSamples/post/chatPost.json")
         val expected = ChatPost(
             blogName = "david",
@@ -331,7 +331,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialLPF_post_linkPost() {
+    internal fun testOfficialLPF_post_linkPost() {
         val post = parseFile<Post>("samples/officialLPFSamples/post/linkPost.json")
         val expected = LinkPost(
             blogName = "travellingcameraclub",
@@ -366,7 +366,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialLPF_post_photoPost() {
+    internal fun testOfficialLPF_post_photoPost() {
         val post = parseFile<Post>("samples/officialLPFSamples/post/photoPost.json")
         val expected = PhotoPost(
             blogName = "derekg",
@@ -422,7 +422,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialLPF_post_quotePost() {
+    internal fun testOfficialLPF_post_quotePost() {
         val post = parseFile<Post>("samples/officialLPFSamples/post/quotePost.json")
         val expected = QuotePost(
             blogName = "museumsandstuff",
@@ -444,7 +444,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialLPF_post_textPost() {
+    internal fun testOfficialLPF_post_textPost() {
         val post = parseFile<Post>("samples/officialLPFSamples/post/textPost.json")
         val expected = TextPost(
             blogName = "citriccomics",
@@ -469,7 +469,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialLPF_post_videoPost() {
+    internal fun testOfficialLPF_post_videoPost() {
         val post = parseFile<Post>("samples/officialLPFSamples/post/videoPost.json")
         val expected = VideoPost(
             blogName = "john",
@@ -508,7 +508,7 @@ class SampleFilesIndividualParseTest {
     // region User
 
     @Test
-    fun testOfficialLPF_user_getFollower() {
+    internal fun testOfficialLPF_user_getFollower() {
         val user = parseFile<User>("samples/officialLPFSamples/user/getFollower.json")
         val expected = User(
             name = "david",
@@ -554,7 +554,7 @@ class SampleFilesIndividualParseTest {
     // region Attribution
 
     @Test
-    fun testOfficialNPF_attributionTypeApp() {
+    internal fun testOfficialNPF_attributionTypeApp() {
         val attribution = parseFile<Attribution>("samples/officialNPFSamples/attribution/attributionTypeApp.json")
         val expected = AppAttribution(
             url = "https://www.instagram.com/p/BVZyxTklQWX/",
@@ -571,7 +571,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_attributionTypeBlog() {
+    internal fun testOfficialNPF_attributionTypeBlog() {
         val attribution = parseFile<Attribution>("samples/officialNPFSamples/attribution/attributionTypeBlog.json")
         val expected = BlogAttribution(
             url = "https://randerson.tumblr.com",
@@ -581,7 +581,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_attributionTypeLink() {
+    internal fun testOfficialNPF_attributionTypeLink() {
         val attribution = parseFile<Attribution>("samples/officialNPFSamples/attribution/attributionTypeLink.json")
         val expected = LinkAttribution(
             url = "http://shahkashani.com/"
@@ -590,7 +590,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_attributionTypePost() {
+    internal fun testOfficialNPF_attributionTypePost() {
         val attribution = parseFile<Attribution>("samples/officialNPFSamples/attribution/attributionTypePost.json")
         val expected = PostAttribution(
             url = "http://www.davidslog.com/153957802620/five-years-of-working-with-this-awesome-girl",
@@ -612,7 +612,7 @@ class SampleFilesIndividualParseTest {
     // region Content
 
     @Test
-    fun testOfficialNPF_contentBlockTypeAudio1() {
+    internal fun testOfficialNPF_contentBlockTypeAudio1() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeAudio1.json")
         val expected = AudioContent(
             provider = "tumblr",
@@ -636,7 +636,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeAudio2() {
+    internal fun testOfficialNPF_contentBlockTypeAudio2() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeAudio2.json")
         val expected = AudioContent(
             provider = "soundcloud",
@@ -662,7 +662,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeImage1() {
+    internal fun testOfficialNPF_contentBlockTypeImage1() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeImage1.json")
         val expected = ImageContent(
             media = listOf(
@@ -691,7 +691,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeImage2() {
+    internal fun testOfficialNPF_contentBlockTypeImage2() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeImage2.json")
         val expected = ImageContent(
             media = listOf(
@@ -708,7 +708,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeImage3() {
+    internal fun testOfficialNPF_contentBlockTypeImage3() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeImage3.json")
         val expected = ImageContent(
             media = listOf(
@@ -728,7 +728,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeImage_gifPoster() {
+    internal fun testOfficialNPF_contentBlockTypeImage_gifPoster() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeImage_gifPosters.json")
         val expected = ImageContent(
             media = listOf(
@@ -750,7 +750,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeLink1() {
+    internal fun testOfficialNPF_contentBlockTypeLink1() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeLink1.json")
         val expected = LinkContent(
             url = "https://www.nytimes.com/2017/06/15/us/politics/secrecy-surrounding-senate-health-bill-raises-alarms-in-both-parties.html",
@@ -770,7 +770,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeLink2() {
+    internal fun testOfficialNPF_contentBlockTypeLink2() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeLink2.json")
         val expected = LinkContent(
             url = "http://t.umblr.com/redirect?stuff-here",
@@ -792,7 +792,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeText() {
+    internal fun testOfficialNPF_contentBlockTypeText() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText.json")
         val expected = TextContent(
             text = "Hello world!"
@@ -801,7 +801,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeText_formatting1() {
+    internal fun testOfficialNPF_contentBlockTypeText_formatting1() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_formatting1.json")
         val expected = TextContent(
             text = "supercalifragilisticexpialidocious",
@@ -820,7 +820,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeText_formatting2() {
+    internal fun testOfficialNPF_contentBlockTypeText_formatting2() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_formatting2.json")
         val expected = TextContent(
             text = "some bold and italic text",
@@ -839,7 +839,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeText_formatting3() {
+    internal fun testOfficialNPF_contentBlockTypeText_formatting3() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_formatting3.json")
         val expected = TextContent(
             text = "Found this link for you",
@@ -855,7 +855,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeText_formatting4() {
+    internal fun testOfficialNPF_contentBlockTypeText_formatting4() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_formatting4.json")
         val expected = TextContent(
             text = "Shout out to @david",
@@ -875,7 +875,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeText_formatting5() {
+    internal fun testOfficialNPF_contentBlockTypeText_formatting5() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_formatting5.json")
         val expected = TextContent(
             text = "Celebrate Pride Month",
@@ -891,7 +891,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeText_subtypeChat() {
+    internal fun testOfficialNPF_contentBlockTypeText_subtypeChat() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_subtypeChat.json")
         val expected = TextContent(
             text = "cyle: ello",
@@ -907,7 +907,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeText_subtypeHeading1() {
+    internal fun testOfficialNPF_contentBlockTypeText_subtypeHeading1() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_subtypeHeading1.json")
         val expected = TextContent(
             text = "New Post Forms Manifesto",
@@ -917,7 +917,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeText_subtypeHeading2() {
+    internal fun testOfficialNPF_contentBlockTypeText_subtypeHeading2() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_subtypeHeading2.json")
         val expected = TextContent(
             text = "what a great conversation",
@@ -927,7 +927,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeText_subtypeIndented() {
+    internal fun testOfficialNPF_contentBlockTypeText_subtypeIndented() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_subtypeIndented.json")
         val expected = TextContent(
             text = "A few years ago, when I was living in the hous. ",
@@ -937,7 +937,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeText_subtypeOrderedList() {
+    internal fun testOfficialNPF_contentBlockTypeText_subtypeOrderedList() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_subtypeOrderedList.json")
         val expected = TextContent(
             text = "Sword",
@@ -947,7 +947,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeText_subtypeQuirky() {
+    internal fun testOfficialNPF_contentBlockTypeText_subtypeQuirky() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_subtypeQuirky.json")
         val expected = TextContent(
             text = "Oh, worm?",
@@ -957,7 +957,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeText_subtypeQuote() {
+    internal fun testOfficialNPF_contentBlockTypeText_subtypeQuote() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_subtypeQuote.json")
         val expected = TextContent(
             text = "Genius without education is like silver in the mine.",
@@ -967,7 +967,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeText_subtypeUnorderedList() {
+    internal fun testOfficialNPF_contentBlockTypeText_subtypeUnorderedList() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_subtypeUnorderedList.json")
         val expected = TextContent(
             text = "Death, which is uncountable on this list.",
@@ -977,7 +977,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeVideo1() {
+    internal fun testOfficialNPF_contentBlockTypeVideo1() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeVideo1.json")
         val expected = VideoContent(
             media = Media(
@@ -1017,7 +1017,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_contentBlockTypeVideo2() {
+    internal fun testOfficialNPF_contentBlockTypeVideo2() {
         val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeVideo2.json")
         val expected = VideoContent(
             provider = "youtube",
@@ -1044,7 +1044,7 @@ class SampleFilesIndividualParseTest {
     // region Layout
 
     @Test
-    fun testOfficialNPF_layoutBlockTypeAsk() {
+    internal fun testOfficialNPF_layoutBlockTypeAsk() {
         val content = parseFile<BlockLayout>("samples/officialNPFSamples/layout/layoutBlockTypeAsk.json")
         val expected = AskBlockLayout(
             blocks = listOf(0, 1),
@@ -1057,7 +1057,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_layoutBlockTypeCondensed1() {
+    internal fun testOfficialNPF_layoutBlockTypeCondensed1() {
         val content = parseFile<BlockLayout>("samples/officialNPFSamples/layout/layoutBlockTypeCondensed1.json")
         val expected = CondensedBlockLayout(
             truncateAfter = 1
@@ -1066,7 +1066,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_layoutBlockTypeCondensed2() {
+    internal fun testOfficialNPF_layoutBlockTypeCondensed2() {
         val content = parseFile<BlockLayout>("samples/officialNPFSamples/layout/layoutBlockTypeCondensed2.json")
         val expected = CondensedBlockLayout(
             truncateAfter = 3,
@@ -1076,7 +1076,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_layoutBlockTypeRows1() {
+    internal fun testOfficialNPF_layoutBlockTypeRows1() {
         val content = parseFile<BlockLayout>("samples/officialNPFSamples/layout/layoutBlockTypeRows1.json")
         val expected = RowBlockLayout(
             display = listOf(
@@ -1092,7 +1092,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_layoutBlockTypeRows2() {
+    internal fun testOfficialNPF_layoutBlockTypeRows2() {
         val content = parseFile<BlockLayout>("samples/officialNPFSamples/layout/layoutBlockTypeRows2.json")
         val expected = RowBlockLayout(
             display = listOf(
@@ -1117,7 +1117,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_layoutBlockTypeRows3() {
+    internal fun testOfficialNPF_layoutBlockTypeRows3() {
         val content = parseFile<BlockLayout>("samples/officialNPFSamples/layout/layoutBlockTypeRows3.json")
         val expected = RowBlockLayout(
             display = listOf(
@@ -1130,7 +1130,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_layoutBlockTypeRows_displayModeCarousel() {
+    internal fun testOfficialNPF_layoutBlockTypeRows_displayModeCarousel() {
         val content = parseFile<BlockLayout>("samples/officialNPFSamples/layout/layoutBlockTypeRows_displayModeCarousel.json")
         val expected = RowBlockLayout(
             display = listOf(
@@ -1156,7 +1156,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_layoutBlockTypeVertical() {
+    internal fun testOfficialNPF_layoutBlockTypeVertical() {
         val content = parseFile<BlockLayout>("samples/officialNPFSamples/layout/layoutBlockTypeVertical.json")
         val expected = VerticalBlockLayout()
         assertEquals(expected, content)
@@ -1167,7 +1167,7 @@ class SampleFilesIndividualParseTest {
     // region Media
 
     @Test
-    fun testOfficialNPF_mediaObjects() {
+    internal fun testOfficialNPF_mediaObjects() {
         val content = parseFile<Media>("samples/officialNPFSamples/media/mediaObjects.json")
         val expected = Media(
             url = "https://69.media.tumblr.com/path/to/image.jpg",
@@ -1183,7 +1183,7 @@ class SampleFilesIndividualParseTest {
     // region Post
 
     @Test
-    fun testOfficialNPF_post_contentBlocks1() {
+    internal fun testOfficialNPF_post_contentBlocks1() {
         val content = parseFile<Post>("samples/officialNPFSamples/post/contentBlocks1.json")
         val expected = BlockPost(
             id = 1234,
@@ -1194,7 +1194,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_post_contentBlocks2() {
+    internal fun testOfficialNPF_post_contentBlocks2() {
         val content = parseFile<Post>("samples/officialNPFSamples/post/contentBlocks2.json")
         val expected = BlockPost(
             content = listOf(
@@ -1207,7 +1207,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_post_contentBlocks3() {
+    internal fun testOfficialNPF_post_contentBlocks3() {
         val content = parseFile<Post>("samples/officialNPFSamples/post/contentBlocks3.json")
         val expected = BlockPost(
             content = listOf(
@@ -1223,7 +1223,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_post_contentBlocks_emptyContent_before() {
+    internal fun testOfficialNPF_post_contentBlocks_emptyContent_before() {
         val content = parseFile<Post>("samples/officialNPFSamples/post/contentBlockTypeText_leadingTrailingEmptyBlocks_before.json")
         val expected = BlockPost(
             content = listOf(
@@ -1251,7 +1251,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_post_contentBlocks_emptyContent_after() {
+    internal fun testOfficialNPF_post_contentBlocks_emptyContent_after() {
         val content = parseFile<Post>("samples/officialNPFSamples/post/contentBlockTypeText_leadingTrailingEmptyBlocks_after.json")
         val expected = BlockPost(
             content = listOf(
@@ -1270,7 +1270,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_post_postIdentification() {
+    internal fun testOfficialNPF_post_postIdentification() {
         val content = parseFile<Post>("samples/officialNPFSamples/post/postIdentification.json")
         val expected = BlockPost(
             id = 1234567891234567,
@@ -1280,7 +1280,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_post_reblogTrail() {
+    internal fun testOfficialNPF_post_reblogTrail() {
         val content = parseFile<Post>("samples/officialNPFSamples/post/reblogTrail.json")
         val expected = BlockPost(
             trail = listOf(
@@ -1324,7 +1324,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_post_reblogTrail_brokenTrailItems() {
+    internal fun testOfficialNPF_post_reblogTrail_brokenTrailItems() {
         val content = parseFile<Post>("samples/officialNPFSamples/post/reblogTrail_brokenTrailItems.json")
         val expected = BlockPost(
             trail = listOf(
@@ -1359,7 +1359,7 @@ class SampleFilesIndividualParseTest {
     // region Row Block Display
 
     @Test
-    fun testOfficialNPF_rowBlockDisplay_carousel() {
+    internal fun testOfficialNPF_rowBlockDisplay_carousel() {
         val content = parseFile<RowBlockLayout.Display>("samples/officialNPFSamples/rowBlockDisplay/carousel.json")
         val expected = RowBlockLayout.Display(
             blocks = listOf(4, 5, 6),
@@ -1369,7 +1369,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_rowBlockDisplay_weighted() {
+    internal fun testOfficialNPF_rowBlockDisplay_weighted() {
         val content = parseFile<RowBlockLayout.Display>("samples/officialNPFSamples/rowBlockDisplay/weighted.json")
         val expected = RowBlockLayout.Display(
             blocks = listOf(1, 2)
@@ -1382,7 +1382,7 @@ class SampleFilesIndividualParseTest {
     // region Text Format
 
     @Test
-    fun testOfficialNPF_textFormat_bold() {
+    internal fun testOfficialNPF_textFormat_bold() {
         val content = parseFile<TextFormat>("samples/officialNPFSamples/textFormat/bold.json")
         val expected = BoldTextFormat(
             start = 0,
@@ -1392,7 +1392,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_textFormat_color() {
+    internal fun testOfficialNPF_textFormat_color() {
         val content = parseFile<TextFormat>("samples/officialNPFSamples/textFormat/color.json")
         val expected = ColorTextFormat(
             start = 10,
@@ -1403,7 +1403,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_textFormat_italic() {
+    internal fun testOfficialNPF_textFormat_italic() {
         val content = parseFile<TextFormat>("samples/officialNPFSamples/textFormat/italic.json")
         val expected = ItalicTextFormat(
             start = 9,
@@ -1413,7 +1413,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_textFormat_link() {
+    internal fun testOfficialNPF_textFormat_link() {
         val content = parseFile<TextFormat>("samples/officialNPFSamples/textFormat/link.json")
         val expected = LinkTextFormat(
             start = 6,
@@ -1424,7 +1424,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_textFormat_mention() {
+    internal fun testOfficialNPF_textFormat_mention() {
         val content = parseFile<TextFormat>("samples/officialNPFSamples/textFormat/mention.json")
         val expected = MentionTextFormat(
             start = 13,
@@ -1439,7 +1439,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_textFormat_sizeBig() {
+    internal fun testOfficialNPF_textFormat_sizeBig() {
         val content = parseFile<TextFormat>("samples/officialNPFSamples/textFormat/sizeBig.json")
         val expected = SizeTextFormat(
             start = 10,
@@ -1450,7 +1450,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_textFormat_sizeSmall() {
+    internal fun testOfficialNPF_textFormat_sizeSmall() {
         val content = parseFile<TextFormat>("samples/officialNPFSamples/textFormat/sizeSmall.json")
         val expected = SizeTextFormat(
             start = 10,
@@ -1461,7 +1461,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun testOfficialNPF_textFormat_strikethrough() {
+    internal fun testOfficialNPF_textFormat_strikethrough() {
         val content = parseFile<TextFormat>("samples/officialNPFSamples/textFormat/strikethrough.json")
         val expected = StrikeThroughTextFormat(
             start = 4,
@@ -1479,7 +1479,7 @@ class SampleFilesIndividualParseTest {
     // region Blog
 
     @Test
-    fun onceFailed_blog_self() {
+    internal fun onceFailed_blog_self() {
         val blog = parseFile<Blog>("samples/onceFailed/blog/self.json")
         val expected = Blog(
             admin = true,
@@ -1532,7 +1532,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_blog_asksAllowMedia() {
+    internal fun onceFailed_blog_asksAllowMedia() {
         val blog = parseFile<Blog>("samples/onceFailed/blog/asksAllowMedia.json")
         val expected = Blog(
             asksAllowMedia = true
@@ -1545,7 +1545,7 @@ class SampleFilesIndividualParseTest {
     // region Content
 
     @Test
-    fun onceFailed_content_imageContent_exif() {
+    internal fun onceFailed_content_imageContent_exif() {
         val content = parseFile<PostContent>("samples/onceFailed/content/imageContent_exif.json")
         val expected = ImageContent(
             exif = mapOf(
@@ -1556,7 +1556,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_content_listOfAttribution() {
+    internal fun onceFailed_content_listOfAttribution() {
         val content = parseFile<PostContent>("samples/onceFailed/content/listOfAttribution.json")
         val expected = ImageContent(
             attribution = AttributionWrapper(listAttribution = emptyList())
@@ -1565,7 +1565,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_content_textContent_indentLevel() {
+    internal fun onceFailed_content_textContent_indentLevel() {
         val content = parseFile<PostContent>("samples/onceFailed/content/textContent_indentLevel.json")
         val expected = TextContent(
             text = "Test",
@@ -1576,7 +1576,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_content_videoContent_embedIFrame() {
+    internal fun onceFailed_content_videoContent_embedIFrame() {
         val content = parseFile<PostContent>("samples/onceFailed/content/videoContent_embedIFrame.json")
         val expected = VideoContent(
             provider = "youtube",
@@ -1590,7 +1590,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_content_videoContent_singleImageFilmstrip() {
+    internal fun onceFailed_content_videoContent_singleImageFilmstrip() {
         val content = parseFile<PostContent>("samples/onceFailed/content/videoContent_singleImageFilmstrip.json")
         val expected = VideoContent(
             provider = "tumblr",
@@ -1611,7 +1611,7 @@ class SampleFilesIndividualParseTest {
     // region Layout
 
     @Test
-    fun onceFailed_layout_rowLayout_truncateAfter() {
+    internal fun onceFailed_layout_rowLayout_truncateAfter() {
         val content = parseFile<BlockLayout>("samples/onceFailed/layout/rowLayout_truncateAfter.json")
         val expected = RowBlockLayout(
             display = listOf(
@@ -1647,7 +1647,7 @@ class SampleFilesIndividualParseTest {
     // region Legacy Post
 
     @Test
-    fun onceFailed_legacyPost_answerPost() {
+    internal fun onceFailed_legacyPost_answerPost() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/answerPost.json")
         val expected = AnswerPost(
             askingName = "Anonymous",
@@ -1659,7 +1659,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_answerPost_abstract() {
+    internal fun onceFailed_legacyPost_answerPost_abstract() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/answerPost_abstract.json")
         val expected = AnswerPost(
             askingName = "Anonymous",
@@ -1672,7 +1672,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_audioPost() {
+    internal fun onceFailed_legacyPost_audioPost() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/audioPost.json")
         val expected = AudioPost(
             sourceUrl = "https://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/post/8675309",
@@ -1692,7 +1692,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_audioPost_embed() {
+    internal fun onceFailed_legacyPost_audioPost_embed() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/audioPost_embed.json")
         val expected = AudioPost(
             embed = "ukIuGYR_Jcdm60j7Nb95dg"
@@ -1701,7 +1701,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_audioPost_external() {
+    internal fun onceFailed_legacyPost_audioPost_external() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/audioPost_external.json")
         val expected = AudioPost(
             audioUrl = "https://bandcamp.com/stream_redirect?enc=mp3-ukIuGYR_Jcdm60j7Nb95dg",
@@ -1713,7 +1713,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_audioPost_provider() {
+    internal fun onceFailed_legacyPost_audioPost_provider() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/audioPost_provider.json")
         val expected = AudioPost(
             audioUrl = "https://open.spotify.com/track/ukIuGYR_Jcdm60j7Nb95dg",
@@ -1726,7 +1726,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_audioPost_track() {
+    internal fun onceFailed_legacyPost_audioPost_track() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/audioPost_track.json")
         val expected = AudioPost(
             track = "7"
@@ -1735,7 +1735,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_audioPost_trackOf() {
+    internal fun onceFailed_legacyPost_audioPost_trackOf() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/audioPost_trackOf.json")
         val expected = AudioPost(
             track = "12 of 13"
@@ -1744,7 +1744,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_chatPost() {
+    internal fun onceFailed_legacyPost_chatPost() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/chatPost.json")
         val expected = ChatPost(
             sourceUrl = "http://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/post/8675309/ukIuGYR_Jcdm60j7Nb95dg",
@@ -1756,7 +1756,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_linkPost() {
+    internal fun onceFailed_legacyPost_linkPost() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/linkPost.json")
         val expected = LinkPost(
             sourceUrl = "url",
@@ -1768,7 +1768,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_linkPost_author() {
+    internal fun onceFailed_legacyPost_linkPost_author() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/linkPost_author.json")
         val expected = LinkPost(
             sourceUrl = "url",
@@ -1785,7 +1785,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_linkPost_image() {
+    internal fun onceFailed_legacyPost_linkPost_image() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/linkPost_image.json")
         val expected = LinkPost(
             linkImage = "url.jpg",
@@ -1805,7 +1805,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_photoPost_captionAbstract() {
+    internal fun onceFailed_legacyPost_photoPost_captionAbstract() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/photoPost_captionAbstract.json")
         val expected = PhotoPost(
             caption = "text",
@@ -1815,7 +1815,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_photoPost_imagePermalink() {
+    internal fun onceFailed_legacyPost_photoPost_imagePermalink() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/photoPost_imagePermalink.json")
         val expected = PhotoPost(
             sourceUrl = "url",
@@ -1828,7 +1828,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_photoPost_layout() {
+    internal fun onceFailed_legacyPost_photoPost_layout() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/photoPost_layout.json")
         val expected = PhotoPost(
             photosetLayout = "2",
@@ -1849,7 +1849,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_photoPost_linkUrl() {
+    internal fun onceFailed_legacyPost_photoPost_linkUrl() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/photoPost_linkUrl.json")
         val expected = PhotoPost(
             linkUrl = "url"
@@ -1858,7 +1858,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_photoPost_panorama() {
+    internal fun onceFailed_legacyPost_photoPost_panorama() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/photoPost_panorama.json")
         val expected = PhotoPost(
             photos = listOf(
@@ -1878,7 +1878,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_photoPost_submitted() {
+    internal fun onceFailed_legacyPost_photoPost_submitted() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/submittedPost.json")
         val expected = PhotoPost(
             isSubmission = true
@@ -1887,7 +1887,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_textPost_abstract() {
+    internal fun onceFailed_legacyPost_textPost_abstract() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/textPost_abstract.json")
         val expected = TextPost(
             body = "text",
@@ -1897,7 +1897,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_videoPost_booleanEmbed() {
+    internal fun onceFailed_legacyPost_videoPost_booleanEmbed() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/videoPost_booleanEmbed.json")
         val expected = VideoPost(
             player = listOf(
@@ -1911,7 +1911,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_videoPost_floatDuration() {
+    internal fun onceFailed_legacyPost_videoPost_floatDuration() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/videoPost_floatDuration.json")
         val expected = VideoPost(
             duration = 105.22999999999999
@@ -1920,7 +1920,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_videoPost_html5() {
+    internal fun onceFailed_legacyPost_videoPost_html5() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/videoPost_html5.json")
         val expected = VideoPost(
             html5Capable = true
@@ -1929,7 +1929,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_videoPost_permalink() {
+    internal fun onceFailed_legacyPost_videoPost_permalink() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/videoPost_permalink.json")
         val expected = VideoPost(
             permalinkUrl = "url"
@@ -1938,7 +1938,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_legacyPost_videoPost_videoObject() {
+    internal fun onceFailed_legacyPost_videoPost_videoObject() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/videoPost_videoObject.json")
         val expected = VideoPost(
             videoData = mapOf<String, Any?>(
@@ -1957,7 +1957,7 @@ class SampleFilesIndividualParseTest {
     // region Media
 
     @Test
-    fun onceFailed_media_mediaGif() {
+    internal fun onceFailed_media_mediaGif() {
         val media = parseFile<Media>("samples/onceFailed/media/mediaGif.json")
         val expected = Media(
             url = "https://66.media.tumblr.com/ukIuGYR_Jcdm60j7Nb95dg/tumblr_ukIuGYR_Jcdm60j7Nb95dg_1280.gif",
@@ -1975,7 +1975,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_media_mediaKey() {
+    internal fun onceFailed_media_mediaKey() {
         val media = parseFile<Media>("samples/onceFailed/media/mediaKey.json")
         val expected = Media(
             mediaKey = "urlPart1:urlPart2",
@@ -1989,7 +1989,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_media_mediaMP4() {
+    internal fun onceFailed_media_mediaMP4() {
         val media = parseFile<Media>("samples/onceFailed/media/mediaMP4.json")
         val expected = Media(
             type = "video/mp4",
@@ -2006,7 +2006,7 @@ class SampleFilesIndividualParseTest {
     // region Note
 
     @Test
-    fun onceFailed_note_noteLike() {
+    internal fun onceFailed_note_noteLike() {
         val note = parseFile<NoteData>("samples/onceFailed/note/noteLike.json")
         val expected = LikeNote(
             timestamp = 1541225157,
@@ -2020,7 +2020,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_note_notePostAttribution() {
+    internal fun onceFailed_note_notePostAttribution() {
         val note = parseFile<NoteData>("samples/onceFailed/note/notePostAttribution.json")
         val expected = AttributionNote(
             timestamp = 1541121830,
@@ -2040,7 +2040,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_note_notePosted() {
+    internal fun onceFailed_note_notePosted() {
         val note = parseFile<NoteData>("samples/onceFailed/note/notePosted.json")
         val expected = PostedNote(
             timestamp = 1541183549,
@@ -2054,7 +2054,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_note_noteWithAddedText() {
+    internal fun onceFailed_note_noteWithAddedText() {
         val note = parseFile<NoteData>("samples/onceFailed/note/noteWithAddedText.json")
         val expected = ReblogNote(
             timestamp = 1541254415,
@@ -2072,7 +2072,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_note_noteWithFormatting() {
+    internal fun onceFailed_note_noteWithFormatting() {
         val note = parseFile<NoteData>("samples/onceFailed/note/noteWithFormatting.json")
         val expected = ReplyNote(
             timestamp = 1541254204,
@@ -2099,7 +2099,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_note_noteWithResponseText() {
+    internal fun onceFailed_note_noteWithResponseText() {
         val note = parseFile<NoteData>("samples/onceFailed/note/noteWithResponseText.json")
         val expected = ReplyNote(
             timestamp = 1541238046,
@@ -2120,7 +2120,7 @@ class SampleFilesIndividualParseTest {
     // region Photo
 
     @Test
-    fun onceFailed_photo_photoWithExif() {
+    internal fun onceFailed_photo_photoWithExif() {
         val photo = parseFile<Photo>("samples/onceFailed/photo/photoWithExif.json")
         val expected = Photo(
             caption = "",
@@ -2146,7 +2146,7 @@ class SampleFilesIndividualParseTest {
     // region Posts
 
     @Test
-    fun onceFailed_posts_blockPost_isBlurredImages() {
+    internal fun onceFailed_posts_blockPost_isBlurredImages() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_isBlurredImages.json")
         val expected = BlockPost(
             isBlurredImages = true
@@ -2155,7 +2155,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_posts_blockPost_originalType() {
+    internal fun onceFailed_posts_blockPost_originalType() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_originalType.json")
         val expected = BlockPost(
             originalType = Post.Type.Photo
@@ -2164,7 +2164,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_posts_blockPost_originalType_conversation() {
+    internal fun onceFailed_posts_blockPost_originalType_conversation() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_originalType_conversation.json")
         val expected = BlockPost(
             originalType = Post.Type.Conversation
@@ -2173,7 +2173,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_posts_blockPost_originalType_note() {
+    internal fun onceFailed_posts_blockPost_originalType_note() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_originalType_note.json")
         val expected = BlockPost(
             originalType = Post.Type.Note
@@ -2182,7 +2182,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_posts_blockPost_originalType_regular() {
+    internal fun onceFailed_posts_blockPost_originalType_regular() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_originalType_regular.json")
         val expected = BlockPost(
             originalType = Post.Type.Regular
@@ -2191,7 +2191,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_posts_blockPostWithAskFields() {
+    internal fun onceFailed_posts_blockPostWithAskFields() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPostWithAskFields.json")
         val expected = BlockPost(
             askingName = "ukIuGYR_Jcdm60j7Nb95dg",
@@ -2201,7 +2201,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_posts_markdownFormat() {
+    internal fun onceFailed_posts_markdownFormat() {
         val post = parseFile<Post>("samples/onceFailed/posts/markdownFormat.json")
         val expected = PhotoPost(
             id = 8675309,
@@ -2211,7 +2211,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_posts_postWithNotesData() {
+    internal fun onceFailed_posts_postWithNotesData() {
         val post = parseFile<Post>("samples/onceFailed/posts/postWithNotesData.json")
         val expected = QuotePost(
             notes = listOf(
@@ -2229,7 +2229,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun onceFailed_posts_postWithReblogData() {
+    internal fun onceFailed_posts_postWithReblogData() {
         val post = parseFile<Post>("samples/onceFailed/posts/postWithReblogData.json")
         val expected = PhotoPost(
             rebloggedFromId = 8675309,
@@ -2255,7 +2255,7 @@ class SampleFilesIndividualParseTest {
     // region Text Format
 
     @Test
-    fun onceFailed_textFormat_small() {
+    internal fun onceFailed_textFormat_small() {
         val textFormat = parseFile<TextFormat>("samples/onceFailed/textFormat/small.json")
         val expected = SmallTextFormat(
             start = 0,
@@ -2269,7 +2269,7 @@ class SampleFilesIndividualParseTest {
     // region User
 
     @Test
-    fun onceFailed_user_self() {
+    internal fun onceFailed_user_self() {
         val user = parseFile<User>("samples/onceFailed/user/self.json")
         val expected = User(
             name = "kotlr-development",
@@ -2296,7 +2296,7 @@ class SampleFilesIndividualParseTest {
     // region Video
 
     @Test
-    fun onceFailed_video_videoWithEmbed() {
+    internal fun onceFailed_video_videoWithEmbed() {
         val video = parseFile<Video>("samples/onceFailed/video/videoWithEmbed.json")
         val expected = Video(
             width = 250,
@@ -2314,7 +2314,7 @@ class SampleFilesIndividualParseTest {
     // region BlogAvatar
 
     @Test
-    fun responseBodies_blogAvatar_error() {
+    internal fun responseBodies_blogAvatar_error() {
         val response = parseFile<ResponseBlogAvatar.Response>("samples/responseBodies/blogAvatar/error.json")
         val expected = ResponseBlogAvatar.Response(
             meta = ResponseMetaInfo(
@@ -2336,7 +2336,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun responseBodies_blogAvatar_good() {
+    internal fun responseBodies_blogAvatar_good() {
         val response = parseFile<ResponseBlogAvatar.Response>("samples/responseBodies/blogAvatar/good.json")
         val expected = ResponseBlogAvatar.Response(
             meta = ResponseMetaInfo(
@@ -2357,7 +2357,7 @@ class SampleFilesIndividualParseTest {
     // region BlogLikes
 
     @Test
-    fun responseBodies_blogLikes_good() {
+    internal fun responseBodies_blogLikes_good() {
         val response = parseFile<ResponseBlogLikes.Response>("samples/responseBodies/blogLikes/good.json")
         val expected = ResponseBlogLikes.Response(
             meta = ResponseMetaInfo(
@@ -2393,7 +2393,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun responseBodies_blogLikes_error() {
+    internal fun responseBodies_blogLikes_error() {
         val response = parseFile<ResponseBlogLikes.Response>("samples/responseBodies/blogLikes/unauthorized.json")
         val expected = ResponseBlogLikes.Response(
             meta = ResponseMetaInfo(
@@ -2412,7 +2412,7 @@ class SampleFilesIndividualParseTest {
     // region UserDash
 
     @Test
-    fun responseBodies_userDash_good() {
+    internal fun responseBodies_userDash_good() {
         val response = parseFile<ResponseUserDashboard.Response>("samples/responseBodies/userDash/good.json")
         val expected = ResponseUserDashboard.Response(
             meta = ResponseMetaInfo(
@@ -2429,7 +2429,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun responseBodies_userDash_error() {
+    internal fun responseBodies_userDash_error() {
         val response = parseFile<ResponseUserDashboard.Response>("samples/responseBodies/userDash/unauthorized.json")
         val expected = ResponseUserDashboard.Response(
             meta = ResponseMetaInfo(
@@ -2451,7 +2451,7 @@ class SampleFilesIndividualParseTest {
     }
 
     @Test
-    fun responseBodies_userDash_limitExceeded() {
+    internal fun responseBodies_userDash_limitExceeded() {
         val response = parseFile<ResponseUserDashboard.Response>("samples/responseBodies/userDash/limitExceeded.json")
         val expected = ResponseUserDashboard.Response(
             meta = ResponseMetaInfo(

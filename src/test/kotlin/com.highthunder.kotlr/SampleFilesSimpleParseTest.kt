@@ -27,9 +27,9 @@ import org.junit.Assert.assertNotNull
 import org.junit.BeforeClass
 import org.junit.Test
 
-class SampleFilesSimpleParseTest {
+internal class SampleFilesSimpleParseTest {
 
-    companion object {
+    internal companion object {
         private var allFileNames = mutableSetOf<String>()
         private val parsedFileNames = mutableSetOf<String>()
 
@@ -48,7 +48,7 @@ class SampleFilesSimpleParseTest {
 
         @BeforeClass
         @JvmStatic
-        fun beforeClass() {
+        internal fun beforeClass() {
             parsedFileNames.clear()
             allFileNames.clear()
             countFilesInDirRecursive(File("samples"))
@@ -57,7 +57,7 @@ class SampleFilesSimpleParseTest {
 
         @AfterClass
         @JvmStatic
-        fun afterClass() {
+        internal fun afterClass() {
             // Make sure that we tested every file.
             println("Parsed ${parsedFileNames.size} out of ${allFileNames.size} files")
             allFileNames.filter { it !in parsedFileNames }.sorted().forEach {
@@ -88,7 +88,7 @@ class SampleFilesSimpleParseTest {
     // region Integration Test Cases
 
     @Test
-    fun testIntegration_posts() {
+    internal fun testIntegration_posts() {
         parseAllFilesInDirectory<Post>("samples/integrationTest")
     }
 
@@ -97,12 +97,12 @@ class SampleFilesSimpleParseTest {
     // region Manufactured Test Cases
 
     @Test
-    fun testManufacturedSamples_colors() {
+    internal fun testManufacturedSamples_colors() {
         parseAllFilesInDirectory<Colors>("samples/manufactured/colors")
     }
 
     @Test
-    fun testManufacturedSamples_media() {
+    internal fun testManufacturedSamples_media() {
         parseAllFilesInDirectory<Media>("samples/manufactured/media")
     }
 
@@ -111,22 +111,22 @@ class SampleFilesSimpleParseTest {
     // region Official LPF Samples Test Cases
 
     @Test
-    fun testOfficialLPF_blog() {
+    internal fun testOfficialLPF_blog() {
         parseAllFilesInDirectory<Blog>("samples/officialLPFSamples/blog")
     }
 
     @Test
-    fun testOfficialLPF_links() {
+    internal fun testOfficialLPF_links() {
         parseAllFilesInDirectory("samples/officialLPFSamples/links", moshi.mapAdapter<String, RequestLink>())
     }
 
     @Test
-    fun testOfficialLPF_post() {
+    internal fun testOfficialLPF_post() {
         parseAllFilesInDirectory<Post>("samples/officialLPFSamples/post")
     }
 
     @Test
-    fun testOfficialLPF_user() {
+    internal fun testOfficialLPF_user() {
         parseAllFilesInDirectory<User>("samples/officialLPFSamples/user")
     }
 
@@ -135,37 +135,37 @@ class SampleFilesSimpleParseTest {
     // region Official NPF Samples Test Cases
 
     @Test
-    fun testNPFSampleAttributions() {
+    internal fun testNPFSampleAttributions() {
         parseAllFilesInDirectory<Attribution>("samples/officialNPFSamples/attribution")
     }
 
     @Test
-    fun testNPFSampleContents() {
+    internal fun testNPFSampleContents() {
         parseAllFilesInDirectory<PostContent>("samples/officialNPFSamples/content")
     }
 
     @Test
-    fun testNPFSampleLayouts() {
+    internal fun testNPFSampleLayouts() {
         parseAllFilesInDirectory<BlockLayout>("samples/officialNPFSamples/layout")
     }
 
     @Test
-    fun testNPFSampleMedia() {
+    internal fun testNPFSampleMedia() {
         parseAllFilesInDirectory<Media>("samples/officialNPFSamples/media")
     }
 
     @Test
-    fun testNPFSamplePosts() {
+    internal fun testNPFSamplePosts() {
         parseAllFilesInDirectory<Post>("samples/officialNPFSamples/post")
     }
 
     @Test
-    fun testNPFSampleRowBlockDisplay() {
+    internal fun testNPFSampleRowBlockDisplay() {
         parseAllFilesInDirectory<RowBlockLayout.Display>("samples/officialNPFSamples/rowBlockDisplay")
     }
 
     @Test
-    fun testNPFSampleTextFormat() {
+    internal fun testNPFSampleTextFormat() {
         parseAllFilesInDirectory<TextFormat>("samples/officialNPFSamples/textFormat")
     }
 
@@ -174,57 +174,57 @@ class SampleFilesSimpleParseTest {
     // region Once Failed Test Cases
 
     @Test
-    fun testBadBlogs() {
+    internal fun testBadBlogs() {
         parseAllFilesInDirectory<Blog>("samples/onceFailed/blog")
     }
 
     @Test
-    fun testBadContents() {
+    internal fun testBadContents() {
         parseAllFilesInDirectory<PostContent>("samples/onceFailed/content")
     }
 
     @Test
-    fun testBadLayouts() {
+    internal fun testBadLayouts() {
         parseAllFilesInDirectory<BlockLayout>("samples/onceFailed/layout")
     }
 
     @Test
-    fun testBadLegacyPosts() {
+    internal fun testBadLegacyPosts() {
         parseAllFilesInDirectory<Post>("samples/onceFailed/legacyPost")
     }
 
     @Test
-    fun testBadMedia() {
+    internal fun testBadMedia() {
         parseAllFilesInDirectory<Media>("samples/onceFailed/media")
     }
 
     @Test
-    fun testBadNotes() {
+    internal fun testBadNotes() {
         parseAllFilesInDirectory<NoteData>("samples/onceFailed/note")
     }
 
     @Test
-    fun testBadPhoto() {
+    internal fun testBadPhoto() {
         parseAllFilesInDirectory<Photo>("samples/onceFailed/photo")
     }
 
     @Test
-    fun testBadPosts() {
+    internal fun testBadPosts() {
         parseAllFilesInDirectory<Post>("samples/onceFailed/posts")
     }
 
     @Test
-    fun testBadTextFormat() {
+    internal fun testBadTextFormat() {
         parseAllFilesInDirectory<TextFormat>("samples/onceFailed/textFormat")
     }
 
     @Test
-    fun testBadUsers() {
+    internal fun testBadUsers() {
         parseAllFilesInDirectory<User>("samples/onceFailed/user")
     }
 
     @Test
-    fun testBadVideo() {
+    internal fun testBadVideo() {
         parseAllFilesInDirectory<Video>("samples/onceFailed/video")
     }
 
@@ -233,17 +233,17 @@ class SampleFilesSimpleParseTest {
     // region Response Bodies Test Cases
 
     @Test
-    fun testResponseSamples_blogAvatar() {
+    internal fun testResponseSamples_blogAvatar() {
         parseAllFilesInDirectory<ResponseBlogAvatar.Response>("samples/responseBodies/blogAvatar")
     }
 
     @Test
-    fun testResponseSamples_blogLikes() {
+    internal fun testResponseSamples_blogLikes() {
         parseAllFilesInDirectory<ResponseBlogLikes.Response>("samples/responseBodies/blogLikes")
     }
 
     @Test
-    fun testResponseSamples_userDash() {
+    internal fun testResponseSamples_userDash() {
         parseAllFilesInDirectory<ResponseUserDashboard.Response>("samples/responseBodies/userDash")
     }
 

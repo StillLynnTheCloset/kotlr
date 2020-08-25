@@ -55,9 +55,9 @@ import org.junit.Test
  * In the past I have forgotten to add default values for new fields.
  * This test will prevent that from happening
  */
-class VerifyEverythingHasADefaultConstructor {
+internal class VerifyEverythingHasADefaultConstructor {
     @Test
-    fun constructEverything() {
+    internal fun constructEverything() {
         println(PostAttribution().toString())
         println(LinkAttribution().toString())
         println(BlogAttribution().toString())
