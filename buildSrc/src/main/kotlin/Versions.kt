@@ -12,20 +12,19 @@ import org.gradle.plugin.use.PluginDependencySpec
  * YOU are responsible for updating manually the dependency version.
  */
 object Versions {
-    const val org_jetbrains_kotlinx_kotlinx_coroutines: String = "1.3.3"
-             // available: "1.3.5-1.4-M1-release-99"
+    const val org_jetbrains_kotlinx_kotlinx_coroutines: String = "1.3.9"
 
-    const val com_squareup_retrofit2: String = "2.8.1"
+    const val com_squareup_retrofit2: String = "2.9.0"
 
-    const val com_squareup_okhttp3: String = "4.5.0"
+    const val com_squareup_okhttp3: String = "4.8.1"
 
     const val org_jetbrains_kotlin: String = "1.4.0"
 
-    const val com_squareup_moshi: String = "1.9.2"
+    const val com_squareup_moshi: String = "1.9.3"
 
-    const val com_github_ben_manes_versions_gradle_plugin: String = "0.28.0"
+    const val com_github_ben_manes_versions_gradle_plugin: String = "0.29.0"
 
-    const val org_jlleitschuh_gradle_ktlint_gradle_plugin: String = "9.2.1"
+    const val org_jlleitschuh_gradle_ktlint_gradle_plugin: String = "9.3.0"
 
     const val de_fayard_buildsrcversions_gradle_plugin: String = "0.7.0"
 
@@ -35,7 +34,7 @@ object Versions {
 
     const val okhttp_signpost: String = "1.1.0"
 
-    const val signpost_core: String = "1.2.1.2"
+    const val signpost_core: String = "2.1.1"
 
     const val wagon_git: String = "0.3.0"
 
@@ -48,7 +47,7 @@ object Versions {
      * See issue 19: How to update Gradle itself?
      * https://github.com/jmfayard/buildSrcVersions/issues/19
      */
-    const val gradleLatestVersion: String = "6.3"
+    const val gradleLatestVersion: String = "6.6.1"
 }
 
 /**

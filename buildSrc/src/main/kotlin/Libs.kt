@@ -14,19 +14,19 @@ object Libs {
             Versions.org_jetbrains_kotlinx_kotlinx_coroutines
 
     /**
-     * https://github.com/square/retrofit/
+     * https://github.com/square/retrofit
      */
     const val converter_moshi: String = "com.squareup.retrofit2:converter-moshi:" +
             Versions.com_squareup_retrofit2
 
     /**
-     * https://github.com/square/retrofit/
+     * https://github.com/square/retrofit
      */
     const val converter_scalars: String = "com.squareup.retrofit2:converter-scalars:" +
             Versions.com_squareup_retrofit2
 
     /**
-     * https://github.com/square/retrofit/
+     * https://github.com/square/retrofit
      */
     const val retrofit: String = "com.squareup.retrofit2:retrofit:" +
             Versions.com_squareup_retrofit2
@@ -99,7 +99,7 @@ object Libs {
     const val okhttp_signpost: String = "se.akerfeldt:okhttp-signpost:" + Versions.okhttp_signpost
 
     /**
-     * http://code.google.com/p/oauth-signpost/
+     * https://github.com/mttkay/signpost/releases
      */
     const val signpost_core: String = "oauth.signpost:signpost-core:" + Versions.signpost_core
 
