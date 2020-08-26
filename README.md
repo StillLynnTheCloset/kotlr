@@ -165,6 +165,10 @@ suspend fun minimalExample() {
 
 ### Version History ###
 
+#### 0.7.3 ####
+
+  * Test Github publish changes
+
 #### 0.7.2 ####
 
   * Update to Kotlin 1.4 and Gradle 6.6.1.
