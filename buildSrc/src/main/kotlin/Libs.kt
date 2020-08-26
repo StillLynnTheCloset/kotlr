@@ -104,11 +104,6 @@ object Libs {
     const val signpost_core: String = "oauth.signpost:signpost-core:" + Versions.signpost_core
 
     /**
-     * http://synergian.github.com/wagon-git/
-     */
-    const val wagon_git: String = "ar.com.synergian:wagon-git:" + Versions.wagon_git
-
-    /**
      * https://github.com/pinterest/ktlint
      */
     const val ktlint: String = "com.pinterest:ktlint:" + Versions.ktlint
