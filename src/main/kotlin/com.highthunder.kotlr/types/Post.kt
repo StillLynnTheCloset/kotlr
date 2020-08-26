@@ -302,6 +302,10 @@ public interface Post {
      * TODO: Documentation
      */
     public val parentBlogUUID: String?
+    /**
+     * TODO: Documentation
+     */
+    public val isBlurredImages: Boolean?
 
     // endregion
 

@@ -2258,6 +2258,15 @@ internal class SampleFilesIndividualParseTest {
         assertEquals(expected, post)
     }
 
+    @Test
+    internal fun onceFailed_posts_textPost_isBlurredImages() {
+        val post = parseFile<Post>("samples/onceFailed/posts/textPost_isBlurredImages.json")
+        val expected = TextPost(
+            isBlurredImages = true
+        )
+        assertEquals(expected, post)
+    }
+
     // endregion Posts
 
     // region Text Format

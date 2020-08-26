@@ -189,6 +189,8 @@ public data class ChatPost constructor(
     override val parentPostId: Long? = null,
     @Json(name = "parent_tumblelog_uuid")
     override val parentBlogUUID: String? = null,
+    @Json(name = "is_blurred_images")
+    override val isBlurredImages: Boolean? = null,
     val title: String? = null,
     val body: String? = null,
     val dialogue: List<Dialogue>? = null,

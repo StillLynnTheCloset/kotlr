@@ -197,6 +197,8 @@ public data class LinkPost constructor(
     override val parentPostId: Long? = null,
     @Json(name = "parent_tumblelog_uuid")
     override val parentBlogUUID: String? = null,
+    @Json(name = "is_blurred_images")
+    override val isBlurredImages: Boolean? = null,
     val title: String? = null,
     val description: String? = null,
     val url: String? = null,

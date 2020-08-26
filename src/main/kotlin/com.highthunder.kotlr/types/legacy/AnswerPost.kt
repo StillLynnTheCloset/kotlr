@@ -191,6 +191,8 @@ public data class AnswerPost constructor(
     override val parentPostId: Long? = null,
     @Json(name = "parent_tumblelog_uuid")
     override val parentBlogUUID: String? = null,
+    @Json(name = "is_blurred_images")
+    override val isBlurredImages: Boolean? = null,
     @Json(name = "asking_name")
     val askingName: String? = null,
     @Json(name = "asking_url")

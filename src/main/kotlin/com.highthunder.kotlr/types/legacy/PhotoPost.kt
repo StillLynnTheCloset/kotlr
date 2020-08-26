@@ -195,6 +195,8 @@ public data class PhotoPost constructor(
     override val parentPostId: Long? = null,
     @Json(name = "parent_tumblelog_uuid")
     override val parentBlogUUID: String? = null,
+    @Json(name = "is_blurred_images")
+    override val isBlurredImages: Boolean? = null,
     val caption: String? = null,
     @Json(name = "caption_abstract")
     val captionAbstract: String? = null,

@@ -188,6 +188,8 @@ public data class QuotePost constructor(
     override val parentPostId: Long? = null,
     @Json(name = "parent_tumblelog_uuid")
     override val parentBlogUUID: String? = null,
+    @Json(name = "is_blurred_images")
+    override val isBlurredImages: Boolean? = null,
     val text: String? = null,
     val source: String? = null,
     @Json(name = "type")

@@ -179,14 +179,14 @@ public data class BlockPost constructor(
     override val parentPostId: Long? = null,
     @Json(name = "parent_tumblelog_uuid")
     override val parentBlogUUID: String? = null,
+    @Json(name = "is_blurred_images")
+    override val isBlurredImages: Boolean? = null,
     @Json(name = "asking_name")
     val askingName: String? = null,
     @Json(name = "asking_url")
     val askingUrl: String? = null,
     @Json(name = "original_type")
     val originalType: Post.Type? = null,
-    @Json(name = "is_blurred_images")
-    val isBlurredImages: Boolean? = null,
     @Json(name = "type")
     override val type: Post.Type = Post.Type.Block
 ) : Post
