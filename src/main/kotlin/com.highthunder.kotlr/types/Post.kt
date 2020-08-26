@@ -27,8 +27,8 @@ import com.squareup.moshi.JsonClass
  * @since 10/20/18
  * @version 1.0.0
  */
-interface Post {
-    companion object {
+public interface Post {
+    public companion object {
         internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(Post::class.java, "type")
             // .withDefaultValue() // TODO: Add a default post object
@@ -45,82 +45,82 @@ interface Post {
             .withSubtype(VideoPost::class.java, Type.Video.key)
     }
 
-    val type: Type
+    public val type: Type
 
     // region Defaults
 
     /**
      * The short name used to uniquely identify a blog.
      */
-    val blogName: String?
+    public val blogName: String?
     /**
      * The post's unique ID.
      */
-    val id: Long?
+    public val id: Long?
     /**
      * The post's unique ID formatted as a string to prevent loss of precision on platforms that lack true 64-bit integers.
      */
-    val idString: String?
+    public val idString: String?
     /**
      * A standard API-formatted "short blog info" object.
      */
-    val blog: Blog?
+    public val blog: Blog?
     /**
      * The location of the post.
      */
-    val postUrl: String?
+    public val postUrl: String?
     /**
      * The time of the post, in seconds since the epoch.
      */
-    val timestamp: Long?
+    public val timestamp: Long?
     /**
      * The GMT date and time of the post, as a string.
      */
-    val date: String?
+    public val date: String?
     /**
      * The post format: html, raw, or markdown.
      */
-    val format: PostFormat?
+    public val format: PostFormat?
     /**
      * The key used to reblog this post.
      */
-    val reblogKey: String?
+    public val reblogKey: String?
     /**
      * Tags applied to the post.
      */
-    val tags: List<String>?
+    public val tags: List<String>?
     /**
      * Indicates whether the post was created via the Tumblr bookmarklet.
      */
-    val isBookmarklet: Boolean?
+    public val isBookmarklet: Boolean?
     /**
      * Indicates whether the post was created via mobile/email publishing.
      */
-    val isMobile: Boolean?
+    public val isMobile: Boolean?
     /**
      * The URL for the source of the content (for quotes, reblogs, etc.).
      */
-    val sourceUrl: String?
+    public val sourceUrl: String?
     /**
      * The title of the source site.
      */
-    val sourceTitle: String?
+    public val sourceTitle: String?
     /**
      * Indicates if a user has already liked a post or not.
      */
-    val isLiked: Boolean?
+    public val isLiked: Boolean?
     /**
      * Indicates the current state of the post.
      */
-    val state: State?
+    public val state: State?
     /**
      * The total number of post available for this request, useful for paginating through results.
      */
-    val totalPosts: Int?
+    public val totalPosts: Int?
     /**
      * TODO: Documentation
      */
-    val anonymous: Boolean?
+    public val anonymous: Boolean?
 
     // endregion
 
@@ -129,179 +129,179 @@ interface Post {
     /**
      * The array of content that constitutes the body of a post in the Neue Post Format(NPF).
      */
-    val content: List<PostContent>?
+    public val content: List<PostContent>?
     /**
      * The previous Posts in the reblog trail. In order of oldest (the root Post) to the newest (the parent Post).
      */
-    val trail: List<Trail>?
+    public val trail: List<Trail>?
     /**
      * The layouts of the blocks in this post.
      */
-    val layout: List<BlockLayout>?
+    public val layout: List<BlockLayout>?
     /**
      * The id of the author of the post.
      */
-    val postAuthor: String?
+    public val postAuthor: String?
     /**
      * The short URL for this post.
      */
-    val shortUrl: String?
+    public val shortUrl: String?
     /**
      * A short description of this post.
      */
-    val summary: String?
+    public val summary: String?
     /**
      * Indicates whether or not this post is using the new block format(NPF).
      */
-    val isBlocksFormat: Boolean?
+    public val isBlocksFormat: Boolean?
     /**
      * The timestamp of when this post was liked.
      */
-    val likedTimestamp: Long?
+    public val likedTimestamp: Long?
     /**
      * The slug. TODO: Documentation
      */
-    val slug: String?
+    public val slug: String?
     /**
      * The note count for this post.
      */
-    val noteCount: Long?
+    public val noteCount: Long?
     /**
      * The source of a recommended post.
      */
-    val recommendedSource: String?
+    public val recommendedSource: String?
     /**
      * The recommended color for styling this post.
      */
-    val recommendedColor: String?
+    public val recommendedColor: String?
     /**
      * Indicates whether or not the author of this post is an adult only blog.
      */
-    val postAuthorIsAdult: Boolean?
+    public val postAuthorIsAdult: Boolean?
     /**
      * Indicates whether or not this post is a submission.
      */
-    val isSubmission: Boolean?
+    public val isSubmission: Boolean?
     /**
      * Indicates whether or not the current user can like this post.
      */
-    val canLike: Boolean?
+    public val canLike: Boolean?
     /**
      * Indicates whether or not the current user can reblog this post.
      */
-    val canReblog: Boolean?
+    public val canReblog: Boolean?
     /**
      * Indicates whether or not this post can be sent in a message.
      */
-    val canSendInMessage: Boolean?
+    public val canSendInMessage: Boolean?
     /**
      * Indicates whether or not the current user can reply to this post.
      */
-    val canReply: Boolean?
+    public val canReply: Boolean?
     /**
      * Indicates whether or not the poster's avatar should be shown with this post.
      */
-    val displayAvatar: Boolean?
+    public val displayAvatar: Boolean?
     /**
      * Indicates whether or not the current user follows the author of this post.
      */
-    val followed: Boolean?
+    public val followed: Boolean?
     /**
      * TODO: Documentation
      */
-    val reblogData: ReblogData?
+    public val reblogData: ReblogData?
     /**
      * TODO: Documentation
      */
-    val rebloggedFromId: Long?
+    public val rebloggedFromId: Long?
     /**
      * TODO: Documentation
      */
-    val rebloggedFromUrl: String?
+    public val rebloggedFromUrl: String?
     /**
      * TODO: Documentation
      */
-    val rebloggedFromName: String?
+    public val rebloggedFromName: String?
     /**
      * TODO: Documentation
      */
-    val rebloggedFromTitle: String?
+    public val rebloggedFromTitle: String?
     /**
      * TODO: Documentation
      */
-    val rebloggedFromUuid: String?
+    public val rebloggedFromUuid: String?
     /**
      * TODO: Documentation
      */
-    val rebloggedFromCanMessage: Boolean?
+    public val rebloggedFromCanMessage: Boolean?
     /**
      * TODO: Documentation
      */
-    val rebloggedFromFollowing: Boolean?
+    public val rebloggedFromFollowing: Boolean?
     /**
      * TODO: Documentation
      */
-    val rebloggedRootId: Long?
+    public val rebloggedRootId: Long?
     /**
      * TODO: Documentation
      */
-    val rebloggedRootUrl: String?
+    public val rebloggedRootUrl: String?
     /**
      * TODO: Documentation
      */
-    val rebloggedRootName: String?
+    public val rebloggedRootName: String?
     /**
      * TODO: Documentation
      */
-    val rebloggedRootTitle: String?
+    public val rebloggedRootTitle: String?
     /**
      * TODO: Documentation
      */
-    val rebloggedRootUuid: String?
+    public val rebloggedRootUuid: String?
     /**
      * TODO: Documentation
      */
-    val rebloggedRootCanMessage: Boolean?
+    public val rebloggedRootCanMessage: Boolean?
     /**
      * TODO: Documentation
      */
-    val rebloggedRootFollowing: Boolean?
+    public val rebloggedRootFollowing: Boolean?
     /**
      * TODO: Documentation
      */
-    val notes: List<NoteData>?
+    public val notes: List<NoteData>?
     /**
      * TODO: Documentation
      */
-    val publishTime: Long?
+    public val publishTime: Long?
     /**
      * TODO: Documentation
      */
-    val queueState: QueueState?
+    public val queueState: QueueState?
     /**
      * TODO: Documentation
      */
-    val shouldOpenInLegacy: Boolean?
+    public val shouldOpenInLegacy: Boolean?
     /**
      * TODO: Documentation
      */
-    val muted: Boolean?
+    public val muted: Boolean?
     /**
      * TODO: Documentation
      */
-    val objectType: String?
+    public val objectType: String?
     /**
      * TODO: Documentation
      */
-    val blogUUID: String?
+    public val blogUUID: String?
     /**
      * TODO: Documentation
      */
-    val parentPostId: Long?
+    public val parentPostId: Long?
     /**
      * TODO: Documentation
      */
-    val parentBlogUUID: String?
+    public val parentBlogUUID: String?
 
     // endregion
 
@@ -309,7 +309,7 @@ interface Post {
      * Enum of valid post states.
      */
     @JsonClass(generateAdapter = false)
-    enum class State {
+    public enum class State {
         /**
          * TODO: Documentation
          */
@@ -342,7 +342,7 @@ interface Post {
      * @param key TODO: Documentation
      */
     @JsonClass(generateAdapter = false)
-    enum class Type(val key: String) {
+    public enum class Type constructor(public val key: String) {
         /**
          * TODO: Documentation
          */
@@ -411,7 +411,7 @@ interface Post {
      * @param key TODO: Documentation
      */
     @JsonClass(generateAdapter = false)
-    enum class PostFormat(val key: String) {
+    public enum class PostFormat constructor(public val key: String) {
         /**
          * TODO: Documentation
          */
@@ -440,7 +440,7 @@ interface Post {
      * @param key TODO: Documentation
      */
     @JsonClass(generateAdapter = false)
-    enum class PostVersion(val key: String) {
+    public enum class PostVersion constructor(public val key: String) {
         /**
          * TODO: Documentation
          */
@@ -459,7 +459,7 @@ interface Post {
      * @param key TODO: Documentation
      */
     @JsonClass(generateAdapter = false)
-    enum class QueueState(val key: String) {
+    public enum class QueueState constructor(public val key: String) {
         /**
          * TODO: Documentation
          */
@@ -470,7 +470,7 @@ interface Post {
     /**
      * https://www.tumblr.com/docs/npf#mapping-npf-post-content-to-legacy-post-types
      */
-    fun getLegacyPostType(): Type {
+    public fun getLegacyPostType(): Type {
         return when {
             layout?.any { it is AskBlockLayout } == true -> {
                 Type.Answer
