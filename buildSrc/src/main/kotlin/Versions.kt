@@ -43,7 +43,7 @@ object Versions {
     const val junit: String = "4.13"
 
     /**
-     * Current version: "6.2.1"
+     * Current version: "6.6.1"
      * See issue 19: How to update Gradle itself?
      * https://github.com/jmfayard/buildSrcVersions/issues/19
      */
