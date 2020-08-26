@@ -165,6 +165,15 @@ suspend fun minimalExample() {
 
 ### Version History ###
 
+#### 0.7.2 ####
+
+  * Update to Kotlin 1.4 and Gradle 6.6.1.
+  * Enable strict API warnings and fix all new warnings (in non-generated code).
+  * Update to use the maven-publish plugin and publish to Github instead of Bitbucket.
+  * Add support for alpha in `Color`.
+  * Add support for `Post.isBlurredImages`.
+  * Slightly improve documentation.
+
 #### 0.7.1 ####
 
   * Improve handling of re-serializing unknown sub-types.
