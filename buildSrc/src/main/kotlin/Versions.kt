@@ -20,7 +20,7 @@ object Versions {
 
     const val org_jetbrains_kotlin: String = "1.4.0"
 
-    const val com_squareup_moshi: String = "1.9.3"
+    const val com_squareup_moshi: String = "1.10.0"
 
     const val com_github_ben_manes_versions_gradle_plugin: String = "0.29.0"
 
