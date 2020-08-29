@@ -112,4 +112,9 @@ object Libs {
      * http://junit.org
      */
     const val junit: String = "junit:junit:" + Versions.junit
+
+    /**
+     * https://github.com/JakeWharton/shimo
+     */
+    const val shimo: String = "com.jakewharton.moshi:shimo:" + Versions.shimo
 }

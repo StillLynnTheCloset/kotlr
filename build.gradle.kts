@@ -54,6 +54,7 @@ dependencies {
     implementation(Libs.signpost_core)
 
     testImplementation(Libs.junit)
+    testImplementation(Libs.shimo)
 }
 
 idea {

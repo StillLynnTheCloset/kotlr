@@ -40,6 +40,8 @@ object Versions {
 
     const val junit: String = "4.13"
 
+    const val shimo: String = "0.1.0"
+
     /**
      * Current version: "6.6.1"
      * See issue 19: How to update Gradle itself?
