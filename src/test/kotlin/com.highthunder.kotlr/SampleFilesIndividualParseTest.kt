@@ -220,7 +220,7 @@ internal class SampleFilesIndividualParseTest {
                 httpMethod = "GET",
                 fullLink = "https://api.tumblr.com/v2/endpoint",
                 queryParams = mapOf(
-                    "page" to "1"
+                    "page" to 1.0
                 )
             ),
             "next" to RequestLink(
@@ -228,7 +228,7 @@ internal class SampleFilesIndividualParseTest {
                 httpMethod = "GET",
                 fullLink = "https://api.tumblr.com/v2/endpoint",
                 queryParams = mapOf(
-                    "page" to "3"
+                    "page" to 3.0
                 )
             ),
             "terms_of_service" to RequestLink(
@@ -236,7 +236,8 @@ internal class SampleFilesIndividualParseTest {
                 fullLink = "https://www.tumblr.com/policy/terms-of-service"
             )
         )
-        assertEquals(expected, linkMap)
+
+        assertMapEquals(expected, linkMap)
     }
 
     // endregion Links
