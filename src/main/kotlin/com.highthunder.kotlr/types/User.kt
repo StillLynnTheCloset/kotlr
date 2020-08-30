@@ -36,5 +36,5 @@ public data class User constructor(
     @Json(name = "likes")
     val likes: Int? = null,
     @Json(name = "default_post_format")
-    val defaultPostFormat: Post.PostFormat? = null
+    val defaultPostFormat: Post.PostFormat? = null,
 )

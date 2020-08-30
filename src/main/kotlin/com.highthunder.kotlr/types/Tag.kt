@@ -24,5 +24,5 @@ public data class Tag constructor(
     @Json(name = "is_tracked")
     val isTracked: Boolean? = null,
     @Json(name = "featured")
-    val featured: Boolean? = null
+    val featured: Boolean? = null,
 )

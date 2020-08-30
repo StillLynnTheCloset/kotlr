@@ -18,5 +18,5 @@ public data class ReblogData constructor(
     @Json(name = "comment")
     val comment: String? = null,
     @Json(name = "tree_html")
-    val tree: String? = null
+    val tree: String? = null,
 )

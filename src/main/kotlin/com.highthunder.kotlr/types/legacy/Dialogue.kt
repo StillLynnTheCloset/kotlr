@@ -21,5 +21,5 @@ public data class Dialogue constructor(
     @Json(name = "label")
     val label: String? = null,
     @Json(name = "phrase")
-    val phrase: String? = null
+    val phrase: String? = null,
 )

@@ -51,7 +51,7 @@ public data class RateLimitMetaData constructor(
     val timeUntilDailyReset: Long?,
     val hourlyLimit: Long?,
     val hourlyRemaining: Long?,
-    val timeUntilHourlyReset: Long?
+    val timeUntilHourlyReset: Long?,
 ) {
     private companion object {
         private const val DAILY_LIMIT_HEADER: String = "X-Ratelimit-Perday-Limit"

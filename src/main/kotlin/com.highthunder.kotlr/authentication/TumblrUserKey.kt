@@ -18,7 +18,7 @@ public data class TumblrUserKey constructor(
     override val apiKey: String,
     override val apiSecret: String,
     val userKey: String,
-    val userSecret: String
+    val userSecret: String,
 ) : TumblrAppKey(
     apiKey,
     apiSecret

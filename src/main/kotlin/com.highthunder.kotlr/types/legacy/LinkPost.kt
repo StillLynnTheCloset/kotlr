@@ -223,5 +223,5 @@ public data class LinkPost constructor(
     val photos: List<Photo>? = null,
     val body: String? = null,
     @Json(name = "type")
-    override val type: Post.Type = Post.Type.Link
+    override val type: Post.Type = Post.Type.Link,
 ) : Post

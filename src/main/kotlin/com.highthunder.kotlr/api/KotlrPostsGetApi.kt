@@ -18,7 +18,7 @@ internal interface KotlrPostsGetApi {
         @Query("limit")
         limit: Long? = null,
         @Query("filter")
-        filter: Post.PostFormat? = null
+        filter: Post.PostFormat? = null,
     ): Response<ResponsePostsTagged.Response>
 
     @GET("blog/{identifier}/posts/{postId}")
@@ -28,6 +28,6 @@ internal interface KotlrPostsGetApi {
         @Path("postId", encoded = true)
         postId: Long,
         @Query("post_format")
-        postFormat: Post.PostVersion? = null
+        postFormat: Post.PostVersion? = null,
     ): Response<ResponsePostsPost.Response>
 }

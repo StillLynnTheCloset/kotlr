@@ -202,5 +202,5 @@ public data class QuotePost constructor(
     val text: String? = null,
     val source: String? = null,
     @Json(name = "type")
-    override val type: Post.Type = Post.Type.Quote
+    override val type: Post.Type = Post.Type.Quote,
 ) : Post

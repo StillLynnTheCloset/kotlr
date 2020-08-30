@@ -79,5 +79,5 @@ public data class BlogTheme constructor(
     @Json(name = "show_header_image")
     val showHeaderImage: Boolean? = null,
     @Json(name = "show_title")
-    val showTitle: Boolean? = null
+    val showTitle: Boolean? = null,
 )

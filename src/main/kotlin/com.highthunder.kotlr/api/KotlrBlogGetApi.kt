@@ -19,7 +19,7 @@ internal interface KotlrBlogGetApi {
     @GET("blog/{identifier}/avatar")
     suspend fun getBlogAvatarHelper(
         @Path("identifier", encoded = true)
-        identifier: String
+        identifier: String,
     ): Response<ResponseBlogAvatar.Response>
 
     @GET("blog/{identifier}/avatar/{size}")
@@ -27,7 +27,7 @@ internal interface KotlrBlogGetApi {
         @Path("identifier", encoded = true)
         identifier: String,
         @Path("size")
-        size: Int
+        size: Int,
     ): Response<ResponseBlogAvatar.Response>
 
     @GET("blog/{identifier}/posts/draft")
@@ -55,7 +55,7 @@ internal interface KotlrBlogGetApi {
         @Query("tag")
         tag: String? = null,
         @Query("page_number")
-        pageNumber: Int? = null
+        pageNumber: Int? = null,
     ): Response<ResponseBlogDrafts.Response>
 
     @GET("blog/{identifier}/followers")
@@ -65,7 +65,7 @@ internal interface KotlrBlogGetApi {
         @Query("limit")
         limit: Int? = null,
         @Query("offset")
-        offset: Int? = null
+        offset: Int? = null,
     ): Response<ResponseBlogFollowers.Response>
 
     @GET("blog/{identifier}/following")
@@ -75,7 +75,7 @@ internal interface KotlrBlogGetApi {
         @Query("limit")
         limit: Int? = null,
         @Query("offset")
-        offset: Int? = null
+        offset: Int? = null,
     ): Response<ResponseBlogFollowing.Response>
 
     @GET("blog/{identifier}/info")
@@ -109,7 +109,7 @@ internal interface KotlrBlogGetApi {
         @Query("tag")
         tag: String? = null,
         @Query("page_number")
-        pageNumber: Int? = null
+        pageNumber: Int? = null,
     ): Response<ResponseBlogLikes.Response>
 
     @GET("blog/{identifier}/posts")
@@ -139,7 +139,7 @@ internal interface KotlrBlogGetApi {
         @Query("page_number")
         pageNumber: Int? = null,
         @Query("type")
-        type: Post.Type? = null
+        type: Post.Type? = null,
     ): Response<ResponseBlogPosts.Response>
 
     @GET("blog/{identifier}/posts/queue")
@@ -167,7 +167,7 @@ internal interface KotlrBlogGetApi {
         @Query("tag")
         tag: String? = null,
         @Query("page_number")
-        pageNumber: Int? = null
+        pageNumber: Int? = null,
     ): Response<ResponseBlogQueue.Response>
 
     @GET("blog/{identifier}/posts/submission")
@@ -195,6 +195,6 @@ internal interface KotlrBlogGetApi {
         @Query("tag")
         tag: String? = null,
         @Query("page_number")
-        pageNumber: Int? = null
+        pageNumber: Int? = null,
     ): Response<ResponseBlogSubmissions.Response>
 }

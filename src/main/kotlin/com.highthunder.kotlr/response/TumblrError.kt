@@ -42,5 +42,5 @@ import com.squareup.moshi.JsonClass
 public data class TumblrError constructor(
     val title: String? = null,
     val code: Int? = null,
-    val detail: String? = null
+    val detail: String? = null,
 )

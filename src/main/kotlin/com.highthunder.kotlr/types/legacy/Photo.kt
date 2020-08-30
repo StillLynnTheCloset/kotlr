@@ -30,5 +30,5 @@ public data class Photo constructor(
     @Json(name = "alt_sizes")
     val altSizes: List<PhotoSize>? = null,
     @Json(name = "exif")
-    val exif: ExifData? = null
+    val exif: ExifData? = null,
 )

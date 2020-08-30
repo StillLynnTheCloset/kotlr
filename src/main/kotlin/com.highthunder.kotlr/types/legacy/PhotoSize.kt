@@ -21,5 +21,5 @@ public data class PhotoSize constructor(
     @Json(name = "height")
     val height: Int? = null,
     @Json(name = "url")
-    val url: String? = null
+    val url: String? = null,
 )

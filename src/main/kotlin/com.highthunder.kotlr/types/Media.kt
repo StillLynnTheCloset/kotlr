@@ -47,5 +47,5 @@ public data class Media constructor(
     @Json(name = "has_original_dimensions")
     val hasOriginalDimensions: Boolean? = null,
     @Json(name = "colors")
-    val colors: Colors? = null
+    val colors: Colors? = null,
 )

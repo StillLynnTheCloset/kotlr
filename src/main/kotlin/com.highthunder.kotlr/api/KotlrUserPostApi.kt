@@ -13,7 +13,7 @@ internal interface KotlrUserPostApi {
     @POST("user/follow")
     suspend fun followBlog(
         @Query("url")
-        identifier: String
+        identifier: String,
     )
 
     /**
@@ -24,7 +24,7 @@ internal interface KotlrUserPostApi {
     @POST("user/unfollow")
     suspend fun unfollowBlog(
         @Query("url")
-        identifier: String
+        identifier: String,
     )
 
     /**
@@ -38,7 +38,7 @@ internal interface KotlrUserPostApi {
         @Query("id")
         postId: Long,
         @Query("reblog_key")
-        reblogKey: String
+        reblogKey: String,
     )
 
     /**
@@ -52,6 +52,6 @@ internal interface KotlrUserPostApi {
         @Query("id")
         postId: Long,
         @Query("reblog_key")
-        reblogKey: String
+        reblogKey: String,
     )
 }

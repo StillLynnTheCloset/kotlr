@@ -15,5 +15,5 @@ package com.highthunder.kotlr.authentication
  */
 public open class TumblrAppKey constructor(
     public open val apiKey: String,
-    public open val apiSecret: String
+    public open val apiSecret: String,
 )

@@ -140,5 +140,5 @@ public data class Blog constructor(
     @Json(name = "can_chat")
     val canChat: Boolean? = null,
     @Json(name = "avatar")
-    val avatar: List<Media>? = null
+    val avatar: List<Media>? = null,
 )

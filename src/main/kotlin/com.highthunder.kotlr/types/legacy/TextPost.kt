@@ -205,5 +205,5 @@ public data class TextPost constructor(
     val abstract: String? = null,
     val body: String? = null,
     @Json(name = "type")
-    override val type: Post.Type = Post.Type.Text
+    override val type: Post.Type = Post.Type.Text,
 ) : Post

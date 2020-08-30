@@ -75,7 +75,7 @@ public class UnknownTextFormat : TextFormat() {
 public data class BoldTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : TextFormat() {
     internal companion object {
         internal const val KEY: String = "bold"
@@ -89,7 +89,7 @@ public data class BoldTextFormat constructor(
 public data class ItalicTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : TextFormat() {
     internal companion object {
         internal const val KEY: String = "italic"
@@ -103,7 +103,7 @@ public data class ItalicTextFormat constructor(
 public data class StrikeThroughTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : TextFormat() {
     internal companion object {
         internal const val KEY: String = "strikethrough"
@@ -120,7 +120,7 @@ public data class LinkTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
     val url: String? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : TextFormat() {
     internal companion object {
         internal const val KEY: String = "link"
@@ -137,7 +137,7 @@ public data class MentionTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
     val blog: Blog? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : TextFormat() {
     internal companion object {
         internal const val KEY: String = "mention"
@@ -154,7 +154,7 @@ public data class ColorTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
     @HexColorOctothorpe val hex: Color? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : TextFormat() {
     internal companion object {
         internal const val KEY: String = "color"
@@ -172,7 +172,7 @@ public data class SizeTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
     val size: Option? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : TextFormat() {
     internal companion object {
         internal const val KEY: String = "size"
@@ -211,7 +211,7 @@ public data class SizeTextFormat constructor(
 public data class SmallTextFormat constructor(
     override val start: Int? = null,
     override val end: Int? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : TextFormat() {
     internal companion object {
         internal const val KEY: String = "small"

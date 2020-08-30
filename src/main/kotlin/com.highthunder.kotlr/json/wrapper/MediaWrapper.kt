@@ -24,5 +24,5 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = false)
 internal data class MediaWrapper constructor(
     val singleMedia: Media? = null,
-    val listMedia: List<Media> = listOfNotNull(singleMedia)
+    val listMedia: List<Media> = listOfNotNull(singleMedia),
 ) : MediaList(), List<Media> by listMedia

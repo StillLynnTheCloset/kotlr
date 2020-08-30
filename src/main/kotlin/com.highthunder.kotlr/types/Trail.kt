@@ -46,5 +46,5 @@ public data class Trail constructor(
     @Json(name = "broken_blog_name")
     val brokenBlogName: String? = null,
     @Json(name = "broken_blog")
-    val brokenBlog: Blog? = null
+    val brokenBlog: Blog? = null,
 )

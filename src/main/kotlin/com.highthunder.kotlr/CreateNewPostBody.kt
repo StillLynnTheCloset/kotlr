@@ -31,7 +31,7 @@ public data class CreateNewPostBody constructor(
     @Json(name = "send_to_twitter")
     val sendToTwitter: Boolean? = null,
     @Json(name = "send_to_facebook")
-    val sendToFacebook: Boolean? = null
+    val sendToFacebook: Boolean? = null,
 ) {
     init {
         tags?.forEach {

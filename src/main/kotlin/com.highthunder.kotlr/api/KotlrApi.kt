@@ -62,7 +62,7 @@ public class KotlrApi internal constructor(
         getNotesHistory: Boolean? = null,
         useNeuePostFormat: Boolean? = null,
         tag: String? = null,
-        pageNumber: Int? = null
+        pageNumber: Int? = null,
     ): ResponseUserLikes.Response? {
         // TODO: Validate arguments.
         val retrofitResponse = userGetApi.getUserLikesHelper(
@@ -76,7 +76,7 @@ public class KotlrApi internal constructor(
             getNotesHistory,
             useNeuePostFormat,
             tag,
-            pageNumber
+            pageNumber,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -115,7 +115,7 @@ public class KotlrApi internal constructor(
         useNeuePostFormat: Boolean? = null,
         tag: String? = null,
         pageNumber: Int? = null,
-        type: Post.Type? = null
+        type: Post.Type? = null,
     ): ResponseUserDashboard.Response? {
         // TODO: Validate arguments.
         val retrofitResponse = userGetApi.getUserDashHelper(
@@ -130,7 +130,7 @@ public class KotlrApi internal constructor(
             useNeuePostFormat,
             tag,
             pageNumber,
-            type
+            type,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -146,12 +146,12 @@ public class KotlrApi internal constructor(
      */
     public suspend fun getUserFollowing(
         limit: Int? = null,
-        offset: Long? = null
+        offset: Long? = null,
     ): ResponseUserFollowing.Response? {
         // TODO: Validate arguments.
         val retrofitResponse = userGetApi.getUserFollowingHelper(
             limit,
-            offset
+            offset,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -171,10 +171,10 @@ public class KotlrApi internal constructor(
      * @param identifier A blog identifier.
      */
     public suspend fun getBlogAvatar(
-        identifier: String
+        identifier: String,
     ): ResponseBlogAvatar.Response? {
         val retrofitResponse = blogGetApi.getBlogAvatarHelper(
-            identifier
+            identifier,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -192,14 +192,14 @@ public class KotlrApi internal constructor(
      */
     public suspend fun getBlogAvatar(
         identifier: String,
-        size: Int
+        size: Int,
     ): ResponseBlogAvatar.Response? {
         val validSizes = listOf(16, 24, 30, 40, 48, 64, 96, 128, 512)
         require(size in validSizes) { "Size must be one of $validSizes" }
 
         val retrofitResponse = blogGetApi.getBlogAvatarHelper(
             identifier,
-            size
+            size,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -217,13 +217,13 @@ public class KotlrApi internal constructor(
     public suspend fun getBlogFollowers(
         identifier: String,
         limit: Int? = null,
-        offset: Int? = null
+        offset: Int? = null,
     ): ResponseBlogFollowers.Response? {
         // TODO: Validate arguments.
         val retrofitResponse = blogGetApi.getBlogFollowersHelper(
             identifier,
             limit,
-            offset
+            offset,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -244,13 +244,13 @@ public class KotlrApi internal constructor(
     public suspend fun getBlogFollowing(
         identifier: String,
         limit: Int? = null,
-        offset: Int? = null
+        offset: Int? = null,
     ): ResponseBlogFollowing.Response? {
         // TODO: Validate arguments.
         val retrofitResponse = blogGetApi.getBlogFollowingHelper(
             identifier,
             limit,
-            offset
+            offset,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -268,7 +268,7 @@ public class KotlrApi internal constructor(
      */
     public suspend fun getFollowedBy(
         identifier: String,
-        query: String
+        query: String,
     ): ResponseBlogFollowing.Response? {
         TODO("Implement")
     }
@@ -281,10 +281,10 @@ public class KotlrApi internal constructor(
      * @param identifier An identifier for the blog.
      */
     public suspend fun getBlogInfo(
-        identifier: String
+        identifier: String,
     ): ResponseBlogInfo.Response? {
         val retrofitResponse = blogGetApi.getBlogInfoHelper(
-            identifier
+            identifier,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -327,7 +327,7 @@ public class KotlrApi internal constructor(
         getNotesHistory: Boolean? = null,
         useNeuePostFormat: Boolean? = null,
         tag: String? = null,
-        pageNumber: Int? = null
+        pageNumber: Int? = null,
     ): ResponseBlogLikes.Response? {
         // TODO: Validate arguments.
         val retrofitResponse = blogGetApi.getBlogLikesHelper(
@@ -342,7 +342,7 @@ public class KotlrApi internal constructor(
             getNotesHistory,
             useNeuePostFormat,
             tag,
-            pageNumber
+            pageNumber,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -380,7 +380,7 @@ public class KotlrApi internal constructor(
         useNeuePostFormat: Boolean? = null,
         tag: String? = null,
         pageNumber: Int? = null,
-        type: Post.Type? = null
+        type: Post.Type? = null,
     ): ResponseBlogPosts.Response? {
         // TODO: Validate arguments.
         val retrofitResponse = blogGetApi.getBlogPostsHelper(
@@ -396,7 +396,7 @@ public class KotlrApi internal constructor(
             useNeuePostFormat,
             tag,
             pageNumber,
-            type
+            type,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -432,7 +432,7 @@ public class KotlrApi internal constructor(
         getNotesHistory: Boolean? = null,
         useNeuePostFormat: Boolean? = null,
         tag: String? = null,
-        pageNumber: Int? = null
+        pageNumber: Int? = null,
     ): ResponseBlogDrafts.Response? {
         // TODO: Validate arguments.
         val retrofitResponse = blogGetApi.getBlogDraftsHelper(
@@ -447,7 +447,7 @@ public class KotlrApi internal constructor(
             getNotesHistory,
             useNeuePostFormat,
             tag,
-            pageNumber
+            pageNumber,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -483,7 +483,7 @@ public class KotlrApi internal constructor(
         getNotesHistory: Boolean? = null,
         useNeuePostFormat: Boolean? = null,
         tag: String? = null,
-        pageNumber: Int? = null
+        pageNumber: Int? = null,
     ): ResponseBlogQueue.Response? {
         // TODO: Validate arguments.
         val retrofitResponse = blogGetApi.getBlogQueueHelper(
@@ -498,7 +498,7 @@ public class KotlrApi internal constructor(
             getNotesHistory,
             useNeuePostFormat,
             tag,
-            pageNumber
+            pageNumber,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -534,7 +534,7 @@ public class KotlrApi internal constructor(
         getNotesHistory: Boolean? = null,
         useNeuePostFormat: Boolean? = null,
         tag: String? = null,
-        pageNumber: Int? = null
+        pageNumber: Int? = null,
     ): ResponseBlogSubmissions.Response? {
         // TODO: Validate arguments.
         val retrofitResponse = blogGetApi.getBlogSubmissionsHelper(
@@ -549,7 +549,7 @@ public class KotlrApi internal constructor(
             getNotesHistory,
             useNeuePostFormat,
             tag,
-            pageNumber
+            pageNumber,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -580,7 +580,7 @@ public class KotlrApi internal constructor(
     //         tag,
     //         before,
     //         limit,
-    //         filter
+    //         filter,
     //     )
     //
     //     val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -598,12 +598,12 @@ public class KotlrApi internal constructor(
     public suspend fun getPost(
         identifier: String,
         postId: Long,
-        postFormat: Post.PostVersion? = null
+        postFormat: Post.PostVersion? = null,
     ): ResponsePostsPost.Response? {
         val retrofitResponse = postsGetApi.getPost(
             identifier,
             postId,
-            postFormat
+            postFormat,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())

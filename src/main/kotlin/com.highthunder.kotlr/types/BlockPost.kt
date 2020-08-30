@@ -202,5 +202,5 @@ public data class BlockPost constructor(
     @Json(name = "original_type")
     val originalType: Post.Type? = null,
     @Json(name = "type")
-    override val type: Post.Type = Post.Type.Block
+    override val type: Post.Type = Post.Type.Block,
 ) : Post

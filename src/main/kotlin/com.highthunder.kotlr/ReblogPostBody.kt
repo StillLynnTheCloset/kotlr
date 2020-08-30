@@ -43,7 +43,7 @@ public data class ReblogPostBody constructor(
     @Json(name = "reblog_key")
     val reblogKey: String,
     @Json(name = "hide_trail")
-    val hideTrail: Boolean? = null
+    val hideTrail: Boolean? = null,
 ) {
     init {
         tags?.forEach {

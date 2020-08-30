@@ -242,5 +242,5 @@ public data class AudioPost constructor(
     val audioType: String? = null,
     val embed: String? = null,
     @Json(name = "type")
-    override val type: Post.Type = Post.Type.Audio
+    override val type: Post.Type = Post.Type.Audio,
 ) : Post

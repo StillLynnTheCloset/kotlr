@@ -16,5 +16,5 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = false)
 public data class ThemeWrapper constructor(
     val singleTheme: BlogTheme? = null,
-    val listOfThemes: List<BlogTheme>? = null
+    val listOfThemes: List<BlogTheme>? = null,
 )

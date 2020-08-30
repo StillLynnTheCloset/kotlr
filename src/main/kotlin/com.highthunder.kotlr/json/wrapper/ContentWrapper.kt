@@ -18,5 +18,5 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = false)
 public data class ContentWrapper constructor(
     val contentString: String? = null,
-    val contentList: List<PostContent>? = null
+    val contentList: List<PostContent>? = null,
 )

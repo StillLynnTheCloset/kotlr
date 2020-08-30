@@ -124,7 +124,7 @@ internal class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
             url = if (urlSet) url else result.url,
             updated = if (updatedSet) updated else result.updated,
             likes = if (likesSet) likes else result.likes,
-            defaultPostFormat = if (defaultPostFormatSet) defaultPostFormat else result.defaultPostFormat
+            defaultPostFormat = if (defaultPostFormatSet) defaultPostFormat else result.defaultPostFormat,
         )
         return result
     }

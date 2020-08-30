@@ -36,7 +36,7 @@ internal interface KotlrUserGetApi {
         @Query("tag")
         tag: String? = null,
         @Query("page_number")
-        pageNumber: Int? = null
+        pageNumber: Int? = null,
     ): Response<ResponseUserLikes.Response>
 
     @GET("user/dashboard")
@@ -64,7 +64,7 @@ internal interface KotlrUserGetApi {
         @Query("page_number")
         pageNumber: Int? = null,
         @Query("type")
-        type: Post.Type? = null
+        type: Post.Type? = null,
     ): Response<ResponseUserDashboard.Response>
 
     @GET("user/following")
@@ -72,6 +72,6 @@ internal interface KotlrUserGetApi {
         @Query("limit")
         limit: Int? = null,
         @Query("offset")
-        offset: Long? = null
+        offset: Long? = null,
     ): Response<ResponseUserFollowing.Response>
 }

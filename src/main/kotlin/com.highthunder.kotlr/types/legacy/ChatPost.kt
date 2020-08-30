@@ -204,5 +204,5 @@ public data class ChatPost constructor(
     val body: String? = null,
     val dialogue: List<Dialogue>? = null,
     @Json(name = "type")
-    override val type: Post.Type = Post.Type.Chat
+    override val type: Post.Type = Post.Type.Chat,
 ) : Post

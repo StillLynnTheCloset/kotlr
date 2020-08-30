@@ -222,5 +222,5 @@ public data class PhotoPost constructor(
     @Json(name = "photoset_layout")
     val photosetLayout: String? = null,
     @Json(name = "type")
-    override val type: Post.Type = Post.Type.Photo
+    override val type: Post.Type = Post.Type.Photo,
 ) : Post

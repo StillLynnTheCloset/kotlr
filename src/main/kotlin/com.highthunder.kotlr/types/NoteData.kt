@@ -76,7 +76,7 @@ public data class LikeNote constructor(
     override val blogFollowed: Boolean? = null,
     @Json(name = "avatar_shape")
     override val avatarShape: String? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : NoteData() {
     internal companion object {
         internal const val KEY: String = "like"
@@ -99,7 +99,7 @@ public data class PostedNote constructor(
     override val blogFollowed: Boolean? = null,
     @Json(name = "avatar_shape")
     override val avatarShape: String? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : NoteData() {
     internal companion object {
         internal const val KEY: String = "posted"
@@ -133,7 +133,7 @@ public data class ReblogNote constructor(
     val canBlock: Boolean? = null,
     @Json(name = "reblog_parent_blog_name")
     val reblogParentBlogName: String? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : NoteData() {
     internal companion object {
         internal const val KEY: String = "reblog"
@@ -165,7 +165,7 @@ public data class ReplyNote constructor(
     val formatting: List<TextFormat>? = null,
     @Json(name = "can_block")
     val canBlock: Boolean? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : NoteData() {
     internal companion object {
         internal const val KEY: String = "reply"
@@ -206,7 +206,7 @@ public data class AttributionNote constructor(
     val photoWidth: Int? = null,
     @Json(name = "photo_height")
     val photoHeight: Int? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : NoteData() {
     internal companion object {
         internal const val KEY: String = "post_attribution"

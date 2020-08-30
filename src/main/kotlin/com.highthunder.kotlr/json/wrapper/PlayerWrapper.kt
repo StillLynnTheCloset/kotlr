@@ -16,5 +16,5 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = false)
 internal data class PlayerWrapper constructor(
     val contentString: String? = null,
-    val contentList: List<Video>? = null
+    val contentList: List<Video>? = null,
 )

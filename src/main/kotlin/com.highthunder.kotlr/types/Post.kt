@@ -407,7 +407,7 @@ public interface Post {
          * TODO: Documentation
          */
         @Json(name = "conversation")
-        Conversation("conversation")
+        Conversation("conversation"),
     }
 
     /**
@@ -455,7 +455,7 @@ public interface Post {
          * This is a legacy post that uses each of the different post types and post content is encoded as HTML.
          */
         @Json(name = "legacy")
-        Legacy("legacy")
+        Legacy("legacy"),
     }
 
     /**
@@ -469,7 +469,7 @@ public interface Post {
          * This post is currently queued.
          */
         @Json(name = "queued")
-        Queued("queued")
+        Queued("queued"),
     }
 
     /**

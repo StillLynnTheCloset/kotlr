@@ -26,5 +26,5 @@ public data class ResponseMetaInfo constructor(
     val msg: String? = null,
     @Json(name = "x_tumblr_content_rating")
     val contentRating: String? = null,
-    val rateLimitMetaData: RateLimitMetaData? = null
+    val rateLimitMetaData: RateLimitMetaData? = null,
 )

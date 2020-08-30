@@ -211,5 +211,5 @@ public data class AnswerPost constructor(
     @Json(name = "answer_abstract")
     val answerAbstract: String? = null,
     @Json(name = "type")
-    override val type: Post.Type = Post.Type.Answer
+    override val type: Post.Type = Post.Type.Answer,
 ) : Post

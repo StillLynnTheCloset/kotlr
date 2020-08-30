@@ -85,7 +85,7 @@ public data class AudioContent constructor(
     val embedUrl: String? = null,
     val metadata: Any? = null,
     val attribution: AttributionList? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : PostContent() {
     internal companion object {
         internal const val KEY: String = "audio"
@@ -119,7 +119,7 @@ public data class ImageContent constructor(
     @Json(name = "alt_text")
     val altText: String? = null,
     val exif: Map<String, Any?>? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : PostContent() {
     internal companion object {
         internal const val KEY: String = "image"
@@ -161,7 +161,7 @@ public data class LinkContent constructor(
     @Json(name = "display_url")
     val displayUrl: String? = null,
     val poster: List<Media>? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : PostContent() {
     internal companion object {
         internal const val KEY: String = "link"
@@ -189,7 +189,7 @@ public data class TextContent constructor(
     val formatting: List<TextFormat>? = null,
     @Json(name = "indent_level")
     val indentLevel: Int? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : PostContent() {
     internal companion object {
         internal const val KEY: String = "text"
@@ -305,7 +305,7 @@ public data class VideoContent constructor(
     val filmStrip: MediaList? = null,
     @Json(name = "embed_iframe")
     val iframe: Media? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : PostContent() {
     internal companion object {
         internal const val KEY: String = "video"

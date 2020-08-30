@@ -27,5 +27,5 @@ public data class ExifData constructor(
     @Json(name = "Exposure")
     val exposure: String? = null,
     @Json(name = "FocalLength")
-    val focalLength: String? = null
+    val focalLength: String? = null,
 )

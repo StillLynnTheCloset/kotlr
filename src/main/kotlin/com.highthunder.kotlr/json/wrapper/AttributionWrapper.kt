@@ -24,5 +24,5 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = false)
 internal data class AttributionWrapper constructor(
     val singleAttribution: Attribution? = null,
-    val listAttribution: List<Attribution> = listOfNotNull(singleAttribution)
+    val listAttribution: List<Attribution> = listOfNotNull(singleAttribution),
 ) : AttributionList(), List<Attribution> by listAttribution

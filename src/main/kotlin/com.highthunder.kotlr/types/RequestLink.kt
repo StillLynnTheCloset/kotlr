@@ -30,7 +30,7 @@ public data class RequestLink constructor(
     @Json(name = "href")
     val fullLink: String? = null,
     @Json(name = "query_params")
-    val queryParams: Map<String, Any?>? = null
+    val queryParams: Map<String, Any?>? = null,
 ) {
     /**
      * A _links object may be of type navigation or action.

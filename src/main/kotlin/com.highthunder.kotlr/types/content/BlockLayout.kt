@@ -75,7 +75,7 @@ public data class RowBlockLayout constructor(
     val display: List<Display>? = null,
     @Json(name = "truncate_after")
     val truncateAfter: Int? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : BlockLayout() {
     internal companion object {
         internal const val KEY: String = "rows"
@@ -95,7 +95,7 @@ public data class RowBlockLayout constructor(
         @Json(name = "blocks")
         val blocks: List<Int>? = null,
         @Json(name = "mode")
-        val mode: Mode? = Mode.Weighted()
+        val mode: Mode? = Mode.Weighted(),
     ) {
 
         /**
@@ -132,7 +132,7 @@ public data class RowBlockLayout constructor(
              */
             @JsonClass(generateAdapter = true)
             public data class Weighted constructor(
-                override val type: String = KEY
+                override val type: String = KEY,
             ) : Mode() {
                 internal companion object {
                     internal const val KEY: String = "weighted"
@@ -150,7 +150,7 @@ public data class RowBlockLayout constructor(
              */
             @JsonClass(generateAdapter = true)
             public data class Carousel constructor(
-                override val type: String = KEY
+                override val type: String = KEY,
             ) : Mode() {
                 internal companion object {
                     internal const val KEY: String = "carousel"
@@ -189,7 +189,7 @@ public data class CondensedBlockLayout constructor(
     val blocks: List<Int>? = null,
     @Json(name = "truncate_after")
     val truncateAfter: Int? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : BlockLayout() {
     internal companion object {
         internal const val KEY: String = "condensed"
@@ -214,7 +214,7 @@ public data class CondensedBlockLayout constructor(
 public data class AskBlockLayout constructor(
     val blocks: List<Int>? = null,
     val attribution: Attribution? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : BlockLayout() {
     internal companion object {
         internal const val KEY: String = "ask"

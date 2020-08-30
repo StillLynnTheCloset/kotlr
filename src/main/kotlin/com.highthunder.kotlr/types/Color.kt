@@ -19,7 +19,7 @@ package com.highthunder.kotlr.types
  * @version 1.0.0
  */
 public data class Color constructor(
-    private val c: Int
+    private val c: Int,
 ) {
     private companion object {
         private const val DEFAULT_COLOR: String = "00000000"

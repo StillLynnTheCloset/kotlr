@@ -228,5 +228,5 @@ public data class VideoPost constructor(
     @Json(name = "video_type")
     val videoType: String? = null,
     @Json(name = "type")
-    override val type: Post.Type = Post.Type.Video
+    override val type: Post.Type = Post.Type.Video,
 ) : Post

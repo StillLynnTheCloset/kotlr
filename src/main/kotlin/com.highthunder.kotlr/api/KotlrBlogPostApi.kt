@@ -53,7 +53,7 @@ internal interface KotlrBlogPostApi {
         @Query("title")
         title: String? = null,
         @Query("body")
-        body: String
+        body: String,
     )
 
     /**
@@ -96,7 +96,7 @@ internal interface KotlrBlogPostApi {
         @Query("link")
         link: String? = null,
         @Query("source")
-        externalUrl: String
+        externalUrl: String,
     )
 
     /**
@@ -140,7 +140,7 @@ internal interface KotlrBlogPostApi {
         @Query("link")
         link: String? = null,
         @Query("data")
-        data: String
+        data: String,
     )
 
     /**
@@ -183,7 +183,7 @@ internal interface KotlrBlogPostApi {
         @Query("link")
         link: String? = null,
         @Query("data64")
-        dataBase64Encoded: String
+        dataBase64Encoded: String,
     )
 
     /**
@@ -223,7 +223,7 @@ internal interface KotlrBlogPostApi {
         @Query("quote")
         quote: String,
         @Query("source")
-        source: String? = null
+        source: String? = null,
     )
 
     /**
@@ -275,7 +275,7 @@ internal interface KotlrBlogPostApi {
         @Query("excerpt")
         excerpt: String? = null,
         @Query("author")
-        author: String? = null
+        author: String? = null,
     )
 
     /**
@@ -315,7 +315,7 @@ internal interface KotlrBlogPostApi {
         @Query("title")
         title: String? = null,
         @Query("conversation")
-        conversation: String
+        conversation: String,
     )
 
     /**
@@ -355,7 +355,7 @@ internal interface KotlrBlogPostApi {
         @Query("caption")
         caption: String? = null,
         @Query("external_url")
-        externalUrl: String
+        externalUrl: String,
     )
 
     /**
@@ -395,7 +395,7 @@ internal interface KotlrBlogPostApi {
         @Query("caption")
         caption: String? = null,
         @Query("data")
-        dataBase64Encoded: String
+        dataBase64Encoded: String,
     )
 
     /**
@@ -435,7 +435,7 @@ internal interface KotlrBlogPostApi {
         @Query("caption")
         caption: String? = null,
         @Query("embed")
-        externalUrl: String
+        externalUrl: String,
     )
 
     /**
@@ -475,7 +475,7 @@ internal interface KotlrBlogPostApi {
         @Query("caption")
         caption: String? = null,
         @Query("data")
-        dataBase64Encoded: String
+        dataBase64Encoded: String,
     )
 
     // endregion Create New Legacy Post
@@ -520,7 +520,7 @@ internal interface KotlrBlogPostApi {
         @Query("title")
         title: String? = null,
         @Query("body")
-        body: String
+        body: String,
     )
 
     /**
@@ -564,7 +564,7 @@ internal interface KotlrBlogPostApi {
         @Query("link")
         link: String? = null,
         @Query("source")
-        externalUrl: String
+        externalUrl: String,
     )
 
     /**
@@ -609,7 +609,7 @@ internal interface KotlrBlogPostApi {
         @Query("link")
         link: String? = null,
         @Query("data")
-        data: String
+        data: String,
     )
 
     /**
@@ -653,7 +653,7 @@ internal interface KotlrBlogPostApi {
         @Query("link")
         link: String? = null,
         @Query("data64")
-        dataBase64Encoded: String
+        dataBase64Encoded: String,
     )
 
     /**
@@ -694,7 +694,7 @@ internal interface KotlrBlogPostApi {
         @Query("quote")
         quote: String,
         @Query("source")
-        source: String? = null
+        source: String? = null,
     )
 
     /**
@@ -747,7 +747,7 @@ internal interface KotlrBlogPostApi {
         @Query("excerpt")
         excerpt: String? = null,
         @Query("author")
-        author: String? = null
+        author: String? = null,
     )
 
     /**
@@ -788,7 +788,7 @@ internal interface KotlrBlogPostApi {
         @Query("title")
         title: String? = null,
         @Query("conversation")
-        conversation: String
+        conversation: String,
     )
 
     /**
@@ -829,7 +829,7 @@ internal interface KotlrBlogPostApi {
         @Query("caption")
         caption: String? = null,
         @Query("external_url")
-        externalUrl: String
+        externalUrl: String,
     )
 
     /**
@@ -870,7 +870,7 @@ internal interface KotlrBlogPostApi {
         @Query("caption")
         caption: String? = null,
         @Query("data")
-        dataBase64Encoded: String
+        dataBase64Encoded: String,
     )
 
     /**
@@ -911,7 +911,7 @@ internal interface KotlrBlogPostApi {
         @Query("caption")
         caption: String? = null,
         @Query("embed")
-        externalUrl: String
+        externalUrl: String,
     )
 
     /**
@@ -952,7 +952,7 @@ internal interface KotlrBlogPostApi {
         @Query("caption")
         caption: String? = null,
         @Query("data")
-        dataBase64Encoded: String
+        dataBase64Encoded: String,
     )
 
     // endregion Edit Legacy Post
@@ -997,7 +997,7 @@ internal interface KotlrBlogPostApi {
         @Query("reblog_key")
         reblogKey: Long,
         @Query("comment")
-        comment: String? = null
+        comment: String? = null,
     )
 
     // endregion Reblog Legacy Post
@@ -1028,7 +1028,7 @@ internal interface KotlrBlogPostApi {
         @Path("identifier", encoded = true)
         identifier: String,
         @Body
-        createBody: CreateNewPostBody
+        createBody: CreateNewPostBody,
     ): Response<ResponseCreatePost.Response>
 
     /**
@@ -1059,7 +1059,7 @@ internal interface KotlrBlogPostApi {
         @Part
         createBody: CreateNewPostBody,
         @Part
-        contentFiles: List<MultipartBody.Part>
+        contentFiles: List<MultipartBody.Part>,
     ): Response<ResponseCreatePost.Response>
 
     // endregion Create NPF Post
@@ -1090,7 +1090,7 @@ internal interface KotlrBlogPostApi {
         @Path("identifier", encoded = true)
         identifier: String,
         @Body
-        reblogBody: ReblogPostBody
+        reblogBody: ReblogPostBody,
     ): Response<ResponseCreatePost.Response>
 
     /**
@@ -1121,7 +1121,7 @@ internal interface KotlrBlogPostApi {
         @Part
         reblogBody: ReblogPostBody,
         @Part
-        contentFiles: List<MultipartBody.Part>
+        contentFiles: List<MultipartBody.Part>,
     ): Response<ResponseCreatePost.Response>
 
     // endregion Reblog NPF Post

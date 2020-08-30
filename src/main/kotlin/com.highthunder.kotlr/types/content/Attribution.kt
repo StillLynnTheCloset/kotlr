@@ -56,7 +56,7 @@ public data class PostAttribution constructor(
     val url: String? = null,
     val post: Post? = null,
     val blog: Blog? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : Attribution() {
     internal companion object {
         internal const val KEY: String = "post"
@@ -71,7 +71,7 @@ public data class PostAttribution constructor(
 @JsonClass(generateAdapter = true)
 public data class LinkAttribution constructor(
     val url: String? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : Attribution() {
     internal companion object {
         internal const val KEY: String = "link"
@@ -88,7 +88,7 @@ public data class LinkAttribution constructor(
 public data class BlogAttribution constructor(
     val blog: Blog? = null,
     val url: String? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : Attribution() {
     internal companion object {
         internal const val KEY: String = "blog"
@@ -111,7 +111,7 @@ public data class AppAttribution constructor(
     @Json(name = "display_text")
     val displayText: String? = null,
     val logo: Media? = null,
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : Attribution() {
     internal companion object {
         internal const val KEY: String = "app"

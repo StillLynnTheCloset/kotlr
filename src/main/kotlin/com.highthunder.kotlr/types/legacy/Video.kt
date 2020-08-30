@@ -18,5 +18,5 @@ public data class Video constructor(
     @Json(name = "width")
     val width: Int? = null,
     @Json(name = "embed_code")
-    val embedCode: String? = null
+    val embedCode: String? = null,
 )

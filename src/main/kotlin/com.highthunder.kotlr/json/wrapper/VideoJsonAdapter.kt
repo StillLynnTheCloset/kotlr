@@ -65,7 +65,7 @@ internal class VideoJsonAdapter(moshi: Moshi) : JsonAdapter<Video>() {
         var result = Video()
         result = result.copy(
             width = if (widthSet) width else result.width,
-            embedCode = if (embedCodeSet) embedCode else result.embedCode
+            embedCode = if (embedCodeSet) embedCode else result.embedCode,
         )
         return result
     }
