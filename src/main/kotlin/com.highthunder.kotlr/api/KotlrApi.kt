@@ -259,6 +259,21 @@ public class KotlrApi internal constructor(
     }
 
     /**
+     * Check If Followed By Blog.
+     *
+     * This method can be used to check if one of your blogs is followed by another blog.
+     *
+     * @param identifier An identifier for your blog to check.
+     * @param query The name of the blog that may be following your blog.
+     */
+    public suspend fun getFollowedBy(
+        identifier: String,
+        query: String
+    ): ResponseBlogFollowing.Response? {
+        TODO("Implement")
+    }
+
+    /**
      * Retrieve Blog Info.
      *
      * This method returns general information about the blog, such as the title, number of posts, and other high-level data.
