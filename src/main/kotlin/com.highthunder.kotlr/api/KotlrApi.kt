@@ -558,7 +558,7 @@ public class KotlrApi internal constructor(
     //     tag: String,
     //     before: Long? = null,
     //     limit: Long? = null,
-    //     filter: String? = null
+    //     filter: PostFormat? = null
     // ): ResponsePostsTagged.Response? {
     //     TODO("The get tagged posts api requires special parsing that I don't feel like implementing")
     //     val retrofitResponse = postsGetApi.getTaggedPosts(

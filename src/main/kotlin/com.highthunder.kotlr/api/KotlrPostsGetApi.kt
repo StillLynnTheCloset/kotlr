@@ -18,7 +18,7 @@ internal interface KotlrPostsGetApi {
         @Query("limit")
         limit: Long? = null,
         @Query("filter")
-        filter: String? = null
+        filter: Post.PostFormat? = null
     ): Response<ResponsePostsTagged.Response>
 
     @GET("blog/{identifier}/posts/{postId}")
