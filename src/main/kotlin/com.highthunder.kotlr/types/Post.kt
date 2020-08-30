@@ -53,70 +53,87 @@ public interface Post {
      * The short name used to uniquely identify a blog.
      */
     public val blogName: String?
+
     /**
      * The post's unique ID.
      */
     public val id: Long?
+
     /**
      * The post's unique ID formatted as a string to prevent loss of precision on platforms that lack true 64-bit integers.
      */
     public val idString: String?
+
     /**
      * A standard API-formatted "short blog info" object.
      */
     public val blog: Blog?
+
     /**
      * The location of the post.
      */
     public val postUrl: String?
+
     /**
      * The time of the post, in seconds since the epoch.
      */
     public val timestamp: Long?
+
     /**
      * The GMT date and time of the post, as a string.
      */
     public val date: String?
+
     /**
      * The post format: html, raw, or markdown.
      */
     public val format: PostFormat?
+
     /**
      * The key used to reblog this post.
      */
     public val reblogKey: String?
+
     /**
      * Tags applied to the post.
      */
     public val tags: List<String>?
+
     /**
      * Indicates whether the post was created via the Tumblr bookmarklet.
      */
     public val isBookmarklet: Boolean?
+
     /**
      * Indicates whether the post was created via mobile/email publishing.
      */
     public val isMobile: Boolean?
+
     /**
      * The URL for the source of the content (for quotes, reblogs, etc.).
      */
     public val sourceUrl: String?
+
     /**
      * The title of the source site.
      */
     public val sourceTitle: String?
+
     /**
      * Indicates if a user has already liked a post or not.
      */
     public val isLiked: Boolean?
+
     /**
      * Indicates the current state of the post.
      */
     public val state: State?
+
     /**
      * The total number of post available for this request, useful for paginating through results.
      */
     public val totalPosts: Int?
+
     /**
      * Was this post made anonymously.
      */
@@ -130,178 +147,222 @@ public interface Post {
      * The array of content that constitutes the body of a post in the Neue Post Format(NPF).
      */
     public val content: List<PostContent>?
+
     /**
      * The previous Posts in the reblog trail. In order of oldest (the root Post) to the newest (the parent Post).
      */
     public val trail: List<Trail>?
+
     /**
      * The layouts of the blocks in this post.
      */
     public val layout: List<BlockLayout>?
+
     /**
      * The id of the author of the post.
      */
     public val postAuthor: String?
+
     /**
      * The short URL for this post.
      */
     public val shortUrl: String?
+
     /**
      * A short description of this post.
      */
     public val summary: String?
+
     /**
      * Indicates whether or not this post is using the new block format(NPF).
      */
     public val isBlocksFormat: Boolean?
+
     /**
      * The timestamp of when this post was liked.
      */
     public val likedTimestamp: Long?
+
     /**
      * The slug. This is a short string (with spaces replaced with "-") that is added to urls to give a simple overview of the post content.
      */
     public val slug: String?
+
     /**
      * The note count for this post.
      */
     public val noteCount: Long?
+
     /**
      * The source of a recommended post.
      */
     public val recommendedSource: String?
+
     /**
      * The recommended color for styling this post.
      */
     public val recommendedColor: String?
+
     /**
      * Indicates whether or not the author of this post is an adult only blog.
      */
     public val postAuthorIsAdult: Boolean?
+
     /**
      * Indicates whether or not this post is a submission.
      */
     public val isSubmission: Boolean?
+
     /**
      * Indicates whether or not the current user can like this post.
      */
     public val canLike: Boolean?
+
     /**
      * Indicates whether or not the current user can reblog this post.
      */
     public val canReblog: Boolean?
+
     /**
      * Indicates whether or not this post can be sent in a message.
      */
     public val canSendInMessage: Boolean?
+
     /**
      * Indicates whether or not the current user can reply to this post.
      */
     public val canReply: Boolean?
+
     /**
      * Indicates whether or not the poster's avatar should be shown with this post.
      */
     public val displayAvatar: Boolean?
+
     /**
      * Indicates whether or not the current user follows the author of this post.
      */
     public val followed: Boolean?
+
     /**
      * The reblog content of this post.
      */
     public val reblogData: ReblogData?
+
     /**
      * The ID of the post that this post reblogged.
      */
     public val rebloggedFromId: Long?
+
     /**
      * The URL of the post that this post reblogged.
      */
     public val rebloggedFromUrl: String?
+
     /**
      * The name of the blog that this post reblogged.
      */
     public val rebloggedFromName: String?
+
     /**
      * The title of the blog that made the post that this post reblogged.
      */
     public val rebloggedFromTitle: String?
+
     /**
      * The blog uuid of the post that this post reblogged.
      */
     public val rebloggedFromUuid: String?
+
     /**
      * Whether or not you can message the blog that made the post that this post reblogged.
      */
     public val rebloggedFromCanMessage: Boolean?
+
     /**
      * Whether or not you are following the blog that made the post that this post reblogged.
      */
     public val rebloggedFromFollowing: Boolean?
+
     /**
      * The ID of the root post that this post reblogged.
      */
     public val rebloggedRootId: Long?
+
     /**
      * The URL of the root post that this post reblogged.
      */
     public val rebloggedRootUrl: String?
+
     /**
      * The name of the blog that this post reblogged.
      */
     public val rebloggedRootName: String?
+
     /**
      * The title of the blog that made the root post that this post reblogged.
      */
     public val rebloggedRootTitle: String?
+
     /**
      * The blog uuid of the root post that this post reblogged.
      */
     public val rebloggedRootUuid: String?
+
     /**
      * Whether or not you can message the blog that made the root post that this post reblogged.
      */
     public val rebloggedRootCanMessage: Boolean?
+
     /**
      * Whether or not you are following the blog that made the root post that this post reblogged.
      */
     public val rebloggedRootFollowing: Boolean?
+
     /**
      * A list of all of the notes objects attached to this post.
      */
     public val notes: List<NoteData>?
+
     /**
      * Returned on queued posts, the time that this post is scheduled to be posted.
      */
     public val publishTime: Long?
+
     /**
      * The current queue state of this post.
      */
     public val queueState: QueueState?
+
     /**
      * TODO: Documentation
      */
     public val shouldOpenInLegacy: Boolean?
+
     /**
      * TODO: Documentation
      */
     public val muted: Boolean?
+
     /**
      * TODO: Documentation
      */
     public val objectType: String?
+
     /**
      * The UUID of the blog that made this post.
      */
     public val blogUUID: String?
+
     /**
      * The id of the post that this post was a response to.
      */
     public val parentPostId: Long?
+
     /**
      * The UUID of the blog that made the parent post.
      */
     public val parentBlogUUID: String?
+
     /**
      * Are the images in this post blurred (a NSFW thing I guess?)
      */
@@ -319,21 +380,25 @@ public interface Post {
          */
         @Json(name = "draft")
         Draft,
+
         /**
          * This post has been queued, it is scheduled to be posted in the future.
          */
         @Json(name = "queued")
         Queue,
+
         /**
          * The post has been publicly posted.
          */
         @Json(name = "published")
         Published,
+
         /**
          * This post has been privately posted.
          */
         @Json(name = "private")
         Private,
+
         /**
          * This post was submitted by another user, and has not been posted.
          */
@@ -353,56 +418,67 @@ public interface Post {
          */
         @Json(name = "answer")
         Answer("answer"),
+
         /**
          * An audio post. [AudioPost]
          */
         @Json(name = "audio")
         Audio("audio"),
+
         /**
          * A chat post, also know as a dialog post. [ChatPost]
          */
         @Json(name = "chat")
         Chat("chat"),
+
         /**
          * A link post. [LinkPost]
          */
         @Json(name = "link")
         Link("link"),
+
         /**
          * A photo or photoset post. [PhotoPost]
          */
         @Json(name = "photo")
         Photo("photo"),
+
         /**
          * A quote post. [QuotePost]
          */
         @Json(name = "quote")
         Quote("quote"),
+
         /**
          * A text post. [TextPost]
          */
         @Json(name = "text")
         Text("text"),
+
         /**
          * A video post. [VideoPost]
          */
         @Json(name = "video")
         Video("video"),
+
         /**
          * A block post, also known as a NPF post. [BlockPost]
          */
         @Json(name = "blocks")
         Block("blocks"),
+
         /**
          * TODO: Documentation
          */
         @Json(name = "regular")
         Regular("regular"),
+
         /**
          * TODO: Documentation
          */
         @Json(name = "note")
         Note("note"),
+
         /**
          * TODO: Documentation
          */
@@ -422,16 +498,19 @@ public interface Post {
          */
         @Json(name = "html")
         HTML("html"),
+
         /**
          * Post content is rendered as plain text, no HTML.
          */
         @Json(name = "text")
         Plain("text"),
+
         /**
          * Post content is rendered as entered by the user (no post-processing).
          */
         @Json(name = "raw")
         Raw("raw"),
+
         /**
          * Post content is rendered as Markdown if the user writes in Markdown.
          */
@@ -451,6 +530,7 @@ public interface Post {
          */
         @Json(name = "npf")
         NPF("npf"),
+
         /**
          * This is a legacy post that uses each of the different post types and post content is encoded as HTML.
          */

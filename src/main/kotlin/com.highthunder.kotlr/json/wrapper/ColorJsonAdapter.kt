@@ -1,7 +1,6 @@
 package com.highthunder.kotlr.json.wrapper
 
 import com.highthunder.kotlr.types.Color
-import com.highthunder.kotlr.types.legacy.Video
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonDataException

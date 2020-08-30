@@ -33,7 +33,6 @@ import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer
 import se.akerfeldt.okhttp.signpost.OkHttpOAuthProvider
 import se.akerfeldt.okhttp.signpost.SigningInterceptor
 
-
 /**
  * Helper function to add support for all Kotlr datatypes to the given Moshi Builder
  */

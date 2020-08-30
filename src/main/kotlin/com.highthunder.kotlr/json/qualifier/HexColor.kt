@@ -1,7 +1,7 @@
 package com.highthunder.kotlr.json.qualifier
 
-import com.squareup.moshi.JsonQualifier
 import com.highthunder.kotlr.types.Color
+import com.squareup.moshi.JsonQualifier
 
 /**
  * HexColor - An internal JSON annotation to tell Moshi that the annotated property is a [Color] that should be

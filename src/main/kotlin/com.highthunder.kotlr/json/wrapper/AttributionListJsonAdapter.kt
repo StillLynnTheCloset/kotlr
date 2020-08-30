@@ -1,8 +1,6 @@
 package com.highthunder.kotlr.json.wrapper
 
 import com.highthunder.kotlr.types.AttributionList
-import com.highthunder.kotlr.types.Media
-import com.highthunder.kotlr.types.content.Attribution
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson
 

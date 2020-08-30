@@ -166,7 +166,10 @@ public data class ColorTextFormat constructor(
  *
  * @param size The text size for this particular range of text, one of 'small' or 'big'.
  */
-@Deprecated("This was removed from the Tumblr API spec and is unsupported when creating posts.", replaceWith = ReplaceWith("SmallTextFormat()"))
+@Deprecated(
+    message = "This was removed from the Tumblr API spec and is unsupported when creating posts.",
+    replaceWith = ReplaceWith("SmallTextFormat()")
+)
 @JsonClass(generateAdapter = true)
 public data class SizeTextFormat constructor(
     override val start: Int? = null,
@@ -181,7 +184,10 @@ public data class SizeTextFormat constructor(
     /**
      * Option - The size option used.
      */
-    @Deprecated("This was removed from the Tumblr API spec and is unsupported when creating posts.", replaceWith = ReplaceWith("SmallTextFormat()"))
+    @Deprecated(
+        message = "This was removed from the Tumblr API spec and is unsupported when creating posts.",
+        replaceWith = ReplaceWith("SmallTextFormat()")
+    )
     @JsonClass(generateAdapter = false)
     public enum class Option {
         /**
@@ -189,6 +195,7 @@ public data class SizeTextFormat constructor(
          */
         @Json(name = "small")
         Small,
+
         /**
          * Bigger than normal text.
          */
