@@ -5,6 +5,7 @@ import com.highthunder.kotlr.types.AttributionList
 import com.highthunder.kotlr.types.Colors
 import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.MediaList
+import com.highthunder.kotlr.types.VideoMetadata
 import com.highthunder.kotlr.types.content.TextContent.SubType
 import com.highthunder.kotlr.types.legacy.ExifData
 import com.squareup.moshi.Json
@@ -298,7 +299,7 @@ public data class VideoContent constructor(
     @Json(name = "embed_url")
     val embedUrl: String? = null,
     val poster: List<Media>? = null,
-    val metadata: Any? = null,
+    val metadata: VideoMetadata? = null,
     val attribution: AttributionList? = null,
     @Json(name = "can_autoplay_on_cellular")
     val canAutoPlayOnCellular: Boolean? = null,

@@ -28,6 +28,7 @@ import com.highthunder.kotlr.types.RequestQueryParameters
 import com.highthunder.kotlr.types.SubmissionTerms
 import com.highthunder.kotlr.types.Trail
 import com.highthunder.kotlr.types.User
+import com.highthunder.kotlr.types.VideoMetadata
 import com.highthunder.kotlr.types.content.AppAttribution
 import com.highthunder.kotlr.types.content.AskBlockLayout
 import com.highthunder.kotlr.types.content.Attribution
@@ -1027,8 +1028,8 @@ internal class SampleFilesIndividualParseTest {
             url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
             embedHtml = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>",
             embedUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ",
-            metadata = mapOf(
-                "id" to "dQw4w9WgXcQ"
+            metadata = VideoMetadata(
+                id = "dQw4w9WgXcQ"
             ),
             poster = listOf(
                 Media(
