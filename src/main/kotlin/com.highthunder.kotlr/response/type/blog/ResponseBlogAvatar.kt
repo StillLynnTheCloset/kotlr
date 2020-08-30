@@ -6,6 +6,7 @@ import com.highthunder.kotlr.response.TumblrError
 import com.highthunder.kotlr.response.TumblrResponse
 import com.highthunder.kotlr.response.WrapperInterface
 import com.highthunder.kotlr.types.RequestLink
+import com.highthunder.kotlr.types.RequestLinks
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -54,7 +55,7 @@ public interface ResponseBlogAvatar {
     @JsonClass(generateAdapter = true)
     public data class Body constructor(
         @Json(name = "_links")
-        val links: Map<String, RequestLink>? = null, // TODO: Get rid of map.
+        val links: RequestLinks? = null,
         @Json(name = "avatar_url")
         val url: String? = null
     )

@@ -13,7 +13,7 @@ import com.squareup.moshi.JsonClass
  * should be used to take the action.
  *
  * @author highthunder
- * @since 10/24/18
+ * @since 2018-11-04
  * @version 1.0.0
  *
  * @param linkType The type of link that this is, see [Type].
@@ -30,7 +30,7 @@ public data class RequestLink constructor(
     @Json(name = "href")
     val fullLink: String? = null,
     @Json(name = "query_params")
-    val queryParams: Map<String, Any?>? = null,
+    val queryParams: RequestQueryParameters? = null,
 ) {
     /**
      * A _links object may be of type navigation or action.

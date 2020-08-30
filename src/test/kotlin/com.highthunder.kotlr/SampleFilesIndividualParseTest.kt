@@ -23,6 +23,8 @@ import com.highthunder.kotlr.types.PostedNote
 import com.highthunder.kotlr.types.ReblogNote
 import com.highthunder.kotlr.types.ReplyNote
 import com.highthunder.kotlr.types.RequestLink
+import com.highthunder.kotlr.types.RequestLinks
+import com.highthunder.kotlr.types.RequestQueryParameters
 import com.highthunder.kotlr.types.SubmissionTerms
 import com.highthunder.kotlr.types.Trail
 import com.highthunder.kotlr.types.User
@@ -213,31 +215,31 @@ internal class SampleFilesIndividualParseTest {
 
     @Test
     internal fun testOfficialLPF_links_links() {
-        val linkMap = parseFile<Map<String, RequestLink>>("samples/officialLPFSamples/links/links.json", adapter = moshi.mapAdapter())
-        val expected = mapOf(
-            "previous" to RequestLink(
+        val linkMap = parseFile<RequestLinks>("samples/officialLPFSamples/links/links.json")
+        val expected = RequestLinks(
+            prev = RequestLink(
                 linkType = RequestLink.Type.Action,
                 httpMethod = "GET",
                 fullLink = "https://api.tumblr.com/v2/endpoint",
-                queryParams = mapOf(
-                    "page" to 1.0
+                queryParams = RequestQueryParameters(
+                    pageNumber = "1.0"
                 )
             ),
-            "next" to RequestLink(
+            next = RequestLink(
                 linkType = RequestLink.Type.Action,
                 httpMethod = "GET",
                 fullLink = "https://api.tumblr.com/v2/endpoint",
-                queryParams = mapOf(
-                    "page" to 3.0
+                queryParams =  RequestQueryParameters(
+                    pageNumber = "3.0"
                 )
             ),
-            "terms_of_service" to RequestLink(
+            termsOfService = RequestLink(
                 linkType = RequestLink.Type.Navigation,
                 fullLink = "https://www.tumblr.com/policy/terms-of-service"
             )
         )
 
-        assertMapEquals(expected, linkMap)
+        assertEquals(expected, linkMap)
     }
 
     // endregion Links
@@ -1980,8 +1982,8 @@ internal class SampleFilesIndividualParseTest {
         val expected = RequestLink(
             fullLink = "/v2/user/following?offset=20",
             httpMethod = "GET",
-            queryParams = mapOf(
-                "offset" to "20"
+            queryParams = RequestQueryParameters(
+                offset= "20"
             )
         )
         assertEquals(expected, post)
@@ -2412,21 +2414,21 @@ internal class SampleFilesIndividualParseTest {
                 body = ResponseBlogLikes.Body(
                     posts = listOf(BlockPost()),
                     totalLiked = 202,
-                    links = mapOf(
-                        "next" to RequestLink(
+                    links = RequestLinks(
+                        next = RequestLink(
                             fullLink = "/v2/blog/kotlr-development.tumblr.com/likes?limit=1&before=1539817301",
                             httpMethod = "GET",
-                            queryParams = mapOf(
-                                "limit" to "1",
-                                "before" to "1539817301"
+                            queryParams = RequestQueryParameters(
+                                limit = "1",
+                                before = "1539817301"
                             )
                         ),
-                        "prev" to RequestLink(
+                        prev = RequestLink(
                             fullLink = "/v2/blog/kotlr-development.tumblr.com/likes?limit=1&after=1539817301",
                             httpMethod = "GET",
-                            queryParams = mapOf(
-                                "limit" to "1",
-                                "after" to "1539817301"
+                            queryParams = RequestQueryParameters(
+                                limit = "1",
+                                after = "1539817301"
                             )
                         )
                     )

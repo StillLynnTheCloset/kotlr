@@ -1,10 +1,10 @@
 {
-    "previous": {
+    "prev": {
         "type": "action",
         "method": "GET",
         "href": "https://api.tumblr.com/v2/endpoint",
         "query_params": {
-            "page": 1
+            "page_number": 1
         }
     },
     "next": {
@@ -12,7 +12,7 @@
         "method": "GET",
         "href": "https://api.tumblr.com/v2/endpoint",
         "query_params": {
-            "page": 3
+            "page_number": 3
         }
     },
     "terms_of_service": {

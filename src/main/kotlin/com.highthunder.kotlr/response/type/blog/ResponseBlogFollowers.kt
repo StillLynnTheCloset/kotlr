@@ -6,6 +6,7 @@ import com.highthunder.kotlr.response.TumblrError
 import com.highthunder.kotlr.response.TumblrResponse
 import com.highthunder.kotlr.response.WrapperInterface
 import com.highthunder.kotlr.types.RequestLink
+import com.highthunder.kotlr.types.RequestLinks
 import com.highthunder.kotlr.types.User
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -56,7 +57,7 @@ public interface ResponseBlogFollowers {
     @JsonClass(generateAdapter = true)
     public data class Body constructor(
         @Json(name = "_links")
-        val links: Map<String, RequestLink>? = null, // TODO: Get rid of map.
+        val links: RequestLinks? = null,
         @Json(name = "users")
         val users: List<User>? = null,
         @Json(name = "total_users")
