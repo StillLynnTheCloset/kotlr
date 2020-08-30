@@ -82,10 +82,13 @@ public data class RowBlockLayout constructor(
     }
 
     /**
-     *  TODO: Documentation
+     * Display - This display object is an array of dictionaries containing both the array of blocks to be used in the
+     * row as well as an optional mode dictionary with a specified type. The default display mode is weighted. The
+     * display mode type does not need to be specified when creating a Post with NPF content. each one representing a
+     * different row to be rendered with the given content blocks.
      *
-     * @param blocks TODO: Documentation
-     * @param mode TODO: Documentation
+     * @param blocks The content blocks included in this row.
+     * @param mode The mode to be used for this row.
      */
     @JsonClass(generateAdapter = true)
     public data class Display constructor(
@@ -96,7 +99,7 @@ public data class RowBlockLayout constructor(
     ) {
 
         /**
-         *  TODO: Documentation
+         * Mode - A description of how the individual blocks in this row should be laid out.
          */
         public sealed class Mode {
             internal companion object {
@@ -121,6 +124,12 @@ public data class RowBlockLayout constructor(
                 override val type: String = KEY
             }
 
+            /**
+             * Carousel - A weighted display mode signifies that the client should use a horizontally scaling view
+             * where each block occupies an equal percentage of the horizontal width of the screen.
+             *
+             * This is the default mode that should be used if no mode is specified.
+             */
             @JsonClass(generateAdapter = true)
             public data class Weighted constructor(
                 override val type: String = KEY
@@ -130,6 +139,15 @@ public data class RowBlockLayout constructor(
                 }
             }
 
+            /**
+             * Carousel - A carousel display mode signifies that the client should use a horizontally paging view
+             * where each block occupies 100% of the width of the screen (a "page") and scrolling snaps to the center
+             * of a "page".
+             *
+             * Note: Currently only certain Tumblr content creators can create layouts with the carousel display mode,
+             * but all Tumblr consumers can see it. The API will return a 403 Forbidden response for ineligible
+             * consumers trying to create a carousel.
+             */
             @JsonClass(generateAdapter = true)
             public data class Carousel constructor(
                 override val type: String = KEY

@@ -106,7 +106,7 @@ public data class AudioContent constructor(
  * @param colors Colors used in the image.
  * @param poster For GIFs, this is a single-frame "poster".
  * @param attribution See the [Attribution] for details about these objects.
- * @param exif TODO: Documentation
+ * @param exif A map of extra properties extracted from the Exif data of the photo
  */
 @JsonClass(generateAdapter = true)
 public data class ImageContent constructor(
@@ -196,7 +196,8 @@ public data class TextContent constructor(
     }
 
     /**
-     * TODO: Documentation
+     * SubType - Text blocks can also have a subtype field that specifies a semantic meaning to the text block, which
+     * can also be used by the clients to render the entire block of text differently.
      */
     @JsonClass(generateAdapter = false)
     public enum class SubType {
@@ -284,7 +285,7 @@ public data class TextContent constructor(
  * @param attribution Optional attribution information about where the video came from.
  * @param canAutoPlayOnCellular Whether this video can be played on a cellular connection.
  * @param filmStrip A series of images taken from throughout this video.
- * @param iframe TODO: Documentation
+ * @param iframe An HTML string for embedding this video in an IFrame.
  */
 @JsonClass(generateAdapter = true)
 public data class VideoContent constructor(

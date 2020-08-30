@@ -118,7 +118,7 @@ public interface Post {
      */
     public val totalPosts: Int?
     /**
-     * TODO: Documentation
+     * Was this post made anonymously.
      */
     public val anonymous: Boolean?
 
@@ -159,7 +159,7 @@ public interface Post {
      */
     public val likedTimestamp: Long?
     /**
-     * The slug. TODO: Documentation
+     * The slug. This is a short string (with spaces replaced with "-") that is added to urls to give a simple overview of the post content.
      */
     public val slug: String?
     /**
@@ -207,75 +207,75 @@ public interface Post {
      */
     public val followed: Boolean?
     /**
-     * TODO: Documentation
+     * The reblog content of this post.
      */
     public val reblogData: ReblogData?
     /**
-     * TODO: Documentation
+     * The ID of the post that this post reblogged.
      */
     public val rebloggedFromId: Long?
     /**
-     * TODO: Documentation
+     * The URL of the post that this post reblogged.
      */
     public val rebloggedFromUrl: String?
     /**
-     * TODO: Documentation
+     * The name of the blog that this post reblogged.
      */
     public val rebloggedFromName: String?
     /**
-     * TODO: Documentation
+     * The title of the blog that made the post that this post reblogged.
      */
     public val rebloggedFromTitle: String?
     /**
-     * TODO: Documentation
+     * The blog uuid of the post that this post reblogged.
      */
     public val rebloggedFromUuid: String?
     /**
-     * TODO: Documentation
+     * Whether or not you can message the blog that made the post that this post reblogged.
      */
     public val rebloggedFromCanMessage: Boolean?
     /**
-     * TODO: Documentation
+     * Whether or not you are following the blog that made the post that this post reblogged.
      */
     public val rebloggedFromFollowing: Boolean?
     /**
-     * TODO: Documentation
+     * The ID of the root post that this post reblogged.
      */
     public val rebloggedRootId: Long?
     /**
-     * TODO: Documentation
+     * The URL of the root post that this post reblogged.
      */
     public val rebloggedRootUrl: String?
     /**
-     * TODO: Documentation
+     * The name of the blog that this post reblogged.
      */
     public val rebloggedRootName: String?
     /**
-     * TODO: Documentation
+     * The title of the blog that made the root post that this post reblogged.
      */
     public val rebloggedRootTitle: String?
     /**
-     * TODO: Documentation
+     * The blog uuid of the root post that this post reblogged.
      */
     public val rebloggedRootUuid: String?
     /**
-     * TODO: Documentation
+     * Whether or not you can message the blog that made the root post that this post reblogged.
      */
     public val rebloggedRootCanMessage: Boolean?
     /**
-     * TODO: Documentation
+     * Whether or not you are following the blog that made the root post that this post reblogged.
      */
     public val rebloggedRootFollowing: Boolean?
     /**
-     * TODO: Documentation
+     * A list of all of the notes objects attached to this post.
      */
     public val notes: List<NoteData>?
     /**
-     * TODO: Documentation
+     * Returned on queued posts, the time that this post is scheduled to be posted.
      */
     public val publishTime: Long?
     /**
-     * TODO: Documentation
+     * The current queue state of this post.
      */
     public val queueState: QueueState?
     /**
@@ -291,19 +291,19 @@ public interface Post {
      */
     public val objectType: String?
     /**
-     * TODO: Documentation
+     * The UUID of the blog that made this post.
      */
     public val blogUUID: String?
     /**
-     * TODO: Documentation
+     * The id of the post that this post was a response to.
      */
     public val parentPostId: Long?
     /**
-     * TODO: Documentation
+     * The UUID of the blog that made the parent post.
      */
     public val parentBlogUUID: String?
     /**
-     * TODO: Documentation
+     * Are the images in this post blurred (a NSFW thing I guess?)
      */
     public val isBlurredImages: Boolean?
 
@@ -315,27 +315,27 @@ public interface Post {
     @JsonClass(generateAdapter = false)
     public enum class State {
         /**
-         * TODO: Documentation
+         * This post is currently a draft. It has not been posted, or scheduled to be posted.
          */
         @Json(name = "draft")
         Draft,
         /**
-         * TODO: Documentation
+         * This post has been queued, it is scheduled to be posted in the future.
          */
         @Json(name = "queued")
         Queue,
         /**
-         * TODO: Documentation
+         * The post has been publicly posted.
          */
         @Json(name = "published")
         Published,
         /**
-         * TODO: Documentation
+         * This post has been privately posted.
          */
         @Json(name = "private")
         Private,
         /**
-         * TODO: Documentation
+         * This post was submitted by another user, and has not been posted.
          */
         @Json(name = "submission")
         Submission
@@ -343,52 +343,53 @@ public interface Post {
 
     /**
      * Enum of valid post types.
-     * @param key TODO: Documentation
+     *
+     * @param key The string that Tumblr uses to reference each type of post.
      */
     @JsonClass(generateAdapter = false)
     public enum class Type constructor(public val key: String) {
         /**
-         * TODO: Documentation
+         * An answer post, also known as an Ask post. [AnswerPost]
          */
         @Json(name = "answer")
         Answer("answer"),
         /**
-         * TODO: Documentation
+         * An audio post. [AudioPost]
          */
         @Json(name = "audio")
         Audio("audio"),
         /**
-         * TODO: Documentation
+         * A chat post, also know as a dialog post. [ChatPost]
          */
         @Json(name = "chat")
         Chat("chat"),
         /**
-         * TODO: Documentation
+         * A link post. [LinkPost]
          */
         @Json(name = "link")
         Link("link"),
         /**
-         * TODO: Documentation
+         * A photo or photoset post. [PhotoPost]
          */
         @Json(name = "photo")
         Photo("photo"),
         /**
-         * TODO: Documentation
+         * A quote post. [QuotePost]
          */
         @Json(name = "quote")
         Quote("quote"),
         /**
-         * TODO: Documentation
+         * A text post. [TextPost]
          */
         @Json(name = "text")
         Text("text"),
         /**
-         * TODO: Documentation
+         * A video post. [VideoPost]
          */
         @Json(name = "video")
         Video("video"),
         /**
-         * TODO: Documentation
+         * A block post, also known as a NPF post. [BlockPost]
          */
         @Json(name = "blocks")
         Block("blocks"),
@@ -410,69 +411,71 @@ public interface Post {
     }
 
     /**
-     * TODO: Documentation
+     * PostFormat - The different text formatting markups that a post can be encoded with.
      *
-     * @param key TODO: Documentation
+     * @param key The string that Tumblr uses to reference each type of format.
      */
     @JsonClass(generateAdapter = false)
     public enum class PostFormat constructor(public val key: String) {
         /**
-         * TODO: Documentation
+         * Post content is rendered as HTML.
          */
         @Json(name = "html")
         HTML("html"),
         /**
-         * TODO: Documentation
+         * Post content is rendered as plain text.
          */
         @Json(name = "text")
         Plain("text"),
         /**
-         * TODO: Documentation
+         * Post content is rendered as raw text.
          */
         @Json(name = "raw")
         Raw("raw"),
         /**
-         * TODO: Documentation
+         * Post content is rendered as Markdown.
          */
         @Json(name = "markdown")
         Markdown("markdown"),
     }
 
     /**
-     * TODO: Documentation
+     * PostVersion - The api version of the post.
      *
-     * @param key TODO: Documentation
+     * @param key The string that Tumblr uses to reference each type of post.
      */
     @JsonClass(generateAdapter = false)
     public enum class PostVersion constructor(public val key: String) {
         /**
-         * TODO: Documentation
+         * This is an NPF post that uses a [BlockPost] and post content is encoded with [PostContent] json objects.
          */
         @Json(name = "npf")
         NPF("npf"),
         /**
-         * TODO: Documentation
+         * This is a legacy post that uses each of the different post types and post content is encoded as HTML.
          */
         @Json(name = "legacy")
         Legacy("legacy")
     }
 
     /**
-     * TODO: Documentation
+     * QueueState - The current state of this post in the queue.
      *
-     * @param key TODO: Documentation
+     * @param key The string that Tumblr uses to reference each state of post.
      */
     @JsonClass(generateAdapter = false)
     public enum class QueueState constructor(public val key: String) {
         /**
-         * TODO: Documentation
+         * This post is currently queued.
          */
         @Json(name = "queued")
         Queued("queued")
     }
 
     /**
-     * https://www.tumblr.com/docs/npf#mapping-npf-post-content-to-legacy-post-types
+     * A helper function to determine the legacy post type that a block post corresponds to.
+     *
+     * Based on the logic here: https://www.tumblr.com/docs/npf#mapping-npf-post-content-to-legacy-post-types
      */
     public fun getLegacyPostType(): Type {
         return when {

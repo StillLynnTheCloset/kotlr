@@ -46,13 +46,12 @@ import com.squareup.moshi.JsonClass
  * @param twitterEnabled Unknown.
  * @param twitterSend Unknown.
  * @param isOptOutAds Unknown.
- *
- * @param submissionTerms TODO: Documentation
- * @param followed TODO: Documentation
- * @param totalPosts TODO: Documentation
- * @param shareFollowing TODO: Documentation
- * @param canBeFollowed TODO: Documentation
- * @param canChat TODO: Documentation
+ * @param submissionTerms Specification of requirements when submitting posts to this blog.
+ * @param followed Whether or not you have followed this blog.
+ * @param totalPosts The total number of posts that this blog has made.
+ * @param shareFollowing Whether or not this blog shares who they are following.
+ * @param canBeFollowed Whether or not you can follow this blog.
+ * @param canChat Whether or not you can chat with this blog.
  */
 @JsonClass(generateAdapter = true)
 public data class Blog constructor(

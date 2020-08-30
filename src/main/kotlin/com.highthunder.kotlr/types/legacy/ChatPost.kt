@@ -33,7 +33,7 @@ import com.squareup.moshi.JsonClass
  * @param isLiked Indicates if a user has already liked a post or not.
  * @param state Indicates the current state of the post.
  * @param totalPosts The total number of post available for this request, useful for paginating through results.
- * @param anonymous TODO: Documentation
+ * @param anonymous Was this post made anonymously.
  * @param content The array of content that constitutes the body of a post in the Neue Post Format(NPF).
  * @param trail The previous Posts in the reblog trail. In order of oldest (the root Post) to the newest (the parent Post).
  * @param layout The layouts of the blocks in this post.
@@ -56,22 +56,31 @@ import com.squareup.moshi.JsonClass
  * @param canReply Indicates whether or not the current user can reply to this post.
  * @param displayAvatar Indicates whether or not the poster's avatar should be shown with this post.
  * @param followed Indicates whether or not the current user follows the author of this post.
- * @param reblogData TODO: Documentation
+ * @param reblogData The reblog content of this post.
  * @param rebloggedFromId The ID of the post that this post reblogged.
- * @param rebloggedFromUrl TODO: Documentation
+ * @param rebloggedFromUrl The URL of the post that this post reblogged.
  * @param rebloggedFromName The name of the blog that this post reblogged.
- * @param rebloggedFromTitle TODO: Documentation
- * @param rebloggedFromUuid TODO: Documentation
- * @param rebloggedFromCanMessage TODO: Documentation
- * @param rebloggedFromFollowing TODO: Documentation
- * @param rebloggedRootId The ID of the post that this post reblogged.
- * @param rebloggedRootUrl TODO: Documentation
+ * @param rebloggedFromTitle The title of the blog that made the post that this post reblogged.
+ * @param rebloggedFromUuid The blog uuid of the post that this post reblogged.
+ * @param rebloggedFromCanMessage Whether or not you can message the blog that made the post that this post reblogged.
+ * @param rebloggedFromFollowing Whether or not you are following the blog that made the post that this post reblogged.
+ * @param rebloggedRootId The ID of the root post that this post reblogged.
+ * @param rebloggedRootUrl The URL of the root post that this post reblogged.
  * @param rebloggedRootName The name of the blog that this post reblogged.
- * @param rebloggedRootTitle TODO: Documentation
- * @param rebloggedRootUuid TODO: Documentation
- * @param rebloggedRootCanMessage TODO: Documentation
- * @param rebloggedRootFollowing TODO: Documentation
- * @param notes TODO: Documentation
+ * @param rebloggedRootTitle The title of the blog that made the root post that this post reblogged.
+ * @param rebloggedRootUuid The blog uuid of the root post that this post reblogged.
+ * @param rebloggedRootCanMessage Whether or not you can message the blog that made the root post that this post reblogged.
+ * @param rebloggedRootFollowing Whether or not you are following the blog that made the root post that this post reblogged.
+ * @param notes A list of all of the notes objects attached to this post.
+ * @param publishTime Returned on queued posts, the time that this post is scheduled to be posted.
+ * @param queueState The current queue state of this post.
+ * @param shouldOpenInLegacy TODO: Documentation
+ * @param muted TODO: Documentation
+ * @param objectType TODO: Documentation
+ * @param blogUUID The UUID of the blog that made this post.
+ * @param parentPostId The id of the post that this post was a response to.
+ * @param parentBlogUUID The UUID of the blog that made the parent post.
+ * @param isBlurredImages Are the images in this post blurred (a NSFW thing I guess?)
  *
  * Chat Post
  * @param title The optional title of the post.

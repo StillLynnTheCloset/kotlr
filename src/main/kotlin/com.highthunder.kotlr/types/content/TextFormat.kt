@@ -69,7 +69,7 @@ public class UnknownTextFormat : TextFormat() {
 }
 
 /**
- * BoldTextFormat - TODO: Documentation
+ * BoldTextFormat - A text format to allow bolding text.
  */
 @JsonClass(generateAdapter = true)
 public data class BoldTextFormat constructor(
@@ -83,7 +83,7 @@ public data class BoldTextFormat constructor(
 }
 
 /**
- * ItalicTextFormat- TODO: Documentation
+ * ItalicTextFormat - A text format to allow italicising text.
  */
 @JsonClass(generateAdapter = true)
 public data class ItalicTextFormat constructor(
@@ -97,7 +97,7 @@ public data class ItalicTextFormat constructor(
 }
 
 /**
- * StrikeThroughTextFormat- TODO: Documentation
+ * StrikeThroughTextFormat - A text format to allow striking out text.
  */
 @JsonClass(generateAdapter = true)
 public data class StrikeThroughTextFormat constructor(
@@ -111,7 +111,7 @@ public data class StrikeThroughTextFormat constructor(
 }
 
 /**
- * LinkTextFormat - TODO: Documentation
+ * LinkTextFormat - A text format to allow marking the formatted text as an arbitrary link.
  *
  * @param url The link's URL!
  */
@@ -128,7 +128,7 @@ public data class LinkTextFormat constructor(
 }
 
 /**
- * MentionTextFormat - TODO: Documentation
+ * MentionTextFormat - A text format to allow marking the formatted text as a link to a blog.
  *
  * @param blog An object with a uuid field, which is the mentioned blog's UUID.
  */
@@ -145,7 +145,7 @@ public data class MentionTextFormat constructor(
 }
 
 /**
- * ColorTextFormat - TODO: Documentation
+ * ColorTextFormat - A text format to allow changing the foreground color of the formatted text.
  *
  * @param hex The color to use, in standard hex format, with leading '#'.
  */
@@ -162,11 +162,11 @@ public data class ColorTextFormat constructor(
 }
 
 /**
- * SizeTextFormat - TODO: Documentation
+ * SizeTextFormat - A deprecated mechanism for altering the size of text in a post.
  *
  * @param size The text size for this particular range of text, one of 'small' or 'big'.
  */
-@Deprecated("This was removed from the Tumblr API spec and is unsupported when creating posts.")
+@Deprecated("This was removed from the Tumblr API spec and is unsupported when creating posts.", replaceWith = ReplaceWith("SmallTextFormat()"))
 @JsonClass(generateAdapter = true)
 public data class SizeTextFormat constructor(
     override val start: Int? = null,
@@ -179,18 +179,18 @@ public data class SizeTextFormat constructor(
     }
 
     /**
-     * TODO: Documentation
+     * Option - The size option used.
      */
-    @Deprecated("This was removed from the Tumblr API spec and is unsupported when creating posts.")
+    @Deprecated("This was removed from the Tumblr API spec and is unsupported when creating posts.", replaceWith = ReplaceWith("SmallTextFormat()"))
     @JsonClass(generateAdapter = false)
     public enum class Option {
         /**
-         * TODO: Documentation
+         * Smaller than normal text.
          */
         @Json(name = "small")
         Small,
         /**
-         * TODO: Documentation
+         * Bigger than normal text.
          */
         @Json(name = "big")
         Big
@@ -198,10 +198,14 @@ public data class SizeTextFormat constructor(
 }
 
 /**
- * SmallTextFormat - Format the specified range of text to be smaller
+ * SmallTextFormat - Format the specified range of text to be smaller.
  *
  * Note: small refers to one-text-size smaller by default.
  * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
+ *
+ * These formats should not compound, if there are multiple overlapping [SmallTextFormat]s in a post, the covered text
+ * should still only be one size smaller than normal.
+ * https://github.com/tumblr/docs/issues/16#issuecomment-657631209
  */
 @JsonClass(generateAdapter = true)
 public data class SmallTextFormat constructor(
