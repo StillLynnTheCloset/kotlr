@@ -193,6 +193,13 @@ internal class SampleFilesSimpleParseTest {
         parseAllFilesInDirectory<Post>("samples/onceFailed/legacyPost")
     }
 
+    // region Links
+
+    @Test
+    internal fun testBadLinks() {
+        parseAllFilesInDirectory<RequestLink>("samples/onceFailed/links")
+    }
+
     @Test
     internal fun testBadMedia() {
         parseAllFilesInDirectory<Media>("samples/onceFailed/media")

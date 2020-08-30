@@ -1,0 +1,7 @@
+{
+  "href": "/v2/user/following?offset=20",
+  "method": "GET",
+  "query_params": {
+    "offset": "20"
+  }
+}

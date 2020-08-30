@@ -1963,6 +1963,23 @@ internal class SampleFilesIndividualParseTest {
 
     // endregion Legacy Post
 
+    // region Links
+
+    @Test
+    internal fun onceFailed_links_realExample() {
+        val post = parseFile<RequestLink>("samples/onceFailed/links/realExample.json")
+        val expected = RequestLink(
+            fullLink = "/v2/user/following?offset=20",
+            httpMethod = "GET",
+            queryParams = mapOf(
+                "offset" to "20"
+            )
+        )
+        assertEquals(expected, post)
+    }
+
+    // endregion Links
+
     // region Media
 
     @Test
