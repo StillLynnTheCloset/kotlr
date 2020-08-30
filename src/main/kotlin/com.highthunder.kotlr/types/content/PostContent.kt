@@ -6,6 +6,7 @@ import com.highthunder.kotlr.types.Colors
 import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.MediaList
 import com.highthunder.kotlr.types.content.TextContent.SubType
+import com.highthunder.kotlr.types.legacy.ExifData
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -106,7 +107,7 @@ public data class AudioContent constructor(
  * @param colors Colors used in the image.
  * @param poster For GIFs, this is a single-frame "poster".
  * @param attribution See the [Attribution] for details about these objects.
- * @param exif A map of extra properties extracted from the Exif data of the photo
+ * @param exif A map of extra properties extracted from the Exif data of the photo.
  */
 @JsonClass(generateAdapter = true)
 public data class ImageContent constructor(
@@ -118,7 +119,7 @@ public data class ImageContent constructor(
     val attribution: AttributionList? = null,
     @Json(name = "alt_text")
     val altText: String? = null,
-    val exif: Map<String, Any?>? = null,
+    val exif: ExifData? = null,
     override val type: String = KEY,
 ) : PostContent() {
     internal companion object {
