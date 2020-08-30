@@ -18,7 +18,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
 
 /**
- * PostsPostWrapperJsonAdapter - TODO: Documentation
+ * PostsPostWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponsePostsPost].
  *
  * Tumblr decided to make this one request special and put the post object directly as the value in `response` instead
  * of nesting it in another object like all of the other API responses.

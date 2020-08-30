@@ -4,7 +4,7 @@ import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson
 
 /**
- * HexColorJsonAdapter - TODO: Documentation
+ * CommaSeparatedStringJsonAdapter - An adapter to (de-)serialize properties annotated with [CommaSeparatedString].
  *
  * @author highthunder
  * @since 10/27/18

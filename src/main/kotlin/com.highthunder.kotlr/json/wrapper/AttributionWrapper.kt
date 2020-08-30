@@ -15,7 +15,7 @@ import com.squareup.moshi.JsonClass
  * depending on the content.
  *
  * @author highthunder
- * @since 03/21/20
+ * @since 2020-03-21
  * @version 1.0.0
  *
  * @param singleAttribution The single attribution object, if it was returned.

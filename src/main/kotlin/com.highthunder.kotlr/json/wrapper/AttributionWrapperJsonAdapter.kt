@@ -20,7 +20,7 @@ import com.squareup.moshi.ToJson
  * from either a single [Media] object, or a list of them.
  *
  * @author highthunder
- * @since 10/20/18
+ * @since 2020-03-21
  * @version 1.0.0
  */
 internal class AttributionWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<AttributionWrapper>() {
@@ -29,9 +29,6 @@ internal class AttributionWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<Attribu
 
     private val listOfAttributionAdapter: JsonAdapter<List<Attribution>> = moshi.listAdapter()
 
-    /**
-     * TODO: Documentation
-     */
     @FromJson
     override fun fromJson(reader: JsonReader): AttributionWrapper? {
         return when (reader.peek()) {
@@ -42,9 +39,6 @@ internal class AttributionWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<Attribu
         }
     }
 
-    /**
-     * TODO: Documentation
-     */
     @ToJson
     override fun toJson(writer: JsonWriter, value: AttributionWrapper?) {
         when {

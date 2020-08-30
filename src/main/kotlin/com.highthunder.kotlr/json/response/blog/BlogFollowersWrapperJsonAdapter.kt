@@ -17,7 +17,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
 
 /**
- * BlogFollowersWrapperJsonAdapter - TODO: Documentation
+ * BlogFollowersWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseBlogFollowers].
  *
  * @author highthunder
  * @since 10/25/18

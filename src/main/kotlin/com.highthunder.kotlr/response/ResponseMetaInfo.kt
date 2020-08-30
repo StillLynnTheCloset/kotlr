@@ -4,15 +4,19 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * ResponseMetaInfo - TODO: Documentation
+ * ResponseMetaInfo - An object to hold meta data about the response.
+ *
+ * This includes meta-data explicitly returned in the response by Tumblr, and data that was extracted from various HTTP
+ * headers on the response.
  *
  * @author highthunder
  * @since 10/24/18
  * @version 1.0.0
  *
- * @param status TODO: Documentation
- * @param msg TODO: Documentation
- * @param contentRating TODO: Documentation
+ * @param status The 3-digit HTTP Status-Code code of the response.
+ * @param msg The HTTP Reason-Phrase of the response.
+ * @param contentRating Extracted from Tumblr's headers. Informs whether or not the content in this response is adult rated.
+ * @param rateLimitMetaData Extracted from Tumblr's headers. Contains information about the current state of your rate limits.
  */
 @JsonClass(generateAdapter = true)
 public data class ResponseMetaInfo constructor(

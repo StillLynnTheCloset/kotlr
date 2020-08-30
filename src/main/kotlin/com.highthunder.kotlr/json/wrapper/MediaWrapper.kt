@@ -15,7 +15,7 @@ import com.squareup.moshi.JsonClass
  * depending on the content.
  *
  * @author highthunder
- * @since 10/20/18
+ * @since 2018-11-04
  * @version 1.0.0
  *
  * @param singleMedia The single media object, if it was returned.

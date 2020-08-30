@@ -5,7 +5,7 @@ import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson
 
 /**
- * HexColorOctothorpeJsonAdapter - TODO: Documentation
+ * HexColorOctothorpeJsonAdapter - An adapter to (de-)serialize properties annotated with [HexColorOctothorpe].
  *
  * @author highthunder
  * @since 10/27/18

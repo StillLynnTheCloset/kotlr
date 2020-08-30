@@ -11,7 +11,13 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
 
 /**
- * TODO: Documentation
+ * ColorsJsonAdapter - A custom adapter to help Moshi parse [Colors] objects.
+ *
+ * This helps convert the property names from "c1", "c2" to the numbers 1, 2, etc.
+ *
+ * @author highthunder
+ * @since 2018-11-18
+ * @version 1.0.0
  */
 internal class ColorsJsonAdapter(moshi: Moshi) : JsonAdapter<Colors>() {
 
@@ -20,9 +26,6 @@ internal class ColorsJsonAdapter(moshi: Moshi) : JsonAdapter<Colors>() {
 
     override fun toString(): String = "JsonAdapter(Colors)"
 
-    /**
-     * TODO: Documentation
-     */
     @FromJson
     override fun fromJson(reader: JsonReader): Colors {
         val colors: MutableMap<Int, Color> = mutableMapOf()
@@ -39,9 +42,6 @@ internal class ColorsJsonAdapter(moshi: Moshi) : JsonAdapter<Colors>() {
         return Colors(colors)
     }
 
-    /**
-     * TODO: Documentation
-     */
     @ToJson
     override fun toJson(writer: JsonWriter, value: Colors?) {
 //        if (value == null) {

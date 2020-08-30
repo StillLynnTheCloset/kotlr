@@ -1,16 +1,18 @@
 package com.highthunder.kotlr.authentication
 
 /**
- * TumblrUserKey - TODO: Documentation
+ * TumblrUserKey - An extension of [TumblrAppKey] that also includes user specific credentials.
+ *
+ * Acquire this data by using an [OAuthFlow], but this constructor is public so you can rebuild this from a persistent datastore.
  *
  * @author highthunder
  * @since 10/23/18
  * @version 1.0.0
  *
- * @param apiKey TODO: Documentation
- * @param apiSecret TODO: Documentation
- * @param userKey TODO: Documentation
- * @param userSecret TODO: Documentation
+ * @param apiKey Tumblr calls this the "OAuth Consumer Key". The OAuth standard calls this "Consumer Key".
+ * @param apiSecret Tumblr calls this the "Secret Key". The OAuth standard calls this "Consumer Secret".
+ * @param userKey The OAuth standard calls this "Access Secret".
+ * @param userSecret The OAuth standard calls this "Access Secret".
  */
 public data class TumblrUserKey constructor(
     override val apiKey: String,

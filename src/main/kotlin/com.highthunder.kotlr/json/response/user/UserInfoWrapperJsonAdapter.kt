@@ -17,7 +17,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
 
 /**
- * UserInfoWrapperJsonAdapter - TODO: Documentation
+ * UserInfoWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseUserInfo].
  *
  * @author highthunder
  * @since 10/25/18

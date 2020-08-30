@@ -23,7 +23,8 @@ public interface TumblrResponse<out T> {
     public val meta: ResponseMetaInfo
 
     /**
-     * TODO: Documentation
+     * The actual body of the response, this can either be the body promised by the API, or a string containing an
+     * error message.
      */
     public val response: WrapperInterface<T>
 

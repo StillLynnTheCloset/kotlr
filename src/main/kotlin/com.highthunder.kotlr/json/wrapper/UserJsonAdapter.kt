@@ -16,7 +16,14 @@ import kotlin.Long
 import kotlin.String
 
 /**
- * TODO: Documentation
+ * UserJsonAdapter - A custom adapter to help Moshi parse [User] objects.
+ *
+ * This is necessary because depending on the circumstances, the [User.following] property can either be a boolean
+ * representing if you are following that user, or an int of the number of blogs that this user follows.
+ *
+ * @author highthunder
+ * @since 2018-11-10
+ * @version 1.0.0
  */
 internal class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
     private val options: JsonReader.Options =
@@ -46,9 +53,6 @@ internal class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
 
     override fun toString(): String = "GeneratedJsonAdapter(User)"
 
-    /**
-     * TODO: Documentation
-     */
     @FromJson
     override fun fromJson(reader: JsonReader): User {
         var blogs: List<Blog>? = null
@@ -125,9 +129,6 @@ internal class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
         return result
     }
 
-    /**
-     * TODO: Documentation
-     */
     @ToJson
     override fun toJson(writer: JsonWriter, value: User?) {
         if (value == null) {

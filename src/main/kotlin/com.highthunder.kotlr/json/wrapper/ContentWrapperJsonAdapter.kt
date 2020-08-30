@@ -14,10 +14,10 @@ import com.squareup.moshi.ToJson
 import com.squareup.moshi.Types
 
 /**
- * ContentWrapperJsonAdapter - TODO: Documentation
+ * ContentWrapperJsonAdapter - A custom adapter to help Moshi parse [PostContent] either as a string of HTML or as a list of content objects.
  *
  * @author highthunder
- * @since 10/20/18
+ * @since 2018-11-04
  * @version 1.0.0
  */
 internal class ContentWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ContentWrapper>() {
@@ -28,9 +28,6 @@ internal class ContentWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ContentWrap
     private val listOfContentAdapter: JsonAdapter<List<PostContent>> =
         moshi.adapter(Types.newParameterizedType(List::class.java, PostContent::class.java), emptySet())
 
-    /**
-     * TODO: Documentation
-     */
     @FromJson
     override fun fromJson(reader: JsonReader): ContentWrapper {
         return when (reader.peek()) {
@@ -41,9 +38,6 @@ internal class ContentWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ContentWrap
         }
     }
 
-    /**
-     * TODO: Documentation
-     */
     @ToJson
     override fun toJson(writer: JsonWriter, value: ContentWrapper?) {
         if (value?.contentString != null) {

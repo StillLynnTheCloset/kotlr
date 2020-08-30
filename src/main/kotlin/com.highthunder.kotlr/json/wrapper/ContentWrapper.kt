@@ -9,7 +9,7 @@ import com.squareup.moshi.JsonClass
  * a [Trail] object as a string. Otherwise it will be returned as a list of PostContent objects.
  *
  * @author highthunder
- * @since 10/20/18
+ * @since 2019-11-04
  * @version 1.0.0
  *
  * @param contentString The contents as a string (usually HTML).

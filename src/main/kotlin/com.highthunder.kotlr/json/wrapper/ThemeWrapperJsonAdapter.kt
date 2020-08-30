@@ -18,7 +18,7 @@ import com.squareup.moshi.Types
  * from either a single [BlogTheme] object, or a list of them.
  *
  * @author highthunder
- * @since 10/20/18
+ * @since 2018-11-04
  * @version 1.0.0
  */
 internal class ThemeWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ThemeWrapper>() {
@@ -33,9 +33,6 @@ internal class ThemeWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ThemeWrapper>
             null
         )
 
-    /**
-     * TODO: Documentation
-     */
     @FromJson
     override fun fromJson(reader: JsonReader): ThemeWrapper {
         return when (reader.peek()) {
@@ -46,9 +43,6 @@ internal class ThemeWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ThemeWrapper>
         }
     }
 
-    /**
-     * TODO: Documentation
-     */
     @ToJson
     override fun toJson(writer: JsonWriter, value: ThemeWrapper?) {
         if (value?.singleTheme != null) {

@@ -9,10 +9,13 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
 
 /**
- * VideoJsonAdapter - TODO: Documentation
+ * VideoJsonAdapter - A custom adapter to help Moshi parse [Video] objects.
+ *
+ * This is necessary because depending on the circumstances, the [Video.embed_code] property can either be a string
+ * containing HTML, or a boolean [false] if there is no embed code.
  *
  * @author highthunder
- * @since 10/20/18
+ * @since 2018-11-04
  * @version 1.0.0
  */
 internal class VideoJsonAdapter(moshi: Moshi) : JsonAdapter<Video>() {
@@ -29,9 +32,6 @@ internal class VideoJsonAdapter(moshi: Moshi) : JsonAdapter<Video>() {
 
     override fun toString(): String = "GeneratedJsonAdapter(Video)"
 
-    /**
-     * TODO: Documentation
-     */
     @FromJson
     override fun fromJson(reader: JsonReader): Video {
         var width: Int? = null
@@ -70,9 +70,6 @@ internal class VideoJsonAdapter(moshi: Moshi) : JsonAdapter<Video>() {
         return result
     }
 
-    /**
-     * TODO: Documentation
-     */
     @ToJson
     override fun toJson(writer: JsonWriter, value: Video?) {
         if (value == null) {

@@ -6,7 +6,7 @@ import com.highthunder.kotlr.authentication.TumblrAppKey
 import com.highthunder.kotlr.authentication.TumblrUserKey
 
 /*
- * SampleKeys - TODO: Documentation
+ * SampleKeys - A sample usage of the credentials.
  *
  * @author highthunder
  * @since 10/23/18
@@ -14,7 +14,7 @@ import com.highthunder.kotlr.authentication.TumblrUserKey
  */
 
 /**
- * TODO: Documentation
+ * A sample AppKey.
  */
 public val SampleAppKey: TumblrAppKey = TumblrAppKey(
     apiKey = "apiKey aka ConsumerKey",
@@ -22,7 +22,7 @@ public val SampleAppKey: TumblrAppKey = TumblrAppKey(
 )
 
 /**
- * TODO: Documentation
+ * A sample UserKey, built using [SampleAppKey].
  */
 public val SampleUserKey: TumblrUserKey = TumblrUserKey(
     appKey = SampleAppKey,

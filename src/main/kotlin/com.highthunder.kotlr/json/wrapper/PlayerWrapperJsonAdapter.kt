@@ -1,5 +1,6 @@
 package com.highthunder.kotlr.json.wrapper
 
+import com.highthunder.kotlr.types.MediaList
 import com.highthunder.kotlr.types.legacy.Video
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonAdapter
@@ -14,10 +15,11 @@ import com.squareup.moshi.ToJson
 import com.squareup.moshi.Types
 
 /**
- * PlayerWrapperJsonAdapter - TODO: Documentation
+ * PlayerWrapperJsonAdapter - An adapter to help Moshi convert [MediaList] objects to and
+ * from a string or a list of [Video] objects.
  *
  * @author highthunder
- * @since 10/20/18
+ * @since 2018-11-04
  * @version 1.0.0
  */
 internal class PlayerWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<PlayerWrapper>() {
@@ -32,9 +34,6 @@ internal class PlayerWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<PlayerWrappe
             null
         )
 
-    /**
-     * TODO: Documentation
-     */
     @FromJson
     override fun fromJson(reader: JsonReader): PlayerWrapper? {
         return when (reader.peek()) {
@@ -45,9 +44,6 @@ internal class PlayerWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<PlayerWrappe
         }
     }
 
-    /**
-     * TODO: Documentation
-     */
     @ToJson
     override fun toJson(writer: JsonWriter, value: PlayerWrapper?) {
         when {

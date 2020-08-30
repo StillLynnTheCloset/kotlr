@@ -17,7 +17,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
 
 /**
- * CreatePostWrapperJsonAdapter - TODO: Documentation
+ * CreatePostWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseCreatePost].
  *
  * @author highthunder
  * @since 10/25/18

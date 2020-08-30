@@ -1,6 +1,7 @@
 package com.highthunder.kotlr.json.wrapper
 
 import com.highthunder.kotlr.types.Color
+import com.highthunder.kotlr.types.legacy.Video
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonDataException
@@ -9,15 +10,18 @@ import com.squareup.moshi.JsonWriter
 import com.squareup.moshi.ToJson
 
 /**
- * TODO: Documentation
+ * ColorJsonAdapter - A custom adapter to help Moshi parse [Color] objects.
+ *
+ * This allows parsing both strings and integers as colors.
+ *
+ * @author highthunder
+ * @since 2020-02-08
+ * @version 1.0.0
  */
 internal class ColorJsonAdapter() : JsonAdapter<Color>() {
 
     override fun toString(): String = "JsonAdapter(Colors)"
 
-    /**
-     * TODO: Documentation
-     */
     @FromJson
     override fun fromJson(reader: JsonReader): Color {
         return when (reader.peek()) {
@@ -27,9 +31,6 @@ internal class ColorJsonAdapter() : JsonAdapter<Color>() {
         }
     }
 
-    /**
-     * TODO: Documentation
-     */
     @ToJson
     override fun toJson(writer: JsonWriter, value: Color?) {
 //        if (value == null) {

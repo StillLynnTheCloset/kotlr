@@ -17,7 +17,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
 
 /**
- * UserLikesWrapperJsonAdapter - TODO: Documentation
+ * UserLikesWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseUserLikes].
  *
  * @author highthunder
  * @since 10/25/18
