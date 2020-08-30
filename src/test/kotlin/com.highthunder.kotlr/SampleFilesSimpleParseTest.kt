@@ -67,7 +67,7 @@ internal class SampleFilesSimpleParseTest {
         }
 
         private inline fun <reified T> parseAllFilesInDirectory(directoryName: String) {
-            parseAllFilesInDirectory(directoryName, moshi.adapter<T>())
+            parseAllFilesInDirectory(directoryName, moshi.adapter<T>().failOnUnknown())
         }
 
         private fun <T> parseAllFilesInDirectory(directoryName: String, adapter: JsonAdapter<T>) {
