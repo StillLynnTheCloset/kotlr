@@ -1,6 +1,15 @@
 {
     "type": "image",
     "exif": {
-        "Time": "1594466997"
+        "Time": 1598724932,
+        "FocalLength": 4,
+        "FocalLength35mmEquiv": 4,
+        "Aperture": 1.8,
+        "ExposureTime": 0.03333333333333333,
+        "ISO": 1000,
+        "CameraMake": "Apple",
+        "CameraModel": "iPhone 11 Pro",
+        "Lens": "4mm",
+        "SensorWidthMM": 4
     }
 }

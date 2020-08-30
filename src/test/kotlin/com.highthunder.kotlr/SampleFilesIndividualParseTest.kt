@@ -1557,8 +1557,17 @@ internal class SampleFilesIndividualParseTest {
     internal fun onceFailed_content_imageContent_exif() {
         val content = parseFile<PostContent>("samples/onceFailed/content/imageContent_exif.json")
         val expected = ImageContent(
-            exif = mapOf(
-                "Time" to "1594466997"
+            exif = ExifData(
+                time = 1598724932,
+                focalLength = "4.0",
+                focalLength35mmEquivalent = "4.0",
+                aperture = "1.8",
+                exposureTime = "0.03333333333333333",
+                iso = 1000,
+                cameraMake = "Apple",
+                cameraModel = "iPhone 11 Pro",
+                lens = "4mm",
+                sensorWidthMM = "4.0"
             )
         )
         assertEquals(expected, content)
