@@ -423,17 +423,17 @@ public interface Post {
         @Json(name = "html")
         HTML("html"),
         /**
-         * Post content is rendered as plain text.
+         * Post content is rendered as plain text, no HTML.
          */
         @Json(name = "text")
         Plain("text"),
         /**
-         * Post content is rendered as raw text.
+         * Post content is rendered as entered by the user (no post-processing).
          */
         @Json(name = "raw")
         Raw("raw"),
         /**
-         * Post content is rendered as Markdown.
+         * Post content is rendered as Markdown if the user writes in Markdown.
          */
         @Json(name = "markdown")
         Markdown("markdown"),

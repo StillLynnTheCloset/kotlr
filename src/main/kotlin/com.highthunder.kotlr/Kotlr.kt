@@ -121,6 +121,15 @@ private fun getClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false, str
         .build()
 }
 
+/**
+ * Get a Kotlr API client.
+ *
+ * This allows you to perform requests to the Tumblr API.
+ *
+ * @param userKey The User key to be used to authenticate the requests.
+ * @param debug Controls whether or not requests are made in debug mode (prints extra connection debugging information.)
+ * @param strict Controls whether or not parsing is performed in strict mode (throws an error if Tumblr returns unexpected data.)
+ */
 public fun getApi(userKey: TumblrUserKey, debug: Boolean = false, strict: Boolean = false): KotlrApi {
     val client = getClient(getOAuthConsumer(userKey), debug = debug, strict = strict)
     val userGetApi: KotlrUserGetApi = client.create()
