@@ -5,6 +5,7 @@ import com.highthunder.kotlr.types.NoteData
 import com.highthunder.kotlr.types.Post
 import com.highthunder.kotlr.types.ReblogData
 import com.highthunder.kotlr.types.Trail
+import com.highthunder.kotlr.types.VideoMetadata
 import com.highthunder.kotlr.types.content.BlockLayout
 import com.highthunder.kotlr.types.content.PostContent
 import com.squareup.moshi.Json
@@ -221,8 +222,8 @@ public data class VideoPost constructor(
     @Json(name = "thumbnail_height")
     val thumbnailHeight: Int? = null,
     val duration: Double? = null,
-    @Json(name = "video") // TODO: Figure out how to parse this one
-    val videoData: Any? = null,
+    @Json(name = "video")
+    val videoData: VideoMetadata? = null,
     @Json(name = "permalink_url")
     val permalinkUrl: String? = null,
     @Json(name = "video_type")

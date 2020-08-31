@@ -12,10 +12,14 @@ import com.highthunder.kotlr.types.ReblogData
 import com.highthunder.kotlr.types.ReblogNote
 import com.highthunder.kotlr.types.ReplyNote
 import com.highthunder.kotlr.types.RequestLink
+import com.highthunder.kotlr.types.RequestLinks
+import com.highthunder.kotlr.types.RequestQueryParameters
 import com.highthunder.kotlr.types.SubmissionTerms
 import com.highthunder.kotlr.types.Tag
 import com.highthunder.kotlr.types.Trail
 import com.highthunder.kotlr.types.User
+import com.highthunder.kotlr.types.VideoMetadata
+import com.highthunder.kotlr.types.YoutubeVideoMetadata
 import com.highthunder.kotlr.types.content.AppAttribution
 import com.highthunder.kotlr.types.content.AskBlockLayout
 import com.highthunder.kotlr.types.content.AudioContent
@@ -53,7 +57,7 @@ import org.junit.Test
 
 /**
  * In the past I have forgotten to add default values for new fields.
- * This test will prevent that from happening
+ * This test will prevent that from happening. Assuming that I remember to add tests for new classes...
  */
 internal class VerifyEverythingHasADefaultConstructor {
     @Test
@@ -94,6 +98,8 @@ internal class VerifyEverythingHasADefaultConstructor {
         println(Photo().toString())
         println(PhotoSize().toString())
         println(Video().toString())
+        println(VideoMetadata().toString())
+        println(YoutubeVideoMetadata().toString())
         println(BlockPost().toString())
         println(Blog().toString())
         println(BlogTheme().toString())
@@ -101,6 +107,8 @@ internal class VerifyEverythingHasADefaultConstructor {
         println(Media().toString())
         println(ReblogData().toString())
         println(RequestLink().toString())
+        println(RequestLinks().toString())
+        println(RequestQueryParameters().toString())
         println(SubmissionTerms().toString())
         println(Tag().toString())
         println(Trail().toString())

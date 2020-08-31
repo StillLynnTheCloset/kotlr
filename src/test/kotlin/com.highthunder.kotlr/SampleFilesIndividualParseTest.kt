@@ -29,6 +29,7 @@ import com.highthunder.kotlr.types.SubmissionTerms
 import com.highthunder.kotlr.types.Trail
 import com.highthunder.kotlr.types.User
 import com.highthunder.kotlr.types.VideoMetadata
+import com.highthunder.kotlr.types.YoutubeVideoMetadata
 import com.highthunder.kotlr.types.content.AppAttribution
 import com.highthunder.kotlr.types.content.AskBlockLayout
 import com.highthunder.kotlr.types.content.Attribution
@@ -1962,11 +1963,11 @@ internal class SampleFilesIndividualParseTest {
     internal fun onceFailed_legacyPost_videoPost_videoObject() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/videoPost_videoObject.json")
         val expected = VideoPost(
-            videoData = mapOf<String, Any?>(
-                "youtube" to mapOf<String, Any?>(
-                    "video_id" to "ukIuGYR_Jcdm60j7Nb95dg",
-                    "width" to 540.0,
-                    "height" to 304.0
+            videoData = VideoMetadata(
+                youtube = YoutubeVideoMetadata(
+                    videoId = "ukIuGYR_Jcdm60j7Nb95dg",
+                    width = 540,
+                    height = 304,
                 )
             )
         )
