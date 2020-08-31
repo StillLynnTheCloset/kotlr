@@ -5,7 +5,6 @@ import com.highthunder.kotlr.response.ResponseMetaInfo
 import com.highthunder.kotlr.response.TumblrError
 import com.highthunder.kotlr.response.TumblrResponse
 import com.highthunder.kotlr.response.WrapperInterface
-import com.highthunder.kotlr.types.RequestLink
 import com.highthunder.kotlr.types.RequestLinks
 import com.highthunder.kotlr.types.User
 import com.squareup.moshi.Json

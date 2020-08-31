@@ -24,12 +24,12 @@ import com.squareup.moshi.Types
 internal class ThemeWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ThemeWrapper>() {
 
     private val themeAdapter: JsonAdapter<BlogTheme?> =
-        moshi.adapter(BlogTheme::class.java, kotlin.collections.emptySet(), null)
+        moshi.adapter(BlogTheme::class.java, emptySet(), null)
 
     private val listOfThemeAdapter: JsonAdapter<List<BlogTheme>> =
-        moshi.adapter<List<BlogTheme>>(
+        moshi.adapter(
             Types.newParameterizedType(List::class.java, BlogTheme::class.java),
-            kotlin.collections.emptySet(),
+            emptySet(),
             null
         )
 

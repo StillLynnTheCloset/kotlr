@@ -83,6 +83,7 @@ import com.squareup.moshi.JsonClass
  * @param isBlurredImages Are the images in this post blurred (a NSFW thing I guess?)
  *
  * Chat Post
+ * @param type The type of this post. This is provided as a constructor parameter to make Moshi happy. If you override this, you'll get bad data.
  * @param title The optional title of the post.
  * @param body The full chat body.
  * @param dialogue List of dialog objects describing the chat in detail.

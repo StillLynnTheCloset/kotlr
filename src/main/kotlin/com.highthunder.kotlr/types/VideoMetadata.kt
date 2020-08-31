@@ -11,6 +11,7 @@ import com.squareup.moshi.JsonClass
  * @version 1.0.0
  *
  * @param id An identifier.
+ * @param youtube An object containing YouTube-specific metadata.
  */
 @JsonClass(generateAdapter = true)
 public data class VideoMetadata constructor(

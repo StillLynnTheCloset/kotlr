@@ -117,9 +117,8 @@ internal class SampleFilesIndividualParseTest {
             assertEquals(allFileNames, parsedFileNames)
         }
 
-        private inline fun <reified T> parseFile(fileName: String): T? {
-            return parseFile(fileName, moshi.adapter<T>().failOnUnknown())
-        }
+        private inline fun <reified T> parseFile(fileName: String): T? =
+            parseFile(fileName, moshi.adapter<T>().failOnUnknown())
 
         private fun <T> parseFile(fileName: String, adapter: JsonAdapter<T>): T? {
             val file = File(fileName)
@@ -231,7 +230,7 @@ internal class SampleFilesIndividualParseTest {
                 linkType = RequestLink.Type.Action,
                 httpMethod = "GET",
                 fullLink = "https://api.tumblr.com/v2/endpoint",
-                queryParams =  RequestQueryParameters(
+                queryParams = RequestQueryParameters(
                     pageNumber = "3.0"
                 )
             ),
@@ -1985,7 +1984,7 @@ internal class SampleFilesIndividualParseTest {
             fullLink = "/v2/user/following?offset=20",
             httpMethod = "GET",
             queryParams = RequestQueryParameters(
-                offset= "20"
+                offset = "20"
             )
         )
         assertEquals(expected, post)

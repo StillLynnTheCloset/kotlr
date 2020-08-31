@@ -46,8 +46,8 @@ public data class ReblogPostBody constructor(
     val hideTrail: Boolean? = null,
 ) {
     init {
-        tags?.forEach {
-            it.takeIf { it.contains(',') }
+        tags?.forEach { tag ->
+            tag.takeIf { it.contains(',') }
                 ?.also { println("Tag `$it` contains comma(s). Tumblr will interpret this as a delimiter.") }
         }
     }

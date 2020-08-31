@@ -28,6 +28,7 @@ import com.squareup.moshi.JsonClass
  * @param isBlockedFromPrimary Indicates whether this blog has been blocked by the calling user's primary blog.
  * @param uuid A unique identifier for this blog.
  * @param askPageTitle The title to display on this blog's ask page, often a prompt.
+ * @param asksAllowMedia Indicates whether or not asks allow uploading additional media.
  * @param submissionPageTitle The title to display on this blog's submission page, often a prompt.
  * @param active Indicates whether or not this blog is active, i.e. the owner has not deactivated it.
  * @param canSubmit Indicates whether or not this blog accepts submissions.
@@ -52,6 +53,7 @@ import com.squareup.moshi.JsonClass
  * @param shareFollowing Whether or not this blog shares who they are following.
  * @param canBeFollowed Whether or not you can follow this blog.
  * @param canChat Whether or not you can chat with this blog.
+ * @param avatar A list of images representing the different sizes of this blog's avatar.
  */
 @JsonClass(generateAdapter = true)
 public data class Blog constructor(

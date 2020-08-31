@@ -23,6 +23,10 @@ import com.squareup.moshi.JsonClass
  * @param originalDimensionsMissing Indicates that the dimensions of this media are unknown so [width] and [height] contain default values.
  * @param hd Indicates if Tumblr considers this media to be in High Definition.
  * @param poster Usually a still image to represent this media while loading.
+ * @param mediaKey A key to identify this media object.
+ * @param cropped Indicates if this media has been cropped.
+ * @param hasOriginalDimensions Indicates if this media includes a version with the original dimensions.
+ * @param colors A colors object containing the main colors in this media.
  */
 @JsonClass(generateAdapter = true)
 public data class Media constructor(

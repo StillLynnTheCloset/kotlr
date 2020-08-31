@@ -84,6 +84,7 @@ import com.squareup.moshi.JsonClass
  * @param isBlurredImages Are the images in this post blurred (a NSFW thing I guess?)
  *
  * Video Post
+ * @param type The type of this post. This is provided as a constructor parameter to make Moshi happy. If you override this, you'll get bad data.
  * @param player The list of [Video]s in this post.
  * @param caption The user-supplied caption.
  * @param videoUrl A direct link to the video file.

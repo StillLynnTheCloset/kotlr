@@ -83,6 +83,7 @@ import com.squareup.moshi.JsonClass
  * @param isBlurredImages Are the images in this post blurred (a NSFW thing I guess?)
  *
  * Link Post
+ * @param type The type of this post. This is provided as a constructor parameter to make Moshi happy. If you override this, you'll get bad data.
  * @param title The title of the page the link points to.
  * @param description A user-supplied description.
  * @param url The link!

@@ -25,12 +25,12 @@ import com.squareup.moshi.Types
 internal class PlayerWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<PlayerWrapper>() {
 
     private val stringAdapter: JsonAdapter<String?> =
-        moshi.adapter(String::class.java, kotlin.collections.emptySet(), null)
+        moshi.adapter(String::class.java, emptySet(), null)
 
     private val listOfVideoAdapter: JsonAdapter<List<Video>> =
-        moshi.adapter<List<Video>>(
+        moshi.adapter(
             Types.newParameterizedType(List::class.java, Video::class.java),
-            kotlin.collections.emptySet(),
+            emptySet(),
             null
         )
 

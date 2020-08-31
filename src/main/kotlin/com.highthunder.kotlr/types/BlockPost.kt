@@ -78,6 +78,7 @@ import com.squareup.moshi.JsonClass
  * @param isBlurredImages Are the images in this post blurred (a NSFW thing I guess?)
  *
  * Block Post
+ * @param type The type of this post. This is provided as a constructor parameter to make Moshi happy. If you override this, you'll get bad data.
  * @param askingName The name of the blog that sent this ask (if this is an ask post.)
  * @param askingUrl The url of the blog that sent this ask (if this is an ask post.)
  * @param originalType The original post type of this post before it was converted to a BlockPost.

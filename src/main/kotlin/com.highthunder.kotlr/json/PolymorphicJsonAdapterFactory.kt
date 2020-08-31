@@ -169,6 +169,9 @@ public class PolymorphicJsonAdapterFactory<T> internal constructor(
         )
     }
 
+    /**
+     * Construct an adapter from this factory.
+     */
     override fun create(
         type: Type,
         annotations: Set<Annotation?>,
@@ -221,7 +224,7 @@ public class PolymorphicJsonAdapterFactory<T> internal constructor(
         override fun fromJson(reader: JsonReader): Any? {
             val peeked = reader.peekJson()
             peeked.setFailOnUnknown(false)
-            val labelIndex: Int = peeked.use { labelIndex(it) }
+            val labelIndex: Int = peeked.use(::labelIndex)
             if (labelIndex == LABEL_INDEX_USE_DEFAULT) {
                 reader.skipValue()
                 return defaultValue
@@ -273,8 +276,6 @@ public class PolymorphicJsonAdapterFactory<T> internal constructor(
             writer.endObject()
         }
 
-        override fun toString(): String {
-            return "PolymorphicJsonAdapter($labelKey)"
-        }
+        override fun toString(): String = "PolymorphicJsonAdapter($labelKey)"
     }
 }

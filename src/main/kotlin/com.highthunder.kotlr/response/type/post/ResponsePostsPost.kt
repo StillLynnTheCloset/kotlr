@@ -1,5 +1,6 @@
 package com.highthunder.kotlr.response.type.post
 
+import com.highthunder.kotlr.json.response.post.PostsPostWrapperJsonAdapter
 import com.highthunder.kotlr.response.ResponseMetaInfo
 import com.highthunder.kotlr.response.TumblrError
 import com.highthunder.kotlr.response.TumblrResponse

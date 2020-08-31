@@ -17,7 +17,7 @@ import com.squareup.moshi.ToJson
  * @since 2020-02-08
  * @version 1.0.0
  */
-internal class ColorJsonAdapter() : JsonAdapter<Color>() {
+internal class ColorJsonAdapter : JsonAdapter<Color>() {
 
     override fun toString(): String = "JsonAdapter(Colors)"
 

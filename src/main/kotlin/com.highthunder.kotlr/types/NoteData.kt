@@ -109,7 +109,9 @@ public data class PostedNote constructor(
 /**
  * ReblogNote - TODO: Documentation
  *
+ * @param addedText TODO: Documentation
  * @param postId TODO: Documentation
+ * @param canBlock TODO: Documentation
  * @param reblogParentBlogName TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
@@ -175,6 +177,7 @@ public data class ReplyNote constructor(
 /**
  * AttributionNote - TODO: Documentation
  *
+ * @param postId TODO: Documentation
  * @param postAttributionType TODO: Documentation
  * @param postAttributionTypeName TODO: Documentation
  * @param photoUrl TODO: Documentation

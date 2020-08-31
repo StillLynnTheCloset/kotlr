@@ -11,8 +11,8 @@ import com.squareup.moshi.ToJson
 /**
  * VideoJsonAdapter - A custom adapter to help Moshi parse [Video] objects.
  *
- * This is necessary because depending on the circumstances, the [Video.embed_code] property can either be a string
- * containing HTML, or a boolean [false] if there is no embed code.
+ * This is necessary because depending on the circumstances, the `embed_code` property can either be a string
+ * containing HTML, or a boolean `false` if there is no embed code.
  *
  * @author highthunder
  * @since 2018-11-04

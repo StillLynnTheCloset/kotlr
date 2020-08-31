@@ -18,7 +18,7 @@ import kotlin.String
 /**
  * UserJsonAdapter - A custom adapter to help Moshi parse [User] objects.
  *
- * This is necessary because depending on the circumstances, the [User.following] property can either be a boolean
+ * This is necessary because depending on the circumstances, the `following` property can either be a boolean
  * representing if you are following that user, or an int of the number of blogs that this user follows.
  *
  * @author highthunder

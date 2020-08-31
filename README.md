@@ -4,7 +4,7 @@
 
 # Kotlr
 
-Its a portmanteau of Kotlin and Tumblr
+It's a portmanteau of Kotlin and Tumblr
 
 Kotlr is a Kotlin library for interacting with the Tumblr(V2) API.
 The library is written in pure Kotlin, but does currently have
@@ -31,7 +31,7 @@ The priorities of development right now are:
 2. Improve documentation.
 3. Improve test coverage and make tests more targeted.
 4. Add support for requests using other HTTP verbs.
-5. Add support for mutlipart form uploads. After this Kotlr will support all of the Tumblr API which will mark version 1.0.0
+5. Add support for mutlipart form uploads. After this Kotlr will support all the Tumblr API which will mark version 1.0.0
 6. Clean up the API by: restricting visibility, reducing optional and default values, limiting mutablity, and enforcing stricter types.
 7. Create extension library to improve ease of use on Android.
 8. Create PoC Android App.

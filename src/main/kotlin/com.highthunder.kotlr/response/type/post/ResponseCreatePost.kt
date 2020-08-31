@@ -48,8 +48,9 @@ public interface ResponseCreatePost {
     /**
      * TODO: Documentation
      *
-     * @param links TODO: Documentation
-     * @param post TODO: Documentation
+     * @param postId TODO: Documentation
+     * @param state TODO: Documentation
+     * @param displayText TODO: Documentation
      */
     @JsonClass(generateAdapter = true)
     public data class Body constructor(

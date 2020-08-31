@@ -45,6 +45,9 @@ public interface Post {
             .withSubtype(VideoPost::class.java, Type.Video.key)
     }
 
+    /**
+     * The type of post that this is.
+     */
     public val type: Type
 
     // region Defaults

@@ -1,5 +1,6 @@
 package com.highthunder.kotlr.api
 
+import com.highthunder.kotlr.getApi
 import com.highthunder.kotlr.response.RateLimitMetaData
 import com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar
 import com.highthunder.kotlr.response.type.blog.ResponseBlogDrafts
@@ -17,6 +18,11 @@ import com.highthunder.kotlr.response.type.user.ResponseUserInfo
 import com.highthunder.kotlr.response.type.user.ResponseUserLikes
 import com.highthunder.kotlr.types.Post
 
+/**
+ * KotlrApi - The main class for performing requests to the Tumblr API.
+ *
+ * Get an instance by calling [getApi].
+ */
 public class KotlrApi internal constructor(
     private val userGetApi: KotlrUserGetApi,
     private val blogGetApi: KotlrBlogGetApi,

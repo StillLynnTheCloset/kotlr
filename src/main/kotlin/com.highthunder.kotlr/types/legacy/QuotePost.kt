@@ -83,6 +83,7 @@ import com.squareup.moshi.JsonClass
  * @param isBlurredImages Are the images in this post blurred (a NSFW thing I guess?)
  *
  * Quote Post
+ * @param type The type of this post. This is provided as a constructor parameter to make Moshi happy. If you override this, you'll get bad data.
  * @param text The text of the quote (can be modified by the user when posting).
  * @param source Full HTML for the source of the quote Example: <a href="...">Steve Jobs</a>.
  */

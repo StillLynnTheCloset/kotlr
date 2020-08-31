@@ -115,6 +115,9 @@ public data class RowBlockLayout constructor(
 
             internal abstract val type: String
 
+            /**
+             * Unknown - A fall back type to be used if a new, unknown type of display mode is encountered.
+             */
             @JsonClass(generateAdapter = true)
             public class Unknown : Mode() {
                 internal companion object {
@@ -125,7 +128,7 @@ public data class RowBlockLayout constructor(
             }
 
             /**
-             * Carousel - A weighted display mode signifies that the client should use a horizontally scaling view
+             * Weighted - A weighted display mode signifies that the client should use a horizontally scaling view
              * where each block occupies an equal percentage of the horizontal width of the screen.
              *
              * This is the default mode that should be used if no mode is specified.
