@@ -9,6 +9,7 @@ import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.NoteData
 import com.highthunder.kotlr.types.Post
 import com.highthunder.kotlr.types.RequestLink
+import com.highthunder.kotlr.types.RequestLinks
 import com.highthunder.kotlr.types.User
 import com.highthunder.kotlr.types.content.Attribution
 import com.highthunder.kotlr.types.content.BlockLayout
@@ -117,7 +118,7 @@ internal class SampleFilesSimpleParseTest {
 
     @Test
     internal fun testOfficialLPF_links() {
-        parseAllFilesInDirectory("samples/officialLPFSamples/links", moshi.mapAdapter<String, RequestLink>())
+        parseAllFilesInDirectory<RequestLinks>("samples/officialLPFSamples/links")
     }
 
     @Test

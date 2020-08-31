@@ -108,7 +108,7 @@ public data class AudioContent constructor(
  * @param colors Colors used in the image.
  * @param poster For GIFs, this is a single-frame "poster".
  * @param attribution See the [Attribution] for details about these objects.
- * @param exif A map of extra properties extracted from the Exif data of the photo.
+ * @param exif Extra properties extracted from the Exif data of the photo.
  */
 @JsonClass(generateAdapter = true)
 public data class ImageContent constructor(

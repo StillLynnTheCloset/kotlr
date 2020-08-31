@@ -19,7 +19,7 @@ import com.squareup.moshi.JsonClass
  * @param linkType The type of link that this is, see [Type].
  * @param httpMethod The HTTP Verb that should be used when making a request from this link.
  * @param fullLink The full href of this link (this included any query parameters).
- * @param queryParams A map of the query parameters that are a part of this link.
+ * @param queryParams The query parameters that are a part of this link.
  */
 @JsonClass(generateAdapter = true)
 public data class RequestLink constructor(

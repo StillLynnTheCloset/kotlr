@@ -10,9 +10,6 @@ internal inline fun <reified T> Moshi.adapter(): JsonAdapter<T> =
 internal inline fun <reified T> Moshi.listAdapter(): JsonAdapter<List<T>> =
     adapter(Types.newParameterizedType(List::class.java, T::class.java))
 
-internal inline fun <reified K, reified V> Moshi.mapAdapter(): JsonAdapter<Map<K, V>> =
-    adapter(Types.newParameterizedType(Map::class.java, K::class.java, V::class.java))
-
 internal inline fun justTry(silent: Boolean = false, block: () -> Unit) {
     try {
         block()
