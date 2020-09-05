@@ -43,6 +43,7 @@ dependencies {
 
     kapt(Libs.moshi_kotlin_codegen)
     implementation(Libs.moshi)
+    implementation(Libs.shimo)
 
     implementation(Libs.retrofit)
     implementation(Libs.converter_scalars)
@@ -54,7 +55,6 @@ dependencies {
     implementation(Libs.signpost_core)
 
     testImplementation(Libs.junit)
-    testImplementation(Libs.shimo)
 }
 
 idea {

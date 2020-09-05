@@ -118,7 +118,7 @@ internal class SampleFilesIndividualParseTest {
         }
 
         private inline fun <reified T> parseFile(fileName: String): T? =
-            parseFile(fileName, moshi.adapter<T>().failOnUnknown())
+            parseFile(fileName, shimo.adapter<T>().failOnUnknown())
 
         private fun <T> parseFile(fileName: String, adapter: JsonAdapter<T>): T? {
             val file = File(fileName)
