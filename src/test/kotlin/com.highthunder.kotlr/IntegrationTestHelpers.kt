@@ -295,7 +295,7 @@ internal suspend fun testCreate(api: KotlrApi, blogName: String) {
                 ImageContent(
                     media = listOf(
                         Media(
-                            url = ""
+                            url = "https://assets.tumblr.com/images/default_avatar/cube_closed_64.png"
                         ),
                     ),
                 ),
@@ -330,11 +330,20 @@ internal suspend fun testCreate(api: KotlrApi, blogName: String) {
                         RowBlockLayout.Display(
                             blocks = listOf(8),
                         ),
+                        RowBlockLayout.Display(
+                            blocks = listOf(9),
+                        ),
+                        RowBlockLayout.Display(
+                            blocks = listOf(10),
+                        ),
+                        RowBlockLayout.Display(
+                            blocks = listOf(11),
+                        ),
                     ),
                 ),
             ),
             state = Post.State.Draft,
-            tags = listOf("Tag1", "Tag2", "Tag3, Tag4 ， Tag5 ‚ Tag6, Tag7"),
+            tags = listOf("Tag1", "Tag2", "Tag3, Tag4， Tag5‚ Tag6, Tag7"),
         )
     )
     println(response)
