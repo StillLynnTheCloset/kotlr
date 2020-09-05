@@ -21,5 +21,4 @@ gradle-app.setting
 /local.properties
 
 /src/test/kotlin/com.highthunder.kotlr/MyAppKey.kt
-/src/main/kotlin/com.highthunder.kotlr/MyAppKey.kt
-/src/main/kotlin/com.highthunder.kotlr/Main.kt
+/src/test/kotlin/com.highthunder.kotlr/Main.kt

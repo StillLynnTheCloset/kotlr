@@ -154,12 +154,12 @@ or, the same example without the fluff:
 
 ```kotlin
 suspend fun minimalExample() {
-    val postUrl: String? = getApi(SampleUserKey)
+    println(getApi(SampleUserKey)
         .getBlogLikes(identifier = "kotlr-development")
         ?.getBody()
         ?.posts
         ?.firstOrNull()
-        ?.postUrl
+        ?.postUrl)
 }
 ```
 
