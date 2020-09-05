@@ -349,7 +349,7 @@ public interface Post {
     /**
      * TODO: Documentation
      */
-    public val objectType: String?
+    public val objectType: ObjectType?
 
     /**
      * The UUID of the blog that made this post.
@@ -553,6 +553,20 @@ public interface Post {
          */
         @Json(name = "queued")
         Queued("queued"),
+    }
+
+    /**
+     * ObjectType - TODO: Figure out what this is.
+     *
+     * @param key The string that Tumblr uses to reference each type.
+     */
+    @JsonClass(generateAdapter = false)
+    public enum class ObjectType constructor(public val key: String) {
+        /**
+         * The value returned on the single post returned when requesting a specific post.
+         */
+        @Json(name = "post")
+        Post("post"),
     }
 
     /**

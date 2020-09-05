@@ -192,7 +192,7 @@ public data class ChatPost constructor(
     override val shouldOpenInLegacy: Boolean? = null,
     override val muted: Boolean? = null,
     @Json(name = "object_type")
-    override val objectType: String? = null,
+    override val objectType: Post.ObjectType? = null,
     @Json(name = "tumblelog_uuid")
     override val blogUUID: String? = null,
     @Json(name = "parent_post_id")
