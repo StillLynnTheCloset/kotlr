@@ -133,11 +133,6 @@ public interface Post {
     public val state: State?
 
     /**
-     * The total number of post available for this request, useful for paginating through results.
-     */
-    public val totalPosts: Int?
-
-    /**
      * Was this post made anonymously.
      */
     public val anonymous: Boolean?

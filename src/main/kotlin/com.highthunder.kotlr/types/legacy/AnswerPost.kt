@@ -32,7 +32,6 @@ import com.squareup.moshi.JsonClass
  * @param sourceTitle The title of the source site.
  * @param isLiked Indicates if a user has already liked a post or not.
  * @param state Indicates the current state of the post.
- * @param totalPosts The total number of post available for this request, useful for paginating through results.
  * @param anonymous Was this post made anonymously.
  * @param content The array of content that constitutes the body of a post in the Neue Post Format(NPF).
  * @param trail The previous Posts in the reblog trail. In order of oldest (the root Post) to the newest (the parent Post).
@@ -117,8 +116,6 @@ public data class AnswerPost constructor(
     @Json(name = "liked")
     override val isLiked: Boolean? = null,
     override val state: Post.State? = null,
-    @Json(name = "total_posts")
-    override val totalPosts: Int? = null,
     @Json(name = "is_anonymous")
     override val anonymous: Boolean? = null,
     override val content: List<PostContent>? = null,
