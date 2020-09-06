@@ -10,18 +10,18 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * ResponseUserInfo - TODO: Documentation
+ * ResponseUserInfo - The response to a request for information about a user.
  *
  * @author highthunder
  * @since 2018-11-04
  */
 public interface ResponseUserInfo {
     /**
-     * TODO: Documentation
+     * Response - The top level object returned from Tumblr.
      *
-     * @param meta TODO: Documentation
-     * @param response TODO: Documentation
-     * @param errors TODO: Documentation
+     * @param meta An object containing any meta data returned from Tumblr, as well as some data returned in response headers.
+     * @param response The actual response to the request, as a wrapper object to handle some types of errors from Tumblr.
+     * @param errors An array of error objects, which are returned when some types of errors occur.
      */
     @JsonClass(generateAdapter = true)
     public data class Response constructor(
@@ -30,7 +30,7 @@ public interface ResponseUserInfo {
         @Json(name = "response")
         override val response: WrapperInterface<Body>,
         @Json(name = "errors")
-        override val errors: List<TumblrError>? = null
+        override val errors: List<TumblrError>? = null,
     ) : TumblrResponse<Body>
 
     /**
@@ -41,17 +41,17 @@ public interface ResponseUserInfo {
      */
     public data class Wrapper constructor(
         override val error: String? = null,
-        override val body: Body? = null
+        override val body: Body? = null,
     ) : WrapperInterface<Body>
 
     /**
-     * TODO: Documentation
+     * Body - The actual body of a successful response.
      *
-     * @param user TODO: Documentation
+     * @param user An object of all the information about this user.
      */
     @JsonClass(generateAdapter = true)
     public data class Body constructor(
         @Json(name = "user")
-        val user: User? = null
+        val user: User? = null,
     )
 }

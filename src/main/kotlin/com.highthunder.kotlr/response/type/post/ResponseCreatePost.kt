@@ -10,18 +10,18 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * ResponsePostsPost - TODO: Documentation
+ * ResponseCreatePost - The response to a request to create a new post.
  *
  * @author highthunder
- * @since 2019-12-0
+ * @since 2019-12-01
  */
 public interface ResponseCreatePost {
     /**
-     * TODO: Documentation
+     * Response - The top level object returned from Tumblr.
      *
-     * @param meta TODO: Documentation
-     * @param response TODO: Documentation
-     * @param errors TODO: Documentation
+     * @param meta An object containing any meta data returned from Tumblr, as well as some data returned in response headers.
+     * @param response The actual response to the request, as a wrapper object to handle some types of errors from Tumblr.
+     * @param errors An array of error objects, which are returned when some types of errors occur.
      */
     @JsonClass(generateAdapter = true)
     public data class Response constructor(
@@ -30,7 +30,7 @@ public interface ResponseCreatePost {
         @Json(name = "response")
         override val response: WrapperInterface<Body>,
         @Json(name = "errors")
-        override val errors: List<TumblrError>? = null
+        override val errors: List<TumblrError>? = null,
     ) : TumblrResponse<Body>
 
     /**
@@ -41,15 +41,15 @@ public interface ResponseCreatePost {
      */
     public data class Wrapper constructor(
         override val error: String? = null,
-        override val body: Body? = null
+        override val body: Body? = null,
     ) : WrapperInterface<Body>
 
     /**
-     * TODO: Documentation
+     * Body - The actual body of a successful response.
      *
-     * @param postId TODO: Documentation
-     * @param state TODO: Documentation
-     * @param displayText TODO: Documentation
+     * @param postId The Id of the created post, as a string to prevent rounding errors.
+     * @param state The state that the post was created in
+     * @param displayText Some simple, user friendly text describing the result of the action.
      */
     @JsonClass(generateAdapter = true)
     public data class Body constructor(
@@ -58,6 +58,6 @@ public interface ResponseCreatePost {
         @Json(name = "state")
         val state: Post.State? = null,
         @Json(name = "display_text")
-        val displayText: String? = null
+        val displayText: String? = null,
     )
 }

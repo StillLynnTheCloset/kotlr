@@ -12,18 +12,18 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * ResponseBlogPosts - TODO: Documentation
+ * ResponseBlogPosts - The response to a request for a Blog's posts.
  *
  * @author highthunder
  * @since 2018-11-06
  */
 public interface ResponseBlogPosts {
     /**
-     * TODO: Documentation
+     * Response - The top level object returned from Tumblr.
      *
-     * @param meta TODO: Documentation
-     * @param response TODO: Documentation
-     * @param errors TODO: Documentation
+     * @param meta An object containing any meta data returned from Tumblr, as well as some data returned in response headers.
+     * @param response The actual response to the request, as a wrapper object to handle some types of errors from Tumblr.
+     * @param errors An array of error objects, which are returned when some types of errors occur.
      */
     @JsonClass(generateAdapter = true)
     public data class Response constructor(
@@ -32,7 +32,7 @@ public interface ResponseBlogPosts {
         @Json(name = "response")
         override val response: WrapperInterface<Body>,
         @Json(name = "errors")
-        override val errors: List<TumblrError>? = null
+        override val errors: List<TumblrError>? = null,
     ) : TumblrResponse<Body>
 
     /**
@@ -43,16 +43,16 @@ public interface ResponseBlogPosts {
      */
     public data class Wrapper constructor(
         override val error: String? = null,
-        override val body: Body? = null
+        override val body: Body? = null,
     ) : WrapperInterface<Body>
 
     /**
-     * TODO: Documentation
+     * Body - The actual body of a successful response.
      *
-     * @param links TODO: Documentation
-     * @param blog TODO: Documentation
-     * @param posts TODO: Documentation
-     * @param totalPosts TODO: Documentation
+     * @param links Additional links that you might be interested in.
+     * @param blog A slightly pared down copy of this blogs information.
+     * @param posts A list of posts from this blog's posts.
+     * @param totalPosts The total number of available posts on this blog.
      */
     @JsonClass(generateAdapter = true)
     public data class Body constructor(
@@ -63,6 +63,6 @@ public interface ResponseBlogPosts {
         @Json(name = "posts")
         val posts: List<Post>? = null,
         @Json(name = "total_posts")
-        val totalPosts: Long? = null
+        val totalPosts: Long? = null,
     )
 }

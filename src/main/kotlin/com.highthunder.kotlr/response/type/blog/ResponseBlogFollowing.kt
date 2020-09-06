@@ -11,18 +11,18 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * ResponseBlogFollowing - TODO: Documentation
+ * ResponseBlogFollowing - The response to a request for the blogs that a Blog follows.
  *
  * @author highthunder
  * @since 2018-11-06
  */
 public interface ResponseBlogFollowing {
     /**
-     * TODO: Documentation
+     * Response - The top level object returned from Tumblr.
      *
-     * @param meta TODO: Documentation
-     * @param response TODO: Documentation
-     * @param errors TODO: Documentation
+     * @param meta An object containing any meta data returned from Tumblr, as well as some data returned in response headers.
+     * @param response The actual response to the request, as a wrapper object to handle some types of errors from Tumblr.
+     * @param errors An array of error objects, which are returned when some types of errors occur.
      */
     @JsonClass(generateAdapter = true)
     public data class Response constructor(
@@ -31,7 +31,7 @@ public interface ResponseBlogFollowing {
         @Json(name = "response")
         override val response: WrapperInterface<Body>,
         @Json(name = "errors")
-        override val errors: List<TumblrError>? = null
+        override val errors: List<TumblrError>? = null,
     ) : TumblrResponse<Body>
 
     /**
@@ -42,15 +42,15 @@ public interface ResponseBlogFollowing {
      */
     public data class Wrapper constructor(
         override val error: String? = null,
-        override val body: Body? = null
+        override val body: Body? = null,
     ) : WrapperInterface<Body>
 
     /**
-     * TODO: Documentation
+     * Body - The actual body of a successful response.
      *
-     * @param links TODO: Documentation
-     * @param blogs TODO: Documentation
-     * @param total TODO: Documentation
+     * @param links Additional links that you might be interested in.
+     * @param blogs A list of blogs that this blog follows.
+     * @param totalFollowed The total number of blogs that this blog follows.
      */
     @JsonClass(generateAdapter = true)
     public data class Body constructor(
@@ -59,6 +59,6 @@ public interface ResponseBlogFollowing {
         @Json(name = "blogs")
         val blogs: List<Blog>? = null,
         @Json(name = "total_blogs")
-        val total: Int? = null
+        val totalFollowed: Int? = null,
     )
 }

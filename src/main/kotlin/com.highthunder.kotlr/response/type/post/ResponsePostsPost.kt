@@ -10,7 +10,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * ResponsePostsPost - TODO: Documentation
+ * ResponsePostsPost - The response to a request for a single post.
  *
  * Tumblr decided to make this one request special and put the post object directly as the value in `response` instead
  * of nesting it in another object like all of the other API responses.
@@ -20,11 +20,11 @@ import com.squareup.moshi.JsonClass
  */
 public interface ResponsePostsPost {
     /**
-     * TODO: Documentation
+     * Response - The top level object returned from Tumblr.
      *
-     * @param meta TODO: Documentation
-     * @param response TODO: Documentation
-     * @param errors TODO: Documentation
+     * @param meta An object containing any meta data returned from Tumblr, as well as some data returned in response headers.
+     * @param response The actual response to the request, as a wrapper object to handle some types of errors from Tumblr.
+     * @param errors An array of error objects, which are returned when some types of errors occur.
      */
     @JsonClass(generateAdapter = true)
     public data class Response constructor(
@@ -33,7 +33,7 @@ public interface ResponsePostsPost {
         @Json(name = "response")
         override val response: WrapperInterface<Post>,
         @Json(name = "errors")
-        override val errors: List<TumblrError>? = null
+        override val errors: List<TumblrError>? = null,
     ) : TumblrResponse<Post>
 
     /**
@@ -44,6 +44,6 @@ public interface ResponsePostsPost {
      */
     public data class Wrapper constructor(
         override val error: String? = null,
-        override val body: Post? = null
+        override val body: Post? = null,
     ) : WrapperInterface<Post>
 }
