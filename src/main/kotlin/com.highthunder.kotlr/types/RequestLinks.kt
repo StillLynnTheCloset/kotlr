@@ -8,7 +8,6 @@ import com.squareup.moshi.JsonClass
  *
  * @author highthunder
  * @since 2020-08-30
- * @version 1.0.0
  *
  * @param next A link to the next request in a series.
  * @param prev A link to the previous request in a series.

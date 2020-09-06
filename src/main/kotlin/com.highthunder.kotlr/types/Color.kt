@@ -15,8 +15,7 @@ package com.highthunder.kotlr.types
  * and can then be output either as an int, AARRGGBB, or #AARRGGBB
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-19
  */
 public data class Color constructor(
     private val c: Int,

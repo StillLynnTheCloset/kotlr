@@ -24,8 +24,7 @@ import com.squareup.moshi.JsonClass
  * Post - The base information about a post.
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  */
 public interface Post {
     public companion object {

@@ -41,8 +41,7 @@ import com.highthunder.kotlr.getOAuthProvider
  * </pre>
  *
  * @author highthunder
- * @since 10/23/18
- * @version 1.0.0
+ * @since 2018-11-04
  */
 public class OAuthFlow constructor(private val appKey: TumblrAppKey) {
     private companion object {

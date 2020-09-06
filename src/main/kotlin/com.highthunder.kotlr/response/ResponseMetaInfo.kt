@@ -10,8 +10,7 @@ import com.squareup.moshi.JsonClass
  * headers on the response.
  *
  * @author highthunder
- * @since 10/24/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param status The 3-digit HTTP Status-Code code of the response.
  * @param msg The HTTP Reason-Phrase of the response.

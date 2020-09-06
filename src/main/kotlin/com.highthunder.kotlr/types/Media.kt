@@ -13,8 +13,7 @@ import com.squareup.moshi.JsonClass
  * width and height.
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param type The MIME type of this media, or the closest fit.
  * @param url The location of the resource backing this piece of media.

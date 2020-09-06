@@ -7,8 +7,7 @@ import com.squareup.moshi.JsonClass
  * ExifData - Extra data included in the Exif headers of a photo.
  *
  * @author highthunder
- * @since 11/3/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param camera The name/model/brand of the camera that took this picture.
  * @param cameraMake The brand of the camera that took this picture.

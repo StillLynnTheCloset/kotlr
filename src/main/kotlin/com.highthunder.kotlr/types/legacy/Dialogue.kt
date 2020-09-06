@@ -7,8 +7,7 @@ import com.squareup.moshi.JsonClass
  * Dialogue - A legacy dialogue object, part of legacy chat posts.
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param name Name of the speaker.
  * @param label Label of the speaker.

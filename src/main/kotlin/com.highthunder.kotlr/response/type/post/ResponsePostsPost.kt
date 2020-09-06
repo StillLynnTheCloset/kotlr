@@ -16,8 +16,7 @@ import com.squareup.moshi.JsonClass
  * of nesting it in another object like all of the other API responses.
  *
  * @author highthunder
- * @since 11/4/18
- * @version 1.0.0
+ * @since 2019-12-01
  */
 public interface ResponsePostsPost {
     /**

@@ -14,8 +14,7 @@ import com.squareup.moshi.JsonClass
  * ResponseBlogFollowing - TODO: Documentation
  *
  * @author highthunder
- * @since 11/4/18
- * @version 1.0.0
+ * @since 2018-11-06
  */
 public interface ResponseBlogFollowing {
     /**

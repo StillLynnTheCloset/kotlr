@@ -14,8 +14,7 @@ import com.squareup.moshi.JsonClass
  * ResponseUserDashboard - TODO: Documentation
  *
  * @author highthunder
- * @since 10/27/18
- * @version 1.0.0
+ * @since 2018-11-04
  */
 public interface ResponseUserDashboard {
     /**

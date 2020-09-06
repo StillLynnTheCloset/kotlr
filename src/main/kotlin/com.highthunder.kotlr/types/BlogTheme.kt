@@ -8,8 +8,7 @@ import com.squareup.moshi.JsonClass
  * BlogTheme - A blog's user customizable theme.
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param headerFullWidth TODO: Documentation
  * @param headerFullHeight TODO: Documentation

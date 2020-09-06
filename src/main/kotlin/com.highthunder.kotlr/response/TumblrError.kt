@@ -31,8 +31,7 @@ import com.squareup.moshi.JsonClass
  * 503 Service Unavailable when all posting, or posting via the API, is disabled.
  *
  * @author highthunder
- * @since 10/29/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param title An explanation of the error that occurred.
  * @param code An error code that provides more detail than the HTTP response code.

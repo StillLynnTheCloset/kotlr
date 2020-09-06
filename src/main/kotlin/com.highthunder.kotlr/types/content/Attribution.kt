@@ -13,8 +13,7 @@ import com.squareup.moshi.JsonClass
  * attributions only require the type field, and other fields are required based on the given type.
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  */
 public sealed class Attribution {
     internal companion object {

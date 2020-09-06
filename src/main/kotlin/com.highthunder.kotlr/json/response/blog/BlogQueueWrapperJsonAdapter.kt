@@ -20,8 +20,7 @@ import com.squareup.moshi.ToJson
  * BlogQueueWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseBlogQueue].
  *
  * @author highthunder
- * @since 10/25/18
- * @version 1.0.0
+ * @since 2018-11-10
  */
 internal class BlogQueueWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponseBlogQueue.Body>>() {
     private val stringAdapter: JsonAdapter<String?> = moshi.adapter()

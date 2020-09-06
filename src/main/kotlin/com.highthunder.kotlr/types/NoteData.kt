@@ -9,8 +9,7 @@ import com.squareup.moshi.JsonClass
  * NoteData - Extra data that can be returned on a [Post] when the getNotesHistory argument is used in the request.
  *
  * @author highthunder
- * @since 11/3/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @property timestamp The time that this note was added to the post (seconds since the epoch.)
  * @property blogName The name of the blog that added this note.

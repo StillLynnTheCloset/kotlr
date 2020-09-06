@@ -20,8 +20,7 @@ import com.squareup.moshi.ToJson
  * BlogLikesWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseBlogLikes].
  *
  * @author highthunder
- * @since 10/25/18
- * @version 1.0.0
+ * @since 2018-11-04
  */
 internal class BlogLikesWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponseBlogLikes.Body>>() {
     private val stringAdapter: JsonAdapter<String?> = moshi.adapter()

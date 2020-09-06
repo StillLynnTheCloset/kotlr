@@ -9,8 +9,7 @@ import com.highthunder.kotlr.authentication.TumblrUserKey
  * SampleKeys - A sample usage of the credentials.
  *
  * @author highthunder
- * @since 10/23/18
- * @version 1.0.0
+ * @since 2018-11-13
  */
 
 /**

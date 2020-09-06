@@ -7,8 +7,7 @@ import com.squareup.moshi.ToJson
  * CommaSeparatedStringJsonAdapter - An adapter to (de-)serialize properties annotated with [CommaSeparatedString].
  *
  * @author highthunder
- * @since 10/27/18
- * @version 1.0.0
+ * @since 2019-12-01
  */
 internal class CommaSeparatedStringJsonAdapter {
     @ToJson

@@ -23,7 +23,6 @@ import kotlin.String
  *
  * @author highthunder
  * @since 2018-11-10
- * @version 1.0.0
  */
 internal class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
     private val options: JsonReader.Options =

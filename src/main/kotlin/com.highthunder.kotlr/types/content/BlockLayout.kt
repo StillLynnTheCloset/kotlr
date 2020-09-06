@@ -11,8 +11,7 @@ import com.squareup.moshi.JsonClass
  * just like content blocks.
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  */
 public sealed class BlockLayout {
     internal companion object {

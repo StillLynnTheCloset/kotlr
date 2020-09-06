@@ -14,7 +14,6 @@ import com.squareup.moshi.JsonClass
  *
  * @author highthunder
  * @since 2018-11-04
- * @version 1.0.0
  *
  * @param linkType The type of link that this is, see [Type].
  * @param httpMethod The HTTP Verb that should be used when making a request from this link.

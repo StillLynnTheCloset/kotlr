@@ -8,8 +8,7 @@ import com.squareup.moshi.JsonClass
  * Blog - A simple tumblog.
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param name The short name of the blog.
  * @param url The URL of the blog.

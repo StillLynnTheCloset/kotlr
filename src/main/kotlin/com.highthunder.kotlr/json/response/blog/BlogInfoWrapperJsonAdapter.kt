@@ -20,8 +20,7 @@ import com.squareup.moshi.ToJson
  * BlogInfoWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseBlogInfo].
  *
  * @author highthunder
- * @since 10/25/18
- * @version 1.0.0
+ * @since 2018-11-10
  */
 internal class BlogInfoWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponseBlogInfo.Body>>() {
     private val stringAdapter: JsonAdapter<String?> = moshi.adapter()

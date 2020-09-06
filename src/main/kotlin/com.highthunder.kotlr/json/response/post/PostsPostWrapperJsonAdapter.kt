@@ -24,8 +24,7 @@ import com.squareup.moshi.ToJson
  * of nesting it in another object like all of the other API responses.
  *
  * @author highthunder
- * @since 10/25/18
- * @version 1.0.0
+ * @since 2019-12-01
  */
 internal class PostsPostWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<Post>>() {
     private val stringAdapter: JsonAdapter<String?> = moshi.adapter()

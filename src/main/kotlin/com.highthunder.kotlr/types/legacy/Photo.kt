@@ -7,8 +7,7 @@ import com.squareup.moshi.JsonClass
  * Photo - A legacy class containing multiple sizes of a picture along with a caption.
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param originalSize The photo at its original size.
  * @param panoramaSize TODO: Documentation

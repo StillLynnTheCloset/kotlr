@@ -8,7 +8,6 @@ import com.squareup.moshi.JsonClass
  *
  * @author highthunder
  * @since 2020-08-30
- * @version 1.0.0
  *
  * @param limit The number of results to return.
  * @param before The id of the result before which additional results should be returned.

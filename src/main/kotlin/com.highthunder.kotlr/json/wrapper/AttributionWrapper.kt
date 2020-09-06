@@ -16,7 +16,6 @@ import com.squareup.moshi.JsonClass
  *
  * @author highthunder
  * @since 2020-03-21
- * @version 1.0.0
  *
  * @param singleAttribution The single attribution object, if it was returned.
  * @param listAttribution A list of attribution objects, if they were returned, or a list containing only singleAttribution.

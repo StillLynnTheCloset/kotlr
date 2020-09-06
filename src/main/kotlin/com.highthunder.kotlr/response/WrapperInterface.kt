@@ -7,8 +7,7 @@ package com.highthunder.kotlr.response
  * object as the response body so we need to be able to account for that.
  *
  * @author highthunder
- * @since 10/27/18
- * @version 1.0.0
+ * @since 2018-11-04
  */
 public interface WrapperInterface<out T> {
 

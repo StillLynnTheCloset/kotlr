@@ -7,8 +7,7 @@ import com.squareup.moshi.JsonClass
  * PhotoSize - A legacy object containing a photo url and it's dimensions.
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param width The width of the photo, in pixels.
  * @param height The height of the photo, in pixels.

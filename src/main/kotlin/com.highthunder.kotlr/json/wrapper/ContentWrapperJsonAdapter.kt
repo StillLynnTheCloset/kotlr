@@ -18,7 +18,6 @@ import com.squareup.moshi.Types
  *
  * @author highthunder
  * @since 2018-11-04
- * @version 1.0.0
  */
 internal class ContentWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ContentWrapper>() {
 

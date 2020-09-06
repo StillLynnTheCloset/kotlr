@@ -14,8 +14,7 @@ import com.squareup.moshi.JsonClass
  * TextPost - A legacy text post.
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param blogName The short name used to uniquely identify a blog.
  * @param id The post's unique ID.

@@ -20,8 +20,7 @@ import com.squareup.moshi.ToJson
  * CreatePostWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseCreatePost].
  *
  * @author highthunder
- * @since 10/25/18
- * @version 1.0.0
+ * @since 2019-12-01
  */
 internal class CreatePostWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponseCreatePost.Body>>() {
     private val stringAdapter: JsonAdapter<String?> = moshi.adapter()

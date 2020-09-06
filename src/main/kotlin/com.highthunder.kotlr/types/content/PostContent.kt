@@ -15,8 +15,7 @@ import com.squareup.moshi.JsonClass
  * PostContent - A super class for all types of content blocks
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  */
 @JsonClass(generateAdapter = false)
 public sealed class PostContent {
@@ -57,8 +56,7 @@ public class UnknownContent : PostContent() {
  * Optionally, an audio block may include the track's [title], [artist], and/or [album].
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param provider The provider of the audio source, whether it's tumblr for native audio or a trusted third party.
  * @param url The URL to use for the audio block, if no [media] is present.
@@ -100,8 +98,7 @@ public data class AudioContent constructor(
  * and height; see the [Media] section for more details.
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param media An array of Media Objects which represent different available sizes of this image asset.
  * @param feedbackToken A feedback token to use when this image block is a GIF Search result.
@@ -142,8 +139,7 @@ public data class ImageContent constructor(
  * alternate sizes.
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param url The URL to use for the link block.
  * @param title The title of where the link goes.
@@ -177,8 +173,7 @@ public data class LinkContent constructor(
  * At its simplest, it simply wraps a plaintext string.
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param text The text to use inside this block.
  * @param subType The [SubType] of text block.
@@ -276,8 +271,7 @@ public data class TextContent constructor(
  * 4. If all else fails, just show a link to [url].
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param url The URL to use for the video block, if no media is present.
  * @param media The Media Object to use for the video block, if no url is present.

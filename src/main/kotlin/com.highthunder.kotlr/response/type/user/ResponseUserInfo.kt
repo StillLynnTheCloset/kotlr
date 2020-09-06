@@ -13,8 +13,7 @@ import com.squareup.moshi.JsonClass
  * ResponseUserInfo - TODO: Documentation
  *
  * @author highthunder
- * @since 11/4/18
- * @version 1.0.0
+ * @since 2018-11-04
  */
 public interface ResponseUserInfo {
     /**

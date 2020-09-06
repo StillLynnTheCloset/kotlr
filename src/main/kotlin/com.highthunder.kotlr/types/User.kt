@@ -7,8 +7,7 @@ import com.squareup.moshi.JsonClass
  * User - A Tumblr user/account.
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param blogs The blogs to which the user can post.
  * @param name The user's tumblr short name.

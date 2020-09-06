@@ -11,8 +11,7 @@ import com.squareup.moshi.JsonClass
  * array are the previous Posts in the reblog trail, in order of oldest (the root Post) to the newest (the parent Post).
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param blog An object with information about the Post's blog in the reblog trail; contains at least a uuid field. This won't be available for "broken" trail items.
  * @param post An object with information about the Post in the reblog trail; contains at least an id field. This won't be available for "broken" trail items.

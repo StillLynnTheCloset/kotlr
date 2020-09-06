@@ -10,7 +10,6 @@ import com.squareup.moshi.ToJson
  *
  * @author highthunder
  * @since 2020-03-04
- * @version 1.0.0
  */
 internal class MediaListJsonAdapter {
     @ToJson

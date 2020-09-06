@@ -7,8 +7,7 @@ import com.squareup.moshi.JsonQualifier
  * should be serialized as a comma separated string.
  *
  * @author highthunder
- * @since 10/27/18
- * @version 1.0.0
+ * @since 2019-12-01
  */
 @Retention(AnnotationRetention.RUNTIME)
 @JsonQualifier

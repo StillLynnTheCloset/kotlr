@@ -16,7 +16,6 @@ import com.squareup.moshi.ToJson
  *
  * @author highthunder
  * @since 2018-11-04
- * @version 1.0.0
  */
 internal class VideoJsonAdapter(moshi: Moshi) : JsonAdapter<Video>() {
     private val options: JsonReader.Options = JsonReader.Options.of("width", "embed_code")

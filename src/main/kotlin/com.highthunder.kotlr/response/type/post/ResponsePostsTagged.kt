@@ -14,8 +14,7 @@ import com.squareup.moshi.JsonClass
  * ResponsePostsTagged - TODO: Documentation
  *
  * @author highthunder
- * @since 11/4/18
- * @version 1.0.0
+ * @since 2019-12-01
  */
 public interface ResponsePostsTagged {
     /**

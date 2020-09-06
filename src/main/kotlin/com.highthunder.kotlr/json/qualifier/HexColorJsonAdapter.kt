@@ -8,8 +8,7 @@ import com.squareup.moshi.ToJson
  * HexColorJsonAdapter - An adapter to (de-)serialize properties annotated with [HexColor].
  *
  * @author highthunder
- * @since 10/27/18
- * @version 1.0.0
+ * @since 2018-11-04
  */
 internal class HexColorJsonAdapter {
     @ToJson

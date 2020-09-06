@@ -15,7 +15,6 @@ import com.squareup.moshi.ToJson
  *
  * @author highthunder
  * @since 2020-02-08
- * @version 1.0.0
  */
 internal class ColorJsonAdapter : JsonAdapter<Color>() {
 

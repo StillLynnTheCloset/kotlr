@@ -20,8 +20,7 @@ import com.squareup.moshi.ToJson
  * UserFollowingWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseUserFollowing].
  *
  * @author highthunder
- * @since 10/25/18
- * @version 1.0.0
+ * @since 2018-11-10
  */
 internal class UserFollowingWrapperJsonAdapter(moshi: Moshi) :
     JsonAdapter<WrapperInterface<ResponseUserFollowing.Body>>() {

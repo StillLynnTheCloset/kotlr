@@ -8,7 +8,6 @@ import com.squareup.moshi.JsonClass
  *
  * @author highthunder
  * @since 2018-11-04
- * @version 1.0.0
  *
  * @param contentString An HTML string representing the video content
  * @param contentList A list of [Video] objects.

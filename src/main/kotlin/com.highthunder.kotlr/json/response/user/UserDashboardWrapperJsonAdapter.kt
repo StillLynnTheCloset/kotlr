@@ -20,8 +20,7 @@ import com.squareup.moshi.ToJson
  * UserDashboardWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseUserDashboard].
  *
  * @author highthunder
- * @since 10/25/18
- * @version 1.0.0
+ * @since 2018-11-04
  */
 internal class UserDashboardWrapperJsonAdapter(moshi: Moshi) :
     JsonAdapter<WrapperInterface<ResponseUserDashboard.Body>>() {

@@ -10,7 +10,6 @@ import com.squareup.moshi.JsonClass
  *
  * @author highthunder
  * @since 2019-11-04
- * @version 1.0.0
  *
  * @param contentString The contents as a string (usually HTML).
  * @param contentList The contents as a list of content blocks.

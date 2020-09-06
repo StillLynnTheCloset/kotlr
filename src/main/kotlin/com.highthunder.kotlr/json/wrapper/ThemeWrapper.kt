@@ -8,7 +8,6 @@ import com.squareup.moshi.JsonClass
  *
  * @author highthunder
  * @since 2018-11-04
- * @version 1.0.0
  *
  * @param singleTheme A single theme held in this wrapper.
  * @param listOfThemes A list of themes held in this wrapper.

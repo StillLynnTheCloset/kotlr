@@ -9,8 +9,7 @@ import com.squareup.moshi.JsonClass
  * This is only returned when a post is a reblog.
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param comment The new text that was added during the reblog, but only sometimes?
  * @param tree The full post's HTML.

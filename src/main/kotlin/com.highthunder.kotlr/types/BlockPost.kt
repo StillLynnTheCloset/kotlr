@@ -9,8 +9,7 @@ import com.squareup.moshi.JsonClass
  * BlockPost - A block post, aka. NPF post
  *
  * @author highthunder
- * @since 11/3/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param blogName The short name used to uniquely identify a blog.
  * @param id The post's unique ID.

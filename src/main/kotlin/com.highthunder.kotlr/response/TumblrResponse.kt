@@ -4,8 +4,7 @@ package com.highthunder.kotlr.response
  * TumblrResponse - A generic response from the Tumblr API.
  *
  * @author highthunder
- * @since 10/27/18
- * @version 1.0.0
+ * @since 2018-11-04
  */
 public interface TumblrResponse<out T> {
 

@@ -9,8 +9,7 @@ import com.squareup.moshi.JsonClass
  * This isn't used anywhere? TODO: Figure out why Tumblr defined this object.
  *
  * @author highthunder
- * @since 10/24/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @param tagText The tag name
  * @param thumbnailUrl An image (75x75) associated with the tag; may be null

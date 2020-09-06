@@ -25,8 +25,7 @@ import com.squareup.moshi.JsonClass
  * when nesting HTML.
  *
  * @author highthunder
- * @since 10/20/18
- * @version 1.0.0
+ * @since 2018-11-04
  *
  * @property start The starting index of the formatting range (inclusive).
  * @property end The ending index of the formatting range (exclusive).
