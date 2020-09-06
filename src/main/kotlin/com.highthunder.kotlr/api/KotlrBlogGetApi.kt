@@ -2,6 +2,7 @@ package com.highthunder.kotlr.api
 
 import com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar
 import com.highthunder.kotlr.response.type.blog.ResponseBlogDrafts
+import com.highthunder.kotlr.response.type.blog.ResponseBlogFollowedBy
 import com.highthunder.kotlr.response.type.blog.ResponseBlogFollowers
 import com.highthunder.kotlr.response.type.blog.ResponseBlogFollowing
 import com.highthunder.kotlr.response.type.blog.ResponseBlogInfo
@@ -77,6 +78,14 @@ internal interface KotlrBlogGetApi {
         @Query("offset")
         offset: Int? = null,
     ): Response<ResponseBlogFollowing.Response>
+
+    @GET("blog/{identifier}/followed_by")
+    suspend fun getBlogFollowedByHelper(
+        @Path("identifier", encoded = true)
+        identifier: String,
+        @Query("query")
+        query: String,
+    ): Response<ResponseBlogFollowedBy.Response>
 
     @GET("blog/{identifier}/info")
     suspend fun getBlogInfoHelper(

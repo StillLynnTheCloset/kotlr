@@ -4,6 +4,7 @@ import com.highthunder.kotlr.getApi
 import com.highthunder.kotlr.response.RateLimitMetaData
 import com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar
 import com.highthunder.kotlr.response.type.blog.ResponseBlogDrafts
+import com.highthunder.kotlr.response.type.blog.ResponseBlogFollowedBy
 import com.highthunder.kotlr.response.type.blog.ResponseBlogFollowers
 import com.highthunder.kotlr.response.type.blog.ResponseBlogFollowing
 import com.highthunder.kotlr.response.type.blog.ResponseBlogInfo
@@ -273,11 +274,18 @@ public class KotlrApi internal constructor(
      * @param identifier An identifier for your blog to check.
      * @param query The name of the blog that may be following your blog.
      */
-    public suspend fun getFollowedBy(
+    public suspend fun getBlogFollowedBy(
         identifier: String,
         query: String,
-    ): ResponseBlogFollowing.Response? {
-        TODO("Implement")
+    ): ResponseBlogFollowedBy.Response? {
+        val retrofitResponse = blogGetApi.getBlogFollowedByHelper(
+            identifier,
+            query,
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
     /**
