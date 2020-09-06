@@ -169,7 +169,6 @@ internal suspend fun loopLikes(api: KotlrApi, useNpf: Boolean, postsPerRequest: 
 
 // Uses up to (1 + ceiling(postsToLoop / postsPerRequest)) requests. (depends if there are enough posts on your dash)
 internal suspend fun loopDashboard(api: KotlrApi, useNpf: Boolean, postsPerRequest: Int, postsToLoop: Int) {
-    var lastTime: Long = Long.MAX_VALUE
     var posts: List<Post>?
     var offset = 0L
     // Get a first post, which can then be used to call [getUserDash] with a beforePostId
@@ -399,6 +398,7 @@ internal suspend fun runAllTests(userKey: TumblrUserKey, blogName: String, debug
 
 // region README Examples
 
+@Suppress("unused")
 internal fun minimalExampleExplained() = runBlocking {
     // Class for holding API keys and secrets.
     // You can get your API key and secret from https://www.tumblr.com/oauth/apps and clicking on "Register Application"
@@ -414,6 +414,7 @@ internal fun minimalExampleExplained() = runBlocking {
 
     // Check out any of the meta information that Tumblr returns such as HTTP success codes.
     val meta: ResponseMetaInfo? = response?.meta
+    println(meta)
 
     // Get the main meat of the response.
     val body: ResponseBlogLikes.Body? = response?.getBody()
@@ -423,11 +424,14 @@ internal fun minimalExampleExplained() = runBlocking {
     // a map of RequestLinks which can encode some generic actions that Tumblr thinks you
     // might like to perform based on the content of this request.
     val totalLikedPosts: Long? = body?.totalLiked
+    println(totalLikedPosts)
     val requestLinks: RequestLinks? = body?.links
+    println(requestLinks)
     val postUrl: String? = body?.posts?.firstOrNull()?.postUrl
     println(postUrl)
 }
 
+@Suppress("unused")
 internal fun minimalExample() = runBlocking {
     println(getApi(SampleUserKey)
         .getBlogLikes(identifier = "kotlr-development")
@@ -437,6 +441,7 @@ internal fun minimalExample() = runBlocking {
         ?.postUrl)
 }
 
+@Suppress("unused")
 internal fun oAuthExample() = runBlocking {
     // Kotlr also makes the process of getting OAuth keys easy.
 
