@@ -328,6 +328,8 @@ public interface Post {
 
     /**
      * The current queue state of this post.
+     *
+     * This is only returned on queued posts, so the only value I've ever seen is "queued".
      */
     public val queueState: QueueState?
 

@@ -6,18 +6,18 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * NoteData - TODO: Documentation
+ * NoteData - Extra data that can be returned on a [Post] when the getNotesHistory argument is used in the request.
  *
  * @author highthunder
  * @since 11/3/18
  * @version 1.0.0
  *
- * @property timestamp TODO: Documentation
- * @property blogName TODO: Documentation
- * @property blogUuid TODO: Documentation
- * @property blogUrl TODO: Documentation
- * @property blogFollowed TODO: Documentation
- * @property avatarShape TODO: Documentation
+ * @property timestamp The time that this note was added to the post (seconds since the epoch.)
+ * @property blogName The name of the blog that added this note.
+ * @property blogUuid The UUID of the blog that added this note.
+ * @property blogUrl The URL of the blog that added this note.
+ * @property blogFollowed Whether or not you have followed the blog that added this note.
+ * @property avatarShape The shape of the avatar icon of the blog that added this note.
  */
 public sealed class NoteData {
     internal companion object {
@@ -61,7 +61,7 @@ public class UnknownNote : NoteData() {
 }
 
 /**
- * LikeNote - TODO: Documentation
+ * LikeNote - A note that is added when someone likes a post.
  */
 @JsonClass(generateAdapter = true)
 public data class LikeNote constructor(
@@ -84,7 +84,7 @@ public data class LikeNote constructor(
 }
 
 /**
- * PostedNote - TODO: Documentation
+ * PostedNote - A note that is added when the post is first posted.
  */
 @JsonClass(generateAdapter = true)
 public data class PostedNote constructor(
@@ -107,12 +107,12 @@ public data class PostedNote constructor(
 }
 
 /**
- * ReblogNote - TODO: Documentation
+ * ReblogNote - A note that is added when a post is reblogged.
  *
- * @param addedText TODO: Documentation
- * @param postId TODO: Documentation
- * @param canBlock TODO: Documentation
- * @param reblogParentBlogName TODO: Documentation
+ * @param addedText A string containing the text that was added to the post when it was reblogged.
+ * @param postId The post id of the reblog, i.e. the postId on the reblogger's blog that was created when they reblogged.
+ * @param canBlock Whether or not you can block the blog that added this note.
+ * @param reblogParentBlogName The name of the blog which this post was reblogged from (not the reblogger)
  */
 @JsonClass(generateAdapter = true)
 public data class ReblogNote constructor(
@@ -143,11 +143,11 @@ public data class ReblogNote constructor(
 }
 
 /**
- * ReplyNote - TODO: Documentation
+ * ReplyNote - A note that is added when a user adds a message to a post.
  *
- * @param replyText TODO: Documentation
- * @param formatting TODO: Documentation
- * @param canBlock TODO: Documentation
+ * @param replyText The text that they added.
+ * @param formatting Text formatting objects, just like [TextContent].
+ * @param canBlock Whether or not you are able to block the user who added this reply.
  */
 @JsonClass(generateAdapter = true)
 public data class ReplyNote constructor(

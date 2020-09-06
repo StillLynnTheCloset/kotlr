@@ -108,7 +108,7 @@ public data class AudioContent constructor(
  * @param colors Colors used in the image.
  * @param poster For GIFs, this is a single-frame "poster".
  * @param attribution See the [Attribution] for details about these objects.
- * @param altText TODO: Documentation.
+ * @param altText Text that should be displayed to describe this image.
  * @param exif Extra properties extracted from the Exif data of the photo.
  */
 @JsonClass(generateAdapter = true)
@@ -182,7 +182,7 @@ public data class LinkContent constructor(
  *
  * @param text The text to use inside this block.
  * @param subType The [SubType] of text block.
- * @param indentLevel TODO: Documentation.
+ * @param indentLevel TODO: Figure out what this does, it doesn't seem to have any affect when creating posts.
  * @param formatting A list of special formatting instructions.
  */
 @JsonClass(generateAdapter = true)

@@ -4,16 +4,16 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * SubmissionTerms - TODO: Documentation
+ * SubmissionTerms - An object that is included in some [Blog]s. Defines any restrictions and guidelines for the blog's "Submit" page.
  *
  * @author highthunder
  * @since 10/20/18
  * @version 1.0.0
  *
- * @param tags TODO: Documentation
- * @param title TODO: Documentation
- * @param guidelines TODO: Documentation
- * @param accepted_types TODO: Documentation
+ * @param tags A set of tags that submitters may choose from.
+ * @param title The title of the "Submit" page.
+ * @param guidelines A user generated paragraph providing any additional text.
+ * @param acceptedTypes The types of post that are allowed to be submitted.
  */
 @JsonClass(generateAdapter = true)
 public data class SubmissionTerms constructor(

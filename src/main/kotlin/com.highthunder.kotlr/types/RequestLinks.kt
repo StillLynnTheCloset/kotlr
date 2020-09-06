@@ -12,7 +12,7 @@ import com.squareup.moshi.JsonClass
  *
  * @param next A link to the next request in a series.
  * @param prev A link to the previous request in a series.
- * @param termsOfService TODO: Documentation
+ * @param termsOfService A link to Tumblr's terms of service.
  */
 @JsonClass(generateAdapter = true)
 public data class RequestLinks constructor(

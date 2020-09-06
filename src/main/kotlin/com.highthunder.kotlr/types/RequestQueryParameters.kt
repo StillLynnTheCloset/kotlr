@@ -14,7 +14,7 @@ import com.squareup.moshi.JsonClass
  * @param before The id of the result before which additional results should be returned.
  * @param after The id of the result after which additional results should be returned.
  * @param offset The offset of results to return.
- * @param npf Whether results should be returned in NPF or not.
+ * @param npf Whether or not results should be returned in NPF.
  * @param pageNumber The page offset to return.
  */
 @JsonClass(generateAdapter = true)
