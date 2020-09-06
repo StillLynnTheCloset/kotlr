@@ -4,7 +4,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Tag - A tag object represents a tag
+ * Tag - A tag object represents a tag.
+ *
+ * This isn't used anywhere? TODO: Figure out why Tumblr defined this object.
  *
  * @author highthunder
  * @since 10/24/18
