@@ -31,9 +31,10 @@ import com.squareup.moshi.Moshi
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
-internal class KotlrJsonAdapterFactory : JsonAdapter.Factory {
+internal class KotlrJsonAdapterFactory constructor(private val printDebug: Boolean = false) : JsonAdapter.Factory {
     override fun create(type: Type, annotations: MutableSet<out Annotation>, moshi: Moshi): JsonAdapter<*>? {
-        return if (type is ParameterizedType) {
+        val adapter = if (type is ParameterizedType) {
+            if (printDebug) println("Checking for adapter for parameterized type $type with types ${type.actualTypeArguments.map { it.typeName }}")
             if (type.rawType.typeName == "com.highthunder.kotlr.response.WrapperInterface") {
                 when (type.actualTypeArguments.firstOrNull()?.typeName) {
                     "com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar\$Body" ->
@@ -78,6 +79,7 @@ internal class KotlrJsonAdapterFactory : JsonAdapter.Factory {
                 null
             }
         } else {
+            if (printDebug) println("Checking for adapter for ${type.typeName}")
             when (type.typeName) {
                 "com.highthunder.kotlr.types.Colors" -> ColorsJsonAdapter(moshi)
                 "com.highthunder.kotlr.types.legacy.Video" -> VideoJsonAdapter(moshi)
@@ -90,5 +92,8 @@ internal class KotlrJsonAdapterFactory : JsonAdapter.Factory {
                 else -> null
             }
         }
+
+        if (printDebug) println("Returning adapter $adapter")
+        return adapter
     }
 }
