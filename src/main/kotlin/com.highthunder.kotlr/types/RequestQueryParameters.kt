@@ -16,6 +16,8 @@ import com.squareup.moshi.JsonClass
  * @param offset The offset of results to return.
  * @param npf Whether or not results should be returned in NPF.
  * @param pageNumber The page offset to return.
+ * @param reblogInfo Whether or not reblog info should be returned.
+ * @param notesInfo Whether or not note info should be returned.
  */
 @JsonClass(generateAdapter = true)
 public data class RequestQueryParameters constructor(
@@ -26,4 +28,8 @@ public data class RequestQueryParameters constructor(
     val npf: String? = null,
     @Json(name = "page_number")
     val pageNumber: String? = null,
+    @Json(name = "reblog_info")
+    val reblogInfo: String? = null,
+    @Json(name = "notes_info")
+    val notesInfo: String? = null,
 )
