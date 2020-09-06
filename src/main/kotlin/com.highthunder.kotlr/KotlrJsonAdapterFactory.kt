@@ -10,6 +10,7 @@ import com.highthunder.kotlr.json.response.blog.BlogPostsWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.blog.BlogQueueWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.blog.BlogSubmissionsWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.post.CreatePostWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.post.PostNotesWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.post.PostsPostWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.post.PostsTaggedWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserDashboardWrapperJsonAdapter
@@ -64,6 +65,8 @@ internal class KotlrJsonAdapterFactory : JsonAdapter.Factory {
                         PostsTaggedWrapperJsonAdapter(moshi)
                     "com.highthunder.kotlr.response.type.post.ResponseCreatePost\$Body" ->
                         CreatePostWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.post.ResponsePostNotes\$Body" ->
+                        PostNotesWrapperJsonAdapter(moshi)
                     "com.highthunder.kotlr.types.Post" ->
                         PostsPostWrapperJsonAdapter(moshi)
                     else -> null

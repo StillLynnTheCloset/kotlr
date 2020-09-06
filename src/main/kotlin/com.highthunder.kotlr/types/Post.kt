@@ -566,6 +566,44 @@ public interface Post {
     }
 
     /**
+     * NotesMode - The mode of request to use when requesting all notes for a post.
+     *
+     * @param key The string that Tumblr uses to reference each mode.
+     */
+    @JsonClass(generateAdapter = false)
+    public enum class NotesMode constructor(public val key: String) {
+        /**
+         * All - loads all notes for the post.
+         */
+        @Json(name = "all")
+        All("all"),
+
+        /**
+         * Likes - loads only likes for the post.
+         */
+        @Json(name = "likes")
+        Likes("likes"),
+
+        /**
+         * Conversation - loads only replies and reblogs with added text commentary, with the rest of the notes (likes, reblogs without commentary) in a rollup_notes field.
+         */
+        @Json(name = "conversation")
+        Conversation("conversation"),
+
+        /**
+         * RollUp - loads only like and reblog notes for the post in the notes array.
+         */
+        @Json(name = "rollup")
+        RollUp("rollup"),
+
+        /**
+         * ReblogsWithTags - loads only the reblog notes for the post, and each note object includes a tags array field (which may be empty).
+         */
+        @Json(name = "reblogs_with_tags")
+        ReblogsWithTags("reblogs_with_tags")
+    }
+
+    /**
      * A helper function to determine the legacy post type that a block post corresponds to.
      *
      * Based on the logic here: https://www.tumblr.com/docs/npf#mapping-npf-post-content-to-legacy-post-types

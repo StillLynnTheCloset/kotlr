@@ -1,5 +1,6 @@
 package com.highthunder.kotlr.api
 
+import com.highthunder.kotlr.response.type.post.ResponsePostNotes
 import com.highthunder.kotlr.response.type.post.ResponsePostsPost
 import com.highthunder.kotlr.response.type.post.ResponsePostsTagged
 import com.highthunder.kotlr.types.Post
@@ -30,4 +31,16 @@ internal interface KotlrPostsGetApi {
         @Query("post_format")
         postFormat: Post.PostVersion? = null,
     ): Response<ResponsePostsPost.Response>
+
+    @GET("blog/{identifier}/notes")
+    suspend fun getPostNotes(
+        @Path("identifier", encoded = true)
+        blogIdentifier: String,
+        @Query("id")
+        postId: Long,
+        @Query("before_timestamp")
+        beforeTimestamp: Long? = null,
+        @Query("mode")
+        mode: Post.NotesMode? = null,
+    ): Response<ResponsePostNotes.Response>
 }

@@ -11,6 +11,7 @@ import com.highthunder.kotlr.response.type.blog.ResponseBlogLikes
 import com.highthunder.kotlr.response.type.blog.ResponseBlogPosts
 import com.highthunder.kotlr.response.type.blog.ResponseBlogQueue
 import com.highthunder.kotlr.response.type.blog.ResponseBlogSubmissions
+import com.highthunder.kotlr.response.type.post.ResponsePostNotes
 import com.highthunder.kotlr.response.type.post.ResponsePostsPost
 import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
 import com.highthunder.kotlr.response.type.user.ResponseUserFollowing
@@ -610,6 +611,32 @@ public class KotlrApi internal constructor(
             identifier,
             postId,
             postFormat,
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    /**
+     * Fetch the notes of a single post.
+     *
+     * @param blogIdentifier A blog identifier of the blog that posted the desired post.
+     * @param postId The id of the desired post.
+     * @param beforeTimestamp Optional. Fetch notes created before this timestamp, for pagination. This is a unix timestamp in seconds precision, but microsecond precision for conversation mode.
+     * @param mode The response formatting mode.
+     */
+    public suspend fun getPostNotes(
+        blogIdentifier: String,
+        postId: Long,
+        beforeTimestamp: Long? = null,
+        mode: Post.NotesMode? = null,
+    ): ResponsePostNotes.Response? {
+        val retrofitResponse = postsGetApi.getPostNotes(
+            blogIdentifier,
+            postId,
+            beforeTimestamp,
+            mode,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
