@@ -6,6 +6,8 @@ import com.squareup.moshi.JsonClass
 /**
  * RequestQueryParameters - A class to encode the various request query parameters that are included in [RequestLink] objects.
  *
+ * TODO: Break this up to be unique per response.
+ *
  * @author highthunder
  * @since 2020-08-30
  *
@@ -17,6 +19,9 @@ import com.squareup.moshi.JsonClass
  * @param pageNumber The page offset to return.
  * @param reblogInfo Whether or not reblog info should be returned.
  * @param notesInfo Whether or not note info should be returned.
+ * @param mode The request mode for post notes.
+ * @param id The post Id that was requested.
+ * @param beforeTimestamp The timestamp that the request occurred before.
  */
 @JsonClass(generateAdapter = true)
 public data class RequestQueryParameters constructor(
@@ -31,4 +36,8 @@ public data class RequestQueryParameters constructor(
     val reblogInfo: String? = null,
     @Json(name = "notes_info")
     val notesInfo: String? = null,
+    val mode: String? = null,
+    val id: String? = null,
+    @Json(name = "before_timestamp")
+    val beforeTimestamp: String? = null,
 )
