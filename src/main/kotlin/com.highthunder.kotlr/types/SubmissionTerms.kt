@@ -1,5 +1,6 @@
 package com.highthunder.kotlr.types
 
+import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
@@ -19,5 +20,6 @@ public data class SubmissionTerms constructor(
     val tags: List<String>? = null,
     val title: String? = null,
     val guidelines: String? = null,
-    val accepted_types: List<String>? = null,
+    @Json(name = "accepted_types")
+    val acceptedTypes: List<Post.Type>? = null,
 )

@@ -1517,12 +1517,12 @@ internal class SampleFilesIndividualParseTest {
             sharesLikes = false,
             submissionPageTitle = "Submit a post",
             submissionTerms = SubmissionTerms(
-                accepted_types = listOf(
-                    "text",
-                    "photo",
-                    "quote",
-                    "link",
-                    "video"
+                acceptedTypes = listOf(
+                    Post.Type.Text,
+                    Post.Type.Photo,
+                    Post.Type.Quote,
+                    Post.Type.Link,
+                    Post.Type.Video,
                 ),
                 tags = emptyList(),
                 title = "Submit a post",
