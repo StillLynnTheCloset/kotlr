@@ -10,10 +10,10 @@ buildscript {
 plugins {
     kotlin("jvm") version "1.4.0"
     kotlin("kapt") version "1.4.0"
-    id("com.github.ben-manes.versions") version "0.29.0"
+    id("com.github.ben-manes.versions") version "0.30.0"
     id("de.fayard.buildSrcVersions") version "0.7.0"
     // id("de.fayard.refreshVersions") version "0.7.0" // Soon this will be the future!
-    id("org.jlleitschuh.gradle.ktlint") version "9.3.0"
+    id("org.jlleitschuh.gradle.ktlint") version "9.4.0"
     id("idea")
 }
 
