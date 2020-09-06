@@ -52,7 +52,7 @@ internal suspend fun runUserTests(api: KotlrApi, useNpf: Boolean, postsPerReques
     println(api.getUserFollowing().clean())
 }
 
-// Uses (if (doNotesAndReblogs) 21 else 11) requests.
+// Uses (if (doNotesAndReblogs) 22 else 12) requests.
 internal suspend fun runBlogTests(api: KotlrApi, blogName: String, useNpf: Boolean, postsPerRequest: Int, doNotesAndReblogs: Boolean) {
     println("Calling `getBlogAvatar()`")
     println(api.getBlogAvatar(blogName).clean())
@@ -67,6 +67,9 @@ internal suspend fun runBlogTests(api: KotlrApi, blogName: String, useNpf: Boole
 
     println("Calling `getBlogInfo()`")
     println(api.getBlogInfo(blogName).clean())
+
+    println("Calling `getBlogFollowedBy()`")
+    println(api.getBlogFollowedBy(blogName, "kotlr-development").clean())
 
     println("Calling `getBlogLikes()``")
     println(api.getBlogLikes(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest).clean())
@@ -102,6 +105,15 @@ internal suspend fun runBlogTests(api: KotlrApi, blogName: String, useNpf: Boole
         println(api.getBlogSubmissions(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest, getReblogFields = true).clean())
         println(api.getBlogSubmissions(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest, getNotesHistory = true).clean())
     }
+}
+
+// Uses (2) requests.
+internal suspend fun runPostTests(api: KotlrApi, blogName: String, useNpf: Boolean) {
+    println("Calling `getPost()`")
+    println(api.getPost(blogName, 189418176408, if (useNpf) Post.PostVersion.NPF else Post.PostVersion.Legacy).clean())
+
+    println("Calling `getPostNotes()`")
+    println(api.getPostNotes(blogName, 189418176408).clean())
 }
 
 // Uses up to (ceiling(postsToLoop / postsPerRequest)) requests. (depends if there are enough posts on the given blog)
@@ -350,8 +362,8 @@ internal suspend fun testCreate(api: KotlrApi, blogName: String) {
     println(response.body())
 }
 
-// Uses ((if (doNotesAndReblogs) 33 else 19) + 3 * ceiling(postsToLoop / postsPerRequest)) requests
-// Default = 199 = 19 + 3*60
+// Uses ((if (doNotesAndReblogs) 36 else 22) + 3 * ceiling(postsToLoop / postsPerRequest)) requests
+// Default = 202 = 22 + 3*60
 internal suspend fun runAllTests(userKey: TumblrUserKey, blogName: String, debugLogging: Boolean = false, strictParsing: Boolean = false, useNpf: Boolean = true, doNotesAndReblogs: Boolean = false, postsPerRequest: Int = 50, maxPostsPerLooper: Int = 3000) {
     val api = getApi(userKey, debug = debugLogging, strict = strictParsing)
 
@@ -360,6 +372,9 @@ internal suspend fun runAllTests(userKey: TumblrUserKey, blogName: String, debug
 
     println("Test all of the Blog related api calls")
     runBlogTests(api, blogName, useNpf, postsPerRequest, doNotesAndReblogs)
+
+    println("Test all of the Post related api calls")
+    runPostTests(api, blogName, useNpf)
 
     println("Loop through a bunch of the most recent posts on your dashboard")
     loopDashboard(api, useNpf, postsPerRequest, maxPostsPerLooper)
