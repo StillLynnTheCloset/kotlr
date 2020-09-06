@@ -18,7 +18,7 @@ restricted to the JVM.
 
    This means that every response, and every object within those responses,
    will be represented by a class which will have typed properties for every
-   possible field that the API can return.
+   possible field that the API has ever returned.
 * Support the original (legacy) post format
 * Support the new 'blocks' post type, aka the Neue Post Format or NPF.
 * Provide any functionality needed to interact with
@@ -154,20 +154,49 @@ or, the same example without the fluff:
 
 ```kotlin
 suspend fun minimalExample() {
-    println(getApi(SampleUserKey)
-        .getBlogLikes(identifier = "kotlr-development")
-        ?.getBody()
-        ?.posts
-        ?.firstOrNull()
-        ?.postUrl)
+    println(
+        getApi(SampleUserKey)
+            .getBlogLikes(identifier = "kotlr-development")
+            ?.getBody()
+            ?.posts
+            ?.firstOrNull()
+            ?.postUrl
+    )
 }
 ```
 
 ### Version History ###
 
+#### 0.8.0 ####
+
+##### Breaking Changes #####
+  * Update `PhotoContent.exif` to use `ExifData` instead of a `Map`.
+  * Update request links to be strongly typed with new classes `RequestLinks` and `RequestQueryParameters`.
+  * Update `VideoContent.metadata` to use `VideoMetadata` instead of `Any`.
+  * Update `Post.objectType` to be a new `ObjectType` enum.
+  * Remove `Post.totalPosts` this seems to have been an old copy/paste mistake.
+  * Update `SubmissionTerms.acceptedTypes` to use camelCase and be strongly typed.
+
+##### New Functionality #####
+
+  * Add support for `getPostNotes` API.
+  * Add support for `getBlogFollowedBy` API.
+  * Add support for many new properties of `ExifData`.
+
+##### Minor Changes #####
+
+  * Add a number of functions that can be easily called from a `fun main()` to perform integration tests.
+  * Add a TON of documentation comments.
+  * Fix a lot of style warnings.
+  * Start using trailing commas everywhere that makes sense.
+  * Update Moshi dependency.
+  * Start using Shimo for testing.
+  * Add ability to output debug info in the Moshi adapter factory.
+  * Use Moshi.failOnUnknown() during unit tests.
+
 #### 0.7.3 ####
 
-  * Test Github publish changes
+  * Test Github publish changes.
 
 #### 0.7.2 ####
 
@@ -204,45 +233,45 @@ suspend fun minimalExample() {
 
 #### 0.6.3 ####
 
-  * Add amalgamation types back in when constructing the amalgamation from a specific type
+  * Add amalgamation types back in when constructing the amalgamation from a specific type.
 
 #### 0.6.2 ####
 
-  * Fix issue when trying to store `Post` classes in Room database
-  * Expose a new helper function `Moshi.Builder.addKotlrTypes` to easilly add Kotlr data types' adapters to your own instance of Moshi
+  * Fix issue when trying to store `Post` classes in Room database.
+  * Expose a new helper function `Moshi.Builder.addKotlrTypes` to easily add Kotlr data types' adapters to your own instance of Moshi.
 
 #### 0.6.1 ####
 
-  * Add JsonAdapter for `Color`
+  * Add JsonAdapter for `Color`.
 
 #### 0.6.0 ####
 
-  * Only fail on unknown JSON properties when `getApi` is called with `debug = true`
-  * Add support for Blog.avatar property, this is a list of `Media` objects
-  * Add support for Post.parentPostId
-  * Add support for Post.parentBlogUUID
+  * Only fail on unknown JSON properties when `getApi` is called with `debug = true`.
+  * Add support for Blog.avatar property, this is a list of `Media` objects.
+  * Add support for Post.parentPostId.
+  * Add support for Post.parentBlogUUID.
 
 #### 0.5.0 ####
 
   * Add a bunch of new requests including:
-    * Create new post (NPF and Legacy post types)
-    * Edit post (NPF and Legacy post types)
-    * Reblog post (NPF and Legacy post types)
-    * Get Post
-    * Follow Blog
-    * Unfollow Blog
-    * Like Post
-    * Unlike Post
-  * Use more `val`s instead of `var`s
-  * Add an object to all API responses containing Tumblr's rate limit headers
+    * Create new post (NPF and Legacy post types).
+    * Edit post (NPF and Legacy post types).
+    * Reblog post (NPF and Legacy post types).
+    * Get Post.
+    * Follow Blog.
+    * Unfollow Blog.
+    * Like Post.
+    * Unlike Post.
+  * Use more `val`s instead of `var`s.
+  * Add an object to all API responses containing Tumblr's rate limit headers.
     * Now every API call will tell you how many requests you have left in the hour and in the day.
-  * Add support for Post.objectType
-  * Add support for Post.type
-  * Add support for Post.blogUUID
-  * Add support for Media.cropped
-  * Add support for Media.hasOriginalDimensions
-  * Add support for Media.colors
-  * Add support for TextContent.SubType.Indented
+  * Add support for Post.objectType.
+  * Add support for Post.type.
+  * Add support for Post.blogUUID.
+  * Add support for Media.cropped.
+  * Add support for Media.hasOriginalDimensions.
+  * Add support for Media.colors.
+  * Add support for TextContent.SubType.Indented.
 
 #### <= 0.4.0 ####
 

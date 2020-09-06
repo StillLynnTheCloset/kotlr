@@ -17,12 +17,13 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
 
 /**
- * BlogInfoWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseBlogFollowedBy].
+ * BlogFollowedByWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseBlogFollowedBy].
  *
  * @author highthunder
  * @since 2018-11-10
  */
-internal class BlogFollowedByWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponseBlogFollowedBy.Body>>() {
+internal class BlogFollowedByWrapperJsonAdapter(moshi: Moshi) :
+    JsonAdapter<WrapperInterface<ResponseBlogFollowedBy.Body>>() {
     private val stringAdapter: JsonAdapter<String?> = moshi.adapter()
     private val responseAdapter: JsonAdapter<ResponseBlogFollowedBy.Body> = moshi.adapter()
     private val listOfAnyAdapter: JsonAdapter<List<Any>> = moshi.listAdapter()

@@ -103,7 +103,12 @@ private fun getHttpClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false)
     return httpClient.build()
 }
 
-private fun getClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false, strict: Boolean = false, useShimo: Boolean = false): Retrofit {
+private fun getClient(
+    consumer: OkHttpOAuthConsumer,
+    debug: Boolean = false,
+    strict: Boolean = false,
+    useShimo: Boolean = false,
+): Retrofit {
     val moshiFactory = MoshiConverterFactory.create(if (useShimo) shimo else moshi).let { factory ->
         if (strict) {
             factory.failOnUnknown()
@@ -130,7 +135,12 @@ private fun getClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false, str
  * @param strict Controls whether or not parsing is performed in strict mode (throws an error if Tumblr returns unexpected data.)
  * @param useShimo Controls whether or not Shimo is added to Moshi, randomizing the order of properties. This breaks many interactions with Tumblr, still investigating who's fault that is.
  */
-public fun getApi(userKey: TumblrUserKey, debug: Boolean = false, strict: Boolean = false, useShimo: Boolean = false): KotlrApi {
+public fun getApi(
+    userKey: TumblrUserKey,
+    debug: Boolean = false,
+    strict: Boolean = false,
+    useShimo: Boolean = false,
+): KotlrApi {
     val client = getClient(getOAuthConsumer(userKey), debug = debug, strict = strict, useShimo = useShimo)
     val userGetApi: KotlrUserGetApi = client.create()
     val blogGetApi: KotlrBlogGetApi = client.create()

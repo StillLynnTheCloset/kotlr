@@ -34,7 +34,10 @@ import java.lang.reflect.Type
 internal class KotlrJsonAdapterFactory constructor(private val printDebug: Boolean = false) : JsonAdapter.Factory {
     override fun create(type: Type, annotations: MutableSet<out Annotation>, moshi: Moshi): JsonAdapter<*>? {
         val adapter = if (type is ParameterizedType) {
-            if (printDebug) println("Checking for adapter for parameterized type $type with types ${type.actualTypeArguments.map { it.typeName }}")
+            if (printDebug) {
+                val types = type.actualTypeArguments.map { it.typeName }
+                println("Checking for adapter for parameterized type $type with types $types")
+            }
             if (type.rawType.typeName == "com.highthunder.kotlr.response.WrapperInterface") {
                 when (type.actualTypeArguments.firstOrNull()?.typeName) {
                     "com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar\$Body" ->
@@ -79,7 +82,9 @@ internal class KotlrJsonAdapterFactory constructor(private val printDebug: Boole
                 null
             }
         } else {
-            if (printDebug) println("Checking for adapter for ${type.typeName}")
+            if (printDebug) {
+                println("Checking for adapter for ${type.typeName}")
+            }
             when (type.typeName) {
                 "com.highthunder.kotlr.types.Colors" -> ColorsJsonAdapter(moshi)
                 "com.highthunder.kotlr.types.legacy.Video" -> VideoJsonAdapter(moshi)
@@ -93,7 +98,9 @@ internal class KotlrJsonAdapterFactory constructor(private val printDebug: Boole
             }
         }
 
-        if (printDebug) println("Returning adapter $adapter")
+        if (printDebug) {
+            println("Returning adapter $adapter")
+        }
         return adapter
     }
 }

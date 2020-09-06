@@ -1,3 +1,5 @@
+/* ktlint-disable max-line-length */
+/* ktlint-disable parameter-list-wrapping */
 package com.highthunder.kotlr
 
 import com.highthunder.kotlr.api.KotlrApi
@@ -433,12 +435,14 @@ internal fun minimalExampleExplained() = runBlocking {
 
 @Suppress("unused")
 internal fun minimalExample() = runBlocking {
-    println(getApi(SampleUserKey)
-        .getBlogLikes(identifier = "kotlr-development")
-        ?.getBody()
-        ?.posts
-        ?.firstOrNull()
-        ?.postUrl)
+    println(
+        getApi(SampleUserKey)
+            .getBlogLikes(identifier = "kotlr-development")
+            ?.getBody()
+            ?.posts
+            ?.firstOrNull()
+            ?.postUrl
+    )
 }
 
 @Suppress("unused")
