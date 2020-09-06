@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/static/v1?label=Version&message=0.7.3&color=brightgreen)]()
+[![version](https://img.shields.io/static/v1?label=Version&message=0.8.0&color=brightgreen)]()
 [![Build Status](https://travis-ci.com/highthunder/kotlr.svg?branch=master)](https://travis-ci.com/highthunder/kotlr)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
@@ -29,7 +29,7 @@ The priorities of development right now are:
 
 1. ~~Add support for all GET request/response types.~~
 2. Improve documentation.
-3. Improve test coverage and make tests more targeted.
+3. ~~Improve test coverage and make tests more targeted~~.
 4. Add support for requests using other HTTP verbs.
 5. Add support for mutlipart form uploads. After this Kotlr will support all the Tumblr API which will mark version 1.0.0
 6. Clean up the API by: restricting visibility, reducing optional and default values, limiting mutablity, and enforcing stricter types.
@@ -64,7 +64,7 @@ to your project's `repositories` block.
 
 Then add
 ```groovy
-implementation 'com.highthunder:kotlr:0.7.1'
+implementation 'com.highthunder:kotlr:0.8.0'
 ```
 to your module's `dependencies` block.
 
@@ -78,7 +78,7 @@ to your project's `repositories` block.
 
 Then add
 ```kotlin
-implementation("com.highthunder:kotlr:0.7.1")
+implementation("com.highthunder:kotlr:0.8.0")
 ```
 to your module's `dependencies` block.
 
@@ -221,15 +221,15 @@ suspend fun minimalExample() {
 
 #### 0.7.0 ####
 
-  * Switch from using amalgamation types to using a modified version of PolymorphicJsonAdapterFactory
+  * Switch from using amalgamation types to using a modified version of PolymorphicJsonAdapterFactory.
   * Complete rework of testing system, now samples are stored in separate files and fully tested.
   * Add improved support for various properties that can return as either a list of objects or a single object.
   * Add support for Tumblr's new `id_string` property, even though it is unnecessary for languages with 64-bit longs.
-  * Add a Markdown post format
-  * Add the `truncateAfter` property to `CondensedBlockLayout` and deprecate the `blocks` property
-  * Remove the `PostId` class, this should just use a `BlockPost` with only an ID
-  * Add test samples from both the legacy documentation and the NPF documentation
-  * Many small changes
+  * Add a Markdown post format.
+  * Add the `truncateAfter` property to `CondensedBlockLayout` and deprecate the `blocks` property.
+  * Remove the `PostId` class, this should just use a `BlockPost` with only an ID.
+  * Add test samples from both the legacy documentation and the NPF documentation.
+  * Many small changes.
 
 #### 0.6.3 ####
 
@@ -275,7 +275,7 @@ suspend fun minimalExample() {
 
 #### <= 0.4.0 ####
 
-  * Lots of cool stuff
+  * Lots of cool stuff.
 
 ### Credits ###
 * API Documentation - [Tumblr](https://github.com/tumblr/docs)
@@ -285,6 +285,5 @@ suspend fun minimalExample() {
 * JSON Serialization - [Moshi](https://github.com/square/moshi)
 * OAuth - [SignPost](https://github.com/mttkay/signpost)
 * Continuous Integration - [Travis](https://travis-ci.com/)
-
 
 This [application/service] uses the Tumblr application programming interface but is not endorsed or certified by Tumblr, Inc. All of the Tumblr logos and trademarks displayed on this [application/service] are the property of Tumblr, Inc.
