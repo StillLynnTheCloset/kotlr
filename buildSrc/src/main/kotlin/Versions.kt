@@ -16,21 +16,21 @@ object Versions {
 
     const val com_squareup_retrofit2: String = "2.9.0"
 
-    const val com_squareup_okhttp3: String = "4.8.1"
+    const val com_squareup_okhttp3: String = "4.9.0"
 
-    const val org_jetbrains_kotlin: String = "1.4.0"
+    const val org_jetbrains_kotlin: String = "1.4.10"
 
     const val com_squareup_moshi: String = "1.10.0"
 
-    const val com_github_ben_manes_versions_gradle_plugin: String = "0.30.0"
+    const val com_github_ben_manes_versions_gradle_plugin: String = "0.31.0"
 
     const val org_jlleitschuh_gradle_ktlint_gradle_plugin: String = "9.4.0"
 
     const val de_fayard_buildsrcversions_gradle_plugin: String = "0.7.0"
 
-    const val org_jetbrains_kotlin_kapt_gradle_plugin: String = "1.4.0"
+    const val org_jetbrains_kotlin_kapt_gradle_plugin: String = "1.4.10"
 
-    const val org_jetbrains_kotlin_jvm_gradle_plugin: String = "1.4.0"
+    const val org_jetbrains_kotlin_jvm_gradle_plugin: String = "1.4.10"
 
     const val okhttp_signpost: String = "1.1.0"
 
