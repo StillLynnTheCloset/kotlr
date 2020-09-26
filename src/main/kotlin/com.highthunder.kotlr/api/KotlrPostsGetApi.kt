@@ -29,7 +29,7 @@ internal interface KotlrPostsGetApi {
         @Path("postId", encoded = true)
         postId: Long,
         @Query("post_format")
-        postFormat: Post.PostVersion? = null,
+        postFormat: String? = null,
     ): Response<ResponsePostsPost.Response>
 
     @GET("blog/{identifier}/notes")

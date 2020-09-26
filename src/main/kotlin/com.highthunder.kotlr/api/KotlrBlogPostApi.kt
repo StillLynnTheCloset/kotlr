@@ -1086,6 +1086,7 @@ internal interface KotlrBlogPostApi {
      * @param reblogBody The payload of this post.
      */
     @POST("blog/{identifier}/posts")
+    // TODO: Add a wrapper function to remove the OKHTTP response type
     suspend fun reblogPost(
         @Path("identifier", encoded = true)
         identifier: String,

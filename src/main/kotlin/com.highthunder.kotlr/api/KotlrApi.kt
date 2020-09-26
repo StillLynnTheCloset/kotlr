@@ -618,7 +618,7 @@ public class KotlrApi internal constructor(
         val retrofitResponse = postsGetApi.getPost(
             identifier,
             postId,
-            postFormat,
+            postFormat?.key,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
