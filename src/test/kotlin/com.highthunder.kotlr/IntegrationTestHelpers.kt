@@ -112,12 +112,12 @@ internal suspend fun runBlogTests(api: KotlrApi, blogName: String, useNpf: Boole
 }
 
 // Uses (2) requests.
-internal suspend fun runPostTests(api: KotlrApi, blogName: String, useNpf: Boolean) {
+internal suspend fun runPostTests(api: KotlrApi, useNpf: Boolean) {
     println("Calling `getPost()`")
-    println(api.getPost(blogName, 189418176408, if (useNpf) Post.PostVersion.NPF else Post.PostVersion.Legacy).clean())
+    println(api.getPost("kotlr-development", 179771546338, if (useNpf) Post.PostVersion.NPF else Post.PostVersion.Legacy).checkError().clean())
 
     println("Calling `getPostNotes()`")
-    println(api.getPostNotes(blogName, 189418176408).clean())
+    println(api.getPostNotes("kotlr-development", 179771546338).checkError().clean())
 }
 
 // Uses up to (ceiling(postsToLoop / postsPerRequest)) requests. (depends if there are enough posts on the given blog)
@@ -378,7 +378,7 @@ internal suspend fun runAllTests(userKey: TumblrUserKey, blogName: String, debug
     runBlogTests(api, blogName, useNpf, postsPerRequest, doNotesAndReblogs)
 
     println("Test all of the Post related api calls")
-    runPostTests(api, blogName, useNpf)
+    runPostTests(api, useNpf)
 
     println("Loop through a bunch of the most recent posts on your dashboard")
     loopDashboard(api, useNpf, postsPerRequest, maxPostsPerLooper)
