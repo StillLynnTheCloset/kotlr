@@ -40,4 +40,6 @@ public data class RequestQueryParameters constructor(
     val id: String? = null,
     @Json(name = "before_timestamp")
     val beforeTimestamp: String? = null,
+    @Json(name = "before_id")
+    val beforeId: String? = null,
 )
