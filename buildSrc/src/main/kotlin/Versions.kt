@@ -36,7 +36,7 @@ object Versions {
 
     const val signpost_core: String = "2.1.1"
 
-    const val ktlint: String = "0.38.1"
+    const val ktlint: String = "0.39.0"
 
     const val junit: String = "4.13"
 

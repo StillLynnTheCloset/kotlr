@@ -70,7 +70,7 @@ kotlin {
 }
 
 ktlint {
-    version.set("0.38.1")
+    version.set(Versions.ktlint)
     debug.set(false)
     verbose.set(true)
     android.set(false)
