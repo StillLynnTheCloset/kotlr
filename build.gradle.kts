@@ -13,9 +13,8 @@ plugins {
     id("com.github.ben-manes.versions") version "0.33.0"
     id("org.jlleitschuh.gradle.ktlint") version "9.4.0"
     id("idea")
+    id("maven-publish")
 }
-
-apply(from = "publish-bitbucket.gradle")
 
 group = properties["ARTIFACT_PACKAGE"] as String
 version = properties["ARTIFACT_VERSION"] as String
@@ -23,6 +22,8 @@ version = properties["ARTIFACT_VERSION"] as String
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
+    withJavadocJar()
+    withSourcesJar()
 }
 
 tasks.withType<KotlinCompile> {
@@ -75,11 +76,30 @@ ktlint {
     outputToConsole.set(true)
     ignoreFailures.set(true)
 
-    kotlinScriptAdditionalPaths {
-        include(fileTree("scripts/"))
-    }
     filter {
         include("src/**")
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/highthunder/kotlr")
+            credentials {
+                username = (project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")).toString()
+                password = (project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")).toString()
+            }
+        }
+    }
+    publications {
+        create<MavenPublication>("gpr") {
+            groupId = properties["ARTIFACT_PACKAGE"] as String
+            artifactId = properties["ARTIFACT_NAME"] as String
+            version = properties["ARTIFACT_VERSION"] as String
+
+            from(components["java"])
+        }
     }
 }
 
