@@ -367,6 +367,21 @@ public interface Post {
      */
     public val isBlurredImages: Boolean?
 
+    /**
+     * TODO: Documentation
+     */
+    public val recommendationReason: String?
+
+    /**
+     * TODO: Documentation
+     */
+    public val dismissal: String?
+
+    /**
+     * TODO: Documentation
+     */
+    public val serveId: String?
+
     // endregion
 
     /**

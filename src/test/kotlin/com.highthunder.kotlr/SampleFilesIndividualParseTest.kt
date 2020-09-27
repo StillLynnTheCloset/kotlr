@@ -1918,6 +1918,17 @@ internal class SampleFilesIndividualParseTest {
     }
 
     @Test
+    internal fun onceFailed_legacyPost_textPost_recommendationReason() {
+        val post = parseFile<Post>("samples/onceFailed/legacyPost/textPost_recommendationReason.json")
+        val expected = TextPost(
+            recommendationReason = null,
+            dismissal = null,
+            serveId = "8f0e8b01d9401311ec651bf7a94a259a",
+        )
+        assertEquals(expected, post)
+    }
+
+    @Test
     internal fun onceFailed_legacyPost_videoPost_booleanEmbed() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/videoPost_booleanEmbed.json")
         val expected = VideoPost(

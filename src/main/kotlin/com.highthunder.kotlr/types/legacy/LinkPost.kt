@@ -79,6 +79,9 @@ import com.squareup.moshi.JsonClass
  * @param parentPostId The id of the post that this post was a response to.
  * @param parentBlogUUID The UUID of the blog that made the parent post.
  * @param isBlurredImages Are the images in this post blurred (a NSFW thing I guess?)
+ * @param recommendationReason TODO: Documentation
+ * @param dismissal TODO: Documentation
+ * @param serveId TODO: Documentation
  *
  * Link Post
  * @param type The type of this post. This is provided as a constructor parameter to make Moshi happy. If you override this, you'll get bad data.
@@ -205,6 +208,12 @@ public data class LinkPost constructor(
     override val parentBlogUUID: String? = null,
     @Json(name = "is_blurred_images")
     override val isBlurredImages: Boolean? = null,
+    @Json(name = "recommendation_reason")
+    override val recommendationReason: String? = null,
+    @Json(name = "dismissal")
+    override val dismissal: String? = null,
+    @Json(name = "serve_id")
+    override val serveId: String? = null,
     val title: String? = null,
     val description: String? = null,
     val url: String? = null,
