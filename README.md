@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/static/v1?label=Version&message=0.8.0&color=brightgreen)]()
+[![version](https://img.shields.io/static/v1?label=Version&message=0.8.1&color=brightgreen)]()
 [![Build Status](https://travis-ci.com/highthunder/kotlr.svg?branch=develop)](https://travis-ci.com/highthunder/kotlr)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
@@ -72,7 +72,7 @@ to your project's `repositories` block.
 
 Then add
 ```groovy
-implementation 'com.highthunder:kotlr:0.8.0'
+implementation 'com.highthunder:kotlr:0.8.1'
 ```
 to your module's `dependencies` block.
 
@@ -91,7 +91,7 @@ to your project's `repositories` block.
 
 Then add
 ```kotlin
-implementation("com.highthunder:kotlr:0.8.0")
+implementation("com.highthunder:kotlr:0.8.1")
 ```
 to your module's `dependencies` block.
 
@@ -179,6 +179,25 @@ suspend fun minimalExample() {
 ```
 
 ### Version History ###
+
+#### 0.8.1 ####
+
+##### Breaking Changes #####
+  * None
+
+##### New Functionality #####
+
+  * Add support for `RequestQueryParameters.beforeId`.
+  * Add support for `Post.recommendationReason`.
+  * Add support for `Post.dismissal`.
+  * Add support for `Post.serveId`.
+
+##### Minor Changes #####
+
+  * Update readme to show how to add new dependency from Github.
+  * Update dependency resolution system.
+  * Move publishing configuration into `build.gradle.kts`.
+  * Actually use `Moshi.failOnUnknown()` during unit tests.
 
 #### 0.8.0 ####
 
