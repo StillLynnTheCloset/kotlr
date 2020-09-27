@@ -22,7 +22,7 @@ object Versions {
 
     const val com_squareup_moshi: String = "1.10.0"
 
-    const val com_github_ben_manes_versions_gradle_plugin: String = "0.31.0"
+    const val com_github_ben_manes_versions_gradle_plugin: String = "0.33.0"
 
     const val org_jlleitschuh_gradle_ktlint_gradle_plugin: String = "9.4.0"
 
