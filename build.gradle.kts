@@ -11,8 +11,6 @@ plugins {
     kotlin("jvm") version "1.4.10"
     kotlin("kapt") version "1.4.10"
     id("com.github.ben-manes.versions") version "0.33.0"
-    id("de.fayard.buildSrcVersions") version "0.7.0"
-    // id("de.fayard.refreshVersions") version "0.7.0" // Soon this will be the future!
     id("org.jlleitschuh.gradle.ktlint") version "9.4.0"
     id("idea")
 }
@@ -38,23 +36,23 @@ repositories {
 }
 
 dependencies {
-    implementation(Libs.kotlin_stdlib)
-    implementation(Libs.kotlinx_coroutines_core)
+    implementation(Kotlin.stdlib)
+    implementation(KotlinX.coroutines.core)
 
-    kapt(Libs.moshi_kotlin_codegen)
-    implementation(Libs.moshi)
-    implementation(Libs.shimo)
+    kapt(Square.moshi.kotlinCodegen)
+    implementation(Square.moshi)
+    implementation(JakeWharton.moshi.shimo)
 
-    implementation(Libs.retrofit)
-    implementation(Libs.converter_scalars)
-    implementation(Libs.converter_moshi)
+    implementation(Square.retrofit2.retrofit)
+    implementation(Square.retrofit2.converter.scalars)
+    implementation(Square.retrofit2.converter.moshi)
 
-    implementation(Libs.okhttp)
-    implementation(Libs.logging_interceptor)
-    implementation(Libs.okhttp_signpost)
-    implementation(Libs.signpost_core)
+    implementation(Square.okHttp3.okHttp)
+    implementation(Square.okHttp3.loggingInterceptor)
+    implementation("se.akerfeldt:okhttp-signpost:_")
+    implementation("oauth.signpost:signpost-core:_")
 
-    testImplementation(Libs.junit)
+    testImplementation(Testing.junit4)
 }
 
 idea {
@@ -70,7 +68,7 @@ kotlin {
 }
 
 ktlint {
-    version.set(Versions.ktlint)
+    version.set("0.39.0")
     debug.set(false)
     verbose.set(true)
     android.set(false)
@@ -87,5 +85,5 @@ ktlint {
 
 tasks.withType<Wrapper> {
     distributionType = Wrapper.DistributionType.ALL
-    gradleVersion = Versions.gradleLatestVersion
+    gradleVersion = "6.6.1"
 }
