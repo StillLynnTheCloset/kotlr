@@ -64,11 +64,11 @@ internal class SampleFilesSimpleParseTest {
             allFileNames.filter { it !in parsedFileNames }.sorted().forEach {
                 println("Did not test file $it")
             }
-            assertEquals(allFileNames, parsedFileNames)
+            assertEquals(allFileNames.sorted(), parsedFileNames.sorted())
         }
 
         private inline fun <reified T> parseAllFilesInDirectory(directoryName: String) {
-            parseAllFilesInDirectory(directoryName, shimo.adapter<T>().failOnUnknown())
+            parseAllFilesInDirectory(directoryName, moshi.adapter<T>().failOnUnknown())
         }
 
         private fun <T> parseAllFilesInDirectory(directoryName: String, adapter: JsonAdapter<T>) {

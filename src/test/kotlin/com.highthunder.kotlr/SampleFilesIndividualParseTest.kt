@@ -118,7 +118,7 @@ internal class SampleFilesIndividualParseTest {
         }
 
         private inline fun <reified T> parseFile(fileName: String): T? =
-            parseFile(fileName, shimo.adapter<T>().failOnUnknown())
+            parseFile(fileName, moshi.adapter<T>().failOnUnknown())
 
         private fun <T> parseFile(fileName: String, adapter: JsonAdapter<T>): T? {
             val file = File(fileName)
@@ -223,7 +223,7 @@ internal class SampleFilesIndividualParseTest {
                 httpMethod = "GET",
                 fullLink = "https://api.tumblr.com/v2/endpoint",
                 queryParams = RequestQueryParameters(
-                    pageNumber = "1.0"
+                    pageNumber = "1"
                 )
             ),
             next = RequestLink(
@@ -231,7 +231,7 @@ internal class SampleFilesIndividualParseTest {
                 httpMethod = "GET",
                 fullLink = "https://api.tumblr.com/v2/endpoint",
                 queryParams = RequestQueryParameters(
-                    pageNumber = "3.0"
+                    pageNumber = "3"
                 )
             ),
             termsOfService = RequestLink(
@@ -1562,15 +1562,15 @@ internal class SampleFilesIndividualParseTest {
         val expected = ImageContent(
             exif = ExifData(
                 time = 1598724932,
-                focalLength = "4.0",
-                focalLength35mmEquivalent = "4.0",
+                focalLength = "4",
+                focalLength35mmEquivalent = "4",
                 aperture = "1.8",
                 exposureTime = "0.03333333333333333",
                 iso = 1000,
                 cameraMake = "Apple",
                 cameraModel = "iPhone 11 Pro",
                 lens = "4mm",
-                sensorWidthMM = "4.0"
+                sensorWidthMM = "4"
             )
         )
         assertEquals(expected, content)
