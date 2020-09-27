@@ -1,10 +1,10 @@
 [![version](https://img.shields.io/static/v1?label=Version&message=0.8.0&color=brightgreen)]()
-[![Build Status](https://travis-ci.com/highthunder/kotlr.svg?branch=master)](https://travis-ci.com/highthunder/kotlr)
+[![Build Status](https://travis-ci.com/highthunder/kotlr.svg?branch=develop)](https://travis-ci.com/highthunder/kotlr)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
 # Kotlr
 
-It's a portmanteau of Kotlin and Tumblr
+It's a portmanteau of Kotlin and Tumblr, [real original, I know...](https://www.reddit.com/r/mAndroidDev/comments/iunvxu/konichiwa/)
 
 Kotlr is a Kotlin library for interacting with the Tumblr(V2) API.
 The library is written in pure Kotlin, but does currently have
@@ -32,7 +32,7 @@ The priorities of development right now are:
 3. ~~Improve test coverage and make tests more targeted~~.
 4. Add support for requests using other HTTP verbs.
 5. Add support for mutlipart form uploads. After this Kotlr will support all the Tumblr API which will mark version 1.0.0
-6. Clean up the API by: restricting visibility, reducing optional and default values, limiting mutablity, and enforcing stricter types.
+6. Clean up the API by: restricting visibility, reducing optional and default values, limiting mutability, and enforcing stricter types.
 7. Create extension library to improve ease of use on Android.
 8. Create PoC Android App.
 9. ~~Make use of Coroutines to better define blocking api calls.~~
@@ -54,11 +54,19 @@ app [here](https://www.tumblr.com/oauth/apps).
 
 Then you'll need to add Kotlr to you project's dependencies.
 
+This requires setting up your own access token to Github and then adding some code to your gradle build files.
+See [here](https://docs.github.com/en/free-pro-team@latest/packages/using-github-packages-with-your-projects-ecosystem/configuring-gradle-for-use-with-github-packages) for more info on setting up your token.
+
 ##### Gradle (build.gradle) #####
 
 Add
-```groovey
-maven { url 'https://api.bitbucket.org/2.0/repositories/teamhighthunder/highthundermavenrepository/src/releases' }
+```groovy
+maven("https://maven.pkg.github.com/highthunder/kotlr") {
+    credentials {
+        username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+        password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+    }
+}
 ```
 to your project's `repositories` block.
 
@@ -72,7 +80,12 @@ to your module's `dependencies` block.
 
 Add
 ```kotlin
-maven(url = "https://api.bitbucket.org/2.0/repositories/teamhighthunder/highthundermavenrepository/src/releases")
+maven("https://maven.pkg.github.com/highthunder/kotlr") {
+    credentials {
+        username = (project.findProperty("gpr.user") ?: System.getenv("USERNAME")).toString()
+        password = (project.findProperty("gpr.key") ?: System.getenv("TOKEN")).toString()
+    }
+}
 ```
 to your project's `repositories` block.
 
@@ -285,5 +298,6 @@ suspend fun minimalExample() {
 * JSON Serialization - [Moshi](https://github.com/square/moshi)
 * OAuth - [SignPost](https://github.com/mttkay/signpost)
 * Continuous Integration - [Travis](https://travis-ci.com/)
+* Hosting - [Github](https://github.com/)
 
-This [application/service] uses the Tumblr application programming interface but is not endorsed or certified by Tumblr, Inc. All of the Tumblr logos and trademarks displayed on this [application/service] are the property of Tumblr, Inc.
+This \[application/service] uses the Tumblr application programming interface but is not endorsed or certified by Tumblr, Inc. All of the Tumblr logos and trademarks displayed on this \[application/service] are the property of Tumblr, Inc.
