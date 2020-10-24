@@ -105,5 +105,5 @@ publishing {
 
 tasks.withType<Wrapper> {
     distributionType = Wrapper.DistributionType.ALL
-    gradleVersion = "6.6.1"
+    gradleVersion = "6.7"
 }
