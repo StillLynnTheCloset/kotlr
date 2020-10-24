@@ -8,10 +8,9 @@ buildscript {
 }
 
 plugins {
-    kotlin("jvm") version "1.4.10"
-    kotlin("kapt") version "1.4.10"
-    id("com.github.ben-manes.versions") version "0.33.0"
-    id("org.jlleitschuh.gradle.ktlint") version "9.4.0"
+    id("org.jetbrains.kotlin.jvm")
+    id("org.jetbrains.kotlin.kapt")
+    id("org.jlleitschuh.gradle.ktlint")
     id("idea")
     id("maven-publish")
 }
