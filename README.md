@@ -8,46 +8,53 @@ It's a portmanteau of Kotlin and Tumblr, [real original, I know...](https://www.
 
 Kotlr is a Kotlin library for interacting with the Tumblr(V2) API.
 The library is written in pure Kotlin, but does currently have
-dependencies on Java libraries, so, for the time being, it's use is
+dependencies on Java libraries, so for the time being, using it is
 restricted to the JVM.
 
-### Goals ###
+## Goals ##
 
-* Create a full API client for Tumblr
-* Use typesafe and idiomatic Kotlin
+### Create a full API client for Tumblr ###
+Implement the entire public API (V2).
 
-   This means that every response, and every object within those responses,
-   will be represented by a class which will have typed properties for every
-   possible field that the API has ever returned.
-* Support the original (legacy) post format
-* Support the new 'blocks' post type, aka the Neue Post Format or NPF.
-* Provide any functionality needed to interact with
-the Tumblr API, such as APIs to acquire OAuth keys in a
-(hopefully) straightforward manner.
+### Use typesafe and idiomatic Kotlin
+This means that every response, and every object within those responses,
+will be represented by a class which will have typed properties for every
+possible field that the API has ever returned.
 
-The priorities of development right now are:
+### Support the original (legacy) post format
+Safely query posts without `npf=true`.
+
+### Support the new 'blocks' post type, aka the Neue Post Format or NPF.
+Safely query posts with `npf=true`.
+
+### Provide any functionality needed to interact with the Tumblr API straightforwardly.
+
+Currently, this only includes getting OAuth keys.
+
+## Priorities of Development
 
 1. ~~Add support for all GET request/response types.~~
-2. Improve documentation.
+2. ~~Improve documentation.~~
 3. ~~Improve test coverage and make tests more targeted~~.
-4. Add support for requests using other HTTP verbs.
-5. Add support for mutlipart form uploads. After this Kotlr will support all the Tumblr API which will mark version 1.0.0
-6. Clean up the API by: restricting visibility, reducing optional and default values, limiting mutability, and enforcing stricter types.
+4. ~~Add support for requests using other HTTP verbs.~~
+5. Add support for mutli-part form uploads. After this Kotlr will support all the Tumblr API which will mark version 1.0.0
+6. Clean up the API by: restricting visibility, reducing optional and default values, ~~limiting mutability, and enforcing stricter types~~.
 7. Create extension library to improve ease of use on Android.
 8. Create PoC Android App.
 9. ~~Make use of Coroutines to better define blocking api calls.~~
 10. Improve error messages/exceptions.
 11. Find/make/port pure Kotlin libraries to replace existing JVM bound dependencies.
-12. Performance improvements and bug fixes, etc.
+12. Become completely Kotlin multiplatform.
+13. Performance improvements and bug fixes, etc.
 
 Development Blog [Here](https://kotlr-development.tumblr.com/)
 
 Please use Kotlr responsibly and follow the
 [Tumblr api agreement](https://www.tumblr.com/docs/en/api_agreement).
 
-### Kotlr is NOT maintained by/built by/associated with/endorsed by Tumblr in any way! ###
+### *Kotlr is NOT maintained by/built by/associated with/endorsed by Tumblr in any way!* ###
 
-### How To Use Kotlr ###
+## How To Use Kotlr ##
 
 First, you'll need a Tumblr API token and secret. Get those by registering an
 app [here](https://www.tumblr.com/oauth/apps).
@@ -57,7 +64,8 @@ Then you'll need to add Kotlr to you project's dependencies.
 This requires setting up your own access token to Github and then adding some code to your gradle build files.
 See [here](https://docs.github.com/en/free-pro-team@latest/packages/using-github-packages-with-your-projects-ecosystem/configuring-gradle-for-use-with-github-packages) for more info on setting up your token.
 
-##### Gradle (build.gradle) #####
+### Add Dependencies ###
+#### Gradle (build.gradle) ####
 
 Add
 ```groovy
@@ -76,7 +84,7 @@ implementation 'com.highthunder:kotlr:0.8.1'
 ```
 to your module's `dependencies` block.
 
-##### Gradle (build.gradle.kts) #####
+#### Gradle (build.gradle.kts) ####
 
 Add
 ```kotlin
@@ -95,11 +103,12 @@ implementation("com.highthunder:kotlr:0.8.1")
 ```
 to your module's `dependencies` block.
 
-##### Auth Example #####
+### Write Code ###
+#### Auth Example ####
 
 ```kotlin
+// Kotlr also makes the process of getting OAuth keys easy.
 suspend fun oAuthExample() {
-    // Kotlr also makes the process of getting OAuth and XAuth keys easy.
 
     println("Enter your consumer key:")
     val apiKey: String = Scanner(System.`in`).nextLine()
@@ -134,11 +143,15 @@ suspend fun oAuthExample() {
 }
 ```
 
-#### Examples ####
+#### Usage Examples ####
 
 ```kotlin
+// A simple example of how to get the url of a user's most recently liked post.
 suspend fun minimalExampleExplained() {
-    // Class for holding API keys and secrets. Get this from one of the auth mechanisms.
+    // Class for holding API keys and secrets.
+    // You can get your API key and secret from https://www.tumblr.com/oauth/apps and clicking on "Register Application"
+    // They will be called "OAuth Consumer Key" and "Secret Key"
+    // User key and user secret have to be acquired through OAuth, see the `oAuthExample` to find how to get them.
     val key = TumblrUserKey("apiKey", "apiSecret", "userKey", "userSecret")
 
     // The client which performs all requests, this is similar to Jumblr's `JumblrClient`.
@@ -149,6 +162,7 @@ suspend fun minimalExampleExplained() {
 
     // Check out any of the meta information that Tumblr returns such as HTTP success codes.
     val meta: ResponseMetaInfo? = response?.meta
+    println(meta)
 
     // Get the main meat of the response.
     val body: ResponseBlogLikes.Body? = response?.getBody()
@@ -158,8 +172,11 @@ suspend fun minimalExampleExplained() {
     // a map of RequestLinks which can encode some generic actions that Tumblr thinks you
     // might like to perform based on the content of this request.
     val totalLikedPosts: Long? = body?.totalLiked
-    val requestLinks: Map<String, RequestLink>? = body?.links
+    println(totalLikedPosts)
+    val requestLinks: RequestLinks? = body?.links
+    println(requestLinks)
     val postUrl: String? = body?.posts?.firstOrNull()?.postUrl
+    println(postUrl)
 }
 ```
 
@@ -168,7 +185,7 @@ or, the same example without the fluff:
 ```kotlin
 suspend fun minimalExample() {
     println(
-        getApi(SampleUserKey)
+        getApi(TumblrUserKey("apiKey", "apiSecret", "userKey", "userSecret"))
             .getBlogLikes(identifier = "kotlr-development")
             ?.getBody()
             ?.posts
@@ -178,30 +195,30 @@ suspend fun minimalExample() {
 }
 ```
 
-### Version History ###
+## Version History ##
 
-#### 0.8.1 ####
+### 0.8.1 ###
 
-##### Breaking Changes #####
+#### Breaking Changes ####
   * None
 
-##### New Functionality #####
+#### New Functionality ####
 
   * Add support for `RequestQueryParameters.beforeId`.
   * Add support for `Post.recommendationReason`.
   * Add support for `Post.dismissal`.
   * Add support for `Post.serveId`.
 
-##### Minor Changes #####
+#### Minor Changes ####
 
   * Update readme to show how to add new dependency from Github.
   * Update dependency resolution system.
   * Move publishing configuration into `build.gradle.kts`.
   * Actually use `Moshi.failOnUnknown()` during unit tests.
 
-#### 0.8.0 ####
+### 0.8.0 ###
 
-##### Breaking Changes #####
+#### Breaking Changes ####
   * Update `PhotoContent.exif` to use `ExifData` instead of a `Map`.
   * Update request links to be strongly typed with new classes `RequestLinks` and `RequestQueryParameters`.
   * Update `VideoContent.metadata` to use `VideoMetadata` instead of `Any`.
@@ -209,13 +226,13 @@ suspend fun minimalExample() {
   * Remove `Post.totalPosts` this seems to have been an old copy/paste mistake.
   * Update `SubmissionTerms.acceptedTypes` to use camelCase and be strongly typed.
 
-##### New Functionality #####
+#### New Functionality ####
 
   * Add support for `getPostNotes` API.
   * Add support for `getBlogFollowedBy` API.
   * Add support for many new properties of `ExifData`.
 
-##### Minor Changes #####
+#### Minor Changes ####
 
   * Add a number of functions that can be easily called from a `fun main()` to perform integration tests.
   * Add a TON of documentation comments.
@@ -226,11 +243,11 @@ suspend fun minimalExample() {
   * Add ability to output debug info in the Moshi adapter factory.
   * Use Moshi.failOnUnknown() during unit tests.
 
-#### 0.7.3 ####
+### 0.7.3 ###
 
   * Test Github publish changes.
 
-#### 0.7.2 ####
+### 0.7.2 ###
 
   * Update to Kotlin 1.4 and Gradle 6.6.1.
   * Enable strict API warnings and fix all new warnings (in non-generated code).
@@ -239,7 +256,7 @@ suspend fun minimalExample() {
   * Add support for `Post.isBlurredImages`.
   * Slightly improve documentation.
 
-#### 0.7.1 ####
+### 0.7.1 ###
 
   * Improve handling of re-serializing unknown sub-types.
   * Deprecate the `SizeTextFormat` type.
@@ -251,7 +268,7 @@ suspend fun minimalExample() {
   * Add support for `ImageContent.exif`.
   * Slightly improve documentation.
 
-#### 0.7.0 ####
+### 0.7.0 ###
 
   * Switch from using amalgamation types to using a modified version of PolymorphicJsonAdapterFactory.
   * Complete rework of testing system, now samples are stored in separate files and fully tested.
@@ -263,27 +280,27 @@ suspend fun minimalExample() {
   * Add test samples from both the legacy documentation and the NPF documentation.
   * Many small changes.
 
-#### 0.6.3 ####
+### 0.6.3 ###
 
   * Add amalgamation types back in when constructing the amalgamation from a specific type.
 
-#### 0.6.2 ####
+### 0.6.2 ###
 
   * Fix issue when trying to store `Post` classes in Room database.
   * Expose a new helper function `Moshi.Builder.addKotlrTypes` to easily add Kotlr data types' adapters to your own instance of Moshi.
 
-#### 0.6.1 ####
+### 0.6.1 ###
 
   * Add JsonAdapter for `Color`.
 
-#### 0.6.0 ####
+### 0.6.0 ###
 
   * Only fail on unknown JSON properties when `getApi` is called with `debug = true`.
   * Add support for Blog.avatar property, this is a list of `Media` objects.
   * Add support for Post.parentPostId.
   * Add support for Post.parentBlogUUID.
 
-#### 0.5.0 ####
+### 0.5.0 ###
 
   * Add a bunch of new requests including:
     * Create new post (NPF and Legacy post types).
@@ -305,11 +322,11 @@ suspend fun minimalExample() {
   * Add support for Media.colors.
   * Add support for TextContent.SubType.Indented.
 
-#### <= 0.4.0 ####
+### <= 0.4.0 ###
 
   * Lots of cool stuff.
 
-### Credits ###
+## Credits ##
 * API Documentation - [Tumblr](https://github.com/tumblr/docs)
 * Kotlin - [Jet Brains](https://kotlinlang.org/)
 * HTTP - [OkHTTP](https://github.com/square/okhttp)
