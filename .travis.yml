@@ -9,5 +9,4 @@ cache:
     - $HOME/.gradle/wrapper/
 
 env:
-  - GITHUB_USERNAME=placeholder
-  - GITHUB_TOKEN=placeholder
+  - GITHUB_USERNAME=placeholder GITHUB_TOKEN=placeholder
