@@ -20,7 +20,7 @@ import kotlinx.coroutines.runBlocking
 import java.util.Scanner
 
 /**
- * A set of functions to make it easy to implement a full suite of integration tests.
+ * A set of functions to make it easy to implement a full suite of flaky (live) integration tests.
  *
  * Just add a <pre>{@code
  * fun main(): Unit = runBlocking { }
@@ -121,9 +121,10 @@ internal suspend fun runPostTests(api: KotlrApi, useNpf: Boolean) {
 }
 
 // Uses up to (ceiling(postsToLoop / postsPerRequest)) requests. (depends if there are enough posts on the given blog)
-internal suspend fun loopBlogPosts(api: KotlrApi, blogName: String, useNpf: Boolean, postsPerRequest: Int, postsToLoop: Int) {
+internal suspend fun loopBlogPosts(api: KotlrApi, blogName: String, useNpf: Boolean, postsPerRequest: Int, postsToLoop: Int): List<Post> {
     var lastTime: Long = Long.MAX_VALUE
     var posts: List<Post>?
+    val allPosts: MutableList<Post> = mutableListOf()
     var offset = 0L
 
     do {
@@ -143,13 +144,16 @@ internal suspend fun loopBlogPosts(api: KotlrApi, blogName: String, useNpf: Bool
             }
         }
         offset += postsPerRequest
+        posts?.also { allPosts.addAll(it) }
     } while (!posts.isNullOrEmpty() && offset < postsToLoop)
+    return allPosts
 }
 
 // Uses up to (ceiling(postsToLoop / postsPerRequest)) requests. (depends if there are enough likes on your account)
-internal suspend fun loopLikes(api: KotlrApi, useNpf: Boolean, postsPerRequest: Int, postsToLoop: Int) {
+internal suspend fun loopLikes(api: KotlrApi, useNpf: Boolean, postsPerRequest: Int, postsToLoop: Int): List<Post> {
     var lastTime: Long = Long.MAX_VALUE
     var posts: List<Post>?
+    val allPosts: MutableList<Post> = mutableListOf()
     var offset = 0L
 
     do {
@@ -167,13 +171,16 @@ internal suspend fun loopLikes(api: KotlrApi, useNpf: Boolean, postsPerRequest: 
                 lastTime = ts - 1 // Subtract 1 ms so we don't get an overlap
             }
         }
+        posts?.also { allPosts.addAll(it) }
         offset += postsPerRequest
     } while (!posts.isNullOrEmpty() && offset < postsToLoop)
+    return allPosts
 }
 
 // Uses up to (1 + ceiling(postsToLoop / postsPerRequest)) requests. (depends if there are enough posts on your dash)
-internal suspend fun loopDashboard(api: KotlrApi, useNpf: Boolean, postsPerRequest: Int, postsToLoop: Int) {
+internal suspend fun loopDashboard(api: KotlrApi, useNpf: Boolean, postsPerRequest: Int, postsToLoop: Int): List<Post> {
     var posts: List<Post>?
+    val allPosts: MutableList<Post> = mutableListOf()
     var offset = 0L
     // Get a first post, which can then be used to call [getUserDash] with a beforePostId
     var beforeId = api.getUserDash(
@@ -189,9 +196,11 @@ internal suspend fun loopDashboard(api: KotlrApi, useNpf: Boolean, postsPerReque
         println(response.checkError().clean())
         val body = response?.getBody()
         posts = body?.posts
+        posts?.also { allPosts.addAll(it) }
         beforeId = posts?.lastOrNull()?.id!!
         offset += posts.size
     } while (!posts.isNullOrEmpty() && offset < postsToLoop)
+    return allPosts
 }
 
 // Uses (2) requests.
