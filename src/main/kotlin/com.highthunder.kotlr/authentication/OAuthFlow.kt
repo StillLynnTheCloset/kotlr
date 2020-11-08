@@ -74,7 +74,7 @@ public class OAuthFlow constructor(private val appKey: TumblrAppKey) {
     /**
      * Check that the given [url] is a Tumblr Verifier URL.
      */
-    private fun isVerifierUrl(url: String): Boolean = url.contains(URL_FILTER)
+    public fun isVerifierUrl(url: String): Boolean = url.contains(URL_FILTER)
 
     /**
      * Retrieve a User Token based on the given verifier [url].
