@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/static/v1?label=Version&message=0.8.1&color=brightgreen)]()
+[![version](https://img.shields.io/static/v1?label=Version&message=0.8.2&color=brightgreen)]()
 [![Build Status](https://travis-ci.com/highthunder/kotlr.svg?branch=develop)](https://travis-ci.com/highthunder/kotlr)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
@@ -80,7 +80,7 @@ to your project's `repositories` block.
 
 Then add
 ```groovy
-implementation 'com.highthunder:kotlr:0.8.1'
+implementation 'com.highthunder:kotlr:0.8.2'
 ```
 to your module's `dependencies` block.
 
@@ -99,7 +99,7 @@ to your project's `repositories` block.
 
 Then add
 ```kotlin
-implementation("com.highthunder:kotlr:0.8.1")
+implementation("com.highthunder:kotlr:0.8.2")
 ```
 to your module's `dependencies` block.
 
@@ -197,10 +197,23 @@ suspend fun minimalExample() {
 
 ## Version History ##
 
+### 0.8.2 ###
+
+#### Breaking Changes ####
+  * None.
+
+#### New Functionality ####
+
+  * None.
+
+#### Minor Changes ####
+
+  * Update dependency resolution system.
+
 ### 0.8.1 ###
 
 #### Breaking Changes ####
-  * None
+  * None.
 
 #### New Functionality ####
 
