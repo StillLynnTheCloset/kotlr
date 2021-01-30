@@ -1488,6 +1488,20 @@ internal class SampleFilesIndividualParseTest {
 
     // region Once Failed Test Cases
 
+    // region Attribution
+
+    @Test
+    internal fun onceFailed_attribution_link_urlRedirect() {
+        val blog = parseFile<Attribution>("samples/onceFailed/attribution/link_urlRedirect.json")
+        val expected = LinkAttribution(
+            url = "http://8675309.tumblr.com",
+            urlRedirect = "https://t.umblr.com/redirect?z=8675309",
+        )
+        assertEquals(expected, blog)
+    }
+
+    // endregion Attribution
+
     // region Blog
 
     @Test

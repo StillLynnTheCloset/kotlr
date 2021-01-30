@@ -70,6 +70,8 @@ public data class PostAttribution constructor(
 @JsonClass(generateAdapter = true)
 public data class LinkAttribution constructor(
     val url: String? = null,
+    @Json(name = "url_redirect")
+    val urlRedirect: String? = null,
     override val type: String = KEY,
 ) : Attribution() {
     internal companion object {

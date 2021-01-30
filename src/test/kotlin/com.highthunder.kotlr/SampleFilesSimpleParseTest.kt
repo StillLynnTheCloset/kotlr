@@ -175,6 +175,11 @@ internal class SampleFilesSimpleParseTest {
     // region Once Failed Test Cases
 
     @Test
+    internal fun testBadAttributions() {
+        parseAllFilesInDirectory<Attribution>("samples/onceFailed/attribution")
+    }
+
+    @Test
     internal fun testBadBlogs() {
         parseAllFilesInDirectory<Blog>("samples/onceFailed/blog")
     }
@@ -193,8 +198,6 @@ internal class SampleFilesSimpleParseTest {
     internal fun testBadLegacyPosts() {
         parseAllFilesInDirectory<Post>("samples/onceFailed/legacyPost")
     }
-
-    // region Links
 
     @Test
     internal fun testBadLinks() {
