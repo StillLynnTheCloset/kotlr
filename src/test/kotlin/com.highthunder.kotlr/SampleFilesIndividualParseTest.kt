@@ -1693,6 +1693,38 @@ internal class SampleFilesIndividualParseTest {
     }
 
     @Test
+    internal fun onceFailed_legacyPost_answerPost_askingAvatar() {
+        val post = parseFile<Post>("samples/onceFailed/legacyPost/answerPost_askingAvatar.json")
+        val expected = AnswerPost(
+            askingAvatar = MediaWrapper(
+                listMedia = listOf(
+                    Media(
+                        width = 512,
+                        height = 512,
+                        url = "https://assets.tumblr.com/images/default_avatar/cone_open_512.png"
+                    ),
+                    Media(
+                        width = 128,
+                        height = 128,
+                        url = "https://assets.tumblr.com/images/default_avatar/cone_open_128.png"
+                    ),
+                    Media(
+                        width = 96,
+                        height = 96,
+                        url = "https://assets.tumblr.com/images/default_avatar/cone_open_96.png"
+                    ),
+                    Media(
+                        width = 64,
+                        height = 64,
+                        url = "https://assets.tumblr.com/images/default_avatar/cone_open_64.png"
+                    ),
+                ),
+            )
+        )
+        assertEquals(expected, post)
+    }
+
+    @Test
     internal fun onceFailed_legacyPost_audioPost() {
         val post = parseFile<Post>("samples/onceFailed/legacyPost/audioPost.json")
         val expected = AudioPost(
@@ -2194,6 +2226,37 @@ internal class SampleFilesIndividualParseTest {
 
     // region Posts
 
+    @Test
+    internal fun onceFailed_posts_blockPost_askingAvatar() {
+        val post = parseFile<Post>("samples/onceFailed/posts/blockPost_askingAvatar.json")
+        val expected = BlockPost(
+            askingAvatar = MediaWrapper(
+                listMedia = listOf(
+                    Media(
+                        width = 512,
+                        height = 512,
+                        url = "https://assets.tumblr.com/images/default_avatar/cone_open_512.png"
+                    ),
+                    Media(
+                        width = 128,
+                        height = 128,
+                        url = "https://assets.tumblr.com/images/default_avatar/cone_open_128.png"
+                    ),
+                    Media(
+                        width = 96,
+                        height = 96,
+                        url = "https://assets.tumblr.com/images/default_avatar/cone_open_96.png"
+                    ),
+                    Media(
+                        width = 64,
+                        height = 64,
+                        url = "https://assets.tumblr.com/images/default_avatar/cone_open_64.png"
+                    ),
+                ),
+            )
+        )
+        assertEquals(expected, post)
+    }
     @Test
     internal fun onceFailed_posts_blockPost_isBlurredImages() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_isBlurredImages.json")

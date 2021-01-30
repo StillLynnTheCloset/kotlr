@@ -205,6 +205,8 @@ public data class BlockPost constructor(
     val askingName: String? = null,
     @Json(name = "asking_url")
     val askingUrl: String? = null,
+    @Json(name = "asking_avatar")
+    val askingAvatar: MediaList? = null,
     @Json(name = "original_type")
     val originalType: Post.Type? = null,
     @Json(name = "type")

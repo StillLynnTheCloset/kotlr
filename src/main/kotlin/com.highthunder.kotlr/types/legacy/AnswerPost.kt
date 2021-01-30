@@ -1,6 +1,7 @@
 package com.highthunder.kotlr.types.legacy
 
 import com.highthunder.kotlr.types.Blog
+import com.highthunder.kotlr.types.MediaList
 import com.highthunder.kotlr.types.NoteData
 import com.highthunder.kotlr.types.Post
 import com.highthunder.kotlr.types.ReblogData
@@ -208,6 +209,8 @@ public data class AnswerPost constructor(
     override val dismissal: String? = null,
     @Json(name = "serve_id")
     override val serveId: String? = null,
+    @Json(name = "asking_avatar")
+    val askingAvatar: MediaList? = null,
     @Json(name = "asking_name")
     val askingName: String? = null,
     @Json(name = "asking_url")
