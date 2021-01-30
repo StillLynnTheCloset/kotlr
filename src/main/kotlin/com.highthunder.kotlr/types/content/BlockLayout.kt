@@ -215,7 +215,7 @@ public data class CondensedBlockLayout constructor(
 @JsonClass(generateAdapter = true)
 public data class AskBlockLayout constructor(
     val blocks: List<Int>? = null,
-    val attribution: Attribution? = null,
+    val attribution: BlogAttribution? = null,
     override val type: String = KEY,
 ) : BlockLayout() {
     internal companion object {
