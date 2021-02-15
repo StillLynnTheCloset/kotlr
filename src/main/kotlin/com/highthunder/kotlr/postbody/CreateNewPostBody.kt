@@ -1,4 +1,4 @@
-package com.highthunder.kotlr
+package com.highthunder.kotlr.postbody
 
 import com.highthunder.kotlr.json.qualifier.CommaSeparatedString
 import com.highthunder.kotlr.types.Post
@@ -16,13 +16,9 @@ import com.squareup.moshi.JsonClass
  * @param sourceUrl A source attribution for the post content.
  * @param sendToFacebook Whether or not to share this via any connected Twitter account on post publish. Defaults to the blog's global setting.
  * @param sendToTwitter Whether or not to share this via any connected Facebook account on post publish. Defaults to the blog's global setting.
- * @param parentTumblelogUuid The unique public identifier of the Tumblelog that's being reblogged from.
- * @param parentPostId The unique public post ID being reblogged.
- * @param reblogKey The unique per-post hash validating that this is a genuine reblog action.
- * @param hideTrail Whether or not to hide the reblog trail with this new post. Defaults to false.
  */
 @JsonClass(generateAdapter = true)
-public data class ReblogPostBody constructor(
+public data class CreateNewPostBody constructor(
     val content: List<PostContent>,
     val layout: List<BlockLayout>? = null,
     val state: Post.State? = null,
@@ -36,46 +32,17 @@ public data class ReblogPostBody constructor(
     val sendToTwitter: Boolean? = null,
     @Json(name = "send_to_facebook")
     val sendToFacebook: Boolean? = null,
-    @Json(name = "parent_tumblelog_uuid")
-    val parentTumblelogUuid: String,
-    @Json(name = "parent_post_id")
-    val parentPostId: Long,
-    @Json(name = "reblog_key")
-    val reblogKey: String,
-    @Json(name = "hide_trail")
-    val hideTrail: Boolean? = null,
 ) {
     init {
         tags?.forEach { tag ->
-            tag.takeIf { it.contains(',') }
+            tag
+                .takeIf { it.contains(',') }
                 ?.also { println("Tag `$it` contains comma(s). Tumblr will interpret this as a delimiter.") }
         }
-    }
 
-    public constructor(
-        postToReblog: Post,
-        content: List<PostContent>,
-        layout: List<BlockLayout>? = null,
-        state: Post.State? = null,
-        publishOn: String? = null,
-        tags: List<String>? = null,
-        sourceUrl: String? = null,
-        sendToTwitter: Boolean? = null,
-        sendToFacebook: Boolean? = null,
-        hideTrail: Boolean? = null
-    ) : this(
-        content = content,
-        layout = layout,
-        state = state,
-        publishOn = publishOn,
-        tags = tags,
-        sourceUrl = sourceUrl,
-        sendToTwitter = sendToTwitter,
-        sendToFacebook = sendToFacebook,
-        parentTumblelogUuid = postToReblog.blogUUID ?: postToReblog.blog?.uuid
-            ?: throw IllegalArgumentException("Post must have a parentBlogId"),
-        parentPostId = postToReblog.id ?: throw IllegalArgumentException("Post must have an id"),
-        reblogKey = postToReblog.reblogKey ?: throw IllegalArgumentException("Post must have a reblog key"),
-        hideTrail = hideTrail
-    )
+        tags
+            ?.flatMap { it.split(",") }
+            ?.map(String::trim)
+            ?.also { println("Tumblr will interpret tags as: $tags") }
+    }
 }

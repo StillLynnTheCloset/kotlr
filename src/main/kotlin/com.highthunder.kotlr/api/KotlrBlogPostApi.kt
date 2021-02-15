@@ -1,7 +1,7 @@
 package com.highthunder.kotlr.api
 
-import com.highthunder.kotlr.CreateNewPostBody
-import com.highthunder.kotlr.ReblogPostBody
+import com.highthunder.kotlr.postbody.CreateNewPostBody
+import com.highthunder.kotlr.postbody.ReblogPostBody
 import com.highthunder.kotlr.response.type.post.ResponseCreatePost
 import com.highthunder.kotlr.types.Post
 import okhttp3.MultipartBody

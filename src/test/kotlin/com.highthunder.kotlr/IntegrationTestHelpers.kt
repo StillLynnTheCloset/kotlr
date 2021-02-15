@@ -6,6 +6,10 @@ import com.highthunder.kotlr.api.KotlrApi
 import com.highthunder.kotlr.authentication.OAuthFlow
 import com.highthunder.kotlr.authentication.TumblrAppKey
 import com.highthunder.kotlr.authentication.TumblrUserKey
+import com.highthunder.kotlr.postbody.CreateNewPostBody
+import com.highthunder.kotlr.postbody.FollowPostBody
+import com.highthunder.kotlr.postbody.LikePostBody
+import com.highthunder.kotlr.postbody.ReblogPostBody
 import com.highthunder.kotlr.response.ResponseMetaInfo
 import com.highthunder.kotlr.response.TumblrResponse
 import com.highthunder.kotlr.response.type.blog.ResponseBlogLikes
@@ -30,7 +34,7 @@ import java.util.Scanner
 
 // region Integration Test Helpers
 
-internal fun Any?.clean(): String? = this.toString().replace("\n", "")
+internal fun Any?.clean(): String = this.toString().replace("\n", "")
 internal fun <T> TumblrResponse<T>?.checkError(doCheck: Boolean = true): TumblrResponse<T>? = if (doCheck && this?.meta?.status != null && this.meta.status!! >= 400) throw IllegalStateException("Response was an error: $this") else this
 
 // Uses (if (doNotesAndReblogs) 8 else 4) requests.
@@ -51,6 +55,19 @@ internal suspend fun runUserTests(api: KotlrApi, useNpf: Boolean, postsPerReques
         println(api.getUserDash(useNeuePostFormat = useNpf, postLimit = postsPerRequest, getReblogFields = true).checkError().clean())
         println(api.getUserDash(useNeuePostFormat = useNpf, postLimit = postsPerRequest, getNotesHistory = true).checkError().clean())
     }
+
+
+    println("Calling `likePost()`")
+    println(api.likePost(LikePostBody(189418176408, "6wJ3EaAY")).clean())
+
+    println("Calling `unlikePost()`")
+    println(api.unlikePost(LikePostBody(189418176408, "6wJ3EaAY")).clean())
+
+    println("Calling `unfollowBlog()`")
+    println(api.unfollowBlog(FollowPostBody("https://kotlr-development.tumblr.com/")).clean())
+
+    println("Calling `followBlog()`")
+    println(api.followBlog(FollowPostBody("https://kotlr-development.tumblr.com/")).clean())
 
     println("Calling `getUserFollowing()`")
     println(api.getUserFollowing().checkError().clean())
