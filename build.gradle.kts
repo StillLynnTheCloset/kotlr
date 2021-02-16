@@ -68,7 +68,7 @@ kotlin {
 }
 
 ktlint {
-    version.set("0.39.0")
+    version.set("0.40.0")
     debug.set(false)
     verbose.set(true)
     android.set(false)
@@ -84,7 +84,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/highthunder/kotlr")
+            url = uri("https://maven.pkg.github.com/stilllynnthecloset/kotlr")
             credentials {
                 username = (project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")).toString()
                 password = (project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")).toString()
@@ -104,5 +104,5 @@ publishing {
 
 tasks.withType<Wrapper> {
     distributionType = Wrapper.DistributionType.ALL
-    gradleVersion = "6.7"
+    gradleVersion = "6.8.2"
 }

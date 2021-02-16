@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/static/v1?label=Version&message=0.8.2&color=brightgreen)]()
+[![version](https://img.shields.io/static/v1?label=Version&message=0.8.3&color=brightgreen)]()
 [![Build Status](https://travis-ci.com/highthunder/kotlr.svg?branch=develop)](https://travis-ci.com/highthunder/kotlr)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
@@ -69,7 +69,7 @@ See [here](https://docs.github.com/en/free-pro-team@latest/packages/using-github
 
 Add
 ```groovy
-maven("https://maven.pkg.github.com/highthunder/kotlr") {
+maven("https://maven.pkg.github.com/StillLynnTheCloset/kotlr") {
     credentials {
         username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
         password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
@@ -80,7 +80,7 @@ to your project's `repositories` block.
 
 Then add
 ```groovy
-implementation 'com.highthunder:kotlr:0.8.2'
+implementation 'com.highthunder:kotlr:0.8.3'
 ```
 to your module's `dependencies` block.
 
@@ -88,7 +88,7 @@ to your module's `dependencies` block.
 
 Add
 ```kotlin
-maven("https://maven.pkg.github.com/highthunder/kotlr") {
+maven("https://maven.pkg.github.com/StillLynnTheCloset/kotlr") {
     credentials {
         username = (project.findProperty("gpr.user") ?: System.getenv("USERNAME")).toString()
         password = (project.findProperty("gpr.key") ?: System.getenv("TOKEN")).toString()
@@ -99,7 +99,7 @@ to your project's `repositories` block.
 
 Then add
 ```kotlin
-implementation("com.highthunder:kotlr:0.8.2")
+implementation("com.highthunder:kotlr:0.8.3")
 ```
 to your module's `dependencies` block.
 
@@ -196,6 +196,25 @@ suspend fun minimalExample() {
 ```
 
 ## Version History ##
+
+### 0.8.3 ###
+
+#### Breaking Changes ####
+
+  * Changed my username, so the repo is now hosted at [github.com/StillLynnTheCloset/kotlr](https://github.com/StillLynnTheCloset/kotlr).
+  * Change the signatures of like/unlike post to use a post body and return a response object.
+  * Change the signatures of follow/unfollow blog to use a post body and return a response object.
+
+#### New Functionality ####
+
+  * Add support for `BlockPost.askingAvatar`.
+  * Add support for `AnswerPost.askingAvatar`.
+  * Add support for `LinkAttribution.urlRedirect`.
+
+#### Minor Changes ####
+
+  * Make `AskBlockLayout.attribution` more strictly typed to just `BlogAttribution`.
+  * Update some dependencies.
 
 ### 0.8.2 ###
 
