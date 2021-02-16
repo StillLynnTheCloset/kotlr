@@ -16,6 +16,9 @@ import com.squareup.moshi.JsonClass
  * @param sourceUrl A source attribution for the post content.
  * @param sendToFacebook Whether or not to share this via any connected Twitter account on post publish. Defaults to the blog's global setting.
  * @param sendToTwitter Whether or not to share this via any connected Facebook account on post publish. Defaults to the blog's global setting.
+ *
+ * @author highthunder
+ * @since 2019-12-01
  */
 @JsonClass(generateAdapter = true)
 public data class CreateNewPostBody constructor(

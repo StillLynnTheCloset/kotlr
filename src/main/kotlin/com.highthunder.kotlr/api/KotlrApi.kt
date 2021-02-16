@@ -1,6 +1,8 @@
 package com.highthunder.kotlr.api
 
 import com.highthunder.kotlr.getApi
+import com.highthunder.kotlr.postbody.FollowPostBody
+import com.highthunder.kotlr.postbody.LikePostBody
 import com.highthunder.kotlr.response.RateLimitMetaData
 import com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar
 import com.highthunder.kotlr.response.type.blog.ResponseBlogDrafts
@@ -15,8 +17,10 @@ import com.highthunder.kotlr.response.type.blog.ResponseBlogSubmissions
 import com.highthunder.kotlr.response.type.post.ResponsePostNotes
 import com.highthunder.kotlr.response.type.post.ResponsePostsPost
 import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
+import com.highthunder.kotlr.response.type.user.ResponseUserFollow
 import com.highthunder.kotlr.response.type.user.ResponseUserFollowing
 import com.highthunder.kotlr.response.type.user.ResponseUserInfo
+import com.highthunder.kotlr.response.type.user.ResponseUserLike
 import com.highthunder.kotlr.response.type.user.ResponseUserLikes
 import com.highthunder.kotlr.types.Post
 
@@ -31,7 +35,7 @@ public class KotlrApi internal constructor(
     private val userPostApi: KotlrUserPostApi,
     private val blogPostApi: KotlrBlogPostApi,
     private val postsGetApi: KotlrPostsGetApi
-) : KotlrUserPostApi by userPostApi, KotlrBlogPostApi by blogPostApi {
+) : KotlrBlogPostApi by blogPostApi {
     // region User Getters
 
     /**
@@ -168,6 +172,88 @@ public class KotlrApi internal constructor(
     }
 
     // endregion User Getters
+
+    // region User Posts
+
+    /**
+     * Use this method to follow a blog.
+     *
+     * @param url The url of the blog.
+     * @param email The email of the blog if the user has enabled "allow people to find this blog by email"
+     */
+    public suspend fun followBlog(
+        url: String? = null,
+        email: String? = null,
+    ): ResponseUserFollow.Response? {
+        check((url != null) xor (email != null)) { "Only one of url or email can be provided" }
+        val retrofitResponse = userPostApi.followBlog(
+            followPostBody = FollowPostBody(url, email)
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    /**
+     * Use this method to unfollow a blog.
+     *
+     * @param url The url of the blog.
+     * @param email The email of the blog if the user has enabled "allow people to find this blog by email"
+     */
+    public suspend fun unfollowBlog(
+        url: String? = null,
+        email: String? = null,
+    ): ResponseUserFollow.Response? {
+        check((url != null) xor (email != null)) { "Only one of url or email can be provided" }
+        val retrofitResponse = userPostApi.unfollowBlog(
+            followPostBody = FollowPostBody(url, email)
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    /**
+     * Use this method to like a post.
+     *
+     * @param id The postId of the post to like.
+     * @param reblogKey The reblogKey of the post to like.
+     */
+    public suspend fun likePost(
+        id: Long,
+        reblogKey: String,
+    ): ResponseUserLike.Response? {
+        val retrofitResponse = userPostApi.likePost(
+            likePostBody = LikePostBody(id, reblogKey)
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    /**
+     * Use this method to unlike a post.
+     *
+     * @param id The postId of the post to unlike.
+     * @param reblogKey The reblogKey of the post to unlike.
+     */
+    public suspend fun unlikePost(
+        id: Long,
+        reblogKey: String,
+    ): ResponseUserLike.Response? {
+        val retrofitResponse = userPostApi.unlikePost(
+            likePostBody = LikePostBody(id, reblogKey)
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    // endregion User Posts
 
     // region Blog Getters
 

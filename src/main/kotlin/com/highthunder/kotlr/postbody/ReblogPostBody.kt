@@ -20,6 +20,9 @@ import com.squareup.moshi.JsonClass
  * @param parentPostId The unique public post ID being reblogged.
  * @param reblogKey The unique per-post hash validating that this is a genuine reblog action.
  * @param hideTrail Whether or not to hide the reblog trail with this new post. Defaults to false.
+ *
+ * @author highthunder
+ * @since 2019-12-01
  */
 @JsonClass(generateAdapter = true)
 public data class ReblogPostBody constructor(

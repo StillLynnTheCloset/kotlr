@@ -15,8 +15,10 @@ import com.highthunder.kotlr.json.response.post.PostNotesWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.post.PostsPostWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.post.PostsTaggedWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserDashboardWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.user.UserFollowWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserFollowingWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserInfoWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.user.UserLikeWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.user.UserLikesWrapperJsonAdapter
 import com.highthunder.kotlr.json.wrapper.AttributionWrapperJsonAdapter
 import com.highthunder.kotlr.json.wrapper.ColorsJsonAdapter
@@ -66,6 +68,10 @@ internal class KotlrJsonAdapterFactory constructor(private val printDebug: Boole
                         UserDashboardWrapperJsonAdapter(moshi)
                     "com.highthunder.kotlr.response.type.user.ResponseUserLikes\$Body" ->
                         UserLikesWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.user.ResponseUserLike\$Body" ->
+                        UserLikeWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.user.ResponseUserFollow\$Body" ->
+                        UserFollowWrapperJsonAdapter(moshi)
                     "com.highthunder.kotlr.response.type.user.ResponseUserFollowing\$Body" ->
                         UserFollowingWrapperJsonAdapter(moshi)
                     "com.highthunder.kotlr.response.type.post.ResponsePostsTagged\$Body" ->

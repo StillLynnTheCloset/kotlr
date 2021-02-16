@@ -7,8 +7,6 @@ import com.highthunder.kotlr.authentication.OAuthFlow
 import com.highthunder.kotlr.authentication.TumblrAppKey
 import com.highthunder.kotlr.authentication.TumblrUserKey
 import com.highthunder.kotlr.postbody.CreateNewPostBody
-import com.highthunder.kotlr.postbody.FollowPostBody
-import com.highthunder.kotlr.postbody.LikePostBody
 import com.highthunder.kotlr.postbody.ReblogPostBody
 import com.highthunder.kotlr.response.ResponseMetaInfo
 import com.highthunder.kotlr.response.TumblrResponse
@@ -56,18 +54,17 @@ internal suspend fun runUserTests(api: KotlrApi, useNpf: Boolean, postsPerReques
         println(api.getUserDash(useNeuePostFormat = useNpf, postLimit = postsPerRequest, getNotesHistory = true).checkError().clean())
     }
 
-
     println("Calling `likePost()`")
-    println(api.likePost(LikePostBody(189418176408, "6wJ3EaAY")).clean())
+    println(api.likePost(189418176408, "6wJ3EaAY").checkError().clean())
 
     println("Calling `unlikePost()`")
-    println(api.unlikePost(LikePostBody(189418176408, "6wJ3EaAY")).clean())
+    println(api.unlikePost(189418176408, "6wJ3EaAY").checkError().clean())
 
     println("Calling `unfollowBlog()`")
-    println(api.unfollowBlog(FollowPostBody("https://kotlr-development.tumblr.com/")).clean())
+    println(api.unfollowBlog("https://kotlr-development.tumblr.com/").checkError().clean())
 
     println("Calling `followBlog()`")
-    println(api.followBlog(FollowPostBody("https://kotlr-development.tumblr.com/")).clean())
+    println(api.followBlog("https://kotlr-development.tumblr.com/").checkError().clean())
 
     println("Calling `getUserFollowing()`")
     println(api.getUserFollowing().checkError().clean())
