@@ -382,6 +382,11 @@ public interface Post {
      */
     public val serveId: String?
 
+    /**
+     * TODO: Documentation
+     */
+    public val genesisPostId: String?
+
     // endregion
 
     /**

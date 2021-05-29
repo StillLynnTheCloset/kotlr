@@ -2337,6 +2337,15 @@ internal class SampleFilesIndividualParseTest {
     }
 
     @Test
+    internal fun onceFailed_post_postGenesisPostId() {
+        val post = parseFile<Post>("samples/onceFailed/posts/postGenesisPostId.json")
+        val expected = BlockPost(
+            genesisPostId = "1234784234687",
+        )
+        assertEquals(expected, post)
+    }
+
+    @Test
     internal fun onceFailed_posts_postWithNotesData() {
         val post = parseFile<Post>("samples/onceFailed/posts/postWithNotesData.json")
         val expected = QuotePost(

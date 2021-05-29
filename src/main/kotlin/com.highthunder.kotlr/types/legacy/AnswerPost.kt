@@ -83,6 +83,7 @@ import com.squareup.moshi.JsonClass
  * @param recommendationReason TODO: Documentation
  * @param dismissal TODO: Documentation
  * @param serveId TODO: Documentation
+ * @param genesisPostId TODO: Documentation
  *
  * Answer Post
  * @param type The type of this post. This is provided as a constructor parameter to make Moshi happy. If you override this, you'll get bad data.
@@ -209,6 +210,8 @@ public data class AnswerPost constructor(
     override val dismissal: String? = null,
     @Json(name = "serve_id")
     override val serveId: String? = null,
+    @Json(name = "genesis_post_id")
+    override val genesisPostId: String? = null,
     @Json(name = "asking_avatar")
     val askingAvatar: MediaList? = null,
     @Json(name = "asking_name")
