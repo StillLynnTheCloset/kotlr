@@ -1,0 +1,10 @@
+{
+    "type": "blocks",
+    "recommendation_reason": {
+        "text": "Pinned Post",
+        "icon": "pin",
+        "logging_reason": "pin:t:kfDsDFSldgGjfsJFDLSL",
+        "color": "#00cf35",
+        "_links": {}
+    }
+}

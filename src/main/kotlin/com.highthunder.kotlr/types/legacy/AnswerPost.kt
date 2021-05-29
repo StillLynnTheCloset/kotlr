@@ -5,6 +5,7 @@ import com.highthunder.kotlr.types.MediaList
 import com.highthunder.kotlr.types.NoteData
 import com.highthunder.kotlr.types.Post
 import com.highthunder.kotlr.types.ReblogData
+import com.highthunder.kotlr.types.RecommendationReason
 import com.highthunder.kotlr.types.Trail
 import com.highthunder.kotlr.types.content.BlockLayout
 import com.highthunder.kotlr.types.content.PostContent
@@ -206,7 +207,7 @@ public data class AnswerPost constructor(
     @Json(name = "is_blurred_images")
     override val isBlurredImages: Boolean? = null,
     @Json(name = "recommendation_reason")
-    override val recommendationReason: String? = null,
+    override val recommendationReason: RecommendationReason? = null,
     @Json(name = "dismissal")
     override val dismissal: String? = null,
     @Json(name = "serve_id")

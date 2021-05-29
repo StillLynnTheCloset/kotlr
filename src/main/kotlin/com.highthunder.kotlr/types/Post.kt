@@ -370,7 +370,7 @@ public interface Post {
     /**
      * TODO: Documentation
      */
-    public val recommendationReason: String?
+    public val recommendationReason: RecommendationReason?
 
     /**
      * TODO: Documentation

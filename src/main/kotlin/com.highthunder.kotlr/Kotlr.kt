@@ -14,6 +14,7 @@ import com.highthunder.kotlr.json.qualifier.HexColorOctothorpeJsonAdapter
 import com.highthunder.kotlr.json.wrapper.AttributionListJsonAdapter
 import com.highthunder.kotlr.json.wrapper.ColorJsonAdapter
 import com.highthunder.kotlr.json.wrapper.MediaListJsonAdapter
+import com.highthunder.kotlr.json.wrapper.RecommendationReasonJsonAdapter
 import com.highthunder.kotlr.types.NoteData
 import com.highthunder.kotlr.types.Post
 import com.highthunder.kotlr.types.content.Attribution
@@ -50,7 +51,8 @@ public fun Moshi.Builder.addKotlrTypes(): Moshi.Builder = this
     .add(MediaListJsonAdapter())
     .add(AttributionListJsonAdapter())
     .add(HexColorOctothorpeJsonAdapter())
-    .add(KotlrJsonAdapterFactory())
+    .add(RecommendationReasonJsonAdapter())
+    .add(KotlrJsonAdapterFactory)
 
 private const val API_BASE_URL = "https://api.tumblr.com/v2/"
 private const val O_AUTH_BASE_URL = "https://www.tumblr.com/oauth/"

@@ -10,6 +10,7 @@ import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.PostedNote
 import com.highthunder.kotlr.types.ReblogData
 import com.highthunder.kotlr.types.ReblogNote
+import com.highthunder.kotlr.types.RecommendationReason
 import com.highthunder.kotlr.types.ReplyNote
 import com.highthunder.kotlr.types.RequestLink
 import com.highthunder.kotlr.types.RequestLinks
@@ -118,5 +119,6 @@ internal class VerifyEverythingHasADefaultConstructor {
         println(ReblogNote().toString())
         println(ReplyNote().toString())
         println(AttributionNote().toString())
+        println(RecommendationReason().toString())
     }
 }

@@ -21,6 +21,7 @@ import com.highthunder.kotlr.types.NoteData
 import com.highthunder.kotlr.types.Post
 import com.highthunder.kotlr.types.PostedNote
 import com.highthunder.kotlr.types.ReblogNote
+import com.highthunder.kotlr.types.RecommendationReason
 import com.highthunder.kotlr.types.ReplyNote
 import com.highthunder.kotlr.types.RequestLink
 import com.highthunder.kotlr.types.RequestLinks
@@ -1964,10 +1965,10 @@ internal class SampleFilesIndividualParseTest {
     }
 
     @Test
-    internal fun onceFailed_legacyPost_textPost_recommendationReason() {
-        val post = parseFile<Post>("samples/onceFailed/legacyPost/textPost_recommendationReason.json")
+    internal fun onceFailed_legacyPost_textPost_recommendationReasonString() {
+        val post = parseFile<Post>("samples/onceFailed/legacyPost/textPost_recommendationReasonString.json")
         val expected = TextPost(
-            recommendationReason = null,
+            recommendationReason = RecommendationReason(text = "Pin"),
             dismissal = null,
             serveId = "8f0e8b01d9401311ec651bf7a94a259a",
         )
@@ -2350,6 +2351,21 @@ internal class SampleFilesIndividualParseTest {
         val post = parseFile<Post>("samples/onceFailed/posts/postIsPinned.json")
         val expected = BlockPost(
             isPinned = true,
+        )
+        assertEquals(expected, post)
+    }
+
+    @Test
+    internal fun onceFailed_post_recommendationReasonObject() {
+        val post = parseFile<Post>("samples/onceFailed/posts/postRecommendationReasonObject.json")
+        val expected = BlockPost(
+            recommendationReason = RecommendationReason(
+                text = "Pinned Post",
+                icon = "pin",
+                logging_reason = "pin:t:kfDsDFSldgGjfsJFDLSL",
+                color = Color("#00cf35"),
+                links = emptyMap(),
+            ),
         )
         assertEquals(expected, post)
     }

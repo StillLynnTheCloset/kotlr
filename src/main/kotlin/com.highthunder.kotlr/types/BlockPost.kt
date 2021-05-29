@@ -198,7 +198,7 @@ public data class BlockPost constructor(
     @Json(name = "is_blurred_images")
     override val isBlurredImages: Boolean? = null,
     @Json(name = "recommendation_reason")
-    override val recommendationReason: String? = null,
+    override val recommendationReason: RecommendationReason? = null,
     @Json(name = "dismissal")
     override val dismissal: String? = null,
     @Json(name = "serve_id")

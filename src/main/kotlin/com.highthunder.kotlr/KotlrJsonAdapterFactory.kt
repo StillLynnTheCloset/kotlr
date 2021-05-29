@@ -25,6 +25,7 @@ import com.highthunder.kotlr.json.wrapper.ColorsJsonAdapter
 import com.highthunder.kotlr.json.wrapper.ContentWrapperJsonAdapter
 import com.highthunder.kotlr.json.wrapper.MediaWrapperJsonAdapter
 import com.highthunder.kotlr.json.wrapper.PlayerWrapperJsonAdapter
+import com.highthunder.kotlr.json.wrapper.RecommendationReasonWrapperJsonAdapter
 import com.highthunder.kotlr.json.wrapper.ThemeWrapperJsonAdapter
 import com.highthunder.kotlr.json.wrapper.UserJsonAdapter
 import com.highthunder.kotlr.json.wrapper.VideoJsonAdapter
@@ -33,7 +34,9 @@ import com.squareup.moshi.Moshi
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
-internal class KotlrJsonAdapterFactory constructor(private val printDebug: Boolean = false) : JsonAdapter.Factory {
+internal object KotlrJsonAdapterFactory : JsonAdapter.Factory {
+    var printDebug: Boolean = false
+
     override fun create(type: Type, annotations: MutableSet<out Annotation>, moshi: Moshi): JsonAdapter<*>? {
         val adapter = if (type is ParameterizedType) {
             if (printDebug) {
@@ -100,6 +103,7 @@ internal class KotlrJsonAdapterFactory constructor(private val printDebug: Boole
                 "com.highthunder.kotlr.json.wrapper.ThemeWrapper" -> ThemeWrapperJsonAdapter(moshi)
                 "com.highthunder.kotlr.json.wrapper.PlayerWrapper" -> PlayerWrapperJsonAdapter(moshi)
                 "com.highthunder.kotlr.json.wrapper.ContentWrapper" -> ContentWrapperJsonAdapter(moshi)
+                "com.highthunder.kotlr.json.wrapper.RecommendationReasonWrapper" -> RecommendationReasonWrapperJsonAdapter(moshi)
                 else -> null
             }
         }
