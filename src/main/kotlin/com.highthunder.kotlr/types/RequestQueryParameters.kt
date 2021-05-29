@@ -22,6 +22,7 @@ import com.squareup.moshi.JsonClass
  * @param mode The request mode for post notes.
  * @param id The post Id that was requested.
  * @param beforeTimestamp The timestamp that the request occurred before.
+ * @param beforeId The post Id that was before the requested post(s).
  */
 @JsonClass(generateAdapter = true)
 public data class RequestQueryParameters constructor(

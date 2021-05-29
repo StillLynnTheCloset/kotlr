@@ -48,7 +48,7 @@ internal suspend fun runUserTests(api: KotlrApi, useNpf: Boolean, postsPerReques
     }
 
     println("Calling `getUserDash()`")
-    println(api.getUserDash(useNeuePostFormat = useNpf, postLimit = postsPerRequest).clean())
+    println(api.getUserDash(useNeuePostFormat = useNpf, postLimit = postsPerRequest).checkError().clean())
     if (doNotesAndReblogs) {
         println(api.getUserDash(useNeuePostFormat = useNpf, postLimit = postsPerRequest, getReblogFields = true).checkError().clean())
         println(api.getUserDash(useNeuePostFormat = useNpf, postLimit = postsPerRequest, getNotesHistory = true).checkError().clean())
@@ -158,7 +158,7 @@ internal suspend fun loopBlogPosts(api: KotlrApi, blogName: String, useNpf: Bool
             }
         }
         offset += postsPerRequest
-        posts?.also { allPosts.addAll(it) }
+        posts?.also(allPosts::addAll)
     } while (!posts.isNullOrEmpty() && offset < postsToLoop)
     return allPosts
 }
@@ -185,7 +185,7 @@ internal suspend fun loopLikes(api: KotlrApi, useNpf: Boolean, postsPerRequest: 
                 lastTime = ts - 1 // Subtract 1 ms so we don't get an overlap
             }
         }
-        posts?.also { allPosts.addAll(it) }
+        posts?.also(allPosts::addAll)
         offset += postsPerRequest
     } while (!posts.isNullOrEmpty() && offset < postsToLoop)
     return allPosts
@@ -210,7 +210,7 @@ internal suspend fun loopDashboard(api: KotlrApi, useNpf: Boolean, postsPerReque
         println(response.checkError().clean())
         val body = response?.getBody()
         posts = body?.posts
-        posts?.also { allPosts.addAll(it) }
+        posts?.also(allPosts::addAll)
         beforeId = posts?.lastOrNull()?.id!!
         offset += posts.size
     } while (!posts.isNullOrEmpty() && offset < postsToLoop)

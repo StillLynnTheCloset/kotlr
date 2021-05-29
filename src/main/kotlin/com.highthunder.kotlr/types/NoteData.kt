@@ -1,6 +1,7 @@
 package com.highthunder.kotlr.types
 
 import com.highthunder.kotlr.json.PolymorphicJsonAdapterFactory
+import com.highthunder.kotlr.types.content.TextContent
 import com.highthunder.kotlr.types.content.TextFormat
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

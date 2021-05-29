@@ -66,6 +66,7 @@ public data class PostAttribution constructor(
  * Link Attribution
  *
  * @param url The URL to be attributed for the content.
+ * @param urlRedirect TODO: Documentation.
  */
 @JsonClass(generateAdapter = true)
 public data class LinkAttribution constructor(

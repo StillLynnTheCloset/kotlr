@@ -37,7 +37,7 @@ Currently, this only includes getting OAuth keys.
 2. ~~Improve documentation.~~
 3. ~~Improve test coverage and make tests more targeted~~.
 4. ~~Add support for requests using other HTTP verbs.~~
-5. Add support for mutli-part form uploads. After this Kotlr will support all the Tumblr API which will mark version 1.0.0
+5. Add support for mutli-part form uploads. After this, Kotlr will support all the Tumblr API which will mark version 1.0.0
 6. Clean up the API by: restricting visibility, reducing optional and default values, ~~limiting mutability, and enforcing stricter types~~.
 7. Create extension library to improve ease of use on Android.
 8. Create PoC Android App.
@@ -61,7 +61,7 @@ app [here](https://www.tumblr.com/oauth/apps).
 
 Then you'll need to add Kotlr to you project's dependencies.
 
-This requires setting up your own access token to Github and then adding some code to your gradle build files.
+This requires setting up your own access token to GitHub and then adding some code to your gradle build files.
 See [here](https://docs.github.com/en/free-pro-team@latest/packages/using-github-packages-with-your-projects-ecosystem/configuring-gradle-for-use-with-github-packages) for more info on setting up your token.
 
 ### Add Dependencies ###
@@ -243,7 +243,7 @@ suspend fun minimalExample() {
 
 #### Minor Changes ####
 
-  * Update readme to show how to add new dependency from Github.
+  * Update readme to show how to add new dependency from GitHub.
   * Update dependency resolution system.
   * Move publishing configuration into `build.gradle.kts`.
   * Actually use `Moshi.failOnUnknown()` during unit tests.
@@ -277,13 +277,13 @@ suspend fun minimalExample() {
 
 ### 0.7.3 ###
 
-  * Test Github publish changes.
+  * Test GitHub publish changes.
 
 ### 0.7.2 ###
 
   * Update to Kotlin 1.4 and Gradle 6.6.1.
   * Enable strict API warnings and fix all new warnings (in non-generated code).
-  * Update to use the maven-publish plugin and publish to Github instead of Bitbucket.
+  * Update to use the maven-publish plugin and publish to GitHub instead of Bitbucket.
   * Add support for alpha in `Color`.
   * Add support for `Post.isBlurredImages`.
   * Slightly improve documentation.
@@ -368,4 +368,4 @@ suspend fun minimalExample() {
 * Continuous Integration - [Travis](https://travis-ci.com/)
 * Hosting - [Github](https://github.com/)
 
-This \[application/service] uses the Tumblr application programming interface but is not endorsed or certified by Tumblr, Inc. All of the Tumblr logos and trademarks displayed on this \[application/service] are the property of Tumblr, Inc.
+This \[application/service] uses the Tumblr application programming interface but is not endorsed or certified by Tumblr, Inc. All the Tumblr logos and trademarks displayed on this \[application/service] are the property of Tumblr, Inc.

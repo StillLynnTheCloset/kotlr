@@ -89,6 +89,7 @@ import com.squareup.moshi.JsonClass
  *
  * Answer Post
  * @param type The type of this post. This is provided as a constructor parameter to make Moshi happy. If you override this, you'll get bad data.
+ * @param askingAvatar The avatar of the blog that sent this ask, or answered it if it was privately answered.
  * @param askingName The blog that sent this ask, or answered it if it was privately answered.
  * @param askingUrl The blog URL that sent this ask, or answered it if it was privately answered.
  * @param question The question being asked.

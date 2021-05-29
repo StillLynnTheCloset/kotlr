@@ -2,7 +2,6 @@ package com.highthunder.kotlr.json.wrapper
 
 import com.highthunder.kotlr.adapter
 import com.highthunder.kotlr.listAdapter
-import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.content.Attribution
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonAdapter
@@ -16,8 +15,8 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
 
 /**
- * MediaWrapperJsonAdapter - An adapter to help Moshi convert [MediaWrapper] objects to and
- * from either a single [Media] object, or a list of them.
+ * AttributionWrapperJsonAdapter - An adapter to help Moshi convert [AttributionWrapper] objects to and
+ * from either a single [Attribution] object, or a list of them.
  *
  * @author highthunder
  * @since 2020-03-21
