@@ -32,7 +32,6 @@ tasks.withType<KotlinCompile> {
 repositories {
     mavenCentral()
     jcenter()
-    maven(url = "https://raw.github.com/synergian/wagon-git/releases")
 }
 
 dependencies {
