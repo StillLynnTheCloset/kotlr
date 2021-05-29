@@ -387,6 +387,11 @@ public interface Post {
      */
     public val genesisPostId: String?
 
+    /**
+     * TODO: Documentation
+     */
+    public val isPinned: Boolean?
+
     // endregion
 
     /**

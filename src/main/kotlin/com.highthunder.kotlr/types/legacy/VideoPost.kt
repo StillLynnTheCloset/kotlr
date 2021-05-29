@@ -84,6 +84,7 @@ import com.squareup.moshi.JsonClass
  * @param dismissal TODO: Documentation
  * @param serveId TODO: Documentation
  * @param genesisPostId TODO: Documentation
+ * @param isPinned TODO: Documentation
  *
  * Video Post
  * @param type The type of this post. This is provided as a constructor parameter to make Moshi happy. If you override this, you'll get bad data.
@@ -218,6 +219,8 @@ public data class VideoPost constructor(
     override val serveId: String? = null,
     @Json(name = "genesis_post_id")
     override val genesisPostId: String? = null,
+    @Json(name = "is_pinned")
+    override val isPinned: Boolean? = null,
     val player: List<Video>? = null,
     val caption: String? = null,
     @Json(name = "video_url")

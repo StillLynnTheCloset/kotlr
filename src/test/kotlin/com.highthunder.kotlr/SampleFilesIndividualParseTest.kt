@@ -2346,6 +2346,15 @@ internal class SampleFilesIndividualParseTest {
     }
 
     @Test
+    internal fun onceFailed_post_postIsPinned() {
+        val post = parseFile<Post>("samples/onceFailed/posts/postIsPinned.json")
+        val expected = BlockPost(
+            isPinned = true,
+        )
+        assertEquals(expected, post)
+    }
+
+    @Test
     internal fun onceFailed_posts_postWithNotesData() {
         val post = parseFile<Post>("samples/onceFailed/posts/postWithNotesData.json")
         val expected = QuotePost(
