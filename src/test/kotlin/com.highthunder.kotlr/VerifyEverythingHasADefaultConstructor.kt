@@ -5,6 +5,7 @@ import com.highthunder.kotlr.types.BlockPost
 import com.highthunder.kotlr.types.Blog
 import com.highthunder.kotlr.types.BlogTheme
 import com.highthunder.kotlr.types.Colors
+import com.highthunder.kotlr.types.ExifData
 import com.highthunder.kotlr.types.LikeNote
 import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.PostedNote
@@ -41,19 +42,6 @@ import com.highthunder.kotlr.types.content.StrikeThroughTextFormat
 import com.highthunder.kotlr.types.content.TextContent
 import com.highthunder.kotlr.types.content.VerticalBlockLayout
 import com.highthunder.kotlr.types.content.VideoContent
-import com.highthunder.kotlr.types.legacy.AnswerPost
-import com.highthunder.kotlr.types.legacy.AudioPost
-import com.highthunder.kotlr.types.legacy.ChatPost
-import com.highthunder.kotlr.types.legacy.Dialogue
-import com.highthunder.kotlr.types.legacy.ExifData
-import com.highthunder.kotlr.types.legacy.LinkPost
-import com.highthunder.kotlr.types.legacy.Photo
-import com.highthunder.kotlr.types.legacy.PhotoPost
-import com.highthunder.kotlr.types.legacy.PhotoSize
-import com.highthunder.kotlr.types.legacy.QuotePost
-import com.highthunder.kotlr.types.legacy.TextPost
-import com.highthunder.kotlr.types.legacy.Video
-import com.highthunder.kotlr.types.legacy.VideoPost
 import org.junit.Test
 
 /**
@@ -86,19 +74,7 @@ internal class VerifyEverythingHasADefaultConstructor {
         println(MentionTextFormat().toString())
         println(ColorTextFormat().toString())
         println(SizeTextFormat().toString())
-        println(AnswerPost().toString())
-        println(AudioPost().toString())
-        println(ChatPost().toString())
-        println(LinkPost().toString())
-        println(PhotoPost().toString())
-        println(QuotePost().toString())
-        println(TextPost().toString())
-        println(VideoPost().toString())
-        println(Dialogue().toString())
         println(ExifData().toString())
-        println(Photo().toString())
-        println(PhotoSize().toString())
-        println(Video().toString())
         println(VideoMetadata().toString())
         println(YoutubeVideoMetadata().toString())
         println(BlockPost().toString())

@@ -3,11 +3,11 @@ package com.highthunder.kotlr.types.content
 import com.highthunder.kotlr.json.PolymorphicJsonAdapterFactory
 import com.highthunder.kotlr.types.AttributionList
 import com.highthunder.kotlr.types.Colors
+import com.highthunder.kotlr.types.ExifData
 import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.MediaList
 import com.highthunder.kotlr.types.VideoMetadata
 import com.highthunder.kotlr.types.content.TextContent.SubType
-import com.highthunder.kotlr.types.legacy.ExifData
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

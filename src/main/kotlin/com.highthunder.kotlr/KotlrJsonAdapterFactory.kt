@@ -25,11 +25,9 @@ import com.highthunder.kotlr.json.wrapper.AttributionWrapperJsonAdapter
 import com.highthunder.kotlr.json.wrapper.ColorsJsonAdapter
 import com.highthunder.kotlr.json.wrapper.ContentWrapperJsonAdapter
 import com.highthunder.kotlr.json.wrapper.MediaWrapperJsonAdapter
-import com.highthunder.kotlr.json.wrapper.PlayerWrapperJsonAdapter
 import com.highthunder.kotlr.json.wrapper.RecommendationReasonWrapperJsonAdapter
 import com.highthunder.kotlr.json.wrapper.ThemeWrapperJsonAdapter
 import com.highthunder.kotlr.json.wrapper.UserJsonAdapter
-import com.highthunder.kotlr.json.wrapper.VideoJsonAdapter
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import java.lang.reflect.ParameterizedType
@@ -99,12 +97,10 @@ internal object KotlrJsonAdapterFactory : JsonAdapter.Factory {
             }
             when (type.typeName) {
                 "com.highthunder.kotlr.types.Colors" -> ColorsJsonAdapter(moshi)
-                "com.highthunder.kotlr.types.legacy.Video" -> VideoJsonAdapter(moshi)
                 "com.highthunder.kotlr.types.User" -> UserJsonAdapter(moshi)
                 "com.highthunder.kotlr.json.wrapper.MediaWrapper" -> MediaWrapperJsonAdapter(moshi)
                 "com.highthunder.kotlr.json.wrapper.AttributionWrapper" -> AttributionWrapperJsonAdapter(moshi)
                 "com.highthunder.kotlr.json.wrapper.ThemeWrapper" -> ThemeWrapperJsonAdapter(moshi)
-                "com.highthunder.kotlr.json.wrapper.PlayerWrapper" -> PlayerWrapperJsonAdapter(moshi)
                 "com.highthunder.kotlr.json.wrapper.ContentWrapper" -> ContentWrapperJsonAdapter(moshi)
                 "com.highthunder.kotlr.json.wrapper.RecommendationReasonWrapper" -> {
                     RecommendationReasonWrapperJsonAdapter(moshi)

@@ -66,7 +66,6 @@ public class KotlrApi internal constructor(
      * @param beforeTime Optional. Retrieve posts liked before the specified timestamp.
      * @param getReblogFields Optional. Indicates whether to return reblog information (specify true or false). Returns the various reblogged_ fields.
      * @param getNotesHistory Optional. Indicates whether to return notes information (specify true or false). Returns note count and note metadata.
-     * @param useNeuePostFormat Optional. Returns posts' content in NPF format instead of the legacy format.
      * @param tag Optional.
      * @param pageNumber Optional.
      */
@@ -79,7 +78,6 @@ public class KotlrApi internal constructor(
         beforeTime: Long? = null,
         getReblogFields: Boolean? = null,
         getNotesHistory: Boolean? = null,
-        useNeuePostFormat: Boolean? = null,
         tag: String? = null,
         pageNumber: Int? = null,
     ): ResponseUserLikes.Response? {
@@ -94,17 +92,17 @@ public class KotlrApi internal constructor(
         validatePageNumber(pageNumber)
 
         val retrofitResponse = userGetApi.getUserLikesHelper(
-            pagingLimit,
-            pagingOffset,
-            afterPostId,
-            beforePostId,
-            afterTime,
-            beforeTime,
-            getReblogFields,
-            getNotesHistory,
-            useNeuePostFormat,
-            tag,
-            pageNumber,
+            postLimit = pagingLimit,
+            postOffset = pagingOffset,
+            afterPostId = afterPostId,
+            beforePostId = beforePostId,
+            afterTime = afterTime,
+            beforeTime = beforeTime,
+            getReblogFields = getReblogFields,
+            getNotesHistory = getNotesHistory,
+            useNeuePostFormat = true,
+            tag = tag,
+            pageNumber = pageNumber,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -126,7 +124,6 @@ public class KotlrApi internal constructor(
      * @param beforeTime Optional. Retrieve posts before the specified timestamp.
      * @param getReblogFields Optional. Indicates whether to return reblog information (specify true or false). Returns the various reblogged_ fields.
      * @param getNotesHistory Optional. Indicates whether to return notes information (specify true or false). Returns note count and note metadata.
-     * @param useNeuePostFormat Optional. Returns posts' content in NPF format instead of the legacy format.
      * @param tag Optional.
      * @param pageNumber Optional.
      * @param type Optional. The type of post to return. Specify one of the following: text, photo, quote, link, chat, audio, video, answer
@@ -140,7 +137,6 @@ public class KotlrApi internal constructor(
         beforeTime: Long? = null,
         getReblogFields: Boolean? = null,
         getNotesHistory: Boolean? = null,
-        useNeuePostFormat: Boolean? = null,
         tag: String? = null,
         pageNumber: Int? = null,
         type: Post.Type? = null,
@@ -156,18 +152,18 @@ public class KotlrApi internal constructor(
         validatePageNumber(pageNumber)
 
         val retrofitResponse = userGetApi.getUserDashHelper(
-            pagingLimit,
-            pagingOffset,
-            afterPostId,
-            beforePostId,
-            afterTime,
-            beforeTime,
-            getReblogFields,
-            getNotesHistory,
-            useNeuePostFormat,
-            tag,
-            pageNumber,
-            type,
+            postLimit = pagingLimit,
+            postOffset = pagingOffset,
+            afterPostId = afterPostId,
+            beforePostId = beforePostId,
+            afterTime = afterTime,
+            beforeTime = beforeTime,
+            getReblogFields = getReblogFields,
+            getNotesHistory = getNotesHistory,
+            useNeuePostFormat = true,
+            tag = tag,
+            pageNumber = pageNumber,
+            type = type,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -197,7 +193,6 @@ public class KotlrApi internal constructor(
         val response = retrofitResponse.body()
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
-
 
     /**
      * Use this method to retrieve the content filtering strings of the user whose OAuth credentials are submitted with the request.
@@ -548,7 +543,6 @@ public class KotlrApi internal constructor(
      * @param beforeTime Optional. Retrieve posts before the specified timestamp.
      * @param getReblogFields Optional. Indicates whether to return reblog information (specify true or false). Returns the various reblogged_ fields.
      * @param getNotesHistory Optional. Indicates whether to return notes information (specify true or false). Returns note count and note metadata.
-     * @param useNeuePostFormat Optional. Returns posts' content in NPF format instead of the legacy format.
      * @param tag Optional.
      * @param pageNumber Optional.
      */
@@ -562,7 +556,6 @@ public class KotlrApi internal constructor(
         beforeTime: Long? = null,
         getReblogFields: Boolean? = null,
         getNotesHistory: Boolean? = null,
-        useNeuePostFormat: Boolean? = null,
         tag: String? = null,
         pageNumber: Int? = null,
     ): ResponseBlogLikes.Response? {
@@ -578,18 +571,18 @@ public class KotlrApi internal constructor(
         validatePageNumber(pageNumber)
 
         val retrofitResponse = blogGetApi.getBlogLikesHelper(
-            blogIdentifier,
-            pagingLimit,
-            pagingOffset,
-            afterPostId,
-            beforePostId,
-            afterTime,
-            beforeTime,
-            getReblogFields,
-            getNotesHistory,
-            useNeuePostFormat,
-            tag,
-            pageNumber,
+            identifier = blogIdentifier,
+            postLimit = pagingLimit,
+            postOffset = pagingOffset,
+            afterPostId = afterPostId,
+            beforePostId = beforePostId,
+            afterTime = afterTime,
+            beforeTime = beforeTime,
+            getReblogFields = getReblogFields,
+            getNotesHistory = getNotesHistory,
+            useNeuePostFormat = true,
+            tag = tag,
+            pageNumber = pageNumber,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -609,7 +602,6 @@ public class KotlrApi internal constructor(
      * @param beforeTime Optional. Retrieve posts before the specified timestamp.
      * @param getReblogFields Optional. Indicates whether to return reblog information (specify true or false). Returns the various reblogged_ fields.
      * @param getNotesHistory Optional. Indicates whether to return notes information (specify true or false). Returns note count and note metadata.
-     * @param useNeuePostFormat Optional. Returns posts' content in NPF format instead of the legacy format.
      * @param tag Optional.
      * @param pageNumber Optional.
      * @param type Optional. The type of post to return. Specify one of the following: text, photo, quote, link, chat, audio, video, answer
@@ -624,7 +616,6 @@ public class KotlrApi internal constructor(
         beforeTime: Long? = null,
         getReblogFields: Boolean? = null,
         getNotesHistory: Boolean? = null,
-        useNeuePostFormat: Boolean? = null,
         tag: String? = null,
         pageNumber: Int? = null,
         type: Post.Type? = null,
@@ -641,19 +632,19 @@ public class KotlrApi internal constructor(
         validatePageNumber(pageNumber)
 
         val retrofitResponse = blogGetApi.getBlogPostsHelper(
-            blogIdentifier,
-            pagingLimit,
-            pagingOffset,
-            afterPostId,
-            beforePostId,
-            afterTime,
-            beforeTime,
-            getReblogFields,
-            getNotesHistory,
-            useNeuePostFormat,
-            tag,
-            pageNumber,
-            type,
+            identifier = blogIdentifier,
+            postLimit = pagingLimit,
+            postOffset = pagingOffset,
+            afterPostId = afterPostId,
+            beforePostId = beforePostId,
+            afterTime = afterTime,
+            beforeTime = beforeTime,
+            getReblogFields = getReblogFields,
+            getNotesHistory = getNotesHistory,
+            useNeuePostFormat = true,
+            tag = tag,
+            pageNumber = pageNumber,
+            type = type,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -673,7 +664,6 @@ public class KotlrApi internal constructor(
      * @param beforeTime Optional. Retrieve posts before the specified timestamp.
      * @param getReblogFields Optional. Indicates whether to return reblog information (specify true or false). Returns the various reblogged_ fields.
      * @param getNotesHistory Optional. Indicates whether to return notes information (specify true or false). Returns note count and note metadata.
-     * @param useNeuePostFormat Optional. Returns posts' content in NPF format instead of the legacy format.
      * @param tag Optional.
      * @param pageNumber Optional.
      */
@@ -687,7 +677,6 @@ public class KotlrApi internal constructor(
         beforeTime: Long? = null,
         getReblogFields: Boolean? = null,
         getNotesHistory: Boolean? = null,
-        useNeuePostFormat: Boolean? = null,
         tag: String? = null,
         pageNumber: Int? = null,
     ): ResponseBlogDrafts.Response? {
@@ -703,18 +692,18 @@ public class KotlrApi internal constructor(
         validatePageNumber(pageNumber)
 
         val retrofitResponse = blogGetApi.getBlogDraftsHelper(
-            blogIdentifier,
-            pagingLimit,
-            pagingOffset,
-            afterPostId,
-            beforePostId,
-            afterTime,
-            beforeTime,
-            getReblogFields,
-            getNotesHistory,
-            useNeuePostFormat,
-            tag,
-            pageNumber,
+            identifier = blogIdentifier,
+            postLimit = pagingLimit,
+            postOffset = pagingOffset,
+            afterPostId = afterPostId,
+            beforePostId = beforePostId,
+            afterTime = afterTime,
+            beforeTime = beforeTime,
+            getReblogFields = getReblogFields,
+            getNotesHistory = getNotesHistory,
+            useNeuePostFormat = true,
+            tag = tag,
+            pageNumber = pageNumber,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -734,7 +723,6 @@ public class KotlrApi internal constructor(
      * @param beforeTime Optional. Retrieve posts before the specified timestamp.
      * @param getReblogFields Optional. Indicates whether to return reblog information (specify true or false). Returns the various reblogged_ fields.
      * @param getNotesHistory Optional. Indicates whether to return notes information (specify true or false). Returns note count and note metadata.
-     * @param useNeuePostFormat Optional. Returns posts' content in NPF format instead of the legacy format.
      * @param tag Optional.
      * @param pageNumber Optional.
      */
@@ -748,7 +736,6 @@ public class KotlrApi internal constructor(
         beforeTime: Long? = null,
         getReblogFields: Boolean? = null,
         getNotesHistory: Boolean? = null,
-        useNeuePostFormat: Boolean? = null,
         tag: String? = null,
         pageNumber: Int? = null,
     ): ResponseBlogQueue.Response? {
@@ -764,18 +751,18 @@ public class KotlrApi internal constructor(
         validatePageNumber(pageNumber)
 
         val retrofitResponse = blogGetApi.getBlogQueueHelper(
-            blogIdentifier,
-            pagingLimit,
-            pagingOffset,
-            afterPostId,
-            beforePostId,
-            afterTime,
-            beforeTime,
-            getReblogFields,
-            getNotesHistory,
-            useNeuePostFormat,
-            tag,
-            pageNumber,
+            identifier = blogIdentifier,
+            postLimit = pagingLimit,
+            postOffset = pagingOffset,
+            afterPostId = afterPostId,
+            beforePostId = beforePostId,
+            afterTime = afterTime,
+            beforeTime = beforeTime,
+            getReblogFields = getReblogFields,
+            getNotesHistory = getNotesHistory,
+            useNeuePostFormat = true,
+            tag = tag,
+            pageNumber = pageNumber,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -795,7 +782,6 @@ public class KotlrApi internal constructor(
      * @param beforeTime Optional. Retrieve posts before the specified timestamp.
      * @param getReblogFields Optional. Indicates whether to return reblog information (specify true or false). Returns the various reblogged_ fields.
      * @param getNotesHistory Optional. Indicates whether to return notes information (specify true or false). Returns note count and note metadata.
-     * @param useNeuePostFormat Optional. Returns posts' content in NPF format instead of the legacy format.
      * @param tag Optional.
      * @param pageNumber Optional.
      */
@@ -809,7 +795,6 @@ public class KotlrApi internal constructor(
         beforeTime: Long? = null,
         getReblogFields: Boolean? = null,
         getNotesHistory: Boolean? = null,
-        useNeuePostFormat: Boolean? = null,
         tag: String? = null,
         pageNumber: Int? = null,
     ): ResponseBlogSubmissions.Response? {
@@ -825,18 +810,18 @@ public class KotlrApi internal constructor(
         validatePageNumber(pageNumber)
 
         val retrofitResponse = blogGetApi.getBlogSubmissionsHelper(
-            blogIdentifier,
-            pagingLimit,
-            pagingOffset,
-            afterPostId,
-            beforePostId,
-            afterTime,
-            beforeTime,
-            getReblogFields,
-            getNotesHistory,
-            useNeuePostFormat,
-            tag,
-            pageNumber,
+            identifier = blogIdentifier,
+            postLimit = pagingLimit,
+            postOffset = pagingOffset,
+            afterPostId = afterPostId,
+            beforePostId = beforePostId,
+            afterTime = afterTime,
+            beforeTime = beforeTime,
+            getReblogFields = getReblogFields,
+            getNotesHistory = getNotesHistory,
+            useNeuePostFormat = true,
+            tag = tag,
+            pageNumber = pageNumber,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -880,20 +865,18 @@ public class KotlrApi internal constructor(
      *
      * @param blogIdentifier A blog identifier of the blog that posted the desired post.
      * @param postId The id of the desired post.
-     * @param postFormat Optional. The format to serve the post as, either [Post.PostVersion.Legacy] or [Post.PostVersion.NPF].
      */
     public suspend fun getPost(
         blogIdentifier: String,
         postId: Long,
-        postFormat: Post.PostVersion? = null,
     ): ResponsePostsPost.Response? {
         validateBlogIdentifier(blogIdentifier)
         validatePostId(postId)
 
         val retrofitResponse = postsGetApi.getPost(
-            blogIdentifier,
-            postId,
-            postFormat?.key,
+            identifier = blogIdentifier,
+            postId = postId,
+            postFormat = "npf",
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())

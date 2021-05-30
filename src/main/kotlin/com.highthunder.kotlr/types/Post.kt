@@ -9,14 +9,6 @@ import com.highthunder.kotlr.types.content.LinkContent
 import com.highthunder.kotlr.types.content.PostContent
 import com.highthunder.kotlr.types.content.TextContent
 import com.highthunder.kotlr.types.content.VideoContent
-import com.highthunder.kotlr.types.legacy.AnswerPost
-import com.highthunder.kotlr.types.legacy.AudioPost
-import com.highthunder.kotlr.types.legacy.ChatPost
-import com.highthunder.kotlr.types.legacy.LinkPost
-import com.highthunder.kotlr.types.legacy.PhotoPost
-import com.highthunder.kotlr.types.legacy.QuotePost
-import com.highthunder.kotlr.types.legacy.TextPost
-import com.highthunder.kotlr.types.legacy.VideoPost
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -32,16 +24,7 @@ public interface Post {
             .of(Post::class.java, "type")
             // .withDefaultValue() // TODO: Add a default post object
             .withMissingLabelType(BlockPost::class.java)
-
-            .withSubtype(AnswerPost::class.java, Type.Answer.key)
-            .withSubtype(AudioPost::class.java, Type.Audio.key)
             .withSubtype(BlockPost::class.java, Type.Block.key)
-            .withSubtype(ChatPost::class.java, Type.Chat.key)
-            .withSubtype(LinkPost::class.java, Type.Link.key)
-            .withSubtype(PhotoPost::class.java, Type.Photo.key)
-            .withSubtype(QuotePost::class.java, Type.Quote.key)
-            .withSubtype(TextPost::class.java, Type.Text.key)
-            .withSubtype(VideoPost::class.java, Type.Video.key)
     }
 
     /**
@@ -543,26 +526,6 @@ public interface Post {
          */
         @Json(name = "markdown")
         Markdown("markdown"),
-    }
-
-    /**
-     * PostVersion - The api version of the post.
-     *
-     * @param key The string that Tumblr uses to reference each type of post.
-     */
-    @JsonClass(generateAdapter = false)
-    public enum class PostVersion constructor(public val key: String) {
-        /**
-         * This is an NPF post that uses a [BlockPost] and post content is encoded with [PostContent] json objects.
-         */
-        @Json(name = "npf")
-        NPF("npf"),
-
-        /**
-         * This is a legacy post that uses each of the different post types and post content is encoded as HTML.
-         */
-        @Json(name = "legacy")
-        Legacy("legacy"),
     }
 
     /**

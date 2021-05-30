@@ -1,4 +1,4 @@
-package com.highthunder.kotlr.types.legacy
+package com.highthunder.kotlr.types
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

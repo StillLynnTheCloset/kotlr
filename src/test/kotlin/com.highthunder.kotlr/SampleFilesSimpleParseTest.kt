@@ -16,8 +16,6 @@ import com.highthunder.kotlr.types.content.BlockLayout
 import com.highthunder.kotlr.types.content.PostContent
 import com.highthunder.kotlr.types.content.RowBlockLayout
 import com.highthunder.kotlr.types.content.TextFormat
-import com.highthunder.kotlr.types.legacy.Photo
-import com.highthunder.kotlr.types.legacy.Video
 import com.squareup.moshi.JsonAdapter
 import okio.buffer
 import okio.source
@@ -109,68 +107,59 @@ internal class SampleFilesSimpleParseTest {
 
     // endregion Manufactured Tests
 
-    // region Official LPF Samples Test Cases
+    // region Official Samples Test Cases
 
     @Test
-    internal fun testOfficialLPF_blog() {
-        parseAllFilesInDirectory<Blog>("samples/officialLPFSamples/blog")
+    internal fun testOfficial_blog() {
+        parseAllFilesInDirectory<Blog>("samples/officialSamples/blog")
     }
 
     @Test
-    internal fun testOfficialLPF_links() {
-        parseAllFilesInDirectory<RequestLinks>("samples/officialLPFSamples/links")
+    internal fun testOfficial_links() {
+        parseAllFilesInDirectory<RequestLinks>("samples/officialSamples/links")
     }
 
     @Test
-    internal fun testOfficialLPF_post() {
-        parseAllFilesInDirectory<Post>("samples/officialLPFSamples/post")
+    internal fun testOfficial_user() {
+        parseAllFilesInDirectory<User>("samples/officialSamples/user")
     }
-
-    @Test
-    internal fun testOfficialLPF_user() {
-        parseAllFilesInDirectory<User>("samples/officialLPFSamples/user")
-    }
-
-    // endregion Official LPF Samples Test Cases
-
-    // region Official NPF Samples Test Cases
 
     @Test
     internal fun testNPFSampleAttributions() {
-        parseAllFilesInDirectory<Attribution>("samples/officialNPFSamples/attribution")
+        parseAllFilesInDirectory<Attribution>("samples/officialSamples/attribution")
     }
 
     @Test
     internal fun testNPFSampleContents() {
-        parseAllFilesInDirectory<PostContent>("samples/officialNPFSamples/content")
+        parseAllFilesInDirectory<PostContent>("samples/officialSamples/content")
     }
 
     @Test
     internal fun testNPFSampleLayouts() {
-        parseAllFilesInDirectory<BlockLayout>("samples/officialNPFSamples/layout")
+        parseAllFilesInDirectory<BlockLayout>("samples/officialSamples/layout")
     }
 
     @Test
     internal fun testNPFSampleMedia() {
-        parseAllFilesInDirectory<Media>("samples/officialNPFSamples/media")
+        parseAllFilesInDirectory<Media>("samples/officialSamples/media")
     }
 
     @Test
     internal fun testNPFSamplePosts() {
-        parseAllFilesInDirectory<Post>("samples/officialNPFSamples/post")
+        parseAllFilesInDirectory<Post>("samples/officialSamples/post")
     }
 
     @Test
     internal fun testNPFSampleRowBlockDisplay() {
-        parseAllFilesInDirectory<RowBlockLayout.Display>("samples/officialNPFSamples/rowBlockDisplay")
+        parseAllFilesInDirectory<RowBlockLayout.Display>("samples/officialSamples/rowBlockDisplay")
     }
 
     @Test
     internal fun testNPFSampleTextFormat() {
-        parseAllFilesInDirectory<TextFormat>("samples/officialNPFSamples/textFormat")
+        parseAllFilesInDirectory<TextFormat>("samples/officialSamples/textFormat")
     }
 
-    // endregion Official NPF Samples Test Cases
+    // endregion Official Samples Test Cases
 
     // region Once Failed Test Cases
 
@@ -195,11 +184,6 @@ internal class SampleFilesSimpleParseTest {
     }
 
     @Test
-    internal fun testBadLegacyPosts() {
-        parseAllFilesInDirectory<Post>("samples/onceFailed/legacyPost")
-    }
-
-    @Test
     internal fun testBadLinks() {
         parseAllFilesInDirectory<RequestLink>("samples/onceFailed/links")
     }
@@ -215,11 +199,6 @@ internal class SampleFilesSimpleParseTest {
     }
 
     @Test
-    internal fun testBadPhoto() {
-        parseAllFilesInDirectory<Photo>("samples/onceFailed/photo")
-    }
-
-    @Test
     internal fun testBadPosts() {
         parseAllFilesInDirectory<Post>("samples/onceFailed/posts")
     }
@@ -232,11 +211,6 @@ internal class SampleFilesSimpleParseTest {
     @Test
     internal fun testBadUsers() {
         parseAllFilesInDirectory<User>("samples/onceFailed/user")
-    }
-
-    @Test
-    internal fun testBadVideo() {
-        parseAllFilesInDirectory<Video>("samples/onceFailed/video")
     }
 
     // endregion Once Failed Test Cases
