@@ -33,8 +33,8 @@ import java.util.Scanner
 // region Integration Test Helpers
 
 internal fun Any?.clean(): String = this.toString().replace("\n", "")
-internal fun <T> TumblrResponse<T>?.checkError(doCheck: Boolean = true): TumblrResponse<T>? =
-    if (doCheck && this?.meta?.status != null && this.meta.status!! >= 400) {
+internal fun <T> TumblrResponse<T>?.checkError(expectFailure: Boolean = false): TumblrResponse<T>? =
+    if (expectFailure xor (this?.meta?.status != null && this.meta.status!! >= 400)) {
         throw IllegalStateException("Response was an error: $this")
     } else {
         this
@@ -84,27 +84,27 @@ internal suspend fun runUserTests(api: KotlrApi, useNpf: Boolean, postsPerReques
 }
 
 // Uses (if (doNotesAndReblogs) 22 else 12) requests.
-internal suspend fun runBlogTests(api: KotlrApi, blogName: String, useNpf: Boolean, postsPerRequest: Int, doNotesAndReblogs: Boolean, throwOnError: Boolean = true) {
+internal suspend fun runBlogTests(api: KotlrApi, blogName: String, useNpf: Boolean, postsPerRequest: Int, doNotesAndReblogs: Boolean, expectError: Boolean = false) {
     println("Calling `getBlogAvatar()`")
-    println(api.getBlogAvatar(blogName).checkError(throwOnError).clean())
-    println(api.getBlogAvatar(blogName, 16).checkError(throwOnError).clean())
-    println(api.getBlogAvatar(blogName, 512).checkError(throwOnError).clean())
+    println(api.getBlogAvatar(blogName).checkError(expectError).clean())
+    println(api.getBlogAvatar(blogName, 16).checkError(expectError).clean())
+    println(api.getBlogAvatar(blogName, 512).checkError(expectError).clean())
 
     println("Calling `getBlogFollowers()`")
-    println(api.getBlogFollowers(blogName).checkError(throwOnError).clean())
+    println(api.getBlogFollowers(blogName).checkError(expectError).clean())
 
     println("Calling `getBlogFollowing()`")
-    println(api.getBlogFollowing(blogName).checkError(throwOnError).clean())
+    println(api.getBlogFollowing(blogName).checkError(expectError).clean())
 
     println("Calling `getBlogInfo()`")
-    println(api.getBlogInfo(blogName).checkError(throwOnError).clean())
+    println(api.getBlogInfo(blogName).checkError(expectError).clean())
 
     println("Calling `getBlogFollowedBy()`")
-    println(api.getBlogFollowedBy(blogName, "kotlr-development").checkError(throwOnError).clean())
+    println(api.getBlogFollowedBy(blogName, "kotlr-development").checkError(expectError).clean())
 
     println("Calling `getBlogLikes()``")
     println(
-        api.getBlogLikes(blogName, useNeuePostFormat = useNpf, pagingLimit = postsPerRequest).checkError(throwOnError).clean()
+        api.getBlogLikes(blogName, useNeuePostFormat = useNpf, pagingLimit = postsPerRequest).checkError(expectError).clean()
     )
     if (doNotesAndReblogs) {
         println(
@@ -113,7 +113,7 @@ internal suspend fun runBlogTests(api: KotlrApi, blogName: String, useNpf: Boole
                 useNeuePostFormat = useNpf,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true
-            ).checkError(throwOnError).clean()
+            ).checkError(expectError).clean()
         )
         println(
             api.getBlogLikes(
@@ -121,13 +121,13 @@ internal suspend fun runBlogTests(api: KotlrApi, blogName: String, useNpf: Boole
                 useNeuePostFormat = useNpf,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true
-            ).checkError(throwOnError).clean()
+            ).checkError(expectError).clean()
         )
     }
 
     println("Calling `getBlogPosts()`")
     println(
-        api.getBlogPosts(blogName, useNeuePostFormat = useNpf, pagingLimit = postsPerRequest).checkError(throwOnError).clean()
+        api.getBlogPosts(blogName, useNeuePostFormat = useNpf, pagingLimit = postsPerRequest).checkError(expectError).clean()
     )
     if (doNotesAndReblogs) {
         println(
@@ -136,7 +136,7 @@ internal suspend fun runBlogTests(api: KotlrApi, blogName: String, useNpf: Boole
                 useNeuePostFormat = useNpf,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true
-            ).checkError(throwOnError).clean()
+            ).checkError(expectError).clean()
         )
         println(
             api.getBlogPosts(
@@ -144,13 +144,13 @@ internal suspend fun runBlogTests(api: KotlrApi, blogName: String, useNpf: Boole
                 useNeuePostFormat = useNpf,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true
-            ).checkError(throwOnError).clean()
+            ).checkError(expectError).clean()
         )
     }
 
     println("Calling `getBlogDrafts()`")
     println(
-        api.getBlogDrafts(blogName, useNeuePostFormat = useNpf, pagingLimit = postsPerRequest).checkError(throwOnError).clean()
+        api.getBlogDrafts(blogName, useNeuePostFormat = useNpf, pagingLimit = postsPerRequest).checkError(expectError).clean()
     )
     if (doNotesAndReblogs) {
         println(
@@ -159,7 +159,7 @@ internal suspend fun runBlogTests(api: KotlrApi, blogName: String, useNpf: Boole
                 useNeuePostFormat = useNpf,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true
-            ).checkError(throwOnError).clean()
+            ).checkError(expectError).clean()
         )
         println(
             api.getBlogDrafts(
@@ -167,13 +167,13 @@ internal suspend fun runBlogTests(api: KotlrApi, blogName: String, useNpf: Boole
                 useNeuePostFormat = useNpf,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true
-            ).checkError(throwOnError).clean()
+            ).checkError(expectError).clean()
         )
     }
 
     println("Calling `getBlogQueue()`")
     println(
-        api.getBlogQueue(blogName, useNeuePostFormat = useNpf, pagingLimit = postsPerRequest).checkError(throwOnError).clean()
+        api.getBlogQueue(blogName, useNeuePostFormat = useNpf, pagingLimit = postsPerRequest).checkError(expectError).clean()
     )
     if (doNotesAndReblogs) {
         println(
@@ -182,7 +182,7 @@ internal suspend fun runBlogTests(api: KotlrApi, blogName: String, useNpf: Boole
                 useNeuePostFormat = useNpf,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true
-            ).checkError(throwOnError).clean()
+            ).checkError(expectError).clean()
         )
         println(
             api.getBlogQueue(
@@ -190,14 +190,14 @@ internal suspend fun runBlogTests(api: KotlrApi, blogName: String, useNpf: Boole
                 useNeuePostFormat = useNpf,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true
-            ).checkError(throwOnError).clean()
+            ).checkError(expectError).clean()
         )
     }
 
     println("Calling `getBlogSubmissions()`")
     println(
         api.getBlogSubmissions(blogName, useNeuePostFormat = useNpf, pagingLimit = postsPerRequest).checkError(
-            throwOnError
+            expectError
         ).clean()
     )
     if (doNotesAndReblogs) {
@@ -207,7 +207,7 @@ internal suspend fun runBlogTests(api: KotlrApi, blogName: String, useNpf: Boole
                 useNeuePostFormat = useNpf,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true
-            ).checkError(throwOnError).clean()
+            ).checkError(expectError).clean()
         )
         println(
             api.getBlogSubmissions(
@@ -215,7 +215,7 @@ internal suspend fun runBlogTests(api: KotlrApi, blogName: String, useNpf: Boole
                 useNeuePostFormat = useNpf,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true
-            ).checkError(throwOnError).clean()
+            ).checkError(expectError).clean()
         )
     }
 }
@@ -527,7 +527,7 @@ internal suspend fun runAllTests(userKey: TumblrUserKey, blogName: String, debug
     loopBlogPosts(api, blogName, useNpf, postsPerRequest, maxPostsPerLooper)
 
     println("Test what happens if you call for a blog that (probably) doesn't exist")
-    runBlogTests(api, blogName + "asdfasdfasdfasdf", useNpf, postsPerRequest, doNotesAndReblogs, throwOnError = false)
+    runBlogTests(api, blogName + "asdfasdfasdfasdf", useNpf, postsPerRequest, doNotesAndReblogs, expectError = true)
 
     println("Draft a reblog of the most recent post")
     testReblog(api, blogName)

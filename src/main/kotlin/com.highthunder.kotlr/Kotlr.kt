@@ -95,18 +95,16 @@ private fun getHttpClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false)
         }
     }
 
-    val httpClient = OkHttpClient.Builder()
-    httpClient.followRedirects(false)
-    httpClient.retryOnConnectionFailure(false)
-
-    httpClient.addInterceptor(SigningInterceptor(consumer))
-    httpClient.addInterceptor(treatAs200ResponseInterceptor)
-    httpClient.addNetworkInterceptor(logging)
-
-    return httpClient.build()
+    return OkHttpClient.Builder()
+        .followRedirects(false)
+        .retryOnConnectionFailure(false)
+        .addInterceptor(SigningInterceptor(consumer))
+        .addInterceptor(treatAs200ResponseInterceptor)
+        .addNetworkInterceptor(logging)
+        .build()
 }
 
-private fun getClient(
+private fun getRetrofit(
     consumer: OkHttpOAuthConsumer,
     debug: Boolean = false,
     strict: Boolean = false,
@@ -144,7 +142,7 @@ public fun getApi(
     strict: Boolean = false,
     useShimo: Boolean = false,
 ): KotlrApi {
-    val client = getClient(getOAuthConsumer(userKey), debug = debug, strict = strict, useShimo = useShimo)
+    val client = getRetrofit(getOAuthConsumer(userKey), debug = debug, strict = strict, useShimo = useShimo)
     val userGetApi: KotlrUserGetApi = client.create()
     val blogGetApi: KotlrBlogGetApi = client.create()
     val userPostApi: KotlrUserPostApi = client.create()
