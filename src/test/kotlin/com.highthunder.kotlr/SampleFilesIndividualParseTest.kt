@@ -2383,7 +2383,7 @@ internal class SampleFilesIndividualParseTest {
             recommendationReason = RecommendationReason(
                 text = "Pinned Post",
                 icon = "pin",
-                logging_reason = "pin:t:kfDsDFSldgGjfsJFDLSL",
+                loggingReason = "pin:t:kfDsDFSldgGjfsJFDLSL",
                 color = Color("#00cf35"),
                 links = emptyMap(),
             ),

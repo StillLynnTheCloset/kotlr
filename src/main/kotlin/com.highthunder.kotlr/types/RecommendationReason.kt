@@ -11,7 +11,7 @@ import com.squareup.moshi.JsonClass
  *
  * @param text TODO: Documentation.
  * @param icon TODO: Documentation.
- * @param logging_reason TODO: Documentation.
+ * @param loggingReason TODO: Documentation.
  * @param color TODO: Documentation.
  * @param links TODO: Documentation.
  */
@@ -19,7 +19,8 @@ import com.squareup.moshi.JsonClass
 public data class RecommendationReason constructor(
     val text: String? = null,
     val icon: String? = null,
-    val logging_reason: String? = null,
+    @Json(name = "logging_reason")
+    val loggingReason: String? = null,
     val color: Color? = null,
     @Json(name = "_links")
     val links: Map<String, Any?>? = null,

@@ -43,7 +43,7 @@ public class KotlrApi internal constructor(
         private val validAvatarSizes = listOf(16, 24, 30, 40, 48, 64, 96, 128, 512)
     }
 
-    // region User Getters
+    // region User GETs
 
     /**
      * Use this method to retrieve the user's account information that matches the OAuth credentials submitted with the request.
@@ -178,8 +178,8 @@ public class KotlrApi internal constructor(
     /**
      * Use this method to retrieve the blogs followed by the user whose OAuth credentials are submitted with the request.
      *
-     * @param limit Optional. The number of results to return: 1–50, inclusive
-     * @param offset Optional. Result number to start at
+     * @param pagingLimit Optional. The number of results to return: 1–50, inclusive
+     * @param pagingOffset Optional. Result number to start at
      */
     public suspend fun getUserFollowing(
         pagingLimit: Int? = null,
@@ -210,9 +210,9 @@ public class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
-    // endregion User Getters
+    // endregion User GETs
 
-    // region User Posts
+    // region User POSTs
 
     /**
      * Use this method to follow a blog.
@@ -844,9 +844,9 @@ public class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
-    // endregion Blog Getters
+    // endregion Blog GETs
 
-    // region Post Getters
+    // region Post GETs
 
     // /**
     //  * Fetch posts with a given tag.
@@ -931,7 +931,9 @@ public class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
-    // endregion Post Getters
+    // endregion Post GETs
+
+    // region Argument Validation
 
     private fun validateBlogIdentifier(blogIdentifier: String) {
         require(blogIdentifier.isNotBlank()) { "Blog identifiers must not be blank." }
@@ -983,4 +985,6 @@ public class KotlrApi internal constructor(
     private fun validateAvatarSize(size: Int?) {
         require(size == null || size in validAvatarSizes) { "Size must be one of $validAvatarSizes." }
     }
+
+    // endregion Argument Validation
 }

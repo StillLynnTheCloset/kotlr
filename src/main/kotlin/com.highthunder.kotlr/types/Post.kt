@@ -132,7 +132,7 @@ public interface Post {
     public val state: State?
 
     /**
-     * Was this post made anonymously.
+     * Whether or not this post was made anonymously.
      */
     public val anonymous: Boolean?
 
@@ -383,12 +383,15 @@ public interface Post {
     public val serveId: String?
 
     /**
-     * TODO: Documentation
+     * The "genesis" ID for a post is only available and different than its current ID if that post had been
+     * drafted, queued, or scheduled, and is now published. In which case, the "genesis" ID will be the original
+     * post ID generated when drafting, queuing, or scheduling that post. You cannot use this ID to look up the post
+     * after it has been published, but it can be useful for tracking a post from its pre- to post-published state.
      */
     public val genesisPostId: String?
 
     /**
-     * TODO: Documentation
+     * Whether or not this post is pinned to the queried blog.
      */
     public val isPinned: Boolean?
 
