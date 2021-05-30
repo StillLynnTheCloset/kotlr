@@ -1,7 +1,6 @@
 package com.highthunder.kotlr.api
 
 import com.highthunder.kotlr.response.type.user.ResponseUserFilteredContent
-import com.highthunder.kotlr.response.type.user.ResponseUserLike
 import retrofit2.Response
 import retrofit2.http.DELETE
 import retrofit2.http.Query

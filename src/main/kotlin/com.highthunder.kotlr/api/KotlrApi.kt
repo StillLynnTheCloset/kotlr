@@ -345,7 +345,7 @@ public class KotlrApi internal constructor(
     public suspend fun addContentFilters(
         vararg contentFilters: String,
     ): ResponseUserLike.Response? {
-       return addContentFilters(contentFilters.toList())
+        return addContentFilters(contentFilters.toList())
     }
 
     // endregion User POSTs
@@ -957,8 +957,12 @@ public class KotlrApi internal constructor(
     }
 
     private fun validateContentFilter(contentFilter: String?) {
-        require(contentFilter == null || contentFilter.isNotBlank()) { "Content filters must not be blank." }
-        require(contentFilter == null || contentFilter.length <= 250) { "Content filters must not be more than 250 characters in length." }
+        require(contentFilter == null || contentFilter.isNotBlank()) {
+            "Content filters must not be blank."
+        }
+        require(contentFilter == null || contentFilter.length <= 250) {
+            "Content filters must not be more than 250 characters in length."
+        }
     }
 
     private fun validateTimestamp(timestamp: Long?) {

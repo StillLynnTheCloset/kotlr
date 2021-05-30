@@ -35,7 +35,9 @@ internal class BlogFollowedByWrapperJsonAdapter(moshi: Moshi) :
             STRING -> ResponseBlogFollowedBy.Wrapper(error = stringAdapter.fromJson(reader))
             BEGIN_ARRAY -> ResponseBlogFollowedBy.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
             NULL -> ResponseBlogFollowedBy.Wrapper()
-            else -> throw JsonDataException("Expected a field of type Object, String, List, or null but got ${reader.peek()}")
+            else -> throw JsonDataException(
+                "Expected a field of type Object, String, List, or null but got ${reader.peek()}"
+            )
         }
     }
 

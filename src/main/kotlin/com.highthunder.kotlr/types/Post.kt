@@ -413,7 +413,7 @@ public interface Post {
          * This post was submitted by another user, and has not been posted.
          */
         @Json(name = "submission")
-        Submission
+        Submission,
     }
 
     /**
@@ -591,7 +591,7 @@ public interface Post {
          * ReblogsWithTags - loads only the reblog notes for the post, and each note object includes a tags array field (which may be empty).
          */
         @Json(name = "reblogs_with_tags")
-        ReblogsWithTags("reblogs_with_tags")
+        ReblogsWithTags("reblogs_with_tags"),
     }
 
     /**

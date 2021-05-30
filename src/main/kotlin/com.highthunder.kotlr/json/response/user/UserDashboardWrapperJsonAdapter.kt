@@ -35,7 +35,9 @@ internal class UserDashboardWrapperJsonAdapter(moshi: Moshi) :
             STRING -> ResponseUserDashboard.Wrapper(error = stringAdapter.fromJson(reader))
             BEGIN_ARRAY -> ResponseUserDashboard.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
             NULL -> ResponseUserDashboard.Wrapper()
-            else -> throw JsonDataException("Expected a field of type Object, String, List, or null but got ${reader.peek()}")
+            else -> throw JsonDataException(
+                "Expected a field of type Object, String, List, or null but got ${reader.peek()}"
+            )
         }
     }
 

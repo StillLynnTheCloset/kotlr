@@ -34,7 +34,9 @@ internal class PostsTaggedWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<Wrapper
             STRING -> ResponsePostsTagged.Wrapper(error = stringAdapter.fromJson(reader))
             BEGIN_ARRAY -> ResponsePostsTagged.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
             NULL -> ResponsePostsTagged.Wrapper()
-            else -> throw JsonDataException("Expected a field of type Object, String, List, or null but got ${reader.peek()}")
+            else -> throw JsonDataException(
+                "Expected a field of type Object, String, List, or null but got ${reader.peek()}"
+            )
         }
     }
 

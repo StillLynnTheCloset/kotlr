@@ -22,7 +22,8 @@ import com.squareup.moshi.ToJson
  * @author highthunder
  * @since 2021-05-30
  */
-internal class UserFilteredContentWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponseUserFilteredContent.Body>>() {
+internal class UserFilteredContentWrapperJsonAdapter(moshi: Moshi) :
+    JsonAdapter<WrapperInterface<ResponseUserFilteredContent.Body>>() {
     private val stringAdapter: JsonAdapter<String?> = moshi.adapter()
     private val responseAdapter: JsonAdapter<ResponseUserFilteredContent.Body> = moshi.adapter()
     private val listOfAnyAdapter: JsonAdapter<List<Any>> = moshi.listAdapter()
@@ -34,7 +35,9 @@ internal class UserFilteredContentWrapperJsonAdapter(moshi: Moshi) : JsonAdapter
             STRING -> ResponseUserFilteredContent.Wrapper(error = stringAdapter.fromJson(reader))
             BEGIN_ARRAY -> ResponseUserFilteredContent.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
             NULL -> ResponseUserFilteredContent.Wrapper()
-            else -> throw JsonDataException("Expected a field of type Object, String, List, or null but got ${reader.peek()}")
+            else -> throw JsonDataException(
+                "Expected a field of type Object, String, List, or null but got ${reader.peek()}"
+            )
         }
     }
 
