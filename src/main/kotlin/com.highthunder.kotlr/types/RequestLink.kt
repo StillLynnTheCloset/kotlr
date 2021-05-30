@@ -41,6 +41,7 @@ public data class RequestLink constructor(
          */
         @Json(name = "navigation")
         Navigation,
+
         /**
          * action - A reference to some internal client state change in the application. The most common example would be to open a different view.
          */

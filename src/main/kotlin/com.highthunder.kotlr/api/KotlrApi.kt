@@ -36,6 +36,10 @@ public class KotlrApi internal constructor(
     private val blogPostApi: KotlrBlogPostApi,
     private val postsGetApi: KotlrPostsGetApi
 ) : KotlrBlogPostApi by blogPostApi {
+    private companion object {
+        private val validAvatarSizes = listOf(16, 24, 30, 40, 48, 64, 96, 128, 512)
+    }
+
     // region User Getters
 
     /**
@@ -51,8 +55,8 @@ public class KotlrApi internal constructor(
     /**
      * Use this method to retrieve the liked posts that match the OAuth credentials submitted with the request.
      *
-     * @param postLimit Optional. The number of results to return: 1–50, inclusive
-     * @param postOffset Optional. Post number to start at
+     * @param pagingLimit Optional. The number of results to return: 1–50, inclusive
+     * @param pagingOffset Optional. Post number to start at
      * @param afterPostId Optional. Return posts that have appeared after this ID; Use this parameter to page through the results: first get a set of posts, and then get posts since the last ID of the previous set.
      * @param beforePostId Optional. Return posts that have appeared before this ID; Use this parameter to page through the results: first get a set of posts, and then get posts before the first ID of the previous set.
      * @param afterTime Optional. Retrieve posts liked after the specified timestamp.
@@ -64,8 +68,8 @@ public class KotlrApi internal constructor(
      * @param pageNumber Optional.
      */
     public suspend fun getUserLikes(
-        postLimit: Int? = null,
-        postOffset: Long? = null,
+        pagingLimit: Int? = null,
+        pagingOffset: Long? = null,
         afterPostId: Long? = null,
         beforePostId: Long? = null,
         afterTime: Long? = null,
@@ -76,10 +80,19 @@ public class KotlrApi internal constructor(
         tag: String? = null,
         pageNumber: Int? = null,
     ): ResponseUserLikes.Response? {
-        // TODO: Validate arguments.
+        validatePagingLimit(pagingLimit)
+        validatePagingOffset(pagingOffset)
+        validatePostId(afterPostId)
+        validatePostId(beforePostId)
+        validateTimestamp(afterTime)
+        validateTimestamp(beforeTime)
+        validateReblogsAndNotes(getReblogFields, getNotesHistory)
+        validateTag(tag)
+        validatePageNumber(pageNumber)
+
         val retrofitResponse = userGetApi.getUserLikesHelper(
-            postLimit,
-            postOffset,
+            pagingLimit,
+            pagingOffset,
             afterPostId,
             beforePostId,
             afterTime,
@@ -102,8 +115,8 @@ public class KotlrApi internal constructor(
      * ⚠️ Note: Please don't re-implement the Dashboard, and don't recreate complete Tumblr functions or clients on a
      * platform where Tumblr already has an official client. See our API policies here.
      *
-     * @param postLimit Optional. The number of results to return: 1–50, inclusive
-     * @param postOffset Optional. Post number to start at
+     * @param pagingLimit Optional. The number of results to return: 1–50, inclusive
+     * @param pagingOffset Optional. Post number to start at
      * @param afterPostId Optional. Return posts that have appeared after this ID; Use this parameter to page through the results: first get a set of posts, and then get posts since the last ID of the previous set.
      * @param beforePostId Optional. Return posts that have appeared before this ID; Use this parameter to page through the results: first get a set of posts, and then get posts before the first ID of the previous set.
      * @param afterTime Optional. Retrieve posts after the specified timestamp
@@ -116,8 +129,8 @@ public class KotlrApi internal constructor(
      * @param type Optional. The type of post to return. Specify one of the following: text, photo, quote, link, chat, audio, video, answer
      */
     public suspend fun getUserDash(
-        postLimit: Int? = null,
-        postOffset: Long? = null,
+        pagingLimit: Int? = null,
+        pagingOffset: Long? = null,
         afterPostId: Long? = null,
         beforePostId: Long? = null,
         afterTime: Long? = null,
@@ -129,10 +142,19 @@ public class KotlrApi internal constructor(
         pageNumber: Int? = null,
         type: Post.Type? = null,
     ): ResponseUserDashboard.Response? {
-        // TODO: Validate arguments.
+        validatePagingLimit(pagingLimit)
+        validatePagingOffset(pagingOffset)
+        validatePostId(afterPostId)
+        validatePostId(beforePostId)
+        validateTimestamp(afterTime)
+        validateTimestamp(beforeTime)
+        validateReblogsAndNotes(getReblogFields, getNotesHistory)
+        validateTag(tag)
+        validatePageNumber(pageNumber)
+
         val retrofitResponse = userGetApi.getUserDashHelper(
-            postLimit,
-            postOffset,
+            pagingLimit,
+            pagingOffset,
             afterPostId,
             beforePostId,
             afterTime,
@@ -157,13 +179,15 @@ public class KotlrApi internal constructor(
      * @param offset Optional. Result number to start at
      */
     public suspend fun getUserFollowing(
-        limit: Int? = null,
-        offset: Long? = null,
+        pagingLimit: Int? = null,
+        pagingOffset: Long? = null,
     ): ResponseUserFollowing.Response? {
-        // TODO: Validate arguments.
+        validatePagingLimit(pagingLimit)
+        validatePagingOffset(pagingOffset)
+
         val retrofitResponse = userGetApi.getUserFollowingHelper(
-            limit,
-            offset,
+            pagingLimit,
+            pagingOffset,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -185,7 +209,8 @@ public class KotlrApi internal constructor(
         url: String? = null,
         email: String? = null,
     ): ResponseUserFollow.Response? {
-        check((url != null) xor (email != null)) { "Only one of url or email can be provided" }
+        validateUrlAndEmail(url, email)
+
         val retrofitResponse = userPostApi.followBlog(
             followPostBody = FollowPostBody(url, email)
         )
@@ -205,7 +230,8 @@ public class KotlrApi internal constructor(
         url: String? = null,
         email: String? = null,
     ): ResponseUserFollow.Response? {
-        check((url != null) xor (email != null)) { "Only one of url or email can be provided" }
+        validateUrlAndEmail(url, email)
+
         val retrofitResponse = userPostApi.unfollowBlog(
             followPostBody = FollowPostBody(url, email)
         )
@@ -225,6 +251,9 @@ public class KotlrApi internal constructor(
         id: Long,
         reblogKey: String,
     ): ResponseUserLike.Response? {
+        validatePostId(id)
+        validateReblogKey(reblogKey)
+
         val retrofitResponse = userPostApi.likePost(
             likePostBody = LikePostBody(id, reblogKey)
         )
@@ -244,6 +273,9 @@ public class KotlrApi internal constructor(
         id: Long,
         reblogKey: String,
     ): ResponseUserLike.Response? {
+        validatePostId(id)
+        validateReblogKey(reblogKey)
+
         val retrofitResponse = userPostApi.unlikePost(
             likePostBody = LikePostBody(id, reblogKey)
         )
@@ -262,13 +294,15 @@ public class KotlrApi internal constructor(
      *
      * This uses the default size of 64x64.
      *
-     * @param identifier A blog identifier.
+     * @param blogIdentifier A blog identifier.
      */
     public suspend fun getBlogAvatar(
-        identifier: String,
+        blogIdentifier: String,
     ): ResponseBlogAvatar.Response? {
+        validateBlogIdentifier(blogIdentifier)
+
         val retrofitResponse = blogGetApi.getBlogAvatarHelper(
-            identifier,
+            blogIdentifier,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -281,18 +315,18 @@ public class KotlrApi internal constructor(
      *
      * You can get a blog's avatar in 9 different sizes. The default size is 64x64.
      *
-     * @param identifier A blog identifier.
+     * @param blogIdentifier A blog identifier.
      * @param size The size of the avatar (square, one value for both length and width). Must be one of the values: 16, 24, 30, 40, 48, 64, 96, 128, 512.
      */
     public suspend fun getBlogAvatar(
-        identifier: String,
+        blogIdentifier: String,
         size: Int,
     ): ResponseBlogAvatar.Response? {
-        val validSizes = listOf(16, 24, 30, 40, 48, 64, 96, 128, 512)
-        require(size in validSizes) { "Size must be one of $validSizes" }
+        validateBlogIdentifier(blogIdentifier)
+        validateAvatarSize(size)
 
         val retrofitResponse = blogGetApi.getBlogAvatarHelper(
-            identifier,
+            blogIdentifier,
             size,
         )
 
@@ -304,20 +338,23 @@ public class KotlrApi internal constructor(
     /**
      * Retrieve a Blog's Followers.
      *
-     * @param identifier An identifier for the blog.
-     * @param limit Optional. The number of results to return: 1–50, inclusive.
-     * @param offset Optional. Followed blog index to start at.
+     * @param blogIdentifier An identifier for the blog.
+     * @param pagingLimit Optional. The number of results to return: 1–50, inclusive.
+     * @param pagingOffset Optional. Followed blog index to start at.
      */
     public suspend fun getBlogFollowers(
-        identifier: String,
-        limit: Int? = null,
-        offset: Int? = null,
+        blogIdentifier: String,
+        pagingLimit: Int? = null,
+        pagingOffset: Long? = null,
     ): ResponseBlogFollowers.Response? {
-        // TODO: Validate arguments.
+        validateBlogIdentifier(blogIdentifier)
+        validatePagingLimit(pagingLimit)
+        validatePagingOffset(pagingOffset)
+
         val retrofitResponse = blogGetApi.getBlogFollowersHelper(
-            identifier,
-            limit,
-            offset,
+            blogIdentifier,
+            pagingLimit,
+            pagingOffset,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -331,20 +368,23 @@ public class KotlrApi internal constructor(
      * This method can be used to retrieve the publicly exposed list of blogs that a blog follows, in order from most
      * recently-followed to first.
      *
-     * @param identifier An identifier for the blog.
-     * @param limit Optional. The number of results to return: 1–50, inclusive.
-     * @param offset Optional. Followed blog index to start at.
+     * @param blogIdentifier An identifier for the blog.
+     * @param pagingLimit Optional. The number of results to return: 1–50, inclusive.
+     * @param pagingOffset Optional. Followed blog index to start at.
      */
     public suspend fun getBlogFollowing(
-        identifier: String,
-        limit: Int? = null,
-        offset: Int? = null,
+        blogIdentifier: String,
+        pagingLimit: Int? = null,
+        pagingOffset: Long? = null,
     ): ResponseBlogFollowing.Response? {
-        // TODO: Validate arguments.
+        validateBlogIdentifier(blogIdentifier)
+        validatePagingLimit(pagingLimit)
+        validatePagingOffset(pagingOffset)
+
         val retrofitResponse = blogGetApi.getBlogFollowingHelper(
-            identifier,
-            limit,
-            offset,
+            blogIdentifier,
+            pagingLimit,
+            pagingOffset,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -357,15 +397,18 @@ public class KotlrApi internal constructor(
      *
      * This method can be used to check if one of your blogs is followed by another blog.
      *
-     * @param identifier An identifier for your blog to check.
+     * @param blogIdentifier An identifier for your blog to check.
      * @param query The name of the blog that may be following your blog.
      */
     public suspend fun getBlogFollowedBy(
-        identifier: String,
+        blogIdentifier: String,
         query: String,
     ): ResponseBlogFollowedBy.Response? {
+        validateBlogIdentifier(blogIdentifier)
+        validateBlogIdentifier(query)
+
         val retrofitResponse = blogGetApi.getBlogFollowedByHelper(
-            identifier,
+            blogIdentifier,
             query,
         )
 
@@ -379,13 +422,15 @@ public class KotlrApi internal constructor(
      *
      * This method returns general information about the blog, such as the title, number of posts, and other high-level data.
      *
-     * @param identifier An identifier for the blog.
+     * @param blogIdentifier An identifier for the blog.
      */
     public suspend fun getBlogInfo(
-        identifier: String,
+        blogIdentifier: String,
     ): ResponseBlogInfo.Response? {
+        validateBlogIdentifier(blogIdentifier)
+
         val retrofitResponse = blogGetApi.getBlogInfoHelper(
-            identifier,
+            blogIdentifier,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -403,9 +448,9 @@ public class KotlrApi internal constructor(
      *  You can still use limit with any of those three options to limit your result set.
      *  When using the offset parameter the maximum limit on the offset is 1000. If you would like to get more results than that use either before or after.
      *
-     * @param identifier An identifier for the blog.
-     * @param postLimit Optional. The number of results to return: 1–50, inclusive
-     * @param postOffset Optional. Post number to start at
+     * @param blogIdentifier An identifier for the blog.
+     * @param pagingLimit Optional. The number of results to return: 1–50, inclusive
+     * @param pagingOffset Optional. Post number to start at
      * @param afterPostId Optional. Return posts that have appeared after this ID; Use this parameter to page through the results: first get a set of posts, and then get posts since the last ID of the previous set.
      * @param beforePostId Optional. Return posts that have appeared before this ID; Use this parameter to page through the results: first get a set of posts, and then get posts before the first ID of the previous set.
      * @param afterTime Optional. Retrieve posts after the specified timestamp
@@ -417,9 +462,9 @@ public class KotlrApi internal constructor(
      * @param pageNumber Optional.
      */
     public suspend fun getBlogLikes(
-        identifier: String,
-        postLimit: Int? = null,
-        postOffset: Long? = null,
+        blogIdentifier: String,
+        pagingLimit: Int? = null,
+        pagingOffset: Long? = null,
         afterPostId: Long? = null,
         beforePostId: Long? = null,
         afterTime: Long? = null,
@@ -430,11 +475,21 @@ public class KotlrApi internal constructor(
         tag: String? = null,
         pageNumber: Int? = null,
     ): ResponseBlogLikes.Response? {
-        // TODO: Validate arguments.
+        validateBlogIdentifier(blogIdentifier)
+        validatePagingLimit(pagingLimit)
+        validatePagingOffset(pagingOffset)
+        validatePostId(afterPostId)
+        validatePostId(beforePostId)
+        validateTimestamp(afterTime)
+        validateTimestamp(beforeTime)
+        validateReblogsAndNotes(getReblogFields, getNotesHistory)
+        validateTag(tag)
+        validatePageNumber(pageNumber)
+
         val retrofitResponse = blogGetApi.getBlogLikesHelper(
-            identifier,
-            postLimit,
-            postOffset,
+            blogIdentifier,
+            pagingLimit,
+            pagingOffset,
             afterPostId,
             beforePostId,
             afterTime,
@@ -454,9 +509,9 @@ public class KotlrApi internal constructor(
     /**
      * Retrieve Published Posts.
      *
-     * @param identifier An identifier for the blog.
-     * @param postLimit Optional. The number of results to return: 1–50, inclusive
-     * @param postOffset Optional. Post number to start at
+     * @param blogIdentifier An identifier for the blog.
+     * @param pagingLimit Optional. The number of results to return: 1–50, inclusive
+     * @param pagingOffset Optional. Post number to start at
      * @param afterPostId Optional. Return posts that have appeared after this ID; Use this parameter to page through the results: first get a set of posts, and then get posts since the last ID of the previous set.
      * @param beforePostId Optional. Return posts that have appeared before this ID; Use this parameter to page through the results: first get a set of posts, and then get posts before the first ID of the previous set.
      * @param afterTime Optional. Retrieve posts after the specified timestamp
@@ -469,9 +524,9 @@ public class KotlrApi internal constructor(
      * @param type Optional. The type of post to return. Specify one of the following: text, photo, quote, link, chat, audio, video, answer
      */
     public suspend fun getBlogPosts(
-        identifier: String,
-        postLimit: Int? = null,
-        postOffset: Long? = null,
+        blogIdentifier: String,
+        pagingLimit: Int? = null,
+        pagingOffset: Long? = null,
         afterPostId: Long? = null,
         beforePostId: Long? = null,
         afterTime: Long? = null,
@@ -483,11 +538,21 @@ public class KotlrApi internal constructor(
         pageNumber: Int? = null,
         type: Post.Type? = null,
     ): ResponseBlogPosts.Response? {
-        // TODO: Validate arguments.
+        validateBlogIdentifier(blogIdentifier)
+        validatePagingLimit(pagingLimit)
+        validatePagingOffset(pagingOffset)
+        validatePostId(afterPostId)
+        validatePostId(beforePostId)
+        validateTimestamp(afterTime)
+        validateTimestamp(beforeTime)
+        validateReblogsAndNotes(getReblogFields, getNotesHistory)
+        validateTag(tag)
+        validatePageNumber(pageNumber)
+
         val retrofitResponse = blogGetApi.getBlogPostsHelper(
-            identifier,
-            postLimit,
-            postOffset,
+            blogIdentifier,
+            pagingLimit,
+            pagingOffset,
             afterPostId,
             beforePostId,
             afterTime,
@@ -508,9 +573,9 @@ public class KotlrApi internal constructor(
     /**
      * Retrieve Draft Posts.
      *
-     * @param identifier An identifier for the blog.
-     * @param postLimit Optional. The number of results to return: 1–50, inclusive
-     * @param postOffset Optional. Post number to start at
+     * @param blogIdentifier An identifier for the blog.
+     * @param pagingLimit Optional. The number of results to return: 1–50, inclusive
+     * @param pagingOffset Optional. Post number to start at
      * @param afterPostId Optional. Return posts that have appeared after this ID; Use this parameter to page through the results: first get a set of posts, and then get posts since the last ID of the previous set.
      * @param beforePostId Optional. Return posts that have appeared before this ID; Use this parameter to page through the results: first get a set of posts, and then get posts before the first ID of the previous set.
      * @param afterTime Optional. Retrieve posts after the specified timestamp
@@ -522,9 +587,9 @@ public class KotlrApi internal constructor(
      * @param pageNumber Optional.
      */
     public suspend fun getBlogDrafts(
-        identifier: String,
-        postLimit: Int? = null,
-        postOffset: Long? = null,
+        blogIdentifier: String,
+        pagingLimit: Int? = null,
+        pagingOffset: Long? = null,
         afterPostId: Long? = null,
         beforePostId: Long? = null,
         afterTime: Long? = null,
@@ -535,11 +600,21 @@ public class KotlrApi internal constructor(
         tag: String? = null,
         pageNumber: Int? = null,
     ): ResponseBlogDrafts.Response? {
-        // TODO: Validate arguments.
+        validateBlogIdentifier(blogIdentifier)
+        validatePagingLimit(pagingLimit)
+        validatePagingOffset(pagingOffset)
+        validatePostId(afterPostId)
+        validatePostId(beforePostId)
+        validateTimestamp(afterTime)
+        validateTimestamp(beforeTime)
+        validateReblogsAndNotes(getReblogFields, getNotesHistory)
+        validateTag(tag)
+        validatePageNumber(pageNumber)
+
         val retrofitResponse = blogGetApi.getBlogDraftsHelper(
-            identifier,
-            postLimit,
-            postOffset,
+            blogIdentifier,
+            pagingLimit,
+            pagingOffset,
             afterPostId,
             beforePostId,
             afterTime,
@@ -559,9 +634,9 @@ public class KotlrApi internal constructor(
     /**
      * Retrieve Queued Posts.
      *
-     * @param identifier An identifier for the blog.
-     * @param postLimit Optional. The number of results to return: 1–50, inclusive
-     * @param postOffset Optional. Post number to start at
+     * @param blogIdentifier An identifier for the blog.
+     * @param pagingLimit Optional. The number of results to return: 1–50, inclusive
+     * @param pagingOffset Optional. Post number to start at
      * @param afterPostId Optional. Return posts that have appeared after this ID; Use this parameter to page through the results: first get a set of posts, and then get posts since the last ID of the previous set.
      * @param beforePostId Optional. Return posts that have appeared before this ID; Use this parameter to page through the results: first get a set of posts, and then get posts before the first ID of the previous set.
      * @param afterTime Optional. Retrieve posts after the specified timestamp
@@ -573,9 +648,9 @@ public class KotlrApi internal constructor(
      * @param pageNumber Optional.
      */
     public suspend fun getBlogQueue(
-        identifier: String,
-        postLimit: Int? = null,
-        postOffset: Long? = null,
+        blogIdentifier: String,
+        pagingLimit: Int? = null,
+        pagingOffset: Long? = null,
         afterPostId: Long? = null,
         beforePostId: Long? = null,
         afterTime: Long? = null,
@@ -586,11 +661,21 @@ public class KotlrApi internal constructor(
         tag: String? = null,
         pageNumber: Int? = null,
     ): ResponseBlogQueue.Response? {
-        // TODO: Validate arguments.
+        validateBlogIdentifier(blogIdentifier)
+        validatePagingLimit(pagingLimit)
+        validatePagingOffset(pagingOffset)
+        validatePostId(afterPostId)
+        validatePostId(beforePostId)
+        validateTimestamp(afterTime)
+        validateTimestamp(beforeTime)
+        validateReblogsAndNotes(getReblogFields, getNotesHistory)
+        validateTag(tag)
+        validatePageNumber(pageNumber)
+
         val retrofitResponse = blogGetApi.getBlogQueueHelper(
-            identifier,
-            postLimit,
-            postOffset,
+            blogIdentifier,
+            pagingLimit,
+            pagingOffset,
             afterPostId,
             beforePostId,
             afterTime,
@@ -610,9 +695,9 @@ public class KotlrApi internal constructor(
     /**
      * Retrieve Submission Posts.
      *
-     * @param identifier An identifier for the blog.
-     * @param postLimit Optional. The number of results to return: 1–50, inclusive
-     * @param postOffset Optional. Post number to start at
+     * @param blogIdentifier An identifier for the blog.
+     * @param pagingLimit Optional. The number of results to return: 1–50, inclusive
+     * @param pagingOffset Optional. Post number to start at
      * @param afterPostId Optional. Return posts that have appeared after this ID; Use this parameter to page through the results: first get a set of posts, and then get posts since the last ID of the previous set.
      * @param beforePostId Optional. Return posts that have appeared before this ID; Use this parameter to page through the results: first get a set of posts, and then get posts before the first ID of the previous set.
      * @param afterTime Optional. Retrieve posts after the specified timestamp
@@ -624,9 +709,9 @@ public class KotlrApi internal constructor(
      * @param pageNumber Optional.
      */
     public suspend fun getBlogSubmissions(
-        identifier: String,
-        postLimit: Int? = null,
-        postOffset: Long? = null,
+        blogIdentifier: String,
+        pagingLimit: Int? = null,
+        pagingOffset: Long? = null,
         afterPostId: Long? = null,
         beforePostId: Long? = null,
         afterTime: Long? = null,
@@ -637,11 +722,21 @@ public class KotlrApi internal constructor(
         tag: String? = null,
         pageNumber: Int? = null,
     ): ResponseBlogSubmissions.Response? {
-        // TODO: Validate arguments.
+        validateBlogIdentifier(blogIdentifier)
+        validatePagingLimit(pagingLimit)
+        validatePagingOffset(pagingOffset)
+        validatePostId(afterPostId)
+        validatePostId(beforePostId)
+        validateTimestamp(afterTime)
+        validateTimestamp(beforeTime)
+        validateReblogsAndNotes(getReblogFields, getNotesHistory)
+        validateTag(tag)
+        validatePageNumber(pageNumber)
+
         val retrofitResponse = blogGetApi.getBlogSubmissionsHelper(
-            identifier,
-            postLimit,
-            postOffset,
+            blogIdentifier,
+            pagingLimit,
+            pagingOffset,
             afterPostId,
             beforePostId,
             afterTime,
@@ -692,17 +787,20 @@ public class KotlrApi internal constructor(
     /**
      * Fetch a single post.
      *
-     * @param identifier A blog identifier of the blog that posted the desired post.
+     * @param blogIdentifier A blog identifier of the blog that posted the desired post.
      * @param postId The id of the desired post.
      * @param postFormat Optional. The format to serve the post as, either [Post.PostVersion.Legacy] or [Post.PostVersion.NPF].
      */
     public suspend fun getPost(
-        identifier: String,
+        blogIdentifier: String,
         postId: Long,
         postFormat: Post.PostVersion? = null,
     ): ResponsePostsPost.Response? {
+        validateBlogIdentifier(blogIdentifier)
+        validatePostId(postId)
+
         val retrofitResponse = postsGetApi.getPost(
-            identifier,
+            blogIdentifier,
             postId,
             postFormat?.key,
         )
@@ -726,6 +824,10 @@ public class KotlrApi internal constructor(
         beforeTimestamp: Long? = null,
         mode: Post.NotesMode? = null,
     ): ResponsePostNotes.Response? {
+        validateBlogIdentifier(blogIdentifier)
+        validatePostId(postId)
+        validateTimestamp(beforeTimestamp)
+
         val retrofitResponse = postsGetApi.getPostNotes(
             blogIdentifier,
             postId,
@@ -739,4 +841,50 @@ public class KotlrApi internal constructor(
     }
 
     // endregion Post Getters
+
+    private fun validateBlogIdentifier(blogIdentifier: String) {
+        require(blogIdentifier.isNotBlank()) { "Blog identifiers must not be blank." }
+    }
+
+    private fun validatePostId(postId: Long?) {
+        require(postId == null || postId >= 0) { "Post ids must not be less than 0." }
+    }
+
+    private fun validatePagingLimit(limit: Int?) {
+        require(limit == null || limit in 1..50) { "Paging limit must be in the range [1,50]." }
+    }
+
+    private fun validatePagingOffset(offset: Long?) {
+        require(offset == null || offset >= 0) { "Paging offset must be non-negative." }
+    }
+
+    private fun validatePageNumber(pageNumber: Int?) {
+        require(pageNumber == null || pageNumber >= 0) { "Page number must be non-negative." }
+    }
+
+    private fun validateReblogKey(reblogKey: String?) {
+        require(reblogKey == null || reblogKey.isNotBlank()) { "Reblog key must not be blank." }
+    }
+
+    private fun validateReblogsAndNotes(reblogFields: Boolean?, notesHistory: Boolean?) {
+        require(reblogFields == null || notesHistory == null || reblogFields xor notesHistory) {
+            "Only one of reblog fields or notes history can be provided."
+        }
+    }
+
+    private fun validateUrlAndEmail(url: String?, email: String?) {
+        require((url.isNullOrBlank()) xor (email.isNullOrBlank())) { "Only one of url or email can be provided." }
+    }
+
+    private fun validateTag(tag: String?) {
+        require(tag == null || tag.isNotBlank()) { "Tags must not be blank." }
+    }
+
+    private fun validateTimestamp(timestamp: Long?) {
+        // TODO: Decide if there is any reasonable validation for times.
+    }
+
+    private fun validateAvatarSize(size: Int?) {
+        require(size == null || size in validAvatarSizes) { "Size must be one of $validAvatarSizes." }
+    }
 }

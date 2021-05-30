@@ -33,7 +33,12 @@ import java.util.Scanner
 // region Integration Test Helpers
 
 internal fun Any?.clean(): String = this.toString().replace("\n", "")
-internal fun <T> TumblrResponse<T>?.checkError(doCheck: Boolean = true): TumblrResponse<T>? = if (doCheck && this?.meta?.status != null && this.meta.status!! >= 400) throw IllegalStateException("Response was an error: $this") else this
+internal fun <T> TumblrResponse<T>?.checkError(doCheck: Boolean = true): TumblrResponse<T>? =
+    if (doCheck && this?.meta?.status != null && this.meta.status!! >= 400) {
+        throw IllegalStateException("Response was an error: $this")
+    } else {
+        this
+    }
 
 // Uses (if (doNotesAndReblogs) 8 else 4) requests.
 internal suspend fun runUserTests(api: KotlrApi, useNpf: Boolean, postsPerRequest: Int, doNotesAndReblogs: Boolean) {
@@ -41,17 +46,25 @@ internal suspend fun runUserTests(api: KotlrApi, useNpf: Boolean, postsPerReques
     println(api.getUserInfo().checkError().clean())
 
     println("Calling `getUserLikes()`")
-    println(api.getUserLikes(useNeuePostFormat = useNpf, postLimit = postsPerRequest).checkError().clean())
+    println(api.getUserLikes(useNeuePostFormat = useNpf, pagingLimit = postsPerRequest).checkError().clean())
     if (doNotesAndReblogs) {
-        println(api.getUserLikes(useNeuePostFormat = useNpf, postLimit = postsPerRequest, getReblogFields = true).checkError().clean())
-        println(api.getUserLikes(useNeuePostFormat = useNpf, postLimit = postsPerRequest, getNotesHistory = true).checkError().clean())
+        println(
+            api.getUserLikes(useNeuePostFormat = useNpf, pagingLimit = postsPerRequest, getReblogFields = true).checkError().clean()
+        )
+        println(
+            api.getUserLikes(useNeuePostFormat = useNpf, pagingLimit = postsPerRequest, getNotesHistory = true).checkError().clean()
+        )
     }
 
     println("Calling `getUserDash()`")
-    println(api.getUserDash(useNeuePostFormat = useNpf, postLimit = postsPerRequest).checkError().clean())
+    println(api.getUserDash(useNeuePostFormat = useNpf, pagingLimit = postsPerRequest).checkError().clean())
     if (doNotesAndReblogs) {
-        println(api.getUserDash(useNeuePostFormat = useNpf, postLimit = postsPerRequest, getReblogFields = true).checkError().clean())
-        println(api.getUserDash(useNeuePostFormat = useNpf, postLimit = postsPerRequest, getNotesHistory = true).checkError().clean())
+        println(
+            api.getUserDash(useNeuePostFormat = useNpf, pagingLimit = postsPerRequest, getReblogFields = true).checkError().clean()
+        )
+        println(
+            api.getUserDash(useNeuePostFormat = useNpf, pagingLimit = postsPerRequest, getNotesHistory = true).checkError().clean()
+        )
     }
 
     println("Calling `likePost()`")
@@ -90,45 +103,129 @@ internal suspend fun runBlogTests(api: KotlrApi, blogName: String, useNpf: Boole
     println(api.getBlogFollowedBy(blogName, "kotlr-development").checkError(throwOnError).clean())
 
     println("Calling `getBlogLikes()``")
-    println(api.getBlogLikes(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest).checkError(throwOnError).clean())
+    println(
+        api.getBlogLikes(blogName, useNeuePostFormat = useNpf, pagingLimit = postsPerRequest).checkError(throwOnError).clean()
+    )
     if (doNotesAndReblogs) {
-        println(api.getBlogLikes(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest, getReblogFields = true).checkError(throwOnError).clean())
-        println(api.getBlogLikes(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest, getNotesHistory = true).checkError(throwOnError).clean())
+        println(
+            api.getBlogLikes(
+                blogName,
+                useNeuePostFormat = useNpf,
+                pagingLimit = postsPerRequest,
+                getReblogFields = true
+            ).checkError(throwOnError).clean()
+        )
+        println(
+            api.getBlogLikes(
+                blogName,
+                useNeuePostFormat = useNpf,
+                pagingLimit = postsPerRequest,
+                getNotesHistory = true
+            ).checkError(throwOnError).clean()
+        )
     }
 
     println("Calling `getBlogPosts()`")
-    println(api.getBlogPosts(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest).checkError(throwOnError).clean())
+    println(
+        api.getBlogPosts(blogName, useNeuePostFormat = useNpf, pagingLimit = postsPerRequest).checkError(throwOnError).clean()
+    )
     if (doNotesAndReblogs) {
-        println(api.getBlogPosts(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest, getReblogFields = true).checkError(throwOnError).clean())
-        println(api.getBlogPosts(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest, getNotesHistory = true).checkError(throwOnError).clean())
+        println(
+            api.getBlogPosts(
+                blogName,
+                useNeuePostFormat = useNpf,
+                pagingLimit = postsPerRequest,
+                getReblogFields = true
+            ).checkError(throwOnError).clean()
+        )
+        println(
+            api.getBlogPosts(
+                blogName,
+                useNeuePostFormat = useNpf,
+                pagingLimit = postsPerRequest,
+                getNotesHistory = true
+            ).checkError(throwOnError).clean()
+        )
     }
 
     println("Calling `getBlogDrafts()`")
-    println(api.getBlogDrafts(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest).checkError(throwOnError).clean())
+    println(
+        api.getBlogDrafts(blogName, useNeuePostFormat = useNpf, pagingLimit = postsPerRequest).checkError(throwOnError).clean()
+    )
     if (doNotesAndReblogs) {
-        println(api.getBlogDrafts(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest, getReblogFields = true).checkError(throwOnError).clean())
-        println(api.getBlogDrafts(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest, getNotesHistory = true).checkError(throwOnError).clean())
+        println(
+            api.getBlogDrafts(
+                blogName,
+                useNeuePostFormat = useNpf,
+                pagingLimit = postsPerRequest,
+                getReblogFields = true
+            ).checkError(throwOnError).clean()
+        )
+        println(
+            api.getBlogDrafts(
+                blogName,
+                useNeuePostFormat = useNpf,
+                pagingLimit = postsPerRequest,
+                getNotesHistory = true
+            ).checkError(throwOnError).clean()
+        )
     }
 
     println("Calling `getBlogQueue()`")
-    println(api.getBlogQueue(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest).checkError(throwOnError).clean())
+    println(
+        api.getBlogQueue(blogName, useNeuePostFormat = useNpf, pagingLimit = postsPerRequest).checkError(throwOnError).clean()
+    )
     if (doNotesAndReblogs) {
-        println(api.getBlogQueue(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest, getReblogFields = true).checkError(throwOnError).clean())
-        println(api.getBlogQueue(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest, getNotesHistory = true).checkError(throwOnError).clean())
+        println(
+            api.getBlogQueue(
+                blogName,
+                useNeuePostFormat = useNpf,
+                pagingLimit = postsPerRequest,
+                getReblogFields = true
+            ).checkError(throwOnError).clean()
+        )
+        println(
+            api.getBlogQueue(
+                blogName,
+                useNeuePostFormat = useNpf,
+                pagingLimit = postsPerRequest,
+                getNotesHistory = true
+            ).checkError(throwOnError).clean()
+        )
     }
 
     println("Calling `getBlogSubmissions()`")
-    println(api.getBlogSubmissions(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest).checkError(throwOnError).clean())
+    println(
+        api.getBlogSubmissions(blogName, useNeuePostFormat = useNpf, pagingLimit = postsPerRequest).checkError(
+            throwOnError
+        ).clean()
+    )
     if (doNotesAndReblogs) {
-        println(api.getBlogSubmissions(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest, getReblogFields = true).checkError(throwOnError).clean())
-        println(api.getBlogSubmissions(blogName, useNeuePostFormat = useNpf, postLimit = postsPerRequest, getNotesHistory = true).checkError(throwOnError).clean())
+        println(
+            api.getBlogSubmissions(
+                blogName,
+                useNeuePostFormat = useNpf,
+                pagingLimit = postsPerRequest,
+                getReblogFields = true
+            ).checkError(throwOnError).clean()
+        )
+        println(
+            api.getBlogSubmissions(
+                blogName,
+                useNeuePostFormat = useNpf,
+                pagingLimit = postsPerRequest,
+                getNotesHistory = true
+            ).checkError(throwOnError).clean()
+        )
     }
 }
 
 // Uses (2) requests.
 internal suspend fun runPostTests(api: KotlrApi, useNpf: Boolean) {
     println("Calling `getPost()`")
-    println(api.getPost("kotlr-development", 179771546338, if (useNpf) Post.PostVersion.NPF else Post.PostVersion.Legacy).checkError().clean())
+    println(
+        api.getPost("kotlr-development", 179771546338, if (useNpf) Post.PostVersion.NPF else Post.PostVersion.Legacy).checkError().clean()
+    )
 
     println("Calling `getPostNotes()`")
     println(api.getPostNotes("kotlr-development", 179771546338).checkError().clean())
@@ -143,9 +240,9 @@ internal suspend fun loopBlogPosts(api: KotlrApi, blogName: String, useNpf: Bool
 
     do {
         val response = api.getBlogPosts(
-            identifier = blogName,
+            blogIdentifier = blogName,
             useNeuePostFormat = useNpf,
-            postLimit = postsPerRequest,
+            pagingLimit = postsPerRequest,
             beforeTime = lastTime,
         )
         println(response.checkError().clean())
@@ -173,7 +270,7 @@ internal suspend fun loopLikes(api: KotlrApi, useNpf: Boolean, postsPerRequest: 
     do {
         val response = api.getUserLikes(
             useNeuePostFormat = useNpf,
-            postLimit = postsPerRequest,
+            pagingLimit = postsPerRequest,
             beforeTime = lastTime,
         )
         println(response.checkError().clean())
@@ -199,12 +296,12 @@ internal suspend fun loopDashboard(api: KotlrApi, useNpf: Boolean, postsPerReque
     // Get a first post, which can then be used to call [getUserDash] with a beforePostId
     var beforeId = api.getUserDash(
         useNeuePostFormat = useNpf,
-        postLimit = 1,
+        pagingLimit = 1,
     )?.getBody()?.posts?.firstOrNull()?.id!!
     do {
         val response = api.getUserDash(
             useNeuePostFormat = useNpf,
-            postLimit = postsPerRequest,
+            pagingLimit = postsPerRequest,
             beforePostId = beforeId,
         )
         println(response.checkError().clean())
@@ -438,7 +535,7 @@ internal fun minimalExampleExplained() = runBlocking {
     val service = getApi(key)
 
     // Perform the request.
-    val response = service.getBlogLikes(identifier = "kotlr-development")
+    val response = service.getBlogLikes(blogIdentifier = "kotlr-development")
 
     // Check out any of the meta information that Tumblr returns such as HTTP success codes.
     val meta: ResponseMetaInfo? = response?.meta
@@ -463,7 +560,7 @@ internal fun minimalExampleExplained() = runBlocking {
 internal fun minimalExample() = runBlocking {
     println(
         getApi(SampleUserKey)
-            .getBlogLikes(identifier = "kotlr-development")
+            .getBlogLikes(blogIdentifier = "kotlr-development")
             ?.getBody()
             ?.posts
             ?.firstOrNull()

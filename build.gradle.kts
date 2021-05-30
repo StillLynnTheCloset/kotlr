@@ -62,17 +62,22 @@ idea {
 }
 
 kotlin {
-    // explicitApi() // TODO: Switch to this once code gen supports this.
-    explicitApiWarning()
+    explicitApi()
 }
 
 ktlint {
-    version.set("0.40.0")
+    version.set("0.41.0")
     debug.set(false)
     verbose.set(true)
     android.set(false)
     outputToConsole.set(true)
-    ignoreFailures.set(true)
+    ignoreFailures.set(false)
+    enableExperimentalRules.set(true)
+    disabledRules.set(
+        setOf(
+            "experimental:argument-list-wrapping"
+        )
+    )
 
     filter {
         include("src/**")

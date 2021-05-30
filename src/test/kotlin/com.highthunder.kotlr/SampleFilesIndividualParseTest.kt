@@ -913,7 +913,9 @@ internal class SampleFilesIndividualParseTest {
 
     @Test
     internal fun testOfficialNPF_contentBlockTypeText_subtypeHeading1() {
-        val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_subtypeHeading1.json")
+        val content = parseFile<PostContent>(
+            "samples/officialNPFSamples/content/contentBlockTypeText_subtypeHeading1.json"
+        )
         val expected = TextContent(
             text = "New Post Forms Manifesto",
             subType = TextContent.SubType.Heading1
@@ -923,7 +925,9 @@ internal class SampleFilesIndividualParseTest {
 
     @Test
     internal fun testOfficialNPF_contentBlockTypeText_subtypeHeading2() {
-        val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_subtypeHeading2.json")
+        val content = parseFile<PostContent>(
+            "samples/officialNPFSamples/content/contentBlockTypeText_subtypeHeading2.json"
+        )
         val expected = TextContent(
             text = "what a great conversation",
             subType = TextContent.SubType.Heading2
@@ -933,7 +937,9 @@ internal class SampleFilesIndividualParseTest {
 
     @Test
     internal fun testOfficialNPF_contentBlockTypeText_subtypeIndented() {
-        val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_subtypeIndented.json")
+        val content = parseFile<PostContent>(
+            "samples/officialNPFSamples/content/contentBlockTypeText_subtypeIndented.json"
+        )
         val expected = TextContent(
             text = "A few years ago, when I was living in the hous. ",
             subType = TextContent.SubType.Indented
@@ -943,7 +949,9 @@ internal class SampleFilesIndividualParseTest {
 
     @Test
     internal fun testOfficialNPF_contentBlockTypeText_subtypeOrderedList() {
-        val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_subtypeOrderedList.json")
+        val content = parseFile<PostContent>(
+            "samples/officialNPFSamples/content/contentBlockTypeText_subtypeOrderedList.json"
+        )
         val expected = TextContent(
             text = "Sword",
             subType = TextContent.SubType.OrderedListItem
@@ -953,7 +961,9 @@ internal class SampleFilesIndividualParseTest {
 
     @Test
     internal fun testOfficialNPF_contentBlockTypeText_subtypeQuirky() {
-        val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_subtypeQuirky.json")
+        val content = parseFile<PostContent>(
+            "samples/officialNPFSamples/content/contentBlockTypeText_subtypeQuirky.json"
+        )
         val expected = TextContent(
             text = "Oh, worm?",
             subType = TextContent.SubType.Quirky
@@ -963,7 +973,9 @@ internal class SampleFilesIndividualParseTest {
 
     @Test
     internal fun testOfficialNPF_contentBlockTypeText_subtypeQuote() {
-        val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_subtypeQuote.json")
+        val content = parseFile<PostContent>(
+            "samples/officialNPFSamples/content/contentBlockTypeText_subtypeQuote.json"
+        )
         val expected = TextContent(
             text = "Genius without education is like silver in the mine.",
             subType = TextContent.SubType.Quote
@@ -973,7 +985,9 @@ internal class SampleFilesIndividualParseTest {
 
     @Test
     internal fun testOfficialNPF_contentBlockTypeText_subtypeUnorderedList() {
-        val content = parseFile<PostContent>("samples/officialNPFSamples/content/contentBlockTypeText_subtypeUnorderedList.json")
+        val content = parseFile<PostContent>(
+            "samples/officialNPFSamples/content/contentBlockTypeText_subtypeUnorderedList.json"
+        )
         val expected = TextContent(
             text = "Death, which is uncountable on this list.",
             subType = TextContent.SubType.UnorderedListItem
@@ -1136,7 +1150,9 @@ internal class SampleFilesIndividualParseTest {
 
     @Test
     internal fun testOfficialNPF_layoutBlockTypeRows_displayModeCarousel() {
-        val content = parseFile<BlockLayout>("samples/officialNPFSamples/layout/layoutBlockTypeRows_displayModeCarousel.json")
+        val content = parseFile<BlockLayout>(
+            "samples/officialNPFSamples/layout/layoutBlockTypeRows_displayModeCarousel.json"
+        )
         val expected = RowBlockLayout(
             display = listOf(
                 RowBlockLayout.Display(
@@ -1229,7 +1245,9 @@ internal class SampleFilesIndividualParseTest {
 
     @Test
     internal fun testOfficialNPF_post_contentBlocks_emptyContent_before() {
-        val content = parseFile<Post>("samples/officialNPFSamples/post/contentBlockTypeText_leadingTrailingEmptyBlocks_before.json")
+        val content = parseFile<Post>(
+            "samples/officialNPFSamples/post/contentBlockTypeText_leadingTrailingEmptyBlocks_before.json"
+        )
         val expected = BlockPost(
             content = listOf(
                 TextContent(
@@ -1257,7 +1275,9 @@ internal class SampleFilesIndividualParseTest {
 
     @Test
     internal fun testOfficialNPF_post_contentBlocks_emptyContent_after() {
-        val content = parseFile<Post>("samples/officialNPFSamples/post/contentBlockTypeText_leadingTrailingEmptyBlocks_after.json")
+        val content = parseFile<Post>(
+            "samples/officialNPFSamples/post/contentBlockTypeText_leadingTrailingEmptyBlocks_after.json"
+        )
         val expected = BlockPost(
             content = listOf(
                 TextContent(
@@ -2272,6 +2292,7 @@ internal class SampleFilesIndividualParseTest {
         )
         assertEquals(expected, post)
     }
+
     @Test
     internal fun onceFailed_posts_blockPost_isBlurredImages() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_isBlurredImages.json")

@@ -205,36 +205,43 @@ public data class TextContent constructor(
          */
         @Json(name = "heading1")
         Heading1,
+
         /**
          * Intended for section subheadings.
          */
         @Json(name = "heading2")
         Heading2,
+
         /**
          * Tumblr Official clients display this with a large cursive font.
          */
         @Json(name = "quirky")
         Quirky,
+
         /**
          * Intended for short quotations, official Tumblr clients display this with a large serif font.
          */
         @Json(name = "quote")
         Quote,
+
         /**
          * Intended for longer quotations or photo captions, official Tumblr clients indent this text block.
          */
         @Json(name = "indented")
         Indented,
+
         /**
          * Intended to mimic the behavior of the Chat Post type, official Tumblr clients display this with a monospace font.
          */
         @Json(name = "chat")
         Chat,
+
         /**
          * Intended to be an ordered list item prefixed by a number, see next section.
          */
         @Json(name = "ordered-list-item")
         OrderedListItem,
+
         /**
          * Intended to be an unordered list item prefixed with a bullet, see next section.
          */

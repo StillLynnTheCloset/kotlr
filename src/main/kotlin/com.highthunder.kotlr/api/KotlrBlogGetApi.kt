@@ -66,7 +66,7 @@ internal interface KotlrBlogGetApi {
         @Query("limit")
         limit: Int? = null,
         @Query("offset")
-        offset: Int? = null,
+        offset: Long? = null,
     ): Response<ResponseBlogFollowers.Response>
 
     @GET("blog/{identifier}/following")
@@ -76,7 +76,7 @@ internal interface KotlrBlogGetApi {
         @Query("limit")
         limit: Int? = null,
         @Query("offset")
-        offset: Int? = null,
+        offset: Long? = null,
     ): Response<ResponseBlogFollowing.Response>
 
     @GET("blog/{identifier}/followed_by")

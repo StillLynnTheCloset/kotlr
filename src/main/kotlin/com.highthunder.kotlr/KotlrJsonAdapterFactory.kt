@@ -103,7 +103,9 @@ internal object KotlrJsonAdapterFactory : JsonAdapter.Factory {
                 "com.highthunder.kotlr.json.wrapper.ThemeWrapper" -> ThemeWrapperJsonAdapter(moshi)
                 "com.highthunder.kotlr.json.wrapper.PlayerWrapper" -> PlayerWrapperJsonAdapter(moshi)
                 "com.highthunder.kotlr.json.wrapper.ContentWrapper" -> ContentWrapperJsonAdapter(moshi)
-                "com.highthunder.kotlr.json.wrapper.RecommendationReasonWrapper" -> RecommendationReasonWrapperJsonAdapter(moshi)
+                "com.highthunder.kotlr.json.wrapper.RecommendationReasonWrapper" -> {
+                    RecommendationReasonWrapperJsonAdapter(moshi)
+                }
                 else -> null
             }
         }

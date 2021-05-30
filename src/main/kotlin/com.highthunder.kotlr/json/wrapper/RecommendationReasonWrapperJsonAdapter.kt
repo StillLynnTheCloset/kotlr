@@ -22,7 +22,8 @@ import com.squareup.moshi.ToJson
  * @since 2021-05-29
  */
 internal class RecommendationReasonWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<RecommendationReasonWrapper>() {
-    private val recommendationAdapter: JsonAdapter<RecommendationReason?> = moshi.nextAdapter(KotlrJsonAdapterFactory, RecommendationReason::class.java, emptySet())
+    private val recommendationAdapter: JsonAdapter<RecommendationReason?> =
+        moshi.nextAdapter(KotlrJsonAdapterFactory, RecommendationReason::class.java, emptySet())
 
     private val stringAdapter: JsonAdapter<String> = moshi.adapter()
 
@@ -32,7 +33,11 @@ internal class RecommendationReasonWrapperJsonAdapter(moshi: Moshi) : JsonAdapte
             BEGIN_OBJECT -> RecommendationReasonWrapper(recommendationObject = recommendationAdapter.fromJson(reader))
             STRING -> RecommendationReasonWrapper(recommendationString = stringAdapter.fromJson(reader))
             NULL -> null
-            else -> throw JsonDataException("Expected a field of type RecommendationReason or String but got ${reader.peek()}")
+            else -> {
+                throw JsonDataException(
+                    "Expected a field of type RecommendationReason or String but got ${reader.peek()}"
+                )
+            }
         }
     }
 
