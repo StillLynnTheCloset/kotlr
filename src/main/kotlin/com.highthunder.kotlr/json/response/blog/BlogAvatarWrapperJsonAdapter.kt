@@ -34,7 +34,7 @@ internal class BlogAvatarWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperI
             STRING -> ResponseBlogAvatar.Wrapper(error = stringAdapter.fromJson(reader))
             BEGIN_ARRAY -> ResponseBlogAvatar.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
             NULL -> ResponseBlogAvatar.Wrapper()
-            else -> throw JsonDataException("Expected a field of type List or String but got ${reader.peek()}")
+            else -> throw JsonDataException("Expected a field of type Object, String, List, or null but got ${reader.peek()}")
         }
     }
 

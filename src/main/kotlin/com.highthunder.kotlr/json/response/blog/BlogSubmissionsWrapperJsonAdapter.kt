@@ -35,7 +35,7 @@ internal class BlogSubmissionsWrapperJsonAdapter(moshi: Moshi) :
             STRING -> ResponseBlogSubmissions.Wrapper(error = stringAdapter.fromJson(reader))
             BEGIN_ARRAY -> ResponseBlogSubmissions.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
             NULL -> ResponseBlogSubmissions.Wrapper()
-            else -> throw JsonDataException("Expected a field of type List or String but got ${reader.peek()}")
+            else -> throw JsonDataException("Expected a field of type Object, String, List, or null but got ${reader.peek()}")
         }
     }
 
