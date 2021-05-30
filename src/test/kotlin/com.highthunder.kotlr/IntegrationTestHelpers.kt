@@ -486,7 +486,24 @@ internal suspend fun testCreate(api: KotlrApi, blogName: String) {
     println(response.body())
 }
 
-// Uses ((if (doNotesAndReblogs) 36 else 22) + 3 * ceiling(postsToLoop / postsPerRequest)) requests
+// Uses (9) requests.
+internal suspend fun testFilteredContent(api: KotlrApi) {
+    println(api.getContentFilters().checkError().clean())
+
+    println(api.addContentFilter("testContentFilterThatWon'tAppearAnywhere1").checkError().clean())
+    println(api.addContentFilters(listOf("testContentFilterThatWon'tAppearAnywhere1")).checkError().clean())
+    println(api.addContentFilters(listOf("testContentFilterThatWon'tAppearAnywhere1", "testContentFilterThatWon'tAppearAnywhere2")).checkError().clean())
+    println(api.addContentFilters("testContentFilterThatWon'tAppearAnywhere1", "testContentFilterThatWon'tAppearAnywhere2").checkError().clean())
+
+    println(api.getContentFilters().checkError().clean())
+
+    println(api.deleteContentFilter("testContentFilterThatWon'tAppearAnywhere1").checkError().clean())
+    println(api.deleteContentFilter("testContentFilterThatWon'tAppearAnywhere2").checkError().clean())
+
+    println(api.getContentFilters().checkError().clean())
+}
+
+// Uses ((if (doNotesAndReblogs) 45 else 31) + 3 * ceiling(postsToLoop / postsPerRequest)) requests
 // Default = 202 = 22 + 3*60
 internal suspend fun runAllTests(userKey: TumblrUserKey, blogName: String, debugLogging: Boolean = false, strictParsing: Boolean = false, useNpf: Boolean = true, doNotesAndReblogs: Boolean = false, postsPerRequest: Int = 50, maxPostsPerLooper: Int = 3000) {
     val api = getApi(userKey, debug = debugLogging, strict = strictParsing)
@@ -517,6 +534,9 @@ internal suspend fun runAllTests(userKey: TumblrUserKey, blogName: String, debug
 
     println("Draft a test post")
     testCreate(api, blogName)
+
+    println("Filter content")
+    testFilteredContent(api)
 }
 
 // endregion Integration Test Helpers

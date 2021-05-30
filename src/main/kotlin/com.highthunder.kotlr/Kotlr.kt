@@ -4,6 +4,7 @@ import com.highthunder.kotlr.api.KotlrApi
 import com.highthunder.kotlr.api.KotlrBlogGetApi
 import com.highthunder.kotlr.api.KotlrBlogPostApi
 import com.highthunder.kotlr.api.KotlrPostsGetApi
+import com.highthunder.kotlr.api.KotlrUserDeleteApi
 import com.highthunder.kotlr.api.KotlrUserGetApi
 import com.highthunder.kotlr.api.KotlrUserPostApi
 import com.highthunder.kotlr.authentication.TumblrAppKey
@@ -148,6 +149,7 @@ public fun getApi(
     val blogGetApi: KotlrBlogGetApi = client.create()
     val userPostApi: KotlrUserPostApi = client.create()
     val blogPostApi: KotlrBlogPostApi = client.create()
+    val userDeleteApi: KotlrUserDeleteApi = client.create()
     val postsGetApi: KotlrPostsGetApi = client.create()
-    return KotlrApi(userGetApi, blogGetApi, userPostApi, blogPostApi, postsGetApi)
+    return KotlrApi(userGetApi, blogGetApi, userPostApi, blogPostApi, userDeleteApi, postsGetApi)
 }

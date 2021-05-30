@@ -1,6 +1,7 @@
 package com.highthunder.kotlr.api
 
 import com.highthunder.kotlr.getApi
+import com.highthunder.kotlr.postbody.FilteredContentPostBody
 import com.highthunder.kotlr.postbody.FollowPostBody
 import com.highthunder.kotlr.postbody.LikePostBody
 import com.highthunder.kotlr.response.RateLimitMetaData
@@ -17,6 +18,7 @@ import com.highthunder.kotlr.response.type.blog.ResponseBlogSubmissions
 import com.highthunder.kotlr.response.type.post.ResponsePostNotes
 import com.highthunder.kotlr.response.type.post.ResponsePostsPost
 import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
+import com.highthunder.kotlr.response.type.user.ResponseUserFilteredContent
 import com.highthunder.kotlr.response.type.user.ResponseUserFollow
 import com.highthunder.kotlr.response.type.user.ResponseUserFollowing
 import com.highthunder.kotlr.response.type.user.ResponseUserInfo
@@ -34,7 +36,8 @@ public class KotlrApi internal constructor(
     private val blogGetApi: KotlrBlogGetApi,
     private val userPostApi: KotlrUserPostApi,
     private val blogPostApi: KotlrBlogPostApi,
-    private val postsGetApi: KotlrPostsGetApi
+    private val userDeleteApi: KotlrUserDeleteApi,
+    private val postsGetApi: KotlrPostsGetApi,
 ) : KotlrBlogPostApi by blogPostApi {
     private companion object {
         private val validAvatarSizes = listOf(16, 24, 30, 40, 48, 64, 96, 128, 512)
@@ -195,6 +198,18 @@ public class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
+
+    /**
+     * Use this method to retrieve the content filtering strings of the user whose OAuth credentials are submitted with the request.
+     */
+    public suspend fun getContentFilters(): ResponseUserFilteredContent.Response? {
+        val retrofitResponse = userGetApi.getContentFilters()
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
     // endregion User Getters
 
     // region User Posts
@@ -285,9 +300,85 @@ public class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
-    // endregion User Posts
+    /**
+     * Use this method to add a content filter.
+     *
+     * @param contentFilter The text that a filter filters on.
+     */
+    public suspend fun addContentFilter(
+        contentFilter: String,
+    ): ResponseUserLike.Response? {
+        validateContentFilter(contentFilter)
 
-    // region Blog Getters
+        val body = FilteredContentPostBody(contentFilter)
+
+        val retrofitResponse = userPostApi.addContentFilter(
+            filteredContent = body
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    /**
+     * Use this method to add a group of content filters.
+     *
+     * @param contentFilters The text that a filter filters on.
+     */
+    public suspend fun addContentFilters(
+        contentFilters: Iterable<String>,
+    ): ResponseUserLike.Response? {
+        contentFilters.forEach { validateContentFilter(it) }
+
+        val body = FilteredContentPostBody(contentFilters)
+
+        val retrofitResponse = userPostApi.addContentFilter(
+            filteredContent = body
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    /**
+     * Use this method to add a group of content filters.
+     *
+     * @param contentFilters The text that a filter filters on.
+     */
+    public suspend fun addContentFilters(
+        vararg contentFilters: String,
+    ): ResponseUserLike.Response? {
+       return addContentFilters(contentFilters.toList())
+    }
+
+    // endregion User POSTs
+
+    // region User DELETEs
+
+    /**
+     * Use this method to remove a content filter.
+     *
+     * @param contentFilter The text that a filter filters on.
+     */
+    public suspend fun deleteContentFilter(
+        contentFilter: String,
+    ): ResponseUserFilteredContent.Response? {
+        validateContentFilter(contentFilter)
+
+        val retrofitResponse = userDeleteApi.filterContent(
+            filteredContent = contentFilter
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    // endregion User DELETEs
+
+    // region Blog GETs
 
     /**
      * Retrieve a Blog Avatar.
@@ -878,6 +969,11 @@ public class KotlrApi internal constructor(
 
     private fun validateTag(tag: String?) {
         require(tag == null || tag.isNotBlank()) { "Tags must not be blank." }
+    }
+
+    private fun validateContentFilter(contentFilter: String?) {
+        require(contentFilter == null || contentFilter.isNotBlank()) { "Content filters must not be blank." }
+        require(contentFilter == null || contentFilter.length <= 250) { "Content filters must not be more than 250 characters in length." }
     }
 
     private fun validateTimestamp(timestamp: Long?) {

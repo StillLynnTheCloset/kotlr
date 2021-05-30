@@ -1,6 +1,7 @@
 package com.highthunder.kotlr.api
 
 import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
+import com.highthunder.kotlr.response.type.user.ResponseUserFilteredContent
 import com.highthunder.kotlr.response.type.user.ResponseUserFollowing
 import com.highthunder.kotlr.response.type.user.ResponseUserInfo
 import com.highthunder.kotlr.response.type.user.ResponseUserLikes
@@ -74,4 +75,10 @@ internal interface KotlrUserGetApi {
         @Query("offset")
         offset: Long? = null,
     ): Response<ResponseUserFollowing.Response>
+
+    /**
+     * Get the current user's content filtering.
+     */
+    @GET("user/filtered_content")
+    suspend fun getContentFilters(): Response<ResponseUserFilteredContent.Response>
 }

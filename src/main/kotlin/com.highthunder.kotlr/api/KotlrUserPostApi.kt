@@ -1,5 +1,6 @@
 package com.highthunder.kotlr.api
 
+import com.highthunder.kotlr.postbody.FilteredContentPostBody
 import com.highthunder.kotlr.postbody.FollowPostBody
 import com.highthunder.kotlr.postbody.LikePostBody
 import com.highthunder.kotlr.response.type.user.ResponseUserFollow
@@ -51,5 +52,16 @@ internal interface KotlrUserPostApi {
     suspend fun unlikePost(
         @Body
         likePostBody: LikePostBody,
+    ): Response<ResponseUserLike.Response>
+
+    /**
+     * Add to your current post filters.
+     *
+     * @param filteredContent The string to filter.
+     */
+    @POST("user/filtered_content")
+    suspend fun addContentFilter(
+        @Body
+        filteredContent: FilteredContentPostBody,
     ): Response<ResponseUserLike.Response>
 }
