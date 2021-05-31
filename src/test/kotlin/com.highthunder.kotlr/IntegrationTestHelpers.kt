@@ -333,7 +333,7 @@ internal suspend fun testReblog(api: KotlrApi, blogName: String) {
             tags = listOf("Tag1", "Tag2", "Tag3, Tag4 , Tag5"),
         )
         val reblogResponse = api.reblogPost(
-            identifier = blogName,
+            blogIdentifier = blogName,
             reblogBody = reblogBody,
         )
         println(reblogResponse)
@@ -344,7 +344,7 @@ internal suspend fun testReblog(api: KotlrApi, blogName: String) {
 // Uses (1) request.
 internal suspend fun testCreate(api: KotlrApi, blogName: String) {
     val response = api.createNewPost(
-        identifier = blogName,
+        blogIdentifier = blogName,
         createBody = CreateNewPostBody(
             content = listOf(
                 TextContent(

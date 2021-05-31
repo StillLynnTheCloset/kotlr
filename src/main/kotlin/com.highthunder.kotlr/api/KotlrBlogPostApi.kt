@@ -30,13 +30,14 @@ internal interface KotlrBlogPostApi {
      *
      * If omitted, the state parameter on a new post defaults to "published".
      *
-     * @param identifier An identifier of the Blog that this post should be published to.
+     * @param blogIdentifier An identifier of the Blog that this post should be published to.
      * @param createBody The payload of this post.
      */
     @POST("blog/{identifier}/posts")
+    // TODO: Add a wrapper function to remove the OKHTTP response type
     suspend fun createNewPost(
         @Path("identifier", encoded = true)
-        identifier: String,
+        blogIdentifier: String,
         @Body
         createBody: CreateNewPostBody,
     ): Response<ResponseCreatePost.Response>
@@ -57,15 +58,16 @@ internal interface KotlrBlogPostApi {
      *
      * If omitted, the state parameter on a new post defaults to "published".
      *
-     * @param identifier An identifier of the Blog that this post should be published to.
+     * @param blogIdentifier An identifier of the Blog that this post should be published to.
      * @param createBody The payload of this post.
      * @param contentFiles The content parts that should be uploaded with this post.
      */
     @Multipart
     @POST("blog/{identifier}/posts")
+    // TODO: Add a wrapper function to remove the OKHTTP response type
     suspend fun createNewPostWithContentFiles(
         @Path("identifier", encoded = true)
-        identifier: String,
+        blogIdentifier: String,
         @Part
         createBody: CreateNewPostBody,
         @Part
@@ -92,14 +94,14 @@ internal interface KotlrBlogPostApi {
      *
      * If omitted, the state parameter on a new post defaults to "published".
      *
-     * @param identifier An identifier of the Blog that this post should be published to.
+     * @param blogIdentifier An identifier of the Blog that this post should be published to.
      * @param reblogBody The payload of this post.
      */
     @POST("blog/{identifier}/posts")
     // TODO: Add a wrapper function to remove the OKHTTP response type
     suspend fun reblogPost(
         @Path("identifier", encoded = true)
-        identifier: String,
+        blogIdentifier: String,
         @Body
         reblogBody: ReblogPostBody,
     ): Response<ResponseCreatePost.Response>
@@ -120,15 +122,16 @@ internal interface KotlrBlogPostApi {
      *
      * If omitted, the state parameter on a new post defaults to "published".
      *
-     * @param identifier An identifier of the Blog that this post should be published to.
+     * @param blogIdentifier An identifier of the Blog that this post should be published to.
      * @param reblogBody The payload of this post.
      * @param contentFiles The content parts that should be uploaded with this post.
      */
     @Multipart
     @POST("blog/{identifier}/posts")
+    // TODO: Add a wrapper function to remove the OKHTTP response type
     suspend fun reblogPostWithContentFiles(
         @Path("identifier", encoded = true)
-        identifier: String,
+        blogIdentifier: String,
         @Part
         reblogBody: ReblogPostBody,
         @Part
