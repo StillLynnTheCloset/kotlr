@@ -149,6 +149,7 @@ public fun getApi(
     val userDeleteApi: KotlrUserDeleteApi = client.create()
     val blogGetApi: KotlrBlogGetApi = client.create()
     val blogPostApi: KotlrBlogPostApi = client.create()
+    val blogDeleteApi: KotlrBlogDeleteApi = client.create()
     val postsGetApi: KotlrPostsGetApi = client.create()
-    return KotlrApi(userGetApi, userPostApi, userDeleteApi, blogGetApi, blogPostApi, postsGetApi)
+    return KotlrApi(userGetApi, userPostApi, userDeleteApi, blogGetApi, blogPostApi, blogDeleteApi, postsGetApi)
 }

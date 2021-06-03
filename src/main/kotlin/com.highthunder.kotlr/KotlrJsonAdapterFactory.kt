@@ -1,6 +1,7 @@
 package com.highthunder.kotlr
 
 import com.highthunder.kotlr.json.response.blog.BlogAvatarWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.blog.BlogBlocksWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.blog.BlogDraftsWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.blog.BlogFollowedByWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.blog.BlogFollowersWrapperJsonAdapter
@@ -64,6 +65,8 @@ internal object KotlrJsonAdapterFactory : JsonAdapter.Factory {
                         BlogQueueWrapperJsonAdapter(moshi)
                     "com.highthunder.kotlr.response.type.blog.ResponseBlogSubmissions\$Body" ->
                         BlogSubmissionsWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.blog.ResponseBlogBlocks\$Body" ->
+                        BlogBlocksWrapperJsonAdapter(moshi)
                     "com.highthunder.kotlr.response.type.user.ResponseUserInfo\$Body" ->
                         UserInfoWrapperJsonAdapter(moshi)
                     "com.highthunder.kotlr.response.type.user.ResponseUserDashboard\$Body" ->

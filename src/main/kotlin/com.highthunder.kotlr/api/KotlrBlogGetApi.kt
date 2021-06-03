@@ -1,6 +1,7 @@
 package com.highthunder.kotlr.api
 
 import com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar
+import com.highthunder.kotlr.response.type.blog.ResponseBlogBlocks
 import com.highthunder.kotlr.response.type.blog.ResponseBlogDrafts
 import com.highthunder.kotlr.response.type.blog.ResponseBlogFollowedBy
 import com.highthunder.kotlr.response.type.blog.ResponseBlogFollowers
@@ -206,4 +207,14 @@ internal interface KotlrBlogGetApi {
         @Query("page_number")
         pageNumber: Int? = null,
     ): Response<ResponseBlogSubmissions.Response>
+
+    @GET("blog/{identifier}/blocks")
+    suspend fun getBlogBlocks(
+        @Path("identifier", encoded = true)
+        blogIdentifier: String,
+        @Query("limit")
+        pagingLimit: Int? = null,
+        @Query("offset")
+        pagingOffset: Long? = null,
+    ): Response<ResponseBlogBlocks.Response>
 }

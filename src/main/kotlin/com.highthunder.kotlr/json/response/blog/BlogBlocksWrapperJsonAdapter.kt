@@ -1,0 +1,51 @@
+package com.highthunder.kotlr.json.response.blog
+
+import com.highthunder.kotlr.adapter
+import com.highthunder.kotlr.listAdapter
+import com.highthunder.kotlr.response.WrapperInterface
+import com.highthunder.kotlr.response.type.blog.ResponseBlogBlocks
+import com.squareup.moshi.FromJson
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.JsonDataException
+import com.squareup.moshi.JsonReader
+import com.squareup.moshi.JsonReader.Token.BEGIN_ARRAY
+import com.squareup.moshi.JsonReader.Token.BEGIN_OBJECT
+import com.squareup.moshi.JsonReader.Token.NULL
+import com.squareup.moshi.JsonReader.Token.STRING
+import com.squareup.moshi.JsonWriter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.ToJson
+
+/**
+ * BlogLikesWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseBlogBlocks].
+ *
+ * @author highthunder
+ * @since 2021-06-02
+ */
+internal class BlogBlocksWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponseBlogBlocks.Body>>() {
+    private val stringAdapter: JsonAdapter<String?> = moshi.adapter()
+    private val responseAdapter: JsonAdapter<ResponseBlogBlocks.Body> = moshi.adapter()
+    private val listOfAnyAdapter: JsonAdapter<List<Any>> = moshi.listAdapter()
+
+    @FromJson
+    override fun fromJson(reader: JsonReader): WrapperInterface<ResponseBlogBlocks.Body> {
+        return when (reader.peek()) {
+            BEGIN_OBJECT -> ResponseBlogBlocks.Wrapper(body = responseAdapter.fromJson(reader))
+            STRING -> ResponseBlogBlocks.Wrapper(error = stringAdapter.fromJson(reader))
+            BEGIN_ARRAY -> ResponseBlogBlocks.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
+            NULL -> ResponseBlogBlocks.Wrapper()
+            else -> throw JsonDataException(
+                "Expected a field of type Object, String, List, or null but got ${reader.peek()}"
+            )
+        }
+    }
+
+    @ToJson
+    override fun toJson(writer: JsonWriter, value: WrapperInterface<ResponseBlogBlocks.Body>?) {
+        if (value?.error != null) {
+            stringAdapter.toJson(writer, value.error)
+        } else {
+            responseAdapter.toJson(writer, value?.body)
+        }
+    }
+}

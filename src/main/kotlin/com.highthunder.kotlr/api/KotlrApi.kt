@@ -1,6 +1,7 @@
 package com.highthunder.kotlr.api
 
 import com.highthunder.kotlr.getApi
+import com.highthunder.kotlr.postbody.BlockBlogPostBody
 import com.highthunder.kotlr.postbody.CreateNewPostBody
 import com.highthunder.kotlr.postbody.FilteredContentPostBody
 import com.highthunder.kotlr.postbody.FollowPostBody
@@ -8,6 +9,7 @@ import com.highthunder.kotlr.postbody.LikePostBody
 import com.highthunder.kotlr.postbody.ReblogPostBody
 import com.highthunder.kotlr.response.RateLimitMetaData
 import com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar
+import com.highthunder.kotlr.response.type.blog.ResponseBlogBlocks
 import com.highthunder.kotlr.response.type.blog.ResponseBlogDrafts
 import com.highthunder.kotlr.response.type.blog.ResponseBlogFollowedBy
 import com.highthunder.kotlr.response.type.blog.ResponseBlogFollowers
@@ -41,6 +43,7 @@ public class KotlrApi internal constructor(
     private val userDeleteApi: KotlrUserDeleteApi,
     private val blogGetApi: KotlrBlogGetApi,
     private val blogPostApi: KotlrBlogPostApi,
+    private val blogDeleteApi: KotlrBlogDeleteApi,
     private val postsGetApi: KotlrPostsGetApi,
 ) {
     private companion object {
@@ -833,6 +836,33 @@ public class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
+    /**
+     * Retrieve blogs that have been blocked by the given blog.
+     *
+     * @param blogIdentifier An identifier for the blog that you are using.
+     * @param pagingLimit Optional. The number of results to return: 1–50, inclusive.
+     * @param pagingOffset Optional. Post number to start at.
+     */
+    public suspend fun getBlogBlocks(
+        blogIdentifier: String,
+        pagingLimit: Int? = null,
+        pagingOffset: Long? = null,
+    ): ResponseBlogBlocks.Response? {
+        validateBlogIdentifier(blogIdentifier)
+        validatePagingLimit(pagingLimit)
+        validatePagingOffset(pagingOffset)
+
+        val retrofitResponse = blogGetApi.getBlogBlocks(
+            blogIdentifier = blogIdentifier,
+            pagingLimit = pagingLimit,
+            pagingOffset = pagingOffset,
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
     // endregion Blog GETs
 
     // region Blog POSTs
@@ -983,7 +1013,99 @@ public class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
+    /**
+     * Use this method to block a known blog.
+     *
+     * @param blogIdentifier The identifier that is doing the blocking.
+     * @param blogToBlock The identifier of the blog that is being blocked.
+     */
+    public suspend fun blockBlog(
+        blogIdentifier: String,
+        blogToBlock: String,
+    ): ResponseBlogBlocks.Response? {
+        validateBlogIdentifier(blogIdentifier)
+        validateBlogIdentifier(blogToBlock)
+
+        val retrofitResponse = blogPostApi.blockBlog(
+            blogIdentifier = blogIdentifier,
+            blockBody = BlockBlogPostBody(blogIdentifier = blogToBlock),
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    /**
+     * Use this method to block an anonymous blog.
+     *
+     * @param blogIdentifier The identifier that is doing the blocking.
+     * @param postId The postId of the ask or submission by the blog that you want to block.
+     */
+    public suspend fun blockBlog(
+        blogIdentifier: String,
+        postId: Long,
+    ): ResponseBlogBlocks.Response? {
+        validateBlogIdentifier(blogIdentifier)
+        validatePostId(postId)
+
+        val retrofitResponse = blogPostApi.blockBlog(
+            blogIdentifier = blogIdentifier,
+            blockBody = BlockBlogPostBody(postId = postId),
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
     // endregion Blog POSTs
+
+    // region Blog DELETEs
+
+    /**
+     * Use this method to unblock a known blog.
+     *
+     * @param blogIdentifier The identifier that is doing the blocking.
+     * @param blogToUnblock The identifier of the blog that is being unblocked.
+     */
+    public suspend fun unblockBlog(
+        blogIdentifier: String,
+        blogToUnblock: String,
+    ): ResponseBlogBlocks.Response? {
+        validateBlogIdentifier(blogIdentifier)
+        validateBlogIdentifier(blogToUnblock)
+
+        val retrofitResponse = blogDeleteApi.unblockBlog(
+            blogIdentifier = blogIdentifier,
+            blogToUnblock = blogToUnblock,
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    /**
+     * Use this method to unblock all currently blocked anonymous blogs.
+     *
+     * @param blogIdentifier The identifier that is doing the blocking.
+     */
+    public suspend fun unblockAllAnonymousBlogs(
+        blogIdentifier: String,
+    ): ResponseBlogBlocks.Response? {
+        validateBlogIdentifier(blogIdentifier)
+
+        val retrofitResponse = blogDeleteApi.unblockAllAnonymousBlogs(
+            blogIdentifier = blogIdentifier,
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    // endregion Blog DELETEs
 
     // region Post GETs
 

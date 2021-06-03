@@ -53,6 +53,7 @@ import com.squareup.moshi.JsonClass
  * @param canBeFollowed Whether or not you can follow this blog.
  * @param canChat Whether or not you can chat with this blog.
  * @param avatar A list of images representing the different sizes of this blog's avatar.
+ * @param blockedTimestamp The time at which you blocked this blog.
  */
 @JsonClass(generateAdapter = true)
 public data class Blog constructor(
@@ -142,4 +143,6 @@ public data class Blog constructor(
     val canChat: Boolean? = null,
     @Json(name = "avatar")
     val avatar: List<Media>? = null,
+    @Json(name = "blocked_timestamp")
+    val blockedTimestamp: Long? = null,
 )

@@ -493,8 +493,17 @@ internal suspend fun testFilteredContent(api: KotlrApi) {
     println(api.getContentFilters().checkError().clean())
 }
 
-// Uses ((if (doNotesAndReblogs) 45 else 31) + 3 * ceiling(postsToLoop / postsPerRequest)) requests
-// Default = 202 = 22 + 3*60
+// Uses (5) requests.
+internal suspend fun testBlogBlocks(api: KotlrApi, blogIdentifier: String) {
+    println(api.getBlogBlocks(blogIdentifier = blogIdentifier).checkError().clean())
+    println(api.blockBlog(blogIdentifier = blogIdentifier, blogToBlock = "staff").checkError().clean())
+    println(api.getBlogBlocks(blogIdentifier = blogIdentifier).checkError().clean())
+    println(api.unblockBlog(blogIdentifier = blogIdentifier, blogToUnblock = "staff").checkError().clean())
+    println(api.getBlogBlocks(blogIdentifier = blogIdentifier).checkError().clean())
+}
+
+// Uses ((if (doNotesAndReblogs) 50 else 36) + 3 * ceiling(postsToLoop / postsPerRequest)) requests
+// Default = 216 = 36 + 3*60
 internal suspend fun runAllTests(
     userKey: TumblrUserKey,
     blogName: String,
@@ -535,6 +544,9 @@ internal suspend fun runAllTests(
 
     println("Filter content")
     testFilteredContent(api)
+
+    println("Blocking")
+    testBlogBlocks(api, blogName)
 }
 
 // endregion Integration Test Helpers
