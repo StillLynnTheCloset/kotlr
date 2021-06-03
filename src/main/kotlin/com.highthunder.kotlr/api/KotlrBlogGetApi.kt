@@ -18,27 +18,27 @@ import retrofit2.http.Query
 
 internal interface KotlrBlogGetApi {
     @GET("blog/{identifier}/avatar")
-    suspend fun getBlogAvatarHelper(
+    suspend fun getBlogAvatar(
         @Path("identifier", encoded = true)
-        identifier: String,
+        blogIdentifier: String,
     ): Response<ResponseBlogAvatar.Response>
 
     @GET("blog/{identifier}/avatar/{size}")
-    suspend fun getBlogAvatarHelper(
+    suspend fun getBlogAvatar(
         @Path("identifier", encoded = true)
-        identifier: String,
+        blogIdentifier: String,
         @Path("size")
         size: Int,
     ): Response<ResponseBlogAvatar.Response>
 
     @GET("blog/{identifier}/posts/draft")
-    suspend fun getBlogDraftsHelper(
+    suspend fun getBlogDrafts(
         @Path("identifier", encoded = true)
-        identifier: String,
+        blogIdentifier: String,
         @Query("limit")
-        postLimit: Int? = null,
+        pagingLimit: Int? = null,
         @Query("offset")
-        postOffset: Long? = null,
+        pagingOffset: Long? = null,
         @Query("since_id")
         afterPostId: Long? = null,
         @Query("before_id")
@@ -60,47 +60,47 @@ internal interface KotlrBlogGetApi {
     ): Response<ResponseBlogDrafts.Response>
 
     @GET("blog/{identifier}/followers")
-    suspend fun getBlogFollowersHelper(
+    suspend fun getBlogFollowers(
         @Path("identifier", encoded = true)
-        identifier: String,
+        blogIdentifier: String,
         @Query("limit")
-        limit: Int? = null,
+        pagingLimit: Int? = null,
         @Query("offset")
-        offset: Long? = null,
+        pagingOffset: Long? = null,
     ): Response<ResponseBlogFollowers.Response>
 
     @GET("blog/{identifier}/following")
-    suspend fun getBlogFollowingHelper(
+    suspend fun getBlogFollowing(
         @Path("identifier", encoded = true)
-        identifier: String,
+        blogIdentifier: String,
         @Query("limit")
-        limit: Int? = null,
+        pagingLimit: Int? = null,
         @Query("offset")
-        offset: Long? = null,
+        pagingOffset: Long? = null,
     ): Response<ResponseBlogFollowing.Response>
 
     @GET("blog/{identifier}/followed_by")
-    suspend fun getBlogFollowedByHelper(
+    suspend fun getBlogFollowedBy(
         @Path("identifier", encoded = true)
-        identifier: String,
+        blogIdentifier: String,
         @Query("query")
         query: String,
     ): Response<ResponseBlogFollowedBy.Response>
 
     @GET("blog/{identifier}/info")
-    suspend fun getBlogInfoHelper(
+    suspend fun getBlogInfo(
         @Path("identifier", encoded = true)
-        identifier: String
+        blogIdentifier: String
     ): Response<ResponseBlogInfo.Response>
 
     @GET("blog/{identifier}/likes")
-    suspend fun getBlogLikesHelper(
+    suspend fun getBlogLikes(
         @Path("identifier", encoded = true)
-        identifier: String,
+        blogIdentifier: String,
         @Query("limit")
-        postLimit: Int? = null,
+        pagingLimit: Int? = null,
         @Query("offset")
-        postOffset: Long? = null,
+        pagingOffset: Long? = null,
         @Query("since_id")
         afterPostId: Long? = null,
         @Query("before_id")
@@ -122,13 +122,13 @@ internal interface KotlrBlogGetApi {
     ): Response<ResponseBlogLikes.Response>
 
     @GET("blog/{identifier}/posts")
-    suspend fun getBlogPostsHelper(
+    suspend fun getBlogPosts(
         @Path("identifier", encoded = true)
-        identifier: String,
+        blogIdentifier: String,
         @Query("limit")
-        postLimit: Int? = null,
+        pagingLimit: Int? = null,
         @Query("offset")
-        postOffset: Long? = null,
+        pagingOffset: Long? = null,
         @Query("since_id")
         afterPostId: Long? = null,
         @Query("before_id")
@@ -152,13 +152,13 @@ internal interface KotlrBlogGetApi {
     ): Response<ResponseBlogPosts.Response>
 
     @GET("blog/{identifier}/posts/queue")
-    suspend fun getBlogQueueHelper(
+    suspend fun getBlogQueue(
         @Path("identifier", encoded = true)
-        identifier: String,
+        blogIdentifier: String,
         @Query("limit")
-        postLimit: Int? = null,
+        pagingLimit: Int? = null,
         @Query("offset")
-        postOffset: Long? = null,
+        pagingOffset: Long? = null,
         @Query("since_id")
         afterPostId: Long? = null,
         @Query("before_id")
@@ -180,13 +180,13 @@ internal interface KotlrBlogGetApi {
     ): Response<ResponseBlogQueue.Response>
 
     @GET("blog/{identifier}/posts/submission")
-    suspend fun getBlogSubmissionsHelper(
+    suspend fun getBlogSubmissions(
         @Path("identifier", encoded = true)
-        identifier: String,
+        blogIdentifier: String,
         @Query("limit")
-        postLimit: Int? = null,
+        pagingLimit: Int? = null,
         @Query("offset")
-        postOffset: Long? = null,
+        pagingOffset: Long? = null,
         @Query("since_id")
         afterPostId: Long? = null,
         @Query("before_id")

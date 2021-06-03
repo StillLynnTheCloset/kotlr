@@ -391,7 +391,7 @@ public class KotlrApi internal constructor(
     ): ResponseBlogAvatar.Response? {
         validateBlogIdentifier(blogIdentifier)
 
-        val retrofitResponse = blogGetApi.getBlogAvatarHelper(
+        val retrofitResponse = blogGetApi.getBlogAvatar(
             blogIdentifier,
         )
 
@@ -415,7 +415,7 @@ public class KotlrApi internal constructor(
         validateBlogIdentifier(blogIdentifier)
         validateAvatarSize(size)
 
-        val retrofitResponse = blogGetApi.getBlogAvatarHelper(
+        val retrofitResponse = blogGetApi.getBlogAvatar(
             blogIdentifier,
             size,
         )
@@ -441,7 +441,7 @@ public class KotlrApi internal constructor(
         validatePagingLimit(pagingLimit)
         validatePagingOffset(pagingOffset)
 
-        val retrofitResponse = blogGetApi.getBlogFollowersHelper(
+        val retrofitResponse = blogGetApi.getBlogFollowers(
             blogIdentifier,
             pagingLimit,
             pagingOffset,
@@ -471,7 +471,7 @@ public class KotlrApi internal constructor(
         validatePagingLimit(pagingLimit)
         validatePagingOffset(pagingOffset)
 
-        val retrofitResponse = blogGetApi.getBlogFollowingHelper(
+        val retrofitResponse = blogGetApi.getBlogFollowing(
             blogIdentifier,
             pagingLimit,
             pagingOffset,
@@ -497,7 +497,7 @@ public class KotlrApi internal constructor(
         validateBlogIdentifier(blogIdentifier)
         validateBlogIdentifier(query)
 
-        val retrofitResponse = blogGetApi.getBlogFollowedByHelper(
+        val retrofitResponse = blogGetApi.getBlogFollowedBy(
             blogIdentifier,
             query,
         )
@@ -519,7 +519,7 @@ public class KotlrApi internal constructor(
     ): ResponseBlogInfo.Response? {
         validateBlogIdentifier(blogIdentifier)
 
-        val retrofitResponse = blogGetApi.getBlogInfoHelper(
+        val retrofitResponse = blogGetApi.getBlogInfo(
             blogIdentifier,
         )
 
@@ -574,10 +574,10 @@ public class KotlrApi internal constructor(
         validateTag(tag)
         validatePageNumber(pageNumber)
 
-        val retrofitResponse = blogGetApi.getBlogLikesHelper(
-            identifier = blogIdentifier,
-            postLimit = pagingLimit,
-            postOffset = pagingOffset,
+        val retrofitResponse = blogGetApi.getBlogLikes(
+            blogIdentifier = blogIdentifier,
+            pagingLimit = pagingLimit,
+            pagingOffset = pagingOffset,
             afterPostId = afterPostId,
             beforePostId = beforePostId,
             afterTime = afterTime,
@@ -635,10 +635,10 @@ public class KotlrApi internal constructor(
         validateTag(tag)
         validatePageNumber(pageNumber)
 
-        val retrofitResponse = blogGetApi.getBlogPostsHelper(
-            identifier = blogIdentifier,
-            postLimit = pagingLimit,
-            postOffset = pagingOffset,
+        val retrofitResponse = blogGetApi.getBlogPosts(
+            blogIdentifier = blogIdentifier,
+            pagingLimit = pagingLimit,
+            pagingOffset = pagingOffset,
             afterPostId = afterPostId,
             beforePostId = beforePostId,
             afterTime = afterTime,
@@ -695,10 +695,10 @@ public class KotlrApi internal constructor(
         validateTag(tag)
         validatePageNumber(pageNumber)
 
-        val retrofitResponse = blogGetApi.getBlogDraftsHelper(
-            identifier = blogIdentifier,
-            postLimit = pagingLimit,
-            postOffset = pagingOffset,
+        val retrofitResponse = blogGetApi.getBlogDrafts(
+            blogIdentifier = blogIdentifier,
+            pagingLimit = pagingLimit,
+            pagingOffset = pagingOffset,
             afterPostId = afterPostId,
             beforePostId = beforePostId,
             afterTime = afterTime,
@@ -754,10 +754,10 @@ public class KotlrApi internal constructor(
         validateTag(tag)
         validatePageNumber(pageNumber)
 
-        val retrofitResponse = blogGetApi.getBlogQueueHelper(
-            identifier = blogIdentifier,
-            postLimit = pagingLimit,
-            postOffset = pagingOffset,
+        val retrofitResponse = blogGetApi.getBlogQueue(
+            blogIdentifier = blogIdentifier,
+            pagingLimit = pagingLimit,
+            pagingOffset = pagingOffset,
             afterPostId = afterPostId,
             beforePostId = beforePostId,
             afterTime = afterTime,
@@ -813,10 +813,10 @@ public class KotlrApi internal constructor(
         validateTag(tag)
         validatePageNumber(pageNumber)
 
-        val retrofitResponse = blogGetApi.getBlogSubmissionsHelper(
-            identifier = blogIdentifier,
-            postLimit = pagingLimit,
-            postOffset = pagingOffset,
+        val retrofitResponse = blogGetApi.getBlogSubmissions(
+            blogIdentifier = blogIdentifier,
+            pagingLimit = pagingLimit,
+            pagingOffset = pagingOffset,
             afterPostId = afterPostId,
             beforePostId = beforePostId,
             afterTime = afterTime,
