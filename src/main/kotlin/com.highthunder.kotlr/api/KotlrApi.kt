@@ -37,10 +37,10 @@ import okhttp3.MultipartBody
  */
 public class KotlrApi internal constructor(
     private val userGetApi: KotlrUserGetApi,
-    private val blogGetApi: KotlrBlogGetApi,
     private val userPostApi: KotlrUserPostApi,
-    private val blogPostApi: KotlrBlogPostApi,
     private val userDeleteApi: KotlrUserDeleteApi,
+    private val blogGetApi: KotlrBlogGetApi,
+    private val blogPostApi: KotlrBlogPostApi,
     private val postsGetApi: KotlrPostsGetApi,
 ) {
     private companion object {

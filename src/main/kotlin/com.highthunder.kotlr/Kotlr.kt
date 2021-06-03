@@ -1,6 +1,7 @@
 package com.highthunder.kotlr
 
 import com.highthunder.kotlr.api.KotlrApi
+import com.highthunder.kotlr.api.KotlrBlogDeleteApi
 import com.highthunder.kotlr.api.KotlrBlogGetApi
 import com.highthunder.kotlr.api.KotlrBlogPostApi
 import com.highthunder.kotlr.api.KotlrPostsGetApi
@@ -144,10 +145,10 @@ public fun getApi(
 ): KotlrApi {
     val client = getRetrofit(getOAuthConsumer(userKey), debug = debug, strict = strict, useShimo = useShimo)
     val userGetApi: KotlrUserGetApi = client.create()
-    val blogGetApi: KotlrBlogGetApi = client.create()
     val userPostApi: KotlrUserPostApi = client.create()
-    val blogPostApi: KotlrBlogPostApi = client.create()
     val userDeleteApi: KotlrUserDeleteApi = client.create()
+    val blogGetApi: KotlrBlogGetApi = client.create()
+    val blogPostApi: KotlrBlogPostApi = client.create()
     val postsGetApi: KotlrPostsGetApi = client.create()
-    return KotlrApi(userGetApi, blogGetApi, userPostApi, blogPostApi, userDeleteApi, postsGetApi)
+    return KotlrApi(userGetApi, userPostApi, userDeleteApi, blogGetApi, blogPostApi, postsGetApi)
 }
