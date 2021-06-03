@@ -337,7 +337,6 @@ internal suspend fun testReblog(api: KotlrApi, blogName: String) {
             reblogBody = reblogBody,
         )
         println(reblogResponse)
-        println(reblogResponse.body())
     }
 }
 
@@ -475,7 +474,6 @@ internal suspend fun testCreate(api: KotlrApi, blogName: String) {
         )
     )
     println(response)
-    println(response.body())
 }
 
 // Uses (9) requests.

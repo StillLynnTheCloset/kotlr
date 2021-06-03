@@ -1,9 +1,11 @@
 package com.highthunder.kotlr.api
 
 import com.highthunder.kotlr.getApi
+import com.highthunder.kotlr.postbody.CreateNewPostBody
 import com.highthunder.kotlr.postbody.FilteredContentPostBody
 import com.highthunder.kotlr.postbody.FollowPostBody
 import com.highthunder.kotlr.postbody.LikePostBody
+import com.highthunder.kotlr.postbody.ReblogPostBody
 import com.highthunder.kotlr.response.RateLimitMetaData
 import com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar
 import com.highthunder.kotlr.response.type.blog.ResponseBlogDrafts
@@ -15,6 +17,7 @@ import com.highthunder.kotlr.response.type.blog.ResponseBlogLikes
 import com.highthunder.kotlr.response.type.blog.ResponseBlogPosts
 import com.highthunder.kotlr.response.type.blog.ResponseBlogQueue
 import com.highthunder.kotlr.response.type.blog.ResponseBlogSubmissions
+import com.highthunder.kotlr.response.type.post.ResponseCreatePost
 import com.highthunder.kotlr.response.type.post.ResponsePostNotes
 import com.highthunder.kotlr.response.type.post.ResponsePostsPost
 import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
@@ -25,6 +28,7 @@ import com.highthunder.kotlr.response.type.user.ResponseUserInfo
 import com.highthunder.kotlr.response.type.user.ResponseUserLike
 import com.highthunder.kotlr.response.type.user.ResponseUserLikes
 import com.highthunder.kotlr.types.Post
+import okhttp3.MultipartBody
 
 /**
  * KotlrApi - The main class for performing requests to the Tumblr API.
@@ -38,7 +42,7 @@ public class KotlrApi internal constructor(
     private val blogPostApi: KotlrBlogPostApi,
     private val userDeleteApi: KotlrUserDeleteApi,
     private val postsGetApi: KotlrPostsGetApi,
-) : KotlrBlogPostApi by blogPostApi {
+) {
     private companion object {
         private val validAvatarSizes = listOf(16, 24, 30, 40, 48, 64, 96, 128, 512)
     }
@@ -830,6 +834,156 @@ public class KotlrApi internal constructor(
     }
 
     // endregion Blog GETs
+
+    // region Blog POSTs
+
+    /**
+     * Create/Reblog a Post
+     *
+     * This method allows you to create posts using the Neue Post Format.
+     * Note about Post States
+     *
+     * Posts can be in the following "states" as indicated in requests to the post creation/editing endpoints:
+     *
+     * "published" means the post should be publicly published immediately.
+     * "queue" means the post should be added to the end of the blog's post queue.
+     * "draft" means the post should be saved as a draft.
+     * "private" means the post should be privately published immediately.
+     * "unapproved" means the post is a new submission.
+     *
+     * If omitted, the state parameter on a new post defaults to "published".
+     *
+     * @param blogIdentifier An identifier of the Blog that this post should be published to.
+     * @param createBody The payload of this post.
+     */
+    public suspend fun createNewPost(
+        blogIdentifier: String,
+        createBody: CreateNewPostBody,
+    ): ResponseCreatePost.Response? {
+        validateBlogIdentifier(blogIdentifier)
+
+        val retrofitResponse = blogPostApi.createNewPost(
+            blogIdentifier = blogIdentifier,
+            createBody = createBody,
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    /**
+     * Create a Post
+     *
+     * This method allows you to create posts using the Neue Post Format.
+     * Note about Post States
+     *
+     * Posts can be in the following "states" as indicated in requests to the post creation/editing endpoints:
+     *
+     * "published" means the post should be publicly published immediately.
+     * "queue" means the post should be added to the end of the blog's post queue.
+     * "draft" means the post should be saved as a draft.
+     * "private" means the post should be privately published immediately.
+     * "unapproved" means the post is a new submission.
+     *
+     * If omitted, the state parameter on a new post defaults to "published".
+     *
+     * @param blogIdentifier An identifier of the Blog that this post should be published to.
+     * @param createBody The payload of this post.
+     * @param contentFiles The content parts that should be uploaded with this post.
+     */
+    public suspend fun createNewPostWithContentFiles(
+        blogIdentifier: String,
+        createBody: CreateNewPostBody,
+        contentFiles: List<MultipartBody.Part>, // TODO: Don't expose okhttp
+    ): ResponseCreatePost.Response? {
+        validateBlogIdentifier(blogIdentifier)
+
+        val retrofitResponse = blogPostApi.createNewPostWithContentFiles(
+            blogIdentifier = blogIdentifier,
+            createBody = createBody,
+            contentFiles = contentFiles,
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    /**
+     * Reblog a Post
+     *
+     * This method allows you to create posts (and reblogs) using the Neue Post Format.
+     * Note about Post States
+     *
+     * Posts can be in the following "states" as indicated in requests to the post creation/editing endpoints:
+     *
+     * "published" means the post should be publicly published immediately.
+     * "queue" means the post should be added to the end of the blog's post queue.
+     * "draft" means the post should be saved as a draft.
+     * "private" means the post should be privately published immediately.
+     * "unapproved" means the post is a new submission.
+     *
+     * If omitted, the state parameter on a new post defaults to "published".
+     *
+     * @param blogIdentifier An identifier of the Blog that this post should be published to.
+     * @param reblogBody The payload of this post.
+     */
+    public suspend fun reblogPost(
+        blogIdentifier: String,
+        reblogBody: ReblogPostBody,
+    ): ResponseCreatePost.Response? {
+        validateBlogIdentifier(blogIdentifier)
+
+        val retrofitResponse = blogPostApi.reblogPost(
+            blogIdentifier = blogIdentifier,
+            reblogBody = reblogBody,
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    /**
+     * Reblog a Post
+     *
+     * This method allows you to create posts (and reblogs) using the Neue Post Format.
+     * Note about Post States
+     *
+     * Posts can be in the following "states" as indicated in requests to the post creation/editing endpoints:
+     *
+     * "published" means the post should be publicly published immediately.
+     * "queue" means the post should be added to the end of the blog's post queue.
+     * "draft" means the post should be saved as a draft.
+     * "private" means the post should be privately published immediately.
+     * "unapproved" means the post is a new submission.
+     *
+     * If omitted, the state parameter on a new post defaults to "published".
+     *
+     * @param blogIdentifier An identifier of the Blog that this post should be published to.
+     * @param reblogBody The payload of this post.
+     * @param contentFiles The content parts that should be uploaded with this post.
+     */
+    public suspend fun reblogPostWithContentFiles(
+        blogIdentifier: String,
+        reblogBody: ReblogPostBody,
+        contentFiles: List<MultipartBody.Part>, // TODO: Don't expose okhttp
+    ): ResponseCreatePost.Response? {
+        validateBlogIdentifier(blogIdentifier)
+
+        val retrofitResponse = blogPostApi.reblogPostWithContentFiles(
+            blogIdentifier = blogIdentifier,
+            reblogBody = reblogBody,
+            contentFiles = contentFiles,
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    // endregion Blog POSTs
 
     // region Post GETs
 

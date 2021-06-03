@@ -34,7 +34,6 @@ internal interface KotlrBlogPostApi {
      * @param createBody The payload of this post.
      */
     @POST("blog/{identifier}/posts")
-    // TODO: Add a wrapper function to remove the OKHTTP response type
     suspend fun createNewPost(
         @Path("identifier", encoded = true)
         blogIdentifier: String,
@@ -64,7 +63,6 @@ internal interface KotlrBlogPostApi {
      */
     @Multipart
     @POST("blog/{identifier}/posts")
-    // TODO: Add a wrapper function to remove the OKHTTP response type
     suspend fun createNewPostWithContentFiles(
         @Path("identifier", encoded = true)
         blogIdentifier: String,
@@ -98,7 +96,6 @@ internal interface KotlrBlogPostApi {
      * @param reblogBody The payload of this post.
      */
     @POST("blog/{identifier}/posts")
-    // TODO: Add a wrapper function to remove the OKHTTP response type
     suspend fun reblogPost(
         @Path("identifier", encoded = true)
         blogIdentifier: String,
@@ -128,7 +125,6 @@ internal interface KotlrBlogPostApi {
      */
     @Multipart
     @POST("blog/{identifier}/posts")
-    // TODO: Add a wrapper function to remove the OKHTTP response type
     suspend fun reblogPostWithContentFiles(
         @Path("identifier", encoded = true)
         blogIdentifier: String,
