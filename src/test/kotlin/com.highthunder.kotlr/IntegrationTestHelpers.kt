@@ -216,6 +216,7 @@ internal suspend fun runBlogTests(
     }
 
     println(api.getNotifications(blogName).checkError(expectError).clean())
+    println(api.shuffleQueue(blogName).checkError(expectError).clean())
 }
 
 // Uses (2) requests.

@@ -3,7 +3,9 @@ package com.highthunder.kotlr.api
 import com.highthunder.kotlr.postbody.BlockBlogPostBody
 import com.highthunder.kotlr.postbody.CreateNewPostBody
 import com.highthunder.kotlr.postbody.ReblogPostBody
+import com.highthunder.kotlr.postbody.ReorderQueuePostBody
 import com.highthunder.kotlr.response.type.blog.ResponseBlogBlocks
+import com.highthunder.kotlr.response.type.blog.ResponseBlogQueue
 import com.highthunder.kotlr.response.type.post.ResponseCreatePost
 import okhttp3.MultipartBody
 import retrofit2.Response
@@ -67,4 +69,18 @@ internal interface KotlrBlogPostApi {
         @Body
         blockBody: BlockBlogPostBody,
     ): Response<ResponseBlogBlocks.Response>
+
+    @POST("blog/{identifier}/posts/queue/reorder")
+    suspend fun reorderQueue(
+        @Path("identifier", encoded = true)
+        blogIdentifier: String,
+        @Body
+        reorderBody: ReorderQueuePostBody,
+    ): Response<ResponseBlogQueue.Response>
+
+    @POST("blog/{identifier}/posts/queue/shuffle")
+    suspend fun shuffleQueue(
+        @Path("identifier", encoded = true)
+        blogIdentifier: String,
+    ): Response<ResponseBlogQueue.Response>
 }

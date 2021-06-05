@@ -7,6 +7,7 @@ import com.highthunder.kotlr.postbody.FilteredContentPostBody
 import com.highthunder.kotlr.postbody.FollowPostBody
 import com.highthunder.kotlr.postbody.LikePostBody
 import com.highthunder.kotlr.postbody.ReblogPostBody
+import com.highthunder.kotlr.postbody.ReorderQueuePostBody
 import com.highthunder.kotlr.response.RateLimitMetaData
 import com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar
 import com.highthunder.kotlr.response.type.blog.ResponseBlogBlocks
@@ -1076,6 +1077,51 @@ public class KotlrApi internal constructor(
         val retrofitResponse = blogPostApi.blockBlog(
             blogIdentifier = blogIdentifier,
             blockBody = BlockBlogPostBody(postId = postId),
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    /**
+     * Use this method to move a post within your blog's queue.
+     *
+     * @param blogIdentifier The identifier of the blog who's queue needs reordering.
+     * @param postId The postId of the queued post that you want to move.
+     * @param insertAfter The postId of the queued post that the post should be moved after, or 0 to move it to the front of the queue.
+     */
+    public suspend fun reorderQueue(
+        blogIdentifier: String,
+        postId: Long,
+        insertAfter: Long,
+    ): ResponseBlogQueue.Response? {
+        validateBlogIdentifier(blogIdentifier)
+        validatePostId(postId)
+        validatePostId(insertAfter)
+
+        val retrofitResponse = blogPostApi.reorderQueue(
+            blogIdentifier = blogIdentifier,
+            reorderBody = ReorderQueuePostBody(postId = postId, insertAfter = insertAfter),
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    /**
+     * Use this method to randomly shuffle your blog's queue.
+     *
+     * @param blogIdentifier The identifier of the blog who's queue needs shuffling.
+     */
+    public suspend fun shuffleQueue(
+        blogIdentifier: String,
+    ): ResponseBlogQueue.Response? {
+        validateBlogIdentifier(blogIdentifier)
+
+        val retrofitResponse = blogPostApi.shuffleQueue(
+            blogIdentifier = blogIdentifier,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
