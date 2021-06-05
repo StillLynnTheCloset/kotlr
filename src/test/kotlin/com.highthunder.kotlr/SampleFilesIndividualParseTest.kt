@@ -1438,6 +1438,20 @@ internal class SampleFilesIndividualParseTest {
         assertEquals(expected, post)
     }
 
+    @Test
+    internal fun onceFailed_links_withType() {
+        val post = parseFile<RequestLink>("samples/onceFailed/links/linksWithType.json")
+        val expected = RequestLink(
+            fullLink = "/v2/blog/asdfasdfasdfasdf/notifications?types=like&before=1622863424",
+            httpMethod = "GET",
+            queryParams = RequestQueryParameters(
+                types = "like",
+                before = "1622863424",
+            )
+        )
+        assertEquals(expected, post)
+    }
+
     // endregion Links
 
     // region Media

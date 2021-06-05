@@ -23,6 +23,7 @@ import com.squareup.moshi.JsonClass
  * @param id The post Id that was requested.
  * @param beforeTimestamp The timestamp that the request occurred before.
  * @param beforeId The post Id that was before the requested post(s).
+ * @param types The types of notifications requested.
  */
 @JsonClass(generateAdapter = true)
 public data class RequestQueryParameters constructor(
@@ -43,4 +44,5 @@ public data class RequestQueryParameters constructor(
     val beforeTimestamp: String? = null,
     @Json(name = "before_id")
     val beforeId: String? = null,
+    val types: String? = null,
 )

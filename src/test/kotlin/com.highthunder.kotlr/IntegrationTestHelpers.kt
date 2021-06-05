@@ -224,6 +224,7 @@ internal suspend fun runBlogTests(
     println(api.getPostNotes(blogIdentifier = "kotlr-development", postId = 179771546338).checkError().clean())
 
     println(api.getNotifications(blogIdentifier = blogName).checkError(expectError).clean())
+    println(api.getNotifications(blogIdentifier = blogName, types = listOf("like")).checkError(expectError).clean())
     println(api.shuffleQueue(blogIdentifier = blogName).checkError(expectError).clean())
 }
 
