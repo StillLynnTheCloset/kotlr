@@ -1,6 +1,6 @@
 package com.highthunder.kotlr.response.type.post
 
-import com.highthunder.kotlr.json.response.post.PostNotesWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.post.BlogPostNotesWrapperJsonAdapter
 import com.highthunder.kotlr.response.ResponseMetaInfo
 import com.highthunder.kotlr.response.TumblrError
 import com.highthunder.kotlr.response.TumblrResponse
@@ -11,12 +11,12 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * ResponsePostNotes - The response to a request for a post's notes.
+ * ResponseBlogPostNotes - The response to a request for a post's notes.
  *
  * @author highthunder
  * @since 2019-12-01
  */
-public interface ResponsePostNotes {
+public interface ResponseBlogPostNotes {
     /**
      * Response - The top level object returned from Tumblr.
      *
@@ -35,7 +35,7 @@ public interface ResponsePostNotes {
     ) : TumblrResponse<Body>
 
     /**
-     * Adapter is [PostNotesWrapperJsonAdapter].
+     * Adapter is [BlogPostNotesWrapperJsonAdapter].
      *
      * @param body The body of this response.
      * @param error The error message if there is no body.

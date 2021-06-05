@@ -3,7 +3,7 @@ package com.highthunder.kotlr.json.response.post
 import com.highthunder.kotlr.adapter
 import com.highthunder.kotlr.listAdapter
 import com.highthunder.kotlr.response.WrapperInterface
-import com.highthunder.kotlr.response.type.post.ResponsePostsPost
+import com.highthunder.kotlr.response.type.post.ResponseBlogPost
 import com.highthunder.kotlr.types.Post
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonAdapter
@@ -18,7 +18,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
 
 /**
- * PostsPostWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponsePostsPost].
+ * PostsPostWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseBlogPost].
  *
  * Tumblr decided to make this one request special and put the post object directly as the value in `response` instead
  * of nesting it in another object like all of the other API responses.
@@ -26,7 +26,7 @@ import com.squareup.moshi.ToJson
  * @author highthunder
  * @since 2019-12-01
  */
-internal class PostsPostWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<Post>>() {
+internal class BlogPostWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<Post>>() {
     private val stringAdapter: JsonAdapter<String?> = moshi.adapter()
     private val responseAdapter: JsonAdapter<Post> = moshi.adapter()
     private val listOfAnyAdapter: JsonAdapter<List<Any>> = moshi.listAdapter()
@@ -34,10 +34,10 @@ internal class PostsPostWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperIn
     @FromJson
     override fun fromJson(reader: JsonReader): WrapperInterface<Post> {
         return when (reader.peek()) {
-            BEGIN_OBJECT -> ResponsePostsPost.Wrapper(body = responseAdapter.fromJson(reader))
-            STRING -> ResponsePostsPost.Wrapper(error = stringAdapter.fromJson(reader))
-            BEGIN_ARRAY -> ResponsePostsPost.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
-            NULL -> ResponsePostsPost.Wrapper()
+            BEGIN_OBJECT -> ResponseBlogPost.Wrapper(body = responseAdapter.fromJson(reader))
+            STRING -> ResponseBlogPost.Wrapper(error = stringAdapter.fromJson(reader))
+            BEGIN_ARRAY -> ResponseBlogPost.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
+            NULL -> ResponseBlogPost.Wrapper()
             else -> throw JsonDataException(
                 "Expected a field of type Object, String, List, or null but got ${reader.peek()}"
             )

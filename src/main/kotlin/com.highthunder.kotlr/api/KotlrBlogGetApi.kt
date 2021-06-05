@@ -12,6 +12,8 @@ import com.highthunder.kotlr.response.type.blog.ResponseBlogNotifications
 import com.highthunder.kotlr.response.type.blog.ResponseBlogPosts
 import com.highthunder.kotlr.response.type.blog.ResponseBlogQueue
 import com.highthunder.kotlr.response.type.blog.ResponseBlogSubmissions
+import com.highthunder.kotlr.response.type.post.ResponseBlogPost
+import com.highthunder.kotlr.response.type.post.ResponseBlogPostNotes
 import com.highthunder.kotlr.types.Post
 import retrofit2.Response
 import retrofit2.http.GET
@@ -208,6 +210,28 @@ internal interface KotlrBlogGetApi {
         @Query("page_number")
         pageNumber: Int? = null,
     ): Response<ResponseBlogSubmissions.Response>
+
+    @GET("blog/{identifier}/posts/{postId}")
+    suspend fun getPost(
+        @Path("identifier", encoded = true)
+        blogIdentifier: String,
+        @Path("postId", encoded = true)
+        postId: Long,
+        @Query("post_format")
+        postFormat: String? = null,
+    ): Response<ResponseBlogPost.Response>
+
+    @GET("blog/{identifier}/notes")
+    suspend fun getPostNotes(
+        @Path("identifier", encoded = true)
+        blogIdentifier: String,
+        @Query("id")
+        postId: Long,
+        @Query("before_timestamp")
+        beforeTimestamp: Long? = null,
+        @Query("mode")
+        mode: Post.NotesMode? = null,
+    ): Response<ResponseBlogPostNotes.Response>
 
     @GET("blog/{identifier}/blocks")
     suspend fun getBlogBlocks(

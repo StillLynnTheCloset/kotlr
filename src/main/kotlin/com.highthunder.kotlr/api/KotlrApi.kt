@@ -21,9 +21,9 @@ import com.highthunder.kotlr.response.type.blog.ResponseBlogNotifications
 import com.highthunder.kotlr.response.type.blog.ResponseBlogPosts
 import com.highthunder.kotlr.response.type.blog.ResponseBlogQueue
 import com.highthunder.kotlr.response.type.blog.ResponseBlogSubmissions
+import com.highthunder.kotlr.response.type.post.ResponseBlogPost
+import com.highthunder.kotlr.response.type.post.ResponseBlogPostNotes
 import com.highthunder.kotlr.response.type.post.ResponseCreatePost
-import com.highthunder.kotlr.response.type.post.ResponsePostNotes
-import com.highthunder.kotlr.response.type.post.ResponsePostsPost
 import com.highthunder.kotlr.response.type.post.ResponsePostsTagged
 import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
 import com.highthunder.kotlr.response.type.user.ResponseUserFilteredContent
@@ -59,7 +59,7 @@ public class KotlrApi internal constructor(
      * Use this method to retrieve the user's account information that matches the OAuth credentials submitted with the request.
      */
     public suspend fun getUserInfo(): ResponseUserInfo.Response? {
-        val retrofitResponse = userGetApi.getUserInfoHelper()
+        val retrofitResponse = userGetApi.getUserInfo()
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
         val response = retrofitResponse.body()
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
@@ -101,9 +101,9 @@ public class KotlrApi internal constructor(
         validateTag(tag)
         validatePageNumber(pageNumber)
 
-        val retrofitResponse = userGetApi.getUserLikesHelper(
-            postLimit = pagingLimit,
-            postOffset = pagingOffset,
+        val retrofitResponse = userGetApi.getUserLikes(
+            pagingLimit = pagingLimit,
+            pagingOffset = pagingOffset,
             afterPostId = afterPostId,
             beforePostId = beforePostId,
             afterTime = afterTime,
@@ -161,9 +161,9 @@ public class KotlrApi internal constructor(
         validateTag(tag)
         validatePageNumber(pageNumber)
 
-        val retrofitResponse = userGetApi.getUserDashHelper(
-            postLimit = pagingLimit,
-            postOffset = pagingOffset,
+        val retrofitResponse = userGetApi.getUserDash(
+            pagingLimit = pagingLimit,
+            pagingOffset = pagingOffset,
             afterPostId = afterPostId,
             beforePostId = beforePostId,
             afterTime = afterTime,
@@ -194,7 +194,7 @@ public class KotlrApi internal constructor(
         validatePagingLimit(pagingLimit)
         validatePagingOffset(pagingOffset)
 
-        val retrofitResponse = userGetApi.getUserFollowingHelper(
+        val retrofitResponse = userGetApi.getUserFollowing(
             pagingLimit,
             pagingOffset,
         )
@@ -264,18 +264,18 @@ public class KotlrApi internal constructor(
     /**
      * Use this method to like a post.
      *
-     * @param id The postId of the post to like.
+     * @param postId The postId of the post to like.
      * @param reblogKey The reblogKey of the post to like.
      */
     public suspend fun likePost(
-        id: Long,
+        postId: Long,
         reblogKey: String,
     ): ResponseUserLike.Response? {
-        validatePostId(id)
+        validatePostId(postId)
         validateReblogKey(reblogKey)
 
         val retrofitResponse = userPostApi.likePost(
-            likePostBody = LikePostBody(id, reblogKey)
+            likePostBody = LikePostBody(postId, reblogKey)
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -889,6 +889,60 @@ public class KotlrApi internal constructor(
         return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
     }
 
+    /**
+     * Fetch a single post.
+     *
+     * @param blogIdentifier A blog identifier of the blog that posted the desired post.
+     * @param postId The id of the desired post.
+     */
+    public suspend fun getPost(
+        blogIdentifier: String,
+        postId: Long,
+    ): ResponseBlogPost.Response? {
+        validateBlogIdentifier(blogIdentifier)
+        validatePostId(postId)
+
+        val retrofitResponse = blogGetApi.getPost(
+            blogIdentifier = blogIdentifier,
+            postId = postId,
+            postFormat = "npf",
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    /**
+     * Fetch the notes of a single post.
+     *
+     * @param blogIdentifier A blog identifier of the blog that posted the desired post.
+     * @param postId The id of the desired post.
+     * @param beforeTimestamp Optional. Fetch notes created before this timestamp, for pagination. This is a unix timestamp in seconds precision, but microsecond precision for conversation mode.
+     * @param mode The response formatting mode.
+     */
+    public suspend fun getPostNotes(
+        blogIdentifier: String,
+        postId: Long,
+        beforeTimestamp: Long? = null,
+        mode: Post.NotesMode? = null,
+    ): ResponseBlogPostNotes.Response? {
+        validateBlogIdentifier(blogIdentifier)
+        validatePostId(postId)
+        validateTimestamp(beforeTimestamp)
+
+        val retrofitResponse = blogGetApi.getPostNotes(
+            blogIdentifier,
+            postId,
+            beforeTimestamp,
+            mode,
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
     // endregion Blog GETs
 
     // region Blog POSTs
@@ -1179,61 +1233,6 @@ public class KotlrApi internal constructor(
     // endregion Blog DELETEs
 
     // region Post GETs
-
-
-    /**
-     * Fetch a single post.
-     *
-     * @param blogIdentifier A blog identifier of the blog that posted the desired post.
-     * @param postId The id of the desired post.
-     */
-    public suspend fun getPost(
-        blogIdentifier: String,
-        postId: Long,
-    ): ResponsePostsPost.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validatePostId(postId)
-
-        val retrofitResponse = postsGetApi.getPost(
-            identifier = blogIdentifier,
-            postId = postId,
-            postFormat = "npf",
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
-
-    /**
-     * Fetch the notes of a single post.
-     *
-     * @param blogIdentifier A blog identifier of the blog that posted the desired post.
-     * @param postId The id of the desired post.
-     * @param beforeTimestamp Optional. Fetch notes created before this timestamp, for pagination. This is a unix timestamp in seconds precision, but microsecond precision for conversation mode.
-     * @param mode The response formatting mode.
-     */
-    public suspend fun getPostNotes(
-        blogIdentifier: String,
-        postId: Long,
-        beforeTimestamp: Long? = null,
-        mode: Post.NotesMode? = null,
-    ): ResponsePostNotes.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validatePostId(postId)
-        validateTimestamp(beforeTimestamp)
-
-        val retrofitResponse = postsGetApi.getPostNotes(
-            blogIdentifier,
-            postId,
-            beforeTimestamp,
-            mode,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
 
     /**
      * Fetch posts with a given tag.

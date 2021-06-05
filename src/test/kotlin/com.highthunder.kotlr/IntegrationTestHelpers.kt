@@ -92,30 +92,30 @@ internal suspend fun runBlogTests(
     expectError: Boolean = false
 ) {
     println("Calling `getBlogAvatar()`")
-    println(api.getBlogAvatar(blogName).checkError(expectError).clean())
-    println(api.getBlogAvatar(blogName, 16).checkError(expectError).clean())
-    println(api.getBlogAvatar(blogName, 512).checkError(expectError).clean())
+    println(api.getBlogAvatar(blogIdentifier = blogName).checkError(expectError).clean())
+    println(api.getBlogAvatar(blogIdentifier = blogName, size = 16).checkError(expectError).clean())
+    println(api.getBlogAvatar(blogIdentifier = blogName, size = 512).checkError(expectError).clean())
 
     println("Calling `getBlogFollowers()`")
-    println(api.getBlogFollowers(blogName).checkError(expectError).clean())
+    println(api.getBlogFollowers(blogIdentifier = blogName).checkError(expectError).clean())
 
     println("Calling `getBlogFollowing()`")
-    println(api.getBlogFollowing(blogName).checkError(expectError).clean())
+    println(api.getBlogFollowing(blogIdentifier = blogName).checkError(expectError).clean())
 
     println("Calling `getBlogInfo()`")
-    println(api.getBlogInfo(blogName).checkError(expectError).clean())
+    println(api.getBlogInfo(blogIdentifier = blogName).checkError(expectError).clean())
 
     println("Calling `getBlogFollowedBy()`")
-    println(api.getBlogFollowedBy(blogName, "kotlr-development").checkError(expectError).clean())
+    println(api.getBlogFollowedBy(blogIdentifier = blogName, query = "kotlr-development").checkError(expectError).clean())
 
     println("Calling `getBlogLikes()``")
     println(
-        api.getBlogLikes(blogName, pagingLimit = postsPerRequest).checkError(expectError).clean()
+        api.getBlogLikes(blogIdentifier = blogName, pagingLimit = postsPerRequest).checkError(expectError).clean()
     )
     if (doNotesAndReblogs) {
         println(
             api.getBlogLikes(
-                blogName,
+                blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true
             ).checkError(expectError).clean()
@@ -136,14 +136,14 @@ internal suspend fun runBlogTests(
     if (doNotesAndReblogs) {
         println(
             api.getBlogPosts(
-                blogName,
+                blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true
             ).checkError(expectError).clean()
         )
         println(
             api.getBlogPosts(
-                blogName,
+                blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true
             ).checkError(expectError).clean()
@@ -157,14 +157,14 @@ internal suspend fun runBlogTests(
     if (doNotesAndReblogs) {
         println(
             api.getBlogDrafts(
-                blogName,
+                blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true
             ).checkError(expectError).clean()
         )
         println(
             api.getBlogDrafts(
-                blogName,
+                blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true
             ).checkError(expectError).clean()
@@ -178,14 +178,14 @@ internal suspend fun runBlogTests(
     if (doNotesAndReblogs) {
         println(
             api.getBlogQueue(
-                blogName,
+                blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true
             ).checkError(expectError).clean()
         )
         println(
             api.getBlogQueue(
-                blogName,
+                blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true
             ).checkError(expectError).clean()
@@ -194,40 +194,41 @@ internal suspend fun runBlogTests(
 
     println("Calling `getBlogSubmissions()`")
     println(
-        api.getBlogSubmissions(blogName, pagingLimit = postsPerRequest).checkError(
+        api.getBlogSubmissions(blogIdentifier = blogName, pagingLimit = postsPerRequest).checkError(
             expectError
         ).clean()
     )
     if (doNotesAndReblogs) {
         println(
             api.getBlogSubmissions(
-                blogName,
+                blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true
             ).checkError(expectError).clean()
         )
         println(
             api.getBlogSubmissions(
-                blogName,
+                blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true
             ).checkError(expectError).clean()
         )
     }
 
-    println(api.getNotifications(blogName).checkError(expectError).clean())
-    println(api.shuffleQueue(blogName).checkError(expectError).clean())
-}
-
-// Uses (2) requests.
-internal suspend fun runPostTests(api: KotlrApi) {
     println("Calling `getPost()`")
     println(
-        api.getPost("kotlr-development", 179771546338).checkError().clean()
+        api.getPost(blogIdentifier = "kotlr-development", postId = 179771546338).checkError().clean()
     )
 
     println("Calling `getPostNotes()`")
-    println(api.getPostNotes("kotlr-development", 179771546338).checkError().clean())
+    println(api.getPostNotes(blogIdentifier = "kotlr-development", postId = 179771546338).checkError().clean())
+
+    println(api.getNotifications(blogIdentifier = blogName).checkError(expectError).clean())
+    println(api.shuffleQueue(blogIdentifier = blogName).checkError(expectError).clean())
+}
+
+// Uses (1) requests.
+internal suspend fun runPostTests(api: KotlrApi) {
     println(api.getTaggedPosts("lol").checkError().clean())
 }
 
@@ -484,15 +485,15 @@ internal suspend fun testCreate(api: KotlrApi, blogName: String) {
 internal suspend fun testFilteredContent(api: KotlrApi) {
     println(api.getContentFilters().checkError().clean())
 
-    println(api.addContentFilter("testContentFilterThatWon'tAppearAnywhere1").checkError().clean())
-    println(api.addContentFilters(listOf("testContentFilterThatWon'tAppearAnywhere1")).checkError().clean())
-    println(api.addContentFilters(listOf("testContentFilterThatWon'tAppearAnywhere1", "testContentFilterThatWon'tAppearAnywhere2")).checkError().clean())
+    println(api.addContentFilter(contentFilter = "testContentFilterThatWon'tAppearAnywhere1").checkError().clean())
+    println(api.addContentFilters(contentFilters = listOf("testContentFilterThatWon'tAppearAnywhere1")).checkError().clean())
+    println(api.addContentFilters(contentFilters = listOf("testContentFilterThatWon'tAppearAnywhere1", "testContentFilterThatWon'tAppearAnywhere2")).checkError().clean())
     println(api.addContentFilters("testContentFilterThatWon'tAppearAnywhere1", "testContentFilterThatWon'tAppearAnywhere2").checkError().clean())
 
     println(api.getContentFilters().checkError().clean())
 
-    println(api.deleteContentFilter("testContentFilterThatWon'tAppearAnywhere1").checkError().clean())
-    println(api.deleteContentFilter("testContentFilterThatWon'tAppearAnywhere2").checkError().clean())
+    println(api.deleteContentFilter(contentFilter = "testContentFilterThatWon'tAppearAnywhere1").checkError().clean())
+    println(api.deleteContentFilter(contentFilter = "testContentFilterThatWon'tAppearAnywhere2").checkError().clean())
 
     println(api.getContentFilters().checkError().clean())
 }

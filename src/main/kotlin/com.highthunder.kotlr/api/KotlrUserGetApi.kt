@@ -12,14 +12,14 @@ import retrofit2.http.Query
 
 internal interface KotlrUserGetApi {
     @GET("user/info")
-    suspend fun getUserInfoHelper(): Response<ResponseUserInfo.Response>
+    suspend fun getUserInfo(): Response<ResponseUserInfo.Response>
 
     @GET("user/likes")
-    suspend fun getUserLikesHelper(
+    suspend fun getUserLikes(
         @Query("limit")
-        postLimit: Int? = null,
+        pagingLimit: Int? = null,
         @Query("offset")
-        postOffset: Long? = null,
+        pagingOffset: Long? = null,
         @Query("since_id")
         afterPostId: Long? = null,
         @Query("before_id")
@@ -41,11 +41,11 @@ internal interface KotlrUserGetApi {
     ): Response<ResponseUserLikes.Response>
 
     @GET("user/dashboard")
-    suspend fun getUserDashHelper(
+    suspend fun getUserDash(
         @Query("limit")
-        postLimit: Int? = null,
+        pagingLimit: Int? = null,
         @Query("offset")
-        postOffset: Long? = null,
+        pagingOffset: Long? = null,
         @Query("since_id")
         afterPostId: Long? = null,
         @Query("before_id")
@@ -69,11 +69,11 @@ internal interface KotlrUserGetApi {
     ): Response<ResponseUserDashboard.Response>
 
     @GET("user/following")
-    suspend fun getUserFollowingHelper(
+    suspend fun getUserFollowing(
         @Query("limit")
-        limit: Int? = null,
+        pagingLimit: Int? = null,
         @Query("offset")
-        offset: Long? = null,
+        pagingOffset: Long? = null,
     ): Response<ResponseUserFollowing.Response>
 
     /**

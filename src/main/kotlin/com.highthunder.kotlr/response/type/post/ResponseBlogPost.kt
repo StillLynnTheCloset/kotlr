@@ -1,6 +1,6 @@
 package com.highthunder.kotlr.response.type.post
 
-import com.highthunder.kotlr.json.response.post.PostsPostWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.post.BlogPostWrapperJsonAdapter
 import com.highthunder.kotlr.response.ResponseMetaInfo
 import com.highthunder.kotlr.response.TumblrError
 import com.highthunder.kotlr.response.TumblrResponse
@@ -10,7 +10,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * ResponsePostsPost - The response to a request for a single post.
+ * ResponseBlogPost - The response to a request for a single post.
  *
  * Tumblr decided to make this one request special and put the post object directly as the value in `response` instead
  * of nesting it in another object like all of the other API responses.
@@ -18,7 +18,7 @@ import com.squareup.moshi.JsonClass
  * @author highthunder
  * @since 2019-12-01
  */
-public interface ResponsePostsPost {
+public interface ResponseBlogPost {
     /**
      * Response - The top level object returned from Tumblr.
      *
@@ -37,7 +37,7 @@ public interface ResponsePostsPost {
     ) : TumblrResponse<Post>
 
     /**
-     * Adapter is [PostsPostWrapperJsonAdapter].
+     * Adapter is [BlogPostWrapperJsonAdapter].
      *
      * @param body The body of this response.
      * @param error The error message if there is no body.

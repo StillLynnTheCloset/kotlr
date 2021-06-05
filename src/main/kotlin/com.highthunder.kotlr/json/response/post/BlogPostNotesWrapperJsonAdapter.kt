@@ -3,7 +3,7 @@ package com.highthunder.kotlr.json.response.post
 import com.highthunder.kotlr.adapter
 import com.highthunder.kotlr.listAdapter
 import com.highthunder.kotlr.response.WrapperInterface
-import com.highthunder.kotlr.response.type.post.ResponsePostNotes
+import com.highthunder.kotlr.response.type.post.ResponseBlogPostNotes
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonDataException
@@ -17,23 +17,24 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
 
 /**
- * PostNotesWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponsePostNotes].
+ * PostNotesWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseBlogPostNotes].
  *
  * @author highthunder
  * @since 2019-12-01
  */
-internal class PostNotesWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponsePostNotes.Body>>() {
+internal class BlogPostNotesWrapperJsonAdapter(moshi: Moshi) :
+    JsonAdapter<WrapperInterface<ResponseBlogPostNotes.Body>>() {
     private val stringAdapter: JsonAdapter<String?> = moshi.adapter()
-    private val responseAdapter: JsonAdapter<ResponsePostNotes.Body> = moshi.adapter()
+    private val responseBlogAdapter: JsonAdapter<ResponseBlogPostNotes.Body> = moshi.adapter()
     private val listOfAnyAdapter: JsonAdapter<List<Any>> = moshi.listAdapter()
 
     @FromJson
-    override fun fromJson(reader: JsonReader): WrapperInterface<ResponsePostNotes.Body> {
+    override fun fromJson(reader: JsonReader): WrapperInterface<ResponseBlogPostNotes.Body> {
         return when (reader.peek()) {
-            BEGIN_OBJECT -> ResponsePostNotes.Wrapper(body = responseAdapter.fromJson(reader))
-            STRING -> ResponsePostNotes.Wrapper(error = stringAdapter.fromJson(reader))
-            BEGIN_ARRAY -> ResponsePostNotes.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
-            NULL -> ResponsePostNotes.Wrapper()
+            BEGIN_OBJECT -> ResponseBlogPostNotes.Wrapper(body = responseBlogAdapter.fromJson(reader))
+            STRING -> ResponseBlogPostNotes.Wrapper(error = stringAdapter.fromJson(reader))
+            BEGIN_ARRAY -> ResponseBlogPostNotes.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
+            NULL -> ResponseBlogPostNotes.Wrapper()
             else -> throw JsonDataException(
                 "Expected a field of type Object, String, List, or null but got ${reader.peek()}"
             )
@@ -41,11 +42,11 @@ internal class PostNotesWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperIn
     }
 
     @ToJson
-    override fun toJson(writer: JsonWriter, value: WrapperInterface<ResponsePostNotes.Body>?) {
+    override fun toJson(writer: JsonWriter, value: WrapperInterface<ResponseBlogPostNotes.Body>?) {
         if (value?.error != null) {
             stringAdapter.toJson(writer, value.error)
         } else {
-            responseAdapter.toJson(writer, value?.body)
+            responseBlogAdapter.toJson(writer, value?.body)
         }
     }
 }
