@@ -54,6 +54,8 @@ import com.squareup.moshi.JsonClass
  * @param canChat Whether or not you can chat with this blog.
  * @param avatar A list of images representing the different sizes of this blog's avatar.
  * @param blockedTimestamp The time at which you blocked this blog.
+ * @param timezone The blog's configured timezone, such as "US/Eastern". Only viewable by blog member.
+ * @param timezoneOffset The blog's configured timezone as a GMT offset such as "GMT+0800". Only viewable by blog member.
  */
 @JsonClass(generateAdapter = true)
 public data class Blog constructor(
@@ -145,4 +147,8 @@ public data class Blog constructor(
     val avatar: List<Media>? = null,
     @Json(name = "blocked_timestamp")
     val blockedTimestamp: Long? = null,
+    @Json(name = "timezone")
+    val timezone: String? = null,
+    @Json(name = "timezone_offset")
+    val timezoneOffset: String? = null,
 )

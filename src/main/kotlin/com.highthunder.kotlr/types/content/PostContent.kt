@@ -274,7 +274,9 @@ public data class TextContent constructor(
  * 1. If there is a [media] object present, simply use the client's native player.
  * 2. If there is a client-side SDK for the given provider, use the given [metadata] object with
  *      the client-side SDK.
- * 3. If there is an [embedHtml] and/or [embedUrl] field present, render [embedHtml] or show [embedUrl] in an iframe.
+ * 3. If there is an [embedHtml] render it.
+ * 4. If there is an [iframe] use it to construct an iframe.
+ * 5. If there is an [embedUrl] use it to construct an iframe.
  * 4. If all else fails, just show a link to [url].
  *
  * @author highthunder
@@ -301,6 +303,8 @@ public data class VideoContent constructor(
     val embedHtml: String? = null,
     @Json(name = "embed_url")
     val embedUrl: String? = null,
+    @Json(name = "embed_iframe")
+    val iframe: Media? = null,
     val poster: List<Media>? = null,
     val metadata: VideoMetadata? = null,
     val attribution: AttributionList? = null,
@@ -308,8 +312,6 @@ public data class VideoContent constructor(
     val canAutoPlayOnCellular: Boolean? = null,
     @Json(name = "filmstrip")
     val filmStrip: MediaList? = null,
-    @Json(name = "embed_iframe")
-    val iframe: Media? = null,
     override val type: String = KEY,
 ) : PostContent() {
     internal companion object {

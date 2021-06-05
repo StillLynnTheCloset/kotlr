@@ -70,6 +70,7 @@ public data class VerticalBlockLayout constructor(
  */
 @JsonClass(generateAdapter = true)
 public data class RowBlockLayout constructor(
+    @Deprecated("Use display instead")
     val rows: List<List<Int>>? = null,
     val display: List<Display>? = null,
     @Json(name = "truncate_after")

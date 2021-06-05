@@ -326,7 +326,7 @@ public interface Post {
     public val muted: Boolean?
 
     /**
-     * TODO: Documentation
+     * The timeline object type, always `post`.
      */
     public val objectType: ObjectType?
 
@@ -414,6 +414,12 @@ public interface Post {
          */
         @Json(name = "submission")
         Submission,
+
+        /**
+         * This post is a new submission.
+         */
+        @Json(name = "unapproved")
+        Unapproved,
     }
 
     /**
@@ -424,49 +430,49 @@ public interface Post {
     @JsonClass(generateAdapter = false)
     public enum class Type constructor(public val key: String) {
         /**
-         * An answer post, also known as an Ask post. [AnswerPost]
+         * An answer post, also known as an Ask post.
          */
         @Json(name = "answer")
         Answer("answer"),
 
         /**
-         * An audio post. [AudioPost]
+         * An audio post.
          */
         @Json(name = "audio")
         Audio("audio"),
 
         /**
-         * A chat post, also know as a dialog post. [ChatPost]
+         * A chat post, also know as a dialog post.
          */
         @Json(name = "chat")
         Chat("chat"),
 
         /**
-         * A link post. [LinkPost]
+         * A link post.
          */
         @Json(name = "link")
         Link("link"),
 
         /**
-         * A photo or photoset post. [PhotoPost]
+         * A photo or photoset post.
          */
         @Json(name = "photo")
         Photo("photo"),
 
         /**
-         * A quote post. [QuotePost]
+         * A quote post.
          */
         @Json(name = "quote")
         Quote("quote"),
 
         /**
-         * A text post. [TextPost]
+         * A text post.
          */
         @Json(name = "text")
         Text("text"),
 
         /**
-         * A video post. [VideoPost]
+         * A video post.
          */
         @Json(name = "video")
         Video("video"),
@@ -543,7 +549,7 @@ public interface Post {
     }
 
     /**
-     * ObjectType - TODO: Figure out what this is.
+     * ObjectType - The timeline object type, always `post`.
      *
      * @param key The string that Tumblr uses to reference each type.
      */

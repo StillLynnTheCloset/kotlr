@@ -23,6 +23,7 @@ import com.squareup.moshi.JsonClass
  * @param parentPostId The unique public post ID being reblogged.
  * @param reblogKey The unique per-post hash validating that this is a genuine reblog action.
  * @param hideTrail Whether or not to hide the reblog trail with this new post. Defaults to false.
+ * @param excludeTrailItems Instead of [hideTrail], use this to specify an array of specific reblog trail item indexes to _exclude_ from your reblog.
  *
  * @author highthunder
  * @since 2019-12-01
@@ -54,6 +55,8 @@ public data class ReblogPostBody constructor(
     val reblogKey: String,
     @Json(name = "hide_trail")
     val hideTrail: Boolean? = null,
+    @Json(name = "exclude_trail_items")
+    val excludeTrailItems: List<Int>? = null,
 ) {
     init {
         tags?.forEach { tag ->
@@ -72,7 +75,8 @@ public data class ReblogPostBody constructor(
         sourceUrl: String? = null,
         sendToTwitter: Boolean? = null,
         sendToFacebook: Boolean? = null,
-        hideTrail: Boolean? = null
+        hideTrail: Boolean? = null,
+        excludeTrailItems: List<Int>? = null,
     ) : this(
         content = content,
         layout = layout,
@@ -86,6 +90,7 @@ public data class ReblogPostBody constructor(
             ?: throw IllegalArgumentException("Post must have a parentBlogId"),
         parentPostId = postToReblog.id ?: throw IllegalArgumentException("Post must have an id"),
         reblogKey = postToReblog.reblogKey ?: throw IllegalArgumentException("Post must have a reblog key"),
-        hideTrail = hideTrail
+        hideTrail = hideTrail,
+        excludeTrailItems = excludeTrailItems,
     )
 }
