@@ -8,6 +8,7 @@ import com.highthunder.kotlr.response.type.blog.ResponseBlogFollowers
 import com.highthunder.kotlr.response.type.blog.ResponseBlogFollowing
 import com.highthunder.kotlr.response.type.blog.ResponseBlogInfo
 import com.highthunder.kotlr.response.type.blog.ResponseBlogLikes
+import com.highthunder.kotlr.response.type.blog.ResponseBlogNotifications
 import com.highthunder.kotlr.response.type.blog.ResponseBlogPosts
 import com.highthunder.kotlr.response.type.blog.ResponseBlogQueue
 import com.highthunder.kotlr.response.type.blog.ResponseBlogSubmissions
@@ -217,4 +218,14 @@ internal interface KotlrBlogGetApi {
         @Query("offset")
         pagingOffset: Long? = null,
     ): Response<ResponseBlogBlocks.Response>
+
+    @GET("blog/{identifier}/notifications")
+    suspend fun getNotifications(
+        @Path("identifier", encoded = true)
+        blogIdentifier: String,
+        @Query("before")
+        before: Long? = null,
+        @Query("types")
+        types: List<String>? = null,
+    ): Response<ResponseBlogNotifications.Response>
 }

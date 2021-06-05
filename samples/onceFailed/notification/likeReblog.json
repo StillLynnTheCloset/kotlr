@@ -1,0 +1,18 @@
+{
+  "type": "like",
+  "timestamp": 1622863497,
+  "before": 1622863497,
+  "target_post_id": "1622863497",
+  "target_post_summary": "asdf",
+  "target_tumblelog_name": "asdf",
+  "target_tumblelog_uuid": "asdf",
+  "from_tumblelog_name": "asdf",
+  "from_tumblelog_uuid": "asdf",
+  "from_tumblelog_is_adult": false,
+  "followed": false,
+  "target_root_post_id": "1622863497",
+  "private_channel": false,
+  "target_post_type": "regular",
+  "post_type": "text",
+  "reblog_key": "asdf"
+}

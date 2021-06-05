@@ -214,6 +214,8 @@ internal suspend fun runBlogTests(
             ).checkError(expectError).clean()
         )
     }
+
+    println(api.getNotifications(blogName).checkError(expectError).clean())
 }
 
 // Uses (2) requests.

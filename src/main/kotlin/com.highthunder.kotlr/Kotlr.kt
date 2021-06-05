@@ -18,6 +18,7 @@ import com.highthunder.kotlr.json.wrapper.ColorJsonAdapter
 import com.highthunder.kotlr.json.wrapper.MediaListJsonAdapter
 import com.highthunder.kotlr.json.wrapper.RecommendationReasonJsonAdapter
 import com.highthunder.kotlr.types.NoteData
+import com.highthunder.kotlr.types.Notification
 import com.highthunder.kotlr.types.Post
 import com.highthunder.kotlr.types.content.Attribution
 import com.highthunder.kotlr.types.content.BlockLayout
@@ -47,6 +48,7 @@ public fun Moshi.Builder.addKotlrTypes(): Moshi.Builder = this
     .add(RowBlockLayout.Display.Mode.jsonAdapterFactory)
     .add(NoteData.jsonAdapterFactory)
     .add(Post.jsonAdapterFactory)
+    .add(Notification.jsonAdapterFactory)
     .add(CommaSeparatedStringJsonAdapter())
     .add(ColorJsonAdapter())
     .add(HexColorJsonAdapter())

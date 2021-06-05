@@ -7,6 +7,7 @@ import com.highthunder.kotlr.types.Blog
 import com.highthunder.kotlr.types.Colors
 import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.NoteData
+import com.highthunder.kotlr.types.Notification
 import com.highthunder.kotlr.types.Post
 import com.highthunder.kotlr.types.RequestLink
 import com.highthunder.kotlr.types.RequestLinks
@@ -196,6 +197,11 @@ internal class SampleFilesSimpleParseTest {
     @Test
     internal fun testBadNotes() {
         parseAllFilesInDirectory<NoteData>("samples/onceFailed/note")
+    }
+
+    @Test
+    internal fun testBadNotifications() {
+        parseAllFilesInDirectory<Notification>("samples/onceFailed/notification")
     }
 
     @Test

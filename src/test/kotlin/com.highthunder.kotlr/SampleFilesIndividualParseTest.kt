@@ -16,12 +16,16 @@ import com.highthunder.kotlr.types.Blog
 import com.highthunder.kotlr.types.Color
 import com.highthunder.kotlr.types.Colors
 import com.highthunder.kotlr.types.ExifData
+import com.highthunder.kotlr.types.FollowerNotification
 import com.highthunder.kotlr.types.LikeNote
+import com.highthunder.kotlr.types.LikeNotification
 import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.NoteData
 import com.highthunder.kotlr.types.Post
 import com.highthunder.kotlr.types.PostedNote
 import com.highthunder.kotlr.types.ReblogNote
+import com.highthunder.kotlr.types.ReblogWithContentNotification
+import com.highthunder.kotlr.types.ReblogWithoutContentNotification
 import com.highthunder.kotlr.types.RecommendationReason
 import com.highthunder.kotlr.types.ReplyNote
 import com.highthunder.kotlr.types.RequestLink
@@ -1598,6 +1602,138 @@ internal class SampleFilesIndividualParseTest {
     }
 
     // endregion Note
+
+    // region Notification
+
+    @Test
+    internal fun onceFailed_notification_follower() {
+        val note = parseFile<FollowerNotification>("samples/onceFailed/notification/follower.json")
+        val expected = FollowerNotification(
+            timestamp = 1622863497,
+            before = 1622863497,
+            targetPostId = "",
+            targetPostSummary = "",
+            targetTumblelogName = "asdf",
+            targetTumblelogUuid = "asdf",
+            fromTumblelogName = "asdf",
+            fromTumblelogUuid = "asdf",
+            fromTumblelogIsAdult = false,
+            followed = false,
+        )
+        assertEquals(expected, note)
+    }
+
+    @Test
+    internal fun onceFailed_notification_likeOriginal() {
+        val note = parseFile<LikeNotification>("samples/onceFailed/notification/likeOriginal.json")
+        val expected = LikeNotification(
+            timestamp = 1622863497,
+            before = 1622863497,
+            targetPostId = "1622863497",
+            targetPostSummary = "asdf",
+            targetTumblelogName = "asdf",
+            targetTumblelogUuid = "asdf",
+            fromTumblelogName = "asdf",
+            fromTumblelogUuid = "asdf",
+            fromTumblelogIsAdult = false,
+            followed = false,
+            targetRootPostId = null,
+            privateChannel = false,
+            targetPostType = "regular",
+            postType = "photo",
+            reblogKey = "asdf",
+            mediaUrl = "asdf",
+            mediaUrlLarge = "asdf",
+        )
+        assertEquals(expected, note)
+    }
+
+    @Test
+    internal fun onceFailed_notification_likeReblog() {
+        val note = parseFile<LikeNotification>("samples/onceFailed/notification/likeReblog.json")
+        val expected = LikeNotification(
+            timestamp = 1622863497,
+            before = 1622863497,
+            targetPostId = "1622863497",
+            targetPostSummary = "asdf",
+            targetTumblelogName = "asdf",
+            targetTumblelogUuid = "asdf",
+            fromTumblelogName = "asdf",
+            fromTumblelogUuid = "asdf",
+            fromTumblelogIsAdult = false,
+            followed = false,
+            targetRootPostId = "1622863497",
+            privateChannel = false,
+            targetPostType = "regular",
+            postType = "text",
+            mediaUrl = null,
+            mediaUrlLarge = null,
+            reblogKey = "asdf",
+        )
+        assertEquals(expected, note)
+    }
+
+    @Test
+    internal fun onceFailed_notification_reblogWithContent() {
+        val note = parseFile<ReblogWithContentNotification>("samples/onceFailed/notification/reblogWithContent.json")
+        val expected = ReblogWithContentNotification(
+            timestamp = 1622863497,
+            before = 1622863497,
+            targetPostId = "1622863497",
+            targetPostSummary = "asdf",
+            targetTumblelogName = "asdf",
+            targetTumblelogUuid = "asdf",
+            fromTumblelogName = "asdf",
+            fromTumblelogUuid = "asdf",
+            fromTumblelogIsAdult = false,
+            followed = false,
+            targetRootPostId = null,
+            privateChannel = false,
+            targetPostType = "regular",
+            postType = "photo",
+            reblogKey = "asdf",
+            mediaUrl = "asdf",
+            mediaUrlLarge = "asdf",
+            postId = "1622863497",
+            addedText = "asdf",
+            postTags = listOf(
+                "testing"
+            ),
+        )
+        assertEquals(expected, note)
+    }
+
+    @Test
+    internal fun onceFailed_notification_reblogWithoutContent() {
+        val note =
+            parseFile<ReblogWithoutContentNotification>("samples/onceFailed/notification/reblogWithoutContent.json")
+        val expected = ReblogWithoutContentNotification(
+            timestamp = 1622863497,
+            before = 1622863497,
+            targetPostId = "1622863497",
+            targetPostSummary = "asdf",
+            targetTumblelogName = "asdf",
+            targetTumblelogUuid = "asdf",
+            fromTumblelogName = "asdf",
+            fromTumblelogUuid = "asdf",
+            fromTumblelogIsAdult = false,
+            followed = false,
+            targetRootPostId = null,
+            privateChannel = false,
+            targetPostType = "regular",
+            postType = "photo",
+            mediaUrl = "asdf",
+            mediaUrlLarge = "asdf",
+            reblogKey = "asdf",
+            postId = "1622863497",
+            postTags = listOf(
+                "testing"
+            ),
+        )
+        assertEquals(expected, note)
+    }
+
+    // endregion Notification
 
     // region Posts
 

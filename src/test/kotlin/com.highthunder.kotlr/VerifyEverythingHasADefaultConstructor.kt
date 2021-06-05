@@ -1,26 +1,43 @@
 package com.highthunder.kotlr
 
+import com.highthunder.kotlr.types.AnsweredAskNotification
+import com.highthunder.kotlr.types.AskNotification
 import com.highthunder.kotlr.types.AttributionNote
 import com.highthunder.kotlr.types.BlockPost
 import com.highthunder.kotlr.types.Blog
 import com.highthunder.kotlr.types.BlogTheme
 import com.highthunder.kotlr.types.Colors
+import com.highthunder.kotlr.types.ConversationalNoteNotification
 import com.highthunder.kotlr.types.ExifData
+import com.highthunder.kotlr.types.FollowerNotification
 import com.highthunder.kotlr.types.LikeNote
+import com.highthunder.kotlr.types.LikeNotification
 import com.highthunder.kotlr.types.Media
+import com.highthunder.kotlr.types.MentionInPostNotification
+import com.highthunder.kotlr.types.MentionInReplyNotification
+import com.highthunder.kotlr.types.NewGroupBlogMemberNotification
+import com.highthunder.kotlr.types.PostAppealAcceptedNotification
+import com.highthunder.kotlr.types.PostAppealRejectedNotification
+import com.highthunder.kotlr.types.PostAttributionNotification
+import com.highthunder.kotlr.types.PostFlaggedNotification
 import com.highthunder.kotlr.types.PostedNote
 import com.highthunder.kotlr.types.ReblogData
 import com.highthunder.kotlr.types.ReblogNote
+import com.highthunder.kotlr.types.ReblogWithContentNotification
+import com.highthunder.kotlr.types.ReblogWithoutContentNotification
 import com.highthunder.kotlr.types.RecommendationReason
 import com.highthunder.kotlr.types.ReplyNote
+import com.highthunder.kotlr.types.ReplyNotification
 import com.highthunder.kotlr.types.RequestLink
 import com.highthunder.kotlr.types.RequestLinks
 import com.highthunder.kotlr.types.RequestQueryParameters
 import com.highthunder.kotlr.types.SubmissionTerms
 import com.highthunder.kotlr.types.Tag
 import com.highthunder.kotlr.types.Trail
+import com.highthunder.kotlr.types.UnknownNotification
 import com.highthunder.kotlr.types.User
 import com.highthunder.kotlr.types.VideoMetadata
+import com.highthunder.kotlr.types.WhatYouMissedNotification
 import com.highthunder.kotlr.types.YoutubeVideoMetadata
 import com.highthunder.kotlr.types.content.AppAttribution
 import com.highthunder.kotlr.types.content.AskBlockLayout
@@ -96,5 +113,22 @@ internal class VerifyEverythingHasADefaultConstructor {
         println(ReplyNote().toString())
         println(AttributionNote().toString())
         println(RecommendationReason().toString())
+        println(LikeNotification().toString())
+        println(ReplyNotification().toString())
+        println(FollowerNotification().toString())
+        println(MentionInReplyNotification().toString())
+        println(MentionInPostNotification().toString())
+        println(ReblogWithoutContentNotification().toString())
+        println(ReblogWithContentNotification().toString())
+        println(AskNotification().toString())
+        println(AnsweredAskNotification().toString())
+        println(NewGroupBlogMemberNotification().toString())
+        println(PostAttributionNotification().toString())
+        println(PostFlaggedNotification().toString())
+        println(PostAppealAcceptedNotification().toString())
+        println(PostAppealRejectedNotification().toString())
+        println(WhatYouMissedNotification().toString())
+        println(ConversationalNoteNotification().toString())
+        println(UnknownNotification().toString())
     }
 }

@@ -8,6 +8,7 @@ import com.highthunder.kotlr.json.response.blog.BlogFollowersWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.blog.BlogFollowingWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.blog.BlogInfoWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.blog.BlogLikesWrapperJsonAdapter
+import com.highthunder.kotlr.json.response.blog.BlogNotificationsWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.blog.BlogPostsWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.blog.BlogQueueWrapperJsonAdapter
 import com.highthunder.kotlr.json.response.blog.BlogSubmissionsWrapperJsonAdapter
@@ -67,6 +68,8 @@ internal object KotlrJsonAdapterFactory : JsonAdapter.Factory {
                         BlogSubmissionsWrapperJsonAdapter(moshi)
                     "com.highthunder.kotlr.response.type.blog.ResponseBlogBlocks\$Body" ->
                         BlogBlocksWrapperJsonAdapter(moshi)
+                    "com.highthunder.kotlr.response.type.blog.ResponseBlogNotifications\$Body" ->
+                        BlogNotificationsWrapperJsonAdapter(moshi)
                     "com.highthunder.kotlr.response.type.user.ResponseUserInfo\$Body" ->
                         UserInfoWrapperJsonAdapter(moshi)
                     "com.highthunder.kotlr.response.type.user.ResponseUserDashboard\$Body" ->

@@ -16,6 +16,7 @@ import com.highthunder.kotlr.response.type.blog.ResponseBlogFollowers
 import com.highthunder.kotlr.response.type.blog.ResponseBlogFollowing
 import com.highthunder.kotlr.response.type.blog.ResponseBlogInfo
 import com.highthunder.kotlr.response.type.blog.ResponseBlogLikes
+import com.highthunder.kotlr.response.type.blog.ResponseBlogNotifications
 import com.highthunder.kotlr.response.type.blog.ResponseBlogPosts
 import com.highthunder.kotlr.response.type.blog.ResponseBlogQueue
 import com.highthunder.kotlr.response.type.blog.ResponseBlogSubmissions
@@ -856,6 +857,29 @@ public class KotlrApi internal constructor(
             blogIdentifier = blogIdentifier,
             pagingLimit = pagingLimit,
             pagingOffset = pagingOffset,
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    /**
+     * Retrieve notifications for the given blog.
+     *
+     * @param blogIdentifier An identifier for the blog that you are using.
+     */
+    public suspend fun getNotifications(
+        blogIdentifier: String,
+        before: Long? = null,
+        types: List<String>? = null,
+    ): ResponseBlogNotifications.Response? {
+        validateBlogIdentifier(blogIdentifier)
+
+        val retrofitResponse = blogGetApi.getNotifications(
+            blogIdentifier = blogIdentifier,
+            before = before,
+            types = types,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
