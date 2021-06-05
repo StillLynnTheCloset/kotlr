@@ -228,6 +228,7 @@ internal suspend fun runPostTests(api: KotlrApi) {
 
     println("Calling `getPostNotes()`")
     println(api.getPostNotes("kotlr-development", 179771546338).checkError().clean())
+    println(api.getTaggedPosts("lol").checkError().clean())
 }
 
 // Uses up to (ceiling(postsToLoop / postsPerRequest)) requests. (depends if there are enough posts on the given blog)

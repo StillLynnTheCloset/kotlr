@@ -24,6 +24,7 @@ import com.highthunder.kotlr.response.type.blog.ResponseBlogSubmissions
 import com.highthunder.kotlr.response.type.post.ResponseCreatePost
 import com.highthunder.kotlr.response.type.post.ResponsePostNotes
 import com.highthunder.kotlr.response.type.post.ResponsePostsPost
+import com.highthunder.kotlr.response.type.post.ResponsePostsTagged
 import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
 import com.highthunder.kotlr.response.type.user.ResponseUserFilteredContent
 import com.highthunder.kotlr.response.type.user.ResponseUserFollow
@@ -1179,32 +1180,6 @@ public class KotlrApi internal constructor(
 
     // region Post GETs
 
-    // /**
-    //  * Fetch posts with a given tag.
-    //  *
-    //  * @param tag The tag on the posts you'd like to retrieve.
-    //  * @param before Optional. The timestamp of when you'd like to see posts before. If the Tag is a "featured" tag, use the "featured_timestamp" on the post object for pagination.
-    //  * @param limit Optional. The number of results to return: 1–50, inclusive.
-    //  * @param filter Optional. Specifies the post format to return, other than HTML: text – Plain text, no HTML; raw – As entered by the user (no post-processing); if the user writes in Markdown, the Markdown will be returned rather than HTML.
-    //  */
-    // suspend fun getTaggedPosts(
-    //     tag: String,
-    //     before: Long? = null,
-    //     limit: Long? = null,
-    //     filter: PostFormat? = null
-    // ): ResponsePostsTagged.Response? {
-    //     TODO("The get tagged posts api requires special parsing that I don't feel like implementing")
-    //     val retrofitResponse = postsGetApi.getTaggedPosts(
-    //         tag,
-    //         before,
-    //         limit,
-    //         filter,
-    //     )
-    //
-    //     val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-    //     val response = retrofitResponse.body()
-    //     return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    // }
 
     /**
      * Fetch a single post.
@@ -1253,6 +1228,32 @@ public class KotlrApi internal constructor(
             postId,
             beforeTimestamp,
             mode,
+        )
+
+        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
+        val response = retrofitResponse.body()
+        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
+    }
+
+    /**
+     * Fetch posts with a given tag.
+     *
+     * @param tag The tag on the posts you'd like to retrieve.
+     * @param beforeTimestamp Optional. The timestamp of when you'd like to see posts before. If the Tag is a "featured" tag, use the "featured_timestamp" on the post object for pagination.
+     * @param pagingLimit Optional. The number of results to return: 1–50, inclusive.
+     * @param filter Optional. Specifies the post format to return, other than HTML: text – Plain text, no HTML; raw – As entered by the user (no post-processing); if the user writes in Markdown, the Markdown will be returned rather than HTML.
+     */
+    public suspend fun getTaggedPosts(
+        tag: String,
+        beforeTimestamp: Long? = null,
+        pagingLimit: Long? = null,
+        filter: Post.PostFormat? = null
+    ): ResponsePostsTagged.Response? {
+        val retrofitResponse = postsGetApi.getTaggedPosts(
+            tag = tag,
+            beforeTimestamp = beforeTimestamp,
+            pagingLimit = pagingLimit,
+            filter = filter,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())

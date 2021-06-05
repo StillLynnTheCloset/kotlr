@@ -15,9 +15,9 @@ internal interface KotlrPostsGetApi {
         @Query("tag")
         tag: String,
         @Query("before")
-        before: Long? = null,
+        beforeTimestamp: Long? = null,
         @Query("limit")
-        limit: Long? = null,
+        pagingLimit: Long? = null,
         @Query("filter")
         filter: Post.PostFormat? = null,
     ): Response<ResponsePostsTagged.Response>
