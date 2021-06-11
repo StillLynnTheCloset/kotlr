@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/static/v1?label=Version&message=0.8.3&color=brightgreen)]()
+[![version](https://img.shields.io/static/v1?label=Version&message=0.9.0&color=brightgreen)]()
 [![Build Status](https://travis-ci.com/highthunder/kotlr.svg?branch=develop)](https://travis-ci.com/highthunder/kotlr)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
@@ -20,9 +20,6 @@ Implement the entire public API (V2).
 This means that every response, and every object within those responses,
 will be represented by a class which will have typed properties for every
 possible field that the API has ever returned.
-
-### Support the original (legacy) post format
-Safely query posts without `npf=true`.
 
 ### Support the new 'blocks' post type, aka the Neue Post Format or NPF.
 Safely query posts with `npf=true`.
@@ -80,7 +77,7 @@ to your project's `repositories` block.
 
 Then add
 ```groovy
-implementation 'com.stilllynnthecloset:kotlr:0.8.3'
+implementation 'com.stilllynnthecloset:kotlr:0.9.0'
 ```
 to your module's `dependencies` block.
 
@@ -99,7 +96,7 @@ to your project's `repositories` block.
 
 Then add
 ```kotlin
-implementation("com.stilllynnthecloset:kotlr:0.8.3")
+implementation("com.stilllynnthecloset:kotlr:0.9.0")
 ```
 to your module's `dependencies` block.
 
@@ -197,24 +194,59 @@ suspend fun minimalExample() {
 
 ## Version History ##
 
+### 0.9.0 ###
+
+#### Breaking Changes ####
+
+* Change the package name to `com.stilllynnthecloset.kotlr`
+* Kotlr now only supports NPF posts, all support for legacy post types has been removed.
+* Change the signature of the `POST /blog/*` requests to match other POST requests.
+* Add stricter validation on API query parameters.
+
+#### New Functionality ####
+
+* Add support for `Post.genesisPostId`.
+* Add support for `Post.isPinned`.
+* Add support for `Post.recommendationReason` being either a string or an object.
+* Add support for `GET/POST/DELETE /user/filtered_content`.
+* Add support for `GET/POST/DELETE /blog/blocks`.
+* Add support for `GET /blog/notifications`.
+* Add support for `CreateNew/ReblogPostBody.date/isPrivate/slug`.
+* Add support for `ReblogPostBody.excludeTrailItems`.
+* Add support for `Blog.timezone`.
+* Add support for `Blog.timezoneOffset`.
+* Add support for `Post.State.Unapproved`.
+* Add support for `POST /blog/posts/queue/shuffle`.
+* Add support for `POST /blog/posts/queue/reorder`.
+* Add support for `GET /tagged`.
+
+#### Deprecated Functionality ####
+
+* Tumblr has marked `RowBlockLayout.rows` as deprecated.
+
+#### Minor Changes ####
+
+* Improve error messages when parsing a response from Tumblr fails.
+* Update some dependencies.
+
 ### 0.8.3 ###
 
 #### Breaking Changes ####
 
-  * Changed my username, so the repo is now hosted at [github.com/StillLynnTheCloset/kotlr](https://github.com/StillLynnTheCloset/kotlr).
-  * Change the signatures of like/unlike post to use a post body and return a response object.
-  * Change the signatures of follow/unfollow blog to use a post body and return a response object.
+* Changed my username, so the repo is now hosted at [github.com/StillLynnTheCloset/kotlr](https://github.com/StillLynnTheCloset/kotlr).
+* Change the signatures of like/unlike post to use a post body and return a response object.
+* Change the signatures of follow/unfollow blog to use a post body and return a response object.
 
 #### New Functionality ####
 
-  * Add support for `BlockPost.askingAvatar`.
-  * Add support for `AnswerPost.askingAvatar`.
-  * Add support for `LinkAttribution.urlRedirect`.
+* Add support for `BlockPost.askingAvatar`.
+* Add support for `AnswerPost.askingAvatar`.
+* Add support for `LinkAttribution.urlRedirect`.
 
 #### Minor Changes ####
 
-  * Make `AskBlockLayout.attribution` more strictly typed to just `BlogAttribution`.
-  * Update some dependencies.
+* Make `AskBlockLayout.attribution` more strictly typed to just `BlogAttribution`.
+* Update some dependencies.
 
 ### 0.8.2 ###
 
