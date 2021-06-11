@@ -3,7 +3,6 @@ package com.highthunder.kotlr
 import com.highthunder.kotlr.types.AnsweredAskNotification
 import com.highthunder.kotlr.types.AskNotification
 import com.highthunder.kotlr.types.AttributionNote
-import com.highthunder.kotlr.types.BlockPost
 import com.highthunder.kotlr.types.Blog
 import com.highthunder.kotlr.types.BlogTheme
 import com.highthunder.kotlr.types.Colors
@@ -16,6 +15,7 @@ import com.highthunder.kotlr.types.Media
 import com.highthunder.kotlr.types.MentionInPostNotification
 import com.highthunder.kotlr.types.MentionInReplyNotification
 import com.highthunder.kotlr.types.NewGroupBlogMemberNotification
+import com.highthunder.kotlr.types.Post
 import com.highthunder.kotlr.types.PostAppealAcceptedNotification
 import com.highthunder.kotlr.types.PostAppealRejectedNotification
 import com.highthunder.kotlr.types.PostAttributionNotification
@@ -94,7 +94,7 @@ internal class VerifyEverythingHasADefaultConstructor {
         println(ExifData().toString())
         println(VideoMetadata().toString())
         println(YoutubeVideoMetadata().toString())
-        println(BlockPost().toString())
+        println(Post().toString())
         println(Blog().toString())
         println(BlogTheme().toString())
         println(Colors().toString())

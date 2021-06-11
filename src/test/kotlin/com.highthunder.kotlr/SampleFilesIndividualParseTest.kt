@@ -11,7 +11,6 @@ import com.highthunder.kotlr.response.type.blog.ResponseBlogAvatar
 import com.highthunder.kotlr.response.type.blog.ResponseBlogLikes
 import com.highthunder.kotlr.response.type.user.ResponseUserDashboard
 import com.highthunder.kotlr.types.AttributionNote
-import com.highthunder.kotlr.types.BlockPost
 import com.highthunder.kotlr.types.Blog
 import com.highthunder.kotlr.types.Color
 import com.highthunder.kotlr.types.Colors
@@ -131,7 +130,7 @@ internal class SampleFilesIndividualParseTest {
 
     @Test
     internal fun testIntegration_npfAnnouncementPost() {
-        val post = parseFile<BlockPost>("samples/integrationTest/npfAnnouncementPost.json")
+        val post = parseFile<Post>("samples/integrationTest/npfAnnouncementPost.json")
         assertNotNull(post)
     }
 
@@ -322,7 +321,7 @@ internal class SampleFilesIndividualParseTest {
         val attribution = parseFile<Attribution>("samples/officialSamples/attribution/attributionTypePost.json")
         val expected = PostAttribution(
             url = "http://www.davidslog.com/153957802620/five-years-of-working-with-this-awesome-girl",
-            post = BlockPost(
+            post = Post(
                 id = 1234567890
             ),
             blog = Blog(
@@ -929,7 +928,7 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun testOfficial_post_contentBlocks1() {
         val content = parseFile<Post>("samples/officialSamples/post/contentBlocks1.json")
-        val expected = BlockPost(
+        val expected = Post(
             id = 1234,
             blog = Blog(),
             content = emptyList()
@@ -940,7 +939,7 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun testOfficial_post_contentBlocks2() {
         val content = parseFile<Post>("samples/officialSamples/post/contentBlocks2.json")
-        val expected = BlockPost(
+        val expected = Post(
             content = listOf(
                 TextContent(
                     text = "Hello world!"
@@ -953,7 +952,7 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun testOfficial_post_contentBlocks3() {
         val content = parseFile<Post>("samples/officialSamples/post/contentBlocks3.json")
-        val expected = BlockPost(
+        val expected = Post(
             content = listOf(
                 TextContent(
                     text = "Hello world!"
@@ -971,7 +970,7 @@ internal class SampleFilesIndividualParseTest {
         val content = parseFile<Post>(
             "samples/officialSamples/post/contentBlockTypeText_leadingTrailingEmptyBlocks_before.json"
         )
-        val expected = BlockPost(
+        val expected = Post(
             content = listOf(
                 TextContent(
                     text = ""
@@ -1001,7 +1000,7 @@ internal class SampleFilesIndividualParseTest {
         val content = parseFile<Post>(
             "samples/officialSamples/post/contentBlockTypeText_leadingTrailingEmptyBlocks_after.json"
         )
-        val expected = BlockPost(
+        val expected = Post(
             content = listOf(
                 TextContent(
                     text = "ello!"
@@ -1020,7 +1019,7 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun testOfficial_post_postIdentification() {
         val content = parseFile<Post>("samples/officialSamples/post/postIdentification.json")
-        val expected = BlockPost(
+        val expected = Post(
             id = 1234567891234567,
             blog = Blog()
         )
@@ -1030,10 +1029,10 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun testOfficial_post_reblogTrail() {
         val content = parseFile<Post>("samples/officialSamples/post/reblogTrail.json")
-        val expected = BlockPost(
+        val expected = Post(
             trail = listOf(
                 Trail(
-                    post = BlockPost(id = 1234),
+                    post = Post(id = 1234),
                     blog = Blog(),
                     content = ContentWrapper(
                         contentList = listOf(
@@ -1045,7 +1044,7 @@ internal class SampleFilesIndividualParseTest {
                     layout = emptyList()
                 ),
                 Trail(
-                    post = BlockPost(id = 3456),
+                    post = Post(id = 3456),
                     blog = Blog(),
                     content = ContentWrapper(
                         contentList = listOf(
@@ -1078,7 +1077,7 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun testOfficial_post_reblogTrail_brokenTrailItems() {
         val content = parseFile<Post>("samples/officialSamples/post/reblogTrail_brokenTrailItems.json")
-        val expected = BlockPost(
+        val expected = Post(
             trail = listOf(
                 Trail(
                     brokenBlogName = "old-broken-blog",
@@ -1754,7 +1753,7 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun onceFailed_posts_blockPost_askingAvatar() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_askingAvatar.json")
-        val expected = BlockPost(
+        val expected = Post(
             askingAvatar = MediaWrapper(
                 listMedia = listOf(
                     Media(
@@ -1786,7 +1785,7 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun onceFailed_posts_blockPost_isBlurredImages() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_isBlurredImages.json")
-        val expected = BlockPost(
+        val expected = Post(
             isBlurredImages = true
         )
         assertEquals(expected, post)
@@ -1795,7 +1794,7 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun onceFailed_posts_blockPost_originalType() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_originalType.json")
-        val expected = BlockPost(
+        val expected = Post(
             originalType = Post.Type.Photo
         )
         assertEquals(expected, post)
@@ -1804,7 +1803,7 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun onceFailed_posts_blockPost_originalType_conversation() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_originalType_conversation.json")
-        val expected = BlockPost(
+        val expected = Post(
             originalType = Post.Type.Conversation
         )
         assertEquals(expected, post)
@@ -1813,7 +1812,7 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun onceFailed_posts_blockPost_originalType_note() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_originalType_note.json")
-        val expected = BlockPost(
+        val expected = Post(
             originalType = Post.Type.Note
         )
         assertEquals(expected, post)
@@ -1822,7 +1821,7 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun onceFailed_posts_blockPost_originalType_regular() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_originalType_regular.json")
-        val expected = BlockPost(
+        val expected = Post(
             originalType = Post.Type.Regular
         )
         assertEquals(expected, post)
@@ -1831,7 +1830,7 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun onceFailed_posts_blockPostWithAskFields() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPostWithAskFields.json")
-        val expected = BlockPost(
+        val expected = Post(
             askingName = "ukIuGYR_Jcdm60j7Nb95dg",
             askingUrl = "https://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/"
         )
@@ -1841,7 +1840,7 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun onceFailed_post_postGenesisPostId() {
         val post = parseFile<Post>("samples/onceFailed/posts/postGenesisPostId.json")
-        val expected = BlockPost(
+        val expected = Post(
             genesisPostId = "1234784234687",
         )
         assertEquals(expected, post)
@@ -1850,7 +1849,7 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun onceFailed_post_postIsPinned() {
         val post = parseFile<Post>("samples/onceFailed/posts/postIsPinned.json")
-        val expected = BlockPost(
+        val expected = Post(
             isPinned = true,
         )
         assertEquals(expected, post)
@@ -1859,7 +1858,7 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun onceFailed_post_recommendationReasonObject() {
         val post = parseFile<Post>("samples/onceFailed/posts/postRecommendationReasonObject.json")
-        val expected = BlockPost(
+        val expected = Post(
             recommendationReason = RecommendationReason(
                 text = "Pinned Post",
                 icon = "pin",
@@ -1874,7 +1873,7 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun onceFailed_posts_postWithNotesData() {
         val post = parseFile<Post>("samples/onceFailed/posts/postWithNotesData.json")
-        val expected = BlockPost(
+        val expected = Post(
             notes = listOf(
                 LikeNote(
                     timestamp = 1541225157,
@@ -1892,7 +1891,7 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun onceFailed_posts_postWithReblogData() {
         val post = parseFile<Post>("samples/onceFailed/posts/postWithReblogData.json")
-        val expected = BlockPost(
+        val expected = Post(
             rebloggedFromId = 8675309,
             rebloggedFromUrl = "http://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/post/8675309",
             rebloggedFromName = "ukIuGYR_Jcdm60j7Nb95dg",
@@ -2013,7 +2012,7 @@ internal class SampleFilesIndividualParseTest {
             ),
             response = ResponseBlogLikes.Wrapper(
                 body = ResponseBlogLikes.Body(
-                    posts = listOf(BlockPost()),
+                    posts = listOf(Post()),
                     totalLiked = 202,
                     links = RequestLinks(
                         next = RequestLink(
@@ -2068,7 +2067,7 @@ internal class SampleFilesIndividualParseTest {
             ),
             response = ResponseUserDashboard.Wrapper(
                 body = ResponseUserDashboard.Body(
-                    posts = listOf(BlockPost())
+                    posts = listOf(Post())
                 )
             )
         )
