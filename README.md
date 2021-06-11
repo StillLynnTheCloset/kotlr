@@ -80,7 +80,7 @@ to your project's `repositories` block.
 
 Then add
 ```groovy
-implementation 'com.highthunder:kotlr:0.8.3'
+implementation 'com.stilllynnthecloset:kotlr:0.8.3'
 ```
 to your module's `dependencies` block.
 
@@ -99,7 +99,7 @@ to your project's `repositories` block.
 
 Then add
 ```kotlin
-implementation("com.highthunder:kotlr:0.8.3")
+implementation("com.stilllynnthecloset:kotlr:0.8.3")
 ```
 to your module's `dependencies` block.
 

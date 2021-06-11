@@ -20,5 +20,5 @@ gradle-app.setting
 # Project Ignores
 /local.properties
 
-/src/test/kotlin/com.highthunder.kotlr/MyAppKey.kt
-/src/test/kotlin/com.highthunder.kotlr/Main.kt
+/src/test/kotlin/com/stilllynnthecloset/kotlr/MyAppKey.kt
+/src/test/kotlin/com/stilllynnthecloset/kotlr/Main.kt
