@@ -1,14 +1,8 @@
 package com.stilllynnthecloset.kotlr.api
 
 import com.stilllynnthecloset.kotlr.getApi
-import com.stilllynnthecloset.kotlr.postbody.BlockBlogPostBody
 import com.stilllynnthecloset.kotlr.postbody.CreateNewPostBody
-import com.stilllynnthecloset.kotlr.postbody.FilteredContentPostBody
-import com.stilllynnthecloset.kotlr.postbody.FollowPostBody
-import com.stilllynnthecloset.kotlr.postbody.LikePostBody
 import com.stilllynnthecloset.kotlr.postbody.ReblogPostBody
-import com.stilllynnthecloset.kotlr.postbody.ReorderQueuePostBody
-import com.stilllynnthecloset.kotlr.response.RateLimitMetaData
 import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogAvatar
 import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogBlocks
 import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogDrafts
@@ -40,30 +34,13 @@ import okhttp3.MultipartBody
  *
  * Get an instance by calling [getApi].
  */
-public class KotlrApi internal constructor(
-    private val userGetApi: KotlrUserGetApi,
-    private val userPostApi: KotlrUserPostApi,
-    private val userDeleteApi: KotlrUserDeleteApi,
-    private val blogGetApi: KotlrBlogGetApi,
-    private val blogPostApi: KotlrBlogPostApi,
-    private val blogDeleteApi: KotlrBlogDeleteApi,
-    private val postsGetApi: KotlrPostsGetApi,
-) {
-    private companion object {
-        private val validAvatarSizes = listOf(16, 24, 30, 40, 48, 64, 96, 128, 512)
-    }
-
+public interface KotlrApi {
     // region User GETs
 
     /**
      * Use this method to retrieve the user's account information that matches the OAuth credentials submitted with the request.
      */
-    public suspend fun getUserInfo(): ResponseUserInfo.Response? {
-        val retrofitResponse = userGetApi.getUserInfo()
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    public suspend fun getUserInfo(): ResponseUserInfo.Response?
 
     /**
      * Use this method to retrieve the liked posts that match the OAuth credentials submitted with the request.
@@ -90,35 +67,7 @@ public class KotlrApi internal constructor(
         getNotesHistory: Boolean? = null,
         tag: String? = null,
         pageNumber: Int? = null,
-    ): ResponseUserLikes.Response? {
-        validatePagingLimit(pagingLimit)
-        validatePagingOffset(pagingOffset)
-        validatePostId(afterPostId)
-        validatePostId(beforePostId)
-        validateTimestamp(afterTime)
-        validateTimestamp(beforeTime)
-        validateReblogsAndNotes(getReblogFields, getNotesHistory)
-        validateTag(tag)
-        validatePageNumber(pageNumber)
-
-        val retrofitResponse = userGetApi.getUserLikes(
-            pagingLimit = pagingLimit,
-            pagingOffset = pagingOffset,
-            afterPostId = afterPostId,
-            beforePostId = beforePostId,
-            afterTime = afterTime,
-            beforeTime = beforeTime,
-            getReblogFields = getReblogFields,
-            getNotesHistory = getNotesHistory,
-            useNeuePostFormat = true,
-            tag = tag,
-            pageNumber = pageNumber,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseUserLikes.Response?
 
     /**
      * Use this method to retrieve the dashboard that matches the OAuth credentials submitted with the request.
@@ -150,36 +99,7 @@ public class KotlrApi internal constructor(
         tag: String? = null,
         pageNumber: Int? = null,
         type: Post.Type? = null,
-    ): ResponseUserDashboard.Response? {
-        validatePagingLimit(pagingLimit)
-        validatePagingOffset(pagingOffset)
-        validatePostId(afterPostId)
-        validatePostId(beforePostId)
-        validateTimestamp(afterTime)
-        validateTimestamp(beforeTime)
-        validateReblogsAndNotes(getReblogFields, getNotesHistory)
-        validateTag(tag)
-        validatePageNumber(pageNumber)
-
-        val retrofitResponse = userGetApi.getUserDash(
-            pagingLimit = pagingLimit,
-            pagingOffset = pagingOffset,
-            afterPostId = afterPostId,
-            beforePostId = beforePostId,
-            afterTime = afterTime,
-            beforeTime = beforeTime,
-            getReblogFields = getReblogFields,
-            getNotesHistory = getNotesHistory,
-            useNeuePostFormat = true,
-            tag = tag,
-            pageNumber = pageNumber,
-            type = type,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseUserDashboard.Response?
 
     /**
      * Use this method to retrieve the blogs followed by the user whose OAuth credentials are submitted with the request.
@@ -190,30 +110,12 @@ public class KotlrApi internal constructor(
     public suspend fun getUserFollowing(
         pagingLimit: Int? = null,
         pagingOffset: Long? = null,
-    ): ResponseUserFollowing.Response? {
-        validatePagingLimit(pagingLimit)
-        validatePagingOffset(pagingOffset)
-
-        val retrofitResponse = userGetApi.getUserFollowing(
-            pagingLimit,
-            pagingOffset,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseUserFollowing.Response?
 
     /**
      * Use this method to retrieve the content filtering strings of the user whose OAuth credentials are submitted with the request.
      */
-    public suspend fun getContentFilters(): ResponseUserFilteredContent.Response? {
-        val retrofitResponse = userGetApi.getContentFilters()
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    public suspend fun getContentFilters(): ResponseUserFilteredContent.Response?
 
     // endregion User GETs
 
@@ -228,17 +130,7 @@ public class KotlrApi internal constructor(
     public suspend fun followBlog(
         url: String? = null,
         email: String? = null,
-    ): ResponseUserFollow.Response? {
-        validateUrlAndEmail(url, email)
-
-        val retrofitResponse = userPostApi.followBlog(
-            followPostBody = FollowPostBody(url, email)
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseUserFollow.Response?
 
     /**
      * Use this method to unfollow a blog.
@@ -249,17 +141,7 @@ public class KotlrApi internal constructor(
     public suspend fun unfollowBlog(
         url: String? = null,
         email: String? = null,
-    ): ResponseUserFollow.Response? {
-        validateUrlAndEmail(url, email)
-
-        val retrofitResponse = userPostApi.unfollowBlog(
-            followPostBody = FollowPostBody(url, email)
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseUserFollow.Response?
 
     /**
      * Use this method to like a post.
@@ -270,18 +152,7 @@ public class KotlrApi internal constructor(
     public suspend fun likePost(
         postId: Long,
         reblogKey: String,
-    ): ResponseUserLike.Response? {
-        validatePostId(postId)
-        validateReblogKey(reblogKey)
-
-        val retrofitResponse = userPostApi.likePost(
-            likePostBody = LikePostBody(postId, reblogKey)
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseUserLike.Response?
 
     /**
      * Use this method to unlike a post.
@@ -292,18 +163,7 @@ public class KotlrApi internal constructor(
     public suspend fun unlikePost(
         id: Long,
         reblogKey: String,
-    ): ResponseUserLike.Response? {
-        validatePostId(id)
-        validateReblogKey(reblogKey)
-
-        val retrofitResponse = userPostApi.unlikePost(
-            likePostBody = LikePostBody(id, reblogKey)
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseUserLike.Response?
 
     /**
      * Use this method to add a content filter.
@@ -312,19 +172,7 @@ public class KotlrApi internal constructor(
      */
     public suspend fun addContentFilter(
         contentFilter: String,
-    ): ResponseUserLike.Response? {
-        validateContentFilter(contentFilter)
-
-        val body = FilteredContentPostBody(contentFilter)
-
-        val retrofitResponse = userPostApi.addContentFilter(
-            filteredContent = body
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseUserLike.Response?
 
     /**
      * Use this method to add a group of content filters.
@@ -333,19 +181,7 @@ public class KotlrApi internal constructor(
      */
     public suspend fun addContentFilters(
         contentFilters: Iterable<String>,
-    ): ResponseUserLike.Response? {
-        contentFilters.forEach { validateContentFilter(it) }
-
-        val body = FilteredContentPostBody(contentFilters)
-
-        val retrofitResponse = userPostApi.addContentFilter(
-            filteredContent = body
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseUserLike.Response?
 
     /**
      * Use this method to add a group of content filters.
@@ -354,9 +190,7 @@ public class KotlrApi internal constructor(
      */
     public suspend fun addContentFilters(
         vararg contentFilters: String,
-    ): ResponseUserLike.Response? {
-        return addContentFilters(contentFilters.toList())
-    }
+    ): ResponseUserLike.Response?
 
     // endregion User POSTs
 
@@ -369,17 +203,7 @@ public class KotlrApi internal constructor(
      */
     public suspend fun deleteContentFilter(
         contentFilter: String,
-    ): ResponseUserFilteredContent.Response? {
-        validateContentFilter(contentFilter)
-
-        val retrofitResponse = userDeleteApi.filterContent(
-            filteredContent = contentFilter
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseUserFilteredContent.Response?
 
     // endregion User DELETEs
 
@@ -394,17 +218,7 @@ public class KotlrApi internal constructor(
      */
     public suspend fun getBlogAvatar(
         blogIdentifier: String,
-    ): ResponseBlogAvatar.Response? {
-        validateBlogIdentifier(blogIdentifier)
-
-        val retrofitResponse = blogGetApi.getBlogAvatar(
-            blogIdentifier,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogAvatar.Response?
 
     /**
      * Retrieve a Blog Avatar.
@@ -417,19 +231,7 @@ public class KotlrApi internal constructor(
     public suspend fun getBlogAvatar(
         blogIdentifier: String,
         size: Int,
-    ): ResponseBlogAvatar.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validateAvatarSize(size)
-
-        val retrofitResponse = blogGetApi.getBlogAvatar(
-            blogIdentifier,
-            size,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogAvatar.Response?
 
     /**
      * Retrieve a Blog's Followers.
@@ -442,21 +244,7 @@ public class KotlrApi internal constructor(
         blogIdentifier: String,
         pagingLimit: Int? = null,
         pagingOffset: Long? = null,
-    ): ResponseBlogFollowers.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validatePagingLimit(pagingLimit)
-        validatePagingOffset(pagingOffset)
-
-        val retrofitResponse = blogGetApi.getBlogFollowers(
-            blogIdentifier,
-            pagingLimit,
-            pagingOffset,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogFollowers.Response?
 
     /**
      * Retrieve Blog's following.
@@ -472,21 +260,7 @@ public class KotlrApi internal constructor(
         blogIdentifier: String,
         pagingLimit: Int? = null,
         pagingOffset: Long? = null,
-    ): ResponseBlogFollowing.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validatePagingLimit(pagingLimit)
-        validatePagingOffset(pagingOffset)
-
-        val retrofitResponse = blogGetApi.getBlogFollowing(
-            blogIdentifier,
-            pagingLimit,
-            pagingOffset,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogFollowing.Response?
 
     /**
      * Check If Followed By Blog.
@@ -499,19 +273,7 @@ public class KotlrApi internal constructor(
     public suspend fun getBlogFollowedBy(
         blogIdentifier: String,
         query: String,
-    ): ResponseBlogFollowedBy.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validateBlogIdentifier(query)
-
-        val retrofitResponse = blogGetApi.getBlogFollowedBy(
-            blogIdentifier,
-            query,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogFollowedBy.Response?
 
     /**
      * Retrieve Blog Info.
@@ -522,17 +284,7 @@ public class KotlrApi internal constructor(
      */
     public suspend fun getBlogInfo(
         blogIdentifier: String,
-    ): ResponseBlogInfo.Response? {
-        validateBlogIdentifier(blogIdentifier)
-
-        val retrofitResponse = blogGetApi.getBlogInfo(
-            blogIdentifier,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogInfo.Response?
 
     /**
      * Retrieve Blog's Likes.
@@ -568,37 +320,7 @@ public class KotlrApi internal constructor(
         getNotesHistory: Boolean? = null,
         tag: String? = null,
         pageNumber: Int? = null,
-    ): ResponseBlogLikes.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validatePagingLimit(pagingLimit)
-        validatePagingOffset(pagingOffset)
-        validatePostId(afterPostId)
-        validatePostId(beforePostId)
-        validateTimestamp(afterTime)
-        validateTimestamp(beforeTime)
-        validateReblogsAndNotes(getReblogFields, getNotesHistory)
-        validateTag(tag)
-        validatePageNumber(pageNumber)
-
-        val retrofitResponse = blogGetApi.getBlogLikes(
-            blogIdentifier = blogIdentifier,
-            pagingLimit = pagingLimit,
-            pagingOffset = pagingOffset,
-            afterPostId = afterPostId,
-            beforePostId = beforePostId,
-            afterTime = afterTime,
-            beforeTime = beforeTime,
-            getReblogFields = getReblogFields,
-            getNotesHistory = getNotesHistory,
-            useNeuePostFormat = true,
-            tag = tag,
-            pageNumber = pageNumber,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogLikes.Response?
 
     /**
      * Retrieve Published Posts.
@@ -629,38 +351,7 @@ public class KotlrApi internal constructor(
         tag: String? = null,
         pageNumber: Int? = null,
         type: Post.Type? = null,
-    ): ResponseBlogPosts.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validatePagingLimit(pagingLimit)
-        validatePagingOffset(pagingOffset)
-        validatePostId(afterPostId)
-        validatePostId(beforePostId)
-        validateTimestamp(afterTime)
-        validateTimestamp(beforeTime)
-        validateReblogsAndNotes(getReblogFields, getNotesHistory)
-        validateTag(tag)
-        validatePageNumber(pageNumber)
-
-        val retrofitResponse = blogGetApi.getBlogPosts(
-            blogIdentifier = blogIdentifier,
-            pagingLimit = pagingLimit,
-            pagingOffset = pagingOffset,
-            afterPostId = afterPostId,
-            beforePostId = beforePostId,
-            afterTime = afterTime,
-            beforeTime = beforeTime,
-            getReblogFields = getReblogFields,
-            getNotesHistory = getNotesHistory,
-            useNeuePostFormat = true,
-            tag = tag,
-            pageNumber = pageNumber,
-            type = type,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogPosts.Response?
 
     /**
      * Retrieve Draft Posts.
@@ -689,37 +380,7 @@ public class KotlrApi internal constructor(
         getNotesHistory: Boolean? = null,
         tag: String? = null,
         pageNumber: Int? = null,
-    ): ResponseBlogDrafts.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validatePagingLimit(pagingLimit)
-        validatePagingOffset(pagingOffset)
-        validatePostId(afterPostId)
-        validatePostId(beforePostId)
-        validateTimestamp(afterTime)
-        validateTimestamp(beforeTime)
-        validateReblogsAndNotes(getReblogFields, getNotesHistory)
-        validateTag(tag)
-        validatePageNumber(pageNumber)
-
-        val retrofitResponse = blogGetApi.getBlogDrafts(
-            blogIdentifier = blogIdentifier,
-            pagingLimit = pagingLimit,
-            pagingOffset = pagingOffset,
-            afterPostId = afterPostId,
-            beforePostId = beforePostId,
-            afterTime = afterTime,
-            beforeTime = beforeTime,
-            getReblogFields = getReblogFields,
-            getNotesHistory = getNotesHistory,
-            useNeuePostFormat = true,
-            tag = tag,
-            pageNumber = pageNumber,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogDrafts.Response?
 
     /**
      * Retrieve Queued Posts.
@@ -748,37 +409,7 @@ public class KotlrApi internal constructor(
         getNotesHistory: Boolean? = null,
         tag: String? = null,
         pageNumber: Int? = null,
-    ): ResponseBlogQueue.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validatePagingLimit(pagingLimit)
-        validatePagingOffset(pagingOffset)
-        validatePostId(afterPostId)
-        validatePostId(beforePostId)
-        validateTimestamp(afterTime)
-        validateTimestamp(beforeTime)
-        validateReblogsAndNotes(getReblogFields, getNotesHistory)
-        validateTag(tag)
-        validatePageNumber(pageNumber)
-
-        val retrofitResponse = blogGetApi.getBlogQueue(
-            blogIdentifier = blogIdentifier,
-            pagingLimit = pagingLimit,
-            pagingOffset = pagingOffset,
-            afterPostId = afterPostId,
-            beforePostId = beforePostId,
-            afterTime = afterTime,
-            beforeTime = beforeTime,
-            getReblogFields = getReblogFields,
-            getNotesHistory = getNotesHistory,
-            useNeuePostFormat = true,
-            tag = tag,
-            pageNumber = pageNumber,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogQueue.Response?
 
     /**
      * Retrieve Submission Posts.
@@ -807,37 +438,7 @@ public class KotlrApi internal constructor(
         getNotesHistory: Boolean? = null,
         tag: String? = null,
         pageNumber: Int? = null,
-    ): ResponseBlogSubmissions.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validatePagingLimit(pagingLimit)
-        validatePagingOffset(pagingOffset)
-        validatePostId(afterPostId)
-        validatePostId(beforePostId)
-        validateTimestamp(afterTime)
-        validateTimestamp(beforeTime)
-        validateReblogsAndNotes(getReblogFields, getNotesHistory)
-        validateTag(tag)
-        validatePageNumber(pageNumber)
-
-        val retrofitResponse = blogGetApi.getBlogSubmissions(
-            blogIdentifier = blogIdentifier,
-            pagingLimit = pagingLimit,
-            pagingOffset = pagingOffset,
-            afterPostId = afterPostId,
-            beforePostId = beforePostId,
-            afterTime = afterTime,
-            beforeTime = beforeTime,
-            getReblogFields = getReblogFields,
-            getNotesHistory = getNotesHistory,
-            useNeuePostFormat = true,
-            tag = tag,
-            pageNumber = pageNumber,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogSubmissions.Response?
 
     /**
      * Retrieve blogs that have been blocked by the given blog.
@@ -850,21 +451,7 @@ public class KotlrApi internal constructor(
         blogIdentifier: String,
         pagingLimit: Int? = null,
         pagingOffset: Long? = null,
-    ): ResponseBlogBlocks.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validatePagingLimit(pagingLimit)
-        validatePagingOffset(pagingOffset)
-
-        val retrofitResponse = blogGetApi.getBlogBlocks(
-            blogIdentifier = blogIdentifier,
-            pagingLimit = pagingLimit,
-            pagingOffset = pagingOffset,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogBlocks.Response?
 
     /**
      * Retrieve notifications for the given blog.
@@ -875,19 +462,7 @@ public class KotlrApi internal constructor(
         blogIdentifier: String,
         before: Long? = null,
         types: List<String>? = null,
-    ): ResponseBlogNotifications.Response? {
-        validateBlogIdentifier(blogIdentifier)
-
-        val retrofitResponse = blogGetApi.getNotifications(
-            blogIdentifier = blogIdentifier,
-            before = before,
-            types = types,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogNotifications.Response?
 
     /**
      * Fetch a single post.
@@ -898,20 +473,7 @@ public class KotlrApi internal constructor(
     public suspend fun getPost(
         blogIdentifier: String,
         postId: Long,
-    ): ResponseBlogPost.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validatePostId(postId)
-
-        val retrofitResponse = blogGetApi.getPost(
-            blogIdentifier = blogIdentifier,
-            postId = postId,
-            postFormat = "npf",
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogPost.Response?
 
     /**
      * Fetch the notes of a single post.
@@ -926,22 +488,7 @@ public class KotlrApi internal constructor(
         postId: Long,
         beforeTimestamp: Long? = null,
         mode: Post.NotesMode? = null,
-    ): ResponseBlogPostNotes.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validatePostId(postId)
-        validateTimestamp(beforeTimestamp)
-
-        val retrofitResponse = blogGetApi.getPostNotes(
-            blogIdentifier,
-            postId,
-            beforeTimestamp,
-            mode,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogPostNotes.Response?
 
     // endregion Blog GETs
 
@@ -969,18 +516,7 @@ public class KotlrApi internal constructor(
     public suspend fun createNewPost(
         blogIdentifier: String,
         createBody: CreateNewPostBody,
-    ): ResponseCreatePost.Response? {
-        validateBlogIdentifier(blogIdentifier)
-
-        val retrofitResponse = blogPostApi.createNewPost(
-            blogIdentifier = blogIdentifier,
-            createBody = createBody,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseCreatePost.Response?
 
     /**
      * Create a Post
@@ -1006,19 +542,7 @@ public class KotlrApi internal constructor(
         blogIdentifier: String,
         createBody: CreateNewPostBody,
         contentFiles: List<MultipartBody.Part>, // TODO: Don't expose okhttp
-    ): ResponseCreatePost.Response? {
-        validateBlogIdentifier(blogIdentifier)
-
-        val retrofitResponse = blogPostApi.createNewPostWithContentFiles(
-            blogIdentifier = blogIdentifier,
-            createBody = createBody,
-            contentFiles = contentFiles,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseCreatePost.Response?
 
     /**
      * Reblog a Post
@@ -1042,18 +566,7 @@ public class KotlrApi internal constructor(
     public suspend fun reblogPost(
         blogIdentifier: String,
         reblogBody: ReblogPostBody,
-    ): ResponseCreatePost.Response? {
-        validateBlogIdentifier(blogIdentifier)
-
-        val retrofitResponse = blogPostApi.reblogPost(
-            blogIdentifier = blogIdentifier,
-            reblogBody = reblogBody,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseCreatePost.Response?
 
     /**
      * Reblog a Post
@@ -1079,19 +592,7 @@ public class KotlrApi internal constructor(
         blogIdentifier: String,
         reblogBody: ReblogPostBody,
         contentFiles: List<MultipartBody.Part>, // TODO: Don't expose okhttp
-    ): ResponseCreatePost.Response? {
-        validateBlogIdentifier(blogIdentifier)
-
-        val retrofitResponse = blogPostApi.reblogPostWithContentFiles(
-            blogIdentifier = blogIdentifier,
-            reblogBody = reblogBody,
-            contentFiles = contentFiles,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseCreatePost.Response?
 
     /**
      * Use this method to block a known blog.
@@ -1102,19 +603,7 @@ public class KotlrApi internal constructor(
     public suspend fun blockBlog(
         blogIdentifier: String,
         blogToBlock: String,
-    ): ResponseBlogBlocks.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validateBlogIdentifier(blogToBlock)
-
-        val retrofitResponse = blogPostApi.blockBlog(
-            blogIdentifier = blogIdentifier,
-            blockBody = BlockBlogPostBody(blogIdentifier = blogToBlock),
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogBlocks.Response?
 
     /**
      * Use this method to block an anonymous blog.
@@ -1125,19 +614,7 @@ public class KotlrApi internal constructor(
     public suspend fun blockBlog(
         blogIdentifier: String,
         postId: Long,
-    ): ResponseBlogBlocks.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validatePostId(postId)
-
-        val retrofitResponse = blogPostApi.blockBlog(
-            blogIdentifier = blogIdentifier,
-            blockBody = BlockBlogPostBody(postId = postId),
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogBlocks.Response?
 
     /**
      * Use this method to move a post within your blog's queue.
@@ -1150,20 +627,7 @@ public class KotlrApi internal constructor(
         blogIdentifier: String,
         postId: Long,
         insertAfter: Long,
-    ): ResponseBlogQueue.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validatePostId(postId)
-        validatePostId(insertAfter)
-
-        val retrofitResponse = blogPostApi.reorderQueue(
-            blogIdentifier = blogIdentifier,
-            reorderBody = ReorderQueuePostBody(postId = postId, insertAfter = insertAfter),
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogQueue.Response?
 
     /**
      * Use this method to randomly shuffle your blog's queue.
@@ -1172,17 +636,7 @@ public class KotlrApi internal constructor(
      */
     public suspend fun shuffleQueue(
         blogIdentifier: String,
-    ): ResponseBlogQueue.Response? {
-        validateBlogIdentifier(blogIdentifier)
-
-        val retrofitResponse = blogPostApi.shuffleQueue(
-            blogIdentifier = blogIdentifier,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogQueue.Response?
 
     // endregion Blog POSTs
 
@@ -1197,19 +651,7 @@ public class KotlrApi internal constructor(
     public suspend fun unblockBlog(
         blogIdentifier: String,
         blogToUnblock: String,
-    ): ResponseBlogBlocks.Response? {
-        validateBlogIdentifier(blogIdentifier)
-        validateBlogIdentifier(blogToUnblock)
-
-        val retrofitResponse = blogDeleteApi.unblockBlog(
-            blogIdentifier = blogIdentifier,
-            blogToUnblock = blogToUnblock,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogBlocks.Response?
 
     /**
      * Use this method to unblock all currently blocked anonymous blogs.
@@ -1218,17 +660,7 @@ public class KotlrApi internal constructor(
      */
     public suspend fun unblockAllAnonymousBlogs(
         blogIdentifier: String,
-    ): ResponseBlogBlocks.Response? {
-        validateBlogIdentifier(blogIdentifier)
-
-        val retrofitResponse = blogDeleteApi.unblockAllAnonymousBlogs(
-            blogIdentifier = blogIdentifier,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+    ): ResponseBlogBlocks.Response?
 
     // endregion Blog DELETEs
 
@@ -1246,78 +678,8 @@ public class KotlrApi internal constructor(
         tag: String,
         beforeTimestamp: Long? = null,
         pagingLimit: Long? = null,
-        filter: Post.PostFormat? = null
-    ): ResponsePostsTagged.Response? {
-        val retrofitResponse = postsGetApi.getTaggedPosts(
-            tag = tag,
-            beforeTimestamp = beforeTimestamp,
-            pagingLimit = pagingLimit,
-            filter = filter,
-        )
-
-        val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
-        val response = retrofitResponse.body()
-        return response?.copy(meta = response.meta.copy(rateLimitMetaData = rateLimitMetaData))
-    }
+        filter: Post.PostFormat? = null,
+    ): ResponsePostsTagged.Response?
 
     // endregion Post GETs
-
-    // region Argument Validation
-
-    private fun validateBlogIdentifier(blogIdentifier: String) {
-        require(blogIdentifier.isNotBlank()) { "Blog identifiers must not be blank." }
-    }
-
-    private fun validatePostId(postId: Long?) {
-        require(postId == null || postId >= 0) { "Post ids must not be less than 0." }
-    }
-
-    private fun validatePagingLimit(limit: Int?) {
-        require(limit == null || limit in 1..50) { "Paging limit must be in the range [1,50]." }
-    }
-
-    private fun validatePagingOffset(offset: Long?) {
-        require(offset == null || offset >= 0) { "Paging offset must be non-negative." }
-    }
-
-    private fun validatePageNumber(pageNumber: Int?) {
-        require(pageNumber == null || pageNumber >= 0) { "Page number must be non-negative." }
-    }
-
-    private fun validateReblogKey(reblogKey: String?) {
-        require(reblogKey == null || reblogKey.isNotBlank()) { "Reblog key must not be blank." }
-    }
-
-    private fun validateReblogsAndNotes(reblogFields: Boolean?, notesHistory: Boolean?) {
-        require(reblogFields == null || notesHistory == null || reblogFields xor notesHistory) {
-            "Only one of reblog fields or notes history can be provided."
-        }
-    }
-
-    private fun validateUrlAndEmail(url: String?, email: String?) {
-        require((url.isNullOrBlank()) xor (email.isNullOrBlank())) { "Only one of url or email can be provided." }
-    }
-
-    private fun validateTag(tag: String?) {
-        require(tag == null || tag.isNotBlank()) { "Tags must not be blank." }
-    }
-
-    private fun validateContentFilter(contentFilter: String?) {
-        require(contentFilter == null || contentFilter.isNotBlank()) {
-            "Content filters must not be blank."
-        }
-        require(contentFilter == null || contentFilter.length <= 250) {
-            "Content filters must not be more than 250 characters in length."
-        }
-    }
-
-    private fun validateTimestamp(timestamp: Long?) {
-        // TODO: Decide if there is any reasonable validation for times.
-    }
-
-    private fun validateAvatarSize(size: Int?) {
-        require(size == null || size in validAvatarSizes) { "Size must be one of $validAvatarSizes." }
-    }
-
-    // endregion Argument Validation
 }

@@ -2,6 +2,7 @@ package com.stilllynnthecloset.kotlr
 
 import com.squareup.moshi.Moshi
 import com.stilllynnthecloset.kotlr.api.KotlrApi
+import com.stilllynnthecloset.kotlr.api.KotlrApiImpl
 import com.stilllynnthecloset.kotlr.api.KotlrBlogDeleteApi
 import com.stilllynnthecloset.kotlr.api.KotlrBlogGetApi
 import com.stilllynnthecloset.kotlr.api.KotlrBlogPostApi
@@ -151,5 +152,5 @@ public fun getApi(
     val blogPostApi: KotlrBlogPostApi = client.create()
     val blogDeleteApi: KotlrBlogDeleteApi = client.create()
     val postsGetApi: KotlrPostsGetApi = client.create()
-    return KotlrApi(userGetApi, userPostApi, userDeleteApi, blogGetApi, blogPostApi, blogDeleteApi, postsGetApi)
+    return KotlrApiImpl(userGetApi, userPostApi, userDeleteApi, blogGetApi, blogPostApi, blogDeleteApi, postsGetApi)
 }
