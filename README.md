@@ -1,5 +1,5 @@
 [![version](https://img.shields.io/static/v1?label=Version&message=0.9.0&color=brightgreen)]()
-[![Build Status](https://travis-ci.com/highthunder/kotlr.svg?branch=develop)](https://travis-ci.com/highthunder/kotlr)
+[![Build Status](https://travis-ci.com/stilllynnthecloset/kotlr.svg?branch=develop)](https://travis-ci.com/highthunder/kotlr)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
 # Kotlr
