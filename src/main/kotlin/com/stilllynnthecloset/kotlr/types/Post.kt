@@ -255,10 +255,16 @@ public data class Post constructor(
         Draft,
 
         /**
+         * This post should be queued, schedule it to be posted in the future.
+         */
+        @Json(name = "queue")
+        Queue,
+
+        /**
          * This post has been queued, it is scheduled to be posted in the future.
          */
         @Json(name = "queued")
-        Queue,
+        Queued,
 
         /**
          * The post has been publicly posted.
