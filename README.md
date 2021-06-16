@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/static/v1?label=Version&message=0.9.0&color=brightgreen)]()
+[![version](https://img.shields.io/static/v1?label=Version&message=0.9.1&color=brightgreen)]()
 [![Build Status](https://travis-ci.com/stilllynnthecloset/kotlr.svg?branch=develop)](https://travis-ci.com/highthunder/kotlr)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
@@ -77,7 +77,7 @@ to your project's `repositories` block.
 
 Then add
 ```groovy
-implementation 'com.stilllynnthecloset:kotlr:0.9.0'
+implementation 'com.stilllynnthecloset:kotlr:0.9.1'
 ```
 to your module's `dependencies` block.
 
@@ -96,7 +96,7 @@ to your project's `repositories` block.
 
 Then add
 ```kotlin
-implementation("com.stilllynnthecloset:kotlr:0.9.0")
+implementation("com.stilllynnthecloset:kotlr:0.9.1")
 ```
 to your module's `dependencies` block.
 
@@ -193,6 +193,24 @@ suspend fun minimalExample() {
 ```
 
 ## Version History ##
+
+### 0.9.1 ###
+
+#### Breaking Changes ####
+
+N/A
+
+#### New Functionality ####
+
+N/A
+
+#### Deprecated Functionality ####
+
+N/A
+
+#### Minor Changes ####
+
+* Separated post statuses `Queue` and `Queued`
 
 ### 0.9.0 ###
 
