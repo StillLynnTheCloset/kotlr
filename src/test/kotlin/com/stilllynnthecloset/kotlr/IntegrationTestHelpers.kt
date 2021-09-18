@@ -482,7 +482,7 @@ internal suspend fun testCreate(api: KotlrApi, blogName: String) {
     println(response)
 }
 
-// Uses (9) requests.
+// Uses (13) requests.
 internal suspend fun testFilteredContent(api: KotlrApi) {
     println(api.getContentFilters().checkError().clean())
 
@@ -494,6 +494,10 @@ internal suspend fun testFilteredContent(api: KotlrApi) {
     println(api.getContentFilters().checkError().clean())
 
     println(api.deleteContentFilter(contentFilter = "testContentFilterThatWon'tAppearAnywhere1").checkError().clean())
+    println(api.deleteContentFilter(contentFilter = "testContentFilterThatWon'tAppearAnywhere1").checkError().clean())
+    println(api.deleteContentFilter(contentFilter = "testContentFilterThatWon'tAppearAnywhere1").checkError().clean())
+    println(api.deleteContentFilter(contentFilter = "testContentFilterThatWon'tAppearAnywhere1").checkError().clean())
+    println(api.deleteContentFilter(contentFilter = "testContentFilterThatWon'tAppearAnywhere2").checkError().clean())
     println(api.deleteContentFilter(contentFilter = "testContentFilterThatWon'tAppearAnywhere2").checkError().clean())
 
     println(api.getContentFilters().checkError().clean())
@@ -508,8 +512,8 @@ internal suspend fun testBlogBlocks(api: KotlrApi, blogIdentifier: String) {
     println(api.getBlogBlocks(blogIdentifier = blogIdentifier).checkError().clean())
 }
 
-// Uses ((if (doNotesAndReblogs) 50 else 36) + 3 * ceiling(postsToLoop / postsPerRequest)) requests
-// Default = 216 = 36 + 3*60
+// Uses ((if (doNotesAndReblogs) 54 else 40) + 3 * ceiling(postsToLoop / postsPerRequest)) requests
+// Default = 220 = 40 + 3*60
 internal suspend fun runAllTests(
     userKey: TumblrUserKey,
     blogName: String,
