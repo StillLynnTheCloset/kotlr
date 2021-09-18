@@ -32,7 +32,7 @@ public data class RequestLink constructor(
     val queryParams: RequestQueryParameters? = null,
 ) {
     /**
-     * A _links object may be of type navigation or action.
+     * A _links object may be of several types.
      */
     @JsonClass(generateAdapter = false)
     public enum class Type {
@@ -46,6 +46,12 @@ public data class RequestLink constructor(
          * action - A reference to some internal client state change in the application. The most common example would be to open a different view.
          */
         @Json(name = "action")
-        Action
+        Action,
+
+        /**
+         * Web - A reference to some internet URL.
+         */
+        @Json(name = "web")
+        Web,
     }
 }

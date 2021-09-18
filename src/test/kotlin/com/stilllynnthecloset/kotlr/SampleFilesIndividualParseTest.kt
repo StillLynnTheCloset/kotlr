@@ -17,6 +17,7 @@ import com.stilllynnthecloset.kotlr.types.ClickThrough
 import com.stilllynnthecloset.kotlr.types.Color
 import com.stilllynnthecloset.kotlr.types.Colors
 import com.stilllynnthecloset.kotlr.types.ExifData
+import com.stilllynnthecloset.kotlr.types.FilteredReason
 import com.stilllynnthecloset.kotlr.types.FollowerNotification
 import com.stilllynnthecloset.kotlr.types.LikeNote
 import com.stilllynnthecloset.kotlr.types.LikeNotification
@@ -1882,6 +1883,21 @@ internal class SampleFilesIndividualParseTest {
         val expected = Post(
             askingName = "ukIuGYR_Jcdm60j7Nb95dg",
             askingUrl = "https://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/"
+        )
+        assertEquals(expected, post)
+    }
+
+    @Test
+    internal fun onceFailed_post_post_filtered() {
+        val post = parseFile<Post>("samples/onceFailed/posts/post_filtered.json")
+        val expected = Post(
+            filteredReason = FilteredReason(tags = listOf("asdf")),
+            postLinks = RequestLinks(
+                revealFiltered = RequestLink(
+                    linkType = RequestLink.Type.Web,
+                    fullLink = "asdf",
+                ),
+            ),
         )
         assertEquals(expected, post)
     }

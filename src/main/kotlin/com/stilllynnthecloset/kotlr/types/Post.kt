@@ -94,6 +94,7 @@ import com.stilllynnthecloset.kotlr.types.content.VideoContent
  * @param askingUrl The url of the blog that sent this ask (if this is an ask post.)
  * @param askingAvatar The avatar of the blog that sent this ask (if this is an ask post.)
  * @param originalType The original post type of this post before it was converted to a BlockPost.
+ * @param filteredReason TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 public data class Post constructor(
@@ -239,6 +240,10 @@ public data class Post constructor(
     val askingAvatar: MediaList? = null,
     @Json(name = "original_type")
     val originalType: Type? = null,
+    @Json(name = "filtered")
+    val filteredReason: FilteredReason? = null,
+    @Json(name = "_links")
+    val postLinks: RequestLinks? = null,
     @Json(name = "type")
     val type: Type = Type.Block,
 ) {

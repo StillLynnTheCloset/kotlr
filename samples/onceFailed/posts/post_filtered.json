@@ -1,0 +1,14 @@
+{
+  "type": "blocks",
+  "filtered": {
+    "tags": [
+      "asdf"
+    ]
+  },
+  "_links": {
+    "reveal_filtered": {
+      "type": "web",
+      "href": "asdf"
+    }
+  }
+}

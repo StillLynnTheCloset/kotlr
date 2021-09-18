@@ -17,6 +17,8 @@ import com.squareup.moshi.JsonClass
 public data class RequestLinks constructor(
     val next: RequestLink? = null,
     val prev: RequestLink? = null,
+    @Json(name = "reveal_filtered")
+    val revealFiltered: RequestLink? = null,
     @Json(name = "terms_of_service")
     val termsOfService: RequestLink? = null,
 )
