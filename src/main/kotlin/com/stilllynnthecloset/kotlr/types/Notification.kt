@@ -9,7 +9,6 @@ public sealed class Notification {
         internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(Notification::class.java, "type")
             .withDefaultValue(UnknownNotification())
-
             .withSubtype(LikeNotification::class.java, LikeNotification.KEY)
             .withSubtype(ReplyNotification::class.java, ReplyNotification.KEY)
             .withSubtype(FollowerNotification::class.java, FollowerNotification.KEY)

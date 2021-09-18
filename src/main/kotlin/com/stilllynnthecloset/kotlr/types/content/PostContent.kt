@@ -24,7 +24,6 @@ public sealed class PostContent {
         internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(PostContent::class.java, "type")
             .withDefaultValue(UnknownContent())
-
             .withSubtype(AudioContent::class.java, AudioContent.KEY)
             .withSubtype(ImageContent::class.java, ImageContent.KEY)
             .withSubtype(LinkContent::class.java, LinkContent.KEY)

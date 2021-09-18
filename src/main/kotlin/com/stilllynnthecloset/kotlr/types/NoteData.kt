@@ -24,7 +24,6 @@ public sealed class NoteData {
         internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(NoteData::class.java, "type")
             .withDefaultValue(UnknownNote())
-
             .withSubtype(LikeNote::class.java, LikeNote.KEY)
             .withSubtype(PostedNote::class.java, PostedNote.KEY)
             .withSubtype(ReblogNote::class.java, ReblogNote.KEY)

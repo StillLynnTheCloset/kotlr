@@ -36,7 +36,6 @@ public sealed class TextFormat {
         internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(TextFormat::class.java, "type")
             .withDefaultValue(UnknownTextFormat())
-
             .withSubtype(BoldTextFormat::class.java, BoldTextFormat.KEY)
             .withSubtype(ItalicTextFormat::class.java, ItalicTextFormat.KEY)
             .withSubtype(StrikeThroughTextFormat::class.java, StrikeThroughTextFormat.KEY)

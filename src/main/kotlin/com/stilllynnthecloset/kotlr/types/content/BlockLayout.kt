@@ -19,7 +19,6 @@ public sealed class BlockLayout {
             .of(BlockLayout::class.java, "type")
             .withDefaultValue(UnknownBlockLayout())
             .withMissingLabelType(VerticalBlockLayout::class.java)
-
             .withSubtype(VerticalBlockLayout::class.java, VerticalBlockLayout.KEY)
             .withSubtype(RowBlockLayout::class.java, RowBlockLayout.KEY)
             .withSubtype(CondensedBlockLayout::class.java, CondensedBlockLayout.KEY)
@@ -107,7 +106,6 @@ public data class RowBlockLayout constructor(
                     .of(Mode::class.java, "type")
                     .withDefaultValue(Unknown())
                     .withMissingLabelType(Weighted::class.java)
-
                     .withSubtype(Weighted::class.java, Weighted.KEY)
                     .withSubtype(Carousel::class.java, Carousel.KEY)
                     .withSubtype(Unknown::class.java, Unknown.KEY)

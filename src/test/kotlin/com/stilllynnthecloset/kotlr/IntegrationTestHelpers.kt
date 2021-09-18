@@ -623,7 +623,7 @@ internal fun oAuthExample() = runBlocking {
     // just make it example.com.
     val requestUrl: String? = flow.getRequestUrl("example.com")
 
-    // We'll just print this to the console so you can copy and paste it.
+    // We'll just print this to the console, so you can copy and paste it.
     println("Open this url in your browser and sign in")
     println(requestUrl)
 
@@ -636,7 +636,7 @@ internal fun oAuthExample() = runBlocking {
     val userKey: TumblrUserKey = flow.parseResponseUrl(redirectedUrl)
     println(userKey.toString())
 
-    // Print out information about the newly logged in user.
+    // Print out information about the newly logged-in user.
     println(getApi(userKey).getUserInfo())
 }
 

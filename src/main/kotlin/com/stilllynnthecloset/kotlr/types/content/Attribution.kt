@@ -20,7 +20,6 @@ public sealed class Attribution {
         internal val jsonAdapterFactory = PolymorphicJsonAdapterFactory
             .of(Attribution::class.java, "type")
             .withDefaultValue(UnknownAttribution())
-
             .withSubtype(PostAttribution::class.java, PostAttribution.KEY)
             .withSubtype(LinkAttribution::class.java, LinkAttribution.KEY)
             .withSubtype(BlogAttribution::class.java, BlogAttribution.KEY)
