@@ -31,6 +31,7 @@ import com.stilllynnthecloset.kotlr.types.ReplyNotification
 import com.stilllynnthecloset.kotlr.types.RequestLink
 import com.stilllynnthecloset.kotlr.types.RequestLinks
 import com.stilllynnthecloset.kotlr.types.RequestQueryParameters
+import com.stilllynnthecloset.kotlr.types.SpamReportedNotification
 import com.stilllynnthecloset.kotlr.types.SubmissionTerms
 import com.stilllynnthecloset.kotlr.types.Tag
 import com.stilllynnthecloset.kotlr.types.Trail
@@ -129,6 +130,7 @@ internal class VerifyEverythingHasADefaultConstructor {
         println(PostAppealRejectedNotification().toString())
         println(WhatYouMissedNotification().toString())
         println(ConversationalNoteNotification().toString())
+        println(SpamReportedNotification().toString())
         println(UnknownNotification().toString())
     }
 }

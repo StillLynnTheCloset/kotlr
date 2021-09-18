@@ -26,6 +26,7 @@ public sealed class Notification {
             .withSubtype(PostAppealRejectedNotification::class.java, PostAppealRejectedNotification.KEY)
             .withSubtype(WhatYouMissedNotification::class.java, WhatYouMissedNotification.KEY)
             .withSubtype(ConversationalNoteNotification::class.java, ConversationalNoteNotification.KEY)
+            .withSubtype(SpamReportedNotification::class.java, SpamReportedNotification.KEY)
             .withSubtype(UnknownNotification::class.java, UnknownNotification.KEY)
     }
 
@@ -559,6 +560,32 @@ public data class ConversationalNoteNotification constructor(
 ) : Notification() {
     internal companion object {
         internal const val KEY: String = "conversational_note"
+    }
+}
+
+@JsonClass(generateAdapter = true)
+public data class SpamReportedNotification constructor(
+    override val type: String = KEY,
+    override val timestamp: Long? = null,
+    override val before: Long? = null,
+    @Json(name = "target_post_id")
+    override val targetPostId: String? = null,
+    @Json(name = "target_post_summary")
+    override val targetPostSummary: String? = null,
+    @Json(name = "target_tumblelog_name")
+    override val targetTumblelogName: String? = null,
+    @Json(name = "target_tumblelog_uuid")
+    override val targetTumblelogUuid: String? = null,
+    @Json(name = "from_tumblelog_name")
+    override val fromTumblelogName: String? = null,
+    @Json(name = "from_tumblelog_uuid")
+    override val fromTumblelogUuid: String? = null,
+    @Json(name = "from_tumblelog_is_adult")
+    override val fromTumblelogIsAdult: Boolean? = null,
+    override val followed: Boolean? = null,
+) : Notification() {
+    internal companion object {
+        internal const val KEY: String = "spam_reported"
     }
 }
 

@@ -31,6 +31,7 @@ import com.stilllynnthecloset.kotlr.types.ReplyNote
 import com.stilllynnthecloset.kotlr.types.RequestLink
 import com.stilllynnthecloset.kotlr.types.RequestLinks
 import com.stilllynnthecloset.kotlr.types.RequestQueryParameters
+import com.stilllynnthecloset.kotlr.types.SpamReportedNotification
 import com.stilllynnthecloset.kotlr.types.SubmissionTerms
 import com.stilllynnthecloset.kotlr.types.Trail
 import com.stilllynnthecloset.kotlr.types.User
@@ -1742,6 +1743,21 @@ internal class SampleFilesIndividualParseTest {
             postTags = listOf(
                 "testing"
             ),
+        )
+        assertEquals(expected, note)
+    }
+
+    @Test
+    internal fun onceFailed_notification_spamReported() {
+        val note =
+            parseFile<SpamReportedNotification>("samples/onceFailed/notification/spamReported.json")
+        val expected = SpamReportedNotification(
+            timestamp = 1622863497,
+            before = 1622863497,
+            targetPostId = "",
+            targetPostSummary = "",
+            targetTumblelogName = "asdf",
+            targetTumblelogUuid = "asdf",
         )
         assertEquals(expected, note)
     }
