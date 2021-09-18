@@ -4,6 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import com.stilllynnthecloset.kotlr.json.PolymorphicJsonAdapterFactory
 import com.stilllynnthecloset.kotlr.types.AttributionList
+import com.stilllynnthecloset.kotlr.types.ClickThrough
 import com.stilllynnthecloset.kotlr.types.Colors
 import com.stilllynnthecloset.kotlr.types.ExifData
 import com.stilllynnthecloset.kotlr.types.Media
@@ -108,6 +109,7 @@ public data class AudioContent constructor(
  * @param altText Text that should be displayed to describe this image.
  * @param exif Extra properties extracted from the Exif data of the photo.
  * @param caption The user provided caption for this image.
+ * @param clickThrough TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 public data class ImageContent constructor(
@@ -121,6 +123,8 @@ public data class ImageContent constructor(
     val altText: String? = null,
     val exif: ExifData? = null,
     val caption: String? = null,
+    @Json(name = "clickthrough")
+    val clickThrough: ClickThrough? = null,
     override val type: String = KEY,
 ) : PostContent() {
     internal companion object {

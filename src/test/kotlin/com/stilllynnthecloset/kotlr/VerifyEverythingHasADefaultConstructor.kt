@@ -5,6 +5,7 @@ import com.stilllynnthecloset.kotlr.types.AskNotification
 import com.stilllynnthecloset.kotlr.types.AttributionNote
 import com.stilllynnthecloset.kotlr.types.Blog
 import com.stilllynnthecloset.kotlr.types.BlogTheme
+import com.stilllynnthecloset.kotlr.types.ClickThrough
 import com.stilllynnthecloset.kotlr.types.Colors
 import com.stilllynnthecloset.kotlr.types.ConversationalNoteNotification
 import com.stilllynnthecloset.kotlr.types.ExifData
@@ -132,5 +133,6 @@ internal class VerifyEverythingHasADefaultConstructor {
         println(ConversationalNoteNotification().toString())
         println(SpamReportedNotification().toString())
         println(UnknownNotification().toString())
+        println(ClickThrough())
     }
 }

@@ -13,6 +13,7 @@ import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogLikes
 import com.stilllynnthecloset.kotlr.response.type.user.ResponseUserDashboard
 import com.stilllynnthecloset.kotlr.types.AttributionNote
 import com.stilllynnthecloset.kotlr.types.Blog
+import com.stilllynnthecloset.kotlr.types.ClickThrough
 import com.stilllynnthecloset.kotlr.types.Color
 import com.stilllynnthecloset.kotlr.types.Colors
 import com.stilllynnthecloset.kotlr.types.ExifData
@@ -1319,6 +1320,17 @@ internal class SampleFilesIndividualParseTest {
         val content = parseFile<PostContent>("samples/onceFailed/content/imageContent_caption.json")
         val expected = ImageContent(
             caption = "this is a caption",
+        )
+        assertEquals(expected, content)
+    }
+
+    @Test
+    internal fun onceFailed_content_imageContent_clickThrough() {
+        val content = parseFile<PostContent>("samples/onceFailed/content/imageContent_clickThrough.json")
+        val expected = ImageContent(
+            clickThrough = ClickThrough(
+                webUrl = "asdf",
+            ),
         )
         assertEquals(expected, content)
     }
