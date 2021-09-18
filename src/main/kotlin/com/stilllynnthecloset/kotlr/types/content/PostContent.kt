@@ -107,6 +107,7 @@ public data class AudioContent constructor(
  * @param attribution See the [Attribution] for details about these objects.
  * @param altText Text that should be displayed to describe this image.
  * @param exif Extra properties extracted from the Exif data of the photo.
+ * @param caption The user provided caption for this image.
  */
 @JsonClass(generateAdapter = true)
 public data class ImageContent constructor(
@@ -119,6 +120,7 @@ public data class ImageContent constructor(
     @Json(name = "alt_text")
     val altText: String? = null,
     val exif: ExifData? = null,
+    val caption: String? = null,
     override val type: String = KEY,
 ) : PostContent() {
     internal companion object {

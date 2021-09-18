@@ -1315,6 +1315,15 @@ internal class SampleFilesIndividualParseTest {
     // region Content
 
     @Test
+    internal fun onceFailed_content_imageContent_caption() {
+        val content = parseFile<PostContent>("samples/onceFailed/content/imageContent_caption.json")
+        val expected = ImageContent(
+            caption = "this is a caption",
+        )
+        assertEquals(expected, content)
+    }
+
+    @Test
     internal fun onceFailed_content_imageContent_exif() {
         val content = parseFile<PostContent>("samples/onceFailed/content/imageContent_exif.json")
         val expected = ImageContent(
