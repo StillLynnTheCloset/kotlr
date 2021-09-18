@@ -1447,6 +1447,18 @@ internal class SampleFilesIndividualParseTest {
     // region Links
 
     @Test
+    internal fun onceFailed_links_tumblelog() {
+        val post = parseFile<RequestLink>("samples/onceFailed/links/links_tumblelog.json")
+        val expected = RequestLink(
+            fullLink = "asdf",
+            queryParams = RequestQueryParameters(
+                tumblelog = "asdf"
+            )
+        )
+        assertEquals(expected, post)
+    }
+
+    @Test
     internal fun onceFailed_links_realExample() {
         val post = parseFile<RequestLink>("samples/onceFailed/links/realExample.json")
         val expected = RequestLink(

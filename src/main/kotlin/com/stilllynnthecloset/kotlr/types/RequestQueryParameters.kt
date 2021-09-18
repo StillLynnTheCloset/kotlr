@@ -24,6 +24,7 @@ import com.squareup.moshi.JsonClass
  * @param beforeTimestamp The timestamp that the request occurred before.
  * @param beforeId The post Id that was before the requested post(s).
  * @param types The types of notifications requested.
+ * @param tumblelog The name of the blog requested.
  */
 @JsonClass(generateAdapter = true)
 public data class RequestQueryParameters constructor(
@@ -45,4 +46,5 @@ public data class RequestQueryParameters constructor(
     @Json(name = "before_id")
     val beforeId: String? = null,
     val types: String? = null,
+    val tumblelog: String? = null,
 )
