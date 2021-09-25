@@ -1,67 +1,77 @@
 package com.stilllynnthecloset.kotlr.api
 
-import com.stilllynnthecloset.kotlr.postbody.FilteredContentPostBody
-import com.stilllynnthecloset.kotlr.postbody.FollowPostBody
-import com.stilllynnthecloset.kotlr.postbody.LikePostBody
 import com.stilllynnthecloset.kotlr.response.type.user.ResponseUserFollow
 import com.stilllynnthecloset.kotlr.response.type.user.ResponseUserLike
-import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.POST
 
-internal interface KotlrUserPostApi {
+public interface KotlrUserPostApi {
     /**
-     * Follow a blog.
+     * Use this method to follow a blog.
      *
-     * @param followPostBody The request body.
+     * @param url The url of the blog.
+     * @param email The email of the blog if the user has enabled "allow people to find this blog by email"
      */
-    @POST("user/follow")
-    suspend fun followBlog(
-        @Body
-        followPostBody: FollowPostBody,
-    ): Response<ResponseUserFollow.Response>
+    public suspend fun followBlog(
+        url: String? = null,
+        email: String? = null,
+    ): ResponseUserFollow.Response?
 
     /**
-     * Unfollow a blog.
+     * Use this method to unfollow a blog.
      *
-     * @param followPostBody The request body.
+     * @param url The url of the blog.
+     * @param email The email of the blog if the user has enabled "allow people to find this blog by email"
      */
-    @POST("user/unfollow")
-    suspend fun unfollowBlog(
-        @Body
-        followPostBody: FollowPostBody,
-    ): Response<ResponseUserFollow.Response>
+    public suspend fun unfollowBlog(
+        url: String? = null,
+        email: String? = null,
+    ): ResponseUserFollow.Response?
 
     /**
-     * Like a Post.
+     * Use this method to like a post.
      *
-     * @param likePostBody The request body.
+     * @param postId The postId of the post to like.
+     * @param reblogKey The reblogKey of the post to like.
      */
-    @POST("user/like")
-    suspend fun likePost(
-        @Body
-        likePostBody: LikePostBody,
-    ): Response<ResponseUserLike.Response>
+    public suspend fun likePost(
+        postId: Long,
+        reblogKey: String,
+    ): ResponseUserLike.Response?
 
     /**
-     * Unlike a Post.
+     * Use this method to unlike a post.
      *
-     * @param likePostBody The request body.
+     * @param id The postId of the post to unlike.
+     * @param reblogKey The reblogKey of the post to unlike.
      */
-    @POST("user/unlike")
-    suspend fun unlikePost(
-        @Body
-        likePostBody: LikePostBody,
-    ): Response<ResponseUserLike.Response>
+    public suspend fun unlikePost(
+        id: Long,
+        reblogKey: String,
+    ): ResponseUserLike.Response?
 
     /**
-     * Add to your current post filters.
+     * Use this method to add a content filter.
      *
-     * @param filteredContent The string to filter.
+     * @param contentFilter The text that a filter filters on.
      */
-    @POST("user/filtered_content")
-    suspend fun addContentFilter(
-        @Body
-        filteredContent: FilteredContentPostBody,
-    ): Response<ResponseUserLike.Response>
+    public suspend fun addContentFilter(
+        contentFilter: String,
+    ): ResponseUserLike.Response?
+
+    /**
+     * Use this method to add a group of content filters.
+     *
+     * @param contentFilters The text that a filter filters on.
+     */
+    public suspend fun addContentFilters(
+        contentFilters: Iterable<String>,
+    ): ResponseUserLike.Response?
+
+    /**
+     * Use this method to add a group of content filters.
+     *
+     * @param contentFilters The text that a filter filters on.
+     */
+    public suspend fun addContentFilters(
+        vararg contentFilters: String,
+    ): ResponseUserLike.Response?
 }

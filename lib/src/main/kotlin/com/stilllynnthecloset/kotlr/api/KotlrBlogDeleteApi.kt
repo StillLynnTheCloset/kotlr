@@ -1,23 +1,25 @@
 package com.stilllynnthecloset.kotlr.api
 
 import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogBlocks
-import retrofit2.Response
-import retrofit2.http.DELETE
-import retrofit2.http.Path
-import retrofit2.http.Query
 
-internal interface KotlrBlogDeleteApi {
-    @DELETE("blog/{identifier}/blocks")
-    suspend fun unblockBlog(
-        @Path("identifier", encoded = true)
+public interface KotlrBlogDeleteApi {
+    /**
+     * Use this method to unblock a known blog.
+     *
+     * @param blogIdentifier The identifier that is doing the blocking.
+     * @param blogToUnblock The identifier of the blog that is being unblocked.
+     */
+    public suspend fun unblockBlog(
         blogIdentifier: String,
-        @Query("blocked_tumblelog")
         blogToUnblock: String,
-    ): Response<ResponseBlogBlocks.Response>
+    ): ResponseBlogBlocks.Response?
 
-    @DELETE("blog/{identifier}/blocks?anonymous_only=true")
-    suspend fun unblockAllAnonymousBlogs(
-        @Path("identifier", encoded = true)
+    /**
+     * Use this method to unblock all currently blocked anonymous blogs.
+     *
+     * @param blogIdentifier The identifier that is doing the blocking.
+     */
+    public suspend fun unblockAllAnonymousBlogs(
         blogIdentifier: String,
-    ): Response<ResponseBlogBlocks.Response>
+    ): ResponseBlogBlocks.Response?
 }

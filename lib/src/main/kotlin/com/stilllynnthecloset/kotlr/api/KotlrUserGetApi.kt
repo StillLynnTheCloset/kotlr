@@ -6,79 +6,85 @@ import com.stilllynnthecloset.kotlr.response.type.user.ResponseUserFollowing
 import com.stilllynnthecloset.kotlr.response.type.user.ResponseUserInfo
 import com.stilllynnthecloset.kotlr.response.type.user.ResponseUserLikes
 import com.stilllynnthecloset.kotlr.types.Post
-import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Query
 
-internal interface KotlrUserGetApi {
-    @GET("user/info")
-    suspend fun getUserInfo(): Response<ResponseUserInfo.Response>
-
-    @GET("user/likes")
-    suspend fun getUserLikes(
-        @Query("limit")
-        pagingLimit: Int? = null,
-        @Query("offset")
-        pagingOffset: Long? = null,
-        @Query("since_id")
-        afterPostId: Long? = null,
-        @Query("before_id")
-        beforePostId: Long? = null,
-        @Query("after")
-        afterTime: Long? = null,
-        @Query("before")
-        beforeTime: Long? = null,
-        @Query("reblog_info")
-        getReblogFields: Boolean? = null,
-        @Query("notes_info")
-        getNotesHistory: Boolean? = null,
-        @Query("npf")
-        useNeuePostFormat: Boolean? = null,
-        @Query("tag")
-        tag: String? = null,
-        @Query("page_number")
-        pageNumber: Int? = null,
-    ): Response<ResponseUserLikes.Response>
-
-    @GET("user/dashboard")
-    suspend fun getUserDash(
-        @Query("limit")
-        pagingLimit: Int? = null,
-        @Query("offset")
-        pagingOffset: Long? = null,
-        @Query("since_id")
-        afterPostId: Long? = null,
-        @Query("before_id")
-        beforePostId: Long? = null,
-        @Query("after")
-        afterTime: Long? = null,
-        @Query("before")
-        beforeTime: Long? = null,
-        @Query("reblog_info")
-        getReblogFields: Boolean? = null,
-        @Query("notes_info")
-        getNotesHistory: Boolean? = null,
-        @Query("npf")
-        useNeuePostFormat: Boolean? = null,
-        @Query("tag")
-        tag: String? = null,
-        @Query("page_number")
-        pageNumber: Int? = null,
-        @Query("type")
-        type: Post.Type? = null,
-    ): Response<ResponseUserDashboard.Response>
-
-    @GET("user/following")
-    suspend fun getUserFollowing(
-        @Query("limit")
-        pagingLimit: Int? = null,
-        @Query("offset")
-        pagingOffset: Long? = null,
-    ): Response<ResponseUserFollowing.Response>
+public interface KotlrUserGetApi {
+    /**
+     * Use this method to retrieve the user's account information that matches the OAuth credentials submitted with the request.
+     */
+    public suspend fun getUserInfo(): ResponseUserInfo.Response?
 
     /**
-     * Get the current user's content filtering.
+     * Use this method to retrieve the liked posts that match the OAuth credentials submitted with the request.
+     *
+     * @param pagingLimit Optional. The number of results to return: 1–50, inclusive
+     * @param pagingOffset Optional. Post number to start at
+     * @param afterPostId Optional. Return posts that have appeared after this ID; Use this parameter to page through the results: first get a set of posts, and then get posts since the last ID of the previous set.
+     * @param beforePostId Optional. Return posts that have appeared before this ID; Use this parameter to page through the results: first get a set of posts, and then get posts before the first ID of the previous set.
+     * @param afterTime Optional. Retrieve posts liked after the specified timestamp.
+     * @param beforeTime Optional. Retrieve posts liked before the specified timestamp.
+     * @param getReblogFields Optional. Indicates whether to return reblog information (specify true or false). Returns the various reblogged_ fields.
+     * @param getNotesHistory Optional. Indicates whether to return notes information (specify true or false). Returns note count and note metadata.
+     * @param tag Optional.
+     * @param pageNumber Optional.
      */
-    @GET("user/filtered_content")
-    suspend fun getContentFilters(): Response<ResponseUserFilteredContent.Response>
+    public suspend fun getUserLikes(
+        pagingLimit: Int? = null,
+        pagingOffset: Long? = null,
+        afterPostId: Long? = null,
+        beforePostId: Long? = null,
+        afterTime: Long? = null,
+        beforeTime: Long? = null,
+        getReblogFields: Boolean? = null,
+        getNotesHistory: Boolean? = null,
+        tag: String? = null,
+        pageNumber: Int? = null,
+    ): ResponseUserLikes.Response?
+
+    /**
+     * Use this method to retrieve the dashboard that matches the OAuth credentials submitted with the request.
+     *
+     * ⚠️ Note: Please don't re-implement the Dashboard, and don't recreate complete Tumblr functions or clients on a
+     * platform where Tumblr already has an official client. See our API policies here.
+     *
+     * @param pagingLimit Optional. The number of results to return: 1–50, inclusive
+     * @param pagingOffset Optional. Post number to start at
+     * @param afterPostId Optional. Return posts that have appeared after this ID; Use this parameter to page through the results: first get a set of posts, and then get posts since the last ID of the previous set.
+     * @param beforePostId Optional. Return posts that have appeared before this ID; Use this parameter to page through the results: first get a set of posts, and then get posts before the first ID of the previous set.
+     * @param afterTime Optional. Retrieve posts after the specified timestamp
+     * @param beforeTime Optional. Retrieve posts before the specified timestamp.
+     * @param getReblogFields Optional. Indicates whether to return reblog information (specify true or false). Returns the various reblogged_ fields.
+     * @param getNotesHistory Optional. Indicates whether to return notes information (specify true or false). Returns note count and note metadata.
+     * @param tag Optional.
+     * @param pageNumber Optional.
+     * @param type Optional. The type of post to return. Specify one of the following: text, photo, quote, link, chat, audio, video, answer
+     */
+    public suspend fun getUserDash(
+        pagingLimit: Int? = null,
+        pagingOffset: Long? = null,
+        afterPostId: Long? = null,
+        beforePostId: Long? = null,
+        afterTime: Long? = null,
+        beforeTime: Long? = null,
+        getReblogFields: Boolean? = null,
+        getNotesHistory: Boolean? = null,
+        tag: String? = null,
+        pageNumber: Int? = null,
+        type: Post.Type? = null,
+    ): ResponseUserDashboard.Response?
+
+    /**
+     * Use this method to retrieve the blogs followed by the user whose OAuth credentials are submitted with the request.
+     *
+     * @param pagingLimit Optional. The number of results to return: 1–50, inclusive
+     * @param pagingOffset Optional. Result number to start at
+     */
+    public suspend fun getUserFollowing(
+        pagingLimit: Int? = null,
+        pagingOffset: Long? = null,
+    ): ResponseUserFollowing.Response?
+
+    /**
+     * Use this method to retrieve the content filtering strings of the user whose OAuth credentials are submitted with the request.
+     */
+    public suspend fun getContentFilters(): ResponseUserFilteredContent.Response?
 }

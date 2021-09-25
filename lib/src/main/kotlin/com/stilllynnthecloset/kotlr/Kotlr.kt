@@ -3,13 +3,13 @@ package com.stilllynnthecloset.kotlr
 import com.squareup.moshi.Moshi
 import com.stilllynnthecloset.kotlr.api.KotlrApi
 import com.stilllynnthecloset.kotlr.api.KotlrApiImpl
-import com.stilllynnthecloset.kotlr.api.KotlrBlogDeleteApi
-import com.stilllynnthecloset.kotlr.api.KotlrBlogGetApi
-import com.stilllynnthecloset.kotlr.api.KotlrBlogPostApi
-import com.stilllynnthecloset.kotlr.api.KotlrPostsGetApi
-import com.stilllynnthecloset.kotlr.api.KotlrUserDeleteApi
-import com.stilllynnthecloset.kotlr.api.KotlrUserGetApi
-import com.stilllynnthecloset.kotlr.api.KotlrUserPostApi
+import com.stilllynnthecloset.kotlr.api.KotlrBlogDeleteApiImpl
+import com.stilllynnthecloset.kotlr.api.KotlrBlogGetApiImpl
+import com.stilllynnthecloset.kotlr.api.KotlrBlogPostApiImpl
+import com.stilllynnthecloset.kotlr.api.KotlrPostsGetApiImpl
+import com.stilllynnthecloset.kotlr.api.KotlrUserDeleteApiImpl
+import com.stilllynnthecloset.kotlr.api.KotlrUserGetApiImpl
+import com.stilllynnthecloset.kotlr.api.KotlrUserPostApiImpl
 import com.stilllynnthecloset.kotlr.authentication.TumblrAppKey
 import com.stilllynnthecloset.kotlr.authentication.TumblrUserKey
 import com.stilllynnthecloset.kotlr.json.qualifier.CommaSeparatedStringJsonAdapter
@@ -134,9 +134,9 @@ private fun getRetrofit(
  * This allows you to perform requests to the Tumblr API.
  *
  * @param userKey The User key to be used to authenticate the requests.
- * @param debug Controls whether or not requests are made in debug mode (prints extra connection debugging information.)
- * @param strict Controls whether or not parsing is performed in strict mode (throws an error if Tumblr returns unexpected data.)
- * @param useShimo Controls whether or not Shimo is added to Moshi, randomizing the order of properties. This breaks many interactions with Tumblr, still investigating who's fault that is.
+ * @param debug Controls whether requests are made in debug mode (prints extra connection debugging information.)
+ * @param strict Controls whether parsing is performed in strict mode (throws an error if Tumblr returns unexpected data.)
+ * @param useShimo Controls whether Shimo is added to Moshi, randomizing the order of properties. This breaks many interactions with Tumblr, still investigating who's fault that is.
  */
 public fun getApi(
     userKey: TumblrUserKey,
@@ -144,13 +144,14 @@ public fun getApi(
     strict: Boolean = false,
     useShimo: Boolean = false,
 ): KotlrApi {
-    val client = getRetrofit(getOAuthConsumer(userKey), debug = debug, strict = strict, useShimo = useShimo)
-    val userGetApi: KotlrUserGetApi = client.create()
-    val userPostApi: KotlrUserPostApi = client.create()
-    val userDeleteApi: KotlrUserDeleteApi = client.create()
-    val blogGetApi: KotlrBlogGetApi = client.create()
-    val blogPostApi: KotlrBlogPostApi = client.create()
-    val blogDeleteApi: KotlrBlogDeleteApi = client.create()
-    val postsGetApi: KotlrPostsGetApi = client.create()
-    return KotlrApiImpl(userGetApi, userPostApi, userDeleteApi, blogGetApi, blogPostApi, blogDeleteApi, postsGetApi)
+    val retrofit = getRetrofit(getOAuthConsumer(userKey), debug = debug, strict = strict, useShimo = useShimo)
+    return KotlrApiImpl(
+        userGetApi = KotlrUserGetApiImpl(retrofit.create()),
+        userPostApi = KotlrUserPostApiImpl(retrofit.create()),
+        userDeleteApi = KotlrUserDeleteApiImpl(retrofit.create()),
+        blogGetApi = KotlrBlogGetApiImpl(retrofit.create()),
+        blogPostApi = KotlrBlogPostApiImpl(retrofit.create()),
+        blogDeleteApi = KotlrBlogDeleteApiImpl(retrofit.create()),
+        postsGetApi = KotlrPostsGetApiImpl(retrofit.create()),
+    )
 }

@@ -1,86 +1,154 @@
 package com.stilllynnthecloset.kotlr.api
 
-import com.stilllynnthecloset.kotlr.postbody.BlockBlogPostBody
 import com.stilllynnthecloset.kotlr.postbody.CreateNewPostBody
 import com.stilllynnthecloset.kotlr.postbody.ReblogPostBody
-import com.stilllynnthecloset.kotlr.postbody.ReorderQueuePostBody
 import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogBlocks
 import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogQueue
 import com.stilllynnthecloset.kotlr.response.type.post.ResponseCreatePost
 import okhttp3.MultipartBody
-import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.Multipart
-import retrofit2.http.POST
-import retrofit2.http.Part
-import retrofit2.http.Path
 
-internal interface KotlrBlogPostApi {
-    // region Create NPF Post
-
-    @POST("blog/{identifier}/posts")
-    suspend fun createNewPost(
-        @Path("identifier", encoded = true)
+public interface KotlrBlogPostApi {
+    /**
+     * Create/Reblog a Post
+     *
+     * This method allows you to create posts using the Neue Post Format.
+     * Note about Post States
+     *
+     * Posts can be in the following "states" as indicated in requests to the post creation/editing endpoints:
+     *
+     * "published" means the post should be publicly published immediately.
+     * "queue" means the post should be added to the end of the blog's post queue.
+     * "draft" means the post should be saved as a draft.
+     * "private" means the post should be privately published immediately.
+     * "unapproved" means the post is a new submission.
+     *
+     * If omitted, the state parameter on a new post defaults to "published".
+     *
+     * @param blogIdentifier An identifier of the Blog that this post should be published to.
+     * @param createBody The payload of this post.
+     */
+    public suspend fun createNewPost(
         blogIdentifier: String,
-        @Body
         createBody: CreateNewPostBody,
-    ): Response<ResponseCreatePost.Response>
+    ): ResponseCreatePost.Response?
 
-    @Multipart
-    @POST("blog/{identifier}/posts")
-    suspend fun createNewPostWithContentFiles(
-        @Path("identifier", encoded = true)
+    /**
+     * Create a Post
+     *
+     * This method allows you to create posts using the Neue Post Format.
+     * Note about Post States
+     *
+     * Posts can be in the following "states" as indicated in requests to the post creation/editing endpoints:
+     *
+     * "published" means the post should be publicly published immediately.
+     * "queue" means the post should be added to the end of the blog's post queue.
+     * "draft" means the post should be saved as a draft.
+     * "private" means the post should be privately published immediately.
+     * "unapproved" means the post is a new submission.
+     *
+     * If omitted, the state parameter on a new post defaults to "published".
+     *
+     * @param blogIdentifier An identifier of the Blog that this post should be published to.
+     * @param createBody The payload of this post.
+     * @param contentFiles The content parts that should be uploaded with this post.
+     */
+    public suspend fun createNewPostWithContentFiles(
         blogIdentifier: String,
-        @Part
         createBody: CreateNewPostBody,
-        @Part
-        contentFiles: List<MultipartBody.Part>,
-    ): Response<ResponseCreatePost.Response>
+        contentFiles: List<MultipartBody.Part>, // TODO: Don't expose okhttp
+    ): ResponseCreatePost.Response?
 
-    // endregion Create NPF Post
-
-    // region Reblog NPF Post
-
-    @POST("blog/{identifier}/posts")
-    suspend fun reblogPost(
-        @Path("identifier", encoded = true)
+    /**
+     * Reblog a Post
+     *
+     * This method allows you to create posts (and reblogs) using the Neue Post Format.
+     * Note about Post States
+     *
+     * Posts can be in the following "states" as indicated in requests to the post creation/editing endpoints:
+     *
+     * "published" means the post should be publicly published immediately.
+     * "queue" means the post should be added to the end of the blog's post queue.
+     * "draft" means the post should be saved as a draft.
+     * "private" means the post should be privately published immediately.
+     * "unapproved" means the post is a new submission.
+     *
+     * If omitted, the state parameter on a new post defaults to "published".
+     *
+     * @param blogIdentifier An identifier of the Blog that this post should be published to.
+     * @param reblogBody The payload of this post.
+     */
+    public suspend fun reblogPost(
         blogIdentifier: String,
-        @Body
         reblogBody: ReblogPostBody,
-    ): Response<ResponseCreatePost.Response>
+    ): ResponseCreatePost.Response?
 
-    @Multipart
-    @POST("blog/{identifier}/posts")
-    suspend fun reblogPostWithContentFiles(
-        @Path("identifier", encoded = true)
+    /**
+     * Reblog a Post
+     *
+     * This method allows you to create posts (and reblogs) using the Neue Post Format.
+     * Note about Post States
+     *
+     * Posts can be in the following "states" as indicated in requests to the post creation/editing endpoints:
+     *
+     * "published" means the post should be publicly published immediately.
+     * "queue" means the post should be added to the end of the blog's post queue.
+     * "draft" means the post should be saved as a draft.
+     * "private" means the post should be privately published immediately.
+     * "unapproved" means the post is a new submission.
+     *
+     * If omitted, the state parameter on a new post defaults to "published".
+     *
+     * @param blogIdentifier An identifier of the Blog that this post should be published to.
+     * @param reblogBody The payload of this post.
+     * @param contentFiles The content parts that should be uploaded with this post.
+     */
+    public suspend fun reblogPostWithContentFiles(
         blogIdentifier: String,
-        @Part
         reblogBody: ReblogPostBody,
-        @Part
-        contentFiles: List<MultipartBody.Part>,
-    ): Response<ResponseCreatePost.Response>
+        contentFiles: List<MultipartBody.Part>, // TODO: Don't expose okhttp
+    ): ResponseCreatePost.Response?
 
-    // endregion Reblog NPF Post
-
-    @POST("blog/{identifier}/blocks")
-    suspend fun blockBlog(
-        @Path("identifier", encoded = true)
+    /**
+     * Use this method to block a known blog.
+     *
+     * @param blogIdentifier The identifier that is doing the blocking.
+     * @param blogToBlock The identifier of the blog that is being blocked.
+     */
+    public suspend fun blockBlog(
         blogIdentifier: String,
-        @Body
-        blockBody: BlockBlogPostBody,
-    ): Response<ResponseBlogBlocks.Response>
+        blogToBlock: String,
+    ): ResponseBlogBlocks.Response?
 
-    @POST("blog/{identifier}/posts/queue/reorder")
-    suspend fun reorderQueue(
-        @Path("identifier", encoded = true)
+    /**
+     * Use this method to block an anonymous blog.
+     *
+     * @param blogIdentifier The identifier that is doing the blocking.
+     * @param postId The postId of the ask or submission by the blog that you want to block.
+     */
+    public suspend fun blockBlog(
         blogIdentifier: String,
-        @Body
-        reorderBody: ReorderQueuePostBody,
-    ): Response<ResponseBlogQueue.Response>
+        postId: Long,
+    ): ResponseBlogBlocks.Response?
 
-    @POST("blog/{identifier}/posts/queue/shuffle")
-    suspend fun shuffleQueue(
-        @Path("identifier", encoded = true)
+    /**
+     * Use this method to move a post within your blog's queue.
+     *
+     * @param blogIdentifier The identifier of the blog who's queue needs reordering.
+     * @param postId The postId of the queued post that you want to move.
+     * @param insertAfter The postId of the queued post that the post should be moved after, or 0 to move it to the front of the queue.
+     */
+    public suspend fun reorderQueue(
         blogIdentifier: String,
-    ): Response<ResponseBlogQueue.Response>
+        postId: Long,
+        insertAfter: Long,
+    ): ResponseBlogQueue.Response?
+
+    /**
+     * Use this method to randomly shuffle your blog's queue.
+     *
+     * @param blogIdentifier The identifier of the blog who's queue needs shuffling.
+     */
+    public suspend fun shuffleQueue(
+        blogIdentifier: String,
+    ): ResponseBlogQueue.Response?
 }

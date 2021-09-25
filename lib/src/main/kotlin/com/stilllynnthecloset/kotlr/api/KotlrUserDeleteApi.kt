@@ -1,19 +1,14 @@
 package com.stilllynnthecloset.kotlr.api
 
 import com.stilllynnthecloset.kotlr.response.type.user.ResponseUserFilteredContent
-import retrofit2.Response
-import retrofit2.http.DELETE
-import retrofit2.http.Query
 
-internal interface KotlrUserDeleteApi {
+public interface KotlrUserDeleteApi {
     /**
-     * Remove a content filter.
+     * Use this method to remove a content filter.
      *
-     * @param filteredContent The string to remove from your filter.
+     * @param contentFilter The text that a filter filters on.
      */
-    @DELETE("user/filtered_content")
-    suspend fun filterContent(
-        @Query("filtered_content")
-        filteredContent: String,
-    ): Response<ResponseUserFilteredContent.Response>
+    public suspend fun deleteContentFilter(
+        contentFilter: String,
+    ): ResponseUserFilteredContent.Response?
 }

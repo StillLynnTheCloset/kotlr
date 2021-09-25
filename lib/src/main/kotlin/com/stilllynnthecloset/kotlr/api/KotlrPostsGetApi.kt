@@ -2,20 +2,20 @@ package com.stilllynnthecloset.kotlr.api
 
 import com.stilllynnthecloset.kotlr.response.type.post.ResponsePostsTagged
 import com.stilllynnthecloset.kotlr.types.Post
-import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Query
 
-internal interface KotlrPostsGetApi {
-    @GET("tagged")
-    suspend fun getTaggedPosts(
-        @Query("tag")
+public interface KotlrPostsGetApi {
+    /**
+     * Fetch posts with a given tag.
+     *
+     * @param tag The tag on the posts you'd like to retrieve.
+     * @param beforeTimestamp Optional. The timestamp of when you'd like to see posts before. If the Tag is a "featured" tag, use the "featured_timestamp" on the post object for pagination.
+     * @param pagingLimit Optional. The number of results to return: 1–50, inclusive.
+     * @param filter Optional. Specifies the post format to return, other than HTML: text – Plain text, no HTML; raw – As entered by the user (no post-processing); if the user writes in Markdown, the Markdown will be returned rather than HTML.
+     */
+    public suspend fun getTaggedPosts(
         tag: String,
-        @Query("before")
         beforeTimestamp: Long? = null,
-        @Query("limit")
         pagingLimit: Long? = null,
-        @Query("filter")
         filter: Post.PostFormat? = null,
-    ): Response<ResponsePostsTagged.Response>
+    ): ResponsePostsTagged.Response?
 }
