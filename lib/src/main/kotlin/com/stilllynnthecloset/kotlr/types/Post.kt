@@ -88,13 +88,14 @@ import com.stilllynnthecloset.kotlr.types.content.VideoContent
  *                      drafted, queued, or scheduled, and is now published. In which case, the "genesis" ID will be the original
  *                      post ID generated when drafting, queuing, or scheduling that post. You cannot use this ID to look up the post
  *                      after it has been published, but it can be useful for tracking a post from its pre- to post-published state.
- * @param isPinned Whether or not this post is pinned to the current blog.
+ * @param isPinned Whether this post is pinned to the current blog.
  * @param type The type of this post. This is provided as a constructor parameter to make Moshi happy. If you override this, you'll get bad data.
  * @param askingName The name of the blog that sent this ask (if this is an ask post.)
  * @param askingUrl The url of the blog that sent this ask (if this is an ask post.)
  * @param askingAvatar The avatar of the blog that sent this ask (if this is an ask post.)
  * @param originalType The original post type of this post before it was converted to a BlockPost.
  * @param filteredReason TODO: Documentation
+ * @param interactabilityReblog TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 public data class Post constructor(
@@ -246,6 +247,8 @@ public data class Post constructor(
     val postLinks: RequestLinks? = null,
     @Json(name = "type")
     val type: Type = Type.Block,
+    @Json(name = "interactability_reblog")
+    val interactabilityReblog: Interactability? = null,
 ) {
 
     /**
@@ -472,6 +475,20 @@ public data class Post constructor(
          */
         @Json(name = "reblogs_with_tags")
         ReblogsWithTags("reblogs_with_tags"),
+    }
+
+    /**
+     * Interactability - TODO: Documentation.
+     *
+     * @param key The string that Tumblr uses to reference each state.
+     */
+    @JsonClass(generateAdapter = false)
+    public enum class Interactability constructor(public val key: String) {
+        /**
+         * Everyone - The only value I've seen so far.
+         */
+        @Json(name = "everyone")
+        Everyone("everyone"),
     }
 
     /**
