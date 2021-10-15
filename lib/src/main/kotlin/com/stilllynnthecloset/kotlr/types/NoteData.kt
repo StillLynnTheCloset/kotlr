@@ -16,7 +16,7 @@ import com.stilllynnthecloset.kotlr.types.content.TextFormat
  * @property blogName The name of the blog that added this note.
  * @property blogUuid The UUID of the blog that added this note.
  * @property blogUrl The URL of the blog that added this note.
- * @property blogFollowed Whether or not you have followed the blog that added this note.
+ * @property blogFollowed Whether you have followed the blog that added this note.
  * @property avatarShape The shape of the avatar icon of the blog that added this note.
  */
 public sealed class NoteData {
@@ -110,7 +110,7 @@ public data class PostedNote constructor(
  *
  * @param addedText A string containing the text that was added to the post when it was reblogged.
  * @param postId The post id of the reblog, i.e. the postId on the reblogger's blog that was created when they reblogged.
- * @param canBlock Whether or not you can block the blog that added this note.
+ * @param canBlock Whether you can block the blog that added this note.
  * @param reblogParentBlogName The name of the blog which this post was reblogged from (not the reblogger)
  */
 @JsonClass(generateAdapter = true)
@@ -146,7 +146,7 @@ public data class ReblogNote constructor(
  *
  * @param replyText The text that they added.
  * @param formatting Text formatting objects, just like [TextContent].
- * @param canBlock Whether or not you are able to block the user who added this reply.
+ * @param canBlock Whether you are able to block the user who added this reply.
  */
 @JsonClass(generateAdapter = true)
 public data class ReplyNote constructor(

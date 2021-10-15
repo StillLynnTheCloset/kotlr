@@ -11,6 +11,7 @@ import com.squareup.moshi.JsonClass
  *
  * @param next A link to the next request in a series.
  * @param prev A link to the previous request in a series.
+ * @param revealFiltered A link to a post that was hidden by filters.
  * @param termsOfService A link to Tumblr's terms of service.
  */
 @JsonClass(generateAdapter = true)

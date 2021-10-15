@@ -13,45 +13,45 @@ import com.stilllynnthecloset.kotlr.json.wrapper.ThemeWrapper
  * @param name The short name of the blog.
  * @param url The URL of the blog.
  * @param title The title of the blog.
- * @param primary Indicates if this is the user's primary blog.
+ * @param primary Whether this is the user's primary blog.
  * @param followers The total count of followers for this blog.
- * @param tweet Indicates if posts are tweeted auto, Y, N.
- * @param facebook Indicates if posts are sent to facebook Y, N.
- * @param type Indicates whether a blog is public or private.
+ * @param tweet Whether posts are tweeted auto, Y, N.
+ * @param facebook Whether posts are sent to facebook Y, N.
+ * @param type Whether a blog is public or private.
  * @param updated The time of the most recent post, in seconds since the epoch.
  * @param description The description of the blog.
- * @param ask Indicates whether the blog allows questions.
- * @param askAnon Indicates whether the blog allows anonymous questions.
+ * @param ask Whether the blog allows questions.
+ * @param askAnon Whether the blog allows anonymous questions.
  * @param posts The total number of posts on this blog.
  * @param likes Number of likes for this user.
- * @param isBlockedFromPrimary Indicates whether this blog has been blocked by the calling user's primary blog.
+ * @param isBlockedFromPrimary Whether this blog has been blocked by the calling user's primary blog.
  * @param uuid A unique identifier for this blog.
  * @param askPageTitle The title to display on this blog's ask page, often a prompt.
- * @param asksAllowMedia Indicates whether or not asks allow uploading additional media.
+ * @param asksAllowMedia Whether asks allow uploading additional media.
  * @param submissionPageTitle The title to display on this blog's submission page, often a prompt.
- * @param active Indicates whether or not this blog is active, i.e. the owner has not deactivated it.
- * @param canSubmit Indicates whether or not this blog accepts submissions.
- * @param isNsfw Indicates whether or not this blog features adult content.
- * @param sharesLikes Indicates whether or not this blog publicly shares its liked posts.
- * @param subscribed Indicates whether or not the current user is subscribed to this blog.
- * @param canSubscribe Indicates whether or not the current user can subscribe to this blog.
- * @param following Indicates whether or not the current user follows this blog.
- * @param canSendFanMail Indicates whether or not this blog accepts fan mail.
+ * @param active Whether this blog is active, i.e. the owner has not deactivated it.
+ * @param canSubmit Whether this blog accepts submissions.
+ * @param isNsfw Whether this blog features adult content.
+ * @param sharesLikes Whether this blog publicly shares its liked posts.
+ * @param subscribed Whether the current user is subscribed to this blog.
+ * @param canSubscribe Whether the current user can subscribe to this blog.
+ * @param following Whether the current user follows this blog.
+ * @param canSendFanMail Whether this blog accepts fan mail.
  * @param theme The theme for this blog, there is currently no good way to actually query this.
- * @param admin Indicates whether or not the current user is an admin of this blog.
+ * @param admin Whether the current user is an admin of this blog.
  * @param drafts Indicates the current number of drafts for this blog.
  * @param messages Indicates the current number of messages for this blog.
  * @param queue Indicates the current number of queued posts for this blog.
- * @param facebookOpenGraphEnabled Unknown.
- * @param twitterEnabled Unknown.
- * @param twitterSend Unknown.
- * @param isOptOutAds Unknown.
+ * @param facebookOpenGraphEnabled TODO: Documentation.
+ * @param twitterEnabled TODO: Documentation.
+ * @param twitterSend TODO: Documentation.
+ * @param isOptOutAds TODO: Documentation.
  * @param submissionTerms Specification of requirements when submitting posts to this blog.
- * @param followed Whether or not you have followed this blog.
+ * @param followed Whether you have followed this blog.
  * @param totalPosts The total number of posts that this blog has made.
- * @param shareFollowing Whether or not this blog shares who they are following.
- * @param canBeFollowed Whether or not you can follow this blog.
- * @param canChat Whether or not you can chat with this blog.
+ * @param shareFollowing Whether this blog shares who they are following.
+ * @param canBeFollowed Whether you can follow this blog.
+ * @param canChat Whether you can chat with this blog.
  * @param avatar A list of images representing the different sizes of this blog's avatar.
  * @param blockedTimestamp The time at which you blocked this blog.
  * @param timezone The blog's configured timezone, such as "US/Eastern". Only viewable by blog member.

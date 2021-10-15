@@ -13,8 +13,8 @@ import com.squareup.moshi.JsonClass
  *
  * @param tagText The tag name
  * @param thumbnailUrl An image (75x75) associated with the tag; may be null
- * @param isTracked Indicates whether the requesting user is tracking this tag
- * @param featured Indicates whether the tag is a featured tag
+ * @param isTracked Whether the requesting user is tracking this tag
+ * @param featured Whether the tag is a featured tag
  */
 @JsonClass(generateAdapter = true)
 public data class Tag constructor(

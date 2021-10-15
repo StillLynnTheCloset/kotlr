@@ -5,7 +5,7 @@ import com.squareup.moshi.JsonClass
 import com.stilllynnthecloset.kotlr.json.PolymorphicJsonAdapterFactory
 
 /**
- * BlockLayout - To lay out the blocks of a Post in a way that's different than the default
+ * BlockLayout - To lay out the blocks of a Post in a way that's different from the default
  * vertical stack, you can use the optional layout block alongside the content block array.
  * The layout block holds an array of layouts. Each layout object requires a type field,
  * just like content blocks.
@@ -58,8 +58,8 @@ public data class VerticalBlockLayout constructor(
  * Row Layout - The most basic type of layout block is "rows", which allows you to organize content blocks in rows, with variable elements per row.
  *
  * Each rows layout object requires a display object under the display key.
- * This display object is an array of dictionaries containing both the array of blocks to be used in the row as well
- * as an optional mode dictionary with a specified type. The default display mode is weighted. The display mode type
+ * This display object is an array of dictionaries containing both the array of blocks to be used in the row and an
+ * optional mode dictionary with a specified type. The default display mode is weighted. The display mode type
  * does not need to be specified when creating a Post with NPF content. each one representing a different row to be
  * rendered with the given content blocks.
  *
@@ -82,7 +82,7 @@ public data class RowBlockLayout constructor(
 
     /**
      * Display - This display object is an array of dictionaries containing both the array of blocks to be used in the
-     * row as well as an optional mode dictionary with a specified type. The default display mode is weighted. The
+     * row and an optional mode dictionary with a specified type. The default display mode is weighted. The
      * display mode type does not need to be specified when creating a Post with NPF content. each one representing a
      * different row to be rendered with the given content blocks.
      *
@@ -177,7 +177,7 @@ public data class RowBlockLayout constructor(
  * Note that there are certain contexts where the condensed layout should not be displayed
  * (namely a permalink revealing the full Post), but the server will return this condensed layout for all contexts;
  * this means it is up to the client to determine whether to actually use it.
- * It is expected that the client should use it in every context (a dashboard, via search, etc)
+ * It is expected that the client should use it in every context (a dashboard, via search, etc.)
  * except viewing the blog or Post directly.
  *
  * @param blocks Deprecated by Tumblr. This is an array of block indices that are a part of the truncated version of the Post. Required if truncate_after is not supplied. Must be sequential, not empty, and begin with 0.

@@ -18,8 +18,8 @@ import com.stilllynnthecloset.kotlr.types.content.BlockLayout
  * @param contentRaw The raw content of this post in the trail as it was written.
  * @param content The content of the Post in the trail.
  * @param abstract A short summary of the text of this post.
- * @param currentItem Indicates whether or not this trail item is the most recent post.
- * @param rootItem Indicates whether or not this trail item is the original post.
+ * @param currentItem Whether this trail item is the most recent post.
+ * @param rootItem Whether this trail item is the original post.
  * @param layout The layout to use for the content of the Post in the trail.
  * @param brokenBlogName The name of the blog from a broken trail item; see "broken" trail items.
  * @param brokenBlog An object containing any remaining data from the broken blog.

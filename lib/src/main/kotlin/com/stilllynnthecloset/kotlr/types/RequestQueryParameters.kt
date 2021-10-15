@@ -15,10 +15,10 @@ import com.squareup.moshi.JsonClass
  * @param before The id of the result before which additional results should be returned.
  * @param after The id of the result after which additional results should be returned.
  * @param offset The offset of results to return.
- * @param npf Whether or not results should be returned in NPF.
+ * @param npf Whether results should be returned in NPF.
  * @param pageNumber The page offset to return.
- * @param reblogInfo Whether or not reblog info should be returned.
- * @param notesInfo Whether or not note info should be returned.
+ * @param reblogInfo Whether reblog info should be returned.
+ * @param notesInfo Whether note info should be returned.
  * @param mode The request mode for post notes.
  * @param id The post Id that was requested.
  * @param beforeTimestamp The timestamp that the request occurred before.

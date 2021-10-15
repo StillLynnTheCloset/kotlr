@@ -27,12 +27,12 @@ import com.stilllynnthecloset.kotlr.types.content.VideoContent
  * @param format The post format: html, raw, or markdown.
  * @param reblogKey The key used to reblog this post.
  * @param tags Tags applied to the post.
- * @param isBookmarklet Indicates whether the post was created via the Tumblr bookmarklet.
- * @param isMobile Indicates whether the post was created via mobile/email publishing.
+ * @param isBookmarklet Whether the post was created via the Tumblr bookmarklet.
+ * @param isMobile Whether the post was created via mobile/email publishing.
  * @param sourceUrl The URL for the source of the content (for quotes, reblogs, etc.).
  * @param sourceTitle The title of the source site.
- * @param isLiked Indicates if a user has already liked a post or not.
- * @param state Indicates the current state of the post.
+ * @param isLiked Whether if a user has already liked a post or not.
+ * @param state Whether the current state of the post.
  * @param anonymous Was this post made anonymously.
  * @param content The array of content that constitutes the body of a post in the Neue Post Format(NPF).
  * @param trail The previous Posts in the reblog trail. In order of oldest (the root Post) to the newest (the parent Post).
@@ -40,7 +40,7 @@ import com.stilllynnthecloset.kotlr.types.content.VideoContent
  * @param postAuthor The id of the author of the post.
  * @param shortUrl The short URL for this post.
  * @param summary A short description of this post.
- * @param isBlocksFormat Indicates whether or not this post is using the new block format(NPF).
+ * @param isBlocksFormat Whether this post is using the new block format(NPF).
  * @param likedTimestamp The timestamp of when this post was liked.
  * @param slug The slug.
  * @param rebloggedFromId The ID of the post that this post reblogged.
@@ -48,30 +48,30 @@ import com.stilllynnthecloset.kotlr.types.content.VideoContent
  * @param noteCount The note count for this post.
  * @param recommendedSource The source of a recommended post.
  * @param recommendedColor The recommended color for styling this post.
- * @param postAuthorIsAdult Indicates whether or not the author of this post is an adult only blog.
- * @param isSubmission Indicates whether or not this post is a submission.
- * @param canLike Indicates whether or not the current user can like this post.
- * @param canReblog Indicates whether or not the current user can reblog this post.
- * @param canSendInMessage Indicates whether or not this post can be sent in a message.
- * @param canReply Indicates whether or not the current user can reply to this post.
- * @param displayAvatar Indicates whether or not the poster's avatar should be shown with this post.
- * @param followed Indicates whether or not the current user follows the author of this post.
+ * @param postAuthorIsAdult Whether the author of this post is an adult only blog.
+ * @param isSubmission Whether this post is a submission.
+ * @param canLike Whether the current user can like this post.
+ * @param canReblog Whether the current user can reblog this post.
+ * @param canSendInMessage Whether this post can be sent in a message.
+ * @param canReply Whether the current user can reply to this post.
+ * @param displayAvatar Whether the poster's avatar should be shown with this post.
+ * @param followed Whether the current user follows the author of this post.
  * @param reblogData The reblog content of this post.
  * @param rebloggedFromId The ID of the post that this post reblogged.
  * @param rebloggedFromUrl The URL of the post that this post reblogged.
  * @param rebloggedFromName The name of the blog that this post reblogged.
  * @param rebloggedFromTitle The title of the blog that made the post that this post reblogged.
  * @param rebloggedFromUuid The blog uuid of the post that this post reblogged.
- * @param rebloggedFromCanMessage Whether or not you can message the blog that made the post that this post reblogged.
- * @param rebloggedFromFollowing Whether or not you are following the blog that made the post that this post reblogged.
+ * @param rebloggedFromCanMessage Whether you can message the blog that made the post that this post reblogged.
+ * @param rebloggedFromFollowing Whether you are following the blog that made the post that this post reblogged.
  * @param rebloggedRootId The ID of the root post that this post reblogged.
  * @param rebloggedRootUrl The URL of the root post that this post reblogged.
  * @param rebloggedRootName The name of the blog that this post reblogged.
  * @param rebloggedRootTitle The title of the blog that made the root post that this post reblogged.
  * @param rebloggedRootUuid The blog uuid of the root post that this post reblogged.
- * @param rebloggedRootCanMessage Whether or not you can message the blog that made the root post that this post reblogged.
- * @param rebloggedRootFollowing Whether or not you are following the blog that made the root post that this post reblogged.
- * @param notes A list of all of the notes objects attached to this post.
+ * @param rebloggedRootCanMessage Whether you can message the blog that made the root post that this post reblogged.
+ * @param rebloggedRootFollowing Whether you are following the blog that made the root post that this post reblogged.
+ * @param notes A list of all the notes objects attached to this post.
  * @param publishTime Returned on queued posts, the time that this post is scheduled to be posted.
  * @param queueState The current queue state of this post.
  * @param shouldOpenInLegacy TODO: Documentation

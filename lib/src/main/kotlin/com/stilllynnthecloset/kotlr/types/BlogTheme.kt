@@ -26,11 +26,11 @@ import com.stilllynnthecloset.kotlr.json.qualifier.HexColorOctothorpe
  * @param titleColor The intended hex color of the blog's title.
  * @param titleFont The intended font to use when displaying the blog's title.
  * @param titleFontWeight The intended font weight to use when displaying the blog's title.
- * @param headerStretch Whether or not the blog's header is meant to be stretched to aspect-fill any given space where it's used.
- * @param showAvatar Whether or not the blog's avatar should be displayed, even if it's given in the API payload.
- * @param showDescription Whether or not the blog's description should be displayed, even if it's given in the API payload.
- * @param showHeaderImage Whether or not the blog's header image should be displayed, even if it's given in the API payload.
- * @param showTitle Whether or not the blog's title should be displayed, even if it's given in the API payload.
+ * @param headerStretch Whether the blog's header is meant to be stretched to aspect-fill any given space where it's used.
+ * @param showAvatar Whether the blog's avatar should be displayed, even if it's given in the API payload.
+ * @param showDescription Whether the blog's description should be displayed, even if it's given in the API payload.
+ * @param showHeaderImage Whether the blog's header image should be displayed, even if it's given in the API payload.
+ * @param showTitle Whether the blog's title should be displayed, even if it's given in the API payload.
  */
 @JsonClass(generateAdapter = true)
 public data class BlogTheme constructor(
