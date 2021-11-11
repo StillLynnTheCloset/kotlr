@@ -157,7 +157,7 @@ public interface KotlrBlogGetApi {
         getReblogFields: Boolean? = null,
         getNotesHistory: Boolean? = null,
         tag: String? = null,
-        tags: List<String>?,
+        tags: List<String>? = null,
         pageNumber: Int? = null,
         type: Post.Type? = null,
     ): ResponseBlogPosts.Response?
