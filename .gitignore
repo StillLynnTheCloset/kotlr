@@ -21,4 +21,5 @@ gradle-app.setting
 /local.properties
 
 lib/src/test/kotlin/com/stilllynnthecloset/kotlr/MyAppKey.kt
+/demo/src/main/kotlin/com/stilllynnthecloset/kotlr/demo/MyAppKey.kt
 lib/src/test/kotlin/com/stilllynnthecloset/kotlr/Main.kt

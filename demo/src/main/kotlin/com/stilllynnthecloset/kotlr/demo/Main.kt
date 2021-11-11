@@ -1,0 +1,69 @@
+package com.stilllynnthecloset.kotlr.demo
+
+import com.stilllynnthecloset.kotlr.api.KotlrApi
+import com.stilllynnthecloset.kotlr.getApi
+import com.stilllynnthecloset.kotlr.types.Post
+import com.stilllynnthecloset.kotlr.types.ReblogNote
+import kotlinx.coroutines.runBlocking
+
+fun main(): Unit = runBlocking {
+    val api = getApi(MyUserKey, debug = false, strict = true)
+    findMostPopularPosts(api, "kotlr-development", 50)
+        .forEach {
+            println("${it.first.slug}, ${it.first.date}, ${it.first.id}, ${it.second}")
+        }
+}
+
+/**
+ * Finds the [postCount] most recent original posts on [blogName], pairs them with the number of reblogs they have and
+ * returns them in descending order by that number of reblogs.
+ */
+private suspend fun findMostPopularPosts(api: KotlrApi, blogName: String, postCount: Int): List<Pair<Post, Int>> {
+    val originalPosts = mutableListOf<Post>()
+    loopBlogPosts(api, blogName, 50) { post ->
+        if (post.trail.isNullOrEmpty()) {
+            originalPosts.add(post)
+            println(post.slug)
+        }
+        originalPosts.size < postCount
+    }
+
+    return originalPosts.map { it to getPopularityOfPost(it) }.sortedByDescending { it.second }
+}
+
+private fun getPopularityOfPost(post: Post): Int = post.notes.orEmpty().count {
+    it is ReblogNote
+}
+
+internal suspend fun loopBlogPosts(
+    api: KotlrApi,
+    blogName: String,
+    postsPerRequest: Int,
+    block: (Post) -> Boolean
+): List<Post> {
+    var lastTime: Long = Long.MAX_VALUE
+    var posts: List<Post>?
+    val allPosts: MutableList<Post> = mutableListOf()
+    var offset = 0L
+
+    do {
+        val response = api.getBlogPosts(
+            blogIdentifier = blogName,
+            pagingLimit = postsPerRequest,
+            beforeTime = lastTime,
+            getNotesHistory = true,
+        )
+        val body = response?.getBody()
+        posts = body?.posts.orEmpty()
+        posts.forEach { post ->
+            val ts = post.timestamp ?: Long.MAX_VALUE
+            if (ts < lastTime) {
+                lastTime = ts - 1 // Subtract 1 ms so we don't get an overlap
+            }
+        }
+        val keepGoing = posts.isNotEmpty() && posts.all(block)
+        offset += postsPerRequest
+        posts.also(allPosts::addAll)
+    } while (keepGoing)
+    return allPosts
+}

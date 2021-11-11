@@ -4,4 +4,4 @@ plugins {
 
 rootProject.name = "kotlr"
 
-include(":lib")
+include(":lib", ":demo")
