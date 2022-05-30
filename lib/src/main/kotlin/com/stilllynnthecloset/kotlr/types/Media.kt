@@ -51,4 +51,6 @@ public data class Media constructor(
     val hasOriginalDimensions: Boolean? = null,
     @Json(name = "colors")
     val colors: Colors? = null,
+    @Json(name = "video")
+    val video: List<Media>? = null,
 )
