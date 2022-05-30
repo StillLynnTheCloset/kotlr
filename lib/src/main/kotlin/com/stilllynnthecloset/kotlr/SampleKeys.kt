@@ -17,7 +17,7 @@ import com.stilllynnthecloset.kotlr.authentication.TumblrUserKey
  */
 public val SampleAppKey: TumblrAppKey = TumblrAppKey(
     apiKey = "apiKey aka ConsumerKey",
-    apiSecret = "apiSecret aka ConsumerSecret"
+    apiSecret = "apiSecret aka ConsumerSecret",
 )
 
 /**
@@ -26,5 +26,5 @@ public val SampleAppKey: TumblrAppKey = TumblrAppKey(
 public val SampleUserKey: TumblrUserKey = TumblrUserKey(
     appKey = SampleAppKey,
     userKey = "userKey aka Token",
-    userSecret = "userSecret aka TokenSecret"
+    userSecret = "userSecret aka TokenSecret",
 )

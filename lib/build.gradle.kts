@@ -66,18 +66,14 @@ kotlin {
 }
 
 ktlint {
-    version.set("0.42.1")
+    version.set("0.45.2")
     debug.set(false)
     verbose.set(true)
     android.set(false)
     outputToConsole.set(true)
     ignoreFailures.set(false)
     enableExperimentalRules.set(true)
-    disabledRules.set(
-        setOf(
-            "experimental:argument-list-wrapping"
-        )
-    )
+    disabledRules.set(setOf("experimental:argument-list-wrapping"))
 
     filter {
         include("src/**")

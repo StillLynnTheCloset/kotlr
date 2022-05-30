@@ -68,6 +68,6 @@ public data class RateLimitMetaData constructor(
         header[DAILY_RESET_HEADER]?.toLongOrNull(),
         header[HOURLY_LIMIT_HEADER]?.toLongOrNull(),
         header[HOURLY_REMAINING_HEADER]?.toLongOrNull(),
-        header[HOURLY_RESET_HEADER]?.toLongOrNull()
+        header[HOURLY_RESET_HEADER]?.toLongOrNull(),
     )
 }

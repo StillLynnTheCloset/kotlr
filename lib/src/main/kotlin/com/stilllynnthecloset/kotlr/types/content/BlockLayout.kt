@@ -47,7 +47,7 @@ public class UnknownBlockLayout : BlockLayout() {
  */
 @JsonClass(generateAdapter = true)
 public data class VerticalBlockLayout constructor(
-    override val type: String = KEY
+    override val type: String = KEY,
 ) : BlockLayout() {
     internal companion object {
         internal const val KEY: String = "vertical"

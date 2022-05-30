@@ -36,7 +36,7 @@ internal class UserFilteredContentWrapperJsonAdapter(moshi: Moshi) :
             BEGIN_ARRAY -> ResponseUserFilteredContent.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
             NULL -> ResponseUserFilteredContent.Wrapper()
             else -> throw JsonDataException(
-                "Expected a field of type Object, String, List, or null but got ${reader.peek()}"
+                "Expected a field of type Object, String, List, or null but got ${reader.peek()}",
             )
         }
     }

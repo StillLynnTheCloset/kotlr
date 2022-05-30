@@ -32,7 +32,7 @@ internal class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
         moshi.adapter(
             Types.newParameterizedType(List::class.java, Blog::class.java),
             emptySet(),
-            "blogs"
+            "blogs",
         )
 
     private val nullableStringAdapter: JsonAdapter<String?> =

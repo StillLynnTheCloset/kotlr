@@ -85,7 +85,7 @@ internal fun getOAuthProvider(okHttpOAuthConsumer: OkHttpOAuthConsumer): OkHttpO
         REQUEST_TOKEN_RESOURCE,
         ACCESS_TOKEN_RESOURCE,
         AUTHORIZE_URL,
-        getHttpClient(okHttpOAuthConsumer)
+        getHttpClient(okHttpOAuthConsumer),
     )
 
 private fun getHttpClient(consumer: OkHttpOAuthConsumer, debug: Boolean = false): OkHttpClient {

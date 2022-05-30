@@ -49,10 +49,10 @@ internal suspend fun runUserTests(api: KotlrApi, postsPerRequest: Int, doNotesAn
     println(api.getUserLikes(pagingLimit = postsPerRequest).checkError().clean())
     if (doNotesAndReblogs) {
         println(
-            api.getUserLikes(pagingLimit = postsPerRequest, getReblogFields = true).checkError().clean()
+            api.getUserLikes(pagingLimit = postsPerRequest, getReblogFields = true).checkError().clean(),
         )
         println(
-            api.getUserLikes(pagingLimit = postsPerRequest, getNotesHistory = true).checkError().clean()
+            api.getUserLikes(pagingLimit = postsPerRequest, getNotesHistory = true).checkError().clean(),
         )
     }
 
@@ -60,10 +60,10 @@ internal suspend fun runUserTests(api: KotlrApi, postsPerRequest: Int, doNotesAn
     println(api.getUserDash(pagingLimit = postsPerRequest).checkError().clean())
     if (doNotesAndReblogs) {
         println(
-            api.getUserDash(pagingLimit = postsPerRequest, getReblogFields = true).checkError().clean()
+            api.getUserDash(pagingLimit = postsPerRequest, getReblogFields = true).checkError().clean(),
         )
         println(
-            api.getUserDash(pagingLimit = postsPerRequest, getNotesHistory = true).checkError().clean()
+            api.getUserDash(pagingLimit = postsPerRequest, getNotesHistory = true).checkError().clean(),
         )
     }
 
@@ -89,7 +89,7 @@ internal suspend fun runBlogTests(
     blogName: String,
     postsPerRequest: Int,
     doNotesAndReblogs: Boolean,
-    expectError: Boolean = false
+    expectError: Boolean = false,
 ) {
     println("Calling `getBlogAvatar()`")
     println(api.getBlogAvatar(blogIdentifier = blogName).checkError(expectError).clean())
@@ -110,114 +110,114 @@ internal suspend fun runBlogTests(
 
     println("Calling `getBlogLikes()``")
     println(
-        api.getBlogLikes(blogIdentifier = blogName, pagingLimit = postsPerRequest).checkError(expectError).clean()
+        api.getBlogLikes(blogIdentifier = blogName, pagingLimit = postsPerRequest).checkError(expectError).clean(),
     )
     if (doNotesAndReblogs) {
         println(
             api.getBlogLikes(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
-                getReblogFields = true
-            ).checkError(expectError).clean()
+                getReblogFields = true,
+            ).checkError(expectError).clean(),
         )
         println(
             api.getBlogLikes(
                 blogName,
                 pagingLimit = postsPerRequest,
-                getNotesHistory = true
-            ).checkError(expectError).clean()
+                getNotesHistory = true,
+            ).checkError(expectError).clean(),
         )
     }
 
     println("Calling `getBlogPosts()`")
     println(
-        api.getBlogPosts(blogName, pagingLimit = postsPerRequest).checkError(expectError).clean()
+        api.getBlogPosts(blogName, pagingLimit = postsPerRequest).checkError(expectError).clean(),
     )
     if (doNotesAndReblogs) {
         println(
             api.getBlogPosts(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
-                getReblogFields = true
-            ).checkError(expectError).clean()
+                getReblogFields = true,
+            ).checkError(expectError).clean(),
         )
         println(
             api.getBlogPosts(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
-                getNotesHistory = true
-            ).checkError(expectError).clean()
+                getNotesHistory = true,
+            ).checkError(expectError).clean(),
         )
     }
 
     println("Calling `getBlogDrafts()`")
     println(
-        api.getBlogDrafts(blogName, pagingLimit = postsPerRequest).checkError(expectError).clean()
+        api.getBlogDrafts(blogName, pagingLimit = postsPerRequest).checkError(expectError).clean(),
     )
     if (doNotesAndReblogs) {
         println(
             api.getBlogDrafts(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
-                getReblogFields = true
-            ).checkError(expectError).clean()
+                getReblogFields = true,
+            ).checkError(expectError).clean(),
         )
         println(
             api.getBlogDrafts(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
-                getNotesHistory = true
-            ).checkError(expectError).clean()
+                getNotesHistory = true,
+            ).checkError(expectError).clean(),
         )
     }
 
     println("Calling `getBlogQueue()`")
     println(
-        api.getBlogQueue(blogName, pagingLimit = postsPerRequest).checkError(expectError).clean()
+        api.getBlogQueue(blogName, pagingLimit = postsPerRequest).checkError(expectError).clean(),
     )
     if (doNotesAndReblogs) {
         println(
             api.getBlogQueue(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
-                getReblogFields = true
-            ).checkError(expectError).clean()
+                getReblogFields = true,
+            ).checkError(expectError).clean(),
         )
         println(
             api.getBlogQueue(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
-                getNotesHistory = true
-            ).checkError(expectError).clean()
+                getNotesHistory = true,
+            ).checkError(expectError).clean(),
         )
     }
 
     println("Calling `getBlogSubmissions()`")
     println(
         api.getBlogSubmissions(blogIdentifier = blogName, pagingLimit = postsPerRequest).checkError(
-            expectError
-        ).clean()
+            expectError,
+        ).clean(),
     )
     if (doNotesAndReblogs) {
         println(
             api.getBlogSubmissions(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
-                getReblogFields = true
-            ).checkError(expectError).clean()
+                getReblogFields = true,
+            ).checkError(expectError).clean(),
         )
         println(
             api.getBlogSubmissions(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
-                getNotesHistory = true
-            ).checkError(expectError).clean()
+                getNotesHistory = true,
+            ).checkError(expectError).clean(),
         )
     }
 
     println("Calling `getPost()`")
     println(
-        api.getPost(blogIdentifier = "kotlr-development", postId = 179771546338).checkError().clean()
+        api.getPost(blogIdentifier = "kotlr-development", postId = 179771546338).checkError().clean(),
     )
 
     println("Calling `getPostNotes()`")
@@ -333,7 +333,7 @@ internal suspend fun testReblog(api: KotlrApi, blogName: String) {
                 ),
                 TextContent(
                     text = "This is a test reblog",
-                )
+                ),
             ),
             state = Post.State.Draft,
             tags = listOf("Tag1", "Tag2", "Tag3, Tag4 , Tag5"),
@@ -428,7 +428,7 @@ internal suspend fun testCreate(api: KotlrApi, blogName: String) {
                 ImageContent(
                     media = listOf(
                         Media(
-                            url = "https://assets.tumblr.com/images/default_avatar/cube_closed_64.png"
+                            url = "https://assets.tumblr.com/images/default_avatar/cube_closed_64.png",
                         ),
                     ),
                 ),
@@ -477,7 +477,7 @@ internal suspend fun testCreate(api: KotlrApi, blogName: String) {
             ),
             state = Post.State.Draft,
             tags = listOf("Tag1", "Tag2", "Tag3, Tag4， Tag5‚ Tag6, Tag7"),
-        )
+        ),
     )
     println(response)
 }
@@ -521,7 +521,7 @@ internal suspend fun runAllTests(
     strictParsing: Boolean = false,
     doNotesAndReblogs: Boolean = false,
     postsPerRequest: Int = 50,
-    maxPostsPerLooper: Int = 3000
+    maxPostsPerLooper: Int = 3000,
 ) {
     val api = getApi(userKey, debug = debugLogging, strict = strictParsing)
 
@@ -604,7 +604,7 @@ internal fun minimalExample() = runBlocking {
             ?.getBody()
             ?.posts
             ?.firstOrNull()
-            ?.postUrl
+            ?.postUrl,
     )
 }
 

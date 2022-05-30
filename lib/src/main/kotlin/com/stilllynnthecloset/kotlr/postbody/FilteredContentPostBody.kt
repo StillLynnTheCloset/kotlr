@@ -12,16 +12,16 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 public data class FilteredContentPostBody constructor(
     @Json(name = "filtered_content")
-    val filteredContent: List<String>
+    val filteredContent: List<String>,
 ) {
     public constructor(
-        filteredContent: String
+        filteredContent: String,
     ) : this(
         filteredContent = listOf(filteredContent),
     )
 
     public constructor(
-        filteredContent: Iterable<String>
+        filteredContent: Iterable<String>,
     ) : this(
         filteredContent = filteredContent.toList(),
     )

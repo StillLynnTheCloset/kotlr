@@ -35,7 +35,7 @@ internal class RecommendationReasonWrapperJsonAdapter(moshi: Moshi) : JsonAdapte
             NULL -> null
             else -> {
                 throw JsonDataException(
-                    "Expected a field of type RecommendationReason or String but got ${reader.peek()}"
+                    "Expected a field of type RecommendationReason or String but got ${reader.peek()}",
                 )
             }
         }

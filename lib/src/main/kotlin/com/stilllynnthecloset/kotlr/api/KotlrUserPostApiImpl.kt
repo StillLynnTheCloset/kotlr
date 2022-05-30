@@ -17,7 +17,7 @@ internal class KotlrUserPostApiImpl constructor(
         validateUrlAndEmail(url, email)
 
         val retrofitResponse = userPostApi.followBlog(
-            followPostBody = FollowPostBody(url, email)
+            followPostBody = FollowPostBody(url, email),
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -32,7 +32,7 @@ internal class KotlrUserPostApiImpl constructor(
         validateUrlAndEmail(url, email)
 
         val retrofitResponse = userPostApi.unfollowBlog(
-            followPostBody = FollowPostBody(url, email)
+            followPostBody = FollowPostBody(url, email),
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -48,7 +48,7 @@ internal class KotlrUserPostApiImpl constructor(
         validateReblogKey(reblogKey)
 
         val retrofitResponse = userPostApi.likePost(
-            likePostBody = LikePostBody(postId, reblogKey)
+            likePostBody = LikePostBody(postId, reblogKey),
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -64,7 +64,7 @@ internal class KotlrUserPostApiImpl constructor(
         validateReblogKey(reblogKey)
 
         val retrofitResponse = userPostApi.unlikePost(
-            likePostBody = LikePostBody(id, reblogKey)
+            likePostBody = LikePostBody(id, reblogKey),
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -80,7 +80,7 @@ internal class KotlrUserPostApiImpl constructor(
         val body = FilteredContentPostBody(contentFilter)
 
         val retrofitResponse = userPostApi.addContentFilter(
-            filteredContent = body
+            filteredContent = body,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
@@ -96,7 +96,7 @@ internal class KotlrUserPostApiImpl constructor(
         val body = FilteredContentPostBody(contentFilters)
 
         val retrofitResponse = userPostApi.addContentFilter(
-            filteredContent = body
+            filteredContent = body,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())

@@ -36,7 +36,7 @@ internal class BlogNotificationsWrapperJsonAdapter(moshi: Moshi) :
             BEGIN_ARRAY -> ResponseBlogNotifications.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
             NULL -> ResponseBlogNotifications.Wrapper()
             else -> throw JsonDataException(
-                "Expected a field of type Object, String, List, or null but got ${reader.peek()}"
+                "Expected a field of type Object, String, List, or null but got ${reader.peek()}",
             )
         }
     }

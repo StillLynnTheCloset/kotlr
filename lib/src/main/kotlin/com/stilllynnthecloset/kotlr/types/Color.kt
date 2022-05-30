@@ -42,7 +42,7 @@ public data class Color constructor(
     public constructor(s: String) : this(
         s.normalizeTo8DigitString()
             .toLong(16)
-            .toInt()
+            .toInt(),
     )
 
     /**

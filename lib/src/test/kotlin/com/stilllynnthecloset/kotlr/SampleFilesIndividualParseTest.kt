@@ -186,7 +186,7 @@ internal class SampleFilesIndividualParseTest {
             description = "<p><strong>Mr. Karp</strong> is tall and skinny, with unflinching blue eyes a mop of brown hair.\r\n He speaks incredibly fast and in complete paragraphs.</p>",
             ask = true,
             askAnon = false,
-            likes = 12345
+            likes = 12345,
         )
         assertEquals(expected, blog)
     }
@@ -199,7 +199,7 @@ internal class SampleFilesIndividualParseTest {
             name = "david",
             url = "https://www.davidslog.com",
             updated = 1308781073,
-            description = "“Mr. Karp is tall and skinny, with unflinching blue eyes and a mop of brown hair. He speaks incredibly fast and in complete paragraphs.” – NY Observer"
+            description = "“Mr. Karp is tall and skinny, with unflinching blue eyes and a mop of brown hair. He speaks incredibly fast and in complete paragraphs.” – NY Observer",
         )
         assertEquals(expected, blog)
     }
@@ -217,21 +217,21 @@ internal class SampleFilesIndividualParseTest {
                 httpMethod = "GET",
                 fullLink = "https://api.tumblr.com/v2/endpoint",
                 queryParams = RequestQueryParameters(
-                    pageNumber = "1"
-                )
+                    pageNumber = "1",
+                ),
             ),
             next = RequestLink(
                 linkType = RequestLink.Type.Action,
                 httpMethod = "GET",
                 fullLink = "https://api.tumblr.com/v2/endpoint",
                 queryParams = RequestQueryParameters(
-                    pageNumber = "3"
-                )
+                    pageNumber = "3",
+                ),
             ),
             termsOfService = RequestLink(
                 linkType = RequestLink.Type.Navigation,
-                fullLink = "https://www.tumblr.com/policy/terms-of-service"
-            )
+                fullLink = "https://www.tumblr.com/policy/terms-of-service",
+            ),
         )
 
         assertEquals(expected, linkMap)
@@ -248,7 +248,7 @@ internal class SampleFilesIndividualParseTest {
             name = "david",
             url = "https://www.davidslog.com",
             updated = 1308781073,
-            isUserFollowed = true
+            isUserFollowed = true,
         )
         assertEquals(expected, user)
     }
@@ -268,13 +268,13 @@ internal class SampleFilesIndividualParseTest {
                     url = "https://derekg.org/",
                     tweet = "auto",
                     primary = true,
-                    followers = 33004929
+                    followers = 33004929,
                 ),
                 Blog(
                     name = "ihatehipstrz",
-                    title = "I Hate Hipstrz"
-                )
-            )
+                    title = "I Hate Hipstrz",
+                ),
+            ),
         )
         assertEquals(expected, user)
     }
@@ -294,8 +294,8 @@ internal class SampleFilesIndividualParseTest {
                 url = "https://scontent.cdninstagram.com/path/to/logo.jpg",
                 type = "image/jpeg",
                 width = 64,
-                height = 64
-            )
+                height = 64,
+            ),
         )
         assertEquals(expected, attribution)
     }
@@ -305,7 +305,7 @@ internal class SampleFilesIndividualParseTest {
         val attribution = parseFile<Attribution>("samples/officialSamples/attribution/attributionTypeBlog.json")
         val expected = BlogAttribution(
             url = "https://randerson.tumblr.com",
-            blog = Blog()
+            blog = Blog(),
         )
         assertEquals(expected, attribution)
     }
@@ -314,7 +314,7 @@ internal class SampleFilesIndividualParseTest {
     internal fun testOfficial_attributionTypeLink() {
         val attribution = parseFile<Attribution>("samples/officialSamples/attribution/attributionTypeLink.json")
         val expected = LinkAttribution(
-            url = "http://shahkashani.com/"
+            url = "http://shahkashani.com/",
         )
         assertEquals(expected, attribution)
     }
@@ -325,13 +325,13 @@ internal class SampleFilesIndividualParseTest {
         val expected = PostAttribution(
             url = "http://www.davidslog.com/153957802620/five-years-of-working-with-this-awesome-girl",
             post = Post(
-                id = 1234567890
+                id = 1234567890,
             ),
             blog = Blog(
                 uuid = "t:123456abcdf",
                 name = "david",
-                url = "https://davidslog.com/"
-            )
+                url = "https://davidslog.com/",
+            ),
 
         )
         assertEquals(expected, attribution)
@@ -351,16 +351,16 @@ internal class SampleFilesIndividualParseTest {
             album = "Track Album",
             media = Media(
                 type = "audio/mp3",
-                url = "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1.mp3"
+                url = "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1.mp3",
             ),
             poster = listOf(
                 Media(
                     type = "image/jpeg",
                     url = "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
                     width = 500,
-                    height = 400
-                )
-            )
+                    height = 400,
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -377,16 +377,16 @@ internal class SampleFilesIndividualParseTest {
             embedUrl = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/146805680&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true",
             media = Media(
                 type = "audio/mp3",
-                url = "https://soundcloud.com/neilcic/mouth-sounds.mp3"
+                url = "https://soundcloud.com/neilcic/mouth-sounds.mp3",
             ),
             poster = listOf(
                 Media(
                     type = "image/jpeg",
                     url = "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
                     width = 500,
-                    height = 400
-                )
-            )
+                    height = 400,
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -400,22 +400,22 @@ internal class SampleFilesIndividualParseTest {
                     type = "image/jpeg",
                     url = "http://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_1280.jpg",
                     width = 1280,
-                    height = 1073
+                    height = 1073,
                 ),
                 Media(
                     type = "image/jpeg",
                     url = "http://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_540.jpg",
                     width = 540,
-                    height = 400
+                    height = 400,
                 ),
                 Media(
                     type = "image/jpeg",
                     url = "http://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_250.jpg",
                     width = 250,
-                    height = 150
-                )
+                    height = 150,
+                ),
             ),
-            altText = "Sonic the Hedgehog and friends"
+            altText = "Sonic the Hedgehog and friends",
         )
         assertEquals(expected, content)
     }
@@ -429,10 +429,10 @@ internal class SampleFilesIndividualParseTest {
                     type = "image/gif",
                     url = "http://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_250.gif",
                     width = 250,
-                    height = 200
-                )
+                    height = 200,
+                ),
             ),
-            feedbackToken = "abcdef123456"
+            feedbackToken = "abcdef123456",
         )
         assertEquals(expected, content)
     }
@@ -446,13 +446,13 @@ internal class SampleFilesIndividualParseTest {
                     type = "image/jpeg",
                     url = "http://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_1280.jpg",
                     width = 1280,
-                    height = 1073
-                )
+                    height = 1073,
+                ),
             ),
             colors = Colors(
                 0 to Color("a24615"),
-                1 to Color("ff7c00")
-            )
+                1 to Color("ff7c00"),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -471,10 +471,10 @@ internal class SampleFilesIndividualParseTest {
                         type = "image/jpeg",
                         url = "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
                         width = 500,
-                        height = 400
-                    )
-                )
-            )
+                        height = 400,
+                    ),
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -492,9 +492,9 @@ internal class SampleFilesIndividualParseTest {
                     url = "https://static01.nyt.com/images/2017/06/15/us/politics/15dchealth-2/15dchealth-2-facebookJumbo.jpg",
                     type = "image/jpeg",
                     width = 1050,
-                    height = 549
-                )
-            )
+                    height = 549,
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -514,9 +514,9 @@ internal class SampleFilesIndividualParseTest {
                     url = "https://static01.nyt.com/images/2017/06/15/us/politics/15dchealth-2/15dchealth-2-facebookJumbo.jpg",
                     type = "image/jpeg",
                     width = 1050,
-                    height = 549
-                )
-            )
+                    height = 549,
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -525,7 +525,7 @@ internal class SampleFilesIndividualParseTest {
     internal fun testOfficial_contentBlockTypeText() {
         val content = parseFile<PostContent>("samples/officialSamples/content/contentBlockTypeText.json")
         val expected = TextContent(
-            text = "Hello world!"
+            text = "Hello world!",
         )
         assertEquals(expected, content)
     }
@@ -538,13 +538,13 @@ internal class SampleFilesIndividualParseTest {
             formatting = listOf(
                 BoldTextFormat(
                     start = 0,
-                    end = 20
+                    end = 20,
                 ),
                 ItalicTextFormat(
                     start = 9,
-                    end = 34
-                )
-            )
+                    end = 34,
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -557,13 +557,13 @@ internal class SampleFilesIndividualParseTest {
             formatting = listOf(
                 BoldTextFormat(
                     start = 5,
-                    end = 9
+                    end = 9,
                 ),
                 ItalicTextFormat(
                     start = 14,
-                    end = 20
-                )
-            )
+                    end = 20,
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -577,9 +577,9 @@ internal class SampleFilesIndividualParseTest {
                 LinkTextFormat(
                     start = 6,
                     end = 10,
-                    url = "https://www.nasa.gov"
-                )
-            )
+                    url = "https://www.nasa.gov",
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -596,10 +596,10 @@ internal class SampleFilesIndividualParseTest {
                     blog = Blog(
                         uuid = "t:123456abcdf",
                         name = "david",
-                        url = "https://davidslog.com/"
-                    )
-                )
-            )
+                        url = "https://davidslog.com/",
+                    ),
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -613,9 +613,9 @@ internal class SampleFilesIndividualParseTest {
                 ColorTextFormat(
                     start = 10,
                     end = 15,
-                    hex = Color("#ff492f")
-                )
-            )
+                    hex = Color("#ff492f"),
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -629,9 +629,9 @@ internal class SampleFilesIndividualParseTest {
             formatting = listOf(
                 BoldTextFormat(
                     start = 0,
-                    end = 5
-                )
-            )
+                    end = 5,
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -639,11 +639,11 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun testOfficial_contentBlockTypeText_subtypeHeading1() {
         val content = parseFile<PostContent>(
-            "samples/officialSamples/content/contentBlockTypeText_subtypeHeading1.json"
+            "samples/officialSamples/content/contentBlockTypeText_subtypeHeading1.json",
         )
         val expected = TextContent(
             text = "New Post Forms Manifesto",
-            subType = TextContent.SubType.Heading1
+            subType = TextContent.SubType.Heading1,
         )
         assertEquals(expected, content)
     }
@@ -651,11 +651,11 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun testOfficial_contentBlockTypeText_subtypeHeading2() {
         val content = parseFile<PostContent>(
-            "samples/officialSamples/content/contentBlockTypeText_subtypeHeading2.json"
+            "samples/officialSamples/content/contentBlockTypeText_subtypeHeading2.json",
         )
         val expected = TextContent(
             text = "what a great conversation",
-            subType = TextContent.SubType.Heading2
+            subType = TextContent.SubType.Heading2,
         )
         assertEquals(expected, content)
     }
@@ -663,11 +663,11 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun testOfficial_contentBlockTypeText_subtypeIndented() {
         val content = parseFile<PostContent>(
-            "samples/officialSamples/content/contentBlockTypeText_subtypeIndented.json"
+            "samples/officialSamples/content/contentBlockTypeText_subtypeIndented.json",
         )
         val expected = TextContent(
             text = "A few years ago, when I was living in the hous. ",
-            subType = TextContent.SubType.Indented
+            subType = TextContent.SubType.Indented,
         )
         assertEquals(expected, content)
     }
@@ -675,11 +675,11 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun testOfficial_contentBlockTypeText_subtypeOrderedList() {
         val content = parseFile<PostContent>(
-            "samples/officialSamples/content/contentBlockTypeText_subtypeOrderedList.json"
+            "samples/officialSamples/content/contentBlockTypeText_subtypeOrderedList.json",
         )
         val expected = TextContent(
             text = "Sword",
-            subType = TextContent.SubType.OrderedListItem
+            subType = TextContent.SubType.OrderedListItem,
         )
         assertEquals(expected, content)
     }
@@ -687,11 +687,11 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun testOfficial_contentBlockTypeText_subtypeQuirky() {
         val content = parseFile<PostContent>(
-            "samples/officialSamples/content/contentBlockTypeText_subtypeQuirky.json"
+            "samples/officialSamples/content/contentBlockTypeText_subtypeQuirky.json",
         )
         val expected = TextContent(
             text = "Oh, worm?",
-            subType = TextContent.SubType.Quirky
+            subType = TextContent.SubType.Quirky,
         )
         assertEquals(expected, content)
     }
@@ -699,11 +699,11 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun testOfficial_contentBlockTypeText_subtypeQuote() {
         val content = parseFile<PostContent>(
-            "samples/officialSamples/content/contentBlockTypeText_subtypeQuote.json"
+            "samples/officialSamples/content/contentBlockTypeText_subtypeQuote.json",
         )
         val expected = TextContent(
             text = "Genius without education is like silver in the mine.",
-            subType = TextContent.SubType.Quote
+            subType = TextContent.SubType.Quote,
         )
         assertEquals(expected, content)
     }
@@ -711,11 +711,11 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun testOfficial_contentBlockTypeText_subtypeUnorderedList() {
         val content = parseFile<PostContent>(
-            "samples/officialSamples/content/contentBlockTypeText_subtypeUnorderedList.json"
+            "samples/officialSamples/content/contentBlockTypeText_subtypeUnorderedList.json",
         )
         val expected = TextContent(
             text = "Death, which is uncountable on this list.",
-            subType = TextContent.SubType.UnorderedListItem
+            subType = TextContent.SubType.UnorderedListItem,
         )
         assertEquals(expected, content)
     }
@@ -729,15 +729,15 @@ internal class SampleFilesIndividualParseTest {
                 url = "http://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1.mp4",
                 height = 640,
                 width = 480,
-                hd = false
+                hd = false,
             ),
             poster = listOf(
                 Media(
                     type = "image/jpeg",
                     url = "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
                     width = 500,
-                    height = 400
-                )
+                    height = 400,
+                ),
             ),
             filmStrip = MediaWrapper(
                 listMedia = listOf(
@@ -745,17 +745,17 @@ internal class SampleFilesIndividualParseTest {
                         type = "image/jpeg",
                         url = "https://66.media.tumblr.com/previews/tumblr_nshp8oVOnV1rg0s9xo1_filmstrip_frame1.jpg",
                         width = 200,
-                        height = 125
+                        height = 125,
                     ),
                     Media(
                         type = "image/jpeg",
                         url = "https://66.media.tumblr.com/previews/tumblr_nshp8oVOnV1rg0s9xo1_filmstrip_frame2.jpg",
                         width = 200,
-                        height = 125
-                    )
-                )
+                        height = 125,
+                    ),
+                ),
             ),
-            canAutoPlayOnCellular = true
+            canAutoPlayOnCellular = true,
         )
         assertEquals(expected, content)
     }
@@ -769,16 +769,16 @@ internal class SampleFilesIndividualParseTest {
             embedHtml = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>",
             embedUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ",
             metadata = VideoMetadata(
-                id = "dQw4w9WgXcQ"
+                id = "dQw4w9WgXcQ",
             ),
             poster = listOf(
                 Media(
                     type = "image/jpeg",
                     url = "https://69.media.tumblr.com/b06fe71cc4ab47e93749df060ff54a90/tumblr_nshp8oVOnV1rg0s9xo1_500.jpg",
                     width = 500,
-                    height = 400
-                )
-            )
+                    height = 400,
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -794,8 +794,8 @@ internal class SampleFilesIndividualParseTest {
             blocks = listOf(0, 1),
             attribution = BlogAttribution(
                 url = "https://cyle.tumblr.com",
-                blog = Blog()
-            )
+                blog = Blog(),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -804,7 +804,7 @@ internal class SampleFilesIndividualParseTest {
     internal fun testOfficial_layoutBlockTypeCondensed1() {
         val content = parseFile<BlockLayout>("samples/officialSamples/layout/layoutBlockTypeCondensed1.json")
         val expected = CondensedBlockLayout(
-            truncateAfter = 1
+            truncateAfter = 1,
         )
         assertEquals(expected, content)
     }
@@ -814,7 +814,7 @@ internal class SampleFilesIndividualParseTest {
         val content = parseFile<BlockLayout>("samples/officialSamples/layout/layoutBlockTypeCondensed2.json")
         val expected = CondensedBlockLayout(
             truncateAfter = 3,
-            blocks = listOf(0, 1, 2, 3)
+            blocks = listOf(0, 1, 2, 3),
         )
         assertEquals(expected, content)
     }
@@ -825,12 +825,12 @@ internal class SampleFilesIndividualParseTest {
         val expected = RowBlockLayout(
             display = listOf(
                 RowBlockLayout.Display(
-                    blocks = listOf(0, 1)
+                    blocks = listOf(0, 1),
                 ),
                 RowBlockLayout.Display(
-                    blocks = listOf(2)
-                )
-            )
+                    blocks = listOf(2),
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -841,21 +841,21 @@ internal class SampleFilesIndividualParseTest {
         val expected = RowBlockLayout(
             display = listOf(
                 RowBlockLayout.Display(
-                    blocks = listOf(0)
+                    blocks = listOf(0),
                 ),
                 RowBlockLayout.Display(
-                    blocks = listOf(1, 2)
+                    blocks = listOf(1, 2),
                 ),
                 RowBlockLayout.Display(
-                    blocks = listOf(3)
+                    blocks = listOf(3),
                 ),
                 RowBlockLayout.Display(
-                    blocks = listOf(4, 5, 6)
+                    blocks = listOf(4, 5, 6),
                 ),
                 RowBlockLayout.Display(
-                    blocks = listOf(7)
-                )
-            )
+                    blocks = listOf(7),
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -866,9 +866,9 @@ internal class SampleFilesIndividualParseTest {
         val expected = RowBlockLayout(
             display = listOf(
                 RowBlockLayout.Display(
-                    blocks = listOf(2, 0, 1)
-                )
-            )
+                    blocks = listOf(2, 0, 1),
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -876,27 +876,27 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun testOfficial_layoutBlockTypeRows_displayModeCarousel() {
         val content = parseFile<BlockLayout>(
-            "samples/officialSamples/layout/layoutBlockTypeRows_displayModeCarousel.json"
+            "samples/officialSamples/layout/layoutBlockTypeRows_displayModeCarousel.json",
         )
         val expected = RowBlockLayout(
             display = listOf(
                 RowBlockLayout.Display(
-                    blocks = listOf(0)
+                    blocks = listOf(0),
                 ),
                 RowBlockLayout.Display(
-                    blocks = listOf(1, 2)
+                    blocks = listOf(1, 2),
                 ),
                 RowBlockLayout.Display(
-                    blocks = listOf(3)
+                    blocks = listOf(3),
                 ),
                 RowBlockLayout.Display(
                     blocks = listOf(4, 5, 6),
-                    mode = RowBlockLayout.Display.Mode.Carousel()
+                    mode = RowBlockLayout.Display.Mode.Carousel(),
                 ),
                 RowBlockLayout.Display(
-                    blocks = listOf(7)
-                )
-            )
+                    blocks = listOf(7),
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -919,7 +919,7 @@ internal class SampleFilesIndividualParseTest {
             url = "https://69.media.tumblr.com/path/to/image.jpg",
             type = "image/jpg",
             width = 540,
-            height = 405
+            height = 405,
         )
         assertEquals(expected, content)
     }
@@ -934,7 +934,7 @@ internal class SampleFilesIndividualParseTest {
         val expected = Post(
             id = 1234,
             blog = Blog(),
-            content = emptyList()
+            content = emptyList(),
         )
         assertEquals(expected, content)
     }
@@ -945,9 +945,9 @@ internal class SampleFilesIndividualParseTest {
         val expected = Post(
             content = listOf(
                 TextContent(
-                    text = "Hello world!"
-                )
-            )
+                    text = "Hello world!",
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -958,12 +958,12 @@ internal class SampleFilesIndividualParseTest {
         val expected = Post(
             content = listOf(
                 TextContent(
-                    text = "Hello world!"
+                    text = "Hello world!",
                 ),
                 TextContent(
-                    text = "This is a second paragraph below the first."
-                )
-            )
+                    text = "This is a second paragraph below the first.",
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -971,29 +971,29 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun testOfficial_post_contentBlocks_emptyContent_before() {
         val content = parseFile<Post>(
-            "samples/officialSamples/post/contentBlockTypeText_leadingTrailingEmptyBlocks_before.json"
+            "samples/officialSamples/post/contentBlockTypeText_leadingTrailingEmptyBlocks_before.json",
         )
         val expected = Post(
             content = listOf(
                 TextContent(
-                    text = ""
+                    text = "",
                 ),
                 TextContent(
-                    text = "ello!"
+                    text = "ello!",
                 ),
                 TextContent(
-                    text = ""
+                    text = "",
                 ),
                 TextContent(
-                    text = "my name is cyle!"
+                    text = "my name is cyle!",
                 ),
                 TextContent(
-                    text = ""
+                    text = "",
                 ),
                 TextContent(
-                    text = ""
-                )
-            )
+                    text = "",
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -1001,20 +1001,20 @@ internal class SampleFilesIndividualParseTest {
     @Test
     internal fun testOfficial_post_contentBlocks_emptyContent_after() {
         val content = parseFile<Post>(
-            "samples/officialSamples/post/contentBlockTypeText_leadingTrailingEmptyBlocks_after.json"
+            "samples/officialSamples/post/contentBlockTypeText_leadingTrailingEmptyBlocks_after.json",
         )
         val expected = Post(
             content = listOf(
                 TextContent(
-                    text = "ello!"
+                    text = "ello!",
                 ),
                 TextContent(
-                    text = ""
+                    text = "",
                 ),
                 TextContent(
-                    text = "my name is cyle!"
-                )
-            )
+                    text = "my name is cyle!",
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -1024,7 +1024,7 @@ internal class SampleFilesIndividualParseTest {
         val content = parseFile<Post>("samples/officialSamples/post/postIdentification.json")
         val expected = Post(
             id = 1234567891234567,
-            blog = Blog()
+            blog = Blog(),
         )
         assertEquals(expected, content)
     }
@@ -1040,11 +1040,11 @@ internal class SampleFilesIndividualParseTest {
                     content = ContentWrapper(
                         contentList = listOf(
                             TextContent(
-                                text = "this is the root Post"
-                            )
-                        )
+                                text = "this is the root Post",
+                            ),
+                        ),
                     ),
-                    layout = emptyList()
+                    layout = emptyList(),
                 ),
                 Trail(
                     post = Post(id = 3456),
@@ -1052,27 +1052,27 @@ internal class SampleFilesIndividualParseTest {
                     content = ContentWrapper(
                         contentList = listOf(
                             TextContent(
-                                text = "this is the parent Post"
+                                text = "this is the parent Post",
                             ),
                             TextContent(
-                                text = "this is another text block in the parent Post"
-                            )
-                        )
+                                text = "this is another text block in the parent Post",
+                            ),
+                        ),
                     ),
                     layout = listOf(
                         RowBlockLayout(
                             rows = listOf(
-                                listOf(1, 0)
-                            )
-                        )
-                    )
-                )
+                                listOf(1, 0),
+                            ),
+                        ),
+                    ),
+                ),
             ),
             content = listOf(
                 TextContent(
-                    text = "lol, this is the content i am adding in my reblog of the parent Post"
-                )
-            )
+                    text = "lol, this is the content i am adding in my reblog of the parent Post",
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -1087,27 +1087,27 @@ internal class SampleFilesIndividualParseTest {
                     content = ContentWrapper(
                         contentList = listOf(
                             TextContent(
-                                text = "this is the root Post, which is broken"
-                            )
-                        )
+                                text = "this is the root Post, which is broken",
+                            ),
+                        ),
                     ),
-                    layout = emptyList()
+                    layout = emptyList(),
                 ),
                 Trail(
                     brokenBlogName = "another-broken-blog",
                     content = ContentWrapper(
                         contentList = listOf(
                             TextContent(
-                                text = "this is the parent Post, which is also broken"
+                                text = "this is the parent Post, which is also broken",
                             ),
                             TextContent(
-                                text = "this is another text block in the broken parent Post"
-                            )
-                        )
+                                text = "this is another text block in the broken parent Post",
+                            ),
+                        ),
                     ),
-                    layout = emptyList()
-                )
-            )
+                    layout = emptyList(),
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -1121,7 +1121,7 @@ internal class SampleFilesIndividualParseTest {
         val content = parseFile<RowBlockLayout.Display>("samples/officialSamples/rowBlockDisplay/carousel.json")
         val expected = RowBlockLayout.Display(
             blocks = listOf(4, 5, 6),
-            mode = RowBlockLayout.Display.Mode.Carousel()
+            mode = RowBlockLayout.Display.Mode.Carousel(),
         )
         assertEquals(expected, content)
     }
@@ -1130,7 +1130,7 @@ internal class SampleFilesIndividualParseTest {
     internal fun testOfficial_rowBlockDisplay_weighted() {
         val content = parseFile<RowBlockLayout.Display>("samples/officialSamples/rowBlockDisplay/weighted.json")
         val expected = RowBlockLayout.Display(
-            blocks = listOf(1, 2)
+            blocks = listOf(1, 2),
         )
         assertEquals(expected, content)
     }
@@ -1144,7 +1144,7 @@ internal class SampleFilesIndividualParseTest {
         val content = parseFile<TextFormat>("samples/officialSamples/textFormat/bold.json")
         val expected = BoldTextFormat(
             start = 0,
-            end = 20
+            end = 20,
         )
         assertEquals(expected, content)
     }
@@ -1155,7 +1155,7 @@ internal class SampleFilesIndividualParseTest {
         val expected = ColorTextFormat(
             start = 10,
             end = 15,
-            hex = Color("#ff492f")
+            hex = Color("#ff492f"),
         )
         assertEquals(expected, content)
     }
@@ -1165,7 +1165,7 @@ internal class SampleFilesIndividualParseTest {
         val content = parseFile<TextFormat>("samples/officialSamples/textFormat/italic.json")
         val expected = ItalicTextFormat(
             start = 9,
-            end = 34
+            end = 34,
         )
         assertEquals(expected, content)
     }
@@ -1176,7 +1176,7 @@ internal class SampleFilesIndividualParseTest {
         val expected = LinkTextFormat(
             start = 6,
             end = 10,
-            url = "https://www.nasa.gov"
+            url = "https://www.nasa.gov",
         )
         assertEquals(expected, content)
     }
@@ -1190,8 +1190,8 @@ internal class SampleFilesIndividualParseTest {
             blog = Blog(
                 uuid = "t:123456abcdf",
                 name = "david",
-                url = "https://davidslog.com/"
-            )
+                url = "https://davidslog.com/",
+            ),
         )
         assertEquals(expected, content)
     }
@@ -1202,7 +1202,7 @@ internal class SampleFilesIndividualParseTest {
         val expected = SizeTextFormat(
             start = 10,
             end = 15,
-            size = SizeTextFormat.Option.Big
+            size = SizeTextFormat.Option.Big,
         )
         assertEquals(expected, content)
     }
@@ -1213,7 +1213,7 @@ internal class SampleFilesIndividualParseTest {
         val expected = SizeTextFormat(
             start = 10,
             end = 15,
-            size = SizeTextFormat.Option.Small
+            size = SizeTextFormat.Option.Small,
         )
         assertEquals(expected, content)
     }
@@ -1223,7 +1223,7 @@ internal class SampleFilesIndividualParseTest {
         val content = parseFile<TextFormat>("samples/officialSamples/textFormat/strikethrough.json")
         val expected = StrikeThroughTextFormat(
             start = 4,
-            end = 9
+            end = 9,
         )
         assertEquals(expected, content)
     }
@@ -1286,7 +1286,7 @@ internal class SampleFilesIndividualParseTest {
                 ),
                 tags = emptyList(),
                 title = "Submit a post",
-                guidelines = ""
+                guidelines = "",
             ),
             subscribed = false,
             title = "Kotlr",
@@ -1298,7 +1298,7 @@ internal class SampleFilesIndividualParseTest {
             updated = 1540056911,
             url = "https://kotlr-development.tumblr.com/",
             uuid = "t:ukIuGYR_Jcdm60j7Nb95dg",
-            isOptOutAds = true
+            isOptOutAds = true,
         )
         assertEquals(expected, blog)
     }
@@ -1307,7 +1307,7 @@ internal class SampleFilesIndividualParseTest {
     internal fun onceFailed_blog_asksAllowMedia() {
         val blog = parseFile<Blog>("samples/onceFailed/blog/asksAllowMedia.json")
         val expected = Blog(
-            asksAllowMedia = true
+            asksAllowMedia = true,
         )
         assertEquals(expected, blog)
     }
@@ -1350,8 +1350,8 @@ internal class SampleFilesIndividualParseTest {
                 cameraMake = "Apple",
                 cameraModel = "iPhone 11 Pro",
                 lens = "4mm",
-                sensorWidthMM = "4"
-            )
+                sensorWidthMM = "4",
+            ),
         )
         assertEquals(expected, content)
     }
@@ -1360,7 +1360,7 @@ internal class SampleFilesIndividualParseTest {
     internal fun onceFailed_content_listOfAttribution() {
         val content = parseFile<PostContent>("samples/onceFailed/content/listOfAttribution.json")
         val expected = ImageContent(
-            attribution = AttributionWrapper(listAttribution = emptyList())
+            attribution = AttributionWrapper(listAttribution = emptyList()),
         )
         assertEquals(expected, content)
     }
@@ -1371,7 +1371,7 @@ internal class SampleFilesIndividualParseTest {
         val expected = TextContent(
             text = "Test",
             subType = TextContent.SubType.Indented,
-            indentLevel = 1
+            indentLevel = 1,
         )
         assertEquals(expected, content)
     }
@@ -1384,8 +1384,8 @@ internal class SampleFilesIndividualParseTest {
             iframe = Media(
                 url = "https://safe.txmblr.com/svc/embed/iframe/blogId/postId?w=540&h=304&media_id=HgbN8doxXxg#embed-ukIuGYR_Jcdm60j7Nb95dg",
                 width = 540,
-                height = 304
-            )
+                height = 304,
+            ),
         )
         assertEquals(expected, content)
     }
@@ -1400,9 +1400,9 @@ internal class SampleFilesIndividualParseTest {
                     type = "image/jpeg",
                     url = "https://66.media.tumblr.com/previews/tumblr_ukIuGYR_Jcdm60j7Nb95dg_filmstrip.jpg",
                     width = 2000,
-                    height = 112
-                )
-            )
+                    height = 112,
+                ),
+            ),
         )
         assertEquals(expected, content)
     }
@@ -1417,28 +1417,28 @@ internal class SampleFilesIndividualParseTest {
         val expected = RowBlockLayout(
             display = listOf(
                 RowBlockLayout.Display(
-                    blocks = listOf(0)
+                    blocks = listOf(0),
                 ),
                 RowBlockLayout.Display(
-                    blocks = listOf(1)
+                    blocks = listOf(1),
                 ),
                 RowBlockLayout.Display(
-                    blocks = listOf(2)
+                    blocks = listOf(2),
                 ),
                 RowBlockLayout.Display(
-                    blocks = listOf(3)
+                    blocks = listOf(3),
                 ),
                 RowBlockLayout.Display(
-                    blocks = listOf(4)
+                    blocks = listOf(4),
                 ),
                 RowBlockLayout.Display(
-                    blocks = listOf(5)
+                    blocks = listOf(5),
                 ),
                 RowBlockLayout.Display(
-                    blocks = listOf(6)
-                )
+                    blocks = listOf(6),
+                ),
             ),
-            truncateAfter = 5
+            truncateAfter = 5,
         )
         assertEquals(expected, content)
     }
@@ -1453,8 +1453,8 @@ internal class SampleFilesIndividualParseTest {
         val expected = RequestLink(
             fullLink = "asdf",
             queryParams = RequestQueryParameters(
-                tumblelog = "asdf"
-            )
+                tumblelog = "asdf",
+            ),
         )
         assertEquals(expected, post)
     }
@@ -1466,8 +1466,8 @@ internal class SampleFilesIndividualParseTest {
             fullLink = "/v2/user/following?offset=20",
             httpMethod = "GET",
             queryParams = RequestQueryParameters(
-                offset = "20"
-            )
+                offset = "20",
+            ),
         )
         assertEquals(expected, post)
     }
@@ -1481,7 +1481,7 @@ internal class SampleFilesIndividualParseTest {
             queryParams = RequestQueryParameters(
                 types = "like",
                 before = "1622863424",
-            )
+            ),
         )
         assertEquals(expected, post)
     }
@@ -1502,8 +1502,8 @@ internal class SampleFilesIndividualParseTest {
                 url = "https://46.media.tumblr.com/ukIuGYR_Jcdm60j7Nb95dg/tumblr_ukIuGYR_Jcdm60j7Nb95dg_1280.gif",
                 type = "image/gif",
                 width = 1280,
-                height = 985
-            )
+                height = 985,
+            ),
         )
         assertEquals(expected, media)
     }
@@ -1517,7 +1517,7 @@ internal class SampleFilesIndividualParseTest {
             width = 1579,
             height = 1200,
             url = "https://66.media.tumblr.com/urlPart1/urlPart2/s2048x3072/ukIuGYR_Jcdm60j7Nb95dg.png",
-            hasOriginalDimensions = true
+            hasOriginalDimensions = true,
         )
         assertEquals(expected, media)
     }
@@ -1530,7 +1530,7 @@ internal class SampleFilesIndividualParseTest {
             url = "http://69.media.tumblr.com/ukIuGYR_Jcdm60j7Nb95dg/tumblr_ukIuGYR_Jcdm60j7Nb95dg.mp4",
             height = 640,
             width = 480,
-            hd = false
+            hd = false,
         )
         assertEquals(expected, media)
     }
@@ -1548,7 +1548,7 @@ internal class SampleFilesIndividualParseTest {
             blogUuid = "t:ukIuGYR_Jcdm60j7Nb95dg",
             blogUrl = "http://kotlr-development.tumblr.com/",
             blogFollowed = false,
-            avatarShape = "circle"
+            avatarShape = "circle",
         )
         assertEquals(expected, note)
     }
@@ -1568,7 +1568,7 @@ internal class SampleFilesIndividualParseTest {
             postAttributionTypeName = "GIF",
             photoUrl = "https://66.media.tumblr.com/ukIuGYR_Jcdm60j7Nb95dg/tumblr_ukIuGYR_Jcdm60j7Nb95dg_500.gif",
             photoWidth = 500,
-            photoHeight = 225
+            photoHeight = 225,
         )
         assertEquals(expected, note)
     }
@@ -1582,7 +1582,7 @@ internal class SampleFilesIndividualParseTest {
             blogUuid = "t:ukIuGYR_Jcdm60j7Nb95dg",
             blogUrl = "http://kotlr-development.tumblr.com/",
             blogFollowed = true,
-            avatarShape = "circle"
+            avatarShape = "circle",
         )
         assertEquals(expected, note)
     }
@@ -1600,7 +1600,7 @@ internal class SampleFilesIndividualParseTest {
             addedText = "ukIuGYR_Jcdm60j7Nb95dg",
             postId = "8675309",
             reblogParentBlogName = "kotlr-development",
-            canBlock = true
+            canBlock = true,
         )
         assertEquals(expected, note)
     }
@@ -1623,11 +1623,11 @@ internal class SampleFilesIndividualParseTest {
                     blog = Blog(
                         name = "kotlr-development",
                         url = "http://kotlr-development.tumblr.com/",
-                        uuid = "t:ukIuGYR_Jcdm60j7Nb95dg"
-                    )
-                )
+                        uuid = "t:ukIuGYR_Jcdm60j7Nb95dg",
+                    ),
+                ),
             ),
-            canBlock = true
+            canBlock = true,
         )
         assertEquals(expected, note)
     }
@@ -1644,7 +1644,7 @@ internal class SampleFilesIndividualParseTest {
             avatarShape = "square",
             replyText = "ukIuGYR_Jcdm60j7Nb95dg",
             formatting = emptyList(),
-            canBlock = true
+            canBlock = true,
         )
         assertEquals(expected, note)
     }
@@ -1745,7 +1745,7 @@ internal class SampleFilesIndividualParseTest {
             postId = "1622863497",
             addedText = "asdf",
             postTags = listOf(
-                "testing"
+                "testing",
             ),
         )
         assertEquals(expected, note)
@@ -1775,7 +1775,7 @@ internal class SampleFilesIndividualParseTest {
             reblogKey = "asdf",
             postId = "1622863497",
             postTags = listOf(
-                "testing"
+                "testing",
             ),
         )
         assertEquals(expected, note)
@@ -1809,25 +1809,25 @@ internal class SampleFilesIndividualParseTest {
                     Media(
                         width = 512,
                         height = 512,
-                        url = "https://assets.tumblr.com/images/default_avatar/cone_open_512.png"
+                        url = "https://assets.tumblr.com/images/default_avatar/cone_open_512.png",
                     ),
                     Media(
                         width = 128,
                         height = 128,
-                        url = "https://assets.tumblr.com/images/default_avatar/cone_open_128.png"
+                        url = "https://assets.tumblr.com/images/default_avatar/cone_open_128.png",
                     ),
                     Media(
                         width = 96,
                         height = 96,
-                        url = "https://assets.tumblr.com/images/default_avatar/cone_open_96.png"
+                        url = "https://assets.tumblr.com/images/default_avatar/cone_open_96.png",
                     ),
                     Media(
                         width = 64,
                         height = 64,
-                        url = "https://assets.tumblr.com/images/default_avatar/cone_open_64.png"
+                        url = "https://assets.tumblr.com/images/default_avatar/cone_open_64.png",
                     ),
                 ),
-            )
+            ),
         )
         assertEquals(expected, post)
     }
@@ -1836,7 +1836,7 @@ internal class SampleFilesIndividualParseTest {
     internal fun onceFailed_posts_blockPost_isBlurredImages() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_isBlurredImages.json")
         val expected = Post(
-            isBlurredImages = true
+            isBlurredImages = true,
         )
         assertEquals(expected, post)
     }
@@ -1845,7 +1845,7 @@ internal class SampleFilesIndividualParseTest {
     internal fun onceFailed_posts_blockPost_originalType() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_originalType.json")
         val expected = Post(
-            originalType = Post.Type.Photo
+            originalType = Post.Type.Photo,
         )
         assertEquals(expected, post)
     }
@@ -1854,7 +1854,7 @@ internal class SampleFilesIndividualParseTest {
     internal fun onceFailed_posts_blockPost_originalType_conversation() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_originalType_conversation.json")
         val expected = Post(
-            originalType = Post.Type.Conversation
+            originalType = Post.Type.Conversation,
         )
         assertEquals(expected, post)
     }
@@ -1863,7 +1863,7 @@ internal class SampleFilesIndividualParseTest {
     internal fun onceFailed_posts_blockPost_originalType_note() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_originalType_note.json")
         val expected = Post(
-            originalType = Post.Type.Note
+            originalType = Post.Type.Note,
         )
         assertEquals(expected, post)
     }
@@ -1872,7 +1872,7 @@ internal class SampleFilesIndividualParseTest {
     internal fun onceFailed_posts_blockPost_originalType_regular() {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPost_originalType_regular.json")
         val expected = Post(
-            originalType = Post.Type.Regular
+            originalType = Post.Type.Regular,
         )
         assertEquals(expected, post)
     }
@@ -1882,7 +1882,7 @@ internal class SampleFilesIndividualParseTest {
         val post = parseFile<Post>("samples/onceFailed/posts/blockPostWithAskFields.json")
         val expected = Post(
             askingName = "ukIuGYR_Jcdm60j7Nb95dg",
-            askingUrl = "https://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/"
+            askingUrl = "https://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/",
         )
         assertEquals(expected, post)
     }
@@ -1946,9 +1946,9 @@ internal class SampleFilesIndividualParseTest {
                     blogUuid = "t:ukIuGYR_Jcdm60j7Nb95dg",
                     blogUrl = "http://ukIuGYR_Jcdm60j7Nb95dg.tumblr.com/",
                     blogFollowed = false,
-                    avatarShape = "circle"
-                )
-            )
+                    avatarShape = "circle",
+                ),
+            ),
         )
         assertEquals(expected, post)
     }
@@ -1970,7 +1970,7 @@ internal class SampleFilesIndividualParseTest {
             rebloggedRootTitle = "ukIuGYR_Jcdm60j7Nb95dg",
             rebloggedRootUuid = "t:ukIuGYR_Jcdm60j7Nb95dg",
             rebloggedRootCanMessage = true,
-            rebloggedRootFollowing = false
+            rebloggedRootFollowing = false,
         )
         assertEquals(expected, post)
     }
@@ -1984,7 +1984,7 @@ internal class SampleFilesIndividualParseTest {
         val textFormat = parseFile<TextFormat>("samples/onceFailed/textFormat/small.json")
         val expected = SmallTextFormat(
             start = 0,
-            end = 60
+            end = 60,
         )
         assertEquals(expected, textFormat)
     }
@@ -2003,15 +2003,15 @@ internal class SampleFilesIndividualParseTest {
             defaultPostFormat = Post.PostFormat.HTML,
             blogs = listOf(
                 Blog(
-                    primary = true
+                    primary = true,
                 ),
                 Blog(
-                    primary = false
+                    primary = false,
                 ),
                 Blog(
-                    primary = false
-                )
-            )
+                    primary = false,
+                ),
+            ),
         )
         assertEquals(expected, user)
     }
@@ -2030,18 +2030,18 @@ internal class SampleFilesIndividualParseTest {
         val expected = ResponseBlogAvatar.Response(
             meta = ResponseMetaInfo(
                 status = 404,
-                msg = "Not Found"
+                msg = "Not Found",
             ),
             response = ResponseBlogAvatar.Wrapper(
-                error = "[]"
+                error = "[]",
             ),
             errors = listOf(
                 TumblrError(
                     title = "Not Found",
                     code = 0,
-                    detail = "Tumblr went thud. Try again."
-                )
-            )
+                    detail = "Tumblr went thud. Try again.",
+                ),
+            ),
         )
         assertEquals(expected, response)
     }
@@ -2052,13 +2052,13 @@ internal class SampleFilesIndividualParseTest {
         val expected = ResponseBlogAvatar.Response(
             meta = ResponseMetaInfo(
                 status = 302,
-                msg = "Found"
+                msg = "Found",
             ),
             response = ResponseBlogAvatar.Wrapper(
                 body = ResponseBlogAvatar.Body(
-                    url = "https://66.media.tumblr.com/avatar_19fe3de0d7fb_512.png"
-                )
-            )
+                    url = "https://66.media.tumblr.com/avatar_19fe3de0d7fb_512.png",
+                ),
+            ),
         )
         assertEquals(expected, response)
     }
@@ -2073,7 +2073,7 @@ internal class SampleFilesIndividualParseTest {
         val expected = ResponseBlogLikes.Response(
             meta = ResponseMetaInfo(
                 status = 200,
-                msg = "OK"
+                msg = "OK",
             ),
             response = ResponseBlogLikes.Wrapper(
                 body = ResponseBlogLikes.Body(
@@ -2085,20 +2085,20 @@ internal class SampleFilesIndividualParseTest {
                             httpMethod = "GET",
                             queryParams = RequestQueryParameters(
                                 limit = "1",
-                                before = "1539817301"
-                            )
+                                before = "1539817301",
+                            ),
                         ),
                         prev = RequestLink(
                             fullLink = "/v2/blog/kotlr-development.tumblr.com/likes?limit=1&after=1539817301",
                             httpMethod = "GET",
                             queryParams = RequestQueryParameters(
                                 limit = "1",
-                                after = "1539817301"
-                            )
-                        )
-                    )
-                )
-            )
+                                after = "1539817301",
+                            ),
+                        ),
+                    ),
+                ),
+            ),
         )
         assertEquals(expected, response)
     }
@@ -2109,11 +2109,11 @@ internal class SampleFilesIndividualParseTest {
         val expected = ResponseBlogLikes.Response(
             meta = ResponseMetaInfo(
                 status = 403,
-                msg = "Forbidden"
+                msg = "Forbidden",
             ),
             response = ResponseBlogLikes.Wrapper(
-                error = "Not authorized."
-            )
+                error = "Not authorized.",
+            ),
         )
         assertEquals(expected, response)
     }
@@ -2128,13 +2128,13 @@ internal class SampleFilesIndividualParseTest {
         val expected = ResponseUserDashboard.Response(
             meta = ResponseMetaInfo(
                 status = 200,
-                msg = "OK"
+                msg = "OK",
             ),
             response = ResponseUserDashboard.Wrapper(
                 body = ResponseUserDashboard.Body(
-                    posts = listOf(Post())
-                )
-            )
+                    posts = listOf(Post()),
+                ),
+            ),
         )
         assertEquals(expected, response)
     }
@@ -2145,18 +2145,18 @@ internal class SampleFilesIndividualParseTest {
         val expected = ResponseUserDashboard.Response(
             meta = ResponseMetaInfo(
                 status = 401,
-                msg = "Unauthorized"
+                msg = "Unauthorized",
             ),
             response = ResponseUserDashboard.Wrapper(
-                error = "[]"
+                error = "[]",
             ),
             errors = listOf(
                 TumblrError(
                     title = "Unauthorized",
                     code = 1016,
-                    detail = "Unable to authorize"
-                )
-            )
+                    detail = "Unable to authorize",
+                ),
+            ),
         )
         assertEquals(expected, response)
     }
@@ -2167,18 +2167,18 @@ internal class SampleFilesIndividualParseTest {
         val expected = ResponseUserDashboard.Response(
             meta = ResponseMetaInfo(
                 status = 429,
-                msg = "Limit Exceeded"
+                msg = "Limit Exceeded",
             ),
             response = ResponseUserDashboard.Wrapper(
-                error = "[]"
+                error = "[]",
             ),
             errors = listOf(
                 TumblrError(
                     title = "Limit Exceeded",
                     code = 0,
-                    detail = "Minor hiccup. Try again."
-                )
-            )
+                    detail = "Minor hiccup. Try again.",
+                ),
+            ),
         )
         assertEquals(expected, response)
     }

@@ -29,7 +29,7 @@ internal class ThemeWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ThemeWrapper>
         moshi.adapter(
             Types.newParameterizedType(List::class.java, BlogTheme::class.java),
             emptySet(),
-            null
+            null,
         )
 
     @FromJson

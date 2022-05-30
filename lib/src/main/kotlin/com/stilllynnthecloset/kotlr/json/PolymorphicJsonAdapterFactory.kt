@@ -92,7 +92,7 @@ public class PolymorphicJsonAdapterFactory<T> internal constructor(
     private val subtypes: List<Type>,
     private val defaultValue: T?,
     private val defaultValueSet: Boolean,
-    private val missingLabelType: Type?
+    private val missingLabelType: Type?,
 ) : JsonAdapter.Factory {
     public companion object {
         /**
@@ -108,7 +108,7 @@ public class PolymorphicJsonAdapterFactory<T> internal constructor(
                 emptyList(),
                 null,
                 false,
-                null
+                null,
             )
         }
 
@@ -134,7 +134,7 @@ public class PolymorphicJsonAdapterFactory<T> internal constructor(
             newSubtypes,
             defaultValue,
             defaultValueSet,
-            missingLabelType
+            missingLabelType,
         )
     }
 
@@ -150,7 +150,7 @@ public class PolymorphicJsonAdapterFactory<T> internal constructor(
             subtypes,
             defaultValue,
             true,
-            missingLabelType
+            missingLabelType,
         )
     }
 
@@ -165,7 +165,7 @@ public class PolymorphicJsonAdapterFactory<T> internal constructor(
             subtypes,
             defaultValue,
             defaultValueSet,
-            missingLabelType
+            missingLabelType,
         )
     }
 
@@ -175,7 +175,7 @@ public class PolymorphicJsonAdapterFactory<T> internal constructor(
     override fun create(
         type: Type,
         annotations: Set<Annotation?>,
-        moshi: Moshi
+        moshi: Moshi,
     ): JsonAdapter<*>? {
         if (Types.getRawType(type) != baseType || annotations.isNotEmpty()) {
             return null
@@ -200,7 +200,7 @@ public class PolymorphicJsonAdapterFactory<T> internal constructor(
             jsonAdapters,
             defaultValue,
             defaultValueSet,
-            missingLabelAdapter
+            missingLabelAdapter,
         ).nullSafe()
     }
 
@@ -211,7 +211,7 @@ public class PolymorphicJsonAdapterFactory<T> internal constructor(
         private val jsonAdapters: List<JsonAdapter<Any>>,
         private val defaultValue: Any?,
         private val defaultValueSet: Boolean,
-        private val missingLabelAdapter: JsonAdapter<Any>?
+        private val missingLabelAdapter: JsonAdapter<Any>?,
     ) : JsonAdapter<Any?>() {
 
         /** Single-element options containing the label's key only.  */
@@ -248,7 +248,7 @@ public class PolymorphicJsonAdapterFactory<T> internal constructor(
                 if (labelIndex == LABEL_INDEX_USE_DEFAULT && !defaultValueSet) {
                     throw JsonDataException(
                         "Expected one of $labels for key '$labelKey' but found '${reader.nextString()}'. " +
-                            "Register a subtype for this label."
+                            "Register a subtype for this label.",
                     )
                 }
                 return labelIndex

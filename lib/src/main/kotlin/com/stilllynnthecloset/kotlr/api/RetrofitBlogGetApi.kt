@@ -94,7 +94,7 @@ internal interface RetrofitBlogGetApi {
     @GET("blog/{identifier}/info")
     suspend fun getBlogInfo(
         @Path("identifier", encoded = true)
-        blogIdentifier: String
+        blogIdentifier: String,
     ): Response<ResponseBlogInfo.Response>
 
     @GET("blog/{identifier}/likes")

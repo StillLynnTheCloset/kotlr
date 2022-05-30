@@ -20,12 +20,12 @@ public data class TumblrUserKey constructor(
     val userSecret: String,
 ) : TumblrAppKey(
     apiKey,
-    apiSecret
+    apiSecret,
 ) {
     public constructor(appKey: TumblrAppKey, userKey: String, userSecret: String) : this(
         appKey.apiKey,
         appKey.apiSecret,
         userKey,
-        userSecret
+        userSecret,
     )
 }

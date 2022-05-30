@@ -166,7 +166,7 @@ public data class ColorTextFormat constructor(
  */
 @Deprecated(
     message = "This was removed from the Tumblr API spec and is unsupported when creating posts.",
-    replaceWith = ReplaceWith("SmallTextFormat()")
+    replaceWith = ReplaceWith("SmallTextFormat()"),
 )
 @JsonClass(generateAdapter = true)
 public data class SizeTextFormat constructor(
@@ -184,7 +184,7 @@ public data class SizeTextFormat constructor(
      */
     @Deprecated(
         message = "This was removed from the Tumblr API spec and is unsupported when creating posts.",
-        replaceWith = ReplaceWith("SmallTextFormat()")
+        replaceWith = ReplaceWith("SmallTextFormat()"),
     )
     @JsonClass(generateAdapter = false)
     public enum class Option {
