@@ -8,6 +8,7 @@ import com.stilllynnthecloset.kotlr.response.TumblrError
 import com.stilllynnthecloset.kotlr.response.TumblrResponse
 import com.stilllynnthecloset.kotlr.response.WrapperInterface
 import com.stilllynnthecloset.kotlr.types.Post
+import com.stilllynnthecloset.kotlr.types.QueueState
 import com.stilllynnthecloset.kotlr.types.RequestLinks
 
 /**
@@ -50,6 +51,7 @@ public interface ResponseBlogQueue {
      *
      * @param links Additional links that you might be interested in.
      * @param posts A list of posts from this blog's queue.
+     * @param state The current state of the blog's queue.
      */
     @JsonClass(generateAdapter = true)
     public data class Body constructor(
@@ -57,5 +59,7 @@ public interface ResponseBlogQueue {
         val links: RequestLinks? = null,
         @Json(name = "posts")
         val posts: List<Post>? = null,
+        @Json(name = "state")
+        val state: QueueState? = null,
     )
 }
