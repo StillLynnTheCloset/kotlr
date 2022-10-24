@@ -133,7 +133,7 @@ public interface KotlrBlogPostApi {
     /**
      * Use this method to move a post within your blog's queue.
      *
-     * @param blogIdentifier The identifier of the blog who's queue needs reordering.
+     * @param blogIdentifier The identifier of the blog whose queue needs reordering.
      * @param postId The postId of the queued post that you want to move.
      * @param insertAfter The postId of the queued post that the post should be moved after, or 0 to move it to the front of the queue.
      */
@@ -146,7 +146,7 @@ public interface KotlrBlogPostApi {
     /**
      * Use this method to randomly shuffle your blog's queue.
      *
-     * @param blogIdentifier The identifier of the blog who's queue needs shuffling.
+     * @param blogIdentifier The identifier of the blog whose queue needs shuffling.
      */
     public suspend fun shuffleQueue(
         blogIdentifier: String,

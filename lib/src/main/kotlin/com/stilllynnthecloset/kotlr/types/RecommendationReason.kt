@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonClass
 /**
  * RecommendationReason - An object that is returned on [Post] objects, when the post is recommended to the user.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2021-05-29
  *
  * @param text TODO: Documentation.

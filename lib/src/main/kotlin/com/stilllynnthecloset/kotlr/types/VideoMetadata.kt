@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonClass
 /**
  * VideoMetadata - Additional meta data associated with a video.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2020-08-30
  *
  * @param id An identifier.

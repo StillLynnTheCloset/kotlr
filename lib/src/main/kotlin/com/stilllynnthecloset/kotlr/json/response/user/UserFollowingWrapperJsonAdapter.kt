@@ -19,7 +19,7 @@ import com.stilllynnthecloset.kotlr.response.type.user.ResponseUserFollowing
 /**
  * UserFollowingWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseUserFollowing].
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-10
  */
 internal class UserFollowingWrapperJsonAdapter(moshi: Moshi) :

@@ -24,7 +24,7 @@ import com.stilllynnthecloset.kotlr.types.Color
  * the Tumblr API to reconcile the ranges as needed to display correctly, just like
  * when nesting HTML.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @property start The starting index of the formatting range (inclusive).

@@ -106,7 +106,7 @@ public interface KotlrBlogGetApi {
      *
      * @param blogIdentifier An identifier for the blog.
      * @param pagingLimit Optional. The number of results to return: 1–50, inclusive
-     * @param pagingOffset Optional. Post number to start at
+     * @param pagingOffset Optional. The post number at which to start.
      * @param afterPostId Optional. Return posts that have appeared after this ID; Use this parameter to page through the results: first get a set of posts, and then get posts since the last ID of the previous set.
      * @param beforePostId Optional. Return posts that have appeared before this ID; Use this parameter to page through the results: first get a set of posts, and then get posts before the first ID of the previous set.
      * @param afterTime Optional. Retrieve posts after the specified timestamp
@@ -135,7 +135,7 @@ public interface KotlrBlogGetApi {
      *
      * @param blogIdentifier An identifier for the blog.
      * @param pagingLimit Optional. The number of results to return: 1–50, inclusive
-     * @param pagingOffset Optional. Post number to start at
+     * @param pagingOffset Optional. The post number at which to start.
      * @param afterPostId Optional. Return posts that have appeared after this ID; Use this parameter to page through the results: first get a set of posts, and then get posts since the last ID of the previous set.
      * @param beforePostId Optional. Return posts that have appeared before this ID; Use this parameter to page through the results: first get a set of posts, and then get posts before the first ID of the previous set.
      * @param afterTime Optional. Retrieve posts after the specified timestamp
@@ -167,7 +167,7 @@ public interface KotlrBlogGetApi {
      *
      * @param blogIdentifier An identifier for the blog.
      * @param pagingLimit Optional. The number of results to return: 1–50, inclusive
-     * @param pagingOffset Optional. Post number to start at
+     * @param pagingOffset Optional. The post number at which to start.
      * @param afterPostId Optional. Return posts that have appeared after this ID; Use this parameter to page through the results: first get a set of posts, and then get posts since the last ID of the previous set.
      * @param beforePostId Optional. Return posts that have appeared before this ID; Use this parameter to page through the results: first get a set of posts, and then get posts before the first ID of the previous set.
      * @param afterTime Optional. Retrieve posts after the specified timestamp
@@ -196,7 +196,7 @@ public interface KotlrBlogGetApi {
      *
      * @param blogIdentifier An identifier for the blog.
      * @param pagingLimit Optional. The number of results to return: 1–50, inclusive
-     * @param pagingOffset Optional. Post number to start at
+     * @param pagingOffset Optional. The post number at which to start.
      * @param afterPostId Optional. Return posts that have appeared after this ID; Use this parameter to page through the results: first get a set of posts, and then get posts since the last ID of the previous set.
      * @param beforePostId Optional. Return posts that have appeared before this ID; Use this parameter to page through the results: first get a set of posts, and then get posts before the first ID of the previous set.
      * @param afterTime Optional. Retrieve posts after the specified timestamp
@@ -225,7 +225,7 @@ public interface KotlrBlogGetApi {
      *
      * @param blogIdentifier An identifier for the blog.
      * @param pagingLimit Optional. The number of results to return: 1–50, inclusive
-     * @param pagingOffset Optional. Post number to start at
+     * @param pagingOffset Optional. The post number at which to start.
      * @param afterPostId Optional. Return posts that have appeared after this ID; Use this parameter to page through the results: first get a set of posts, and then get posts since the last ID of the previous set.
      * @param beforePostId Optional. Return posts that have appeared before this ID; Use this parameter to page through the results: first get a set of posts, and then get posts before the first ID of the previous set.
      * @param afterTime Optional. Retrieve posts after the specified timestamp
@@ -254,7 +254,7 @@ public interface KotlrBlogGetApi {
      *
      * @param blogIdentifier An identifier for the blog that you are using.
      * @param pagingLimit Optional. The number of results to return: 1–50, inclusive.
-     * @param pagingOffset Optional. Post number to start at.
+     * @param pagingOffset Optional. The post number at which to start.
      */
     public suspend fun getBlogBlocks(
         blogIdentifier: String,

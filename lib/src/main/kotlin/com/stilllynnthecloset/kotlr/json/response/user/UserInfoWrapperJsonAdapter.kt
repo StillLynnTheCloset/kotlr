@@ -19,7 +19,7 @@ import com.stilllynnthecloset.kotlr.response.type.user.ResponseUserInfo
 /**
  * UserInfoWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseUserInfo].
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  */
 internal class UserInfoWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponseUserInfo.Body>>() {

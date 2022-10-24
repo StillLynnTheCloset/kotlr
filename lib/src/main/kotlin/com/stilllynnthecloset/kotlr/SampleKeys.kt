@@ -8,7 +8,7 @@ import com.stilllynnthecloset.kotlr.authentication.TumblrUserKey
 /*
  * SampleKeys - A sample usage of the credentials.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-13
  */
 

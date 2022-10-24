@@ -8,7 +8,7 @@ import com.stilllynnthecloset.kotlr.types.AttributionList
  * AttributionListJsonAdapter - An adapter to help Moshi convert [AttributionList] objects to and
  * from either a [AttributionWrapper] object.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2020-03-21
  */
 internal class AttributionListJsonAdapter {

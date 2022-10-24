@@ -1,5 +1,7 @@
 package com.stilllynnthecloset.kotlr.types
 
+import java.util.Locale
+
 /**
  * Color - A representation of a color.
  *
@@ -14,7 +16,7 @@ package com.stilllynnthecloset.kotlr.types
  * aarrggbb
  * and can then be output either as an int, AARRGGBB, or #AARRGGBB
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-19
  */
 public data class Color constructor(
@@ -27,7 +29,7 @@ public data class Color constructor(
         private fun String.normalizeTo8DigitString(): String =
             removePrefix("#")
                 .takeIf { it.matches(validCharactersRegex) }
-                ?.toUpperCase()
+                ?.uppercase(Locale.getDefault())
                 ?.let {
                     return@let when (it.length) {
                         8 -> it

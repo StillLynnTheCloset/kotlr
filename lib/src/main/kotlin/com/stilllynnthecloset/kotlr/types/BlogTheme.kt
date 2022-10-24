@@ -7,7 +7,7 @@ import com.stilllynnthecloset.kotlr.json.qualifier.HexColorOctothorpe
 /**
  * BlogTheme - A blog's user customizable theme.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param headerFullWidth TODO: Documentation

@@ -23,7 +23,7 @@ import com.stilllynnthecloset.kotlr.getOAuthProvider
  * // just make it example.com.
  * val requestUrl: String? = flow.getRequestUrl("example.com")
  *
- * // We'll just print this to the console so you can copy and paste it.
+ * // We'll just print this to the console, so you can copy and paste it.
  * println("Open this url in your browser and sign in")
  * println(requestUrl)
  *
@@ -36,11 +36,11 @@ import com.stilllynnthecloset.kotlr.getOAuthProvider
  * val userKey: TumblrUserKey = flow.parseResponseUrl(redirectedUrl)
  * println(userKey.toString())
  *
- * // Print out information about the newly logged in user.
+ * // Print out information about the newly logged-in user.
  * println(getApi(userKey).getUserInfo())
  * </pre>
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  */
 public class OAuthFlow constructor(private val appKey: TumblrAppKey) {
@@ -74,7 +74,7 @@ public class OAuthFlow constructor(private val appKey: TumblrAppKey) {
     /**
      * Check that the given [url] is a Tumblr Verifier URL.
      */
-    public fun isVerifierUrl(url: String): Boolean = url.contains(URL_FILTER)
+    private fun isVerifierUrl(url: String): Boolean = url.contains(URL_FILTER)
 
     /**
      * Retrieve a User Token based on the given verifier [url].

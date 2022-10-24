@@ -4,7 +4,7 @@ import com.stilllynnthecloset.kotlr.types.content.Attribution
 import com.stilllynnthecloset.kotlr.types.content.ImageContent
 
 /**
- * AttributionList - An abstraction of a list of attribution objects because sometimes Tumblr returns a single object and sometimes
+ * AttributionList - An abstraction of a list of attribution objects because sometimes Tumblr returns a single object, and sometimes
  * they return a list of objects. This abstract class hides the fact that there is an underlying class that helps Moshi
  * parse both of these scenarios into a list of objects.
  *

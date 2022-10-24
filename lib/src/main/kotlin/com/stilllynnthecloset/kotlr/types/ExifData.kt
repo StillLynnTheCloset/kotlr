@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonClass
 /**
  * ExifData - Extra data included in the Exif headers of a photo.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param camera The name/model/brand of the camera that took this picture.
@@ -17,7 +17,7 @@ import com.squareup.moshi.JsonClass
  * @param exposure The length of the exposure used to take this picture.
  * @param exposureTime The length of the exposure used to take this picture.
  * @param focalLength The focal length used to take this picture.
- * @param focalLength35mmEquivalent The focal length used to take this picture (converted to be equivalent to a 35mm lens.
+ * @param focalLength35mmEquivalent The focal length used to take this picture (converted to be equivalent to a 35 mm lens.)
  * @param time The time that this picture was taken.
  * @param lens The length of the lens used to take this picture.
  * @param sensorWidthMM The size of the sensor used to take this picture.

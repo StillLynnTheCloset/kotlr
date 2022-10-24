@@ -8,7 +8,7 @@ import com.squareup.moshi.JsonClass
  *
  * This is only returned when a post is a reblog.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param comment The new text that was added during the reblog, but only sometimes?

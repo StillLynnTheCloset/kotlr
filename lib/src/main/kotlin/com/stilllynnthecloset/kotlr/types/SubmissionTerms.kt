@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonClass
 /**
  * SubmissionTerms - An object that is included in some [Blog]s. Defines any restrictions and guidelines for the blog's "Submit" page.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param tags A set of tags that submitters may choose from.

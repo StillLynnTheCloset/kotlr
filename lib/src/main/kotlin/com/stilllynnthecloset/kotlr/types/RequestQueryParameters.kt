@@ -8,7 +8,7 @@ import com.squareup.moshi.JsonClass
  *
  * TODO: Break this up to be unique per response.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2020-08-30
  *
  * @param limit The number of results to return.
@@ -20,9 +20,9 @@ import com.squareup.moshi.JsonClass
  * @param reblogInfo Whether reblog info should be returned.
  * @param notesInfo Whether note info should be returned.
  * @param mode The request mode for post notes.
- * @param id The post Id that was requested.
+ * @param id The post id that was requested.
  * @param beforeTimestamp The timestamp that the request occurred before.
- * @param beforeId The post Id that was before the requested post(s).
+ * @param beforeId The post id that was before the requested post(s).
  * @param types The types of notifications requested.
  * @param tumblelog The name of the blog requested.
  */

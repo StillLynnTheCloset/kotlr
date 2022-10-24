@@ -19,7 +19,7 @@ import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogAvatar
 /**
  * BlogAvatarWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseBlogAvatar].
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-10
  */
 internal class BlogAvatarWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponseBlogAvatar.Body>>() {

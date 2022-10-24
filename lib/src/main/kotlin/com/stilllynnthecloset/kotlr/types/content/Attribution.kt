@@ -12,7 +12,7 @@ import com.stilllynnthecloset.kotlr.types.Post
  * [PostAttribution], [LinkAttribution], [BlogAttribution], or [AppAttribution] type attribution. Like most objects in NPF,
  * attributions only require the type field, and other fields are required based on the given type.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  */
 public sealed class Attribution {

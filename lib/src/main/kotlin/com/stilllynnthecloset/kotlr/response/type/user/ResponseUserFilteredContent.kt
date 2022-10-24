@@ -11,14 +11,14 @@ import com.stilllynnthecloset.kotlr.response.WrapperInterface
 /**
  * ResponseUserFilteredContent - The response to a request for a user's content filters.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2021-05-29
  */
 public interface ResponseUserFilteredContent {
     /**
      * Response - The top level object returned from Tumblr.
      *
-     * @param meta An object containing any meta data returned from Tumblr, as well as some data returned in response headers.
+     * @param meta An object containing any metadata returned from Tumblr, as well as some data returned in response headers.
      * @param response The actual response to the request, as a wrapper object to handle some types of errors from Tumblr.
      * @param errors An array of error objects, which are returned when some types of errors occur.
      */

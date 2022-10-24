@@ -63,8 +63,8 @@ private const val AUTHORIZE_URL = "${O_AUTH_BASE_URL}authorize"
 private const val REQUEST_TOKEN_RESOURCE = "${O_AUTH_BASE_URL}request_token"
 private const val ACCESS_TOKEN_RESOURCE = "${O_AUTH_BASE_URL}access_token"
 
-// Tumblr returns the HTTP response code inside of the response body,
-// so we tell OkHTTP/Retrofit to treat every response as a 200 and we'll handle correctly parsing the error responses.
+// Tumblr returns the HTTP response code inside the response body,
+// so we tell OkHTTP/Retrofit to treat every response as a 200, and we'll handle correctly parsing the error responses.
 private val treatAs200ResponseInterceptor: Interceptor = Interceptor { chain: Interceptor.Chain ->
     return@Interceptor chain.proceed(chain.request())
         .newBuilder()

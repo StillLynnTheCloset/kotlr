@@ -1,5 +1,5 @@
 [![version](https://img.shields.io/static/v1?label=Version&message=0.9.1&color=brightgreen)]()
-[![Build Status](https://travis-ci.com/stilllynnthecloset/kotlr.svg?branch=develop)](https://travis-ci.com/highthunder/kotlr)
+[![Build Status](https://travis-ci.com/stilllynnthecloset/kotlr.svg?branch=develop)](https://travis-ci.com/stilllynnthecloset/kotlr)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
 # Kotlr
@@ -34,7 +34,7 @@ Currently, this only includes getting OAuth keys.
 2. ~~Improve documentation.~~
 3. ~~Improve test coverage and make tests more targeted~~.
 4. ~~Add support for requests using other HTTP verbs.~~
-5. Add support for mutli-part form uploads. After this, Kotlr will support all the Tumblr API which will mark version 1.0.0
+5. Add support for multi-part form uploads. After this, Kotlr will support all the Tumblr API which will mark version 1.0.0
 6. Clean up the API by: restricting visibility, reducing optional and default values, ~~limiting mutability, and enforcing stricter types~~.
 7. Create extension library to improve ease of use on Android.
 8. Create PoC Android App.
@@ -105,7 +105,7 @@ to your module's `dependencies` block.
 
 ```kotlin
 // Kotlr also makes the process of getting OAuth keys easy.
-suspend fun oAuthExample() {
+fun oAuthExample() = runBlocking {
 
     println("Enter your consumer key:")
     val apiKey: String = Scanner(System.`in`).nextLine()
@@ -120,9 +120,9 @@ suspend fun oAuthExample() {
     // It will then ask you to login to Tumblr and authorize your app to access your account.
     // Since we aren't using a web based application, the callbackUrl doesn't really matter, so let's
     // just make it example.com.
-    val requestUrl: String? = flow.getRequestUrl("example.com")
+    val requestUrl: String = flow.getRequestUrl("example.com")
 
-    // We'll just print this to the console so you can copy and paste it.
+    // We'll just print this to the console, so you can copy and paste it.
     println("Open this url in your browser and sign in")
     println(requestUrl)
 
@@ -135,7 +135,7 @@ suspend fun oAuthExample() {
     val userKey: TumblrUserKey = flow.parseResponseUrl(redirectedUrl)
     println(userKey.toString())
 
-    // Print out information about the newly logged in user.
+    // Print out information about the newly logged-in user.
     println(getApi(userKey).getUserInfo())
 }
 ```
@@ -144,7 +144,7 @@ suspend fun oAuthExample() {
 
 ```kotlin
 // A simple example of how to get the url of a user's most recently liked post.
-suspend fun minimalExampleExplained() {
+fun minimalExampleExplained() = runBlocking {
     // Class for holding API keys and secrets.
     // You can get your API key and secret from https://www.tumblr.com/oauth/apps and clicking on "Register Application"
     // They will be called "OAuth Consumer Key" and "Secret Key"
@@ -180,7 +180,7 @@ suspend fun minimalExampleExplained() {
 or, the same example without the fluff:
 
 ```kotlin
-suspend fun minimalExample() {
+fun minimalExample() = runBlocking {
     println(
         getApi(TumblrUserKey("apiKey", "apiSecret", "userKey", "userSecret"))
             .getBlogLikes(identifier = "kotlr-development")
@@ -323,7 +323,7 @@ N/A
   * Update Moshi dependency.
   * Start using Shimo for testing.
   * Add ability to output debug info in the Moshi adapter factory.
-  * Use Moshi.failOnUnknown() during unit tests.
+  * Use `Moshi.failOnUnknown()` during unit tests.
 
 ### 0.7.3 ###
 
@@ -378,9 +378,9 @@ N/A
 ### 0.6.0 ###
 
   * Only fail on unknown JSON properties when `getApi` is called with `debug = true`.
-  * Add support for Blog.avatar property, this is a list of `Media` objects.
-  * Add support for Post.parentPostId.
-  * Add support for Post.parentBlogUUID.
+  * Add support for `Blog.avatar` property, this is a list of `Media` objects.
+  * Add support for `Post.parentPostId`.
+  * Add support for `Post.parentBlogUUID`.
 
 ### 0.5.0 ###
 
@@ -396,13 +396,13 @@ N/A
   * Use more `val`s instead of `var`s.
   * Add an object to all API responses containing Tumblr's rate limit headers.
     * Now every API call will tell you how many requests you have left in the hour and in the day.
-  * Add support for Post.objectType.
-  * Add support for Post.type.
-  * Add support for Post.blogUUID.
-  * Add support for Media.cropped.
-  * Add support for Media.hasOriginalDimensions.
-  * Add support for Media.colors.
-  * Add support for TextContent.SubType.Indented.
+  * Add support for `Post.objectType`.
+  * Add support for `Post.type`.
+  * Add support for `Post.blogUUID`.
+  * Add support for `Media.cropped`.
+  * Add support for `Media.hasOriginalDimensions`.
+  * Add support for `Media.colors`.
+  * Add support for `TextContent.SubType.Indented`.
 
 ### <= 0.4.0 ###
 

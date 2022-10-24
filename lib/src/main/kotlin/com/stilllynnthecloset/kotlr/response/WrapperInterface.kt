@@ -4,9 +4,9 @@ package com.stilllynnthecloset.kotlr.response
  * WrapperInterface - A wrapper class around the response to a given request.
  *
  * This is required because in some situations Tumblr returns a string instead of an
- * object as the response body so we need to be able to account for that.
+ * object as the response body, so we need to be able to account for that.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  */
 public interface WrapperInterface<out T> {

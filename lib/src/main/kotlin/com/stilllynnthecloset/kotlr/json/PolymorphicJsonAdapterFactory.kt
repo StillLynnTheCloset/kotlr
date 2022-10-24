@@ -74,7 +74,7 @@ import java.util.ArrayList
  *   <li>Each type identifier must be unique.
  * </ul>
  *
- * <p>For best performance type information should be the first field in the object. Otherwise Moshi
+ * <p>For best performance type information should be the first field in the object. Otherwise, Moshi
  * must reprocess the JSON stream once it knows the object's type.
  *
  * <p>If an unknown subtype is encountered when decoding, this will throw a {@link

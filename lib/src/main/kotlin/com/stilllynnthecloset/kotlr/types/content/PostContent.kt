@@ -15,7 +15,7 @@ import com.stilllynnthecloset.kotlr.types.content.TextContent.SubType
 /**
  * PostContent - A super class for all types of content blocks
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  */
 @JsonClass(generateAdapter = false)
@@ -55,7 +55,7 @@ public class UnknownContent : PostContent() {
  * tumblr for Tumblr native audio content, or a trusted third party like Spotify or Bandcamp.
  * Optionally, an audio block may include the track's [title], [artist], and/or [album].
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param provider The provider of the audio source, whether it's tumblr for native audio or a trusted third party.
@@ -65,7 +65,7 @@ public class UnknownContent : PostContent() {
  * @param artist The artist of the audio asset.
  * @param album The album from which the audio asset originated.
  * @param poster An image media object to use as a "poster" for the audio track, usually album art.
- * @param embedHtml HTML code that could be used to embed this audio track into a webpage.
+ * @param embedHtml The HTML code that could be used to embed this audio track into a webpage.
  * @param embedUrl A URL to the embeddable content to use as an iframe.
  * @param metadata Optional provider-specific metadata about the audio track.
  * @param attribution Optional attribution information about where the audio track came from.
@@ -97,7 +97,7 @@ public data class AudioContent constructor(
  * objects per-image-size. Each image media object contains fields for type, url, width,
  * and height; see the [Media] section for more details.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param media An array of Media Objects which represent different available sizes of this image asset.
@@ -143,7 +143,7 @@ public data class ImageContent constructor(
  * for display only. The poster field is expected to be an array of image MediaObjects with
  * alternate sizes.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param url The URL to use for the link block.
@@ -177,7 +177,7 @@ public data class LinkContent constructor(
  *
  * At its simplest, it simply wraps a plaintext string.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param text The text to use inside this block.
@@ -259,7 +259,7 @@ public data class TextContent constructor(
  * VideoContent - A video block represents a playable video. At a minimum, the [provider] field must
  * be present, and either the [media] field or [url] field must be present. The [provider] field will
  * indicate which embed provider is being used, whether it's tumblr for Tumblr native video
- * content, or a trusted third party like youtube or vimeo.
+ * content, or a trusted third party like YouTube or Vimeo.
  *
  * A video block may have a canonical [url] specified which, when visited in a web browser,
  * will allow the video to be played. If the video can be embedded on a web page, then the block
@@ -284,13 +284,13 @@ public data class TextContent constructor(
  * 5. If there is an [embedUrl] use it to construct an iframe.
  * 4. If all else fails, just show a link to [url].
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param url The URL to use for the video block, if no media is present.
  * @param media The Media Object to use for the video block, if no url is present.
  * @param provider The provider of the video, whether it's tumblr for native video or a trusted third party.
- * @param embedHtml HTML code that could be used to embed this video into a webpage.
+ * @param embedHtml The HTML code that could be used to embed this video into a webpage.
  * @param embedUrl A URL to the embeddable content to use as an iframe.
  * @param poster An image media object to use as a "poster" for the video, usually a single frame.
  * @param metadata Optional provider-specific metadata about the video.

@@ -10,7 +10,7 @@ import com.stilllynnthecloset.kotlr.json.PolymorphicJsonAdapterFactory
  * The layout block holds an array of layouts. Each layout object requires a type field,
  * just like content blocks.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  */
 public sealed class BlockLayout {

@@ -16,7 +16,7 @@ import com.stilllynnthecloset.kotlr.types.content.PostContent
 /**
  * ContentWrapperJsonAdapter - A custom adapter to help Moshi parse [PostContent] either as a string of HTML or as a list of content objects.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  */
 internal class ContentWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ContentWrapper>() {

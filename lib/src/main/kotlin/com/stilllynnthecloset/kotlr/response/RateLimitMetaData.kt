@@ -37,12 +37,12 @@ import okhttp3.Headers
  * A blog can only have 300 queued posts at a time.
  * You can only filter up to 1,000 tags at a time.
  *
- * @param dailyLimit The total number of requests your API key can make per 24 hour period.
- * @param dailyRemaining The number of requests that your API key has remaining in this 24 hour period.
- * @param timeUntilDailyReset The number of seconds until your API key's current 24 hour period resets.
- * @param hourlyLimit The total number of requests your API key can make per 1 hour period.
- * @param hourlyRemaining The number of requests that your API key has remaining in this 1 hour period.
- * @param timeUntilHourlyReset The number of seconds until your API key's current 1 hour period resets.
+ * @param dailyLimit The total number of requests your API key can make per 24-hour period.
+ * @param dailyRemaining The number of requests that your API key has remaining in this 24-hour period.
+ * @param timeUntilDailyReset The number of seconds until your API key's current 24-hour period resets.
+ * @param hourlyLimit The total number of requests your API key can make per 1-hour period.
+ * @param hourlyRemaining The number of requests that your API key has remaining in this 1-hour period.
+ * @param timeUntilHourlyReset The number of seconds until your API key's current 1-hour period resets.
  */
 @JsonClass(generateAdapter = true)
 public data class RateLimitMetaData constructor(

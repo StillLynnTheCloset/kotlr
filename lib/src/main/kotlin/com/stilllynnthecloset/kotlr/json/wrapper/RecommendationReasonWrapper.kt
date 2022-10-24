@@ -6,7 +6,7 @@ import com.stilllynnthecloset.kotlr.types.RecommendationReason
 /**
  * RecommendationReasonWrapper - A class to wrap around a recommendation either as a string or an object.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2021-05-29
  */
 @JsonClass(generateAdapter = false)

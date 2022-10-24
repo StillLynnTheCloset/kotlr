@@ -9,7 +9,7 @@ import com.squareup.moshi.JsonClass
  * @param id The postId of the post.
  * @param reblogKey The reblog key of the post.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2021-02-15
  */
 @JsonClass(generateAdapter = true)

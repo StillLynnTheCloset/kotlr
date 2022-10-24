@@ -4,12 +4,12 @@ import com.squareup.moshi.JsonClass
 
 /**
  * Colors - Image blocks may contain a color field which provides the dominant colors stored for the image in the Post
- * metadata. The value is an object with string fields where the key starts with a c and ends with a number, eg.
+ * metadata. The value is an object with string fields where the key starts with a c and ends with a number, e.g.
  * c0, c1, c9. The values are a string of three or six characters representing an RGB hex value. These values are
  * typically used for creating a placeholder gradient while images are loading. The colors represented for an image
  * are the same for every size of that image.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param colors A map from the numeric part of the name to the string representation of the color.

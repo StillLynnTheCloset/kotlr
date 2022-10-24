@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2021-06-04
  *
  * @param postId The queued post to move

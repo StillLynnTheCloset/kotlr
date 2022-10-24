@@ -6,13 +6,13 @@ import com.squareup.moshi.JsonClass
 /**
  * User - A Tumblr user/account.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param blogs The blogs to which the user can post.
  * @param name The user's tumblr short name.
  * @param totalFollowing The number of blogs the user is following.
- * @param isUserFollowed Does the current signed in user follow this user's main blog.
+ * @param isUserFollowed Does the current signed-in user follow this user's main blog.
  * @param url The URL of the user's primary blog.
  * @param updated The time of the user's most recent post, in seconds since the epoch.
  * @param likes The total count of the user's likes.

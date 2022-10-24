@@ -18,7 +18,7 @@ import com.stilllynnthecloset.kotlr.types.content.Attribution
  * AttributionWrapperJsonAdapter - An adapter to help Moshi convert [AttributionWrapper] objects to and
  * from either a single [Attribution] object, or a list of them.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2020-03-21
  */
 internal class AttributionWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<AttributionWrapper>() {

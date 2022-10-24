@@ -3,7 +3,7 @@ package com.stilllynnthecloset.kotlr.response
 /**
  * TumblrResponse - A generic response from the Tumblr API.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  */
 public interface TumblrResponse<out T> {

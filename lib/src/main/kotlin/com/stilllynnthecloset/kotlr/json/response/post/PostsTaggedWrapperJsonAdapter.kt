@@ -19,7 +19,7 @@ import com.stilllynnthecloset.kotlr.response.type.post.ResponsePostsTagged
 /**
  * UserDashboardWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponsePostsTagged].
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2019-12-01
  */
 internal class PostsTaggedWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponsePostsTagged.Body>>() {

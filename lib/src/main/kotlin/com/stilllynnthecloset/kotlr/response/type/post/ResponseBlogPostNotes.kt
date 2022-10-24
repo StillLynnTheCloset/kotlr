@@ -13,14 +13,14 @@ import com.stilllynnthecloset.kotlr.types.RequestLinks
 /**
  * ResponseBlogPostNotes - The response to a request for a post's notes.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2019-12-01
  */
 public interface ResponseBlogPostNotes {
     /**
      * Response - The top level object returned from Tumblr.
      *
-     * @param meta An object containing any meta data returned from Tumblr, as well as some data returned in response headers.
+     * @param meta An object containing any metadata returned from Tumblr, as well as some data returned in response headers.
      * @param response The actual response to the request, as a wrapper object to handle some types of errors from Tumblr.
      * @param errors An array of error objects, which are returned when some types of errors occur.
      */
@@ -54,10 +54,10 @@ public interface ResponseBlogPostNotes {
      * @param totalNotes The total notes, which can change depending on the mode.
      * @param totalLikes The total likes, when mode is conversation.
      * @param totalReblogs The total reblogs, when mode is conversation.
-     * @param isSubscribed Whether or not the current user is subscribed to this post.
-     * @param canSubscribe Whether or not the current user can subscribe to this post.
-     * @param canHideOrDeleteNotes Whether or not the current user can edit notes on this post.
-     * @param conversationalNotificationsEnabled Whether or not the current user has notifications enabled for this post.
+     * @param isSubscribed Whether the current user is subscribed to this post.
+     * @param canSubscribe Whether the current user can subscribe to this post.
+     * @param canHideOrDeleteNotes Whether the current user can edit notes on this post.
+     * @param conversationalNotificationsEnabled Whether the current user has notifications enabled for this post.
      */
     @JsonClass(generateAdapter = true)
     public data class Body constructor(

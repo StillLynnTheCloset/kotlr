@@ -36,7 +36,7 @@ import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
 internal object KotlrJsonAdapterFactory : JsonAdapter.Factory {
-    var printDebug: Boolean = false
+    private var printDebug: Boolean = false
 
     override fun create(type: Type, annotations: MutableSet<out Annotation>, moshi: Moshi): JsonAdapter<*>? {
         val adapter = if (type is ParameterizedType) {

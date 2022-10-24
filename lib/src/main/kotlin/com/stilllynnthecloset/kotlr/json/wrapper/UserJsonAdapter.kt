@@ -21,7 +21,7 @@ import kotlin.String
  * This is necessary because depending on the circumstances, the `following` property can either be a boolean
  * representing if you are following that user, or an int of the number of blogs that this user follows.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-10
  */
 internal class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {

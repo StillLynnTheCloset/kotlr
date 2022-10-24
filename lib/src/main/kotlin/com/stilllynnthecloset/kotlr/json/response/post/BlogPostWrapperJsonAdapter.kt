@@ -21,9 +21,9 @@ import com.stilllynnthecloset.kotlr.types.Post
  * PostsPostWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseBlogPost].
  *
  * Tumblr decided to make this one request special and put the post object directly as the value in `response` instead
- * of nesting it in another object like all of the other API responses.
+ * of nesting it in another object like all the other API responses.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2019-12-01
  */
 internal class BlogPostWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<Post>>() {

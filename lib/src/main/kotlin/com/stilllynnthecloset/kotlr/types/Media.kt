@@ -7,19 +7,19 @@ import com.squareup.moshi.JsonClass
  * Media - Many content blocks and their components include media objects which link directly
  * to media assets.
  *
- * Media objects are used for image blocks, all kinds of posters (GIF, video, etc), native audio,
+ * Media objects are used for image blocks, all kinds of posters (GIF, video, etc.), native audio,
  * native video, and some trusted third-party content. All media objects returned from the API
  * should contain type and url, and any video and image media objects should always contain a
  * width and height.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param type The MIME type of this media, or the closest fit.
  * @param url The location of the resource backing this piece of media.
  * @param width The width of this piece of media, only applies to photo and video media.
  * @param height The height of this piece of media, only applies to photo and video media.
- * @param originalDimensionsMissing Whether the dimensions of this media are unknown so [width] and [height] contain default values.
+ * @param originalDimensionsMissing Whether the dimensions of this media is unknown so [width] and [height] contain default values.
  * @param hd Whether Tumblr considers this media to be in High Definition.
  * @param poster Usually a still image to represent this media while loading.
  * @param mediaKey A key to identify this media object.

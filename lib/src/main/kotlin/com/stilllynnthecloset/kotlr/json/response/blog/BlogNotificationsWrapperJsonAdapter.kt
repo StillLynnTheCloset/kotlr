@@ -19,7 +19,7 @@ import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogNotifications
 /**
  * BlogNotificationsWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseBlogNotifications].
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2021-06-03
  */
 internal class BlogNotificationsWrapperJsonAdapter(moshi: Moshi) :

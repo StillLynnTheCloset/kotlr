@@ -19,7 +19,7 @@ import com.stilllynnthecloset.kotlr.response.type.user.ResponseUserLikes
 /**
  * UserLikesWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseUserLikes].
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-10
  */
 internal class UserLikesWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponseUserLikes.Body>>() {

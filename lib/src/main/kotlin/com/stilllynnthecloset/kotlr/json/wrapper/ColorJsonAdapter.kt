@@ -13,7 +13,7 @@ import com.stilllynnthecloset.kotlr.types.Color
  *
  * This allows parsing both strings and integers as colors.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2020-02-08
  */
 internal class ColorJsonAdapter : JsonAdapter<Color>() {

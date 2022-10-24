@@ -5,8 +5,8 @@ import com.squareup.moshi.JsonClass
 /**
  * TumblrError - A specific error message from the Tumblr API.
  *
- * The error codes here are the HTTP statuses that'll be returned in error states, the error subcodes are the specific
- * subcodes also returned in some situations. The response should have an errors array at the top level alongside meta,
+ * The error codes here are the HTTP statuses that'll be returned in error states, the error sub-codes are the specific
+ * sub-codes also returned in some situations. The response should have an errors array at the top level alongside meta,
  * containing what error(s) occurred.
  *
  * 400 Bad Request when the request has not provided the required data.
@@ -30,7 +30,7 @@ import com.squareup.moshi.JsonClass
  * 500.8009 when there was an unknown upload error (video related).
  * 503 Service Unavailable when all posting, or posting via the API, is disabled.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param title An explanation of the error that occurred.

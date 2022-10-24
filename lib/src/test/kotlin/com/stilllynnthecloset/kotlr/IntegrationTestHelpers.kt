@@ -19,7 +19,6 @@ import com.stilllynnthecloset.kotlr.types.content.RowBlockLayout
 import com.stilllynnthecloset.kotlr.types.content.SmallTextFormat
 import com.stilllynnthecloset.kotlr.types.content.TextContent
 import kotlinx.coroutines.runBlocking
-import java.util.Scanner
 
 /**
  * A set of functions to make it easy to implement a full suite of flaky (live) integration tests.
@@ -572,10 +571,10 @@ internal fun minimalExampleExplained() = runBlocking {
     val key = TumblrUserKey("apiKey", "apiSecret", "userKey", "userSecret")
 
     // The client which performs all requests, this is similar to Jumblr's `JumblrClient`.
-    val service = getApi(key)
+    val service: KotlrApi = getApi(key)
 
     // Perform the request.
-    val response = service.getBlogLikes(blogIdentifier = "kotlr-development")
+    val response: ResponseBlogLikes.Response? = service.getBlogLikes(blogIdentifier = "kotlr-development")
 
     // Check out any of the meta information that Tumblr returns such as HTTP success codes.
     val meta: ResponseMetaInfo? = response?.meta
@@ -613,10 +612,10 @@ internal fun oAuthExample() = runBlocking {
     // Kotlr also makes the process of getting OAuth keys easy.
 
     println("Enter your consumer key:")
-    val apiKey: String = Scanner(System.`in`).nextLine()
+    val apiKey: String = readln()
 
     println("Enter your consumer secret:")
-    val apiSecret: String = Scanner(System.`in`).nextLine()
+    val apiSecret: String = readln()
 
     // Create an authentication flow.
     val flow = OAuthFlow(TumblrAppKey(apiKey, apiSecret))
@@ -634,7 +633,7 @@ internal fun oAuthExample() = runBlocking {
     // Once you've signed in and been redirected, copy that new url from
     // the browser and drop it into the console.
     println("Enter the url you were re-directed to:")
-    val redirectedUrl: String = Scanner(System.`in`).nextLine()
+    val redirectedUrl: String = readln()
 
     // Now we just parse that url and use it to complete the authentication process.
     val userKey: TumblrUserKey = flow.parseResponseUrl(redirectedUrl)

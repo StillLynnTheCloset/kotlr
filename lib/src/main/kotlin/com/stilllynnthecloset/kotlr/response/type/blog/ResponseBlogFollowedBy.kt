@@ -9,16 +9,16 @@ import com.stilllynnthecloset.kotlr.response.TumblrResponse
 import com.stilllynnthecloset.kotlr.response.WrapperInterface
 
 /**
- * ResponseBlogFollowedBy - The response to a request for whether or not your blog is followed by the query blog.
+ * ResponseBlogFollowedBy - The response to a request for whether your blog is followed by the query blog.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-06
  */
 public interface ResponseBlogFollowedBy {
     /**
      * Response - The top level object returned from Tumblr.
      *
-     * @param meta An object containing any meta data returned from Tumblr, as well as some data returned in response headers.
+     * @param meta An object containing any metadata returned from Tumblr, as well as some data returned in response headers.
      * @param response The actual response to the request, as a wrapper object to handle some types of errors from Tumblr.
      * @param errors An array of error objects, which are returned when some types of errors occur.
      */
@@ -46,7 +46,7 @@ public interface ResponseBlogFollowedBy {
     /**
      * Body - The actual body of a successful response.
      *
-     * @param followedBy Indicates whether or not your blog is followed by the query blog.
+     * @param followedBy Indicates whether your blog is followed by the query blog.
      */
     @JsonClass(generateAdapter = true)
     public data class Body constructor(

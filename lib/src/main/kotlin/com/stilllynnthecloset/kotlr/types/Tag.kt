@@ -8,7 +8,7 @@ import com.squareup.moshi.JsonClass
  *
  * This isn't used anywhere? TODO: Figure out why Tumblr defined this object.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param tagText The tag name

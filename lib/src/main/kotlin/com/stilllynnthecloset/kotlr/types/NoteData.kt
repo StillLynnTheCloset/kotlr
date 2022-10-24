@@ -9,7 +9,7 @@ import com.stilllynnthecloset.kotlr.types.content.TextFormat
 /**
  * NoteData - Extra data that can be returned on a [Post] when the getNotesHistory argument is used in the request.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @property timestamp The time that this note was added to the post (seconds since the epoch.)

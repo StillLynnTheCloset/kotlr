@@ -19,7 +19,7 @@ import com.stilllynnthecloset.kotlr.response.type.post.ResponseCreatePost
 /**
  * CreatePostWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseCreatePost].
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2019-12-01
  */
 internal class CreatePostWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponseCreatePost.Body>>() {

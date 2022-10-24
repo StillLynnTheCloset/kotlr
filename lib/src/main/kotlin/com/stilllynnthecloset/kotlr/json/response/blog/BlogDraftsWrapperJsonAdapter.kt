@@ -19,7 +19,7 @@ import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogDrafts
 /**
  * BlogDraftsWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseBlogDrafts].
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-10
  */
 internal class BlogDraftsWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperInterface<ResponseBlogDrafts.Body>>() {

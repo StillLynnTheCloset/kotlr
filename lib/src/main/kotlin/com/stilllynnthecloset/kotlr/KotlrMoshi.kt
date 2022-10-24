@@ -4,7 +4,7 @@ import com.jakewharton.shimo.ObjectOrderRandomizer
 import com.squareup.moshi.Moshi
 
 /**
- * A lazily constructed instance of the Moshi JSON parser that is setup to parse all of our data types.
+ * A lazily constructed instance of the Moshi JSON parser that is set up to parse all of our data types.
  */
 internal val moshi: Moshi by lazy {
     return@lazy Moshi
@@ -14,7 +14,7 @@ internal val moshi: Moshi by lazy {
 }
 
 /**
- * A lazily constructed instance of the Moshi JSON parser that is setup to parse all of our data types.
+ * A lazily constructed instance of the Moshi JSON parser that is set up to parse all of our data types.
  *
  * This version, however, also includes Shimo's [ObjectOrderRandomizer] for use when testing.
  */

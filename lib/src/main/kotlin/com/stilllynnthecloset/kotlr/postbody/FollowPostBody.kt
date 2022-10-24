@@ -8,7 +8,7 @@ import com.squareup.moshi.JsonClass
  * @param url The url of the blog.
  * @param email The email of the blog if the user has enabled "allow people to find this blog by email".
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2021-02-15
  */
 @JsonClass(generateAdapter = true)

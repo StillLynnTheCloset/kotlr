@@ -6,7 +6,7 @@ package com.stilllynnthecloset.kotlr.authentication
  * These strings are provided by Tumblr after you have registered your application.
  * See: https://www.tumblr.com/oauth/apps
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param apiKey Tumblr calls this the "OAuth Consumer Key". The OAuth standard calls this "Consumer Key".

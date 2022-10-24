@@ -19,7 +19,7 @@ import com.stilllynnthecloset.kotlr.response.type.user.ResponseUserDashboard
 /**
  * UserDashboardWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseUserDashboard].
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  */
 internal class UserDashboardWrapperJsonAdapter(moshi: Moshi) :

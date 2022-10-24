@@ -14,7 +14,7 @@ import com.stilllynnthecloset.kotlr.types.content.VideoContent
  * "filmstrip": [ { ... media object ... }, { ... media object ... } ]
  * depending on the content.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param singleMedia The single media object, if it was returned.

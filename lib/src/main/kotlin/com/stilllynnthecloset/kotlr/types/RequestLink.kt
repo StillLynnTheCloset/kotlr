@@ -12,7 +12,7 @@ import com.squareup.moshi.JsonClass
  * An action type link will contain details on what request method as well as what query or body parameters
  * should be used to take the action.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param linkType The type of link that this is, see [Type].

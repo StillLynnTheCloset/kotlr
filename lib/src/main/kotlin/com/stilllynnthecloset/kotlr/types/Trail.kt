@@ -10,7 +10,7 @@ import com.stilllynnthecloset.kotlr.types.content.BlockLayout
  * that holds a reblog trail if the Post is a reblog and the user kept the trail attached. The contents of the trail
  * array are the previous Posts in the reblog trail, in order of oldest (the root Post) to the newest (the parent Post).
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param blog An object with information about the Post's blog in the reblog trail; contains at least a uuid field. This won't be available for "broken" trail items.

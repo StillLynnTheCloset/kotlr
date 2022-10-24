@@ -7,7 +7,7 @@ import com.stilllynnthecloset.kotlr.json.wrapper.ThemeWrapper
 /**
  * Blog - A simple tumblog.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param name The short name of the blog.

@@ -19,7 +19,7 @@ import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogFollowedBy
 /**
  * BlogFollowedByWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseBlogFollowedBy].
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-10
  */
 internal class BlogFollowedByWrapperJsonAdapter(moshi: Moshi) :

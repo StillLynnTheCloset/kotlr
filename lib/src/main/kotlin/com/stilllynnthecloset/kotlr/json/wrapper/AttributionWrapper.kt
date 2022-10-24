@@ -14,7 +14,7 @@ import com.stilllynnthecloset.kotlr.types.content.ImageContent
  * "attribution": [ { ... attribution object ... }, { ... attribution object ... } ]
  * depending on the content.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2020-03-21
  *
  * @param singleAttribution The single attribution object, if it was returned.

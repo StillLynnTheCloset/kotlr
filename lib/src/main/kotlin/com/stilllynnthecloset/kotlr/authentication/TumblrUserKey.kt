@@ -3,9 +3,9 @@ package com.stilllynnthecloset.kotlr.authentication
 /**
  * TumblrUserKey - An extension of [TumblrAppKey] that also includes user specific credentials.
  *
- * Acquire this data by using an [OAuthFlow], but this constructor is public so you can rebuild this from a persistent datastore.
+ * Acquire this data by using an [OAuthFlow], but this constructor is public, so you can rebuild this from a persistent datastore.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param apiKey Tumblr calls this the "OAuth Consumer Key". The OAuth standard calls this "Consumer Key".

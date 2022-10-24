@@ -15,7 +15,7 @@ import com.stilllynnthecloset.kotlr.types.Colors
  *
  * This helps convert the property names from "c1", "c2" to the numbers 1, 2, etc.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-18
  */
 internal class ColorsJsonAdapter(moshi: Moshi) : JsonAdapter<Colors>() {

@@ -14,7 +14,7 @@ import com.stilllynnthecloset.kotlr.types.content.VideoContent
 /**
  * Post - A block post, aka. NPF post, which is the only type of post now supported by Kotlr
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param blogName The short name used to uniquely identify a blog.
@@ -84,7 +84,7 @@ import com.stilllynnthecloset.kotlr.types.content.VideoContent
  * @param recommendationReason TODO: Documentation
  * @param dismissal TODO: Documentation
  * @param serveId TODO: Documentation
- * @param genesisPostId The "genesis" ID for a post is only available and different than its current ID if that post had been
+ * @param genesisPostId The "genesis" ID for a post is only available and different from its current ID if that post had been
  *                      drafted, queued, or scheduled, and is now published. In which case, the "genesis" ID will be the original
  *                      post ID generated when drafting, queuing, or scheduling that post. You cannot use this ID to look up the post
  *                      after it has been published, but it can be useful for tracking a post from its pre- to post-published state.
@@ -319,7 +319,7 @@ public data class Post constructor(
         Audio("audio"),
 
         /**
-         * A chat post, also know as a dialog post.
+         * A chat post, also known as a dialog post.
          */
         @Json(name = "chat")
         Chat("chat"),

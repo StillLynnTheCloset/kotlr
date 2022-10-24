@@ -7,7 +7,7 @@ import com.squareup.moshi.JsonClass
  * @param blogIdentifier The tumblelog to block, specified by any blog identifier
  * @param postId The anonymous post ID (asks, submissions) to block
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2021-06-02
  */
 @JsonClass(generateAdapter = true)

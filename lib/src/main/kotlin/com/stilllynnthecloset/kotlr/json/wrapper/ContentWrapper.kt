@@ -6,9 +6,9 @@ import com.stilllynnthecloset.kotlr.types.content.PostContent
 
 /**
  * ContentWrapper - A wrapper class to handle the fact that when not using NPF, Tumblr will return the "content" property of
- * a [Trail] object as a string. Otherwise it will be returned as a list of PostContent objects.
+ * a [Trail] object as a string. Otherwise, it will be returned as a list of PostContent objects.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2019-11-04
  *
  * @param contentString The contents as a string (usually HTML).

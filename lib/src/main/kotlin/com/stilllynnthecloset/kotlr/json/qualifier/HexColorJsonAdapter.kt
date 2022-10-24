@@ -7,7 +7,7 @@ import com.stilllynnthecloset.kotlr.types.Color
 /**
  * HexColorJsonAdapter - An adapter to (de-)serialize properties annotated with [HexColor].
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  */
 internal class HexColorJsonAdapter {

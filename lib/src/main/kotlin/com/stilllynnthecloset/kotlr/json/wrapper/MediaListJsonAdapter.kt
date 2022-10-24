@@ -8,7 +8,7 @@ import com.stilllynnthecloset.kotlr.types.MediaList
  * MediaListJsonAdapter - An adapter to help Moshi convert [MediaList] objects to and
  * from either a [MediaWrapper] object.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2020-03-04
  */
 internal class MediaListJsonAdapter {

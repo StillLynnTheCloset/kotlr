@@ -19,7 +19,7 @@ import com.stilllynnthecloset.kotlr.response.type.user.ResponseUserFilteredConte
 /**
  * UserFilteredContentWrapperJsonAdapter - An adapter to (de-)serialize the response wrapper object for a [ResponseUserFilteredContent].
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2021-05-30
  */
 internal class UserFilteredContentWrapperJsonAdapter(moshi: Moshi) :

@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonClass
 /**
  * @param filteredContent A new content string to filter out.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2021-05-30
  */
 @JsonClass(generateAdapter = true)

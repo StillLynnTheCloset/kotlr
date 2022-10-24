@@ -18,7 +18,7 @@ import com.stilllynnthecloset.kotlr.types.RecommendationReason
  * RecommendationReasonWrapperJsonAdapter - An adapter to help Moshi convert [RecommendationReasonWrapper] objects to and
  * from either a [RecommendationReason] object, or a [String].
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2021-05-29
  */
 internal class RecommendationReasonWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<RecommendationReasonWrapper>() {

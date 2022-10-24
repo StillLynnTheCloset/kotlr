@@ -18,7 +18,7 @@ import com.stilllynnthecloset.kotlr.types.Media
  * MediaWrapperJsonAdapter - An adapter to help Moshi convert [MediaWrapper] objects to and
  * from either a single [Media] object, or a list of them.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  */
 internal class MediaWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<MediaWrapper>() {

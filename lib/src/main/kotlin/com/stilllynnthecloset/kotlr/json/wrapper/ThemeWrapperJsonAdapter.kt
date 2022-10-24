@@ -17,7 +17,7 @@ import com.stilllynnthecloset.kotlr.types.BlogTheme
  * ThemeWrapperJsonAdapter - An adapter to help Moshi convert [ThemeWrapper] objects to and
  * from either a single [BlogTheme] object, or a list of them.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  */
 internal class ThemeWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<ThemeWrapper>() {

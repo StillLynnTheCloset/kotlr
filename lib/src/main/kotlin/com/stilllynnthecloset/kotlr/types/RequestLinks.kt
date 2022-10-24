@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonClass
 /**
  * RequestLinks - A class to encode the various request links that Tumblr will include in responses.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2020-08-30
  *
  * @param next A link to the next request in a series.

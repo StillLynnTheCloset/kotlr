@@ -6,7 +6,7 @@ import com.stilllynnthecloset.kotlr.types.BlogTheme
 /**
  * ThemeWrapper - A class to wrap around both a single [BlogTheme] object and a list of them.
  *
- * @author highthunder
+ * @author StillLynnTheCloset
  * @since 2018-11-04
  *
  * @param singleTheme A single theme held in this wrapper.
