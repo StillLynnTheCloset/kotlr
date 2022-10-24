@@ -485,10 +485,16 @@ public data class Post constructor(
     @JsonClass(generateAdapter = false)
     public enum class Interactability constructor(public val key: String) {
         /**
-         * Everyone - The only value I've seen so far.
+         * Everyone - Everyone can interact with the post.
          */
         @Json(name = "everyone")
         Everyone("everyone"),
+
+        /**
+         * NoOne - No one can interact with the post.
+         */
+        @Json(name = "noone")
+        NoOne("noone"),
     }
 
     /**

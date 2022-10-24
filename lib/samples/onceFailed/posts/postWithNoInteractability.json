@@ -1,0 +1,7 @@
+{
+  "can_like": true,
+  "interactability_reblog": "noone",
+  "can_reblog": false,
+  "can_send_in_message": true,
+  "can_reply": false
+}

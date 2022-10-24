@@ -1936,6 +1936,19 @@ internal class SampleFilesIndividualParseTest {
     }
 
     @Test
+    internal fun onceFailed_posts_postWithNoInteractability() {
+        val post = parseFile<Post>("samples/onceFailed/posts/postWithNoInteractability.json")
+        val expected = Post(
+            canLike = true,
+            canReblog = false,
+            canSendInMessage = true,
+            canReply = false,
+            interactabilityReblog = Post.Interactability.NoOne,
+        )
+        assertEquals(expected, post)
+    }
+
+    @Test
     internal fun onceFailed_posts_postWithNotesData() {
         val post = parseFile<Post>("samples/onceFailed/posts/postWithNotesData.json")
         val expected = Post(
