@@ -9,6 +9,7 @@ import com.stilllynnthecloset.kotlr.json.wrapper.MediaWrapper
 import com.stilllynnthecloset.kotlr.response.ResponseMetaInfo
 import com.stilllynnthecloset.kotlr.response.TumblrError
 import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogAvatar
+import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogBlocks
 import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogLikes
 import com.stilllynnthecloset.kotlr.response.type.user.ResponseUserDashboard
 import com.stilllynnthecloset.kotlr.types.AttributionNote
@@ -2036,6 +2037,23 @@ internal class SampleFilesIndividualParseTest {
     // region Response Bodies Test Cases
 
     // region BlogAvatar
+
+    @Test
+    internal fun responseBodies_blockBlog_good() {
+        val response = parseFile<ResponseBlogBlocks.Response>("samples/responseBodies/blockBlog/good.json")
+        val expected = ResponseBlogBlocks.Response(
+            meta = ResponseMetaInfo(
+                status = 201,
+                msg = "Created",
+            ),
+            response = ResponseBlogBlocks.Wrapper(
+                body = ResponseBlogBlocks.Body(
+                    alreadyBlocked = false,
+                ),
+            ),
+        )
+        assertEquals(expected, response)
+    }
 
     @Test
     internal fun responseBodies_blogAvatar_error() {

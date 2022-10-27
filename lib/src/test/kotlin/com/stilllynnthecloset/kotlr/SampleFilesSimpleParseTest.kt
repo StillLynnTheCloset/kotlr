@@ -2,6 +2,7 @@ package com.stilllynnthecloset.kotlr
 
 import com.squareup.moshi.JsonAdapter
 import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogAvatar
+import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogBlocks
 import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogLikes
 import com.stilllynnthecloset.kotlr.response.type.user.ResponseUserDashboard
 import com.stilllynnthecloset.kotlr.types.Blog
@@ -222,6 +223,11 @@ internal class SampleFilesSimpleParseTest {
     // endregion Once Failed Test Cases
 
     // region Response Bodies Test Cases
+
+    @Test
+    internal fun testResponseSamples_blockBlog() {
+        parseAllFilesInDirectory<ResponseBlogBlocks.Response>("samples/responseBodies/blockBlog")
+    }
 
     @Test
     internal fun testResponseSamples_blogAvatar() {

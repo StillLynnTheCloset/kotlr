@@ -194,6 +194,36 @@ fun minimalExample() = runBlocking {
 
 ## Version History ##
 
+### Version TBD ###
+
+#### Breaking Changes ####
+
+* Refactor the request APIs to fully separate user facing interfaces and implementation classes
+
+#### New Functionality ####
+
+* Add support for `Notification.SpamReported`
+* Add support for `ImageContent.caption`
+* Add support for `ImageContent.clickThrough`
+* Add support for `RequestQueryParameters.tumblelog`
+* Add support for `Post.filteredReason`
+* Add support for `Post.postLinks`
+* Add support for `Post.interactabilityReblog`
+* Add support for `ResponseBlogQueue.state`
+* Add support for `Media.video`
+* Add support for `Interactability.NoOne`
+* Add support for `ResponseBlogBlocks.alreadyBlocked`
+
+#### Deprecated Functionality ####
+
+N/A
+
+#### Minor Changes ####
+
+* Separate the codebase into two modules: one that implements the library, and one to be a place to demonstrate functionality.
+* Improve documentation
+* Fully enforce trailing commas
+
 ### 0.9.1 ###
 
 #### Breaking Changes ####

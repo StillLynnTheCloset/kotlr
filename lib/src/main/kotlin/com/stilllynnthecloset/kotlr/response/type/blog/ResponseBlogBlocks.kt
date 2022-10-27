@@ -49,12 +49,15 @@ public interface ResponseBlogBlocks {
      * Body - The actual body of a successful response.
      *
      * @param blockedBlogs A list of blogs that you have blocked.
+     * @param alreadyBlocked Whether the blog is already blocked
      * @param links Additional links that you might be interested in.
      */
     @JsonClass(generateAdapter = true)
     public data class Body constructor(
         @Json(name = "blocked_tumblelogs")
         val blockedBlogs: List<Blog>? = null,
+        @Json(name = "already_blocked")
+        val alreadyBlocked: Boolean? = null,
         @Json(name = "_links")
         val links: RequestLinks? = null,
     )
