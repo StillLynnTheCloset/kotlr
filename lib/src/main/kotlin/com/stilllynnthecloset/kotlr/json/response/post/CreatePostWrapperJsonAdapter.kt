@@ -35,7 +35,7 @@ internal class CreatePostWrapperJsonAdapter(moshi: Moshi) : JsonAdapter<WrapperI
             BEGIN_ARRAY -> ResponseCreatePost.Wrapper(error = listOfAnyAdapter.fromJson(reader).toString())
             NULL -> ResponseCreatePost.Wrapper()
             else -> throw JsonDataException(
-                "Expected a field of type Object, String, List, or null but got ${reader.peek()}"
+                "Expected a field of type Object, String, List, or null but got ${reader.peek()}",
             )
         }
     }

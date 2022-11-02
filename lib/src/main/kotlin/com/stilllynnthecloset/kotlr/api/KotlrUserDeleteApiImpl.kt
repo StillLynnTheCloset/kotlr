@@ -12,7 +12,7 @@ internal class KotlrUserDeleteApiImpl constructor(
         validateContentFilter(contentFilter)
 
         val retrofitResponse = userDeleteApi.filterContent(
-            filteredContent = contentFilter
+            filteredContent = contentFilter,
         )
 
         val rateLimitMetaData = RateLimitMetaData(retrofitResponse.headers())
