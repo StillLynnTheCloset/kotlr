@@ -39,6 +39,7 @@ import com.stilllynnthecloset.kotlr.types.SpamReportedNotification
 import com.stilllynnthecloset.kotlr.types.SubmissionTerms
 import com.stilllynnthecloset.kotlr.types.Trail
 import com.stilllynnthecloset.kotlr.types.User
+import com.stilllynnthecloset.kotlr.types.UserMentionNotification
 import com.stilllynnthecloset.kotlr.types.VideoMetadata
 import com.stilllynnthecloset.kotlr.types.content.AppAttribution
 import com.stilllynnthecloset.kotlr.types.content.AskBlockLayout
@@ -1805,6 +1806,35 @@ internal class SampleFilesIndividualParseTest {
             targetPostSummary = "",
             targetTumblelogName = "asdf",
             targetTumblelogUuid = "asdf",
+        )
+        assertEquals(expected, note)
+    }
+
+    @Test
+    internal fun onceFailed_notification_userMention() {
+        val note =
+            parseFile<UserMentionNotification>("samples/onceFailed/notification/userMention.json")
+        val expected = UserMentionNotification(
+            type = "user_mention",
+            timestamp = 1670294548,
+            before = 1670294548,
+            targetPostId = "",
+            targetPostSummary = "",
+            targetTumblelogName = "asdf",
+            targetTumblelogUuid = "asdf",
+            fromTumblelogName = "asdf",
+            fromTumblelogUuid = "asdf",
+            fromTumblelogIsAdult = false,
+            followed = true,
+            targetRootPostId = "",
+            privateChannel = false,
+            targetPostType = "regular",
+            postType = "photo",
+            mediaUrl = "asdf.jpg",
+            mediaUrlLarge = "asdf.jpg",
+            reblogKey = "asdf",
+            postId = "",
+            canReply = true
         )
         assertEquals(expected, note)
     }

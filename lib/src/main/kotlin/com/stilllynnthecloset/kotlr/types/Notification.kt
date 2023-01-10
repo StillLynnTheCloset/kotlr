@@ -26,6 +26,7 @@ public sealed class Notification {
             .withSubtype(WhatYouMissedNotification::class.java, WhatYouMissedNotification.KEY)
             .withSubtype(ConversationalNoteNotification::class.java, ConversationalNoteNotification.KEY)
             .withSubtype(SpamReportedNotification::class.java, SpamReportedNotification.KEY)
+            .withSubtype(UserMentionNotification::class.java, UserMentionNotification.KEY)
             .withSubtype(UnknownNotification::class.java, UnknownNotification.KEY)
     }
 
@@ -585,6 +586,50 @@ public data class SpamReportedNotification constructor(
 ) : Notification() {
     internal companion object {
         internal const val KEY: String = "spam_reported"
+    }
+}
+
+@JsonClass(generateAdapter = true)
+public data class UserMentionNotification constructor(
+    override val type: String = KEY,
+    override val timestamp: Long? = null,
+    override val before: Long? = null,
+    @Json(name = "target_post_id")
+    override val targetPostId: String? = null,
+    @Json(name = "target_post_summary")
+    override val targetPostSummary: String? = null,
+    @Json(name = "target_tumblelog_name")
+    override val targetTumblelogName: String? = null,
+    @Json(name = "target_tumblelog_uuid")
+    override val targetTumblelogUuid: String? = null,
+    @Json(name = "from_tumblelog_name")
+    override val fromTumblelogName: String? = null,
+    @Json(name = "from_tumblelog_uuid")
+    override val fromTumblelogUuid: String? = null,
+    @Json(name = "from_tumblelog_is_adult")
+    override val fromTumblelogIsAdult: Boolean? = null,
+    override val followed: Boolean? = null,
+    @Json(name = "target_root_post_id")
+    override val targetRootPostId: String? = null,
+    @Json(name = "private_channel")
+    override val privateChannel: Boolean? = null,
+    @Json(name = "target_post_type")
+    override val targetPostType: String? = null,
+    @Json(name = "post_type")
+    override val postType: String? = null,
+    @Json(name = "reblog_key")
+    override val reblogKey: String? = null,
+    @Json(name = "media_url")
+    override val mediaUrl: String? = null,
+    @Json(name = "media_url_large")
+    override val mediaUrlLarge: String? = null,
+    @Json(name = "post_id")
+    val postId: String? = null,
+    @Json(name = "can_reply")
+    val canReply: Boolean? = null,
+) : PostNotification() {
+    internal companion object {
+        internal const val KEY: String = "user_mention"
     }
 }
 

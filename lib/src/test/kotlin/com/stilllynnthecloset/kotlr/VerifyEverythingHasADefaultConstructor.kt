@@ -40,6 +40,7 @@ import com.stilllynnthecloset.kotlr.types.Tag
 import com.stilllynnthecloset.kotlr.types.Trail
 import com.stilllynnthecloset.kotlr.types.UnknownNotification
 import com.stilllynnthecloset.kotlr.types.User
+import com.stilllynnthecloset.kotlr.types.UserMentionNotification
 import com.stilllynnthecloset.kotlr.types.VideoMetadata
 import com.stilllynnthecloset.kotlr.types.WhatYouMissedNotification
 import com.stilllynnthecloset.kotlr.types.YoutubeVideoMetadata
@@ -134,6 +135,7 @@ internal class VerifyEverythingHasADefaultConstructor {
         println(WhatYouMissedNotification().toString())
         println(ConversationalNoteNotification().toString())
         println(SpamReportedNotification().toString())
+        println(UserMentionNotification().toString())
         println(UnknownNotification().toString())
         println(ClickThrough().toString())
         println(FilteredReason().toString())

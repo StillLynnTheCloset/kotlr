@@ -1,0 +1,22 @@
+{
+  "type": "user_mention",
+  "timestamp": 1670294548,
+  "before": 1670294548,
+  "target_post_id": "",
+  "target_post_summary": "",
+  "target_tumblelog_name": "asdf",
+  "target_tumblelog_uuid": "asdf",
+  "from_tumblelog_name": "asdf",
+  "from_tumblelog_uuid": "asdf",
+  "from_tumblelog_is_adult": false,
+  "followed": true,
+  "target_root_post_id": "",
+  "private_channel": false,
+  "target_post_type": "regular",
+  "post_type": "photo",
+  "media_url": "asdf.jpg",
+  "media_url_large": "asdf.jpg",
+  "reblog_key": "asdf",
+  "post_id": "",
+  "can_reply": true
+}

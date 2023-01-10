@@ -214,6 +214,7 @@ fun minimalExample() = runBlocking {
 * Add support for `Interactability.NoOne`
 * Add support for `ResponseBlogBlocks.alreadyBlocked`
 * Add support for `Blog.tumblrMartAccessories`
+* Add support for `Notification.UserMention`
 
 #### Deprecated Functionality ####
 
