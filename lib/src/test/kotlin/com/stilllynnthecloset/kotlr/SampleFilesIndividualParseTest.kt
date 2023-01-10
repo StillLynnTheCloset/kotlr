@@ -1834,7 +1834,7 @@ internal class SampleFilesIndividualParseTest {
             mediaUrlLarge = "asdf.jpg",
             reblogKey = "asdf",
             postId = "",
-            canReply = true
+            canReply = true,
         )
         assertEquals(expected, note)
     }
