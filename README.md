@@ -213,6 +213,7 @@ fun minimalExample() = runBlocking {
 * Add support for `Media.video`
 * Add support for `Interactability.NoOne`
 * Add support for `ResponseBlogBlocks.alreadyBlocked`
+* Add support for `Blog.tumblrMartAccessories`
 
 #### Deprecated Functionality ####
 

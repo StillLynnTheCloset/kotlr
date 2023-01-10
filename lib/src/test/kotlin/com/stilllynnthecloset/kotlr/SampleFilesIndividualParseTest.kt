@@ -14,6 +14,7 @@ import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogLikes
 import com.stilllynnthecloset.kotlr.response.type.user.ResponseUserDashboard
 import com.stilllynnthecloset.kotlr.types.AttributionNote
 import com.stilllynnthecloset.kotlr.types.Blog
+import com.stilllynnthecloset.kotlr.types.BlogAccessories
 import com.stilllynnthecloset.kotlr.types.ClickThrough
 import com.stilllynnthecloset.kotlr.types.Color
 import com.stilllynnthecloset.kotlr.types.Colors
@@ -1309,6 +1310,17 @@ internal class SampleFilesIndividualParseTest {
         val blog = parseFile<Blog>("samples/onceFailed/blog/asksAllowMedia.json")
         val expected = Blog(
             asksAllowMedia = true,
+        )
+        assertEquals(expected, blog)
+    }
+
+    @Test
+    internal fun onceFailed_blog_accessories() {
+        val blog = parseFile<Blog>("samples/onceFailed/blog/accessories.json")
+        val expected = Blog(
+            tumbleMartAccessories = BlogAccessories(
+                blueCheckmarkCount = 1,
+            ),
         )
         assertEquals(expected, blog)
     }

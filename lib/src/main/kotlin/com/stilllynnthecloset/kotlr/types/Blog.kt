@@ -151,4 +151,6 @@ public data class Blog constructor(
     val timezone: String? = null,
     @Json(name = "timezone_offset")
     val timezoneOffset: String? = null,
+    @Json(name = "tumblrmart_accessories")
+    val tumbleMartAccessories: BlogAccessories? = null,
 )
