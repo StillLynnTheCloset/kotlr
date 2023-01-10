@@ -1,11 +1,13 @@
 /* ktlint-disable max-line-length */
 /* ktlint-disable parameter-list-wrapping */
-package com.stilllynnthecloset.kotlr
+package com.stilllynnthecloset.kotlr.demo
 
+import com.stilllynnthecloset.kotlr.SampleUserKey
 import com.stilllynnthecloset.kotlr.api.KotlrApi
 import com.stilllynnthecloset.kotlr.authentication.OAuthFlow
 import com.stilllynnthecloset.kotlr.authentication.TumblrAppKey
 import com.stilllynnthecloset.kotlr.authentication.TumblrUserKey
+import com.stilllynnthecloset.kotlr.getApi
 import com.stilllynnthecloset.kotlr.postbody.CreateNewPostBody
 import com.stilllynnthecloset.kotlr.postbody.ReblogPostBody
 import com.stilllynnthecloset.kotlr.response.ResponseMetaInfo
@@ -513,7 +515,7 @@ internal suspend fun testBlogBlocks(api: KotlrApi, blogIdentifier: String) {
 
 // Uses ((if (doNotesAndReblogs) 54 else 40) + 3 * ceiling(postsToLoop / postsPerRequest)) requests
 // Default = 220 = 40 + 3*60
-internal suspend fun runAllTests(
+public suspend fun runAllTests(
     userKey: TumblrUserKey,
     blogName: String,
     debugLogging: Boolean = false,

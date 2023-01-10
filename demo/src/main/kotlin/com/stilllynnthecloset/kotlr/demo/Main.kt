@@ -1,5 +1,6 @@
 package com.stilllynnthecloset.kotlr.demo
 
+import com.stilllynnthecloset.kotlr.SampleUserKey
 import com.stilllynnthecloset.kotlr.api.KotlrApi
 import com.stilllynnthecloset.kotlr.getApi
 import com.stilllynnthecloset.kotlr.types.Post
@@ -7,11 +8,44 @@ import com.stilllynnthecloset.kotlr.types.ReblogNote
 import kotlinx.coroutines.runBlocking
 
 fun main(): Unit = runBlocking {
-    val api = getApi(MyUserKey, debug = false, strict = true)
+    // TODO: In order to run this demo, replace this with your own user key.
+    val api = getApi(SampleUserKey)
     findMostPopularPosts(api, "kotlr-development", 50)
         .forEach {
             println("${it.first.slug}, ${it.first.date}, ${it.first.id}, ${it.second}")
         }
+
+    runIntegrationTests()
+}
+
+private suspend fun runIntegrationTests() {
+    val strictParsing = true
+    val debug = true
+    val doNotesAndReblogs = true
+    val postsPerRequest = 50
+    val maxPostsPerLooper = 1000
+
+    // oAuthExample()
+
+    runAllTests(
+        SampleUserKey, // TODO: Replace
+        "kotlr-development",
+        debug,
+        strictParsing,
+        doNotesAndReblogs,
+        postsPerRequest,
+        maxPostsPerLooper,
+    )
+    runAllTests(
+        SampleUserKey, // TODO: Replace
+        "cyle",
+        debug,
+        strictParsing,
+        doNotesAndReblogs,
+        postsPerRequest,
+        maxPostsPerLooper,
+    )
+    println("Done running test API calls")
 }
 
 /**
@@ -55,6 +89,10 @@ internal suspend fun loopBlogPosts(
         )
         val body = response?.getBody()
         posts = body?.posts.orEmpty()
+        if (posts.isEmpty()) {
+            println("Found no posts")
+            return emptyList()
+        }
         posts.forEach { post ->
             val ts = post.timestamp ?: Long.MAX_VALUE
             if (ts < lastTime) {
