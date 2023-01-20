@@ -18,6 +18,8 @@ import com.stilllynnthecloset.kotlr.types.Media
 import com.stilllynnthecloset.kotlr.types.MentionInPostNotification
 import com.stilllynnthecloset.kotlr.types.MentionInReplyNotification
 import com.stilllynnthecloset.kotlr.types.NewGroupBlogMemberNotification
+import com.stilllynnthecloset.kotlr.types.PollAnswer
+import com.stilllynnthecloset.kotlr.types.PollSettings
 import com.stilllynnthecloset.kotlr.types.Post
 import com.stilllynnthecloset.kotlr.types.PostAppealAcceptedNotification
 import com.stilllynnthecloset.kotlr.types.PostAppealRejectedNotification
@@ -57,6 +59,7 @@ import com.stilllynnthecloset.kotlr.types.content.LinkAttribution
 import com.stilllynnthecloset.kotlr.types.content.LinkContent
 import com.stilllynnthecloset.kotlr.types.content.LinkTextFormat
 import com.stilllynnthecloset.kotlr.types.content.MentionTextFormat
+import com.stilllynnthecloset.kotlr.types.content.PollContent
 import com.stilllynnthecloset.kotlr.types.content.PostAttribution
 import com.stilllynnthecloset.kotlr.types.content.RowBlockLayout
 import com.stilllynnthecloset.kotlr.types.content.SizeTextFormat
@@ -89,6 +92,7 @@ internal class VerifyEverythingHasADefaultConstructor {
         println(LinkContent().toString())
         println(TextContent().toString())
         println(VideoContent().toString())
+        println(PollContent().toString())
         println(BoldTextFormat().toString())
         println(ItalicTextFormat().toString())
         println(StrikeThroughTextFormat().toString())
@@ -140,5 +144,7 @@ internal class VerifyEverythingHasADefaultConstructor {
         println(ClickThrough().toString())
         println(FilteredReason().toString())
         println(BlogAccessories().toString())
+        println(PollAnswer().toString())
+        println(PollSettings().toString())
     }
 }

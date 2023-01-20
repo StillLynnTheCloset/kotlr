@@ -25,6 +25,8 @@ import com.stilllynnthecloset.kotlr.types.LikeNote
 import com.stilllynnthecloset.kotlr.types.LikeNotification
 import com.stilllynnthecloset.kotlr.types.Media
 import com.stilllynnthecloset.kotlr.types.NoteData
+import com.stilllynnthecloset.kotlr.types.PollAnswer
+import com.stilllynnthecloset.kotlr.types.PollSettings
 import com.stilllynnthecloset.kotlr.types.Post
 import com.stilllynnthecloset.kotlr.types.PostedNote
 import com.stilllynnthecloset.kotlr.types.ReblogNote
@@ -56,6 +58,7 @@ import com.stilllynnthecloset.kotlr.types.content.LinkAttribution
 import com.stilllynnthecloset.kotlr.types.content.LinkContent
 import com.stilllynnthecloset.kotlr.types.content.LinkTextFormat
 import com.stilllynnthecloset.kotlr.types.content.MentionTextFormat
+import com.stilllynnthecloset.kotlr.types.content.PollContent
 import com.stilllynnthecloset.kotlr.types.content.PostAttribution
 import com.stilllynnthecloset.kotlr.types.content.PostContent
 import com.stilllynnthecloset.kotlr.types.content.RowBlockLayout
@@ -1375,6 +1378,34 @@ internal class SampleFilesIndividualParseTest {
         val content = parseFile<PostContent>("samples/onceFailed/content/listOfAttribution.json")
         val expected = ImageContent(
             attribution = AttributionWrapper(listAttribution = emptyList()),
+        )
+        assertEquals(expected, content)
+    }
+
+    @Test
+    internal fun onceFailed_content_pollContent() {
+        val content = parseFile<PostContent>("samples/onceFailed/content/pollContent.json")
+        val expected = PollContent(
+            clientId = "20a69747-55d4-40c3-adef-eba029556a21",
+            question = "YOLO OR SWAG",
+            answers = listOf(
+                PollAnswer(
+                    answerText = "YOLO",
+                    clientId = "54f846e2-43f2-41c8-958f-44a11242e0db",
+                ),
+                PollAnswer(
+                    answerText = "SWAG",
+                    clientId = "b2bae6e9-792a-4b14-a0cc-4cc36b2146e2",
+                ),
+            ),
+            settings = PollSettings(
+                multipleChoice = false,
+                closeStatus = "closed-after",
+                expireAfter = 604800,
+                source = "tumblr",
+            ),
+            createdAt = "2023-01-18 17:54:59 GMT",
+            timestamp = 1674064499,
         )
         assertEquals(expected, content)
     }

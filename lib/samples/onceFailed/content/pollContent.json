@@ -1,0 +1,23 @@
+{
+  "type": "poll",
+  "client_id": "20a69747-55d4-40c3-adef-eba029556a21",
+  "question": "YOLO OR SWAG",
+  "answers": [
+    {
+      "answer_text": "YOLO",
+      "client_id": "54f846e2-43f2-41c8-958f-44a11242e0db"
+    },
+    {
+      "answer_text": "SWAG",
+      "client_id": "b2bae6e9-792a-4b14-a0cc-4cc36b2146e2"
+    }
+  ],
+  "settings": {
+    "multiple_choice": false,
+    "close_status": "closed-after",
+    "expire_after": 604800,
+    "source": "tumblr"
+  },
+  "created_at": "2023-01-18 17:54:59 GMT",
+  "timestamp": 1674064499
+}

@@ -202,6 +202,7 @@ fun minimalExample() = runBlocking {
 
 #### New Functionality ####
 
+* Add support for `PostContent` and related `PollAnswer` and `PollSettings`
 * Add support for `Notification.SpamReported`
 * Add support for `ImageContent.caption`
 * Add support for `ImageContent.clickThrough`

@@ -9,6 +9,8 @@ import com.stilllynnthecloset.kotlr.types.Colors
 import com.stilllynnthecloset.kotlr.types.ExifData
 import com.stilllynnthecloset.kotlr.types.Media
 import com.stilllynnthecloset.kotlr.types.MediaList
+import com.stilllynnthecloset.kotlr.types.PollAnswer
+import com.stilllynnthecloset.kotlr.types.PollSettings
 import com.stilllynnthecloset.kotlr.types.VideoMetadata
 import com.stilllynnthecloset.kotlr.types.content.TextContent.SubType
 
@@ -29,6 +31,7 @@ public sealed class PostContent {
             .withSubtype(LinkContent::class.java, LinkContent.KEY)
             .withSubtype(TextContent::class.java, TextContent.KEY)
             .withSubtype(VideoContent::class.java, VideoContent.KEY)
+            .withSubtype(PollContent::class.java, PollContent.KEY)
             .withSubtype(UnknownContent::class.java, UnknownContent.KEY)
     }
 
@@ -321,5 +324,22 @@ public data class VideoContent constructor(
 ) : PostContent() {
     internal companion object {
         internal const val KEY: String = "video"
+    }
+}
+
+@JsonClass(generateAdapter = true)
+public data class PollContent constructor(
+    @Json(name = "client_id")
+    val clientId: String? = null,
+    val question: String? = null,
+    val answers: List<PollAnswer>? = null,
+    val settings: PollSettings? = null,
+    @Json(name = "created_at")
+    val createdAt: String? = null,
+    val timestamp: Long? = null,
+    override val type: String = KEY,
+) : PostContent() {
+    internal companion object {
+        internal const val KEY: String = "poll"
     }
 }
