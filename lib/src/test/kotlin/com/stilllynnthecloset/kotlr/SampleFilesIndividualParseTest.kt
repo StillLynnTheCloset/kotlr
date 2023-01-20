@@ -1386,26 +1386,30 @@ internal class SampleFilesIndividualParseTest {
     internal fun onceFailed_content_pollContent() {
         val content = parseFile<PostContent>("samples/onceFailed/content/pollContent.json")
         val expected = PollContent(
-            clientId = "20a69747-55d4-40c3-adef-eba029556a21",
-            question = "YOLO OR SWAG",
+            clientId = "05898443-8e9b-4618-97ed-6e54b0443475",
+            question = "BUG RACE",
             answers = listOf(
                 PollAnswer(
-                    answerText = "YOLO",
-                    clientId = "54f846e2-43f2-41c8-958f-44a11242e0db",
+                    answerText = "\uD83E\uDEB1",
+                    clientId = "46d09e52-6213-411f-bf1b-e438f25baef4",
                 ),
                 PollAnswer(
-                    answerText = "SWAG",
-                    clientId = "b2bae6e9-792a-4b14-a0cc-4cc36b2146e2",
+                    answerText = "\uD83D\uDC0C",
+                    clientId = "66c6650d-e9dc-482a-843f-869a9fb77a60",
+                ),
+                PollAnswer(
+                    answerText = "\uD83D\uDC1B",
+                    clientId = "27d238be-1544-4882-8bbe-59a4e839091f",
                 ),
             ),
             settings = PollSettings(
                 multipleChoice = false,
                 closeStatus = "closed-after",
-                expireAfter = 604800,
+                expireAfter = 86400,
                 source = "tumblr",
             ),
-            createdAt = "2023-01-18 17:54:59 GMT",
-            timestamp = 1674064499,
+            createdAt = "2023-01-18 18:42:31 GMT",
+            timestamp = 1674067351,
         )
         assertEquals(expected, content)
     }
