@@ -516,16 +516,12 @@ internal suspend fun testBlogBlocks(api: KotlrApi, blogIdentifier: String) {
 // Uses ((if (doNotesAndReblogs) 54 else 40) + 3 * ceiling(postsToLoop / postsPerRequest)) requests
 // Default = 220 = 40 + 3*60
 public suspend fun runAllTests(
-    userKey: TumblrUserKey,
+    api: KotlrApi,
     blogName: String,
-    debugLogging: Boolean = false,
-    strictParsing: Boolean = false,
     doNotesAndReblogs: Boolean = false,
     postsPerRequest: Int = 50,
     maxPostsPerLooper: Int = 3000,
 ) {
-    val api = getApi(userKey, debug = debugLogging, strict = strictParsing)
-
     println("Test all of the User related api calls")
     runUserTests(api, postsPerRequest, doNotesAndReblogs)
 

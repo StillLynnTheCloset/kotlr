@@ -10,39 +10,37 @@ import kotlinx.coroutines.runBlocking
 
 fun main(): Unit = runBlocking {
     // TODO: In order to run this demo, replace this with your own user key.
-    val api = getApi(SampleUserKey)
+    val userKey = SampleUserKey
+    val api = getApi(userKey, debug = true, strict = true)
+
+    // Find the X most recent original posts on a blog and rank them by popularity
     findMostPopularPosts(api, "kotlr-development", 50)
         .forEach {
             println("${it.first.slug}, ${it.first.date}, ${it.first.id}, ${it.second}")
         }
+
+    // Find out exact results of the famous Bug Race! Make sure to use the blogname and post ID of the original post that contained the poll.
     getPollResults(api, "crankyteapot", 706810846972706816)
 
-    runIntegrationTests()
+    // Run a full test suite on current tumblr data to hopefully catch any new properties or changes to existing apis.
+    runIntegrationTests(api)
 }
 
-private suspend fun runIntegrationTests() {
-    val strictParsing = true
-    val debug = true
+private suspend fun runIntegrationTests(api: KotlrApi) {
     val doNotesAndReblogs = true
     val postsPerRequest = 50
     val maxPostsPerLooper = 1000
 
-    // oAuthExample()
-
     runAllTests(
-        SampleUserKey, // TODO: Replace
+        api,
         "kotlr-development",
-        debug,
-        strictParsing,
         doNotesAndReblogs,
         postsPerRequest,
         maxPostsPerLooper,
     )
     runAllTests(
-        SampleUserKey, // TODO: Replace
+        api,
         "cyle",
-        debug,
-        strictParsing,
         doNotesAndReblogs,
         postsPerRequest,
         maxPostsPerLooper,
