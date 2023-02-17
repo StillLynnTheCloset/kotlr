@@ -352,7 +352,23 @@ public data class AskNotification constructor(
     @Json(name = "from_tumblelog_is_adult")
     override val fromTumblelogIsAdult: Boolean? = null,
     override val followed: Boolean? = null,
-) : Notification(), FromBlogNotification {
+    @Json(name = "target_root_post_id")
+    override val targetRootPostId: String? = null,
+    @Json(name = "private_channel")
+    override val privateChannel: Boolean? = null,
+    @Json(name = "target_post_type")
+    override val targetPostType: String? = null,
+    @Json(name = "post_type")
+    override val postType: String? = null,
+    @Json(name = "reblog_key")
+    override val reblogKey: String? = null,
+    @Json(name = "media_url")
+    override val mediaUrl: String? = null,
+    @Json(name = "media_url_large")
+    override val mediaUrlLarge: String? = null,
+    @Json(name = "is_anonymous")
+    val isAnonymous: Boolean? = null,
+) : Notification(), PostNotification, FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "ask"
     }

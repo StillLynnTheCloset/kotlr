@@ -12,6 +12,7 @@ import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogAvatar
 import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogBlocks
 import com.stilllynnthecloset.kotlr.response.type.blog.ResponseBlogLikes
 import com.stilllynnthecloset.kotlr.response.type.user.ResponseUserDashboard
+import com.stilllynnthecloset.kotlr.types.AskNotification
 import com.stilllynnthecloset.kotlr.types.AttributionNote
 import com.stilllynnthecloset.kotlr.types.Blog
 import com.stilllynnthecloset.kotlr.types.BlogAccessories
@@ -1710,6 +1711,29 @@ internal class SampleFilesIndividualParseTest {
     // endregion Note
 
     // region Notification
+
+    @Test
+    internal fun onceFailed_notification_ask() {
+        val note = parseFile<AskNotification>("samples/onceFailed/notification/ask.json")
+        val expected = AskNotification(
+            timestamp = 1622863497,
+            before = 1622863497,
+            targetPostId = "1622863497",
+            targetPostSummary = "asdf?",
+            targetTumblelogName = "asdf",
+            targetTumblelogUuid = "asdf",
+            fromTumblelogName = "asdf",
+            fromTumblelogUuid = "asdf",
+            fromTumblelogIsAdult = false,
+            privateChannel = false,
+            targetPostType = "note",
+            postType = "answer",
+            reblogKey = "asdf",
+            isAnonymous = false,
+            followed = false,
+        )
+        assertEquals(expected, note)
+    }
 
     @Test
     internal fun onceFailed_notification_follower() {
