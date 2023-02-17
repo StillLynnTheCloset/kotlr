@@ -14,4 +14,5 @@ public interface KotlrApi :
     KotlrBlogGetApi,
     KotlrBlogPostApi,
     KotlrBlogDeleteApi,
-    KotlrPostsGetApi
+    KotlrPostsGetApi,
+    KotlrPollsGetApi

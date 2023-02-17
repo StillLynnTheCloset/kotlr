@@ -6,6 +6,7 @@ import com.stilllynnthecloset.kotlr.api.KotlrApiImpl
 import com.stilllynnthecloset.kotlr.api.KotlrBlogDeleteApiImpl
 import com.stilllynnthecloset.kotlr.api.KotlrBlogGetApiImpl
 import com.stilllynnthecloset.kotlr.api.KotlrBlogPostApiImpl
+import com.stilllynnthecloset.kotlr.api.KotlrPollsGetApiImpl
 import com.stilllynnthecloset.kotlr.api.KotlrPostsGetApiImpl
 import com.stilllynnthecloset.kotlr.api.KotlrUserDeleteApiImpl
 import com.stilllynnthecloset.kotlr.api.KotlrUserGetApiImpl
@@ -153,5 +154,6 @@ public fun getApi(
         blogPostApi = KotlrBlogPostApiImpl(retrofit.create()),
         blogDeleteApi = KotlrBlogDeleteApiImpl(retrofit.create()),
         postsGetApi = KotlrPostsGetApiImpl(retrofit.create()),
+        pollsGetApi = KotlrPollsGetApiImpl(retrofit.create()),
     )
 }

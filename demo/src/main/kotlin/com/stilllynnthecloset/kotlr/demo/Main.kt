@@ -5,6 +5,7 @@ import com.stilllynnthecloset.kotlr.api.KotlrApi
 import com.stilllynnthecloset.kotlr.getApi
 import com.stilllynnthecloset.kotlr.types.Post
 import com.stilllynnthecloset.kotlr.types.ReblogNote
+import com.stilllynnthecloset.kotlr.types.content.PollContent
 import kotlinx.coroutines.runBlocking
 
 fun main(): Unit = runBlocking {
@@ -14,6 +15,7 @@ fun main(): Unit = runBlocking {
         .forEach {
             println("${it.first.slug}, ${it.first.date}, ${it.first.id}, ${it.second}")
         }
+    getPollResults(api, "crankyteapot", 706810846972706816)
 
     runIntegrationTests()
 }
@@ -46,6 +48,33 @@ private suspend fun runIntegrationTests() {
         maxPostsPerLooper,
     )
     println("Done running test API calls")
+}
+
+private suspend fun getPollResults(api: KotlrApi, blogName: String, postId: Long) {
+    api
+        .getPost(blogName, postId)
+        ?.getBody()
+        ?.also { post ->
+            post.content
+                ?.filterIsInstance<PollContent>()
+                ?.forEach { content ->
+                    val options = content.answers.orEmpty()
+                    val resultBody = api.getPollResults(
+                        blogIdentifier = post.blog?.name.orEmpty(),
+                        postId = post.id ?: 0L,
+                        pollUuid = content.clientId.orEmpty(),
+                    )?.getBody()
+                    println("Poll results as of ${resultBody?.timestamp} unixtime")
+                    val mappedResults = resultBody?.results?.mapKeys { (key, value) ->
+                        options.firstOrNull { it.clientId == key }?.answerText
+                    }
+                    println(content.question)
+                    val totalVotes = mappedResults?.map { it.value }.orEmpty().sum().toDouble()
+                    mappedResults?.forEach {
+                        println("${it.key} : ${it.value} - ${it.value / totalVotes * 100}%")
+                    }
+                }
+        }
 }
 
 /**

@@ -14,6 +14,7 @@ import com.stilllynnthecloset.kotlr.json.response.blog.BlogNotificationsWrapperJ
 import com.stilllynnthecloset.kotlr.json.response.blog.BlogPostsWrapperJsonAdapter
 import com.stilllynnthecloset.kotlr.json.response.blog.BlogQueueWrapperJsonAdapter
 import com.stilllynnthecloset.kotlr.json.response.blog.BlogSubmissionsWrapperJsonAdapter
+import com.stilllynnthecloset.kotlr.json.response.polls.PollsResultsWrapperJsonAdapter
 import com.stilllynnthecloset.kotlr.json.response.post.BlogPostNotesWrapperJsonAdapter
 import com.stilllynnthecloset.kotlr.json.response.post.BlogPostWrapperJsonAdapter
 import com.stilllynnthecloset.kotlr.json.response.post.CreatePostWrapperJsonAdapter
@@ -90,6 +91,8 @@ internal object KotlrJsonAdapterFactory : JsonAdapter.Factory {
                         CreatePostWrapperJsonAdapter(moshi)
                     "com.stilllynnthecloset.kotlr.response.type.post.ResponseBlogPostNotes\$Body" ->
                         BlogPostNotesWrapperJsonAdapter(moshi)
+                    "com.stilllynnthecloset.kotlr.response.type.polls.ResponsePollsResults\$Body" ->
+                        PollsResultsWrapperJsonAdapter(moshi)
                     "com.stilllynnthecloset.kotlr.types.Post" ->
                         BlogPostWrapperJsonAdapter(moshi)
                     else -> null

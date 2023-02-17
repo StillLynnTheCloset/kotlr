@@ -15,6 +15,7 @@ internal class KotlrApiImpl internal constructor(
     private val blogPostApi: KotlrBlogPostApi,
     private val blogDeleteApi: KotlrBlogDeleteApi,
     private val postsGetApi: KotlrPostsGetApi,
+    private val pollsGetApi: KotlrPollsGetApi,
 ) :
     KotlrApi,
     KotlrUserGetApi by userGetApi,
@@ -23,4 +24,5 @@ internal class KotlrApiImpl internal constructor(
     KotlrBlogGetApi by blogGetApi,
     KotlrBlogPostApi by blogPostApi,
     KotlrBlogDeleteApi by blogDeleteApi,
-    KotlrPostsGetApi by postsGetApi
+    KotlrPostsGetApi by postsGetApi,
+    KotlrPollsGetApi by pollsGetApi
