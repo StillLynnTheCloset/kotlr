@@ -198,7 +198,7 @@ fun minimalExample() = runBlocking {
 
 #### Breaking Changes ####
 
-N/A
+* Change notifications to be based on smaller interfaces
 
 #### New Functionality ####
 

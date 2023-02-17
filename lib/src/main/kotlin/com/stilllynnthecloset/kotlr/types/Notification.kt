@@ -37,20 +37,23 @@ public sealed class Notification {
     internal abstract val targetPostSummary: String?
     internal abstract val targetTumblelogName: String?
     internal abstract val targetTumblelogUuid: String?
-    internal abstract val fromTumblelogName: String?
-    internal abstract val fromTumblelogUuid: String?
-    internal abstract val fromTumblelogIsAdult: Boolean?
-    internal abstract val followed: Boolean?
 }
 
-public sealed class PostNotification : Notification() {
-    internal abstract val targetRootPostId: String?
-    internal abstract val privateChannel: Boolean?
-    internal abstract val targetPostType: String?
-    internal abstract val postType: String?
-    internal abstract val reblogKey: String?
-    internal abstract val mediaUrl: String?
-    internal abstract val mediaUrlLarge: String?
+public interface PostNotification {
+    public val targetRootPostId: String?
+    public val privateChannel: Boolean?
+    public val targetPostType: String?
+    public val postType: String?
+    public val reblogKey: String?
+    public val mediaUrl: String?
+    public val mediaUrlLarge: String?
+}
+
+public interface FromBlogNotification {
+    public val fromTumblelogName: String?
+    public val fromTumblelogUuid: String?
+    public val fromTumblelogIsAdult: Boolean?
+    public val followed: Boolean?
 }
 
 @JsonClass(generateAdapter = true)
@@ -87,7 +90,7 @@ public data class LikeNotification constructor(
     override val mediaUrl: String? = null,
     @Json(name = "media_url_large")
     override val mediaUrlLarge: String? = null,
-) : PostNotification() {
+) : Notification(), PostNotification, FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "like"
     }
@@ -127,7 +130,7 @@ public data class ReplyNotification constructor(
     override val mediaUrl: String? = null,
     @Json(name = "media_url_large")
     override val mediaUrlLarge: String? = null,
-) : PostNotification() {
+) : Notification(), PostNotification, FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "reply"
     }
@@ -153,7 +156,7 @@ public data class FollowerNotification constructor(
     @Json(name = "from_tumblelog_is_adult")
     override val fromTumblelogIsAdult: Boolean? = null,
     override val followed: Boolean? = null,
-) : Notification() {
+) : Notification(), FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "follower"
     }
@@ -193,7 +196,7 @@ public data class MentionInReplyNotification constructor(
     override val mediaUrl: String? = null,
     @Json(name = "media_url_large")
     override val mediaUrlLarge: String? = null,
-) : PostNotification() {
+) : Notification(), PostNotification, FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "mention_in_reply"
     }
@@ -233,7 +236,7 @@ public data class MentionInPostNotification constructor(
     override val mediaUrl: String? = null,
     @Json(name = "media_url_large")
     override val mediaUrlLarge: String? = null,
-) : PostNotification() {
+) : Notification(), PostNotification, FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "mention_in_post"
     }
@@ -277,7 +280,7 @@ public data class ReblogWithoutContentNotification constructor(
     val postId: String? = null,
     @Json(name = "post_tags")
     val postTags: List<String>? = null,
-) : PostNotification() {
+) : Notification(), PostNotification, FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "reblog_naked"
     }
@@ -323,7 +326,7 @@ public data class ReblogWithContentNotification constructor(
     val addedText: String? = null,
     @Json(name = "post_tags")
     val postTags: List<String>? = null,
-) : PostNotification() {
+) : Notification(), PostNotification, FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "reblog"
     }
@@ -349,7 +352,7 @@ public data class AskNotification constructor(
     @Json(name = "from_tumblelog_is_adult")
     override val fromTumblelogIsAdult: Boolean? = null,
     override val followed: Boolean? = null,
-) : Notification() {
+) : Notification(), FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "ask"
     }
@@ -375,7 +378,7 @@ public data class AnsweredAskNotification constructor(
     @Json(name = "from_tumblelog_is_adult")
     override val fromTumblelogIsAdult: Boolean? = null,
     override val followed: Boolean? = null,
-) : Notification() {
+) : Notification(), FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "answered_ask"
     }
@@ -401,7 +404,7 @@ public data class NewGroupBlogMemberNotification constructor(
     @Json(name = "from_tumblelog_is_adult")
     override val fromTumblelogIsAdult: Boolean? = null,
     override val followed: Boolean? = null,
-) : Notification() {
+) : Notification(), FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "new_group_blog_member"
     }
@@ -427,7 +430,7 @@ public data class PostAttributionNotification constructor(
     @Json(name = "from_tumblelog_is_adult")
     override val fromTumblelogIsAdult: Boolean? = null,
     override val followed: Boolean? = null,
-) : Notification() {
+) : Notification(), FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "post_attribution"
     }
@@ -453,7 +456,7 @@ public data class PostFlaggedNotification constructor(
     @Json(name = "from_tumblelog_is_adult")
     override val fromTumblelogIsAdult: Boolean? = null,
     override val followed: Boolean? = null,
-) : Notification() {
+) : Notification(), FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "post_flagged"
     }
@@ -479,7 +482,7 @@ public data class PostAppealAcceptedNotification constructor(
     @Json(name = "from_tumblelog_is_adult")
     override val fromTumblelogIsAdult: Boolean? = null,
     override val followed: Boolean? = null,
-) : Notification() {
+) : Notification(), FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "post_appeal_accepted"
     }
@@ -505,7 +508,7 @@ public data class PostAppealRejectedNotification constructor(
     @Json(name = "from_tumblelog_is_adult")
     override val fromTumblelogIsAdult: Boolean? = null,
     override val followed: Boolean? = null,
-) : Notification() {
+) : Notification(), FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "post_appeal_rejected"
     }
@@ -531,7 +534,7 @@ public data class WhatYouMissedNotification constructor(
     @Json(name = "from_tumblelog_is_adult")
     override val fromTumblelogIsAdult: Boolean? = null,
     override val followed: Boolean? = null,
-) : Notification() {
+) : Notification(), FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "what_you_missed"
     }
@@ -557,7 +560,7 @@ public data class ConversationalNoteNotification constructor(
     @Json(name = "from_tumblelog_is_adult")
     override val fromTumblelogIsAdult: Boolean? = null,
     override val followed: Boolean? = null,
-) : Notification() {
+) : Notification(), FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "conversational_note"
     }
@@ -583,7 +586,7 @@ public data class SpamReportedNotification constructor(
     @Json(name = "from_tumblelog_is_adult")
     override val fromTumblelogIsAdult: Boolean? = null,
     override val followed: Boolean? = null,
-) : Notification() {
+) : Notification(), FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "spam_reported"
     }
@@ -627,7 +630,7 @@ public data class UserMentionNotification constructor(
     val postId: String? = null,
     @Json(name = "can_reply")
     val canReply: Boolean? = null,
-) : PostNotification() {
+) : Notification(), PostNotification, FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "user_mention"
     }
@@ -645,8 +648,4 @@ public class UnknownNotification : Notification() {
     override val targetPostSummary: String? = null
     override val targetTumblelogName: String? = null
     override val targetTumblelogUuid: String? = null
-    override val fromTumblelogName: String? = null
-    override val fromTumblelogUuid: String? = null
-    override val fromTumblelogIsAdult: Boolean? = null
-    override val followed: Boolean? = null
 }
