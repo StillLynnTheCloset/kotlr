@@ -27,6 +27,7 @@ public sealed class Notification {
             .withSubtype(ConversationalNoteNotification::class.java, ConversationalNoteNotification.KEY)
             .withSubtype(SpamReportedNotification::class.java, SpamReportedNotification.KEY)
             .withSubtype(UserMentionNotification::class.java, UserMentionNotification.KEY)
+            .withSubtype(MilestonePostNotification::class.java, MilestonePostNotification.KEY)
             .withSubtype(UnknownNotification::class.java, UnknownNotification.KEY)
     }
 
@@ -649,6 +650,29 @@ public data class UserMentionNotification constructor(
 ) : Notification(), PostNotification, FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "user_mention"
+    }
+}
+
+@JsonClass(generateAdapter = true)
+public data class MilestonePostNotification constructor(
+    override val type: String = KEY,
+    override val timestamp: Long? = null,
+    override val before: Long? = null,
+    @Json(name = "target_post_id")
+    override val targetPostId: String? = null,
+    @Json(name = "target_post_summary")
+    override val targetPostSummary: String? = null,
+    @Json(name = "target_tumblelog_name")
+    override val targetTumblelogName: String? = null,
+    @Json(name = "target_tumblelog_uuid")
+    override val targetTumblelogUuid: String? = null,
+    @Json(name = "is_anonymous")
+    val isAnonymous: Boolean? = null,
+    val milestone: Int,
+    val editor: Post,
+) : Notification() {
+    internal companion object {
+        internal const val KEY: String = "milestone_post"
     }
 }
 

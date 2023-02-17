@@ -25,6 +25,7 @@ import com.stilllynnthecloset.kotlr.types.FollowerNotification
 import com.stilllynnthecloset.kotlr.types.LikeNote
 import com.stilllynnthecloset.kotlr.types.LikeNotification
 import com.stilllynnthecloset.kotlr.types.Media
+import com.stilllynnthecloset.kotlr.types.MilestonePostNotification
 import com.stilllynnthecloset.kotlr.types.NoteData
 import com.stilllynnthecloset.kotlr.types.PollAnswer
 import com.stilllynnthecloset.kotlr.types.PollSettings
@@ -1799,6 +1800,44 @@ internal class SampleFilesIndividualParseTest {
             mediaUrl = null,
             mediaUrlLarge = null,
             reblogKey = "asdf",
+        )
+        assertEquals(expected, note)
+    }
+
+    @Test
+    internal fun onceFailed_notification_milestonePost() {
+        val note = parseFile<MilestonePostNotification>("samples/onceFailed/notification/milestonePost.json")
+        val expected = MilestonePostNotification(
+            timestamp = 1622863497,
+            before = 1622863497,
+            targetPostId = "",
+            targetPostSummary = "",
+            targetTumblelogName = "asdf",
+            targetTumblelogUuid = "asdf",
+            milestone = 50,
+            isAnonymous = false,
+            editor = Post(
+                content = listOf(
+                    ImageContent(
+                        media = listOf(
+                            Media(
+                                url = "https://assets.tumblr.com/images/milestones/posts/post_50.png",
+                                type = "image/png",
+                                width = 500,
+                                height = 500,
+                                hasOriginalDimensions = true,
+                            ),
+                        ),
+                    ),
+                    TextContent(
+                        text = "50 posts!",
+                    ),
+                ),
+                tags = listOf(
+                    "50 posts",
+                    "tumblr milestone",
+                ),
+            ),
         )
         assertEquals(expected, note)
     }
