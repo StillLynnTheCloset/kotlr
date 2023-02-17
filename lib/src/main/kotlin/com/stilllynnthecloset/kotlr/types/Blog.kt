@@ -153,4 +153,6 @@ public data class Blog constructor(
     val timezoneOffset: String? = null,
     @Json(name = "tumblrmart_accessories")
     val tumbleMartAccessories: BlogAccessories? = null,
+    @Json(name = "can_show_badges")
+    val canShowBadges: Boolean? = null,
 )

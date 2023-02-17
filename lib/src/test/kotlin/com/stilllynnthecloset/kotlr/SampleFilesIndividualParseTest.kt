@@ -1319,6 +1319,15 @@ internal class SampleFilesIndividualParseTest {
     }
 
     @Test
+    internal fun onceFailed_blog_canShowBadges() {
+        val blog = parseFile<Blog>("samples/onceFailed/blog/canShowBadges.json")
+        val expected = Blog(
+            canShowBadges = true,
+        )
+        assertEquals(expected, blog)
+    }
+
+    @Test
     internal fun onceFailed_blog_accessories() {
         val blog = parseFile<Blog>("samples/onceFailed/blog/accessories.json")
         val expected = Blog(
