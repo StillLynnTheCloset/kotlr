@@ -104,5 +104,5 @@ publishing {
 
 tasks.withType<Wrapper> {
     distributionType = Wrapper.DistributionType.ALL
-    gradleVersion = "6.8.2"
+    gradleVersion = "8.0.1"
 }
