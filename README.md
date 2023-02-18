@@ -205,6 +205,7 @@ fun minimalExample() = runBlocking {
 * Add support for polls.getResults and add a small demo function that gets the results of a poll and matches them with the correct prompts
 * Add support for Blog.canShowBadges
 * Add support missing properties of Ask Notifications
+* Add support for Milestone Post notifications
 
 #### Deprecated Functionality ####
 
