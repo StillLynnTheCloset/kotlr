@@ -69,16 +69,16 @@ internal suspend fun runUserTests(api: KotlrApi, postsPerRequest: Int, doNotesAn
     }
 
     println("Calling `likePost()`")
-    println(api.likePost(189418176408, "6wJ3EaAY").checkError().clean())
+    println(api.likePost(232, "jaHD5AfB").checkError().clean())
 
     println("Calling `unlikePost()`")
-    println(api.unlikePost(189418176408, "6wJ3EaAY").checkError().clean())
-
-    println("Calling `unfollowBlog()`")
-    println(api.unfollowBlog("https://kotlr-development.tumblr.com/").checkError().clean())
+    println(api.unlikePost(232, "jaHD5AfB").checkError().clean())
 
     println("Calling `followBlog()`")
-    println(api.followBlog("https://kotlr-development.tumblr.com/").checkError().clean())
+    println(api.followBlog("https://demo.tumblr.com/").checkError().clean())
+
+    println("Calling `unfollowBlog()`")
+    println(api.unfollowBlog("https://demo.tumblr.com/").checkError().clean())
 
     println("Calling `getUserFollowing()`")
     println(api.getUserFollowing().checkError().clean())
@@ -107,7 +107,7 @@ internal suspend fun runBlogTests(
     println(api.getBlogInfo(blogIdentifier = blogName).checkError(expectError).clean())
 
     println("Calling `getBlogFollowedBy()`")
-    println(api.getBlogFollowedBy(blogIdentifier = blogName, query = "kotlr-development").checkError(expectError).clean())
+    println(api.getBlogFollowedBy(blogIdentifier = blogName, query = "demo").checkError(expectError).clean())
 
     println("Calling `getBlogLikes()``")
     println(
@@ -218,20 +218,26 @@ internal suspend fun runBlogTests(
 
     println("Calling `getPost()`")
     println(
-        api.getPost(blogIdentifier = "kotlr-development", postId = 179771546338).checkError().clean(),
+        api.getPost(blogIdentifier = "demo", postId = 232).checkError().clean(),
     )
 
     println("Calling `getPostNotes()`")
-    println(api.getPostNotes(blogIdentifier = "kotlr-development", postId = 179771546338).checkError().clean())
+    println(api.getPostNotes(blogIdentifier = "demo", postId = 232).checkError().clean())
 
     println(api.getNotifications(blogIdentifier = blogName).checkError(expectError).clean())
     println(api.getNotifications(blogIdentifier = blogName, types = listOf("like")).checkError(expectError).clean())
     println(api.shuffleQueue(blogIdentifier = blogName).checkError(expectError).clean())
 }
 
-// Uses (1) requests.
+// Uses (3) requests.
 internal suspend fun runPostTests(api: KotlrApi) {
     println(api.getTaggedPosts("lol").checkError().clean())
+
+    // Check the results of BUG RACE.
+    println(api.getPollResults("crankyteapot", 706810846972706816, "05898443-8e9b-4618-97ed-6e54b0443475").checkError().clean())
+
+    // Figure out how much vanilla to add to your cake.
+    println(api.getPollResults("relientk", 708263093485076480, "60e0b849-5c0c-43ca-a334-bba8b7f924e2").checkError().clean())
 }
 
 // Uses up to (ceiling(postsToLoop / postsPerRequest)) requests. (depends if there are enough posts on the given blog)
@@ -515,7 +521,7 @@ internal suspend fun testBlogBlocks(api: KotlrApi, blogIdentifier: String) {
 
 // Uses ((if (doNotesAndReblogs) 54 else 40) + 3 * ceiling(postsToLoop / postsPerRequest)) requests
 // Default = 220 = 40 + 3*60
-public suspend fun runAllTests(
+internal suspend fun runAllTests(
     api: KotlrApi,
     blogName: String,
     doNotesAndReblogs: Boolean = false,
@@ -572,7 +578,7 @@ internal fun minimalExampleExplained() = runBlocking {
     val service: KotlrApi = getApi(key)
 
     // Perform the request.
-    val response: ResponseBlogLikes.Response? = service.getBlogLikes(blogIdentifier = "kotlr-development")
+    val response: ResponseBlogLikes.Response? = service.getBlogLikes(blogIdentifier = "cyle")
 
     // Check out any of the meta information that Tumblr returns such as HTTP success codes.
     val meta: ResponseMetaInfo? = response?.meta
@@ -597,7 +603,7 @@ internal fun minimalExampleExplained() = runBlocking {
 internal fun minimalExample() = runBlocking {
     println(
         getApi(SampleUserKey)
-            .getBlogLikes(blogIdentifier = "kotlr-development")
+            .getBlogLikes(blogIdentifier = "cyle")
             ?.getBody()
             ?.posts
             ?.firstOrNull()
