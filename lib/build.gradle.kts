@@ -48,8 +48,8 @@ dependencies {
 
     implementation(Square.okHttp3.okHttp)
     implementation(Square.okHttp3.loggingInterceptor)
-    implementation("se.akerfeldt:okhttp-signpost:_")
-    implementation("oauth.signpost:signpost-core:_")
+    implementation(libs.okhttp.signpost)
+    implementation(libs.signpost.core)
 
     testImplementation(Testing.junit4)
 }
