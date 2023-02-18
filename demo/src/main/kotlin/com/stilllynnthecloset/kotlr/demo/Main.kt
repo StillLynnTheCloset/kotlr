@@ -7,6 +7,7 @@ import com.stilllynnthecloset.kotlr.types.Post
 import com.stilllynnthecloset.kotlr.types.ReblogNote
 import com.stilllynnthecloset.kotlr.types.content.PollContent
 import kotlinx.coroutines.runBlocking
+import kotlin.math.abs
 
 fun main(): Unit = runBlocking {
     // TODO: In order to run this demo, replace this with your own user key.
@@ -48,28 +49,34 @@ private suspend fun runIntegrationTests(api: KotlrApi) {
     println("Done running test API calls")
 }
 
+/**
+ * This is super messy because it's just supposed to be a fun little thing.
+ * I did a bunch of fun little Kotlin things, and make a whole bunch of assumptions about null values, and have 0 error handling.
+ * So this is not an example of how you should write code, but it works, for now.
+ * I don't do any pretty time formatting because I don't feel like importing a time library into this demo module.
+ */
 private suspend fun getPollResults(api: KotlrApi, blogName: String, postId: Long) {
     api
         .getPost(blogName, postId)
         ?.getBody()
         ?.also { post ->
-            post.content
-                ?.filterIsInstance<PollContent>()
-                ?.forEach { content ->
+            // Check the whole trail for poll contents
+            (post.content.orEmpty() + post.trail?.flatMap { it.content?.contentList.orEmpty() }.orEmpty())
+                .filterIsInstance<PollContent>()
+                .forEach { content ->
                     val options = content.answers.orEmpty()
                     val resultBody = api.getPollResults(
                         blogIdentifier = post.blog?.name.orEmpty(),
                         postId = post.id ?: 0L,
                         pollUuid = content.clientId.orEmpty(),
                     )?.getBody()
-                    println("Poll results as of ${resultBody?.timestamp} unixtime")
-                    val mappedResults = resultBody?.results?.mapKeys { (key, value) ->
+                    val mappedResults = resultBody?.results?.mapKeys { (key, _) ->
                         options.firstOrNull { it.clientId == key }?.answerText
                     }
                     println(content.question)
                     val totalVotes = mappedResults?.map { it.value }.orEmpty().sum().toDouble()
                     mappedResults?.forEach {
-                        println("${it.key} : ${it.value} - ${String.format("%01.6f", it.value / totalVotes * 100)}%")
+                        println("    ${it.key} : ${it.value} votes - ${String.format("%01.6f", it.value / totalVotes * 100)}%")
                     }
                     val mappedVotes = resultBody
                         ?.userVotes
@@ -83,8 +90,21 @@ private suspend fun getPollResults(api: KotlrApi, blogName: String, postId: Long
                     } else {
                         println("You voted for: $mappedVotes")
                     }
+                    val pollDuration = content.settings?.expireAfter ?: 0
+                    val postTimestamp = post.timestamp ?: 0
+                    val pollClosesAfter = (pollDuration) + (postTimestamp)
+                    val timestamp = resultBody?.timestamp ?: 0
+                    val remainingTime = pollClosesAfter - timestamp
+                    println("Voting is ${if (remainingTime <= 0) "not" else "still"} open")
+                    if (remainingTime > 0) {
+                        println("There are approximately $remainingTime seconds left to vote")
+                    } else {
+                        println("Poll has been closed for approximately ${abs(remainingTime)} seconds")
+                    }
+                    println("Poll results as of ${resultBody?.timestamp} unixtime")
                 }
         }
+    println()
 }
 
 /**
