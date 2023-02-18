@@ -69,7 +69,19 @@ private suspend fun getPollResults(api: KotlrApi, blogName: String, postId: Long
                     println(content.question)
                     val totalVotes = mappedResults?.map { it.value }.orEmpty().sum().toDouble()
                     mappedResults?.forEach {
-                        println("${it.key} : ${it.value} - ${it.value / totalVotes * 100}%")
+                        println("${it.key} : ${it.value} - ${String.format("%01.6f", it.value / totalVotes * 100)}%")
+                    }
+                    val mappedVotes = resultBody
+                        ?.userVotes
+                        ?.map { vote ->
+                            options
+                                .firstOrNull { it.clientId == vote }
+                                ?.answerText
+                        }
+                    if (mappedVotes.isNullOrEmpty()) {
+                        println("You did not vote")
+                    } else {
+                        println("You voted for: $mappedVotes")
                     }
                 }
         }
