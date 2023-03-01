@@ -34,7 +34,7 @@ Currently, this only includes getting OAuth keys.
 2. ~~Improve documentation.~~
 3. ~~Improve test coverage and make tests more targeted~~.
 4. ~~Add support for requests using other HTTP verbs.~~
-5. Add support for multi-part form uploads. After this, Kotlr will support all the Tumblr API which will mark version 1.0.0
+5. Add support for multipart form uploads. After this, Kotlr will support all the Tumblr API which will mark version 1.0.0
 6. Clean up the API by: restricting visibility, reducing optional and default values, ~~limiting mutability, and enforcing stricter types~~.
 7. Create extension library to improve ease of use on Android.
 8. Create PoC Android App.
@@ -117,7 +117,7 @@ fun oAuthExample() = runBlocking {
     val flow = OAuthFlow(TumblrAppKey(apiKey, apiSecret))
 
     // Get the request url, you'll have to open this in a browser or webview.
-    // It will then ask you to login to Tumblr and authorize your app to access your account.
+    // It will then ask you to log in to Tumblr and authorize your app to access your account.
     // Since we aren't using a web based application, the callbackUrl doesn't really matter, so let's
     // just make it example.com.
     val requestUrl: String = flow.getRequestUrl("example.com")
@@ -216,132 +216,133 @@ fun minimalExample() = runBlocking {
 
 #### Breaking Changes ####
 
-* Change notifications to be based on smaller interfaces
+  * Change notifications to be based on smaller interfaces
 
 #### New Functionality ####
 
-* Add support for polls.getResults and add a small demo function that gets the results of a poll and matches them with the correct prompts
-* Add support for Blog.canShowBadges
-* Add support missing properties of Ask Notifications
-* Add support for Milestone Post notifications
+  * Add support for polls.getResults and add a small demo function that gets the results of a poll and matches them with the correct prompts
+  * Add support for Blog.canShowBadges
+  * Add support missing properties of Ask Notifications
+  * Add support for Milestone Post notifications
 
 #### Deprecated Functionality ####
 
-N/A
+  * N/A
 
 ### 0.10.0 ###
 
 #### Breaking Changes ####
 
-* Refactor the request APIs to fully separate user facing interfaces and implementation classes
+  * Refactor the request APIs to fully separate user facing interfaces and implementation classes
 
 #### New Functionality ####
 
-* Add support for `PollContent` and related `PollAnswer` and `PollSettings`
-* Add support for `Notification.SpamReported`
-* Add support for `ImageContent.caption`
-* Add support for `ImageContent.clickThrough`
-* Add support for `RequestQueryParameters.tumblelog`
-* Add support for `Post.filteredReason`
-* Add support for `Post.postLinks`
-* Add support for `Post.interactabilityReblog`
-* Add support for `ResponseBlogQueue.state`
-* Add support for `Media.video`
-* Add support for `Interactability.NoOne`
-* Add support for `ResponseBlogBlocks.alreadyBlocked`
-* Add support for `Blog.tumblrMartAccessories`
-* Add support for `Notification.UserMention`
+  * Add support for `PollContent` and related `PollAnswer` and `PollSettings`
+  * Add support for `Notification.SpamReported`
+  * Add support for `ImageContent.caption`
+  * Add support for `ImageContent.clickThrough`
+  * Add support for `RequestQueryParameters.tumblelog`
+  * Add support for `Post.filteredReason`
+  * Add support for `Post.postLinks`
+  * Add support for `Post.interactabilityReblog`
+  * Add support for `ResponseBlogQueue.state`
+  * Add support for `Media.video`
+  * Add support for `Interactability.NoOne`
+  * Add support for `ResponseBlogBlocks.alreadyBlocked`
+  * Add support for `Blog.tumblrMartAccessories`
+  * Add support for `Notification.UserMention`
 
 #### Deprecated Functionality ####
 
-N/A
+  * N/A
 
 #### Minor Changes ####
 
-* Separate the codebase into two modules: one that implements the library, and one to be a place to demonstrate functionality.
-* Improve documentation
-* Fully enforce trailing commas
+  * Separate the codebase into two modules: one that implements the library, and one to be a place to demonstrate functionality.
+  * Improve documentation
+  * Fully enforce trailing commas
 
 ### 0.9.1 ###
 
 #### Breaking Changes ####
 
-N/A
+  * N/A
 
 #### New Functionality ####
 
-N/A
+  * N/A
 
 #### Deprecated Functionality ####
 
-N/A
+  * N/A
 
 #### Minor Changes ####
 
-* Separated post statuses `Queue` and `Queued`
+  * Separated post statuses `Queue` and `Queued`
 
 ### 0.9.0 ###
 
 #### Breaking Changes ####
 
-* Change the package name to `com.stilllynnthecloset.kotlr`
-* Kotlr now only supports NPF posts, all support for legacy post types has been removed.
-* Change the signature of the `POST /blog/*` requests to match other POST requests.
-* Add stricter validation on API query parameters.
+  * Change the package name to `com.stilllynnthecloset.kotlr`
+  * Kotlr now only supports NPF posts, all support for legacy post types has been removed.
+  * Change the signature of the `POST /blog/*` requests to match other POST requests.
+  * Add stricter validation on API query parameters.
 
 #### New Functionality ####
 
-* Add support for `Post.genesisPostId`.
-* Add support for `Post.isPinned`.
-* Add support for `Post.recommendationReason` being either a string or an object.
-* Add support for `GET/POST/DELETE /user/filtered_content`.
-* Add support for `GET/POST/DELETE /blog/blocks`.
-* Add support for `GET /blog/notifications`.
-* Add support for `CreateNew/ReblogPostBody.date/isPrivate/slug`.
-* Add support for `ReblogPostBody.excludeTrailItems`.
-* Add support for `Blog.timezone`.
-* Add support for `Blog.timezoneOffset`.
-* Add support for `Post.State.Unapproved`.
-* Add support for `POST /blog/posts/queue/shuffle`.
-* Add support for `POST /blog/posts/queue/reorder`.
-* Add support for `GET /tagged`.
+  * Add support for `Post.genesisPostId`.
+  * Add support for `Post.isPinned`.
+  * Add support for `Post.recommendationReason` being either a string or an object.
+  * Add support for `GET/POST/DELETE /user/filtered_content`.
+  * Add support for `GET/POST/DELETE /blog/blocks`.
+  * Add support for `GET /blog/notifications`.
+  * Add support for `CreateNew/ReblogPostBody.date/isPrivate/slug`.
+  * Add support for `ReblogPostBody.excludeTrailItems`.
+  * Add support for `Blog.timezone`.
+  * Add support for `Blog.timezoneOffset`.
+  * Add support for `Post.State.Unapproved`.
+  * Add support for `POST /blog/posts/queue/shuffle`.
+  * Add support for `POST /blog/posts/queue/reorder`.
+  * Add support for `GET /tagged`.
 
 #### Deprecated Functionality ####
 
-* Tumblr has marked `RowBlockLayout.rows` as deprecated.
+  * Tumblr has marked `RowBlockLayout.rows` as deprecated.
 
 #### Minor Changes ####
 
-* Improve error messages when parsing a response from Tumblr fails.
-* Update some dependencies.
+  * Improve error messages when parsing a response from Tumblr fails.
+  * Update some dependencies.
 
 ### 0.8.3 ###
 
 #### Breaking Changes ####
 
-* Changed my username, so the repo is now hosted at [github.com/StillLynnTheCloset/kotlr](https://github.com/StillLynnTheCloset/kotlr).
-* Change the signatures of like/unlike post to use a post body and return a response object.
-* Change the signatures of follow/unfollow blog to use a post body and return a response object.
+  * Changed my username, so the repo is now hosted at [github.com/StillLynnTheCloset/kotlr](https://github.com/StillLynnTheCloset/kotlr).
+  * Change the signatures of like/unlike post to use a post body and return a response object.
+  * Change the signatures of follow/unfollow blog to use a post body and return a response object.
 
 #### New Functionality ####
 
-* Add support for `BlockPost.askingAvatar`.
-* Add support for `AnswerPost.askingAvatar`.
-* Add support for `LinkAttribution.urlRedirect`.
+  * Add support for `BlockPost.askingAvatar`.
+  * Add support for `AnswerPost.askingAvatar`.
+  * Add support for `LinkAttribution.urlRedirect`.
 
 #### Minor Changes ####
 
-* Make `AskBlockLayout.attribution` more strictly typed to just `BlogAttribution`.
-* Update some dependencies.
+  * Make `AskBlockLayout.attribution` more strictly typed to just `BlogAttribution`.
+  * Update some dependencies.
 
 ### 0.8.2 ###
 
 #### Breaking Changes ####
-  * None.
+
+  * N/A
 
 #### New Functionality ####
 
-  * None.
+  * N/A
 
 #### Minor Changes ####
 
@@ -350,7 +351,8 @@ N/A
 ### 0.8.1 ###
 
 #### Breaking Changes ####
-  * None.
+
+  * N/A
 
 #### New Functionality ####
 
@@ -408,7 +410,7 @@ N/A
 
 ### 0.7.1 ###
 
-  * Improve handling of re-serializing unknown sub-types.
+  * Improve handling of re-serializing unknown subtypes.
   * Deprecate the `SizeTextFormat` type.
   * Add support for `SmallTextFormat`, intended to replace `SizeTextFormat`.
   * Add support for `BlockPost.isBlurredImages`.
@@ -477,13 +479,13 @@ N/A
   * Lots of cool stuff.
 
 ## Credits ##
-* API Documentation - [Tumblr](https://github.com/tumblr/docs)
-* Kotlin - [Jet Brains](https://kotlinlang.org/)
-* HTTP - [OkHTTP](https://github.com/square/okhttp)
-* ReST API Client - [Retrofit](https://github.com/square/retrofit)
-* JSON Serialization - [Moshi](https://github.com/square/moshi)
-* OAuth - [SignPost](https://github.com/mttkay/signpost)
-* Continuous Integration - [Travis](https://travis-ci.com/)
-* Hosting - [Github](https://github.com/)
+  * API Documentation - [Tumblr](https://github.com/tumblr/docs)
+  * Kotlin - [Jet Brains](https://kotlinlang.org/)
+  * HTTP - [OkHTTP](https://github.com/square/okhttp)
+  * ReST API Client - [Retrofit](https://github.com/square/retrofit)
+  * JSON Serialization - [Moshi](https://github.com/square/moshi)
+  * OAuth - [SignPost](https://github.com/mttkay/signpost)
+  * Continuous Integration - [Travis](https://travis-ci.com/)
+  * Hosting - [GitHub](https://github.com/)
 
 This \[application/service] uses the Tumblr application programming interface but is not endorsed or certified by Tumblr, Inc. All the Tumblr logos and trademarks displayed on this \[application/service] are the property of Tumblr, Inc.
