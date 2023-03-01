@@ -41,6 +41,7 @@ import com.stilllynnthecloset.kotlr.types.RequestLinks
 import com.stilllynnthecloset.kotlr.types.RequestQueryParameters
 import com.stilllynnthecloset.kotlr.types.SpamReportedNotification
 import com.stilllynnthecloset.kotlr.types.SubmissionTerms
+import com.stilllynnthecloset.kotlr.types.TipNote
 import com.stilllynnthecloset.kotlr.types.Trail
 import com.stilllynnthecloset.kotlr.types.User
 import com.stilllynnthecloset.kotlr.types.UserMentionNotification
@@ -1643,6 +1644,23 @@ internal class SampleFilesIndividualParseTest {
             blogUrl = "http://kotlr-development.tumblr.com/",
             blogFollowed = true,
             avatarShape = "circle",
+        )
+        assertEquals(expected, note)
+    }
+
+    @Test
+    internal fun onceFailed_note_noteTip() {
+        val note = parseFile<NoteData>("samples/onceFailed/note/noteTip.json")
+        val expected = TipNote(
+            timestamp = 1677028359,
+            blogName = "Anonymous",
+            blogUuid = "",
+            blogUrl = "",
+            blogFollowed = false,
+            avatarShape = "square",
+            replyText = "Tipped blogname",
+            isAnonymous = true,
+            canBlock = true,
         )
         assertEquals(expected, note)
     }

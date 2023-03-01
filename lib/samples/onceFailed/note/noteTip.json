@@ -1,0 +1,12 @@
+{
+    "type": "tip",
+    "timestamp": 1677028359,
+    "blog_name": "Anonymous",
+    "blog_uuid": "",
+    "blog_url": "",
+    "followed": false,
+    "avatar_shape": "square",
+    "reply_text": "Tipped blogname",
+    "is_anonymous": true,
+    "can_block": true
+}

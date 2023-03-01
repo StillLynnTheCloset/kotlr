@@ -39,6 +39,7 @@ import com.stilllynnthecloset.kotlr.types.RequestQueryParameters
 import com.stilllynnthecloset.kotlr.types.SpamReportedNotification
 import com.stilllynnthecloset.kotlr.types.SubmissionTerms
 import com.stilllynnthecloset.kotlr.types.Tag
+import com.stilllynnthecloset.kotlr.types.TipNote
 import com.stilllynnthecloset.kotlr.types.Trail
 import com.stilllynnthecloset.kotlr.types.UnknownNotification
 import com.stilllynnthecloset.kotlr.types.User
@@ -121,6 +122,7 @@ internal class VerifyEverythingHasADefaultConstructor {
         println(ReblogNote().toString())
         println(ReplyNote().toString())
         println(AttributionNote().toString())
+        println(TipNote().toString())
         println(RecommendationReason().toString())
         println(LikeNotification().toString())
         println(ReplyNotification().toString())

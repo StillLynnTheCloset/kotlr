@@ -194,6 +194,24 @@ fun minimalExample() = runBlocking {
 
 ## Version History ##
 
+### TBD ###
+
+#### Breaking Changes ####
+
+  * N/A
+
+#### New Functionality ####
+
+  * Add support for NoteData.TipNote
+
+#### Deprecated Functionality ####
+
+  * N/A
+
+#### Minor Changes ####
+
+  * N/A
+
 ### 0.10.1 ###
 
 #### Breaking Changes ####

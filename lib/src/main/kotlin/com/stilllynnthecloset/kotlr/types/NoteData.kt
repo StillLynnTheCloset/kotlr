@@ -29,6 +29,7 @@ public sealed class NoteData {
             .withSubtype(ReblogNote::class.java, ReblogNote.KEY)
             .withSubtype(ReplyNote::class.java, ReplyNote.KEY)
             .withSubtype(AttributionNote::class.java, AttributionNote.KEY)
+            .withSubtype(TipNote::class.java, TipNote.KEY)
             .withSubtype(UnknownNote::class.java, UnknownNote.KEY)
     }
 
@@ -212,5 +213,39 @@ public data class AttributionNote constructor(
 ) : NoteData() {
     internal companion object {
         internal const val KEY: String = "post_attribution"
+    }
+}
+
+
+/**
+ * TipNote - TODO: Documentation
+ *
+ * @param replyText TODO: Documentation
+ * @param isAnonymous TODO: Documentation
+ * @param canBlock TODO: Documentation
+ */
+@JsonClass(generateAdapter = true)
+public data class TipNote constructor(
+    override val timestamp: Long? = null,
+    @Json(name = "blog_name")
+    override val blogName: String? = null,
+    @Json(name = "blog_uuid")
+    override val blogUuid: String? = null,
+    @Json(name = "blog_url")
+    override val blogUrl: String? = null,
+    @Json(name = "followed")
+    override val blogFollowed: Boolean? = null,
+    @Json(name = "avatar_shape")
+    override val avatarShape: String? = null,
+    @Json(name = "reply_text")
+    val replyText: String? = null,
+    @Json(name = "is_anonymous")
+    val isAnonymous: Boolean? = null,
+    @Json(name = "can_block")
+    val canBlock: Boolean? = null,
+    override val type: String = KEY,
+) : NoteData() {
+    internal companion object {
+        internal const val KEY: String = "tip"
     }
 }
