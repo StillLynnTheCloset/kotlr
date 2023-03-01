@@ -75,9 +75,13 @@ private suspend fun getPollResults(api: KotlrApi, blogName: String, postId: Long
                     }
                     println(content.question)
                     val totalVotes = mappedResults?.map { it.value }.orEmpty().sum().toDouble()
-                    mappedResults?.forEach {
-                        println("    ${it.key} : ${it.value} votes - ${String.format("%01.6f", it.value / totalVotes * 100)}%")
-                    }
+                    val table = mappedResults?.map {
+                        listOf(
+                            Cell("    ${it.key}", false),
+                            Cell("${it.value} votes", true),
+                            Cell("${String.format("%01.6f", it.value / totalVotes * 100)}%", true))
+                    }.orEmpty()
+                    printTable(table)
                     val mappedVotes = resultBody
                         ?.userVotes
                         ?.map { vote ->
@@ -106,6 +110,42 @@ private suspend fun getPollResults(api: KotlrApi, blogName: String, postId: Long
         }
     println()
 }
+
+private fun printTable(table: List<List<Cell>>, divider: String = " | ") {
+    var foundColumn = true
+    var column = 0
+    val columnWidths = mutableListOf<Int>()
+    while (foundColumn) {
+        foundColumn = false
+        val maxLength = table.mapNotNull {
+            if (it.size > column) {
+                foundColumn = true
+                it[column].test.length
+            } else {
+                null
+            }
+        }.maxOrNull()
+        if (maxLength != null) {
+            columnWidths += maxLength
+        }
+        column++
+    }
+    table.forEach { row ->
+        row.forEachIndexed { index, cell ->
+            if (cell.padStart) {
+                print(cell.test.padStart(columnWidths[index]))
+            } else {
+                print(cell.test.padEnd(columnWidths[index]))
+            }
+            if (index != row.lastIndex) {
+                print(divider)
+            }
+        }
+        println()
+    }
+}
+
+private data class Cell constructor(val test: String, val padStart: Boolean)
 
 /**
  * Finds the [postCount] most recent original posts on [blogName], pairs them with the number of reblogs they have and
