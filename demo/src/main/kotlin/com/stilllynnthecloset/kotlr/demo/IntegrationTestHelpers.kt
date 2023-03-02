@@ -91,6 +91,7 @@ internal suspend fun runBlogTests(
     postsPerRequest: Int,
     doNotesAndReblogs: Boolean,
     isSideblog: Boolean,
+    isBlogNotOwned: Boolean,
     expectError: Boolean = false,
 ) {
     println("Calling `getBlogAvatar()`")
@@ -99,20 +100,20 @@ internal suspend fun runBlogTests(
     println(api.getBlogAvatar(blogIdentifier = blogName, size = 512).checkError(expectError).clean())
 
     println("Calling `getBlogFollowers()`")
-    println(api.getBlogFollowers(blogIdentifier = blogName).checkError(expectError).clean())
+    println(api.getBlogFollowers(blogIdentifier = blogName).checkError(expectError || isBlogNotOwned).clean())
 
     println("Calling `getBlogFollowing()`")
-    println(api.getBlogFollowing(blogIdentifier = blogName).checkError(expectError || isSideblog).clean())
+    println(api.getBlogFollowing(blogIdentifier = blogName).checkError(expectError || isSideblog || isBlogNotOwned).clean())
 
     println("Calling `getBlogInfo()`")
     println(api.getBlogInfo(blogIdentifier = blogName).checkError(expectError).clean())
 
     println("Calling `getBlogFollowedBy()`")
-    println(api.getBlogFollowedBy(blogIdentifier = blogName, query = "demo").checkError(expectError).clean())
+    println(api.getBlogFollowedBy(blogIdentifier = blogName, query = "demo").checkError(expectError || isBlogNotOwned).clean())
 
     println("Calling `getBlogLikes()``")
     println(
-        api.getBlogLikes(blogIdentifier = blogName, pagingLimit = postsPerRequest).checkError(expectError || isSideblog).clean(),
+        api.getBlogLikes(blogIdentifier = blogName, pagingLimit = postsPerRequest).checkError(expectError || isSideblog || isBlogNotOwned).clean(),
     )
     if (doNotesAndReblogs) {
         println(
@@ -120,14 +121,14 @@ internal suspend fun runBlogTests(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true,
-            ).checkError(expectError || isSideblog).clean(),
+            ).checkError(expectError || isSideblog || isBlogNotOwned).clean(),
         )
         println(
             api.getBlogLikes(
                 blogName,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true,
-            ).checkError(expectError || isSideblog).clean(),
+            ).checkError(expectError || isSideblog || isBlogNotOwned).clean(),
         )
     }
 
@@ -154,7 +155,7 @@ internal suspend fun runBlogTests(
 
     println("Calling `getBlogDrafts()`")
     println(
-        api.getBlogDrafts(blogName, pagingLimit = postsPerRequest).checkError(expectError).clean(),
+        api.getBlogDrafts(blogName, pagingLimit = postsPerRequest).checkError(expectError || isBlogNotOwned).clean(),
     )
     if (doNotesAndReblogs) {
         println(
@@ -162,20 +163,20 @@ internal suspend fun runBlogTests(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true,
-            ).checkError(expectError).clean(),
+            ).checkError(expectError || isBlogNotOwned).clean(),
         )
         println(
             api.getBlogDrafts(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true,
-            ).checkError(expectError).clean(),
+            ).checkError(expectError || isBlogNotOwned).clean(),
         )
     }
 
     println("Calling `getBlogQueue()`")
     println(
-        api.getBlogQueue(blogName, pagingLimit = postsPerRequest).checkError(expectError).clean(),
+        api.getBlogQueue(blogName, pagingLimit = postsPerRequest).checkError(expectError || isBlogNotOwned).clean(),
     )
     if (doNotesAndReblogs) {
         println(
@@ -183,22 +184,20 @@ internal suspend fun runBlogTests(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true,
-            ).checkError(expectError).clean(),
+            ).checkError(expectError || isBlogNotOwned).clean(),
         )
         println(
             api.getBlogQueue(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true,
-            ).checkError(expectError).clean(),
+            ).checkError(expectError || isBlogNotOwned).clean(),
         )
     }
 
     println("Calling `getBlogSubmissions()`")
     println(
-        api.getBlogSubmissions(blogIdentifier = blogName, pagingLimit = postsPerRequest).checkError(
-            expectError,
-        ).clean(),
+        api.getBlogSubmissions(blogIdentifier = blogName, pagingLimit = postsPerRequest).checkError(expectError || isBlogNotOwned).clean(),
     )
     if (doNotesAndReblogs) {
         println(
@@ -206,28 +205,26 @@ internal suspend fun runBlogTests(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true,
-            ).checkError(expectError).clean(),
+            ).checkError(expectError || isBlogNotOwned).clean(),
         )
         println(
             api.getBlogSubmissions(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true,
-            ).checkError(expectError).clean(),
+            ).checkError(expectError || isBlogNotOwned).clean(),
         )
     }
 
     println("Calling `getPost()`")
-    println(
-        api.getPost(blogIdentifier = "demo", postId = 232).checkError().clean(),
-    )
+    println(api.getPost(blogIdentifier = "demo", postId = 232).checkError().clean(),)
 
     println("Calling `getPostNotes()`")
     println(api.getPostNotes(blogIdentifier = "demo", postId = 232).checkError().clean())
 
-    println(api.getNotifications(blogIdentifier = blogName).checkError(expectError).clean())
-    println(api.getNotifications(blogIdentifier = blogName, types = listOf("like")).checkError(expectError).clean())
-    println(api.shuffleQueue(blogIdentifier = blogName).checkError(expectError).clean())
+    println(api.getNotifications(blogIdentifier = blogName).checkError(expectError || isBlogNotOwned).clean())
+    println(api.getNotifications(blogIdentifier = blogName, types = listOf("like")).checkError(expectError || isBlogNotOwned).clean())
+    println(api.shuffleQueue(blogIdentifier = blogName).checkError(expectError || isBlogNotOwned).clean())
 }
 
 // Uses (3) requests.
@@ -526,6 +523,7 @@ internal suspend fun runAllTests(
     api: KotlrApi,
     blogName: String,
     isSideblog: Boolean,
+    isBlogNotOwned: Boolean,
     doNotesAndReblogs: Boolean = false,
     postsPerRequest: Int = 50,
     maxPostsPerLooper: Int = 3000,
@@ -534,7 +532,7 @@ internal suspend fun runAllTests(
     runUserTests(api, postsPerRequest, doNotesAndReblogs)
 
     println("Test all of the Blog related api calls")
-    runBlogTests(api, blogName, postsPerRequest, doNotesAndReblogs, isSideblog)
+    runBlogTests(api, blogName, postsPerRequest, doNotesAndReblogs, isSideblog, isBlogNotOwned)
 
     println("Test all of the Post related api calls")
     runPostTests(api)
@@ -549,7 +547,7 @@ internal suspend fun runAllTests(
     loopBlogPosts(api, blogName, postsPerRequest, maxPostsPerLooper)
 
     println("Test what happens if you call for a blog that (probably) doesn't exist")
-    runBlogTests(api, blogName + "asdfasdfasdfasdf", postsPerRequest, doNotesAndReblogs, isSideblog, expectError = true)
+    runBlogTests(api, blogName + "asdfasdfasdfasdf", postsPerRequest, doNotesAndReblogs, isSideblog, isBlogNotOwned, expectError = true)
 
     println("Draft a reblog of the most recent post")
     testReblog(api, blogName)
@@ -560,8 +558,10 @@ internal suspend fun runAllTests(
     println("Filter content")
     testFilteredContent(api)
 
-    println("Blocking")
-    testBlogBlocks(api, blogName)
+    if (!isBlogNotOwned) {
+        println("Blocking")
+        testBlogBlocks(api, blogName)
+    }
 }
 
 // endregion Integration Test Helpers

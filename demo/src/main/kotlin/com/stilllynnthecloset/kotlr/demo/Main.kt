@@ -33,18 +33,22 @@ private suspend fun runIntegrationTests(api: KotlrApi) {
     val maxPostsPerLooper = 1000
 
     runAllTests(
-        api,
-        "kotlr-development",
-        doNotesAndReblogs,
-        postsPerRequest,
-        maxPostsPerLooper,
+        api = api,
+        blogName = "kotlr-development",
+        isSideblog = true,
+        isBlogNotOwned = false, // Some requests fail if you don't own that blog.
+        doNotesAndReblogs = doNotesAndReblogs,
+        postsPerRequest = postsPerRequest,
+        maxPostsPerLooper = maxPostsPerLooper,
     )
     runAllTests(
-        api,
-        "cyle",
-        doNotesAndReblogs,
-        postsPerRequest,
-        maxPostsPerLooper,
+        api = api,
+        blogName = "cyle",
+        isSideblog = false,
+        isBlogNotOwned = true,
+        doNotesAndReblogs = doNotesAndReblogs,
+        postsPerRequest = postsPerRequest,
+        maxPostsPerLooper = maxPostsPerLooper,
     )
     println("Done running test API calls")
 }
@@ -79,7 +83,8 @@ private suspend fun getPollResults(api: KotlrApi, blogName: String, postId: Long
                         listOf(
                             Cell("    ${it.key}", false),
                             Cell("${it.value} votes", true),
-                            Cell("${String.format("%01.6f", it.value / totalVotes * 100)}%", true))
+                            Cell("${String.format("%01.6f", it.value / totalVotes * 100)}%", true),
+                        )
                     }.orEmpty()
                     printTable(table)
                     val mappedVotes = resultBody

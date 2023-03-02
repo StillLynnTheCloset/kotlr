@@ -216,7 +216,6 @@ public data class AttributionNote constructor(
     }
 }
 
-
 /**
  * TipNote - TODO: Documentation
  *
