@@ -90,6 +90,7 @@ internal suspend fun runBlogTests(
     blogName: String,
     postsPerRequest: Int,
     doNotesAndReblogs: Boolean,
+    isSideblog: Boolean,
     expectError: Boolean = false,
 ) {
     println("Calling `getBlogAvatar()`")
@@ -101,7 +102,7 @@ internal suspend fun runBlogTests(
     println(api.getBlogFollowers(blogIdentifier = blogName).checkError(expectError).clean())
 
     println("Calling `getBlogFollowing()`")
-    println(api.getBlogFollowing(blogIdentifier = blogName).checkError(expectError).clean())
+    println(api.getBlogFollowing(blogIdentifier = blogName).checkError(expectError || isSideblog).clean())
 
     println("Calling `getBlogInfo()`")
     println(api.getBlogInfo(blogIdentifier = blogName).checkError(expectError).clean())
@@ -111,7 +112,7 @@ internal suspend fun runBlogTests(
 
     println("Calling `getBlogLikes()``")
     println(
-        api.getBlogLikes(blogIdentifier = blogName, pagingLimit = postsPerRequest).checkError(expectError).clean(),
+        api.getBlogLikes(blogIdentifier = blogName, pagingLimit = postsPerRequest).checkError(expectError || isSideblog).clean(),
     )
     if (doNotesAndReblogs) {
         println(
@@ -119,14 +120,14 @@ internal suspend fun runBlogTests(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true,
-            ).checkError(expectError).clean(),
+            ).checkError(expectError || isSideblog).clean(),
         )
         println(
             api.getBlogLikes(
                 blogName,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true,
-            ).checkError(expectError).clean(),
+            ).checkError(expectError || isSideblog).clean(),
         )
     }
 
@@ -524,6 +525,7 @@ internal suspend fun testBlogBlocks(api: KotlrApi, blogIdentifier: String) {
 internal suspend fun runAllTests(
     api: KotlrApi,
     blogName: String,
+    isSideblog: Boolean,
     doNotesAndReblogs: Boolean = false,
     postsPerRequest: Int = 50,
     maxPostsPerLooper: Int = 3000,
@@ -532,7 +534,7 @@ internal suspend fun runAllTests(
     runUserTests(api, postsPerRequest, doNotesAndReblogs)
 
     println("Test all of the Blog related api calls")
-    runBlogTests(api, blogName, postsPerRequest, doNotesAndReblogs)
+    runBlogTests(api, blogName, postsPerRequest, doNotesAndReblogs, isSideblog)
 
     println("Test all of the Post related api calls")
     runPostTests(api)
@@ -547,7 +549,7 @@ internal suspend fun runAllTests(
     loopBlogPosts(api, blogName, postsPerRequest, maxPostsPerLooper)
 
     println("Test what happens if you call for a blog that (probably) doesn't exist")
-    runBlogTests(api, blogName + "asdfasdfasdfasdf", postsPerRequest, doNotesAndReblogs, expectError = true)
+    runBlogTests(api, blogName + "asdfasdfasdfasdf", postsPerRequest, doNotesAndReblogs, isSideblog, expectError = true)
 
     println("Draft a reblog of the most recent post")
     testReblog(api, blogName)
