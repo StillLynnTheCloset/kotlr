@@ -203,6 +203,7 @@ fun minimalExample() = runBlocking {
 #### New Functionality ####
 
   * Add support for NoteData.TipNote
+  * Add support for BlogAccessories.activeBadges
 
 #### Deprecated Functionality ####
 

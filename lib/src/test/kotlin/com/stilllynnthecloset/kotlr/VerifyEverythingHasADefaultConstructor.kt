@@ -5,6 +5,7 @@ import com.stilllynnthecloset.kotlr.types.AskNotification
 import com.stilllynnthecloset.kotlr.types.AttributionNote
 import com.stilllynnthecloset.kotlr.types.Blog
 import com.stilllynnthecloset.kotlr.types.BlogAccessories
+import com.stilllynnthecloset.kotlr.types.BlogAccessoryProduct
 import com.stilllynnthecloset.kotlr.types.BlogTheme
 import com.stilllynnthecloset.kotlr.types.ClickThrough
 import com.stilllynnthecloset.kotlr.types.Colors
@@ -146,6 +147,7 @@ internal class VerifyEverythingHasADefaultConstructor {
         println(ClickThrough().toString())
         println(FilteredReason().toString())
         println(BlogAccessories().toString())
+        println(BlogAccessoryProduct().toString())
         println(PollAnswer().toString())
         println(PollSettings().toString())
     }

@@ -1,5 +1,10 @@
 {
   "tumblrmart_accessories": {
-    "blue_checkmark_count": 1
+    "blue_checkmark_count": 1,
+    "active_badges": [
+      {
+        "product_group": "blue-checkmark"
+      }
+    ]
   }
 }

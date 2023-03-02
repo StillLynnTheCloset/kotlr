@@ -7,4 +7,17 @@ import com.squareup.moshi.JsonClass
 public data class BlogAccessories constructor(
     @Json(name = "blue_checkmark_count")
     val blueCheckmarkCount: Int? = null,
+    @Json(name = "active_badges")
+    val activeBadges: List<BlogAccessoryProduct>? = null,
 )
+
+@JsonClass(generateAdapter = true)
+public data class BlogAccessoryProduct constructor(
+    @Json(name = "product_group")
+    val productGroup: BlogAccessoryProductGroup? = null,
+)
+
+public enum class BlogAccessoryProductGroup {
+    @Json(name = "blue-checkmark")
+    BlueCheckmark,
+}
