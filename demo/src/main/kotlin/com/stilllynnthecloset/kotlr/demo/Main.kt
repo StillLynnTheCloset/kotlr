@@ -79,20 +79,24 @@ private suspend fun getPollResults(api: KotlrApi, blogName: String, postId: Long
                         postId = post.id ?: 0L,
                         pollUuid = content.clientId.orEmpty(),
                     )?.getBody()
-
-                    val mappedResults = resultBody?.results?.map { (key, value) ->
-                        Triple(options.firstOrNull { it.clientId == key }?.answerText, value, key)
+                    val results = resultBody?.results.orEmpty()
+                    val mappedResults = options.map {
+                        Triple(it.answerText, results[it.clientId] ?: 0, it.clientId)
                     }
-                    println(content.question)
-                    val totalVotes = mappedResults?.map { it.second }.orEmpty().sum().toDouble()
-                    val table = mappedResults?.map {
+                    val totalVotes = mappedResults.sumOf { it.second }.toDouble()
+                    val table = mappedResults.map {
                         listOf(
                             Cell("    ${it.first}", false),
                             Cell("${it.second} votes", true),
                             Cell("${String.format("%01.6f", it.second / totalVotes * 100)}%", true),
                             Cell("${it.third}", true),
                         )
-                    }.orEmpty()
+                    }
+
+                    println(content.question)
+                    if (results.isEmpty()) {
+                        println("Failed to fetch poll results")
+                    }
                     printTable(table)
                     val mappedVotes = resultBody
                         ?.userVotes
@@ -117,6 +121,9 @@ private suspend fun getPollResults(api: KotlrApi, blogName: String, postId: Long
                     } else {
                         println("Poll has been closed for approximately ${abs(remainingTime)} seconds")
                     }
+                    println("Poll is multiple choice: ${content.settings?.multipleChoice}")
+                    println("Poll source is ${content.settings?.source}")
+                    println("Poll closed status is ${content.settings?.closeStatus}")
                     println("Poll results as of ${resultBody?.timestamp} unixtime")
                 }
         }
