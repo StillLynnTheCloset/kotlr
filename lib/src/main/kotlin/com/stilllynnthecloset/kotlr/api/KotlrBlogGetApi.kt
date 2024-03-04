@@ -170,11 +170,8 @@ public interface KotlrBlogGetApi {
      * @param pagingOffset Optional. The post number at which to start.
      * @param afterPostId Optional. Return posts that have appeared after this ID; Use this parameter to page through the results: first get a set of posts, and then get posts since the last ID of the previous set.
      * @param beforePostId Optional. Return posts that have appeared before this ID; Use this parameter to page through the results: first get a set of posts, and then get posts before the first ID of the previous set.
-     * @param afterTime Optional. Retrieve posts after the specified timestamp
-     * @param beforeTime Optional. Retrieve posts before the specified timestamp.
      * @param getReblogFields Optional. Indicates whether to return reblog information (specify true or false). Returns the various reblogged_ fields.
      * @param getNotesHistory Optional. Indicates whether to return notes information (specify true or false). Returns note count and note metadata.
-     * @param tag Optional.
      * @param pageNumber Optional.
      */
     public suspend fun getBlogDrafts(
@@ -187,7 +184,6 @@ public interface KotlrBlogGetApi {
         beforeTime: Long? = null,
         getReblogFields: Boolean? = null,
         getNotesHistory: Boolean? = null,
-        tag: String? = null,
         pageNumber: Int? = null,
     ): ResponseBlogDrafts.Response?
 
@@ -199,11 +195,8 @@ public interface KotlrBlogGetApi {
      * @param pagingOffset Optional. The post number at which to start.
      * @param afterPostId Optional. Return posts that have appeared after this ID; Use this parameter to page through the results: first get a set of posts, and then get posts since the last ID of the previous set.
      * @param beforePostId Optional. Return posts that have appeared before this ID; Use this parameter to page through the results: first get a set of posts, and then get posts before the first ID of the previous set.
-     * @param afterTime Optional. Retrieve posts after the specified timestamp
-     * @param beforeTime Optional. Retrieve posts before the specified timestamp.
      * @param getReblogFields Optional. Indicates whether to return reblog information (specify true or false). Returns the various reblogged_ fields.
      * @param getNotesHistory Optional. Indicates whether to return notes information (specify true or false). Returns note count and note metadata.
-     * @param tag Optional.
      * @param pageNumber Optional.
      */
     public suspend fun getBlogQueue(
@@ -212,11 +205,8 @@ public interface KotlrBlogGetApi {
         pagingOffset: Long? = null,
         afterPostId: Long? = null,
         beforePostId: Long? = null,
-        afterTime: Long? = null,
-        beforeTime: Long? = null,
         getReblogFields: Boolean? = null,
         getNotesHistory: Boolean? = null,
-        tag: String? = null,
         pageNumber: Int? = null,
     ): ResponseBlogQueue.Response?
 

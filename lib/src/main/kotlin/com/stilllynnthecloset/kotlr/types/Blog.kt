@@ -56,6 +56,8 @@ import com.stilllynnthecloset.kotlr.json.wrapper.ThemeWrapper
  * @param blockedTimestamp The time at which you blocked this blog.
  * @param timezone The blog's configured timezone, such as "US/Eastern". Only viewable by blog member.
  * @param timezoneOffset The blog's configured timezone as a GMT offset such as "GMT+0800". Only viewable by blog member.
+ * @param showFollowAction TODO: Documentation.
+ * @param members The number of members of a group blog.
  */
 @JsonClass(generateAdapter = true)
 public data class Blog constructor(
@@ -155,4 +157,8 @@ public data class Blog constructor(
     val tumbleMartAccessories: BlogAccessories? = null,
     @Json(name = "can_show_badges")
     val canShowBadges: Boolean? = null,
+    @Json(name = "show_follow_action")
+    val showFollowAction: Boolean? = null,
+    @Json(name = "members")
+    val members: Int? = null,
 )

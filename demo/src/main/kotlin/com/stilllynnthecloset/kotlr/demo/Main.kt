@@ -15,7 +15,7 @@ fun main(): Unit = runBlocking {
     val api = getApi(userKey, debug = true, strict = true)
 
     // Find the X most recent original posts on a blog and rank them by popularity
-    findMostPopularPosts(api, "kotlr-development", 50)
+    findMostPopularPosts(api, "kotlr-development", 5)
         .forEach {
             println("${it.first.slug}, ${it.first.date}, ${it.first.id}, ${it.second}")
         }
@@ -24,19 +24,24 @@ fun main(): Unit = runBlocking {
     getPollResults(api, "crankyteapot", 706810846972706816)
 
     // Run a full test suite on current tumblr data to hopefully catch any new properties or changes to existing apis.
-    runIntegrationTests(api)
+    runIntegrationTests(
+        api = api,
+        blogName = "kotlr-development",
+        isSideBlog = true,
+        isBlogOwned = false,
+    )
 }
 
-private suspend fun runIntegrationTests(api: KotlrApi) {
+private suspend fun runIntegrationTests(api: KotlrApi, blogName: String, isSideBlog: Boolean, isBlogOwned: Boolean) {
     val doNotesAndReblogs = true
     val postsPerRequest = 50
     val maxPostsPerLooper = 1000
 
     runAllTests(
         api = api,
-        blogName = "kotlr-development",
-        isSideblog = true,
-        isBlogNotOwned = false, // Some requests fail if you don't own that blog.
+        blogName = blogName,
+        isSideblog = isSideBlog,
+        isBlogOwned = isBlogOwned,
         doNotesAndReblogs = doNotesAndReblogs,
         postsPerRequest = postsPerRequest,
         maxPostsPerLooper = maxPostsPerLooper,
@@ -45,7 +50,7 @@ private suspend fun runIntegrationTests(api: KotlrApi) {
         api = api,
         blogName = "cyle",
         isSideblog = false,
-        isBlogNotOwned = true,
+        isBlogOwned = false,
         doNotesAndReblogs = doNotesAndReblogs,
         postsPerRequest = postsPerRequest,
         maxPostsPerLooper = maxPostsPerLooper,
@@ -74,16 +79,18 @@ private suspend fun getPollResults(api: KotlrApi, blogName: String, postId: Long
                         postId = post.id ?: 0L,
                         pollUuid = content.clientId.orEmpty(),
                     )?.getBody()
-                    val mappedResults = resultBody?.results?.mapKeys { (key, _) ->
-                        options.firstOrNull { it.clientId == key }?.answerText
+
+                    val mappedResults = resultBody?.results?.map { (key, value) ->
+                        Triple(options.firstOrNull { it.clientId == key }?.answerText, value, key)
                     }
                     println(content.question)
-                    val totalVotes = mappedResults?.map { it.value }.orEmpty().sum().toDouble()
+                    val totalVotes = mappedResults?.map { it.second }.orEmpty().sum().toDouble()
                     val table = mappedResults?.map {
                         listOf(
-                            Cell("    ${it.key}", false),
-                            Cell("${it.value} votes", true),
-                            Cell("${String.format("%01.6f", it.value / totalVotes * 100)}%", true),
+                            Cell("    ${it.first}", false),
+                            Cell("${it.second} votes", true),
+                            Cell("${String.format("%01.6f", it.second / totalVotes * 100)}%", true),
+                            Cell("${it.third}", true),
                         )
                     }.orEmpty()
                     printTable(table)
@@ -158,7 +165,7 @@ private data class Cell constructor(val test: String, val padStart: Boolean)
  */
 private suspend fun findMostPopularPosts(api: KotlrApi, blogName: String, postCount: Int): List<Pair<Post, Int>> {
     val originalPosts = mutableListOf<Post>()
-    loopBlogPosts(api, blogName, 50) { post ->
+    loopBlogPosts(api, blogName, 50, postState = Post.State.Published) { post ->
         if (post.trail.isNullOrEmpty()) {
             originalPosts.add(post)
             println(post.slug)
@@ -177,25 +184,65 @@ internal suspend fun loopBlogPosts(
     api: KotlrApi,
     blogName: String,
     postsPerRequest: Int,
-    block: (Post) -> Boolean
+    postState: Post.State,
+    tag: String? = null,
+    maxPosts: Int = 1000,
+    block: (Post) -> Boolean = { true },
 ): List<Post> {
     var lastTime: Long = Long.MAX_VALUE
     var posts: List<Post>?
     val allPosts: MutableList<Post> = mutableListOf()
+    var lastPostId: Long? = null
     var offset = 0L
 
     do {
-        val response = api.getBlogPosts(
-            blogIdentifier = blogName,
-            pagingLimit = postsPerRequest,
-            beforeTime = lastTime,
-            getNotesHistory = true,
-        )
-        val body = response?.getBody()
-        posts = body?.posts.orEmpty()
+
+        posts = when (postState) {
+            Post.State.Draft -> {
+                if (tag != null) {
+                    throw IllegalArgumentException("Draft posts don't support searching by tags")
+                }
+                val response = api.getBlogDrafts(
+                    blogIdentifier = blogName,
+                    pagingLimit = postsPerRequest,
+                    beforePostId = lastPostId,
+                    getReblogFields = true,
+                )
+                val body = response?.getBody()
+                body?.posts.orEmpty()
+            }
+            Post.State.Queue,
+            Post.State.Queued -> {
+                if (tag != null) {
+                    throw IllegalArgumentException("Queued posts don't support searching by tags")
+                }
+                val response = api.getBlogQueue(
+                    blogIdentifier = blogName,
+                    pagingLimit = postsPerRequest,
+                    pagingOffset = offset,
+                    getReblogFields = true,
+                )
+                val body = response?.getBody()
+                body?.posts.orEmpty()
+            }
+            Post.State.Published -> {
+                val response = api.getBlogPosts(
+                    blogIdentifier = blogName,
+                    pagingLimit = postsPerRequest,
+                    beforeTime = lastTime,
+                    tag = tag,
+                    getReblogFields = true,
+                )
+                val body = response?.getBody()
+                body?.posts.orEmpty()
+            }
+            Post.State.Private -> TODO()
+            Post.State.Submission -> TODO()
+            Post.State.Unapproved -> TODO()
+        }
         if (posts.isEmpty()) {
             println("Found no posts")
-            return emptyList()
+            return allPosts
         }
         posts.forEach { post ->
             val ts = post.timestamp ?: Long.MAX_VALUE
@@ -203,9 +250,11 @@ internal suspend fun loopBlogPosts(
                 lastTime = ts - 1 // Subtract 1 ms so we don't get an overlap
             }
         }
-        val keepGoing = posts.isNotEmpty() && posts.all(block)
+        lastPostId = posts.last().id
         offset += postsPerRequest
         posts.also(allPosts::addAll)
+        println(posts.map { it.id })
+        val keepGoing = posts.isNotEmpty() && posts.all(block) && offset < maxPosts
     } while (keepGoing)
     return allPosts
 }

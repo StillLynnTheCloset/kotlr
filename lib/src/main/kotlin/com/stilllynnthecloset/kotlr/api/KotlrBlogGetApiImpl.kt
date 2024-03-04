@@ -223,7 +223,6 @@ internal class KotlrBlogGetApiImpl constructor(
         beforeTime: Long?,
         getReblogFields: Boolean?,
         getNotesHistory: Boolean?,
-        tag: String?,
         pageNumber: Int?,
     ): ResponseBlogDrafts.Response? {
         validateBlogIdentifier(blogIdentifier)
@@ -231,10 +230,7 @@ internal class KotlrBlogGetApiImpl constructor(
         validatePagingOffset(pagingOffset)
         validatePostId(afterPostId)
         validatePostId(beforePostId)
-        validateTimestamp(afterTime)
-        validateTimestamp(beforeTime)
         validateReblogsAndNotes(getReblogFields, getNotesHistory)
-        validateTag(tag)
         validatePageNumber(pageNumber)
 
         val retrofitResponse = blogGetApi.getBlogDrafts(
@@ -248,7 +244,6 @@ internal class KotlrBlogGetApiImpl constructor(
             getReblogFields = getReblogFields,
             getNotesHistory = getNotesHistory,
             useNeuePostFormat = true,
-            tag = tag,
             pageNumber = pageNumber,
         )
 
@@ -263,11 +258,8 @@ internal class KotlrBlogGetApiImpl constructor(
         pagingOffset: Long?,
         afterPostId: Long?,
         beforePostId: Long?,
-        afterTime: Long?,
-        beforeTime: Long?,
         getReblogFields: Boolean?,
         getNotesHistory: Boolean?,
-        tag: String?,
         pageNumber: Int?,
     ): ResponseBlogQueue.Response? {
         validateBlogIdentifier(blogIdentifier)
@@ -275,10 +267,7 @@ internal class KotlrBlogGetApiImpl constructor(
         validatePagingOffset(pagingOffset)
         validatePostId(afterPostId)
         validatePostId(beforePostId)
-        validateTimestamp(afterTime)
-        validateTimestamp(beforeTime)
         validateReblogsAndNotes(getReblogFields, getNotesHistory)
-        validateTag(tag)
         validatePageNumber(pageNumber)
 
         val retrofitResponse = blogGetApi.getBlogQueue(
@@ -287,12 +276,9 @@ internal class KotlrBlogGetApiImpl constructor(
             pagingOffset = pagingOffset,
             afterPostId = afterPostId,
             beforePostId = beforePostId,
-            afterTime = afterTime,
-            beforeTime = beforeTime,
             getReblogFields = getReblogFields,
             getNotesHistory = getNotesHistory,
             useNeuePostFormat = true,
-            tag = tag,
             pageNumber = pageNumber,
         )
 

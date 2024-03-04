@@ -26,6 +26,8 @@ import com.squareup.moshi.JsonClass
  * @param cropped Whether this media has been cropped.
  * @param hasOriginalDimensions Whether this media includes a version with the original dimensions.
  * @param colors A colors object containing the main colors in this media.
+ * @param video TODO: Documentation
+ * @param accessories TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 public data class Media constructor(
@@ -53,4 +55,6 @@ public data class Media constructor(
     val colors: Colors? = null,
     @Json(name = "video")
     val video: List<Media>? = null,
+    @Json(name = "accessories")
+    val accessories: List<Int>? = null,
 )

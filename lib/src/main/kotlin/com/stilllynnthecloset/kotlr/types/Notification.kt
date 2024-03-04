@@ -32,8 +32,10 @@ public sealed class Notification {
     }
 
     internal abstract val type: String?
+    internal abstract val id: Long?
     internal abstract val timestamp: Long?
     internal abstract val before: Long?
+    internal abstract val unread: Boolean?
     internal abstract val targetPostId: String?
     internal abstract val targetPostSummary: String?
     internal abstract val targetTumblelogName: String?
@@ -48,6 +50,8 @@ public interface PostNotification {
     public val reblogKey: String?
     public val mediaUrl: String?
     public val mediaUrlLarge: String?
+    public val muted: Boolean?
+    public val canMute: Boolean?
 }
 
 public interface FromBlogNotification {
@@ -60,8 +64,10 @@ public interface FromBlogNotification {
 @JsonClass(generateAdapter = true)
 public data class LikeNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -91,6 +97,9 @@ public data class LikeNotification constructor(
     override val mediaUrl: String? = null,
     @Json(name = "media_url_large")
     override val mediaUrlLarge: String? = null,
+    override val muted: Boolean? = null,
+    @Json(name = "can_mute")
+    override val canMute: Boolean? = null,
 ) : Notification(), PostNotification, FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "like"
@@ -100,8 +109,10 @@ public data class LikeNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class ReplyNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -131,6 +142,9 @@ public data class ReplyNotification constructor(
     override val mediaUrl: String? = null,
     @Json(name = "media_url_large")
     override val mediaUrlLarge: String? = null,
+    override val muted: Boolean? = null,
+    @Json(name = "can_mute")
+    override val canMute: Boolean? = null,
 ) : Notification(), PostNotification, FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "reply"
@@ -140,8 +154,10 @@ public data class ReplyNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class FollowerNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -166,8 +182,10 @@ public data class FollowerNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class MentionInReplyNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -197,6 +215,9 @@ public data class MentionInReplyNotification constructor(
     override val mediaUrl: String? = null,
     @Json(name = "media_url_large")
     override val mediaUrlLarge: String? = null,
+    override val muted: Boolean? = null,
+    @Json(name = "can_mute")
+    override val canMute: Boolean? = null,
 ) : Notification(), PostNotification, FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "mention_in_reply"
@@ -206,8 +227,10 @@ public data class MentionInReplyNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class MentionInPostNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -237,6 +260,9 @@ public data class MentionInPostNotification constructor(
     override val mediaUrl: String? = null,
     @Json(name = "media_url_large")
     override val mediaUrlLarge: String? = null,
+    override val muted: Boolean? = null,
+    @Json(name = "can_mute")
+    override val canMute: Boolean? = null,
 ) : Notification(), PostNotification, FromBlogNotification {
     internal companion object {
         internal const val KEY: String = "mention_in_post"
@@ -246,8 +272,10 @@ public data class MentionInPostNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class ReblogWithoutContentNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -277,6 +305,9 @@ public data class ReblogWithoutContentNotification constructor(
     override val mediaUrl: String? = null,
     @Json(name = "media_url_large")
     override val mediaUrlLarge: String? = null,
+    override val muted: Boolean? = null,
+    @Json(name = "can_mute")
+    override val canMute: Boolean? = null,
     @Json(name = "post_id")
     val postId: String? = null,
     @Json(name = "post_tags")
@@ -290,8 +321,10 @@ public data class ReblogWithoutContentNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class ReblogWithContentNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -321,6 +354,9 @@ public data class ReblogWithContentNotification constructor(
     override val mediaUrl: String? = null,
     @Json(name = "media_url_large")
     override val mediaUrlLarge: String? = null,
+    override val muted: Boolean? = null,
+    @Json(name = "can_mute")
+    override val canMute: Boolean? = null,
     @Json(name = "post_id")
     val postId: String? = null,
     @Json(name = "added_text")
@@ -336,8 +372,10 @@ public data class ReblogWithContentNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class AskNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -367,6 +405,9 @@ public data class AskNotification constructor(
     override val mediaUrl: String? = null,
     @Json(name = "media_url_large")
     override val mediaUrlLarge: String? = null,
+    override val muted: Boolean? = null,
+    @Json(name = "can_mute")
+    override val canMute: Boolean? = null,
     @Json(name = "is_anonymous")
     val isAnonymous: Boolean? = null,
 ) : Notification(), PostNotification, FromBlogNotification {
@@ -378,8 +419,10 @@ public data class AskNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class AnsweredAskNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -404,8 +447,10 @@ public data class AnsweredAskNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class NewGroupBlogMemberNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -430,8 +475,10 @@ public data class NewGroupBlogMemberNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class PostAttributionNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -456,8 +503,10 @@ public data class PostAttributionNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class PostFlaggedNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -482,8 +531,10 @@ public data class PostFlaggedNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class PostAppealAcceptedNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -508,8 +559,10 @@ public data class PostAppealAcceptedNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class PostAppealRejectedNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -534,8 +587,10 @@ public data class PostAppealRejectedNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class WhatYouMissedNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -560,8 +615,10 @@ public data class WhatYouMissedNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class ConversationalNoteNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -586,8 +643,10 @@ public data class ConversationalNoteNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class SpamReportedNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -612,8 +671,10 @@ public data class SpamReportedNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class UserMentionNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -643,6 +704,9 @@ public data class UserMentionNotification constructor(
     override val mediaUrl: String? = null,
     @Json(name = "media_url_large")
     override val mediaUrlLarge: String? = null,
+    override val muted: Boolean? = null,
+    @Json(name = "can_mute")
+    override val canMute: Boolean? = null,
     @Json(name = "post_id")
     val postId: String? = null,
     @Json(name = "can_reply")
@@ -656,8 +720,10 @@ public data class UserMentionNotification constructor(
 @JsonClass(generateAdapter = true)
 public data class MilestonePostNotification constructor(
     override val type: String = KEY,
+    override val id: Long? = null,
     override val timestamp: Long? = null,
     override val before: Long? = null,
+    override val unread: Boolean? = null,
     @Json(name = "target_post_id")
     override val targetPostId: String? = null,
     @Json(name = "target_post_summary")
@@ -682,8 +748,10 @@ public class UnknownNotification : Notification() {
         internal const val KEY: String = "unknown"
     }
     override val type: String = KEY
+    override val id: Long? = null
     override val timestamp: Long? = null
     override val before: Long? = null
+    override val unread: Boolean? = null
     override val targetPostId: String? = null
     override val targetPostSummary: String? = null
     override val targetTumblelogName: String? = null

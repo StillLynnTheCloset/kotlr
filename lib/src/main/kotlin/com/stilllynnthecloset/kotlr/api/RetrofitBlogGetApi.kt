@@ -57,8 +57,6 @@ internal interface RetrofitBlogGetApi {
         getNotesHistory: Boolean? = null,
         @Query("npf")
         useNeuePostFormat: Boolean? = null,
-        @Query("tag")
-        tag: String? = null,
         @Query("page_number")
         pageNumber: Int? = null,
     ): Response<ResponseBlogDrafts.Response>
@@ -167,18 +165,12 @@ internal interface RetrofitBlogGetApi {
         afterPostId: Long? = null,
         @Query("before_id")
         beforePostId: Long? = null,
-        @Query("after")
-        afterTime: Long? = null,
-        @Query("before")
-        beforeTime: Long? = null,
         @Query("reblog_info")
         getReblogFields: Boolean? = null,
         @Query("notes_info")
         getNotesHistory: Boolean? = null,
         @Query("npf")
         useNeuePostFormat: Boolean? = null,
-        @Query("tag")
-        tag: String? = null,
         @Query("page_number")
         pageNumber: Int? = null,
     ): Response<ResponseBlogQueue.Response>

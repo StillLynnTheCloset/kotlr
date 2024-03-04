@@ -15,6 +15,7 @@ import com.squareup.moshi.JsonClass
  * @param before The id of the result before which additional results should be returned.
  * @param after The id of the result after which additional results should be returned.
  * @param offset The offset of results to return.
+ * @param prevOffsets TODO: Documentation.
  * @param npf Whether results should be returned in NPF.
  * @param pageNumber The page offset to return.
  * @param reblogInfo Whether reblog info should be returned.
@@ -25,6 +26,7 @@ import com.squareup.moshi.JsonClass
  * @param beforeId The post id that was before the requested post(s).
  * @param types The types of notifications requested.
  * @param tumblelog The name of the blog requested.
+ * @param tag TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 public data class RequestQueryParameters constructor(
@@ -32,6 +34,8 @@ public data class RequestQueryParameters constructor(
     val before: String? = null,
     val after: String? = null,
     val offset: String? = null,
+    @Json(name = "prev_offsets")
+    val prevOffsets: String? = null,
     val npf: String? = null,
     @Json(name = "page_number")
     val pageNumber: String? = null,
@@ -47,4 +51,5 @@ public data class RequestQueryParameters constructor(
     val beforeId: String? = null,
     val types: String? = null,
     val tumblelog: String? = null,
+    val tag: String? = null
 )

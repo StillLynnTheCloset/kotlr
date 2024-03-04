@@ -96,6 +96,12 @@ import com.stilllynnthecloset.kotlr.types.content.VideoContent
  * @param originalType The original post type of this post before it was converted to a BlockPost.
  * @param filteredReason TODO: Documentation
  * @param interactabilityReblog TODO: Documentation
+ * @param isBlazed TODO: Documentation
+ * @param isBlazePending TODO: Documentation
+ * @param canIgnite TODO: Documentation
+ * @param canBlaze TODO: Documentation
+ * @param authorBlog TODO: Documentation
+ * @param postAuthorAvatar TODO: Documentation
  */
 @JsonClass(generateAdapter = true)
 public data class Post constructor(
@@ -213,6 +219,10 @@ public data class Post constructor(
     val shouldOpenInLegacy: Boolean? = null,
     @Json(name = "muted")
     val muted: Boolean? = null,
+    @Json(name = "mute_end_timestamp")
+    val muteEndTimestamp: Long? = null,
+    @Json(name = "can_mute")
+    val canMute: Boolean? = null,
     @Json(name = "object_type")
     val objectType: ObjectType? = null,
     @Json(name = "tumblelog_uuid")
@@ -249,6 +259,24 @@ public data class Post constructor(
     val type: Type = Type.Block,
     @Json(name = "interactability_reblog")
     val interactabilityReblog: Interactability? = null,
+    @Json(name = "interactability_blaze")
+    val interactabilityBlaze: Interactability? = null,
+    @Json(name = "is_blazed")
+    val isBlazed: Boolean? = null,
+    @Json(name = "is_blaze_pending")
+    val isBlazePending: Boolean? = null,
+    @Json(name = "can_ignite")
+    val canIgnite: Boolean? = null,
+    @Json(name = "can_blaze")
+    val canBlaze: Boolean? = null,
+    @Json(name = "publish_on")
+    val publishOn: String? = null,
+    @Json(name = "parent_post_url")
+    val parentPostUrl: String? = null,
+    @Json(name = "author_blog")
+    val authorBlog: Blog? = null,
+    @Json(name = "post_author_avatar")
+    val postAuthorAvatar: List<Media>? = null,
 ) {
 
     /**
@@ -423,6 +451,11 @@ public data class Post constructor(
          */
         @Json(name = "queued")
         Queued("queued"),
+        /**
+         * This post is currently scheduled.
+         */
+        @Json(name = "scheduled")
+        Scheduled("scheduled"),
     }
 
     /**

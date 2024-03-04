@@ -39,6 +39,7 @@ public sealed class NoteData {
     public abstract val blogUrl: String?
     public abstract val blogFollowed: Boolean?
     public abstract val avatarShape: String?
+    public abstract val avatarUrl: AvatarSizes?
     internal abstract val type: String
 }
 
@@ -57,6 +58,7 @@ public class UnknownNote : NoteData() {
     override val blogUrl: String? = null
     override val blogFollowed: Boolean? = null
     override val avatarShape: String? = null
+    override val avatarUrl: AvatarSizes? = null
     override val type: String = KEY
 }
 
@@ -76,6 +78,8 @@ public data class LikeNote constructor(
     override val blogFollowed: Boolean? = null,
     @Json(name = "avatar_shape")
     override val avatarShape: String? = null,
+    @Json(name = "avatar_url")
+    override val avatarUrl: AvatarSizes? = null,
     override val type: String = KEY,
 ) : NoteData() {
     internal companion object {
@@ -99,6 +103,8 @@ public data class PostedNote constructor(
     override val blogFollowed: Boolean? = null,
     @Json(name = "avatar_shape")
     override val avatarShape: String? = null,
+    @Json(name = "avatar_url")
+    override val avatarUrl: AvatarSizes? = null,
     override val type: String = KEY,
 ) : NoteData() {
     internal companion object {
@@ -127,6 +133,8 @@ public data class ReblogNote constructor(
     override val blogFollowed: Boolean? = null,
     @Json(name = "avatar_shape")
     override val avatarShape: String? = null,
+    @Json(name = "avatar_url")
+    override val avatarUrl: AvatarSizes? = null,
     @Json(name = "added_text")
     val addedText: String? = null,
     @Json(name = "post_id")
@@ -162,6 +170,8 @@ public data class ReplyNote constructor(
     override val blogFollowed: Boolean? = null,
     @Json(name = "avatar_shape")
     override val avatarShape: String? = null,
+    @Json(name = "avatar_url")
+    override val avatarUrl: AvatarSizes? = null,
     @Json(name = "reply_text")
     val replyText: String? = null,
     val formatting: List<TextFormat>? = null,
@@ -197,6 +207,8 @@ public data class AttributionNote constructor(
     override val blogFollowed: Boolean? = null,
     @Json(name = "avatar_shape")
     override val avatarShape: String? = null,
+    @Json(name = "avatar_url")
+    override val avatarUrl: AvatarSizes? = null,
     @Json(name = "post_id")
     val postId: String? = null,
     @Json(name = "post_attribution_type")
@@ -236,6 +248,8 @@ public data class TipNote constructor(
     override val blogFollowed: Boolean? = null,
     @Json(name = "avatar_shape")
     override val avatarShape: String? = null,
+    @Json(name = "avatar_url")
+    override val avatarUrl: AvatarSizes? = null,
     @Json(name = "reply_text")
     val replyText: String? = null,
     @Json(name = "is_anonymous")
