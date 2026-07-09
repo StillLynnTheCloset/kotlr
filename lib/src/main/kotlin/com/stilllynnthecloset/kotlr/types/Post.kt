@@ -277,6 +277,12 @@ public data class Post constructor(
     val authorBlog: Blog? = null,
     @Json(name = "post_author_avatar")
     val postAuthorAvatar: List<Media>? = null,
+    @Json(name = "header_cta")
+    val headerCta: CallToAction? = null,
+    @Json(name = "reblog_disabled_reason")
+    val reblogDisabledReason: String? = null,
+    @Json(name = "is_brand_safe")
+    val isBrandSafe: Boolean? = null,
 ) {
 
     /**

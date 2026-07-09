@@ -1971,6 +1971,29 @@ internal class SampleFilesIndividualParseTest {
         assertEquals(expected, note)
     }
 
+    @Test
+    internal fun onceFailed_notification_noteMention() {
+        val note =
+            parseFile<NoteMentionNotification>("samples/onceFailed/notification/noteMention.json")
+        val expected = NoteMentionNotification(
+            type = "note_mention",
+            timestamp = 1670294548,
+            before = 1670294548,
+            targetPostId = "asdf",
+            targetPostSummary = "asdf",
+            targetTumblelogName = "asdf",
+            targetTumblelogUuid = "asdf",
+            targetRootPostId = "",
+            privateChannel = false,
+            targetPostType = "regular",
+            postType = "link",
+            mediaUrl = "asdf.jpg",
+            mediaUrlLarge = "asdf.jpg",
+            reblogKey = "asdf",
+        )
+        assertEquals(expected, note)
+    }
+
     // endregion Notification
 
     // region Posts

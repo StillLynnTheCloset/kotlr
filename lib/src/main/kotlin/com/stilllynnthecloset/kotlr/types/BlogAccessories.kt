@@ -28,4 +28,6 @@ public enum class BlogAccessoryProductGroup {
     BlueCheckmark,
     @Json(name = "netflix-one-piece-badge")
     OnePiece,
+    @Json(name = "staff-member-badge")
+    Staff,
 }

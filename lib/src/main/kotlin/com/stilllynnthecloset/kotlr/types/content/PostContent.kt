@@ -321,6 +321,7 @@ public data class VideoContent constructor(
     @Json(name = "filmstrip")
     val filmStrip: MediaList? = null,
     override val type: String = KEY,
+    val duration: Long? = null,
 ) : PostContent() {
     internal companion object {
         internal const val KEY: String = "video"

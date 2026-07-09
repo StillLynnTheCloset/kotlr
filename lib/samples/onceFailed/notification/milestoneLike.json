@@ -1,0 +1,37 @@
+{
+  "type": "milestone_like",
+  "timestamp": 1738443889,
+  "before": 1738443889,
+  "unread": true,
+  "target_post_id": "",
+  "target_post_summary": "",
+  "target_tumblelog_name": "tallgirl056",
+  "target_tumblelog_uuid": "t:IQ_nQiBU_-qkpeiSQtsUQQ",
+  "is_anonymous": false,
+  "milestone": 2500,
+  "editor": {
+    "content": [
+      {
+        "type": "image",
+        "media": [
+          {
+            "url": "https://assets.tumblr.com/images/milestones/likes/like_2500.png?_v=d5621f23c82592e19c38f171d7badf07",
+            "type": "image/png",
+            "width": 500,
+            "height": 500,
+            "has_original_dimensions": true
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "2500 likes!"
+      }
+    ],
+    "tags": [
+      "2500 likes",
+      "tumblr milestone"
+    ]
+  },
+  "id": "774314539633311744"
+}

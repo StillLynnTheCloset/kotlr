@@ -3,6 +3,7 @@ package com.stilllynnthecloset.kotlr.types
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import com.stilllynnthecloset.kotlr.json.PolymorphicJsonAdapterFactory
+import com.stilllynnthecloset.kotlr.types.content.TextFormat
 
 public sealed class Notification {
     internal companion object {
@@ -28,6 +29,8 @@ public sealed class Notification {
             .withSubtype(SpamReportedNotification::class.java, SpamReportedNotification.KEY)
             .withSubtype(UserMentionNotification::class.java, UserMentionNotification.KEY)
             .withSubtype(MilestonePostNotification::class.java, MilestonePostNotification.KEY)
+            .withSubtype(MilestoneLikeNotification::class.java, MilestoneLikeNotification.KEY)
+            .withSubtype(NoteMentionNotification::class.java, NoteMentionNotification.KEY)
             .withSubtype(UnknownNotification::class.java, UnknownNotification.KEY)
     }
 
@@ -739,6 +742,84 @@ public data class MilestonePostNotification constructor(
 ) : Notification() {
     internal companion object {
         internal const val KEY: String = "milestone_post"
+    }
+}
+
+@JsonClass(generateAdapter = true)
+public data class MilestoneLikeNotification constructor(
+    override val type: String = KEY,
+    override val id: Long? = null,
+    override val timestamp: Long? = null,
+    override val before: Long? = null,
+    override val unread: Boolean? = null,
+    @Json(name = "target_post_id")
+    override val targetPostId: String? = null,
+    @Json(name = "target_post_summary")
+    override val targetPostSummary: String? = null,
+    @Json(name = "target_tumblelog_name")
+    override val targetTumblelogName: String? = null,
+    @Json(name = "target_tumblelog_uuid")
+    override val targetTumblelogUuid: String? = null,
+    @Json(name = "is_anonymous")
+    val isAnonymous: Boolean? = null,
+    val milestone: Int,
+    val editor: Post,
+) : Notification() {
+    internal companion object {
+        internal const val KEY: String = "milestone_like"
+    }
+}
+
+@JsonClass(generateAdapter = true)
+public data class NoteMentionNotification constructor(
+    override val type: String = KEY,
+    override val id: Long? = null,
+    override val timestamp: Long? = null,
+    override val before: Long? = null,
+    override val unread: Boolean? = null,
+    @Json(name = "target_post_id")
+    override val targetPostId: String? = null,
+    @Json(name = "target_post_summary")
+    override val targetPostSummary: String? = null,
+    @Json(name = "target_tumblelog_name")
+    override val targetTumblelogName: String? = null,
+    @Json(name = "target_tumblelog_uuid")
+    override val targetTumblelogUuid: String? = null,
+    @Json(name = "target_root_post_id")
+    override val targetRootPostId: String? = null,
+    @Json(name = "private_channel")
+    override val privateChannel: Boolean? = null,
+    @Json(name = "target_post_type")
+    override val targetPostType: String? = null,
+    @Json(name = "post_type")
+    override val postType: String? = null,
+    @Json(name = "reblog_key")
+    override val reblogKey: String? = null,
+    @Json(name = "media_url")
+    override val mediaUrl: String? = null,
+    @Json(name = "media_url_large")
+    override val mediaUrlLarge: String? = null,
+    override val muted: Boolean? = null,
+    @Json(name = "can_mute")
+    override val canMute: Boolean? = null,
+    @Json(name = "from_tumblelog_name")
+    override val fromTumblelogName: String? = null,
+    @Json(name = "from_tumblelog_uuid")
+    override val fromTumblelogUuid: String? = null,
+    @Json(name = "from_tumblelog_is_adult")
+    override val fromTumblelogIsAdult: Boolean? = null,
+    override val followed: Boolean? = null,
+//    @Json(name = "post_id")
+//    val postId: String? = null,
+    @Json(name = "can_reply")
+    val canReply: Boolean? = null,
+    @Json(name = "reply_text")
+    val replyText: String? = null,
+    @Json(name = "formatting")
+    val formatting: List<TextFormat>? = null,
+) : Notification(), PostNotification, FromBlogNotification {
+    internal companion object {
+        internal const val KEY: String = "note_mention"
     }
 }
 

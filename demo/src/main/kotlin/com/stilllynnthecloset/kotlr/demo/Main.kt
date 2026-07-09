@@ -34,6 +34,7 @@ fun main(): Unit = runBlocking {
 
 private suspend fun runIntegrationTests(api: KotlrApi, blogName: String, isSideBlog: Boolean, isBlogOwned: Boolean) {
     val doNotesAndReblogs = true
+    val printResults = false
     val postsPerRequest = 50
     val maxPostsPerLooper = 1000
 
@@ -45,7 +46,7 @@ private suspend fun runIntegrationTests(api: KotlrApi, blogName: String, isSideB
         doNotesAndReblogs = doNotesAndReblogs,
         postsPerRequest = postsPerRequest,
         maxPostsPerLooper = maxPostsPerLooper,
-        printResults = false,
+        printResults = printResults,
     )
     runAllTests(
         api = api,

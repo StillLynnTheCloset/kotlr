@@ -1,0 +1,66 @@
+{
+  "type": "note_mention",
+  "timestamp": 1670294548,
+  "before": 1670294548,
+  "unread": true,
+  "target_post_id": "asdf",
+  "target_post_summary": "asdf",
+  "target_tumblelog_name": "asdf",
+  "target_tumblelog_uuid": "asdf",
+  "from_tumblelog_name": "asdf",
+  "from_tumblelog_uuid": "asdf",
+  "from_tumblelog_is_adult": false,
+  "followed": false,
+  "target_root_post_id": null,
+  "private_channel": false,
+  "target_post_type": "regular",
+  "post_type": "link",
+  "media_url": "asdf.jpg",
+  "media_url_large": "asdf.jpg",
+  "reblog_key": "asdf",
+  "reply_text": "@asdf @asdf @asdf...",
+  "formatting": [
+    {
+      "type": "mention",
+      "start": 0,
+      "end": 4,
+      "blog": {
+        "name": "asdf",
+        "url": "asdf",
+        "uuid": "asdf"
+      }
+    },
+    {
+      "type": "mention",
+      "start": 5,
+      "end": 9,
+      "blog": {
+        "name": "asdf",
+        "url": "asdf",
+        "uuid": "asdf"
+      }
+    },
+    {
+      "type": "mention",
+      "start": 10,
+      "end": 14,
+      "blog": {
+        "name": "asdf",
+        "url": "asdf",
+        "uuid": "asdf"
+      }
+    },
+    {
+      "type": "mention",
+      "start": 15,
+      "end": 19,
+      "blog": {
+        "name": "asdf",
+        "url": "asdf",
+        "uuid": "asdf"
+      }
+    }
+  ],
+  "can_reply": false,
+  "id": "asdf"
+}

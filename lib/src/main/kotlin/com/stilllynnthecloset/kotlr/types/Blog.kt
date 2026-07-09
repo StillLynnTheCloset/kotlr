@@ -161,4 +161,8 @@ public data class Blog constructor(
     val showFollowAction: Boolean? = null,
     @Json(name = "members")
     val members: Int? = null,
+    @Json(name = "theme_id")
+    val themeId: Long? = null,
+    @Json(name = "share_replies")
+    val shareReplies: Boolean? = null,
 )
