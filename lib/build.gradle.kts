@@ -86,8 +86,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/stilllynnthecloset/kotlr")
             credentials {
-                username = (project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")).toString()
-                password = (project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")).toString()
+                username = (project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME"))?.toString()
+                password = (project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN"))?.toString()
             }
         }
     }
