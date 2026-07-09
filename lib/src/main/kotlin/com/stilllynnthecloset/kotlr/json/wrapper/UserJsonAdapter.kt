@@ -8,6 +8,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
 import com.squareup.moshi.Types
 import com.stilllynnthecloset.kotlr.types.Blog
+import com.stilllynnthecloset.kotlr.types.Community
 import com.stilllynnthecloset.kotlr.types.Post
 import com.stilllynnthecloset.kotlr.types.User
 import kotlin.Boolean
@@ -26,13 +27,19 @@ import kotlin.String
  */
 internal class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
     private val options: JsonReader.Options =
-        JsonReader.Options.of("blogs", "name", "following", "url", "updated", "likes", "default_post_format")
+        JsonReader.Options.of("blogs", "name", "following", "url", "updated", "likes", "default_post_format", "communities")
 
     private val nullableListOfBlogAdapter: JsonAdapter<List<Blog>?> =
         moshi.adapter(
             Types.newParameterizedType(List::class.java, Blog::class.java),
             emptySet(),
             "blogs",
+        )
+    private val nullableListOfCommunityAdapter: JsonAdapter<List<Community>?> =
+        moshi.adapter(
+            Types.newParameterizedType(List::class.java, Community::class.java),
+            emptySet(),
+            "communities",
         )
 
     private val nullableStringAdapter: JsonAdapter<String?> =
@@ -70,6 +77,8 @@ internal class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
         var likesSet = false
         var defaultPostFormat: Post.PostFormat? = null
         var defaultPostFormatSet = false
+        var communities: List<Community>? = null
+        var communitiesSet = false
         reader.beginObject()
         while (reader.hasNext()) {
             when (reader.selectName(options)) {
@@ -106,6 +115,10 @@ internal class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
                     defaultPostFormat = nullablePostFormatAdapter.fromJson(reader)
                     defaultPostFormatSet = true
                 }
+                7 -> {
+                    communities = nullableListOfCommunityAdapter.fromJson(reader)
+                    communitiesSet = true
+                }
                 -1 -> {
                     // Unknown name, skip it.
                     reader.skipName()
@@ -124,6 +137,7 @@ internal class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
             updated = if (updatedSet) updated else result.updated,
             likes = if (likesSet) likes else result.likes,
             defaultPostFormat = if (defaultPostFormatSet) defaultPostFormat else result.defaultPostFormat,
+            communities = if (communitiesSet) communities else result.communities,
         )
         return result
     }
@@ -153,6 +167,8 @@ internal class UserJsonAdapter(moshi: Moshi) : JsonAdapter<User>() {
         nullableIntAdapter.toJson(writer, value.likes)
         writer.name("default_post_format")
         nullablePostFormatAdapter.toJson(writer, value.defaultPostFormat)
+        writer.name("communities")
+        nullableListOfCommunityAdapter.toJson(writer, value.communities)
         writer.endObject()
     }
 }
