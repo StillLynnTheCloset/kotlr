@@ -45,6 +45,7 @@ private suspend fun runIntegrationTests(api: KotlrApi, blogName: String, isSideB
         doNotesAndReblogs = doNotesAndReblogs,
         postsPerRequest = postsPerRequest,
         maxPostsPerLooper = maxPostsPerLooper,
+        printResults = false,
     )
     runAllTests(
         api = api,
@@ -60,7 +61,7 @@ private suspend fun runIntegrationTests(api: KotlrApi, blogName: String, isSideB
 
 /**
  * This is super messy because it's just supposed to be a fun little thing.
- * I did a bunch of fun little Kotlin things, and make a whole bunch of assumptions about null values, and have 0 error handling.
+ * I did a bunch of fun little Kotlin things, and made a whole bunch of assumptions about null values, and have 0 error handling.
  * So this is not an example of how you should write code, but it works, for now.
  * I don't do any pretty time formatting because I don't feel like importing a time library into this demo module.
  */

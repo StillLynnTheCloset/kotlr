@@ -42,46 +42,38 @@ internal fun <T> TumblrResponse<T>?.checkError(expectFailure: Boolean = false): 
     }
 
 // Uses (if (doNotesAndReblogs) 8 else 4) requests.
-internal suspend fun runUserTests(api: KotlrApi, postsPerRequest: Int, doNotesAndReblogs: Boolean) {
-    println("Calling `getUserInfo()`")
-    println(api.getUserInfo().checkError().clean())
+internal suspend fun runUserTests(api: KotlrApi, postsPerRequest: Int, doNotesAndReblogs: Boolean, printResults: Boolean) {
+    "Calling `getUserInfo()`".also { if (printResults) println(it) }
+    api.getUserInfo().checkError().clean().also { if (printResults) println(it) }
 
-    println("Calling `getUserLikes()`")
-    println(api.getUserLikes(pagingLimit = postsPerRequest).checkError().clean())
+    "Calling `getUserLikes()`".also { if (printResults) println(it) }
+    api.getUserLikes(pagingLimit = postsPerRequest).checkError().clean().also { if (printResults) println(it) }
     if (doNotesAndReblogs) {
-        println(
-            api.getUserLikes(pagingLimit = postsPerRequest, getReblogFields = true).checkError().clean(),
-        )
-        println(
-            api.getUserLikes(pagingLimit = postsPerRequest, getNotesHistory = true).checkError().clean(),
-        )
+        api.getUserLikes(pagingLimit = postsPerRequest, getReblogFields = true).checkError().clean().also { if (printResults) println(it) }
+        api.getUserLikes(pagingLimit = postsPerRequest, getNotesHistory = true).checkError().clean().also { if (printResults) println(it) }
     }
 
-    println("Calling `getUserDash()`")
-    println(api.getUserDash(pagingLimit = postsPerRequest).checkError().clean())
+    "Calling `getUserDash()`".also { if (printResults) println(it) }
+    api.getUserDash(pagingLimit = postsPerRequest).checkError().clean().also { if (printResults) println(it) }
     if (doNotesAndReblogs) {
-        println(
-            api.getUserDash(pagingLimit = postsPerRequest, getReblogFields = true).checkError().clean(),
-        )
-        println(
-            api.getUserDash(pagingLimit = postsPerRequest, getNotesHistory = true).checkError().clean(),
-        )
+        api.getUserDash(pagingLimit = postsPerRequest, getReblogFields = true).checkError().clean().also { if (printResults) println(it) }
+        api.getUserDash(pagingLimit = postsPerRequest, getNotesHistory = true).checkError().clean().also { if (printResults) println(it) }
     }
 
-    println("Calling `likePost()`")
-    println(api.likePost(232, "jaHD5AfB").checkError().clean())
+    "Calling `likePost()`".also { if (printResults) println(it) }
+    api.likePost(232, "jaHD5AfB").checkError().clean().also { if (printResults) println(it) }
 
-    println("Calling `unlikePost()`")
-    println(api.unlikePost(232, "jaHD5AfB").checkError().clean())
+    "Calling `unlikePost()`".also { if (printResults) println(it) }
+    api.unlikePost(232, "jaHD5AfB").checkError().clean().also { if (printResults) println(it) }
 
-    println("Calling `followBlog()`")
-    println(api.followBlog("https://demo.tumblr.com/").checkError().clean())
+    "Calling `followBlog()`".also { if (printResults) println(it) }
+    api.followBlog("https://demo.tumblr.com/").checkError().clean().also { if (printResults) println(it) }
 
-    println("Calling `unfollowBlog()`")
-    println(api.unfollowBlog("https://demo.tumblr.com/").checkError().clean())
+    "Calling `unfollowBlog()`".also { if (printResults) println(it) }
+    api.unfollowBlog("https://demo.tumblr.com/").checkError().clean().also { if (printResults) println(it) }
 
-    println("Calling `getUserFollowing()`")
-    println(api.getUserFollowing().checkError().clean())
+    "Calling `getUserFollowing()`".also { if (printResults) println(it) }
+    api.getUserFollowing().checkError().clean().also { if (printResults) println(it) }
 }
 
 // Uses (if (doNotesAndReblogs) 22 else 12) requests.
@@ -92,154 +84,134 @@ internal suspend fun runBlogTests(
     doNotesAndReblogs: Boolean,
     isSideBlog: Boolean,
     isBlogOwned: Boolean,
+    printResults: Boolean,
     expectError: Boolean = false,
 ) {
-    println("Calling `getBlogAvatar()`")
-    println(api.getBlogAvatar(blogIdentifier = blogName).checkError(expectError).clean())
-    println(api.getBlogAvatar(blogIdentifier = blogName, size = 16).checkError(expectError).clean())
-    println(api.getBlogAvatar(blogIdentifier = blogName, size = 512).checkError(expectError).clean())
+    "Calling `getBlogAvatar()`".also { if (printResults) println(it) }
+    api.getBlogAvatar(blogIdentifier = blogName).checkError(expectError).clean().also { if (printResults) println(it) }
+    api.getBlogAvatar(blogIdentifier = blogName, size = 16).checkError(expectError).clean().also { if (printResults) println(it) }
+    api.getBlogAvatar(blogIdentifier = blogName, size = 512).checkError(expectError).clean().also { if (printResults) println(it) }
 
-    println("Calling `getBlogFollowers()`")
-    println(api.getBlogFollowers(blogIdentifier = blogName).checkError(expectError || !isBlogOwned).clean())
+    "Calling `getBlogFollowers()`".also { if (printResults) println(it) }
+    api.getBlogFollowers(blogIdentifier = blogName).checkError(expectError || !isBlogOwned).clean().also { if (printResults) println(it) }
 
-    println("Calling `getBlogFollowing()`")
-    println(api.getBlogFollowing(blogIdentifier = blogName).checkError(expectError || isSideBlog || !isBlogOwned).clean())
+    "Calling `getBlogFollowing()`".also { if (printResults) println(it) }
+    api.getBlogFollowing(blogIdentifier = blogName).checkError(expectError || isSideBlog || !isBlogOwned).clean().also { if (printResults) println(it) }
 
-    println("Calling `getBlogInfo()`")
-    println(api.getBlogInfo(blogIdentifier = blogName).checkError(expectError).clean())
+    "Calling `getBlogInfo()`".also { if (printResults) println(it) }
+    api.getBlogInfo(blogIdentifier = blogName).checkError(expectError).clean().also { if (printResults) println(it) }
 
-    println("Calling `getBlogFollowedBy()`")
-    println(api.getBlogFollowedBy(blogIdentifier = blogName, query = "demo").checkError(expectError || !isBlogOwned).clean())
+    "Calling `getBlogFollowedBy()`".also { if (printResults) println(it) }
+    api.getBlogFollowedBy(blogIdentifier = blogName, query = "demo").checkError(expectError || !isBlogOwned).clean().also { if (printResults) println(it) }
 
-    println("Calling `getBlogLikes()``")
-    println(
-        api.getBlogLikes(blogIdentifier = blogName, pagingLimit = postsPerRequest).checkError(expectError || isSideBlog || !isBlogOwned).clean(),
-    )
+    "Calling `getBlogLikes()``".also { if (printResults) println(it) }
+    api.getBlogLikes(blogIdentifier = blogName, pagingLimit = postsPerRequest).checkError(expectError || isSideBlog || !isBlogOwned).clean().also { if (printResults) println(it) }
     if (doNotesAndReblogs) {
-        println(
+
             api.getBlogLikes(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true,
-            ).checkError(expectError || isSideBlog || !isBlogOwned).clean(),
-        )
-        println(
+            ).checkError(expectError || isSideBlog || !isBlogOwned).clean().also { if (printResults) println(it) }
+
             api.getBlogLikes(
                 blogName,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true,
-            ).checkError(expectError || isSideBlog || !isBlogOwned).clean(),
-        )
+            ).checkError(expectError || isSideBlog || !isBlogOwned).clean().also { if (printResults) println(it) }
+
     }
 
-    println("Calling `getBlogPosts()`")
-    println(
-        api.getBlogPosts(blogName, pagingLimit = postsPerRequest).checkError(expectError).clean(),
-    )
+    "Calling `getBlogPosts()`".also { if (printResults) println(it) }
+    api.getBlogPosts(blogName, pagingLimit = postsPerRequest).checkError(expectError).clean().also { if (printResults) println(it) }
     if (doNotesAndReblogs) {
-        println(
             api.getBlogPosts(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true,
-            ).checkError(expectError).clean(),
-        )
-        println(
+            ).checkError(expectError).clean().also { if (printResults) println(it) }
             api.getBlogPosts(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true,
-            ).checkError(expectError).clean(),
-        )
+            ).checkError(expectError).clean().also { if (printResults) println(it) }
+
     }
 
-    println("Calling `getBlogDrafts()`")
-    println(
-        api.getBlogDrafts(blogName, pagingLimit = postsPerRequest).checkError(expectError || !isBlogOwned).clean(),
-    )
+    "Calling `getBlogDrafts()`".also { if (printResults) println(it) }
+    api.getBlogDrafts(blogName, pagingLimit = postsPerRequest).checkError(expectError || !isBlogOwned).clean().also { if (printResults) println(it) }
     if (doNotesAndReblogs) {
-        println(
             api.getBlogDrafts(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true,
-            ).checkError(expectError || !isBlogOwned).clean(),
-        )
-        println(
+            ).checkError(expectError || !isBlogOwned).clean().also { if (printResults) println(it) }
             api.getBlogDrafts(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true,
-            ).checkError(expectError || !isBlogOwned).clean(),
-        )
+            ).checkError(expectError || !isBlogOwned).clean().also { if (printResults) println(it) }
     }
 
-    println("Calling `getBlogQueue()`")
-    println(
-        api.getBlogQueue(blogName, pagingLimit = postsPerRequest).checkError(expectError || !isBlogOwned).clean(),
-    )
+    "Calling `getBlogQueue()`".also { if (printResults) println(it) }
+    api.getBlogQueue(blogName, pagingLimit = postsPerRequest).checkError(expectError || !isBlogOwned).clean().also { if (printResults) println(it) }
     if (doNotesAndReblogs) {
-        println(
+
             api.getBlogQueue(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true,
-            ).checkError(expectError || !isBlogOwned).clean(),
-        )
-        println(
+            ).checkError(expectError || !isBlogOwned).clean().also { if (printResults) println(it) }
+
             api.getBlogQueue(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true,
-            ).checkError(expectError || !isBlogOwned).clean(),
-        )
-    }
+            ).checkError(expectError || !isBlogOwned).clean().also { if (printResults) println(it) }
 
-    println("Calling `getBlogSubmissions()`")
-    println(
-        api.getBlogSubmissions(blogIdentifier = blogName, pagingLimit = postsPerRequest).checkError(expectError || !isBlogOwned).clean(),
-    )
+    }
+    "Calling `getBlogSubmissions()`".also { if (printResults) println(it) }
+    api.getBlogSubmissions(blogIdentifier = blogName, pagingLimit = postsPerRequest).checkError(expectError || !isBlogOwned).clean().also { if (printResults) println(it) }
+
     if (doNotesAndReblogs) {
-        println(
             api.getBlogSubmissions(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getReblogFields = true,
-            ).checkError(expectError || !isBlogOwned).clean(),
-        )
-        println(
+            ).checkError(expectError || !isBlogOwned).clean().also { if (printResults) println(it) }
+
             api.getBlogSubmissions(
                 blogIdentifier = blogName,
                 pagingLimit = postsPerRequest,
                 getNotesHistory = true,
-            ).checkError(expectError || !isBlogOwned).clean(),
-        )
+            ).checkError(expectError || !isBlogOwned).clean().also { if (printResults) println(it) }
+
     }
 
-    println("Calling `getPost()`")
-    println(api.getPost(blogIdentifier = "demo", postId = 232).checkError().clean(),)
+    "Calling `getPost()`".also { if (printResults) println(it) }
+    api.getPost(blogIdentifier = "demo", postId = 232).checkError().clean().also { if (printResults) println(it) }
 
-    println("Calling `getPostNotes()`")
-    println(api.getPostNotes(blogIdentifier = "demo", postId = 232).checkError().clean())
+    "Calling `getPostNotes()`".also { if (printResults) println(it) }
+    api.getPostNotes(blogIdentifier = "demo", postId = 232).checkError().clean().also { if (printResults) println(it) }
 
-    println(api.getNotifications(blogIdentifier = blogName).checkError(expectError || !isBlogOwned).clean())
-    println(api.getNotifications(blogIdentifier = blogName, types = listOf("like")).checkError(expectError || !isBlogOwned).clean())
-    println(api.shuffleQueue(blogIdentifier = blogName).checkError(expectError || !isBlogOwned).clean())
+    api.getNotifications(blogIdentifier = blogName).checkError(expectError || !isBlogOwned).clean().also { if (printResults) println(it) }
+    api.getNotifications(blogIdentifier = blogName, types = listOf("like")).checkError(expectError || !isBlogOwned).clean().also { if (printResults) println(it) }
+    api.shuffleQueue(blogIdentifier = blogName).checkError(expectError || !isBlogOwned).clean().also { if (printResults) println(it) }
 }
 
 // Uses (3) requests.
-internal suspend fun runPostTests(api: KotlrApi) {
-    println(api.getTaggedPosts("lol").checkError().clean())
+internal suspend fun runPostTests(api: KotlrApi, printResults: Boolean) {
+    api.getTaggedPosts("lol").checkError().clean().also { if (printResults) println(it) }
 
     // Check the results of BUG RACE.
-    println(api.getPollResults("crankyteapot", 706810846972706816, "05898443-8e9b-4618-97ed-6e54b0443475").checkError().clean())
+    api.getPollResults("crankyteapot", 706810846972706816, "05898443-8e9b-4618-97ed-6e54b0443475").checkError().clean().also { if (printResults) println(it) }
 
     // Figure out how much vanilla to add to your cake.
-    println(api.getPollResults("relientk", 708263093485076480, "60e0b849-5c0c-43ca-a334-bba8b7f924e2").checkError().clean())
+    api.getPollResults("relientk", 708263093485076480, "60e0b849-5c0c-43ca-a334-bba8b7f924e2").checkError().clean().also { if (printResults) println(it) }
 }
 
 // Uses up to (ceiling(postsToLoop / postsPerRequest)) requests. (depends if there are enough posts on the given blog)
-internal suspend fun loopBlogPosts(api: KotlrApi, blogName: String, postsPerRequest: Int, postsToLoop: Int): List<Post> {
+internal suspend fun loopBlogPosts(api: KotlrApi, blogName: String, postsPerRequest: Int, postsToLoop: Int, printResults: Boolean): List<Post> {
     var lastTime: Long = Long.MAX_VALUE
     var posts: List<Post>?
     val allPosts: MutableList<Post> = mutableListOf()
@@ -251,7 +223,7 @@ internal suspend fun loopBlogPosts(api: KotlrApi, blogName: String, postsPerRequ
             pagingLimit = postsPerRequest,
             beforeTime = lastTime,
         )
-        println(response.checkError().clean())
+        response.checkError().clean().also { if (printResults) println(it) }
         val body = response?.getBody()
         posts = body?.posts
         posts?.forEach { post ->
@@ -267,7 +239,7 @@ internal suspend fun loopBlogPosts(api: KotlrApi, blogName: String, postsPerRequ
 }
 
 // Uses up to (ceiling(postsToLoop / postsPerRequest)) requests. (depends if there are enough likes on your account)
-internal suspend fun loopLikes(api: KotlrApi, postsPerRequest: Int, postsToLoop: Int): List<Post> {
+internal suspend fun loopLikes(api: KotlrApi, postsPerRequest: Int, postsToLoop: Int, printResults: Boolean): List<Post> {
     var lastTime: Long = Long.MAX_VALUE
     var posts: List<Post>?
     val allPosts: MutableList<Post> = mutableListOf()
@@ -278,7 +250,7 @@ internal suspend fun loopLikes(api: KotlrApi, postsPerRequest: Int, postsToLoop:
             pagingLimit = postsPerRequest,
             beforeTime = lastTime,
         )
-        println(response.checkError().clean())
+        response.checkError().clean().also { if (printResults) println(it) }
         val body = response?.getBody()
         posts = body?.posts
         posts?.forEach { post ->
@@ -294,7 +266,7 @@ internal suspend fun loopLikes(api: KotlrApi, postsPerRequest: Int, postsToLoop:
 }
 
 // Uses up to (1 + ceiling(postsToLoop / postsPerRequest)) requests. (depends if there are enough posts on your dash)
-internal suspend fun loopDashboard(api: KotlrApi, postsPerRequest: Int, postsToLoop: Int): List<Post> {
+internal suspend fun loopDashboard(api: KotlrApi, postsPerRequest: Int, postsToLoop: Int, printResults: Boolean): List<Post> {
     var posts: List<Post>?
     val allPosts: MutableList<Post> = mutableListOf()
     var offset = 0L
@@ -307,7 +279,7 @@ internal suspend fun loopDashboard(api: KotlrApi, postsPerRequest: Int, postsToL
             pagingLimit = postsPerRequest,
             beforePostId = beforeId,
         )
-        println(response.checkError().clean())
+        response.checkError().clean().also { if (printResults) println(it) }
         val body = response?.getBody()
         posts = body?.posts
         posts?.also(allPosts::addAll)
@@ -318,13 +290,13 @@ internal suspend fun loopDashboard(api: KotlrApi, postsPerRequest: Int, postsToL
 }
 
 // Uses (2) requests.
-internal suspend fun testReblog(api: KotlrApi, blogName: String) {
-    api.getBlogPosts(blogName).also { println(it.checkError().clean()) }?.getBody()?.posts?.firstOrNull()?.also {
-        println(it.clean())
+internal suspend fun testReblog(api: KotlrApi, blogName: String, printResults: Boolean) {
+    api.getBlogPosts(blogName).also { it.checkError().clean().also { if (printResults) println(it) } }?.getBody()?.posts?.firstOrNull()?.also {
+        it.clean().also { if (printResults) println(it) }
         val postId = it.id
         val reblogKey = it.reblogKey
         val parentId = it.blog?.uuid
-        println("postId $postId, reblogKey $reblogKey, parentId $parentId")
+        "postId $postId, reblogKey $reblogKey, parentId $parentId".also { if (printResults) println(it) }
         if (postId == null || reblogKey == null || parentId == null) {
             return@also
         }
@@ -347,12 +319,12 @@ internal suspend fun testReblog(api: KotlrApi, blogName: String) {
             blogIdentifier = blogName,
             reblogBody = reblogBody,
         )
-        println(reblogResponse)
+        reblogResponse.also { if (printResults) println(it) }
     }
 }
 
 // Uses (1) request.
-internal suspend fun testCreate(api: KotlrApi, blogName: String) {
+internal suspend fun testCreate(api: KotlrApi, blogName: String, printResults: Boolean) {
     val response = api.createNewPost(
         blogIdentifier = blogName,
         createBody = CreateNewPostBody(
@@ -484,37 +456,37 @@ internal suspend fun testCreate(api: KotlrApi, blogName: String) {
             tags = listOf("Tag1", "Tag2", "Tag3, Tag4， Tag5‚ Tag6, Tag7"),
         ),
     )
-    println(response)
+    response.also { if (printResults) println(it) }
 }
 
 // Uses (13) requests.
-internal suspend fun testFilteredContent(api: KotlrApi) {
-    println(api.getContentFilters().checkError().clean())
+internal suspend fun testFilteredContent(api: KotlrApi, printResults: Boolean) {
+    api.getContentFilters().checkError().clean().also { if (printResults) println(it) }
 
-    println(api.addContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere1").checkError().clean())
-    println(api.addContentFilters(contentFilters = listOf("testContentFilterThatWontAppearAnywhere1")).checkError().clean())
-    println(api.addContentFilters(contentFilters = listOf("testContentFilterThatWontAppearAnywhere1", "testContentFilterThatWontAppearAnywhere2")).checkError().clean())
-    println(api.addContentFilters("testContentFilterThatWontAppearAnywhere1", "testContentFilterThatWontAppearAnywhere2").checkError().clean())
+    api.addContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere1").checkError().clean().also { if (printResults) println(it) }
+    api.addContentFilters(contentFilters = listOf("testContentFilterThatWontAppearAnywhere1")).checkError().clean().also { if (printResults) println(it) }
+    api.addContentFilters(contentFilters = listOf("testContentFilterThatWontAppearAnywhere1", "testContentFilterThatWontAppearAnywhere2")).checkError().clean().also { if (printResults) println(it) }
+    api.addContentFilters("testContentFilterThatWontAppearAnywhere1", "testContentFilterThatWontAppearAnywhere2").checkError().clean().also { if (printResults) println(it) }
 
-    println(api.getContentFilters().checkError().clean())
+    api.getContentFilters().checkError().clean().also { if (printResults) println(it) }
 
-    println(api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere1").checkError().clean())
-    println(api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere1").checkError().clean())
-    println(api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere1").checkError().clean())
-    println(api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere1").checkError().clean())
-    println(api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere2").checkError().clean())
-    println(api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere2").checkError().clean())
+    api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere1").checkError().clean().also { if (printResults) println(it) }
+    api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere1").checkError().clean().also { if (printResults) println(it) }
+    api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere1").checkError().clean().also { if (printResults) println(it) }
+    api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere1").checkError().clean().also { if (printResults) println(it) }
+    api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere2").checkError().clean().also { if (printResults) println(it) }
+    api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere2").checkError().clean().also { if (printResults) println(it) }
 
-    println(api.getContentFilters().checkError().clean())
+    api.getContentFilters().checkError().clean().also { if (printResults) println(it) }
 }
 
 // Uses (5) requests.
-internal suspend fun testBlogBlocks(api: KotlrApi, blogIdentifier: String) {
-    println(api.getBlogBlocks(blogIdentifier = blogIdentifier).checkError().clean())
-    println(api.blockBlog(blogIdentifier = blogIdentifier, blogToBlock = "staff").checkError().clean())
-    println(api.getBlogBlocks(blogIdentifier = blogIdentifier).checkError().clean())
-    println(api.unblockBlog(blogIdentifier = blogIdentifier, blogToUnblock = "staff").checkError().clean())
-    println(api.getBlogBlocks(blogIdentifier = blogIdentifier).checkError().clean())
+internal suspend fun testBlogBlocks(api: KotlrApi, blogIdentifier: String, printResults: Boolean) {
+    api.getBlogBlocks(blogIdentifier = blogIdentifier).checkError().clean().also { if (printResults) println(it) }
+    api.blockBlog(blogIdentifier = blogIdentifier, blogToBlock = "staff").checkError().clean().also { if (printResults) println(it) }
+    api.getBlogBlocks(blogIdentifier = blogIdentifier).checkError().clean().also { if (printResults) println(it) }
+    api.unblockBlog(blogIdentifier = blogIdentifier, blogToUnblock = "staff").checkError().clean().also { if (printResults) println(it) }
+    api.getBlogBlocks(blogIdentifier = blogIdentifier).checkError().clean().also { if (printResults) println(it) }
 }
 
 // Uses ((if (doNotesAndReblogs) 54 else 40) + 3 * ceiling(postsToLoop / postsPerRequest)) requests
@@ -524,43 +496,44 @@ internal suspend fun runAllTests(
     blogName: String,
     isSideblog: Boolean,
     isBlogOwned: Boolean,
+    printResults: Boolean,
     doNotesAndReblogs: Boolean = false,
     postsPerRequest: Int = 50,
     maxPostsPerLooper: Int = 3000,
 ) {
     println("Test all of the User related api calls")
-    runUserTests(api, postsPerRequest, doNotesAndReblogs)
+    runUserTests(api, postsPerRequest, doNotesAndReblogs, printResults)
 
     println("Test all of the Blog related api calls")
-    runBlogTests(api, blogName, postsPerRequest, doNotesAndReblogs, isSideblog, isBlogOwned)
+    runBlogTests(api, blogName, postsPerRequest, doNotesAndReblogs, isSideblog, isBlogOwned, printResults)
 
     println("Test all of the Post related api calls")
-    runPostTests(api)
+    runPostTests(api, printResults)
 
     println("Loop through a bunch of the most recent posts on your dashboard")
-    loopDashboard(api, postsPerRequest, maxPostsPerLooper)
+    loopDashboard(api, postsPerRequest, maxPostsPerLooper, printResults)
 
     println("Loop through a bunch of the most recent posts that you liked")
-    loopLikes(api, postsPerRequest, maxPostsPerLooper)
+    loopLikes(api, postsPerRequest, maxPostsPerLooper, printResults)
 
     println("Loop through a bunch of the most recent posts on your blog")
-    loopBlogPosts(api, blogName, postsPerRequest, maxPostsPerLooper)
+    loopBlogPosts(api, blogName, postsPerRequest, maxPostsPerLooper, printResults)
 
     println("Test what happens if you call for a blog that (probably) doesn't exist")
-    runBlogTests(api, blogName + "asdfasdfasdfasdf", postsPerRequest, doNotesAndReblogs, isSideblog, isBlogOwned, expectError = true)
+    runBlogTests(api, blogName + "asdfasdfasdfasdf", postsPerRequest, doNotesAndReblogs, isSideblog, isBlogOwned, printResults, expectError = true)
 
     println("Draft a reblog of the most recent post")
-    testReblog(api, blogName)
+    testReblog(api, blogName, printResults)
 
     println("Draft a test post")
-    testCreate(api, blogName)
+    testCreate(api, blogName, printResults)
 
     println("Filter content")
-    testFilteredContent(api)
+    testFilteredContent(api, printResults)
 
     if (isBlogOwned) {
         println("Blocking")
-        testBlogBlocks(api, blogName)
+        testBlogBlocks(api, blogName, printResults)
     }
 }
 
