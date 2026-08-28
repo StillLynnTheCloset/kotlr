@@ -459,23 +459,20 @@ internal suspend fun testCreate(api: KotlrApi, blogName: String, printResults: B
     response.also { if (printResults) println(it) }
 }
 
-// Uses (13) requests.
+// Uses (9) requests.
 internal suspend fun testFilteredContent(api: KotlrApi, printResults: Boolean) {
+    val filter1 = "testContentFilterThatWontAppearAnywhere1".lowercase()
+    val filter2 = "testContentFilterThatWontAppearAnywhere2".lowercase()
     api.getContentFilters().checkError().clean().also { if (printResults) println(it) }
 
-    api.addContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere1").checkError().clean().also { if (printResults) println(it) }
-    api.addContentFilters(contentFilters = listOf("testContentFilterThatWontAppearAnywhere1")).checkError().clean().also { if (printResults) println(it) }
-    api.addContentFilters(contentFilters = listOf("testContentFilterThatWontAppearAnywhere1", "testContentFilterThatWontAppearAnywhere2")).checkError().clean().also { if (printResults) println(it) }
-    api.addContentFilters("testContentFilterThatWontAppearAnywhere1", "testContentFilterThatWontAppearAnywhere2").checkError().clean().also { if (printResults) println(it) }
+    api.addContentFilter(contentFilter = filter1).checkError().clean().also { if (printResults) println(it) }
+    api.addContentFilters(contentFilters = listOf(filter1)).checkError().clean().also { if (printResults) println(it) }
+    api.addContentFilters(contentFilters = listOf(filter1, filter2)).checkError().clean().also { if (printResults) println(it) }
+    api.addContentFilters(filter1, filter2).checkError().clean().also { if (printResults) println(it) }
 
     api.getContentFilters().checkError().clean().also { if (printResults) println(it) }
-
-    api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere1").checkError().clean().also { if (printResults) println(it) }
-    api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere1").checkError().clean().also { if (printResults) println(it) }
-    api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere1").checkError().clean().also { if (printResults) println(it) }
-    api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere1").checkError().clean().also { if (printResults) println(it) }
-    api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere2").checkError().clean().also { if (printResults) println(it) }
-    api.deleteContentFilter(contentFilter = "testContentFilterThatWontAppearAnywhere2").checkError().clean().also { if (printResults) println(it) }
+    api.deleteContentFilter(contentFilter = filter1).checkError().clean().also { if (printResults) println(it) }
+    api.deleteContentFilter(contentFilter = filter2).checkError().clean().also { if (printResults) println(it) }
 
     api.getContentFilters().checkError().clean().also { if (printResults) println(it) }
 }

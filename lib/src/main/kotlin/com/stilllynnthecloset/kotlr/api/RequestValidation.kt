@@ -45,6 +45,9 @@ internal fun validateContentFilter(contentFilter: String?) {
     require(contentFilter == null || contentFilter.length <= 250) {
         "Content filters must not be more than 250 characters in length."
     }
+    require(contentFilter == null || contentFilter.none { it.isUpperCase() }) {
+        "Content filters should not contain upper case characters."
+    }
 }
 
 internal fun validateTimestamp(timestamp: Long?) {
