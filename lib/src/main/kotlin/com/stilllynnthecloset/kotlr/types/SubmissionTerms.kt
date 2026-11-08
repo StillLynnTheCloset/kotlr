@@ -21,4 +21,6 @@ public data class SubmissionTerms constructor(
     val guidelines: String? = null,
     @Json(name = "accepted_types")
     val acceptedTypes: List<Post.Type>? = null,
+    @Json(name = "custom_terms_label")
+    val customTermsLabel: String? = null,
 )

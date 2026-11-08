@@ -11,6 +11,8 @@ public data class BlogAccessories constructor(
     val activeBadges: List<BlogAccessoryProduct>? = null,
     @Json(name = "badges")
     val badges: List<BlogAccessoryProduct>? = null,
+    @Json(name = "interaction_badge_icon_limit")
+    val interactionBadgeIconLimit: Int? = null,
 )
 
 @JsonClass(generateAdapter = true)
