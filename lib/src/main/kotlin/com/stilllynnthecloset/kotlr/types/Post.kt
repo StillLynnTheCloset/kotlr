@@ -411,6 +411,12 @@ public data class Post constructor(
          */
         @Json(name = "conversation")
         Conversation("conversation"),
+
+        /**
+         * TODO: Documentation
+         */
+        @Json(name = "poll")
+        Poll("poll"),
     }
 
     /**
