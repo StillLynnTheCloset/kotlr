@@ -6,7 +6,6 @@ rootProject.name = "kotlr"
 
 include(":lib", ":demo")
 
-
 refreshVersions {
     rejectVersionIf {
         candidate.stabilityLevel.isLessStableThan(current.stabilityLevel)
