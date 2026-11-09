@@ -202,8 +202,7 @@ fun minimalExample() = runBlocking {
 
 #### New Functionality ####
 
-  * Add support for NoteData.TipNote
-  * Add support for BlogAccessories.activeBadges
+  * N/A
 
 #### Deprecated Functionality ####
 
@@ -212,6 +211,39 @@ fun minimalExample() = runBlocking {
 #### Minor Changes ####
 
   * N/A
+
+### 0.11.0 ###
+
+#### Breaking Changes ####
+
+  * Remove unused arguments from some BlogGet APIs
+  * ContentFilter requests now require the filter text to be lowercase, because Tumblr makes the text lowercase when adding a filter, but doesn't recognize filters with uppercase characters when deleting filters
+
+#### New Functionality ####
+
+  * Add support for Blog.showFollowAction, Blog.members, Blog.themeId, and Blog.shareReplies
+  * Add support for BlogAccessories.activeBadges, BlogAccessories.badges, and BlogAccessories.interationBadgeIconLimit
+  * Add support for BlogAccessoryProduct.urls and BlogAccessoryProduct.destinationUrl
+  * Add support for BlogAccessoryProductGroup.OnePiece and BlogAccessoryProductGroup.Staff
+  * Add support for Media.accessories
+  * Add support for MilestoneLikeNotification and NoteMentionNotification
+  * Add support for NoteData.TipNote and NoteData.avatarUrl
+  * Add support for Notification.id, Notification.unread, Notification.muted, and Notification.canMute
+  * Add support for Post.muteEndTimestamp, Post.canMute, Post.interactabilityBlaze, Post.isBlazed, Post.isBlazePending, Post.canBlaze, Post.canIgnite, Post.publishOn, Post.parentPostUrl, Post.authorBlog, Post.postAuthorAvatar, Post.headerCta, Post.reblogDisabledReason, and Post.isBrandSafe
+  * Add support for Post.QueueState.Scheduled
+  * Add support for Post.Type.Poll which is used by SubmissionTerms.acceptedTypes
+  * Add support for RequestQueryParameters.prevOffsets and RequestQueryParameters.tag
+  * Add support for SubmissionTerms.customTermsLabel
+  * Add support for User.communities
+  * Add support for VideoContent.duration
+
+#### Deprecated Functionality ####
+
+  * N/A
+
+#### Minor Changes ####
+
+  * Improve parsing of PollResults
 
 ### 0.10.1 ###
 
